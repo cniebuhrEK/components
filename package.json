@@ -1,12 +1,12 @@
 {
-  "name": "components",
+  "name": "examkrackers-components",
   "version": "1.0.0",
   "description": "atom components for examkrackers project",
   "author": "DeSmart",
   "license": "MIT",
   "repository": "https://git.desmart.com/examkrackers-public/components",
-  "main": "dist/index.js",
-  "module": "dist/index.modern.js",
+  "main": "build/index.js",
+  "module": "build/index.modern.js",
   "source": "src/index.tsx",
   "engines": {
     "node": ">=10"
@@ -15,6 +15,7 @@
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "run-s build",
+    "prepare": "yarn run build",
     "test": "run-s test:unit test:lint test:build",
     "test:build": "run-s build",
     "test:lint": "eslint .",
@@ -52,6 +53,6 @@
     "react-scripts": "^3.4.1"
   },
   "files": [
-    "dist"
+    "build"
   ]
 }
