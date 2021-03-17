@@ -1,0 +1,4 @@
+ARG NODE_VERSION=${NODE_VERSION_DOCKERFILE}
+FROM ${NODE_VERSION}
+
+COPY example/build/ /usr/src/app

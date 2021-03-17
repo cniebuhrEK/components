@@ -1,0 +1,69 @@
+variables:
+  RANCHER_URL: "https://rancher.desmart.com"
+  RANCHER_ENVIRONMENT: staging
+  RANCHER_ENVIRONMENT_PRODUCTION: desmart-production
+  RANCHER_STACK_NAME: $CI_ENV-$CI_PROJECT_PATH_SLUG
+  RANCHER_CONFIG_DIR: gitlab/deploy/staging
+  NODE_VERSION: "node:12.16.0-slim"
+  NODE_VERSION_DOCKERFILE: "desmart/nginx-spa:1.19-alpine"
+  WEB_IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
+  HOSTNAME: $CI_PROJECT_PATH_SLUG.$CI_ENV.desmart.live
+  CYPRESS_BROWSER_IMAGE: cypress/included:6.6.0
+
+cache:
+  key: $CI_COMMIT_REF_NAME
+  untracked: false
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - deploy
+
+.stage.build: &STAGE_BUILD
+  environment: $CI_ENV
+  stage: build
+
+.stage.deploy: &STAGE_DEPLOY
+  environment: $CI_ENV
+  stage: deploy
+  image: desmart/rancher-deploy
+  cache: {}
+
+.env.test: &ENV_TEST
+  variables: &VARIABLES_ENV_TEST
+    CI_ENV: test
+  only:
+    - master
+
+.script.build: &SCRIPT_BUILD
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker run --privileged --rm -v "${PWD}:/usr/src/app" -w "/usr/src/app" --env-file=$ENVFILE $NODE_VERSION /bin/sh -c "yarn; yarn predeploy"
+    - docker build . -f "docker/Dockerfile" --build-arg NODE_VERSION=$NODE_VERSION_DOCKERFILE -t $WEB_IMAGE
+    - docker push $WEB_IMAGE
+
+.script.deploy: &SCRIPT_DEPLOY
+  script:
+    - rcompose up -d
+    - rcompose scale web=0
+    - rcompose up -d --pull --force-upgrade --confirm-upgrade web
+    - rcompose scale web=1
+    - rcompose scale web-roll=0
+    - rcompose rm web-roll
+    - stack-add $CI_ENV $CI_PROJECT_NAMESPACE
+    - echo "Successfully deployed app to https://$HOSTNAME"
+
+test:build image:
+  <<: *ENV_TEST
+  <<: *STAGE_BUILD
+  <<: *SCRIPT_BUILD
+  variables:
+    <<: *VARIABLES_ENV_TEST
+
+test:deploy:
+  <<: *ENV_TEST
+  <<: *STAGE_DEPLOY
+  <<: *SCRIPT_DEPLOY
+  variables:
+    <<: *VARIABLES_ENV_TEST
