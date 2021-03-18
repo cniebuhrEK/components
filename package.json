@@ -4,7 +4,7 @@
   "description": "atom components for examkrackers project",
   "author": "DeSmart",
   "license": "MIT",
-  "repository": "https://git.desmart.com/examkrackers-public/components",
+  "repository": "https://git.desmart.com/examkrackers/components",
   "main": "build/index.js",
   "module": "build/index.modern.js",
   "source": "src/index.tsx",
