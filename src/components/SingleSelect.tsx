@@ -39,7 +39,6 @@ SingleSelect.defaultProps = {
   options: [],
   onBlur: () => {},
   onFocus: () => {},
-  onChange: () => {},
   label: '',
   error: false,
   errorText: '',

@@ -4,23 +4,23 @@ import styled from 'styled-components'
 const buttonSizes = {
   normal: 'normal',
   small: 'small',
-  large: 'large'
+  large: 'large',
 }
 
 const buttonVariants = {
   contained: 'contained',
-  outlined: 'outlined'
+  outlined: 'outlined',
 }
 
 const buttonColors = {
   primary: 'primary',
   secondary: 'secondary',
-  tertiary: 'tertiary'
+  tertiary: 'tertiary',
 }
 
 interface ButtonProps {
   onClick?: (e) => any
-  children?: JSX.Element
+  children?: JSX.Element | string
   size?: string
   color?: string
   variant?: string
@@ -46,7 +46,7 @@ const Button = (props: ButtonProps): JSX.Element => {
     autofocus,
     name,
     value,
-    id
+    id,
   } = props
 
   return (
@@ -252,7 +252,7 @@ Button.defaultProps = {
   type: 'button',
   size: buttonSizes.normal,
   variant: buttonVariants.contained,
-  color: buttonColors.primary
+  color: buttonColors.primary,
 }
 
 export default Button

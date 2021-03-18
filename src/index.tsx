@@ -1,9 +1,11 @@
 // theme
-import ThemeProvider from './theme/ThemeProvider'
+export { default as ThemeProvider } from './theme/ThemeProvider'
 
 // components
-import Button from './components/Button'
-import Input from './components/Input'
-import SingleSelect from './components/SingleSelect'
+export { default as Button } from './components/Button'
+export { default as Input } from './components/Input'
+export { default as SingleSelect } from './components/SingleSelect'
 
-export { ThemeProvider, Button, Input, SingleSelect }
+// form elements
+export { default as InputField } from './formElements/InputField'
+export { default as SingleSelectField } from './formElements/SingleSelectField'
