@@ -1,4 +1,4 @@
-# components
+# examkrackers-components
 
 > atom components for examkrackers project
 
@@ -6,25 +6,77 @@
 
 ## Install
 
-```bash
-npm install --save components
+To install in the project add:
+
 ```
-
-## Usage
-
-```tsx
-import React, { Component } from 'react'
-
-import MyComponent from 'components'
-import 'components/dist/index.css'
-
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+{
+    dependencies: {
+        ...
+        "examkrackers-components": "https://git.desmart.com/examkrackers/components.git"
+    }
 }
 ```
+in your project dependencies and run
+```
+    yarn
+```
 
-## License
+Then import the ThemeProvider and wrap your application with it:
 
-MIT © [DeSmart](https://github.com/DeSmart)
+```
+...
+import { ThemeProvider } from 'examkrackers-components';
+...
+
+const Root = (props) => {
+  return (
+    <ThemeProvider>
+      <App {...context} />
+    </ThemeProvider>
+  )
+}
+
+```
+
+and you can use the components within the project, eg.
+
+```
+...
+import { Button } from 'examkrackers-components';
+
+const SubmitButton = (props) => {
+  return (
+    <Button>
+      Submit
+    </Button>
+  )
+}
+
+```
+
+## Development
+
+install the dependencies by running:
+```
+yarn
+cd examples
+yarn
+```
+
+then in first terminal tab inside the root run:
+
+```
+yarn start
+```
+
+in second terminal tab open the examples catalog and run
+```
+yarn start
+```
+
+after that in the root repo you will start a build watcher for the new changes inside `/src` catalog
+and in `/examples` catalog you will run the storybook project so you can preview the components from the root
+
+## Deploy a new version 
+
+tbc

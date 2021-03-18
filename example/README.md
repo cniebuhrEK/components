@@ -1,5 +1,4 @@
-This example was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Storybook of the examkrackers-components package
 
-It is linked to the components package in the parent directory for development purposes.
-
-You can run `yarn install` and then `yarn start` to test your package.
+* to develop run `yarn` and `yarn start`
+* to build run `yarn build`

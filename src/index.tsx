@@ -1,9 +1,9 @@
-import * as React from 'react'
+// theme
+import ThemeProvider from './theme/ThemeProvider'
 
-interface Props {
-  text: string
-}
+// components
+import Button from './components/Button'
+import Input from './components/Input'
+import SingleSelect from './components/SingleSelect'
 
-export const ExampleComponent = ({ text }: Props) => {
-  return <div>Example Component: {text}</div>
-}
+export { ThemeProvider, Button, Input, SingleSelect }
