@@ -25,7 +25,7 @@ const Toast = (props: ToastProps): JSX.Element => {
   }, [open])
 
   return (
-    <StyledToast open={open} severity={severity}>
+    <StyledToast id={`toast-${severity}`} open={open} severity={severity}>
       <div>{children}</div>
       <div onClick={handleClose} className='toast__close'>
         ✕

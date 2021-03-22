@@ -7,6 +7,7 @@ import HideIcon from '../icons/Hide'
 
 interface InputProps {
   name?: string
+  id?: string
   label?: string
   required?: boolean
   disabled?: boolean
@@ -25,6 +26,7 @@ interface InputProps {
 
 const Input = ({
   name,
+  id,
   label,
   required,
   disabled,
@@ -68,7 +70,7 @@ const Input = ({
         className='input-container__input'
         value={value}
         ref={inputRef}
-        id={name}
+        id={id || name}
         name={name}
         required={required}
         disabled={disabled}
