@@ -219,7 +219,7 @@ export const InputContainer = styled.div`
 
   .input-container__toggle-visibility {
     display: ${props => (props.hasPasswordType ? 'flex' : 'none')};
-    color: ${props => props.theme.palette.common.osloGray};
+    color: ${props => props.theme.palette.common.gray500};
     cursor: pointer;
     position: absolute;
     right: 14px;
