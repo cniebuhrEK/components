@@ -5,6 +5,7 @@ import Input from '../components/Input'
 
 interface InputProps {
   name?: string
+  id?: string
   label?: string
   required?: boolean
   disabled?: boolean
@@ -27,6 +28,7 @@ interface InputProps {
 export const InputField = (props: InputProps): JSX.Element => {
   const {
     name,
+    id,
     type,
     onChange,
     validate,
@@ -73,6 +75,7 @@ export const InputField = (props: InputProps): JSX.Element => {
       disabled={disabled}
       required={required}
       name={name}
+      id={id || name}
       label={label}
       value={value}
       errorText={
