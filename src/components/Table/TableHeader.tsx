@@ -10,7 +10,7 @@ export interface TableHeaderProps {
   id: string
   sticky?: boolean
   isSortActive?: boolean
-  onChangeSort: (e) => any
+  onChangeSort?: (e) => any
 }
 
 export const SORT_DIRECTION = {
@@ -30,7 +30,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
   } = props
 
   const handleSort = () => {
-    if (sortable) {
+    if (sortable && onChangeSort) {
       onChangeSort(columnId)
     }
   }
