@@ -89,7 +89,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   ))
 
   const renderRows = rows.map(row => (
-    <TableRow key={row.id}>
+    <TableRow key={row.id} id={row.id}>
       {row.cells.map(cell => (
         <TableCell key={cell.columnId} {...cell.cellProps}>
           {cell.children}

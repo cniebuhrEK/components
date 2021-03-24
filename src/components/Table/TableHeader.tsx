@@ -27,6 +27,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
     sticky,
     onChangeSort,
     isSortActive,
+    id,
   } = props
 
   const handleSort = () => {
@@ -42,6 +43,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
       sortDirection={sortDirection}
       isSortActive={isSortActive}
       onClick={handleSort}
+      id={id}
     >
       {sortable && (
         <span className='table-header__sort-arrow'>

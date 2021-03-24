@@ -15,6 +15,7 @@ export { default as TableCell } from './components/Table/TableCell'
 export { default as TableFoot } from './components/Table/TableFoot'
 export { default as Pagination } from './components/Pagination/Pagination'
 export { default as EntitiesList } from './components/EntitiesList'
+export { default as Modal } from './components/Modal'
 
 // form elements
 export { default as InputField } from './formElements/InputField'
