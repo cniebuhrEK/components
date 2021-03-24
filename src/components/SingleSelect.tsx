@@ -8,7 +8,7 @@ const customComponents = {
 
 interface SingleSelectProps {
   required?: boolean
-  options: { label: string; value: string }[]
+  options: { label: string; value: string | number | boolean }[]
   label: string
   error?: boolean
   errorText?: string

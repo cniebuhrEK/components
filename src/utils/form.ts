@@ -6,7 +6,7 @@ import {
   isEmpty,
   always,
   find,
-  propEq,
+  propEq
 } from 'ramda'
 
 export const getHeadErrorOrEmptyObj = pipe(
@@ -14,6 +14,6 @@ export const getHeadErrorOrEmptyObj = pipe(
   ifElse(isEmpty, always({}), head)
 )
 
-export const getOptionByValue = (value: string) => (
-  options: { label: string; value: string }[]
+export const getOptionByValue = (value: string | number | boolean) => (
+  options: { label: string; value: string | number | boolean }[]
 ) => pipe(find(propEq('value', value)))(options)

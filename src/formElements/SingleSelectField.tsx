@@ -6,14 +6,15 @@ import SingleSelect from '../components/SingleSelect'
 interface SingleSelectFieldProps {
   name?: string
   required?: boolean
-  options: { label: string; value: string }[]
+  options: { label: string; value: string | boolean | number }[]
   label: string
   error?: boolean
   errorText?: string
   disabled?: boolean
   t: (key, options) => string
   reset?: boolean
-  value: string
+  value: string | boolean | number
+  id: string
   onChange: (name, value) => any
   validate: (name, v) => any
 }
@@ -30,7 +31,7 @@ export const SingleSelectField = (
     value: initialValue,
     required,
     reset,
-    t,
+    t
   } = props
   const defaultOption = getOptionByValue(initialValue)(options)
 
@@ -38,7 +39,7 @@ export const SingleSelectField = (
   const [touched, _setTouched] = useState(false)
   const [{ valid, error }, _validate] = useState({
     valid: true,
-    error: {},
+    error: {}
   })
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export const SingleSelectField = (
 
 SingleSelectField.defaultProps = {
   validate: () => {},
-  variant: 'outlined',
+  variant: 'outlined'
 }
 
 export default SingleSelectField
