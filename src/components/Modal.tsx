@@ -63,7 +63,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     z-index: 1000001;
     width: 100%;
     height: 100%;
-    background: rgba(95, 98, 98, 0.3);
+    background: ${props => props.theme.palette.common.gray100};
     overflow-y: auto;
     padding: 40px 0;
     text-align: center;
@@ -85,7 +85,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     position: relative;
     display: inline-block;
     padding: 16px;
-    background: #fff;
+    background: ${props => props.theme.palette.background.paper};
     border-radius: 3px;
     outline: 0;
     max-width: 500px;
@@ -100,7 +100,11 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
       right: 16px;
       cursor: pointer;
       color: ${props => props.theme.palette.common.gray400};
-      font-size: 16px;
+      transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+      &:hover {
+        color: ${props => props.theme.palette.common.gray600};
+      }
     }
 
     .modal__title {

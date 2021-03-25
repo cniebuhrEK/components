@@ -1,10 +1,13 @@
-import { ThemeProvider } from 'components';
+import { ThemeProvider, GlobalStyles, Container } from 'components';
 import { StoryContext, StoryGetter, StoryWrapper } from '@storybook/addons';
 
 const withThemeProvider=(Story,context)=>{
   return (
     <ThemeProvider>
-      <Story {...context} />
+      <GlobalStyles />
+      <Container>
+        <Story {...context} />
+      </Container>
     </ThemeProvider>
   )
 }

@@ -56,17 +56,19 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 }
 
 const StyledTableHeader = styled.th`
-  padding: 10px 5px;
+  padding: 5px;
+  font-size: 12px;
   cursor: ${props => (props.sortable ? 'pointer' : 'text')};
   color: inherit;
   display: table-cell;
   vertical-align: middle;
-  border-color: ${props => props.theme.palette.common.gray400};
+  text-align: left;
+  border-color: transparent;
   border-width: 0 0 1px;
   border-style: solid;
   position: ${props => (props.sticky ? 'sticky' : 'static')};
   background-color: ${props =>
-    props.sticky ? props.theme.palette.common.white : 'transparent'};
+    props.sticky ? props.theme.palette.background.paper : 'transparent'};
   top: 0;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
@@ -78,7 +80,8 @@ const StyledTableHeader = styled.th`
     padding: 0 5px;
     line-height: 14px;
     transform: rotate(
-      ${props => (props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg')}
+      ${props =>
+        props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
     );
   }
 

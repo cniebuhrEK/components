@@ -5,12 +5,12 @@ export default styled.td`
   display: table-cell;
   vertical-align: middle;
   border-spacing: 0;
-  text-align: center;
+  text-align: left;
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size: 14px;
-  padding: 10px 0;
-  border-color: ${props => props.theme.palette.common.gray400};
+  font-size: 16px;
+  padding: 21px 0;
+  border-color: ${props => props.theme.palette.common.gray100};
   border-width: 0 0 1px;
   border-style: solid;
 `

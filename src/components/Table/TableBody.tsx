@@ -9,7 +9,7 @@ export default styled.tbody`
   width: 100%;
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size: 14px;
+  font-size: 16px;
 
   tr {
     cursor: pointer;

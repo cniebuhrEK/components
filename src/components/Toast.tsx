@@ -42,7 +42,7 @@ const StyledToast = styled.div`
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: 14px;
   min-width: 200px;
-  max-width: 200px;
+  max-width: 300px;
   z-index: ${props => props.theme.zIndex.snackbar};
   background-color: ${props => {
     switch (props.severity) {

@@ -3,32 +3,31 @@ export default {
     common: {
       black: '#000',
       white: '#fff',
-      gray100: '#F8F8F9',
-      gray200: '#F1F1F3',
-      gray300: '#D8D9DB',
-      gray400: '#B5B6B8',
-      gray500: '#868789',
-      gray600: '#616775',
-      gray700: '#434B62',
-      gray800: '#2A334F',
-      gray900: '#192141'
+      gray100: '#ffffff1a',
+      gray200: '#ffffff33',
+      gray300: '#ffffff4d',
+      gray400: '#ffffff66',
+      gray500: '#ffffff80',
+      gray600: '#ffffff99',
+      gray700: '#ffffffb3',
+      gray800: '#ffffffcc',
+      gray900: '#ffffffe6'
     },
     background: {
-      paper: '#fff',
-      default: '#fafafa'
+      paper: '#3b3b39',
+      default: '#343432'
     },
     primary: {
-      main: '#ff9347',
-      light: '#ffb37d',
-      dark: '#fc6e08',
-      contrastText: '#fff',
-      transparent: '#ffb06b26'
+      main: '#faad4c',
+      light: '#faad4cb3',
+      dark: '#9e5a04',
+      contrastText: '#ffffffe6'
     },
     secondary: {
-      main: '#8653D0',
-      light: '#A27DD9',
-      dark: '#62399c',
-      contrastText: '#fff'
+      main: '#74c708',
+      light: '#74c708b3',
+      dark: '#396304',
+      contrastText: '#ffffffe6'
     },
     tertiary: {
       main: '#2ebec4',
@@ -37,35 +36,35 @@ export default {
       contrastText: '#fff'
     },
     error: {
-      light: '#FF7F69',
-      main: '#FF4538',
-      dark: '#DB282C',
-      contrastText: '#fff'
+      light: '#FFA28D',
+      main: '#FF7768',
+      dark: '#DB4E4C',
+      contrastText: '#ffffffe6'
     },
     warning: {
-      light: '#FFE882',
-      main: '#ffdd59',
-      dark: '#DBB841',
-      contrastText: '#282166'
+      light: '#FFF275',
+      main: '#DBC833',
+      dark: '#DBC833',
+      contrastText: '#ffffffe6'
     },
     info: {
-      light: '#36DBD2',
-      main: '#00bec4',
-      dark: '#0095A8',
-      contrastText: '#fff'
+      light: '#40DDF4',
+      main: '#04BEED',
+      dark: '#0294CB',
+      contrastText: '#ffffffe6'
     },
     success: {
-      light: '#A8EF8E',
-      main: '#82E569',
-      dark: '#5CC44C',
-      contrastText: '#282166'
+      light: '#8AEF87',
+      main: '#60E567',
+      dark: '#46C458',
+      contrastText: '#ffffffe6'
     },
     text: {
-      main: '#282166'
+      main: '#ffffff'
     }
   },
   shape: {
-    borderRadius: '4px'
+    borderRadius: '2px'
   },
   shadows: {
     main: '4px 0 20px 0 rgba(37, 38, 94, 0.1)',
@@ -99,7 +98,7 @@ export default {
     dropdown: 1700
   },
   typography: {
-    fontFamily: '\'Montserrat\', \'Open Sans\', sans-serif'
+    fontFamily: '\'Nunito\', \'Open Sans\', sans-serif'
   },
   dimensions: {
     navHeight: '60px',
@@ -111,9 +110,9 @@ export default {
     authFormWidth: '600px',
     authRightSideBarWidth: '350px',
     inputHeight: '48px',
-    buttonNormalHeight: '48px',
-    buttonSmallHeight: '32px',
-    buttonLargeHeight: '60px'
+    buttonNormalHeight: '35px',
+    buttonSmallHeight: '19px',
+    buttonLargeHeight: '47px'
   },
   breakpoints: {
     mobile: 768,

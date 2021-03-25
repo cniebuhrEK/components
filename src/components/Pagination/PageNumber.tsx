@@ -42,9 +42,9 @@ const StyledPageNumber = styled.li`
 
   .page_number--current,
   .page_number {
-    min-width: ${props => props.theme.dimensions.buttonSmallHeight};
-    height: ${props => props.theme.dimensions.buttonSmallHeight};
-    line-height: ${props => props.theme.dimensions.buttonSmallHeight};
+    min-width: ${props => props.theme.dimensions.buttonNormalHeight};
+    height: ${props => props.theme.dimensions.buttonNormalHeight};
+    line-height: ${props => props.theme.dimensions.buttonNormalHeight};
     border-radius: ${props => props.theme.shape.borderRadius};
     border: 1px solid ${props => props.theme.palette.common.gray400};
     display: inline-block;
@@ -78,10 +78,10 @@ const StyledPageNumber = styled.li`
       top: 0;
       color: ${props => props.theme.palette.text.main};
       left: calc(
-        0px - ${props => props.theme.dimensions.buttonSmallHeight} - 2px
+        0px - ${props => props.theme.dimensions.buttonNormalHeight} - 2px
       );
-      width: ${props => props.theme.dimensions.buttonSmallHeight};
-      line-height: ${props => props.theme.dimensions.buttonSmallHeight};
+      width: ${props => props.theme.dimensions.buttonNormalHeight};
+      line-height: ${props => props.theme.dimensions.buttonNormalHeight};
       text-align: center;
       pointer-events: none;
       border: 1px solid transparent;
@@ -100,10 +100,10 @@ const StyledPageNumber = styled.li`
       top: 0;
       color: ${props => props.theme.palette.text.main};
       right: calc(
-        0px - ${props => props.theme.dimensions.buttonSmallHeight} - 2px
+        0px - ${props => props.theme.dimensions.buttonNormalHeight} - 2px
       );
-      width: ${props => props.theme.dimensions.buttonSmallHeight};
-      line-height: ${props => props.theme.dimensions.buttonSmallHeight};
+      width: ${props => props.theme.dimensions.buttonNormalHeight};
+      line-height: ${props => props.theme.dimensions.buttonNormalHeight};
       text-align: center;
       pointer-events: none;
       border: 1px solid transparent;

@@ -1,5 +1,6 @@
 // theme
 export { default as ThemeProvider } from './theme/ThemeProvider'
+export { default as GlobalStyles } from './theme/globalStyles'
 
 // components
 export { default as Button } from './components/Button'
@@ -16,6 +17,7 @@ export { default as TableFoot } from './components/Table/TableFoot'
 export { default as Pagination } from './components/Pagination/Pagination'
 export { default as EntitiesList } from './components/EntitiesList'
 export { default as Modal } from './components/Modal'
+export { default as Container } from './components/Container'
 
 // form elements
 export { default as InputField } from './formElements/InputField'

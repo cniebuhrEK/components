@@ -121,7 +121,7 @@ export const InputContainer = styled.div`
   font-family: ${props => props.theme.typography.fontFamily};
   transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   background-color: ${props =>
-    props.isDisabled ? props.theme.palette.common.whisper : 'transparent'};
+    props.isDisabled ? props.theme.palette.common.gray100 : 'transparent'};
 
   &:hover {
     border-color: ${props => {
@@ -162,7 +162,7 @@ export const InputContainer = styled.div`
     z-index: 1;
     padding: ${props => (props.hasValue ? '0 5px' : '0')};
     background-color: ${props =>
-      props.hasValue ? props.theme.palette.common.white : 'transparent'};
+      props.hasValue ? props.theme.palette.background.default : 'transparent'};
     transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   }
 
@@ -172,7 +172,7 @@ export const InputContainer = styled.div`
     left: 14px;
     top: -9px;
     padding: 0 5px;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.background.default};
     color: ${props =>
       props.error
         ? props.theme.palette.error.main
@@ -198,14 +198,14 @@ export const InputContainer = styled.div`
   input:-webkit-autofill {
     color: ${props => props.theme.palette.text.main} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${props => props.theme.palette.common.white}
+    box-shadow: 0 0 0px 1000px ${props => props.theme.palette.background.default}
       inset;
     height: 100%;
   }
 
   .input-container__input:disabled {
     color: ${props => props.theme.palette.common.gray400};
-    background-color: ${props => props.theme.palette.common.gray200};
+    background-color: transparent;
   }
 
   .input-container__error {
