@@ -117,7 +117,7 @@ export const InputContainer = styled.div`
       : props.theme.palette.common.gray400};
   padding: 0 14px;
   border-radius: ${props => props.theme.shape.borderRadius};
-  font-size: 13px;
+  font-size: 16px;
   font-family: ${props => props.theme.typography.fontFamily};
   transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
   background-color: ${props =>
@@ -167,8 +167,8 @@ export const InputContainer = styled.div`
   }
 
   &:focus-within .input-container__label {
-    font-size: 10px;
-    line-height: 10px;
+    font-size: 12px;
+    line-height: 12px;
     left: 14px;
     top: -9px;
     padding: 0 5px;
@@ -182,7 +182,7 @@ export const InputContainer = styled.div`
   .input-container__input {
     position: relative;
     z-index: 2;
-    font-size: 13px;
+    font-size: 16px;
     background-color: transparent;
     border: none;
     color: ${props =>
@@ -211,7 +211,7 @@ export const InputContainer = styled.div`
   .input-container__error {
     display: ${props => (props.error ? 'block' : 'none')};
     color: ${props => props.theme.palette.error.main};
-    font-size: 9px;
+    font-size: 12px;
     position: absolute;
     top: 105%;
     left: 14px;

@@ -111,8 +111,8 @@ export default {
     authRightSideBarWidth: '350px',
     inputHeight: '48px',
     buttonNormalHeight: '35px',
-    buttonSmallHeight: '19px',
-    buttonLargeHeight: '47px'
+    buttonSmallHeight: '25px',
+    buttonLargeHeight: '45px'
   },
   breakpoints: {
     mobile: 768,
