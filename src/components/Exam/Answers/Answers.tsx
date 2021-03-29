@@ -5,7 +5,7 @@ import QuestionUnanswered from '../../../examIcons/QuestionUnanswered'
 import cx from 'classnames'
 
 interface AnswerProps {
-  answerCode: 'A' | 'B' | 'C' | 'D'
+  answerCode: string
   isSelected: boolean
   answerContent: JSX.Element | string
   onClick: (code: string) => void
@@ -35,14 +35,14 @@ const Answer = (props: AnswerProps): JSX.Element => {
 }
 
 interface AnswerI {
-  answerCode: 'A' | 'B' | 'C' | 'D'
+  answerCode: string
   answerContent: JSX.Element | string
 }
 
 interface AnswersProps {
   answers: AnswerI[]
-  onSelectAnswer: () => void
-  selectedAnswerCode: 'A' | 'B' | 'C' | 'D' | ''
+  onSelectAnswer: (e: string) => void
+  selectedAnswerCode: string
 }
 
 const Answers = (props: AnswersProps): JSX.Element => {
