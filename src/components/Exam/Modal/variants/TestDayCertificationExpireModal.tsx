@@ -13,7 +13,8 @@ interface TestDayCertificationExpireModalProps {
 
 const TestDayCertificationExpireModal = ({
   open,
-  handleClose
+  handleClose,
+  ...rest
 }: TestDayCertificationExpireModalProps): JSX.Element => {
   return (
     <Modal
@@ -26,6 +27,7 @@ const TestDayCertificationExpireModal = ({
       }
       initWidth={700}
       initHeight={275}
+      {...rest}
     >
       <TestDayCertificationExpireModalContainer>
         <div className='expire-message-container'>

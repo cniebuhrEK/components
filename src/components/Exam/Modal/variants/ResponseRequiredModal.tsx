@@ -10,7 +10,8 @@ interface ResponseRequiredModalProps {
 
 const ResponseRequiredModal = ({
   open,
-  handleClose
+  handleClose,
+  ...rest
 }: ResponseRequiredModalProps): JSX.Element => {
   return (
     <Modal
@@ -22,6 +23,7 @@ const ResponseRequiredModal = ({
       showConfirmButton
       confirmButtonName='OK'
       handleConfirm={handleClose}
+      {...rest}
     >
       <ResponseRequiredModalContainer>
         <img

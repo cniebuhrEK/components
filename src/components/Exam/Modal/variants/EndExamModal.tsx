@@ -3,7 +3,6 @@ import Modal from '../Modal'
 import styled from 'styled-components'
 
 interface EndExamModalProps {
-  handleClose: () => void
   handleConfirm: () => void
   open: boolean
   [x: string]: any
@@ -12,7 +11,8 @@ interface EndExamModalProps {
 const EndExamModal = ({
   open,
   handleClose,
-  handleConfirm
+  handleConfirm,
+  ...rest
 }: EndExamModalProps): JSX.Element => {
   return (
     <Modal
@@ -25,6 +25,7 @@ const EndExamModal = ({
       showCancelButton
       handleConfirm={handleConfirm}
       handleCancel={handleClose}
+      {...rest}
     >
       <EndExamModalContainer>
         <img

@@ -75,4 +75,8 @@ export const TimeAndPageElement = styled.div`
   &.--warning {
     color: ${props => props.theme.palette.secondary.main};
   }
+
+  &.--hidden {
+    visibility: hidden;
+  }
 `

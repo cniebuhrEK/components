@@ -36,7 +36,12 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   const timerClass = cx({
     '--condensed': !timerExpanded,
-    '--warning': timer !== initialTimer
+    '--warning': timer !== initialTimer,
+    '--hidden': !timerVisibility
+  })
+
+  const pagesClass = cx({
+    '--hidden': !pagesVisibility
   })
 
   useEffect(() => {
@@ -52,23 +57,19 @@ const Header = (props: HeaderProps): JSX.Element => {
         This is not an official MCAT
       </NotOfficialMCATContainer>
       <TimeAndPageContainer>
-        {timerVisibility && (
-          <TimeAndPageElement
-            onClick={toggleTimerVisibility}
-            className={timerClass}
-          >
-            <TimerIcon />
-            <div className='content'>Time Remaining: {timer}</div>
-          </TimeAndPageElement>
-        )}
-        {pagesVisibility && (
-          <TimeAndPageElement>
-            <QuestionIcon />
-            <div className='content'>
-              {currentPage} of {totalPages}
-            </div>
-          </TimeAndPageElement>
-        )}
+        <TimeAndPageElement
+          onClick={toggleTimerVisibility}
+          className={timerClass}
+        >
+          <TimerIcon />
+          <div className='content'>Time Remaining: {timer}</div>
+        </TimeAndPageElement>
+        <TimeAndPageElement className={pagesClass}>
+          <QuestionIcon />
+          <div className='content'>
+            {currentPage} of {totalPages}
+          </div>
+        </TimeAndPageElement>
       </TimeAndPageContainer>
     </ExamHeaderContainer>
   )
