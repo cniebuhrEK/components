@@ -71,4 +71,8 @@ export const TimeAndPageElement = styled.div`
       display: none;
     }
   }
+
+  &.--warning {
+    color: ${props => props.theme.palette.secondary.main};
+  }
 `

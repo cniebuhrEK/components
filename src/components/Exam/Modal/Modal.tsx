@@ -1,0 +1,170 @@
+import React from 'react'
+import styled from 'styled-components'
+
+import Modal from 'react-modal-resizable-draggable'
+import IconClose from '../../../examIcons/Close'
+
+interface ExamModalProps {
+  children: JSX.Element
+  handleClose: () => void
+  open: boolean
+  title: JSX.Element | string
+  showConfirmButton?: boolean
+  confirmButtonName?: string
+  handleConfirm?: () => void
+  showCancelButton?: boolean
+  cancelButtonName?: string
+  handleCancel?: () => void
+  [x: string]: any
+}
+
+const ExamModal = ({
+  children,
+  handleClose,
+  open,
+  title,
+  showConfirmButton,
+  confirmButtonName,
+  showCancelButton,
+  cancelButtonName,
+  handleConfirm,
+  handleCancel,
+  ...rest
+}: ExamModalProps): JSX.Element => {
+  return (
+    <ExamModalContainer>
+      <Modal
+        onRequestClose={handleClose}
+        isOpen={open}
+        initWidth={500}
+        initHeight={300}
+        disableResize
+        {...rest}
+      >
+        <div onClick={handleClose} className='modal__title'>
+          {title}
+          <div onClick={handleClose} className='modal__close'>
+            <IconClose />
+          </div>
+        </div>
+        <div className='modal__content'>
+          {children}
+          <div className='modal_buttons-container'>
+            {showConfirmButton && (
+              <div className='modal__button' onClick={handleConfirm}>
+                {confirmButtonName}
+              </div>
+            )}
+            {showCancelButton && (
+              <div className='modal__button' onClick={handleCancel}>
+                {cancelButtonName}
+              </div>
+            )}
+          </div>
+        </div>
+      </Modal>
+    </ExamModalContainer>
+  )
+}
+
+ExamModal.defaultProps = {
+  showConfirmButton: false,
+  confirmButtonName: 'Yes',
+  showCancelButton: false,
+  cancelButtonName: 'No'
+}
+
+export default ExamModal
+
+export const ExamModalContainer = styled.div`
+  .modal__title {
+    background: ${props => props.theme.palette.primary.main};
+    border-bottom: 1px solid
+      ${props => props.theme.palette.primary.contrastText};
+    height: 28px;
+    padding: 0px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .modal_buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal__button + .modal__button {
+      margin-left: 5px;
+    }
+  }
+
+  .modal__button {
+    color: ${props => props.theme.palette.primary.contrastText};
+    border: 1px solid ${props => props.theme.palette.primary.contrastText};
+    padding: 3px 10px;
+    cursor: pointer;
+    font-size: 12pt;
+    text-decoration: none;
+
+    &:first-letter {
+      text-decoration: underline;
+    }
+
+    &:hover {
+      color: ${props => props.theme.palette.secondary.main};
+    }
+  }
+
+  .modal__close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: ${props => props.theme.palette.primary.contrastText};
+    font-size: 16px;
+
+    &:hover {
+      color: ${props => props.theme.palette.secondary.main};
+    }
+  }
+
+  .modal__content {
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .flexible-modal {
+    position: absolute;
+    z-index: 1;
+    border: 1px solid #000;
+    background: ${props => props.theme.palette.primary.main};
+    border-radius: 4px;
+    color: ${props => props.theme.palette.primary.contrastText};
+  }
+
+  .flexible-modal-resizer {
+    display: none;
+  }
+
+  .flexible-modal-mask {
+    position: fixed;
+    height: 100%;
+    background: transparent;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .flexible-modal-drag-area {
+    background: transparent;
+    height: 28px;
+    width: calc(100% - 20px) !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: move;
+  }
+`

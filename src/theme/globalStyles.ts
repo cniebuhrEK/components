@@ -285,4 +285,8 @@ export default createGlobalStyle`
     th {
     padding: 0;
     }
+
+    .underline {
+      text-decoration: underline;
+    }
 `

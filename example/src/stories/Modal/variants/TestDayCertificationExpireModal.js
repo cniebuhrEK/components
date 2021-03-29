@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Modal as ModalComponent } from 'components'
+import { TestDayCertificationExpireModal as ModalComponent } from 'components'
 
 /**
  * Primary UI component for user interaction
  */
-export const Modal = props => {
+export const TestDayCertificationExpireModal = props => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleOpen = () => setIsOpen(true)
@@ -18,15 +18,12 @@ export const Modal = props => {
       <ModalComponent
         open={isOpen || props.open}
         handleClose={handleClose}
-        title={props.title}
-      >
-        {props.children}
-      </ModalComponent>
+      />
     </>
   );
 };
 
-Modal.propTypes = {
+TestDayCertificationExpireModal.propTypes = {
   /**
    * defines if toast is visible or not
    */
@@ -34,18 +31,8 @@ Modal.propTypes = {
   /**
    * triggers close of the modal
    */
-  handleClose: PropTypes.func,
-  /**
-   * Modals title
-   */
-  title: PropTypes.string,
-  /**
-   * EndExamModal content
-   */
-  children: PropTypes.string,
+  handleClose: PropTypes.func
 };
 
-Modal.defaultProps = {
-  title: 'EndExamModal title'
-};
+TestDayCertificationExpireModal.defaultProps = {};
 
