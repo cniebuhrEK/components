@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { TestDayCertificationExpireModal as ModalComponent } from 'components'
+import { TestDayCertificationExpireModal as ModalComponent } from 'build'
 
 /**
  * Primary UI component for user interaction

@@ -3,7 +3,6 @@ import Modal from '../Modal'
 import styled from 'styled-components'
 
 interface EndExamModalProps {
-  children: JSX.Element
   handleClose: () => void
   handleConfirm: () => void
   open: boolean

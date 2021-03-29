@@ -3,7 +3,7 @@ import React from 'react';
 import { Modal } from './Modal';
 
 export default {
-  title: 'Exam/Modal',
+  title: 'Atoms/Modal',
   component: Modal
 };
 

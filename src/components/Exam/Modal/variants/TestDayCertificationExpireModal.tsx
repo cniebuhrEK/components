@@ -6,7 +6,6 @@ import TimeIcon from '../../../../examIcons/Timer'
 import CloseIcon from '../../../../examIcons/Close'
 
 interface TestDayCertificationExpireModalProps {
-  children: JSX.Element
   handleClose: () => void
   open: boolean
   [x: string]: any

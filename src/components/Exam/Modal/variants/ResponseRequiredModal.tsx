@@ -3,7 +3,6 @@ import Modal from '../Modal'
 import styled from 'styled-components'
 
 interface ResponseRequiredModalProps {
-  children: JSX.Element
   handleClose: () => void
   open: boolean
   [x: string]: any
