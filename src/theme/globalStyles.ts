@@ -22,6 +22,10 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     article,
     aside,
     details,
