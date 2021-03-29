@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Navigation as NavigationComponent } from 'components'
+import { ExamNavigation as NavigationComponent } from 'components'
 
 /**
  * Primary UI component for user interaction

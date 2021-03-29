@@ -13,7 +13,7 @@ export const ExamHeaderContainer = styled.div`
 `
 
 export const NotOfficialMCATContainer = styled.div`
-  height: 45px;
+  height: 100%;
   background-color: ${props => props.theme.palette.success.main};
   color: ${props => props.theme.palette.success.contrastText};
   padding: 0 10px;

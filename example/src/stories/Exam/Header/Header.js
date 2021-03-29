@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header as HeaderComponent } from 'components'
+import { ExamHeader as HeaderComponent } from 'components'
 
 /**
  * Primary UI component for user interaction
