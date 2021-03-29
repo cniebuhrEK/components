@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { EndExamModal as ModalComponent } from 'build'
+import { EndExamModal as ModalComponent } from 'components'
 
 /**
  * Primary UI component for user interaction
