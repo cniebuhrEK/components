@@ -7,6 +7,7 @@ import cx from 'classnames'
 interface AnswerProps {
   answerCode: string
   isSelected: boolean
+  answerCodeHidden?: boolean
   answerContent: JSX.Element | string
   onClick: (code: string) => void
 }
@@ -27,7 +28,7 @@ const Answer = (props: AnswerProps): JSX.Element => {
   return (
     <div className={answerClass} onClick={handleSelect}>
       <div className='answer__code'>
-        {answerIcon} {props.answerCode}.{' '}
+        {answerIcon} {!props.answerCodeHidden && `${props.answerCode}. `}
       </div>
       <div className='answer__content'>{props.answerContent}</div>
     </div>
@@ -42,12 +43,14 @@ interface AnswerI {
 interface AnswersProps {
   answers: AnswerI[]
   onSelectAnswer: (e: string) => void
-  selectedAnswerCode: string
+  selectedAnswerCode?: string
+  answerCodeHidden?: boolean
 }
 
 const Answers = (props: AnswersProps): JSX.Element => {
   const renderAnswers = props.answers.map(answer => (
     <Answer
+      answerCodeHidden={props.answerCodeHidden}
       key={answer.answerCode}
       answerCode={answer.answerCode}
       answerContent={answer.answerContent}
@@ -59,7 +62,9 @@ const Answers = (props: AnswersProps): JSX.Element => {
   return <AnswersContainer>{renderAnswers}</AnswersContainer>
 }
 
-Answers.defaultProps = {}
+Answers.defaultProps = {
+  answerCodeHidden: false
+}
 
 export default Answers
 
