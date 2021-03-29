@@ -16,7 +16,7 @@ export const NotOfficialMCATContainer = styled.div`
   height: 45px;
   background-color: ${props => props.theme.palette.success.main};
   color: ${props => props.theme.palette.success.contrastText};
-  padding: 0 20px;
+  padding: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +25,7 @@ export const NotOfficialMCATContainer = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
-  max-width: 180px;
+  max-width: 200px;
 `
 
 export const TimeAndPageContainer = styled.div`

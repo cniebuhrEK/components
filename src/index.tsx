@@ -19,9 +19,6 @@ export { default as Pagination } from './components/Pagination/Pagination'
 export { default as EntitiesList } from './components/EntitiesList'
 export { default as Modal } from './components/Modal'
 export { default as Container } from './components/Container'
-export { default as Navigation } from './components/Exam/Navigation/Navigation'
-export { default as Header } from './components/Exam/Header/Header'
-export { default as ToolsBar } from './components/Exam/ToolsBar/ToolsBar'
 
 // form elements
 export { default as InputField } from './formElements/InputField'
@@ -59,3 +56,11 @@ export { default as ExamIconSolution } from './examIcons/Solution'
 export { default as ExamIconStriketrough } from './examIcons/Striketrough'
 export { default as ExamIconTimer } from './examIcons/Timer'
 export { default as ExamIconUp } from './examIcons/Up'
+
+// Exam components
+
+export { default as ExamNavigation } from './components/Exam/Navigation/Navigation'
+export { default as ExamHeader } from './components/Exam/Header/Header'
+export { default as ExamToolsBar } from './components/Exam/ToolsBar/ToolsBar'
+export { default as ExamContainer } from './components/Exam/Containers/ExamContainer'
+export { default as ExamContent } from './components/Exam/Containers/ExamContent'
