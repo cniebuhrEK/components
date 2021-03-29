@@ -1,8 +1,17 @@
-import { ThemeProvider, GlobalStyles, Container } from 'components';
+import { ThemeProvider, GlobalStyles, Container, examTheme } from 'components';
 import { StoryContext, StoryGetter, StoryWrapper } from '@storybook/addons';
 
 const withThemeProvider=(Story,context)=>{
-  return (
+  console.log({ Story, context });
+
+  const isExamLayout = /Exam/i.test(context.kind)
+
+  return isExamLayout ? (
+    <ThemeProvider theme={examTheme}>
+      <GlobalStyles />
+        <Story {...context} />
+    </ThemeProvider>
+  ) : (
     <ThemeProvider>
       <GlobalStyles />
       <Container>

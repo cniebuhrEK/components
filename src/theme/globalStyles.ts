@@ -126,6 +126,10 @@ export default createGlobalStyle`
     font-style: italic;
     }
 
+    .highlight {
+      background-color: yellow;
+    }
+
     mark {
     color: #000;
 
@@ -166,7 +170,7 @@ export default createGlobalStyle`
     }
 
     hr {
-    box-sizing: content-box;
+    box-sizing: border-box;
     height: 0;
     }
 
@@ -239,7 +243,7 @@ export default createGlobalStyle`
     }
 
     input[type="search"] {
-    box-sizing: content-box;
+    box-sizing: border-box;
 
     appearance: textfield;
     }
