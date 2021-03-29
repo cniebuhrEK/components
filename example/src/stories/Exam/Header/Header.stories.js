@@ -14,5 +14,7 @@ ExamHeader.args = {
   title: 'Exam title',
   timer: '1:37',
   currentPage: 1,
-  totalPages: 59
+  totalPages: 59,
+  timerVisibility: true,
+  pagesVisibility: true
 };

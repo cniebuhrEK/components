@@ -18,13 +18,17 @@ Header.propTypes = {
   title: PropTypes.string,
   timer: PropTypes.any,
   currentPage: PropTypes.number,
-  totalPages: PropTypes.number
+  totalPages: PropTypes.number,
+  timerVisibility: PropTypes.bool,
+  pagesVisibility: PropTypes.bool
 };
 
 Header.defaultProps = {
   title: 'Exam title',
   timer: '1:37',
   currentPage: 1,
-  totalPages: 59
+  totalPages: 59,
+  timerVisibility: true,
+  pagesVisibility: true
 };
 
