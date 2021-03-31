@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Modal from 'react-modal-resizable-draggable'
 import IconClose from '../../../examIcons/Close'
 
+import cx from 'classnames'
+
 interface ExamModalProps {
   children: JSX.Element
   handleClose: () => void
@@ -31,8 +33,12 @@ const ExamModal = ({
   handleCancel,
   ...rest
 }: ExamModalProps): JSX.Element => {
+  const containerClasses = cx({
+    '--disable-resize': rest.disableResize
+  })
+
   return (
-    <ExamModalContainer>
+    <ExamModalContainer className={containerClasses}>
       <Modal
         onRequestClose={handleClose}
         isOpen={open}
@@ -88,6 +94,10 @@ export const ExamModalContainer = styled.div`
     position: relative;
     font-size: 16px;
     font-weight: 600;
+
+    svg {
+      transform: translateY(3px);
+    }
   }
 
   .modal_buttons-container {
@@ -133,6 +143,7 @@ export const ExamModalContainer = styled.div`
   .modal__content {
     padding: 20px;
     font-size: 16px;
+    height: calc(100% - 28px);
   }
 
   .flexible-modal {
@@ -145,7 +156,42 @@ export const ExamModalContainer = styled.div`
   }
 
   .flexible-modal-resizer {
-    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+    border-left: solid 1px ${props => props.theme.palette.common.white};
+    transform: rotate(45deg);
+  }
+
+  .flexible-modal-resizer::before {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 10px;
+    border-left: solid 1px ${props => props.theme.palette.common.white};
+    margin: 3px 0;
+  }
+
+  .flexible-modal-resizer::after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    left: 0;
+    width: 5px;
+    height: 3px;
+    border-right: solid 1px ${props => props.theme.palette.common.white};
+    margin: 6px 0;
+  }
+
+  &.--disable-resize {
+    .flexible-modal-resizer {
+      display: none;
+    }
   }
 
   .flexible-modal-mask {

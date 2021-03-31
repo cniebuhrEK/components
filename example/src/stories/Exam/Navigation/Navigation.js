@@ -15,6 +15,7 @@ export const Navigation = props => {
 };
 
 Navigation.propTypes = {
+  navigationItems: PropTypes.array,
   endExamButton: PropTypes.bool,
   endSectionButton: PropTypes.bool,
   endTestDayCertification: PropTypes.bool,
@@ -29,9 +30,7 @@ Navigation.propTypes = {
   endExamButtonOnClick: PropTypes.func,
   endSectionButtonOnClick: PropTypes.func,
   endTestDayCertificationOnClick: PropTypes.func,
-  navigationButtonOnClick: PropTypes.func,
   nextButtonOnClick: PropTypes.func,
-  periodicTableButtonOnClick: PropTypes.func,
   previousButtonOnClick: PropTypes.func,
   reviewAllButtonOnClick: PropTypes.func,
   reviewFlaggedButtonOnClick: PropTypes.func,
@@ -40,6 +39,32 @@ Navigation.propTypes = {
 };
 
 Navigation.defaultProps = {
+  navigationItems: [
+    {
+      status: 'complete',
+      flagged: false,
+      onClickHandler: () => {},
+      displayName: 'Question 1'
+    },
+    {
+      status: 'incomplete',
+      flagged: true,
+      onClickHandler: () => {},
+      displayName: 'Question 2'
+    },
+    {
+      status: 'unseen',
+      flagged: false,
+      onClickHandler: () => {},
+      displayName: 'Question 3'
+    },
+    {
+      status: 'unseen',
+      flagged: false,
+      onClickHandler: () => {},
+      displayName: 'Question 4'
+    }
+  ],
   endExamButton: false,
   endSectionButton: false,
   endTestDayCertification: false,
@@ -54,9 +79,7 @@ Navigation.defaultProps = {
   endExamButtonOnClick: (e) => console.log(e),
   endSectionButtonOnClick: (e) => console.log(e),
   endTestDayCertificationOnClick: (e) => console.log(e),
-  navigationButtonOnClick: (e) => console.log(e),
   nextButtonOnClick: (e) => console.log(e),
-  periodicTableButtonOnClick: (e) => console.log(e),
   previousButtonOnClick: (e) => console.log(e),
   reviewAllButtonOnClick: (e) => console.log(e),
   reviewFlaggedButtonOnClick: (e) => console.log(e),

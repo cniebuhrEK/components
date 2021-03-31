@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { ExamNavContainer, ButtonsContainer } from './styles'
+// eslint-disable-next-line no-unused-vars
+import { NavigationItemProps } from '../Modal/variants/NavigationModal'
 
 import EndExamButton from './EndExamButton'
 import EndSectionButton from './EndSectionButton'
@@ -15,6 +17,7 @@ import ReviewIncompleteButton from './ReviewIncompleteButton'
 import ReviewScreenButton from './ReviewScreenButton'
 
 interface NavigationProps {
+  navigationItems?: NavigationItemProps[]
   endExamButton: boolean
   endSectionButton: boolean
   endTestDayCertification: boolean
@@ -31,7 +34,6 @@ interface NavigationProps {
   endTestDayCertificationOnClick: (e) => void
   navigationButtonOnClick: (e) => void
   nextButtonOnClick: (e) => void
-  periodicTableButtonOnClick: (e) => void
   previousButtonOnClick: (e) => void
   reviewAllButtonOnClick: (e) => void
   reviewFlaggedButtonOnClick: (e) => void
@@ -41,6 +43,7 @@ interface NavigationProps {
 
 const Navigation = (props: NavigationProps): JSX.Element => {
   const {
+    navigationItems = [],
     endExamButton,
     endSectionButton,
     endTestDayCertification,
@@ -55,9 +58,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     endExamButtonOnClick,
     endSectionButtonOnClick,
     endTestDayCertificationOnClick,
-    navigationButtonOnClick,
     nextButtonOnClick,
-    periodicTableButtonOnClick,
     previousButtonOnClick,
     reviewAllButtonOnClick,
     reviewFlaggedButtonOnClick,
@@ -68,9 +69,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   return (
     <ExamNavContainer>
       <ButtonsContainer>
-        {periodicTableButton && (
-          <PeriodicTableButton onClick={periodicTableButtonOnClick} />
-        )}
+        {periodicTableButton && <PeriodicTableButton />}
         {endExamButton && <EndExamButton onClick={endExamButtonOnClick} />}
         {endSectionButton && (
           <EndSectionButton onClick={endSectionButtonOnClick} />
@@ -93,9 +92,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
           <ReviewFlaggedButton onClick={reviewFlaggedButtonOnClick} />
         )}
         {previousButton && <PreviousButton onClick={previousButtonOnClick} />}
-        {navigationButton && (
-          <NavigationButton onClick={navigationButtonOnClick} />
-        )}
+        {navigationButton && <NavigationButton items={navigationItems} />}
         {nextButton && <NextButton onClick={nextButtonOnClick} />}
       </ButtonsContainer>
     </ExamNavContainer>

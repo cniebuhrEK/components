@@ -1,20 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ExamNavLeft } from './styles'
 import ExamIconPeriodic from '../../../examIcons/Periodic'
+import PeriodicTable from '../Modal/variants/PeriodicTable'
 
-interface EndExamButtonProps {
-  onClick: (e) => any
-}
+const EndExamButton = (): JSX.Element => {
+  const [isOpen, setIsOpen] = useState(false)
 
-const EndExamButton = (props: EndExamButtonProps): JSX.Element => {
+  const handleOpen = () => setIsOpen(true)
+  const handleClose = () => setIsOpen(false)
+
   return (
-    <ExamNavLeft onClick={props.onClick}>
-      <ExamIconPeriodic />
-      <div>
-        Periodic <span className='underline'>T</span>able
-      </div>
-    </ExamNavLeft>
+    <div>
+      <ExamNavLeft onClick={handleOpen}>
+        <ExamIconPeriodic />
+        <div>
+          Periodic <span className='underline'>T</span>able
+        </div>
+      </ExamNavLeft>
+      <PeriodicTable handleClose={handleClose} open={isOpen} />
+    </div>
   )
 }
 
