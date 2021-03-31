@@ -96,7 +96,9 @@ export default styled.div`
     margin-left: 40px;
 
     &.numeric {
-      list-style: decimal-outside;
+      list-style: decimal;
+      margin-top: 15px;
+      margin-bottom: 25px;
     }
 
     &.alphabetical {
