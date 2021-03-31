@@ -110,4 +110,12 @@ export default styled.div`
       margin-bottom: 5px;
     }
   }
+
+  .indent {
+    text-indent: 50px;
+  }
+
+  .footnote {
+    font-size: 12px;
+  }
 `
