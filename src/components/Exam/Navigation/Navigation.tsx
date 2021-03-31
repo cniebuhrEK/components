@@ -32,7 +32,6 @@ interface NavigationProps {
   endExamButtonOnClick: (e) => void
   endSectionButtonOnClick: (e) => void
   endTestDayCertificationOnClick: (e) => void
-  navigationButtonOnClick: (e) => void
   nextButtonOnClick: (e) => void
   previousButtonOnClick: (e) => void
   reviewAllButtonOnClick: (e) => void

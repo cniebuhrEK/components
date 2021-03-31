@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from '../Modal'
 import styled from 'styled-components'
 import cx from 'classnames'
-import { reverse, identity, ifElse, prop, pipe, sortBy, map, tap } from 'ramda'
+import { reverse, identity, ifElse, prop, pipe, sortBy, map } from 'ramda'
 
 import PeriodicIcon from '../../../../examIcons/Periodic'
 import CloseIcon from '../../../../examIcons/Close'
@@ -77,7 +77,6 @@ const NavigationModal = ({
 
   const sortedItems = pipe(
     map(item => ({ ...item, flagged: `${item.flagged}` })),
-    tap(console.log),
     sortBy(prop(sortedColumnId)),
     ifElse(() => sortDir === 'asc', identity, reverse),
     map(item => ({ ...item, flagged: item.flagged === 'true' }))
