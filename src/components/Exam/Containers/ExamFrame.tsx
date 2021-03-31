@@ -30,6 +30,8 @@ export const FrameContainer = styled.div`
   height: 100%;
   font-size: 16px;
   box-sizing: border-box;
+  min-height: 0;
+  flex-grow: 1;
 
   .panel {
     height: 100%;
