@@ -7,19 +7,6 @@ export default styled.div`
   overflow-y: auto;
   padding: 40px;
 
-  h2 {
-    margin-bottom: 20px;
-    font-size: 14pt;
-  }
-
-  p {
-    margin-bottom: 25px;
-  }
-
-  h3 {
-    font-size: 12pt;
-  }
-
   /* Track */
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
@@ -69,5 +56,56 @@ export default styled.div`
     background-size: cover;
     background-repeat: no-repeat;
     border-left: 1px solid #EEE
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    font-size: 14pt;
+  }
+
+  h3 {
+    font-size: 12pt;
+  }
+
+  p {
+    font-size: 16px;
+    margin: 16px 0;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .heavy-bordered {
+    border: 3px solid #000000;
+    padding: 20px;
+    margin-bottom: 40px;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  ul {
+    margin-bottom: 15px;
+    list-style-type: disc;
+    margin-left: 40px;
+
+    &.numeric {
+      list-style: decimal-outside;
+    }
+
+    &.alphabetical {
+      list-style: lower-latin;
+    }
+
+    li {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
   }
 `
