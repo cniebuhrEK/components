@@ -42,24 +42,28 @@ Navigation.defaultProps = {
   navigationItems: [
     {
       status: 'complete',
+      order: 1,
       flagged: false,
       onClickHandler: () => {},
       displayName: 'Question 1'
     },
     {
       status: 'incomplete',
+      order: 2,
       flagged: true,
       onClickHandler: () => {},
       displayName: 'Question 2'
     },
     {
       status: 'unseen',
+      order: 3,
       flagged: false,
       onClickHandler: () => {},
       displayName: 'Question 3'
     },
     {
       status: 'unseen',
+      order: 4,
       flagged: false,
       onClickHandler: () => {},
       displayName: 'Question 4'

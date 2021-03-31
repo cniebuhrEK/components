@@ -11,6 +11,7 @@ import UpIcon from '../../../../examIcons/Up'
 import FlagMark from '../../../../examIcons/FlagMark'
 
 export interface NavigationItemProps {
+  order: number
   status: string
   flagged: boolean
   onClickHandler: () => any
@@ -25,7 +26,7 @@ interface NavigationModalProps {
 }
 
 const columnIds = {
-  question: 'displayName',
+  question: 'order',
   status: 'status',
   flag: 'flagged'
 }
@@ -92,6 +93,7 @@ const NavigationModal = ({
       <NavigationRow
         key={item.displayName}
         status={item.status}
+        order={item.order}
         flagged={item.flagged}
         onClickHandler={handleClick}
         displayName={item.displayName}
