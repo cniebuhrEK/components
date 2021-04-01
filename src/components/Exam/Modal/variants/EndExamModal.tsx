@@ -20,7 +20,7 @@ const EndExamModal = ({
       open={open}
       title='End exam'
       initWidth={700}
-      initHeight={310}
+      initHeight={390}
       showConfirmButton
       showCancelButton
       handleConfirm={handleConfirm}
