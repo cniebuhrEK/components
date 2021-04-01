@@ -9,7 +9,7 @@ interface EndSectionButtonProps {
 
 const EndSectionButton = (props: EndSectionButtonProps): JSX.Element => {
   return (
-    <ExamNavLeft onClick={props.onClick}>
+    <ExamNavLeft onClick={props.onClick} id='end-section-btn'>
       <ExamIconEndSection />
       <div>
         <span className='underline'>E</span>nd section

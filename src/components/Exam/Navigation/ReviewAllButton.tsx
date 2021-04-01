@@ -9,7 +9,7 @@ interface ReviewAllButtonProps {
 
 const ReviewAllButton = (props: ReviewAllButtonProps): JSX.Element => {
   return (
-    <ExamNavRight onClick={props.onClick}>
+    <ExamNavRight onClick={props.onClick} id='review-all-btn'>
       <ExamIconReviewAll />
       <div>
         Review <span className='underline'>A</span>ll

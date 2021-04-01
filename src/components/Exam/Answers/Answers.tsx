@@ -26,7 +26,12 @@ const Answer = (props: AnswerProps): JSX.Element => {
   })
 
   return (
-    <div className={answerClass} onClick={handleSelect}>
+    <div
+      className={answerClass}
+      onClick={handleSelect}
+      id={`answer-${props.answerCode}`}
+      data-is-selected={`${props.isSelected}`}
+    >
       <div className='answer__code'>
         {answerIcon} {!props.answerCodeHidden && `${props.answerCode}. `}
       </div>
@@ -59,7 +64,11 @@ const Answers = (props: AnswersProps): JSX.Element => {
     />
   ))
 
-  return <AnswersContainer>{renderAnswers}</AnswersContainer>
+  return (
+    <AnswersContainer data-selected-answer={`${props.selectedAnswerCode}`}>
+      {renderAnswers}
+    </AnswersContainer>
+  )
 }
 
 Answers.defaultProps = {

@@ -12,7 +12,7 @@ const EndExamButton = (): JSX.Element => {
 
   return (
     <div>
-      <ExamNavLeft onClick={handleOpen}>
+      <ExamNavLeft onClick={handleOpen} id='periodic-table-btn'>
         <ExamIconPeriodic />
         <div>
           Periodic <span className='underline'>T</span>able

@@ -9,7 +9,7 @@ interface ReviewIncompleteButtonProps {
 
 const ReviewIncompleteButton = (props: ReviewIncompleteButtonProps): JSX.Element => {
   return (
-    <ExamNavRight onClick={props.onClick}>
+    <ExamNavRight onClick={props.onClick} id='review-incomplete-btn'>
       <ExamIconReviewIncomplete />
       <div>
         Review <span className='underline'>I</span>ncomplete

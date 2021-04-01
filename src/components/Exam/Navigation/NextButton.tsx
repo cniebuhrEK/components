@@ -9,7 +9,7 @@ interface NextButtonProps {
 
 const NextButton = (props: NextButtonProps): JSX.Element => {
   return (
-    <ExamNavRight onClick={props.onClick}>
+    <ExamNavRight onClick={props.onClick} id='next-btn'>
       <div>
         <span className='underline'>N</span>ext
       </div>

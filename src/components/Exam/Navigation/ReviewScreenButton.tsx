@@ -9,7 +9,11 @@ interface ReviewScreenButtonProps {
 
 const ReviewScreenButton = (props: ReviewScreenButtonProps): JSX.Element => {
   return (
-    <ExamNavLeft className='no-border' onClick={props.onClick}>
+    <ExamNavLeft
+      className='no-border'
+      onClick={props.onClick}
+      id='review-screen-btn'
+    >
       <ExamIconEndSection />
       <div>
         Revie<span className='underline'>w</span> screen

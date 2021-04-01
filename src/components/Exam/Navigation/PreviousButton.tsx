@@ -9,7 +9,7 @@ interface PreviousButtonProps {
 
 const PreviousButton = (props: PreviousButtonProps): JSX.Element => {
   return (
-    <ExamNavRight onClick={props.onClick}>
+    <ExamNavRight onClick={props.onClick} id='previous-btn'>
       <ExamIconPrevious />
       <div>
         <span className='underline'>P</span>revious

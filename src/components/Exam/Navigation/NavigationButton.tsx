@@ -21,7 +21,7 @@ const NavigationButton = ({
 
   return (
     <div>
-      <ExamNavRight onClick={handleOpen}>
+      <ExamNavRight onClick={handleOpen} id='navigation-btn'>
         <ExamIconNavigation />
         <div>
           Na<span className='underline'>v</span>igation

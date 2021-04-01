@@ -9,7 +9,7 @@ interface ReviewFlaggedButtonProps {
 
 const ReviewFlaggedButton = (props: ReviewFlaggedButtonProps): JSX.Element => {
   return (
-    <ExamNavRight onClick={props.onClick}>
+    <ExamNavRight onClick={props.onClick} id='review-flagged-btn'>
       <ExamIconReviewFlagged />
       <div>
         <span className='underline'>R</span>eview flagged

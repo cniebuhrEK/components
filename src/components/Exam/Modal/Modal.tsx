@@ -52,7 +52,11 @@ const ExamModal = ({
       >
         <div onClick={handleClose} className='modal__title'>
           {title}
-          <div onClick={handleClose} className='modal__close'>
+          <div
+            id='exam-modal-close-btn'
+            onClick={handleClose}
+            className='modal__close'
+          >
             <IconClose />
           </div>
         </div>
@@ -60,12 +64,20 @@ const ExamModal = ({
           {children}
           <div className='modal_buttons-container'>
             {showConfirmButton && (
-              <div className='modal__button' onClick={handleConfirm}>
+              <div
+                className='modal__button'
+                id='exam-modal-confirm-btn'
+                onClick={handleConfirm}
+              >
                 {confirmButtonName}
               </div>
             )}
             {showCancelButton && (
-              <div className='modal__button' onClick={handleCancel}>
+              <div
+                className='modal__button'
+                id='exam-modal-cancel-btn'
+                onClick={handleCancel}
+              >
                 {cancelButtonName}
               </div>
             )}
@@ -120,6 +132,7 @@ export const ExamModalContainer = styled.div`
     cursor: pointer;
     font-size: 12pt;
     text-decoration: none;
+    margin-top: 10px;
 
     &:first-letter {
       text-decoration: underline;

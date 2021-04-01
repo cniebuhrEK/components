@@ -11,7 +11,7 @@ const EndTestDayCertification = (
   props: EndTestDayCertificationProps
 ): JSX.Element => {
   return (
-    <ExamNavLeft onClick={props.onClick}>
+    <ExamNavLeft onClick={props.onClick} id='end-test-day-certification-btn'>
       <ExamIconEndSection />
       <div>
         <span className='underline'>E</span>nd Test-Day Certification
