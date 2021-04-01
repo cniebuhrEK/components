@@ -71,39 +71,41 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   const handleClosePeriodicTable = () => setPeriodicTableOpen(false)
 
   return (
-    <ExamNavContainer>
-      <ButtonsContainer>
-        {periodicTableButton && <PeriodicTableButton onClick={handleOpenPeriodicTable} />}
-        {endExamButton && <EndExamButton onClick={endExamButtonOnClick} />}
-        {endSectionButton && (
-          <EndSectionButton onClick={endSectionButtonOnClick} />
-        )}
-        {endTestDayCertification && (
-          <EndTestDayCertification onClick={endTestDayCertificationOnClick} />
-        )}
-        {reviewScreenButton && (
-          <ReviewScreenButton onClick={reviewScreenButtonOnClick} />
-        )}
-      </ButtonsContainer>
-      <ButtonsContainer>
-        {reviewAllButton && (
-          <ReviewAllButton onClick={reviewAllButtonOnClick} />
-        )}
-        {reviewIncompleteButton && (
-          <ReviewIncompleteButton onClick={reviewIncompleteButtonOnClick} />
-        )}
-        {reviewFlaggedButton && (
-          <ReviewFlaggedButton onClick={reviewFlaggedButtonOnClick} />
-        )}
-        {previousButton && <PreviousButton onClick={previousButtonOnClick} />}
-        {navigationButton && <NavigationButton items={navigationItems} />}
-        {nextButton && <NextButton onClick={nextButtonOnClick} />}
-      </ButtonsContainer>
+    <div>
+      <ExamNavContainer>
+        <ButtonsContainer>
+          {periodicTableButton && <PeriodicTableButton onClick={handleOpenPeriodicTable} />}
+          {endExamButton && <EndExamButton onClick={endExamButtonOnClick} />}
+          {endSectionButton && (
+            <EndSectionButton onClick={endSectionButtonOnClick} />
+          )}
+          {endTestDayCertification && (
+            <EndTestDayCertification onClick={endTestDayCertificationOnClick} />
+          )}
+          {reviewScreenButton && (
+            <ReviewScreenButton onClick={reviewScreenButtonOnClick} />
+          )}
+        </ButtonsContainer>
+        <ButtonsContainer>
+          {reviewAllButton && (
+            <ReviewAllButton onClick={reviewAllButtonOnClick} />
+          )}
+          {reviewIncompleteButton && (
+            <ReviewIncompleteButton onClick={reviewIncompleteButtonOnClick} />
+          )}
+          {reviewFlaggedButton && (
+            <ReviewFlaggedButton onClick={reviewFlaggedButtonOnClick} />
+          )}
+          {previousButton && <PreviousButton onClick={previousButtonOnClick} />}
+          {navigationButton && <NavigationButton items={navigationItems} />}
+          {nextButton && <NextButton onClick={nextButtonOnClick} />}
+        </ButtonsContainer>
+      </ExamNavContainer>
       <PeriodicTable
         handleClose={handleClosePeriodicTable}
         open={isPeriodicTableOpen}
       />
-    </ExamNavContainer>
+    </div>
   )
 }
 
