@@ -223,25 +223,6 @@ export const ExamModalContainer = styled.div`
     bottom: 0;
   }
 
-  &.--disable-close {
-    .flexible-modal-mask {
-      position: static;
-      height: 0;
-    }
-  }
-
-  &.--disable-actions.--open::before {
-      content: '';
-      position: fixed;
-      height: 100%;
-      background: transparent;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  }
-
   .flexible-modal-drag-area {
     background: transparent;
     height: 28px;
