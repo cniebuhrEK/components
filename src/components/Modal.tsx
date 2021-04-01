@@ -63,7 +63,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     z-index: 1000001;
     width: 100%;
     height: 100%;
-    // background: ${props => props.theme.palette.common.gray100};
+    background: rgba(101, 101, 101, 0.3);
     overflow-y: auto;
     padding: 40px 0;
     text-align: center;
@@ -84,7 +84,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     position: relative;
     display: inline-block;
     padding: 16px;
-    background: ${props => props.theme.palette.background.paper};
+    background: ${props => props.theme.palette.background.default};
     border-radius: 3px;
     outline: 0;
     max-width: 500px;
