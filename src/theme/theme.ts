@@ -3,19 +3,19 @@ export default {
     common: {
       black: '#000',
       white: '#fff',
-      gray100: '#ffffff1a',
-      gray200: '#ffffff33',
-      gray300: '#ffffff4d',
-      gray400: '#ffffff66',
-      gray500: '#ffffff80',
-      gray600: '#ffffff99',
-      gray700: '#ffffffb3',
-      gray800: '#ffffffcc',
-      gray900: '#ffffffe6'
+      gray100: '#FCFBFA',
+      gray200: '#F6F6F4',
+      gray300: '#f2f1f0',
+      gray400: '#979797',
+      gray500: '#979797',
+      gray600: '#979797',
+      gray700: '#222428',
+      gray800: '#2e241f',
+      gray900: '#1a1816'
     },
     background: {
-      paper: '#3b3b39',
-      default: '#343432'
+      paper: '#fcfbfa',
+      default: '#f2f1f0'
     },
     primary: {
       main: '#faad4c',
@@ -60,7 +60,7 @@ export default {
       contrastText: '#ffffffe6'
     },
     text: {
-      main: '#ffffff'
+      main: '#2e241f'
     }
   },
   shape: {

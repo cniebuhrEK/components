@@ -15,6 +15,7 @@ interface ExamModalProps {
   confirmButtonName?: string
   handleConfirm?: () => void
   showCancelButton?: boolean
+  disableCloseOnOutsideClick?: boolean
   cancelButtonName?: string
   handleCancel?: () => void
   [x: string]: any
@@ -31,10 +32,12 @@ const ExamModal = ({
   cancelButtonName,
   handleConfirm,
   handleCancel,
+  disableCloseOnOutsideClick,
   ...rest
 }: ExamModalProps): JSX.Element => {
   const containerClasses = cx({
-    '--disable-resize': rest.disableResize
+    '--disable-resize': rest.disableResize,
+    '--disable-close': disableCloseOnOutsideClick
   })
 
   return (
@@ -202,6 +205,13 @@ export const ExamModalContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
+  }
+
+  &.--disable-close {
+    .flexible-modal-mask {
+      position: static;
+      height: 0;
+    }
   }
 
   .flexible-modal-drag-area {

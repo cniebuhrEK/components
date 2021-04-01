@@ -9,5 +9,4 @@ export default styled.table`
   font-size: 16px;
   width: 100%;
   border-spacing: 0;
-  padding: 24px;
 `

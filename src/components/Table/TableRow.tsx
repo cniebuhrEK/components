@@ -15,4 +15,5 @@ export default styled.tr`
   border-style: inherit;
   border-width: 0 0 1px;
   border-color: inherit;
+  padding: 0 24px;
 `

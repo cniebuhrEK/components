@@ -68,7 +68,7 @@ const StyledTableHeader = styled.th`
   border-style: solid;
   position: ${props => (props.sticky ? 'sticky' : 'static')};
   background-color: ${props =>
-    props.sticky ? props.theme.palette.background.paper : 'transparent'};
+    props.sticky ? props.theme.palette.common.gray200 : 'transparent'};
   top: 0;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 

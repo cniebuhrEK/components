@@ -110,6 +110,7 @@ const NavigationModal = ({
 
   return (
     <Modal
+      disableCloseOnOutsideClick
       handleClose={handleClose}
       open={open}
       title={

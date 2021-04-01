@@ -63,12 +63,11 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     z-index: 1000001;
     width: 100%;
     height: 100%;
-    background: ${props => props.theme.palette.common.gray100};
+    // background: ${props => props.theme.palette.common.gray100};
     overflow-y: auto;
     padding: 40px 0;
     text-align: center;
     transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    opacity: 0;
 
     &[class*='--after-open'] {
       opacity: 1;
