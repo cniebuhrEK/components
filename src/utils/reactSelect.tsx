@@ -276,7 +276,7 @@ const InputLabel = styled.div`
   padding: ${props => (props.isFocusedOrHasValue ? '0 5px' : '0')};
   background-color: ${props =>
     props.isFocusedOrHasValue
-      ? props.theme.palette.common.white
+      ? props.theme.palette.background.default
       : 'transparent'};
   transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 `
