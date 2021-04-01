@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { ExamNavContainer, ButtonsContainer } from './styles'
 // eslint-disable-next-line no-unused-vars
@@ -15,6 +15,7 @@ import ReviewAllButton from './ReviewAllButton'
 import ReviewFlaggedButton from './ReviewFlaggedButton'
 import ReviewIncompleteButton from './ReviewIncompleteButton'
 import ReviewScreenButton from './ReviewScreenButton'
+import PeriodicTable from '../Modal/variants/PeriodicTable'
 
 interface NavigationProps {
   navigationItems?: NavigationItemProps[]
@@ -64,11 +65,15 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     reviewIncompleteButtonOnClick,
     reviewScreenButtonOnClick
   } = props
+  const [isPeriodicTableOpen, setPeriodicTableOpen] = useState(false)
+
+  const handleOpenPeriodicTable = () => setPeriodicTableOpen(true)
+  const handleClosePeriodicTable = () => setPeriodicTableOpen(false)
 
   return (
     <ExamNavContainer>
       <ButtonsContainer>
-        {periodicTableButton && <PeriodicTableButton />}
+        {periodicTableButton && <PeriodicTableButton onClick={handleOpenPeriodicTable} />}
         {endExamButton && <EndExamButton onClick={endExamButtonOnClick} />}
         {endSectionButton && (
           <EndSectionButton onClick={endSectionButtonOnClick} />
@@ -94,6 +99,10 @@ const Navigation = (props: NavigationProps): JSX.Element => {
         {navigationButton && <NavigationButton items={navigationItems} />}
         {nextButton && <NextButton onClick={nextButtonOnClick} />}
       </ButtonsContainer>
+      <PeriodicTable
+        handleClose={handleClosePeriodicTable}
+        open={isPeriodicTableOpen}
+      />
     </ExamNavContainer>
   )
 }
