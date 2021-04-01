@@ -33,11 +33,14 @@ const ExamModal = ({
   handleConfirm,
   handleCancel,
   disableCloseOnOutsideClick,
+  disableAllActionsOnOutsideClick,
   ...rest
 }: ExamModalProps): JSX.Element => {
   const containerClasses = cx({
     '--disable-resize': rest.disableResize,
-    '--disable-close': disableCloseOnOutsideClick
+    '--disable-close': disableCloseOnOutsideClick,
+    '--disable-actions': disableAllActionsOnOutsideClick,
+    '--open': open
   })
 
   return (
@@ -224,6 +227,35 @@ export const ExamModalContainer = styled.div`
     .flexible-modal-mask {
       position: static;
       height: 0;
+    }
+  }
+
+  &.--disable-actions {
+    .flexible-modal-mask {
+      position: static;
+      height: 0;
+    }
+
+    &::after {
+      position: fixed;
+      height: 100%;
+      background: transparent;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &.--disable-actions.--open::before {
+      content: '';
+      position: fixed;
+      height: 100%;
+      background: transparent;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
 

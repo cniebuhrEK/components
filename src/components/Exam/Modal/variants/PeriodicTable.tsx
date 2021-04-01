@@ -18,6 +18,7 @@ const PeriodicTable = ({
 }: PeriodicTableProps): JSX.Element => {
   return (
     <Modal
+      disableCloseOnOutsideClick
       handleClose={handleClose}
       open={open}
       title={
