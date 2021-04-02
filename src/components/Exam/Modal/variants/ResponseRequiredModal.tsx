@@ -19,10 +19,11 @@ const ResponseRequiredModal = ({
       open={open}
       title='Response required'
       initWidth={700}
-      initHeight={141}
+      initHeight={180}
       showConfirmButton
       confirmButtonName='OK'
       handleConfirm={handleClose}
+      disableOutsideClick
       {...rest}
     >
       <ResponseRequiredModalContainer>
@@ -44,6 +45,8 @@ export default ResponseRequiredModal
 
 export const ResponseRequiredModalContainer = styled.div`
   display: flex;
+  padding: 20px;
+  min-width: 40px;
 
   strong {
     font-weight: 700;

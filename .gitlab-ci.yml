@@ -36,6 +36,13 @@ stages:
   only:
     - master
 
+.env.beta: &ENV_BETA
+  variables: &VARIABLES_ENV_BETA
+    CI_ENV: beta
+    CI_COMMIT_REF_NAME: beta
+  only:
+    - /^release/
+
 .script.build: &SCRIPT_BUILD
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
@@ -61,9 +68,23 @@ test:build image:
   variables:
     <<: *VARIABLES_ENV_TEST
 
+beta:build image:
+  <<: *ENV_BETA
+  <<: *STAGE_BUILD
+  <<: *SCRIPT_BUILD
+  variables:
+    <<: *VARIABLES_ENV_BETA
+
 test:deploy:
   <<: *ENV_TEST
   <<: *STAGE_DEPLOY
   <<: *SCRIPT_DEPLOY
   variables:
     <<: *VARIABLES_ENV_TEST
+
+beta:deploy:
+  <<: *ENV_BETA
+  <<: *STAGE_DEPLOY
+  <<: *SCRIPT_DEPLOY
+  variables:
+    <<: *VARIABLES_ENV_BETA

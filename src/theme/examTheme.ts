@@ -15,7 +15,9 @@ export default {
     },
     background: {
       paper: '#fff',
-      default: '#fff'
+      default: '#fff',
+      evenRows: '#F4F4F4',
+      oddRows: '#fff'
     },
     primary: {
       main: '#006DAA',
@@ -36,9 +38,9 @@ export default {
       contrastText: '#fff'
     },
     error: {
-      light: '#FFA28D',
-      main: '#FF7768',
-      dark: '#DB4E4C',
+      light: '#FF0000',
+      main: '#FF0000',
+      dark: '#FF0000',
       contrastText: '#ffffffe6'
     },
     warning: {
@@ -61,6 +63,9 @@ export default {
     },
     text: {
       main: '#000'
+    },
+    border: {
+      table: '#d2d2d2'
     }
   },
   shape: {
@@ -68,7 +73,9 @@ export default {
   },
   shadows: {
     main: '4px 0 20px 0 rgba(37, 38, 94, 0.1)',
-    paper: '0 4px 24px 0 rgba(37, 38, 94, 0.1)'
+    paper: '0 4px 24px 0 rgba(37, 38, 94, 0.1)',
+    scrollbarThumb: '0 0 1px rgba(255, 255, 255, 0.5)',
+    scrollbarTrack: 'inset 0 0 5px grey'
   },
   transitions: {
     easing: {

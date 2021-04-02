@@ -16,6 +16,7 @@ const EndExamModal = ({
 }: EndExamModalProps): JSX.Element => {
   return (
     <Modal
+      disableOutsideClick
       handleClose={handleClose}
       open={open}
       title='End exam'
@@ -76,6 +77,7 @@ export default EndExamModal
 
 export const EndExamModalContainer = styled.div`
   display: flex;
+  padding: 20px;
 
   strong {
     font-weight: 700;

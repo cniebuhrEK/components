@@ -3,7 +3,6 @@ import Modal from '../Modal'
 import styled from 'styled-components'
 
 import TimeIcon from '../../../../examIcons/Timer'
-import CloseIcon from '../../../../examIcons/Close'
 
 interface TestDayCertificationExpireModalProps {
   handleClose: () => void
@@ -18,6 +17,8 @@ const TestDayCertificationExpireModal = ({
 }: TestDayCertificationExpireModalProps): JSX.Element => {
   return (
     <Modal
+      showBottomCloseButton
+      disableOutsideClick
       handleClose={handleClose}
       open={open}
       title={
@@ -26,7 +27,7 @@ const TestDayCertificationExpireModal = ({
         </div>
       }
       initWidth={700}
-      initHeight={275}
+      initHeight={265}
       {...rest}
     >
       <TestDayCertificationExpireModalContainer>
@@ -52,10 +53,6 @@ const TestDayCertificationExpireModal = ({
             </p>
           </div>
         </div>
-        <div className='bottom-close' onClick={handleClose}>
-          <CloseIcon />
-          Close
-        </div>
       </TestDayCertificationExpireModalContainer>
     </Modal>
   )
@@ -66,16 +63,18 @@ TestDayCertificationExpireModal.defaultProps = {}
 export default TestDayCertificationExpireModal
 
 export const TestDayCertificationExpireModalContainer = styled.div`
+  padding: 0 20px;
+
   .expire-message-container {
-    background-color: #fff;
     padding: 20px;
+    background-color: ${props => props.theme.palette.common.white};
   }
 
   .expire-message {
     border: 1px solid #000000;
     background-color: #fff9e8;
     padding: 10px;
-    box-shadow: 0px 0px 0px 10px yellow;
+    box-shadow: 0px 0px 0px 10px ${props => props.theme.palette.secondary.main};
     box-sizing: border-box;
     text-align: center;
     color: ${props => props.theme.palette.common.black};
