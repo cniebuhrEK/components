@@ -174,7 +174,7 @@ export default Panel
 const PanelContainer = styled.div`
   position: fixed;
   top: 25%;
-  left: 25%;
+  left: calc((100% - ${props => props.initWidth}px) / 2);
   width: ${props => props.initWidth}px;
   height: ${props => props.initHeight}px;
   box-sizing: border-box;
