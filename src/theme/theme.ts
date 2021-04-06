@@ -57,7 +57,7 @@ export default {
     dropdown: 1700
   },
   typography: {
-    fontFamily: "'Proxima Nova', sans-serif",
+    fontFamily: "'Milliard', sans-serif",
     fontSizeNormal: '16px',
     fontSizeSmall: '14px'
   },

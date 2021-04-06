@@ -8,7 +8,10 @@ interface ThemeProviderProps {
   children: JSX.Element
 }
 
-const ThemeProvider = ({ theme = {}, children }: ThemeProviderProps): JSX.Element => (
+const ThemeProvider = ({
+  theme = {},
+  children
+}: ThemeProviderProps): JSX.Element => (
   <StyledThemeProvider theme={mergeDeepRight(defaultTheme, theme)}>
     {children}
   </StyledThemeProvider>
