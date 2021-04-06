@@ -105,7 +105,7 @@ export const InputContainer = styled.div`
   display: inline-flex;
   align-items: center;
   width: 100%;
-  margin: 30px 0;
+  margin: 30px 0 12px;
   box-sizing: border-box;
   position: relative;
   height: ${props => props.theme.dimensions.inputHeight};

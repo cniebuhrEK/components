@@ -132,13 +132,13 @@ const TableEmptyState = styled.div`
   align-items: center;
   justify-content: center;
   margin: 60px 0;
-  color: ${props => props.theme.palette.common.gray300};
+  color: ${props => props.theme.palette.biege};
   font-size: 14px;
 `
 
 EntitiesList.defaultProps = {
   defaultSortDirection: SORT_DIRECTION.desc,
-  defaultPage: 1,
+  defaultPage: 1
 }
 
 export default EntitiesList

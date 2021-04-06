@@ -14,7 +14,7 @@ export const REACT_SELECT_STYLES = {
     } = state
 
     return {
-      margin: '30px 0',
+      margin: '30px 0 12px',
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',
