@@ -10,12 +10,11 @@ export const REACT_SELECT_STYLES = {
     state: { selectProps: { error: boolean }; isDisabled: boolean }
   ) => {
     const {
-      selectProps: { error },
-      isDisabled,
+      selectProps: { error }
     } = state
 
     return {
-      margin: error ? '10px 0 23px 0' : '10px 0',
+      margin: '30px 0',
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',
@@ -24,28 +23,22 @@ export const REACT_SELECT_STYLES = {
       borderStyle: 'solid',
       fontSize: '13px',
       padding: '0 14px',
-      borderColor: error
-        ? theme.palette.error.main
-        : theme.palette.common.gray400,
-      borderRadius: theme.shape.borderRadius,
+      borderColor: error ? theme.palette.red05 : 'transparent',
+      borderRadius: theme.shape.borderRadiusNormal,
       fontFamily: theme.typography.fontFamily,
       minHeight: theme.dimensions.inputHeight,
-      color: theme.palette.text.main,
-      backgroundColor: isDisabled
-        ? theme.palette.common.gray200
-        : 'transparent',
-      transition: 'all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms',
+      color: error ? theme.palette.red05 : theme.palette.brown01,
+      backgroundColor: theme.palette.grey09,
+      transition: `all 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
         cursor: 'text',
-        borderColor: error ? theme.palette.error.main : theme.palette.text.main,
+        borderColor: error ? theme.palette.red05 : theme.palette.brown01
       },
       '&:focus-within': {
-        borderWidth: '2px',
-        borderColor: error
-          ? theme.palette.error.main
-          : theme.palette.primary.main,
-        color: error ? theme.palette.error.main : theme.palette.text.main,
-      },
+        borderWidth: '1px',
+        borderColor: error ? theme.palette.red05 : theme.palette.orange04,
+        color: error ? theme.palette.red05 : theme.palette.brown01
+      }
     }
   },
   input: (_provided, _state) => {
@@ -53,18 +46,18 @@ export const REACT_SELECT_STYLES = {
       fontSize: '13px',
       backgroundColor: 'transparent',
       border: 'none',
-      color: theme.palette.text.main,
+      color: theme.palette.brown01,
       padding: '0',
       margin: '0',
       outline: 'none',
-      width: 'auto',
+      width: 'auto'
     }
   },
   container: (_provided, _state) => {
     return {
       boxSizing: 'border-box',
       position: 'relative',
-      width: '100%',
+      width: '100%'
     }
   },
   menu: (_provided, _state) => {
@@ -73,25 +66,25 @@ export const REACT_SELECT_STYLES = {
       width: '100%',
       top: '100%',
       left: '0',
-      margin: '8px 0',
-      backgroundColor: theme.palette.common.white,
-      boxShadow: theme.shadows.main,
-      zIndex: theme.zIndex.dropdown,
+      margin: '0',
+      backgroundColor: theme.palette.biege,
+      boxShadow: theme.shadows.beigeShadow,
+      zIndex: theme.zIndex.dropdown
     }
   },
   menuList: (_provided, _state) => {
     return {
-      backgroundColor: theme.palette.common.white,
+      backgroundColor: theme.palette.biege,
       maxHeight: '300px',
       overflowY: 'auto',
       boxSizing: 'border-box',
-      zIndex: theme.zIndex.dropdown,
+      zIndex: theme.zIndex.dropdown
     }
   },
   option: (_provided, state: { isFocused: boolean }) => {
     const { isFocused } = state
     return {
-      color: theme.palette.text.main,
+      color: theme.palette.brown01,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -100,19 +93,17 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: isFocused
-        ? theme.palette.common.gray200
-        : theme.palette.common.white,
-      transition: `background-color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms`,
+      backgroundColor: isFocused ? theme.palette.grey10 : theme.palette.biege,
+      transition: `background-color 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
-        backgroundColor: theme.palette.common.gray200,
+        backgroundColor: theme.palette.grey10
       },
       '&:active': {
-        backgroundColor: theme.palette.common.gray200,
+        backgroundColor: theme.palette.grey10
       },
       '&:focus': {
-        backgroundColor: theme.palette.common.gray400,
-      },
+        backgroundColor: theme.palette.grey10
+      }
     }
   },
   valueContainer: (_provided, _state) => {
@@ -123,12 +114,12 @@ export const REACT_SELECT_STYLES = {
       display: 'inline-flex',
       alignItems: 'center',
       flexWrap: 'wrap',
-      flexGrow: '1',
+      flexGrow: '1'
     }
   },
   singleValue: (_provided, _state) => {
     return {
-      wordBreak: 'keep-all',
+      wordBreak: 'keep-all'
     }
   },
   multiValue: (_provided, _state) => {
@@ -137,15 +128,15 @@ export const REACT_SELECT_STYLES = {
       display: 'flex',
       alignItems: 'center',
       padding: '6px',
-      backgroundColor: theme.palette.common.gray200,
-      borderRadius: theme.shape.borderRadius,
+      backgroundColor: theme.palette.grey09,
+      borderRadius: theme.shape.borderRadiusNormal,
       marginRight: '9px',
-      wordBreak: 'keep-all',
+      wordBreak: 'keep-all'
     }
   },
   multiValueLabel: (_provided, _state) => {
     return {
-      whiteSpace: 'nowrap',
+      whiteSpace: 'nowrap'
     }
   },
   multiValueRemove: (_provided, _state) => {
@@ -156,13 +147,13 @@ export const REACT_SELECT_STYLES = {
       cursor: 'pointer',
       transition: 'all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms',
       '&:hover': {
-        color: theme.palette.primary.main,
-      },
+        color: theme.palette.orange04
+      }
     }
   },
   noOptionsMessage: (_provided, _state) => {
     return {
-      color: theme.palette.text.main,
+      color: theme.palette.brown01,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -171,12 +162,12 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.palette.common.white,
+      backgroundColor: theme.palette.biege
     }
   },
   loadingMessage: (_provided, _state) => {
     return {
-      color: theme.palette.text.main,
+      color: theme.palette.brown01,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -185,7 +176,7 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.palette.common.white,
+      backgroundColor: theme.palette.biege
     }
   },
   placeholder: (_provided, _state) => {
@@ -200,21 +191,21 @@ export const REACT_SELECT_STYLES = {
   indicatorsContainer: (_provided, _state) => {},
   clearIndicator: (_provided, _state) => {
     return {
-      color: theme.palette.common.gray500,
-      cursor: 'pointer',
+      color: theme.palette.brown01,
+      cursor: 'pointer'
     }
   },
   loadingIndicator: (_provided, _state) => {
     return {
-      color: theme.palette.common.gray500,
+      color: theme.palette.brown01,
       display: 'flex',
       alignItems: 'center',
-      fontSize: '4px',
+      fontSize: '4px'
     }
   },
   menuPortal: (_provided, _state) => {},
   group: (_provided, _state) => {},
-  groupHeading: (_provided, _state) => {},
+  groupHeading: (_provided, _state) => {}
 }
 
 export const CustomInput = (props: {
@@ -261,32 +252,28 @@ const InputLabel = styled.div`
   color: ${props => {
     switch (true) {
       case props.error:
-        return props.theme.palette.error.main
+        return props.theme.palette.red05
       case props.isFocused:
-        return props.theme.palette.primary.main
       default:
-        return props.theme.palette.common.gray400
+        return props.theme.palette.brown01
     }
   }};
   position: absolute;
-  left: 14px;
-  top: ${props => (props.isFocusedOrHasValue ? '-9px' : '16px')};
-  font-size: ${props => (props.isFocusedOrHasValue ? '10px' : '13px')};
-  line-height: ${props => (props.isFocusedOrHasValue ? '10px' : '13px')};
-  padding: ${props => (props.isFocusedOrHasValue ? '0 5px' : '0')};
-  background-color: ${props =>
-    props.isFocusedOrHasValue
-      ? props.theme.palette.background.default
-      : 'transparent'};
-  transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  left: ${props => (props.isFocusedOrHasValue ? '-1px' : '14px')};
+  top: ${props => (props.isFocusedOrHasValue ? '-19px' : '14px')};
+  font-size: ${props => (props.isFocusedOrHasValue ? '12px' : '16px')};
+  line-height: ${props => (props.isFocusedOrHasValue ? '12px' : '16px')};
+  background-color: transparent;
+  transition: all 200ms ${props => props.theme.transitions.easing.easeInOut}
+  0ms;
 `
 
 const ErrorText = styled.div`
   display: ${props => (props.error ? 'block' : 'none')};
-  color: ${props => props.theme.palette.error.main};
-  font-size: 9px;
+  color: ${props => props.theme.palette.red05};
+  font-size: 12px;
   position: absolute;
-  top: 105%;
-  left: 14px;
+  left: -1px;
+  bottom: -20px;
   z-index: 1;
 `

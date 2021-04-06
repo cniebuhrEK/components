@@ -26,21 +26,25 @@ const StyledPagePrevious = styled.li`
     margin-left: 4px;
   }
 
+  svg {
+    font-size: 10px;
+  }
+
   .page_previous {
     width: auto;
-    height: ${props => props.theme.dimensions.buttonSmallHeight};
+    height: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    line-height: ${props => props.theme.dimensions.buttonSmallHeight};
     margin-left: 0;
+    line-height: 16px;
     margin-right: 11px;
     transform: rotate(90deg);
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
     &:hover {
-      color: ${props => props.theme.palette.primary.main};
+      color: ${props => props.theme.palette.orange04};
     }
   }
 `

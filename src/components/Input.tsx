@@ -105,78 +105,68 @@ export const InputContainer = styled.div`
   display: inline-flex;
   align-items: center;
   width: 100%;
-  margin: ${props => (props.error ? '10px 0 23px 0' : '10px 0')};
+  margin: 30px 0;
   box-sizing: border-box;
   position: relative;
   height: ${props => props.theme.dimensions.inputHeight};
   border-width: 1px;
   border-style: solid;
+  border-radius: ${props => props.theme.shape.borderRadiusNormal};
   border-color: ${props =>
-    props.error
-      ? props.theme.palette.error.main
-      : props.theme.palette.common.gray400};
-  padding: 0 14px;
-  border-radius: ${props => props.theme.shape.borderRadius};
-  font-size: 16px;
+    props.error ? props.theme.palette.red05 : 'transparent'};
+  padding: 0 16px;
+  font-size: ${props => props.theme.typography.fontSizeNormal};
   font-family: ${props => props.theme.typography.fontFamily};
-  transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  background-color: ${props =>
-    props.isDisabled ? props.theme.palette.common.gray100 : 'transparent'};
+  transition: all 200ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
+  background-color: ${props => props.theme.palette.grey09};
+  color: ${props =>
+    props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
 
   &:hover {
     border-color: ${props => {
       switch (true) {
         case props.error:
-          return props.theme.palette.error.main
+          return props.theme.palette.red05
         case props.isDisabled:
-          return props.theme.palette.common.gray400
+          return 'transparent'
         default:
-          return props.theme.palette.text.main
+          return props.theme.palette.brown01
       }
     }};
   }
 
   &:focus-within {
-    border-width: 2px;
+    border-width: 1px;
     border-color: ${props =>
-      props.error
-        ? props.theme.palette.error.main
-        : props.theme.palette.primary.main};
+      props.error ? props.theme.palette.red05 : props.theme.palette.orange04};
     color: ${props =>
-      props.error
-        ? props.theme.palette.error.main
-        : props.theme.palette.primary.main};
+      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
   }
 
   .input-container__label {
     box-sizing: border-box;
     color: ${props =>
-      props.error
-        ? props.theme.palette.error.main
-        : props.theme.palette.common.gray400};
+      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
     position: absolute;
-    font-size: ${props => (props.hasValue ? '10px' : '13px')};
-    line-height: ${props => (props.hasValue ? '10px' : '13px')};
+    font-size: ${props => (props.hasValue ? '12px' : '16px')};
+    line-height: ${props => (props.hasValue ? '12px' : '16px')};
     left: 14px;
-    top: ${props => (props.hasValue ? '-9px' : '16px')};
+    top: ${props => (props.hasValue ? '-9px' : '14px')};
     z-index: 1;
     padding: ${props => (props.hasValue ? '0 5px' : '0')};
-    background-color: ${props =>
-      props.hasValue ? props.theme.palette.background.default : 'transparent'};
-    transition: all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    background-color: transparent;
+    transition: all 200ms ${props => props.theme.transitions.easing.easeInOut}
+      0ms;
   }
 
   &:focus-within .input-container__label {
     font-size: 12px;
     line-height: 12px;
-    left: 14px;
-    top: -9px;
-    padding: 0 5px;
-    background-color: ${props => props.theme.palette.background.default};
+    left: -1px;
+    top: -19px;
+    background-color: transparent;
     color: ${props =>
-      props.error
-        ? props.theme.palette.error.main
-        : props.theme.palette.primary.main};
+      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
   }
 
   .input-container__input {
@@ -185,41 +175,37 @@ export const InputContainer = styled.div`
     font-size: 16px;
     background-color: transparent;
     border: none;
-    color: ${props =>
-      props.isDisabled
-        ? props.theme.palette.common.gray400
-        : props.theme.palette.text.main};
+    color: ${props => props.theme.palette.brown01};
     padding: 0;
     margin: 0;
     outline: none;
+    cursor: ${props => (props.isDisabled ? 'not-allowed' : 'text')};
     width: ${props => (props.hasPasswordType ? 'calc(100% - 20px)' : '100%')};
   }
 
   input:-webkit-autofill {
-    color: ${props => props.theme.palette.text.main} !important;
+    color: ${props => props.theme.palette.brown01} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${props => props.theme.palette.background.default}
-      inset;
+    box-shadow: 0 0 0px 1000px ${props => props.theme.palette.grey09} inset;
     height: 100%;
   }
 
   .input-container__input:disabled {
-    color: ${props => props.theme.palette.common.gray400};
-    background-color: transparent;
+    color: ${props => props.theme.palette.brown01};
   }
 
   .input-container__error {
     display: ${props => (props.error ? 'block' : 'none')};
-    color: ${props => props.theme.palette.error.main};
+    color: ${props => props.theme.palette.red05};
     font-size: 12px;
     position: absolute;
-    top: 105%;
-    left: 14px;
+    left: -1px;
+    bottom: -20px;
   }
 
   .input-container__toggle-visibility {
     display: ${props => (props.hasPasswordType ? 'flex' : 'none')};
-    color: ${props => props.theme.palette.common.gray500};
+    color: ${props => props.theme.palette.brown01};
     cursor: pointer;
     position: absolute;
     right: 14px;
@@ -227,18 +213,16 @@ export const InputContainer = styled.div`
     font-size: 20px;
     height: ${props => props.theme.dimensions.inputHeight};
     align-items: center;
-    transition: color 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    transition: color 200ms ${props => props.theme.transitions.easing.easeInOut}
+      0ms;
 
     &:hover {
-      color: ${props => props.theme.palette.primary.main};
-    }
-
-    &:focus {
-      color: ${props => props.theme.palette.primary.dark};
+      cursor: pointer;
     }
 
     .input-container__toggle-visibility--hide {
-      transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      transition: opacity 200ms
+        ${props => props.theme.transitions.easing.easeInOut} 0ms;
       position: absolute;
       right: 0;
       opacity: ${props => (props.isPasswordVisible ? '1' : '0')};
@@ -246,7 +230,8 @@ export const InputContainer = styled.div`
     }
 
     .input-container__toggle-visibility--show {
-      transition: opacity 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+      transition: opacity 200ms
+        ${props => props.theme.transitions.easing.easeInOut} 0ms;
       position: absolute;
       right: 0;
       opacity: ${props => (props.isPasswordVisible ? '0' : '1')};

@@ -11,6 +11,6 @@ const Template = (args) => <Button {...args}>{args.children}</Button>;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  color: 'primary',
+  color: 'orange',
   children: 'Button'
 };

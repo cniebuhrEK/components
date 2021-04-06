@@ -8,17 +8,17 @@ export default styled.td`
   text-align: left;
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size: 16px;
-  padding: 21px 0;
-  border-color: ${props => props.theme.palette.common.gray300};
+  font-size: 14px;
+  padding: 18px;
+  border-color: ${props => props.theme.palette.grey09};
   border-width: 0 0 1px;
   border-style: solid;
 
   &:first-child {
-    padding-left: 24px;
+    margin-left: 40px;
   }
 
   &:last-child {
-    padding-right: 24px;
+    margin-right-right: 24px;
   }
 `

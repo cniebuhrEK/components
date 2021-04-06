@@ -12,7 +12,7 @@ const SEVERITY = {
   success: 'success',
   error: 'error',
   warning: 'warning',
-  info: 'info',
+  info: 'info'
 }
 
 const Toast = (props: ToastProps): JSX.Element => {
@@ -47,34 +47,35 @@ const StyledToast = styled.div`
   background-color: ${props => {
     switch (props.severity) {
       case SEVERITY.success:
-        return props.theme.palette.success.main
+        return props.theme.palette.green04
       case SEVERITY.error:
-        return props.theme.palette.error.main
+        return props.theme.palette.red05
       case SEVERITY.warning:
-        return props.theme.palette.warning.main
+        return props.theme.palette.orange04
       case SEVERITY.info:
       default:
-        return props.theme.palette.info.main
+        return props.theme.palette.brown02
     }
   }};
   color: ${props => {
     switch (props.severity) {
       case SEVERITY.success:
-        return props.theme.palette.success.contrastText
+        return props.theme.palette.green10
       case SEVERITY.error:
-        return props.theme.palette.error.contrastText
+        return props.theme.palette.red10
       case SEVERITY.warning:
-        return props.theme.palette.warning.contrastText
+        return props.theme.palette.orange10
       case SEVERITY.info:
       default:
-        return props.theme.palette.info.contrastText
+        return props.theme.palette.biege
     }
   }};
-  border-radius: ${props => props.theme.shape.borderRadius};
+  border-radius: ${props => props.theme.shape.borderRadiusNormal};
   opacity: ${props => (props.open ? '1' : '0')};
   transform: ${props => (props.open ? 'none' : 'scale(0.75, 0.75)')};
-  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 225ms ${props => props.theme.transitions.easing.easeInOut}
+      0ms,
+    transform 150ms ${props => props.theme.transitions.easing.easeInOut};
   display: flex;
   justify-content: space-between;
 
@@ -82,22 +83,11 @@ const StyledToast = styled.div`
     padding: 0 0 0 10px;
     font-size: 16px;
     cursor: pointer;
-    transition: color 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: color 225ms ${props => props.theme.transitions.easing.easeInOut}
+      0ms;
 
     &:hover {
-      color: ${props => {
-        switch (props.severity) {
-          case SEVERITY.success:
-            return props.theme.palette.success.dark
-          case SEVERITY.error:
-            return props.theme.palette.error.dark
-          case SEVERITY.warning:
-            return props.theme.palette.warning.dark
-          case SEVERITY.info:
-          default:
-            return props.theme.palette.info.dark
-        }
-      }};
+      color: ${props => props.theme.palette.brown01};
     }
   }
 
@@ -112,7 +102,7 @@ const StyledToast = styled.div`
 Toast.defaultProps = {
   open: false,
   handleClose: () => {},
-  severity: SEVERITY.info,
+  severity: SEVERITY.info
 }
 
 export default Toast

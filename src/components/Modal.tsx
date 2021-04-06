@@ -63,11 +63,12 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     z-index: 1000001;
     width: 100%;
     height: 100%;
-    background: rgba(101, 101, 101, 0.3);
+    background: ${props => props.theme.palette.overlay};
     overflow-y: auto;
     padding: 40px 0;
     text-align: center;
-    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    transition: opacity 0.2s
+      ${props => props.theme.transitions.easing.easeInOut} 0s;
 
     &[class*='--after-open'] {
       opacity: 1;
@@ -83,8 +84,10 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     text-align: left;
     position: relative;
     display: inline-block;
-    padding: 16px;
-    background: ${props => props.theme.palette.background.default};
+    padding: 64px 72px;
+    background: ${props => props.theme.palette.biege};
+    box-shadow: ${props => props.theme.shadows.beigeShadow};
+    color: ${props => props.theme.palette.brown01};
     border-radius: 3px;
     outline: 0;
     max-width: 500px;
@@ -95,21 +98,23 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
 
     .modal__close {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 24px;
+      right: 24px;
       cursor: pointer;
-      color: ${props => props.theme.palette.common.gray400};
-      transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+      color: ${props => props.theme.palette.grey07};
+      transition: color 0.2s
+        ${props => props.theme.transitions.easing.easeInOut} 0s;
 
       &:hover {
-        color: ${props => props.theme.palette.common.gray600};
+        color: ${props => props.theme.palette.brown01};
       }
     }
 
     .modal__title {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 16px;
+      color: ${props => props.theme.palette.brown01};
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
     }
   }
 `

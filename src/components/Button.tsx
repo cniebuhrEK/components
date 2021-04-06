@@ -3,19 +3,18 @@ import styled from 'styled-components'
 
 const buttonSizes = {
   normal: 'normal',
-  small: 'small',
-  large: 'large',
+  small: 'small'
 }
 
 const buttonVariants = {
   contained: 'contained',
-  outlined: 'outlined',
+  outlined: 'outlined'
 }
 
 const buttonColors = {
-  primary: 'primary',
-  secondary: 'secondary',
-  tertiary: 'tertiary',
+  orange: 'orange',
+  green: 'green',
+  transparent: 'transparent'
 }
 
 interface ButtonProps {
@@ -46,7 +45,7 @@ const Button = (props: ButtonProps): JSX.Element => {
     autofocus,
     name,
     value,
-    id,
+    id
   } = props
 
   return (
@@ -70,7 +69,15 @@ const Button = (props: ButtonProps): JSX.Element => {
 }
 
 export const StyledButton = styled.button`
-  border-radius: ${props => props.theme.shape.borderRadius};
+  border-radius: ${props => {
+    switch (props.size) {
+      case buttonSizes.small:
+        return props.theme.shape.borderRadiusSmall
+      case buttonSizes.normal:
+      default:
+        return props.theme.shape.borderRadiusNormal
+    }
+  }};
   display: inline-flex;
   align-items: center;
   outline: none;
@@ -79,171 +86,151 @@ export const StyledButton = styled.button`
   font-size: ${props => {
     switch (props.size) {
       case buttonSizes.small:
-        return '12px'
-      case buttonSizes.large:
-        return '14px'
+        return props.theme.typography.fontSizeSmall
+      case buttonSizes.normal:
       default:
-        return '14px'
+        return props.theme.typography.fontSizeNormal
     }
   }};
   font-family: ${props => props.theme.typography.fontFamily};
-  font-weight: 400;
+  font-weight: 600;
   height: ${props => {
     switch (props.size) {
       case buttonSizes.small:
         return props.theme.dimensions.buttonSmallHeight
-      case buttonSizes.large:
-        return props.theme.dimensions.buttonLargeHeight
+      case buttonSizes.normal:
       default:
         return props.theme.dimensions.buttonNormalHeight
+    }
+  }};
+  justify-content: center;
+  min-width: ${props => {
+    switch (props.size) {
+      case buttonSizes.normal:
+        return props.theme.dimensions.buttonNormalMinWidth
+      case buttonSizes.small:
+      default:
+        return props.theme.dimensions.buttonSmallMinWidth
     }
   }};
   color: ${props => {
     switch (true) {
       case props.variant === buttonVariants.contained &&
-        props.color === buttonColors.primary:
-        return props.theme.palette.primary.contrastText
+        props.color === buttonColors.orange:
+        return props.theme.palette.brown01
       case props.variant === buttonVariants.contained &&
-        props.color === buttonColors.secondary:
-        return props.theme.palette.secondary.contrastText
+        props.color === buttonColors.green:
+        return props.theme.palette.brown01
       case props.variant === buttonVariants.contained &&
-        props.color === buttonColors.tertiary:
-        return props.theme.palette.tertiary.contrastText
+        props.color === buttonColors.transparent:
+        return props.theme.palette.grey07
       case props.variant === buttonVariants.outlined &&
-        props.color === buttonColors.primary:
-        return props.theme.palette.primary.main
+        props.color === buttonColors.orange:
+        return props.theme.palette.orange05
       case props.variant === buttonVariants.outlined &&
-        props.color === buttonColors.secondary:
-        return props.theme.palette.secondary.main
+        props.color === buttonColors.green:
+        return props.theme.palette.green04
       case props.variant === buttonVariants.outlined &&
-        props.color === buttonColors.tertiary:
-        return props.theme.palette.tertiary.main
+        props.color === buttonColors.transparent:
+        return props.theme.palette.grey07
       default:
-        return props.theme.palette.text.main
+        return props.theme.palette.brown01
     }
   }};
   background-color: ${props => {
     switch (true) {
       case props.variant === buttonVariants.contained &&
-        props.color === buttonColors.primary:
-        return props.theme.palette.primary.main
+        props.color === buttonColors.orange:
+        return props.theme.palette.orange05
       case props.variant === buttonVariants.contained &&
-        props.color === buttonColors.secondary:
-        return props.theme.palette.secondary.main
+        props.color === buttonColors.green:
+        return props.theme.palette.green04
       case props.variant === buttonVariants.contained &&
-        props.color === buttonColors.tertiary:
-        return props.theme.palette.tertiary.main
+        props.color === buttonColors.transparent:
       default:
         return 'transparent'
     }
   }};
+  box-shadow: ${props => {
+    switch (true) {
+      case props.color === buttonColors.orange:
+        return props.theme.shadows.orangeShadow
+      case props.color === buttonColors.green:
+        return props.theme.shadows.greenShadow
+      case props.color === buttonColors.transparent:
+      default:
+        return 'none'
+    }
+  }};
   border-width: ${props =>
-    props.variant === buttonVariants.contained ? '0px' : '2px'};
+    props.variant === buttonVariants.contained ? '0px' : '1px'};
   border-style: ${props =>
     props.variant === buttonVariants.contained ? 'none' : 'solid'};
   border-color: ${props => {
     switch (true) {
       case props.variant === buttonVariants.outlined &&
-        props.color === buttonColors.primary:
-        return props.theme.palette.primary.main
+        props.color === buttonColors.orange:
+        return props.theme.palette.orange05
       case props.variant === buttonVariants.outlined &&
-        props.color === buttonColors.secondary:
-        return props.theme.palette.secondary.main
+        props.color === buttonColors.green:
+        return props.theme.palette.green04
       case props.variant === buttonVariants.outlined &&
-        props.color === buttonColors.tertiary:
-        return props.theme.palette.tertiary.main
+        props.color === buttonColors.transparent:
+        return props.theme.palette.grey07
       default:
         return 'transparent'
     }
   }};
   background-position: center;
-  transition: background 800ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transition: all 800ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
 
   &:disabled {
-    opacity: 0.5;
-  }
-
-  &:hover:enabled {
-    cursor: pointer;
-    outline: none;
-    background: ${props => {
-      switch (true) {
-        case props.variant === buttonVariants.contained &&
-          props.color === buttonColors.primary:
-          return `${props.theme.palette.primary.light} radial-gradient(circle, transparent 1%, ${props.theme.palette.primary.light} 1%) center/15000%`
-        case props.variant === buttonVariants.contained &&
-          props.color === buttonColors.secondary:
-          return `${props.theme.palette.secondary.light} radial-gradient(circle, transparent 1%, ${props.theme.palette.secondary.light} 1%) center/15000%`
-        case props.variant === buttonVariants.contained &&
-          props.color === buttonColors.tertiary:
-          return `${props.theme.palette.tertiary.light} radial-gradient(circle, transparent 1%, ${props.theme.palette.tertiary.light} 1%) center/15000%`
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.primary:
-          return `${props.theme.palette.primary.light} radial-gradient(circle, transparent 1%, ${props.theme.palette.common.white} 1%) center/15000%`
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.secondary:
-          return `${props.theme.palette.secondary.light} radial-gradient(circle, transparent 1%, ${props.theme.palette.common.white} 1%) center/15000%`
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.tertiary:
-          return `${props.theme.palette.tertiary.light} radial-gradient(circle, transparent 1%, ${props.theme.palette.common.white} 1%) center/15000%`
-        default:
-          return 'transparent'
-      }
-    }};
-    border-color: ${props => {
-      switch (true) {
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.primary:
-          return props.theme.palette.primary.light
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.secondary:
-          return props.theme.palette.secondary.light
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.tertiary:
-          return props.theme.palette.tertiary.light
-        default:
-          return 'transparent'
-      }
-    }};
-  }
-  &:active:enabled {
-    outline: none;
+    color: ${props => props.theme.palette.grey08};
     background-color: ${props => {
       switch (true) {
-        case props.variant === buttonVariants.contained &&
-          props.color === buttonColors.primary:
-          return props.theme.palette.primary.dark
-        case props.variant === buttonVariants.contained &&
-          props.color === buttonColors.secondary:
-          return props.theme.palette.secondary.dark
-        case props.variant === buttonVariants.contained &&
-          props.color === buttonColors.tertiary:
-          return props.theme.palette.tertiary.dark
+        case props.color === buttonColors.orange:
+          return props.theme.palette.orange10
+        case props.color === buttonColors.green:
+          return props.theme.palette.green10
+        case props.color === buttonColors.transparent:
         default:
           return 'transparent'
       }
     }};
-    border-color: ${props => {
+    border-color: transparent;
+  }
+
+  &:hover:enabled,
+  &:active:enabled {
+    color: ${props => {
       switch (true) {
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.primary:
-          return props.theme.palette.primary.dark
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.secondary:
-          return props.theme.palette.secondary.dark
-        case props.variant === buttonVariants.outlined &&
-          props.color === buttonColors.tertiary:
-          return props.theme.palette.tertiary.dark
+        case props.color === buttonColors.orange:
+          return props.theme.palette.biege
+        case props.color === buttonColors.green:
+          return props.theme.palette.biege
+        case props.color === buttonColors.transparent:
         default:
-          return 'transparent'
+          return props.theme.palette.grey07
       }
     }};
-    background-size: 100%;
-    transition: background 0ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+
+    background-color: ${props => {
+      switch (true) {
+        case props.color === buttonColors.orange:
+          return props.theme.palette.orange04
+        case props.color === buttonColors.green:
+          return props.theme.palette.green04
+        case props.color === buttonColors.transparent:
+        default:
+          return props.theme.palette.grey10
+      }
+    }};
+    border-color: transparent;
   }
 
   .button__start-icon {
     margin-right: 8px;
+    margin-left: -2px;
   }
 `
 
@@ -252,7 +239,7 @@ Button.defaultProps = {
   type: 'button',
   size: buttonSizes.normal,
   variant: buttonVariants.contained,
-  color: buttonColors.primary,
+  color: buttonColors.orange
 }
 
 export default Button

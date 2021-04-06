@@ -15,7 +15,7 @@ export default styled.tbody`
     cursor: pointer;
 
     &:hover {
-      background-color: ${props => props.theme.palette.common.gray200};
+      background-color: ${props => props.theme.palette.grey10};
     }
   }
 `

@@ -1,74 +1,33 @@
 export default {
   palette: {
-    common: {
-      black: '#000',
-      white: '#fff',
-      gray100: '#FCFBFA',
-      gray200: '#F6F6F4',
-      gray300: '#f2f1f0',
-      gray400: '#979797',
-      gray500: '#979797',
-      gray600: '#979797',
-      gray700: '#222428',
-      gray800: '#2e241f',
-      gray900: '#1a1816'
-    },
-    background: {
-      paper: '#fcfbfa',
-      default: '#f2f1f0'
-    },
-    primary: {
-      main: '#faad4c',
-      light: '#faad4cb3',
-      dark: '#9e5a04',
-      contrastText: '#ffffffe6'
-    },
-    secondary: {
-      main: '#74c708',
-      light: '#74c708b3',
-      dark: '#396304',
-      contrastText: '#ffffffe6'
-    },
-    tertiary: {
-      main: '#2ebec4',
-      light: '#5adbe0',
-      dark: '#1d9ca0',
-      contrastText: '#fff'
-    },
-    error: {
-      light: '#FFA28D',
-      main: '#FF7768',
-      dark: '#DB4E4C',
-      contrastText: '#ffffffe6'
-    },
-    warning: {
-      light: '#FFF275',
-      main: '#DBC833',
-      dark: '#DBC833',
-      contrastText: '#ffffffe6'
-    },
-    info: {
-      light: '#40DDF4',
-      main: '#04BEED',
-      dark: '#0294CB',
-      contrastText: '#ffffffe6'
-    },
-    success: {
-      light: '#8AEF87',
-      main: '#60E567',
-      dark: '#46C458',
-      contrastText: '#ffffffe6'
-    },
-    text: {
-      main: '#2e241f'
-    }
+    black: '#000',
+    white: '#fff',
+    brown01: '#2E241F',
+    brown02: '#58453B',
+    grey07: '#4F4B49',
+    grey08: '#A9A9A9',
+    grey09: '#EAE9E8',
+    grey10: '#F2F1F0',
+    biege: '#FCFBFA',
+    orange04: '#F38800',
+    orange05: '#FF9E33',
+    orange10: '#FFE6C6',
+    red05: '#E83E2E',
+    red10: '#FFDFDC',
+    green04: '#447D29',
+    green05: '#71C700',
+    green10: '#D9EFBB',
+    overlay: 'rgba(0, 0, 0, 0.6)'
   },
   shape: {
-    borderRadius: '2px'
+    borderRadiusSmall: '2px',
+    borderRadiusNormal: '4px',
+    borderRadiusBig: '6px'
   },
   shadows: {
-    main: '4px 0 20px 0 rgba(37, 38, 94, 0.1)',
-    paper: '0 4px 24px 0 rgba(37, 38, 94, 0.1)'
+    greenShadow: '0px 4px 8px rgba(60, 85, 49, 0.2)',
+    orangeShadow: '0px 4px 8px rgba(168, 129, 33, 0.201547)',
+    beigeShadow: '0px 10px 20px rgba(33, 26, 22, 0.1)'
   },
   transitions: {
     easing: {
@@ -98,25 +57,16 @@ export default {
     dropdown: 1700
   },
   typography: {
-    fontFamily: '\'Nunito\', \'Open Sans\', sans-serif'
+    fontFamily: "'Proxima Nova', sans-serif",
+    fontSizeNormal: '16px',
+    fontSizeSmall: '14px'
   },
   dimensions: {
-    navHeight: '60px',
-    bottomNavHeight: '54px',
-    footerHeight: '54px',
-    footerHeightMobile: '46px',
-    navigationFullDrawerWidth: '240px',
-    navigationShrinkDrawerWidth: '59px',
-    authFormWidth: '600px',
-    authRightSideBarWidth: '350px',
-    inputHeight: '48px',
-    buttonNormalHeight: '35px',
-    buttonSmallHeight: '25px',
-    buttonLargeHeight: '45px'
-  },
-  breakpoints: {
-    mobile: 768,
-    smallDesktop: 1024
+    inputHeight: '43px',
+    buttonNormalHeight: '43px',
+    buttonNormalMinWidth: '114px',
+    buttonSmallHeight: '32px',
+    buttonSmallMinWidth: '32px'
   },
   breakpointsMedia: {
     mobile: '@media (max-width: 768px)',

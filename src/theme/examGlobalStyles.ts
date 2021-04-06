@@ -1,22 +1,21 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-
+    @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
 
     html {
     position: relative;
 
     margin: 0;
 
-    color: ${props => props.theme.palette.brown01};
+    color: ${props => props.theme.palette.text.main};
     font-size: 13px;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
     }
 
     body {
-    background-color: ${props => props.theme.palette.grey10};
+    background-color: ${props => props.theme.palette.background.default};
     margin: 0;
     font-family: ${props => props.theme.typography.fontFamily};
     -webkit-font-smoothing: antialiased;
@@ -69,23 +68,24 @@ export default createGlobalStyle`
     }
 
     a {
-      color: ${props => props.theme.palette.grey07};
-      font-weight: 400;
-      text-decoration: none;
-      background-color: transparent;
-      transition: color 0.2s ease-in-out;
+    color: ${props => props.theme.palette.text.main};
+    text-decoration: none;
+
+    background-color: transparent;
+
+    transition: color 0.2s ease-in-out;
 
     &:hover {
-        font-weight: 600;
-        text-decoration: underline;
-      }
+        color: ${props => props.theme.palette.text.main};;
+    }
     }
 
     input:-webkit-autofill {
       height: 100%;
-      color: ${props => props.theme.palette.brown01}; !important;
+      color: ${props => props.theme.palette.text.main}; !important;
       background-color: unset;
-      box-shadow: 0 0 0px 1000px ${props => props.theme.palette.biege} inset;
+      box-shadow: 0 0 0px 1000px ${props =>
+  props.theme.palette.background.d} inset;
     }
 
     input::-ms-clear, input::-ms-reveal {

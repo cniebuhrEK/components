@@ -45,40 +45,44 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
       onClick={handleSort}
       id={id}
     >
+      <span>{children}</span>
       {sortable && (
         <span className='table-header__sort-arrow'>
           <ArrowDown />
         </span>
       )}
-      <span>{children}</span>
     </StyledTableHeader>
   )
 }
 
 const StyledTableHeader = styled.th`
-  padding: 5px;
-  font-size: 12px;
+  box-sizing: border-box;
+  padding: 8px 18px;
+  font-size: 16px;
   cursor: ${props => (props.sortable ? 'pointer' : 'text')};
   color: inherit;
   display: table-cell;
   vertical-align: middle;
   text-align: left;
-  border-color: transparent;
-  border-width: 0 0 1px;
+  border-spacing: 0;
   border-style: solid;
   position: ${props => (props.sticky ? 'sticky' : 'static')};
   background-color: ${props =>
-    props.sticky ? props.theme.palette.common.gray200 : 'transparent'};
+    props.sticky ? props.theme.palette.biege : 'transparent'};
   top: 0;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  border-color: ${props => props.theme.palette.grey09};
+  border-width: 0 0 1px;
+  border-style: solid;
 
   .table-header__sort-arrow {
     display: inline-block;
     opacity: ${props => (props.isSortActive ? '1' : '0')};
-    color: ${props => props.theme.palette.primary.main};
+    color: ${props => props.theme.palette.brown01};
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     padding: 0 5px;
     line-height: 14px;
+    font-size: 10px;
     transform: rotate(
       ${props =>
         props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}

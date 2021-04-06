@@ -42,46 +42,39 @@ const StyledPageNumber = styled.li`
 
   .page_number--current,
   .page_number {
-    min-width: ${props => props.theme.dimensions.buttonNormalHeight};
-    height: ${props => props.theme.dimensions.buttonNormalHeight};
-    line-height: ${props => props.theme.dimensions.buttonNormalHeight};
-    border-radius: ${props => props.theme.shape.borderRadius};
-    border: 1px solid ${props => props.theme.palette.common.gray400};
+    min-width: 16px;
+    height: 16px;
+    line-height: 16px;
     display: inline-block;
     text-align: center;
     font-size: 14px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    color: ${props => props.theme.palette.brown01};
+    transition: all 0.2s ${props => props.theme.transitions.easing.easeInOut} 0s;
 
     &:hover {
-      background-color: ${props => props.theme.palette.primary.light};
-      color: ${props => props.theme.palette.primary.contrastText};
-      border-color: ${props => props.theme.palette.primary.contrastText};
+      text-decoration: underline;
     }
   }
 
   .page_number--current,
   .page_number--current:hover {
-    background-color: ${props => props.theme.palette.primary.main};
-    border-color: ${props => props.theme.palette.primary.main};
-    color: ${props => props.theme.palette.primary.contrastText};
+    text-decoration: underline;
   }
 
   .page_number--last {
     margin-left: 28px;
     position: relative;
     font-size: 14px;
-    line-height: 34px;
+    line-height: 16px;
 
     &:before {
       content: '...';
       position: absolute;
       top: 0;
-      color: ${props => props.theme.palette.text.main};
-      left: calc(
-        0px - ${props => props.theme.dimensions.buttonNormalHeight} - 2px
-      );
-      width: ${props => props.theme.dimensions.buttonNormalHeight};
-      line-height: ${props => props.theme.dimensions.buttonNormalHeight};
+      color: ${props => props.theme.palette.brown01};
+      left: calc(0px - 27px);
+      width: 16px;
+      line-height: 16px;
       text-align: center;
       pointer-events: none;
       border: 1px solid transparent;
@@ -92,18 +85,16 @@ const StyledPageNumber = styled.li`
     margin-right: 28px;
     position: relative;
     font-size: 14px;
-    line-height: 34px;
+    line-height: 16px;
 
     &:after {
       content: '...';
       position: absolute;
       top: 0;
-      color: ${props => props.theme.palette.text.main};
-      right: calc(
-        0px - ${props => props.theme.dimensions.buttonNormalHeight} - 2px
-      );
-      width: ${props => props.theme.dimensions.buttonNormalHeight};
-      line-height: ${props => props.theme.dimensions.buttonNormalHeight};
+      color: ${props => props.theme.palette.brown01};
+      right: calc(0px - 27px);
+      width: 16px;
+      line-height: 16px;
       text-align: center;
       pointer-events: none;
       border: 1px solid transparent;

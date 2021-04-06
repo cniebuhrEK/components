@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import Table from './Table/Table'
 import TableBody from './Table/TableBody'
 import TableCell from './Table/TableCell'
-import TableFoot from './Table/TableFoot'
 import TableHead from './Table/TableHead'
+import TablePaginationContainer from './Table/TablePaginationContainer'
 import TableHeader, {
   // eslint-disable-next-line no-unused-vars
   TableHeaderProps,
@@ -107,23 +107,23 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   )
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>{renderHeaders}</TableRow>
-      </TableHead>
-      <TableBody>{rows.length === 0 ? renderEmptyState : renderRows}</TableBody>
-      <TableFoot>
-        <TableRow>
-          <TableCell colSpan={headers.length}>
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          </TableCell>
-        </TableRow>
-      </TableFoot>
-    </Table>
+    <div>
+      <Table>
+        <TableHead>
+          <TableRow>{renderHeaders}</TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.length === 0 ? renderEmptyState : renderRows}
+        </TableBody>
+      </Table>
+      <TablePaginationContainer>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      </TablePaginationContainer>
+    </div>
   )
 }
 
