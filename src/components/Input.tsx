@@ -201,6 +201,7 @@ export const InputContainer = styled.div`
     position: absolute;
     left: -1px;
     bottom: -20px;
+    white-space: nowrap;
   }
 
   .input-container__toggle-visibility {

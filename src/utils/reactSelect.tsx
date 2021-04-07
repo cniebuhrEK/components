@@ -276,4 +276,5 @@ const ErrorText = styled.div`
   left: -1px;
   bottom: -20px;
   z-index: 1;
+  white-space: nowrap;
 `
