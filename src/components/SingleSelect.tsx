@@ -3,7 +3,7 @@ import Select from 'react-select'
 import { CustomInput, REACT_SELECT_STYLES } from '../utils/reactSelect'
 
 const customComponents = {
-  Input: CustomInput,
+  Input: CustomInput
 }
 
 interface SingleSelectProps {

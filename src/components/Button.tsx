@@ -62,7 +62,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       id={id}
       {...props}
     >
-      {startIcon && <span className='button__start-icon'>{startIcon}</span>}
+      {startIcon && <div className='button__start-icon'>{startIcon}</div>}
       {children}
     </StyledButton>
   )
@@ -83,13 +83,14 @@ export const StyledButton = styled.button`
   outline: none;
   box-sizing: border-box;
   padding: 0 16px;
+  letter-spacing: -0.1px;
   font-size: ${props => {
     switch (props.size) {
       case buttonSizes.small:
         return props.theme.typography.fontSizeSmall
       case buttonSizes.normal:
       default:
-        return props.theme.typography.fontSizeNormal
+        return props.theme.typography.fontSizeSmall
     }
   }};
   font-family: ${props => props.theme.typography.fontFamily};
@@ -231,6 +232,8 @@ export const StyledButton = styled.button`
   .button__start-icon {
     margin-right: 8px;
     margin-left: -2px;
+    line-height: 16px;
+    height: 16px;
   }
 `
 

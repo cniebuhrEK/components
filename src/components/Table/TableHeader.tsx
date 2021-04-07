@@ -82,11 +82,14 @@ const StyledTableHeader = styled.th`
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     padding: 0 5px;
     line-height: 14px;
-    font-size: 10px;
+    font-size: 16px;
     transform: rotate(
-      ${props =>
-        props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
-    );
+        ${props =>
+          props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
+      )
+      translateY(
+        ${props => (props.sortDirection === SORT_DIRECTION.asc ? '10%' : '0')}
+      );
   }
 
   &:hover .table-header__sort-arrow {

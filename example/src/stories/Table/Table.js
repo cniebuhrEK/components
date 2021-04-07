@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { EntitiesList } from 'components'
+import { EntitiesList, Button, AddIcon } from 'components'
 import { headers, rows } from "./tableData";
 
 export const FullTable = props => {
@@ -19,6 +19,8 @@ export const FullTable = props => {
       <br />
       <br />
       <EntitiesList
+        resultsText={'40 admins'}
+        tableActions={<Button startIcon={<AddIcon />}>Add admin</Button>}
         headers={props.headers}
         rows={props.rows}
         totalPages={props.totalPages}

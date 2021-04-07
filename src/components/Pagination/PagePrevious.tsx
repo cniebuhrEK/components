@@ -27,7 +27,7 @@ const StyledPagePrevious = styled.li`
   }
 
   svg {
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .page_previous {

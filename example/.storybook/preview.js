@@ -14,9 +14,7 @@ const withThemeProvider=(Story,context)=>{
   ) : (
     <ThemeProvider>
       <GlobalStyles />
-      <Container>
-        <Story {...context} />
-      </Container>
+      <Story {...context} />
     </ThemeProvider>
   )
 }

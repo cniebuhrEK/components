@@ -105,7 +105,7 @@ export const InputContainer = styled.div`
   display: inline-flex;
   align-items: center;
   width: 100%;
-  margin: 30px 0 12px;
+  margin: 25px 0 21px;
   box-sizing: border-box;
   position: relative;
   height: ${props => props.theme.dimensions.inputHeight};
@@ -150,8 +150,8 @@ export const InputContainer = styled.div`
     position: absolute;
     font-size: ${props => (props.hasValue ? '12px' : '16px')};
     line-height: ${props => (props.hasValue ? '12px' : '16px')};
-    left: 14px;
-    top: ${props => (props.hasValue ? '-9px' : '14px')};
+    left: ${props => (props.hasValue ? '-6px' : '14px')};
+    top: ${props => (props.hasValue ? '-19px' : '14px')};
     z-index: 1;
     padding: ${props => (props.hasValue ? '0 5px' : '0')};
     background-color: transparent;
@@ -162,7 +162,7 @@ export const InputContainer = styled.div`
   &:focus-within .input-container__label {
     font-size: 12px;
     line-height: 12px;
-    left: -1px;
+    left: ${props => (props.hasValue ? '-6px' : '-1px')};
     top: -19px;
     background-color: transparent;
     color: ${props =>

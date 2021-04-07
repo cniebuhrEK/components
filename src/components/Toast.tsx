@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
+import Success from '../icons/Success'
+import Info from '../icons/Info'
+import Warning from '../icons/Warning'
+import Close from '../icons/Close'
+
 interface ToastProps {
   handleClose: (e) => any
   children: JSX.Element | string
@@ -24,11 +29,23 @@ const Toast = (props: ToastProps): JSX.Element => {
     }
   }, [open])
 
+  const getIconByType = () => {
+    switch (severity) {
+      case SEVERITY.success:
+        return <Success />
+      case SEVERITY.info:
+        return <Info />
+      default:
+        return <Warning />
+    }
+  }
+
   return (
     <StyledToast id={`toast-${severity}`} open={open} severity={severity}>
-      <div>{children}</div>
+      <div className='toast__icon'>{getIconByType()}</div>
+      <div className='toast__children'>{children}</div>
       <div onClick={handleClose} className='toast__close'>
-        ✕
+        <Close />
       </div>
     </StyledToast>
   )
@@ -38,26 +55,16 @@ const StyledToast = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
-  padding: 10px 20px;
+  padding: 4px 14px 4px 4px;
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: 14px;
-  min-width: 200px;
-  max-width: 300px;
+  min-width: 300px;
+  max-width: 350px;
   z-index: ${props => props.theme.zIndex.snackbar};
-  background-color: ${props => {
-    switch (props.severity) {
-      case SEVERITY.success:
-        return props.theme.palette.green04
-      case SEVERITY.error:
-        return props.theme.palette.red05
-      case SEVERITY.warning:
-        return props.theme.palette.orange04
-      case SEVERITY.info:
-      default:
-        return props.theme.palette.brown02
-    }
-  }};
-  color: ${props => {
+  background-color: ${props => props.theme.palette.biege};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${props => {
     switch (props.severity) {
       case SEVERITY.success:
         return props.theme.palette.green10
@@ -67,10 +74,11 @@ const StyledToast = styled.div`
         return props.theme.palette.orange10
       case SEVERITY.info:
       default:
-        return props.theme.palette.biege
+        return props.theme.palette.grey09
     }
   }};
-  border-radius: ${props => props.theme.shape.borderRadiusNormal};
+  color: ${props => (props.theme.palette.brown01)};
+  border-radius: ${props => props.theme.shape.borderRadiusBig};
   opacity: ${props => (props.open ? '1' : '0')};
   transform: ${props => (props.open ? 'none' : 'scale(0.75, 0.75)')};
   transition: opacity 225ms ${props => props.theme.transitions.easing.easeInOut}
@@ -79,8 +87,34 @@ const StyledToast = styled.div`
   display: flex;
   justify-content: space-between;
 
+  .toast__icon {
+    margin-right: 16px;
+    display: flex;
+    align-items: flex-start;
+    font-size: 32px;
+    color: ${props => {
+      switch (props.severity) {
+        case SEVERITY.success:
+          return props.theme.palette.green05
+        case SEVERITY.error:
+          return props.theme.palette.red05
+        case SEVERITY.warning:
+          return props.theme.palette.orange04
+        case SEVERITY.info:
+        default:
+          return props.theme.palette.brown01
+      }
+    }};
+  }
+
+  .toast__children {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
   .toast__close {
-    padding: 0 0 0 10px;
+    padding: 8px 0 0 10px;
     font-size: 16px;
     cursor: pointer;
     transition: color 225ms ${props => props.theme.transitions.easing.easeInOut}

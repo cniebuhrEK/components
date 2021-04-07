@@ -17,6 +17,8 @@ export default {
     green04: '#447D29',
     green05: '#71C700',
     green10: '#D9EFBB',
+    gray1: '#333333',
+    gray3: '#828282',
     overlay: 'rgba(0, 0, 0, 0.6)'
   },
   shape: {
@@ -66,7 +68,9 @@ export default {
     buttonNormalHeight: '43px',
     buttonNormalMinWidth: '114px',
     buttonSmallHeight: '32px',
-    buttonSmallMinWidth: '32px'
+    buttonSmallMinWidth: '32px',
+    adminSideNavWidth: '276px',
+    adminTopNavHeight: '48px'
   },
   breakpointsMedia: {
     mobile: '@media (max-width: 768px)',

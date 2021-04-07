@@ -28,8 +28,10 @@ interface RowsProps {
 interface EntitiesListProps {
   headers: TableHeaderProps[]
   rows: RowsProps[]
+  tableActions?: string | JSX.Element
   totalPages: number
   emptyStateText: string
+  resultsText: string
   defaultPage: number
   defaultSortColumnId: string
   defaultSortDirection: string
@@ -50,6 +52,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     emptyStateText,
     defaultSortColumnId,
     defaultSortDirection,
+    resultsText,
+    tableActions
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -108,6 +112,10 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
 
   return (
     <div>
+      <TableActionBar>
+        <div className='table-results'>{resultsText}</div>
+        <div className='table-actions'>{tableActions}</div>
+      </TableActionBar>
       <Table>
         <TableHead>
           <TableRow>{renderHeaders}</TableRow>
@@ -126,6 +134,22 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     </div>
   )
 }
+
+const TableActionBar = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+
+  .table-results {
+    font-weight: 600;
+    font-size: 16px;
+    color: ${props => props.theme.typography.fontSizeNormal};
+    line-height: 19px;
+    letter-spacing: -0.00450187px;
+    color: ${props => props.theme.palette.brown01};
+  }
+`
 
 const TableEmptyState = styled.div`
   display: flex;
