@@ -8,13 +8,15 @@ interface ButtonProps {
   disabled?: boolean
   autofocus?: boolean
   id?: string
+  name?: string
 }
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { onClick, icon, type, disabled, autofocus, id } = props
+  const { onClick, icon, type, disabled, autofocus, id, name } = props
 
   return (
     <StyledButton
+      name={name}
       onClick={onClick}
       autoFocus={autofocus}
       disabled={disabled}
