@@ -60,6 +60,7 @@ export default {
   },
   typography: {
     fontFamily: "'Milliard', sans-serif",
+    fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontSizeNormal: '16px',
     fontSizeSmall: '14px'
   },

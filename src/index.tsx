@@ -27,6 +27,8 @@ export { default as Link } from './components/Link/Link'
 export { default as Header } from './components/Header'
 export { default as AdminSideNavigation } from './components/Navigation/AdminSideNavigation'
 export { default as AdminTopNavigation } from './components/Navigation/AdminTopNavigation'
+export { default as FormTitle } from './components/Form/FormTitle'
+export { default as FormDescription } from './components/Form/FormDescription'
 
 // icons
 export { default as AddIcon } from './icons/Add'
