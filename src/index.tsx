@@ -5,6 +5,7 @@ export { default as examTheme } from './theme/examTheme'
 
 // components
 export { default as Button } from './components/Button'
+export { default as IconButton } from './components/IconButton'
 export { default as Input } from './components/Input'
 export { default as SingleSelect } from './components/SingleSelect'
 export { default as Toast } from './components/Toast'
@@ -41,6 +42,7 @@ export { default as SuccessIcon } from './icons/Success'
 export { default as InfoIcon } from './icons/Info'
 export { default as WarningIcon } from './icons/Warning'
 export { default as UsersIcon } from './icons/Users'
+export { default as EditIcon } from './icons/Edit'
 
 // form elements
 export { default as InputField } from './formElements/InputField'

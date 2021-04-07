@@ -41,6 +41,8 @@ const AdminTopNavigationContainer = styled.div`
 
   .admin-top-nav__logo {
     height: 100%;
+    display: flex;
+    align-items: center;
     color: ${props => props.theme.palette.biege};
   }
 

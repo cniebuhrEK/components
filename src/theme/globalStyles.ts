@@ -13,7 +13,7 @@ export default createGlobalStyle`
     }
 
     body {
-    background-color: ${props => props.theme.palette.grey10};
+    background-color: ${props => props.theme.palette.white};
     margin: 0;
     font-family: ${props => props.theme.typography.fontFamily};
     -webkit-font-smoothing: antialiased;
