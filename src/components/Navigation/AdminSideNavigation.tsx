@@ -55,7 +55,7 @@ export const AdminSideNavigation = (
 
 const AdminSideNavigationContainer = styled.div`
   padding: 32px 0;
-  backgroynd-color: ${props => props.theme.palette.grey09};
+  background-color: ${props => props.theme.palette.grey09};
   height: calc(100vh - ${props => props.theme.dimensions.adminTopNavHeight});
   width: ${props => props.theme.dimensions.adminSideNavWidth};
   overflow: auto;
