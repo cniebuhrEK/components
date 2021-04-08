@@ -10,8 +10,8 @@
     "react-scripts": "link:../node_modules/react-scripts"
   },
   "scripts": {
-    "start": "start-storybook -p 6006 --static-dir public",
-    "build": "build-storybook --output-dir public"
+    "start": "rm -rf ./public && mkdir -p ./public/assets && cp -R ../src/assets ./public && start-storybook -p 6006 --static-dir public",
+    "build": "rm -rf ./public && mkdir -p ./public/assets && cp -R ../src/assets ./public && build-storybook --output-dir public"
   },
   "eslintConfig": {
     "extends": "react-app"
