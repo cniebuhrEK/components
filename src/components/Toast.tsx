@@ -57,7 +57,7 @@ const StyledToast = styled.div`
   right: 20px;
   padding: 4px 14px 4px 4px;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size: 14px;
+  font-size:  ${props => props.theme.typography.fontSizeSmall};
   min-width: 300px;
   max-width: 350px;
   z-index: ${props => props.theme.zIndex.snackbar};
@@ -115,7 +115,7 @@ const StyledToast = styled.div`
 
   .toast__close {
     padding: 8px 0 0 10px;
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizeNormal};
     cursor: pointer;
     transition: color 225ms ${props => props.theme.transitions.easing.easeInOut}
       0ms;

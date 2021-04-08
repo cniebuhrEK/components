@@ -8,7 +8,7 @@ export default styled.td`
   text-align: left;
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size: 14px;
+  font-size:  ${props => props.theme.typography.fontSizeSmall};
   padding: 18px;
   border-color: ${props => props.theme.palette.grey09};
   border-width: 0 0 1px;

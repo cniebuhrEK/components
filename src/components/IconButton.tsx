@@ -36,7 +36,7 @@ export const StyledButton = styled.button`
   outline: none;
   box-sizing: border-box;
   letter-spacing: -0.1px;
-  font-size: 16px;
+  font-size:  ${props => props.theme.typography.fontSizeNormal};
   font-family: ${props => props.theme.typography.fontFamily};
   font-weight: 600;
   height: 32px;

@@ -143,8 +143,7 @@ const TableActionBar = styled.div`
 
   .table-results {
     font-weight: 600;
-    font-size: 16px;
-    color: ${props => props.theme.typography.fontSizeNormal};
+    font-size: ${props => props.theme.typography.fontSizeNormal};
     line-height: 19px;
     letter-spacing: -0.00450187px;
     color: ${props => props.theme.palette.brown01};
@@ -157,7 +156,7 @@ const TableEmptyState = styled.div`
   justify-content: center;
   margin: 60px 0;
   color: ${props => props.theme.palette.biege};
-  font-size: 14px;
+  font-size:  ${props => props.theme.typography.fontSizeSmall};
 `
 
 EntitiesList.defaultProps = {

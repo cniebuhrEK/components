@@ -11,7 +11,7 @@ export default styled.tr`
   border-collapse: separate;
   transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size: 16px;
+  font-size: ${props => props.theme.typography.fontSizeNormal};
   border-style: inherit;
   border-width: 0 0 1px;
   border-color: inherit;

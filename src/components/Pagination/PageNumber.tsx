@@ -47,7 +47,7 @@ const StyledPageNumber = styled.li`
     line-height: 16px;
     display: inline-block;
     text-align: center;
-    font-size: 14px;
+    font-size:  ${props => props.theme.typography.fontSizeSmall};
     color: ${props => props.theme.palette.brown01};
     transition: all 0.2s ${props => props.theme.transitions.easing.easeInOut} 0s;
 
@@ -64,7 +64,7 @@ const StyledPageNumber = styled.li`
   .page_number--last {
     margin-left: 28px;
     position: relative;
-    font-size: 14px;
+    font-size:  ${props => props.theme.typography.fontSizeSmall};
     line-height: 16px;
 
     &:before {
@@ -84,7 +84,7 @@ const StyledPageNumber = styled.li`
   .page_number--first {
     margin-right: 28px;
     position: relative;
-    font-size: 14px;
+    font-size:  ${props => props.theme.typography.fontSizeSmall};
     line-height: 16px;
 
     &:after {

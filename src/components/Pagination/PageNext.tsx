@@ -27,7 +27,7 @@ const StyledPageNext = styled.li`
   }
 
   svg {
-    font-size: 16px;
+    font-size:  ${props => props.theme.typography.fontSizeNormal};
   }
 
   .page_next {
@@ -36,7 +36,7 @@ const StyledPageNext = styled.li`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size:  ${props => props.theme.typography.fontSizeSmall};
     line-height: 16px;
     margin-left: 11px;
     transform: rotate(-90deg);

@@ -93,7 +93,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     max-width: 500px;
     width: 500px;
     margin-top: 100px;
-    font-size: 14px;
+    font-size:  ${props => props.theme.typography.fontSizeSmall};
     font-weight: 400;
 
     .modal__close {

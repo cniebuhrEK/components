@@ -58,7 +58,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 const StyledTableHeader = styled.th`
   box-sizing: border-box;
   padding: 8px 18px;
-  font-size: 16px;
+  font-size: ${props => props.theme.typography.fontSizeSmall};
   cursor: ${props => (props.sortable ? 'pointer' : 'text')};
   color: inherit;
   display: table-cell;
@@ -82,7 +82,7 @@ const StyledTableHeader = styled.th`
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     padding: 0 5px;
     line-height: 14px;
-    font-size: 16px;
+    font-size: ${props => props.theme.typography.fontSizeNormal};
     transform: rotate(
         ${props =>
           props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}

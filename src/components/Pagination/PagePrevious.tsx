@@ -27,7 +27,7 @@ const StyledPagePrevious = styled.li`
   }
 
   svg {
-    font-size: 16px;
+    font-size:  ${props => props.theme.typography.fontSizeNormal};
   }
 
   .page_previous {
@@ -36,7 +36,7 @@ const StyledPagePrevious = styled.li`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size:  ${props => props.theme.typography.fontSizeSmall};
     margin-left: 0;
     line-height: 16px;
     margin-right: 11px;
