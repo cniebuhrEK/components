@@ -15,3 +15,7 @@ declare module '*.svg' {
   export default svgUrl;
   export { svgComponent as ReactComponent }
 }
+
+declare module '*.otf'
+declare module '*.ttf'
+declare module '*.png'

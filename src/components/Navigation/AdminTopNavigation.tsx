@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface AdminTopNavigationProps {
-  logo: string | JSX.Element
   username: string
   logoutName: string
   handleLogout: () => void
@@ -11,11 +10,13 @@ interface AdminTopNavigationProps {
 export const AdminTopNavigation = (
   props: AdminTopNavigationProps
 ): JSX.Element => {
-  const { logo, username, logoutName, handleLogout } = props
+  const { username, logoutName, handleLogout } = props
 
   return (
     <AdminTopNavigationContainer>
-      <div className='admin-top-nav__logo'>{logo}</div>
+      <div className='admin-top-nav__logo'>
+        <img src='./assets/logo/LogoDarkBg.png' />
+      </div>
       <div className='admin-top-nav__content'>
         <div className='admin-top-nav__content-element'>{username}</div>
         <div

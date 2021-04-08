@@ -172,7 +172,7 @@ export const InputContainer = styled.div`
   .input-container__input {
     position: relative;
     z-index: 2;
-    font-size:  ${props => props.theme.typography.fontSizeNormal};
+    font-size: ${props => props.theme.typography.fontSizeNormal};
     background-color: transparent;
     border: none;
     color: ${props => props.theme.palette.brown01};

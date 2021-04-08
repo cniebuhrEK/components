@@ -12,7 +12,6 @@ const Template = (args) =>
 
 export const AdminTopNavigation = Template.bind({});
 AdminTopNavigation.args = {
-  logo: 'Logo placeholder',
   username: 'Hi, user@examkrackres.com',
   logoutName: 'Log out',
   handleLogout: () => {}

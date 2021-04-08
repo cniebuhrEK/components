@@ -7,6 +7,7 @@ export { default as examTheme } from './theme/examTheme'
 export { default as Button } from './components/Button'
 export { default as IconButton } from './components/IconButton'
 export { default as Input } from './components/Input'
+export { default as UploadFile } from './components/UploadFile'
 export { default as SingleSelect } from './components/SingleSelect'
 export { default as Toast } from './components/Toast'
 export { default as Table } from './components/Table/Table'
@@ -49,6 +50,7 @@ export { default as EditIcon } from './icons/Edit'
 // form elements
 export { default as InputField } from './formElements/InputField'
 export { default as SingleSelectField } from './formElements/SingleSelectField'
+export { default as UploadFileField } from './formElements/UploadFileField'
 
 // exam icons
 export { default as ExamIconClose } from './examIcons/Close'

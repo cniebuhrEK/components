@@ -10,7 +10,7 @@
     "react-scripts": "link:../node_modules/react-scripts"
   },
   "scripts": {
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006 --static-dir public",
     "build": "build-storybook --output-dir public"
   },
   "eslintConfig": {

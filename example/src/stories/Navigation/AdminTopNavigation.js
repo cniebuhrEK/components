@@ -16,7 +16,6 @@ AdminTopNavigation.propTypes = {
 };
 
 AdminTopNavigation.defaultProps = {
-  logo: 'Logo placeholder',
   username: 'Hi, user@examkrackres.com',
   logoutName: 'Log out',
   handleLogout: () => {}

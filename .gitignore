@@ -8,6 +8,7 @@ node_modules
 build
 dist
 public
+example/public
 .rpt2_cache
 
 # misc
