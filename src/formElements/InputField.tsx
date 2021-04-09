@@ -23,6 +23,7 @@ interface InputProps {
   errorText?: string
   reset?: boolean
   t: (key, options) => string
+  [x: string]: any
 }
 
 export const InputField = (props: InputProps): JSX.Element => {
@@ -38,6 +39,7 @@ export const InputField = (props: InputProps): JSX.Element => {
     disabled,
     reset,
     t,
+    ...rest
   } = props
   const [touched, _setTouched] = useState(false)
   const [value, _setValue] = useState(initialValue)
@@ -87,6 +89,7 @@ export const InputField = (props: InputProps): JSX.Element => {
       error={!valid && !disabled}
       onFocus={handleFocus}
       onChange={handleChange}
+      {...rest}
     />
   )
 }

@@ -22,6 +22,7 @@ interface InputProps {
   onFocus?: (e) => any
   onBlur?: (e) => any
   errorText?: string
+  [x: string]: any
 }
 
 const Input = ({
@@ -41,6 +42,7 @@ const Input = ({
   onFocus,
   onBlur,
   errorText,
+  ...rest
 }: InputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState(value)
   const [inputType, setInputType] = useState(type)
@@ -81,6 +83,7 @@ const Input = ({
         onFocus={onFocus}
         onBlur={onBlur}
         {...inputProps}
+        {...rest}
       />
       <label htmlFor={name} className='input-container__label'>
         {label}
