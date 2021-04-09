@@ -63,7 +63,7 @@ const Input = ({
       isDisabled={disabled}
       hasPasswordType={type === 'password'}
       isPasswordVisible={type === 'password' && inputType === 'text'}
-      hasValue={isNotNilOrEmpty(inputValue)}
+      hasValue={isNotNilOrEmpty(inputValue) || inputValue === 0}
       error={error}
     >
       <input
