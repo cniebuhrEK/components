@@ -14,7 +14,7 @@ interface InputProps {
   type?: string
   autoComplete?: any
   autoFocus?: any
-  value?: string
+  value?: string | number
   error?: boolean
   inputProps?: object
   inputRef?: any
