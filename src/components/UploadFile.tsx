@@ -94,6 +94,19 @@ export const UploadFileContainer = styled.div`
     background-color: ${props => props.theme.palette.grey09};
     color: ${props =>
       props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+
+    &:hover {
+      border-color: ${props => {
+        switch (true) {
+          case props.error:
+            return props.theme.palette.red05
+          case props.isDisabled:
+            return 'transparent'
+          default:
+            return props.theme.palette.brown01
+        }
+      }};
+    }
   }
 
   .file-upload__trigger {
