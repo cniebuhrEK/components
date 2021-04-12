@@ -90,10 +90,9 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     color: ${props => props.theme.palette.brown01};
     border-radius: 3px;
     outline: 0;
-    max-width: 500px;
-    width: 500px;
+    min-width: 500px;
     margin-top: 100px;
-    font-size:  ${props => props.theme.typography.fontSizeSmall};
+    font-size: ${props => props.theme.typography.fontSizeSmall};
     font-weight: 400;
 
     .modal__close {
