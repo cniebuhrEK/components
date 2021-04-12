@@ -55,6 +55,8 @@ const Header = (props: HeaderProps): JSX.Element => {
       <ExamHeaderTitle>{title}</ExamHeaderTitle>
       <NotOfficialMCATContainer>
         This is not an official MCAT
+        <br />
+        Examkrackers is not affiliated with the AAMC.
       </NotOfficialMCATContainer>
       <TimeAndPageContainer>
         <TimeAndPageElement

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ExamHeaderContainer = styled.div`
+  user-select: none;
   height: 45px;
   width: 100%;
   background-color: ${props => props.theme.palette.blue02};
@@ -21,11 +22,13 @@ export const NotOfficialMCATContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
+  text-align: center;
   top: 0;
   left: 0;
   right: 0;
   margin: 0 auto;
-  max-width: 200px;
+  max-width: 300px;
+  font-size: 12px;
 `
 
 export const TimeAndPageContainer = styled.div`

@@ -11,6 +11,7 @@ export const ToolsBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  user-select: none;
 `
 
 export const ButtonsContainer = styled.div`

@@ -26,7 +26,7 @@ const ExamFrame = (props: ExamFrameProps): JSX.Element => {
 export const FrameContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  background: #006DAA;
+  background: ${props => props.theme.palette.blue02};
   height: 100%;
   font-size: 16px;
   box-sizing: border-box;
@@ -35,7 +35,7 @@ export const FrameContainer = styled.div`
 
   .panel {
     height: 100%;
-    background: #FFFFFF;
+    background: ${props => props.theme.palette.white};
     width: calc(50% - 13px);
     box-sizing: border-box;
   }

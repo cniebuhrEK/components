@@ -24,12 +24,10 @@ const HighlightButton = (): JSX.Element => {
 
   const triggerHighlightOption = () => {
     if (selectedOption === highlightOptions.add) {
-      console.log('highlight')
       highlight('#ff0')
     }
 
     if (selectedOption === highlightOptions.remove) {
-      console.log('unhighlight')
       highlight('transparent')
     }
   }
