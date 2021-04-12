@@ -32,6 +32,7 @@ interface EntitiesListProps {
   totalPages: number
   emptyStateText: string
   resultsText: string
+  size?: string
   defaultPage: number
   defaultSortColumnId: string
   defaultSortDirection: string
@@ -53,7 +54,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     defaultSortColumnId,
     defaultSortDirection,
     resultsText,
-    tableActions
+    tableActions,
+    size
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -116,7 +118,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         <div className='table-results'>{resultsText}</div>
         <div className='table-actions'>{tableActions}</div>
       </TableActionBar>
-      <Table>
+      <Table size={size}>
         <TableHead>
           <TableRow>{renderHeaders}</TableRow>
         </TableHead>

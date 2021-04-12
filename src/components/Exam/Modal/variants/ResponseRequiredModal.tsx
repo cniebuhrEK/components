@@ -27,10 +27,7 @@ const ResponseRequiredModal = ({
       {...rest}
     >
       <ResponseRequiredModalContainer>
-        <img
-          className='warning-icon'
-          src='https://d2to8dvdqb8lhi.cloudfront.net/app/assets/shared/aamc/info-2a467f3febf94dc3b4eb14015ab860d2dcfe0cbdfcec6d9ef9ae61a7baeb6409.svg'
-        />
+        <img className='warning-icon' src='./assets/exam/Info.svg' />
         <div className='warning-content'>
           <p>You cannot advance without answering this question.</p>
         </div>

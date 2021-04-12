@@ -67,17 +67,17 @@ export const TestDayCertificationExpireModalContainer = styled.div`
 
   .expire-message-container {
     padding: 20px;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.white};
   }
 
   .expire-message {
     border: 1px solid #000000;
     background-color: #fff9e8;
     padding: 10px;
-    box-shadow: 0px 0px 0px 10px ${props => props.theme.palette.secondary.main};
+    box-shadow: 0px 0px 0px 10px ${props => props.theme.palette.yellow02};
     box-sizing: border-box;
     text-align: center;
-    color: ${props => props.theme.palette.common.black};
+    color: ${props => props.theme.palette.black};
   }
 
   p {
@@ -96,7 +96,7 @@ export const TestDayCertificationExpireModalContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: ${props => props.theme.palette.secondary.main};
+      color: ${props => props.theme.palette.yellow02};
     }
 
     svg {

@@ -29,10 +29,7 @@ const EndExamModal = ({
       {...rest}
     >
       <EndExamModalContainer>
-        <img
-          className='warning-icon'
-          src='https://d2to8dvdqb8lhi.cloudfront.net/app/assets/shared/aamc/alert-aa4477fb4e8846f07af969e8479538298dfe4d43eb23cff49e4d9d78a8e2d3f4.svg'
-        />
+        <img className='warning-icon' src='./assets/exam/Alert.svg' />
         <div className='warning-content'>
           <p>
             By selecting&nbsp;

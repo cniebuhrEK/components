@@ -28,8 +28,17 @@ export { default as Link } from './components/Link/Link'
 export { default as Header } from './components/Header'
 export { default as AdminSideNavigation } from './components/Navigation/AdminSideNavigation'
 export { default as AdminTopNavigation } from './components/Navigation/AdminTopNavigation'
-export { default as FormTitle } from './components/Form/FormTitle'
-export { default as FormDescription } from './components/Form/FormDescription'
+
+// typography
+export { default as HeaderDecorative } from './components/Typohraphy/HeaderDecorative'
+export { default as HeaderBold } from './components/Typohraphy/HeaderBold'
+export { default as HeaderLight } from './components/Typohraphy/HeaderLight'
+export { default as HeaderNormal } from './components/Typohraphy/HeaderNormal'
+export { default as SubheaderBold } from './components/Typohraphy/SubheaderBold'
+export { default as SubheaderLight } from './components/Typohraphy/SubheaderLight'
+export { default as SubheaderNormal } from './components/Typohraphy/SubheaderNormal'
+export { default as TextSemibold } from './components/Typohraphy/TextSemibold'
+export { default as TextNormal } from './components/Typohraphy/TextNormal'
 
 // icons
 export { default as AddIcon } from './icons/Add'

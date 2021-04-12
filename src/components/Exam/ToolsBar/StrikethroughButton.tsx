@@ -19,7 +19,7 @@ export default StrikethroughButton
 
 export const StrikethroughButtonContainer = styled.div`
   font-size: 16px;
-  color: ${props => props.theme.palette.primary.contrastText};
+  color: ${props => props.theme.palette.white};
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -35,12 +35,12 @@ export const StrikethroughButtonContainer = styled.div`
   }
 
   &:hover {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
   }
 
   &:focus,
   &:active {
-    outline: 1px solid ${props => props.theme.palette.primary.contrastText};
+    outline: 1px solid ${props => props.theme.palette.white};
   }
 
   &.--condensed {

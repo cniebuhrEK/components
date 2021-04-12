@@ -187,7 +187,7 @@ export const NavigationModalContainer = styled.div`
   table {
     width: 100%;
     max-width: 100%;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.white};
     border-spacing: 0;
     width: 100%;
     margin-bottom: 18px;
@@ -217,26 +217,26 @@ export const NavigationModalContainer = styled.div`
 
   th {
     text-align: center;
-    color: ${props => props.theme.palette.common.white};
-    background-color: ${props => props.theme.palette.tertiary.main};
+    color: ${props => props.theme.palette.white};
+    background-color: ${props => props.theme.palette.blue01};
     padding: 5px;
     border-radius: 2px 0 0 0;
   }
 
   table tbody tr:nth-child(odd) td {
-    background-color: ${props => props.theme.palette.background.oddRows};
+    background-color: ${props => props.theme.palette.white};
   }
 
   table tbody tr:nth-child(even) td {
-    background-color: ${props => props.theme.palette.background.evenRows};
+    background-color: ${props => props.theme.palette.grey10};
   }
 
   table tbody tr:hover td {
-    background-color: ${props => props.theme.palette.secondary.main};
+    background-color: ${props => props.theme.palette.yellow02};
   }
 
   table tbody tr:last-child td {
-    border-bottom: 1px solid ${props => props.theme.palette.common.black};
+    border-bottom: 1px solid ${props => props.theme.palette.black};
   }
 
   table td {
@@ -245,9 +245,9 @@ export const NavigationModalContainer = styled.div`
     text-align: left;
     vertical-align: top;
     padding: 5px;
-    border-top: 1px solid ${props => props.theme.palette.common.black};
-    border-left: 1px solid ${props => props.theme.palette.common.black};
-    color: ${props => props.theme.palette.common.black};
+    border-top: 1px solid ${props => props.theme.palette.black};
+    border-left: 1px solid ${props => props.theme.palette.black};
+    color: ${props => props.theme.palette.black};
   }
 
   table th {
@@ -260,11 +260,11 @@ export const NavigationModalContainer = styled.div`
   }
 
   table th:not(:first-child) {
-    border-left: 1px solid ${props => props.theme.palette.border.table};
+    border-left: 1px solid ${props => props.theme.palette.grey09};
   }
 
   .question-status--error {
-    color: ${props => props.theme.palette.error.main};
+    color: ${props => props.theme.palette.red02};
   }
 
   .question-status {
@@ -272,7 +272,7 @@ export const NavigationModalContainer = styled.div`
   }
 
   .question-flagged {
-    color: ${props => props.theme.palette.primary.main};
+    color: ${props => props.theme.palette.blue02};
     text-align: center;
   }
 
@@ -285,11 +285,11 @@ export const NavigationModalContainer = styled.div`
     flex-grow: 1;
     overflow: auto;
     max-height: 1000px;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.white};
 
     &::-webkit-scrollbar-track {
       box-shadow: ${props => props.theme.shadows.scrollbarTrack};
-      background-color: ${props => props.theme.palette.primary.contrastText};
+      background-color: ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar {
@@ -299,7 +299,7 @@ export const NavigationModalContainer = styled.div`
 
     &::-webkit-scrollbar-thumb {
       -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-      background-color: ${props => props.theme.palette.tertiary.main};
+      background-color: ${props => props.theme.palette.blue01};
       box-shadow: ${props => props.theme.shadows.scrollbarThumb};
     }
 
@@ -308,7 +308,7 @@ export const NavigationModalContainer = styled.div`
       height: 18px;
       width: 18px;
       display: block;
-      background-color: ${props => props.theme.palette.tertiary.main};
+      background-color: ${props => props.theme.palette.blue01};
     }
 
     &::-webkit-scrollbar-button:vertical:increment {
@@ -316,7 +316,7 @@ export const NavigationModalContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-top: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar-button:vertical:decrement {
@@ -324,7 +324,7 @@ export const NavigationModalContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-bottom: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar-button:horizontal:increment {
@@ -332,7 +332,7 @@ export const NavigationModalContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-right: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar-button:horizontal:decrement {
@@ -340,7 +340,7 @@ export const NavigationModalContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-left: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
   }
 `

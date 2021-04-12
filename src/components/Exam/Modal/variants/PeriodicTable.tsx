@@ -35,7 +35,7 @@ const PeriodicTable = ({
           <img
             alt='Periodic Table'
             className='periodic-table'
-            src='https://s3.amazonaws.com/benchprep-public/aamc/table.png'
+            src='./assets/exam/PeriodicTable.png'
           />
         </div>
       </PeriodicTableContainer>
@@ -52,6 +52,6 @@ export const PeriodicTableContainer = styled.div`
 
   .periodic-table-container {
     max-height: 1000px;
-    background-color: ${props => props.theme.palette.common.white};
+    background-color: ${props => props.theme.palette.white};
   }
 `

@@ -62,7 +62,8 @@ export default {
     fontFamily: "'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontSizeNormal: '16px',
-    fontSizeSmall: '14px'
+    fontSizeSmall: '14px',
+    fontSizeExtraSmall: '12px'
   },
   dimensions: {
     inputHeight: '43px',

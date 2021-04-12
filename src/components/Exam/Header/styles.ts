@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const ExamHeaderContainer = styled.div`
   height: 45px;
   width: 100%;
-  background-color: ${props => props.theme.palette.primary.main};
-  color: ${props => props.theme.palette.primary.contrastText};
+  background-color: ${props => props.theme.palette.blue02};
+  color: ${props => props.theme.palette.white};
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -14,8 +14,8 @@ export const ExamHeaderContainer = styled.div`
 
 export const NotOfficialMCATContainer = styled.div`
   height: 100%;
-  background-color: ${props => props.theme.palette.success.main};
-  color: ${props => props.theme.palette.success.contrastText};
+  background-color: ${props => props.theme.palette.green02};
+  color: ${props => props.theme.palette.white};
   padding: 0 10px;
   display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ export const TimeAndPageContainer = styled.div`
 `
 
 export const ExamHeaderTitle = styled.h1`
-  color: ${props => props.theme.palette.primary.contrastText};
+  color: ${props => props.theme.palette.white};
   line-height: 40px;
   font-weight: bold;
   font-size: 16pt;
@@ -44,7 +44,7 @@ export const ExamHeaderTitle = styled.h1`
 
 export const TimeAndPageElement = styled.div`
   font-size: 14px;
-  color: ${props => props.theme.palette.primary.contrastText};
+  color: ${props => props.theme.palette.white};
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -58,12 +58,12 @@ export const TimeAndPageElement = styled.div`
   }
 
   &:hover {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
   }
 
   &:focus,
   &:active {
-    outline: 1px solid ${props => props.theme.palette.primary.contrastText};
+    outline: 1px solid ${props => props.theme.palette.white};
   }
 
   &.--condensed {
@@ -73,7 +73,7 @@ export const TimeAndPageElement = styled.div`
   }
 
   &.--warning {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
   }
 
   &.--hidden {

@@ -8,14 +8,14 @@ export default createGlobalStyle`
 
     margin: 0;
 
-    color: ${props => props.theme.palette.text.main};
+    color: ${props => props.theme.palette.black};
     font-size: 13px;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
     }
 
     body {
-    background-color: ${props => props.theme.palette.background.default};
+    background-color: ${props => props.theme.palette.white};
     margin: 0;
     font-family: ${props => props.theme.typography.fontFamily};
     -webkit-font-smoothing: antialiased;
@@ -68,7 +68,7 @@ export default createGlobalStyle`
     }
 
     a {
-    color: ${props => props.theme.palette.text.main};
+    color: ${props => props.theme.palette.black};
     text-decoration: none;
 
     background-color: transparent;
@@ -76,16 +76,15 @@ export default createGlobalStyle`
     transition: color 0.2s ease-in-out;
 
     &:hover {
-        color: ${props => props.theme.palette.text.main};;
+        color: ${props => props.theme.palette.black};;
     }
     }
 
     input:-webkit-autofill {
       height: 100%;
-      color: ${props => props.theme.palette.text.main}; !important;
+      color: ${props => props.theme.palette.black}; !important;
       background-color: unset;
-      box-shadow: 0 0 0px 1000px ${props =>
-  props.theme.palette.background.d} inset;
+      box-shadow: 0 0 0px 1000px ${props => props.theme.palette.white} inset;
     }
 
     input::-ms-clear, input::-ms-reveal {

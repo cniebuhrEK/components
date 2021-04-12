@@ -58,7 +58,6 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 const StyledTableHeader = styled.th`
   box-sizing: border-box;
   padding: 8px 18px;
-  font-size: ${props => props.theme.typography.fontSizeSmall};
   cursor: ${props => (props.sortable ? 'pointer' : 'text')};
   color: inherit;
   display: table-cell;

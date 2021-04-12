@@ -1,132 +1,20 @@
 export default {
   palette: {
-    common: {
-      black: '#000',
-      white: '#fff',
-      gray100: '#ffffff1a',
-      gray200: '#ffffff33',
-      gray300: '#ffffff4d',
-      gray400: '#ffffff66',
-      gray500: '#ffffff80',
-      gray600: '#ffffff99',
-      gray700: '#ffffffb3',
-      gray800: '#ffffffcc',
-      gray900: '#ffffffe6'
-    },
-    background: {
-      paper: '#fff',
-      default: '#fff',
-      evenRows: '#F4F4F4',
-      oddRows: '#fff'
-    },
-    primary: {
-      main: '#006DAA',
-      light: '#006DAA',
-      dark: '#006DAA',
-      contrastText: '#fff'
-    },
-    secondary: {
-      main: 'rgb(255, 255, 0)',
-      light: 'rgb(255, 255, 0)',
-      dark: 'rgb(255, 255, 0)',
-      contrastText: '#ffffffe6'
-    },
-    tertiary: {
-      main: '#80AEE1',
-      light: '#80AEE1',
-      dark: '#80AEE1',
-      contrastText: '#fff'
-    },
-    error: {
-      light: '#FF0000',
-      main: '#FF0000',
-      dark: '#FF0000',
-      contrastText: '#ffffffe6'
-    },
-    warning: {
-      light: '#FFF275',
-      main: '#DBC833',
-      dark: '#DBC833',
-      contrastText: '#ffffffe6'
-    },
-    info: {
-      light: '#40DDF4',
-      main: '#04BEED',
-      dark: '#0294CB',
-      contrastText: '#ffffffe6'
-    },
-    success: {
-      light: '#38b54a',
-      main: '#38b54a',
-      dark: '#38b54a',
-      contrastText: '#fff'
-    },
-    text: {
-      main: '#000'
-    },
-    border: {
-      table: '#d2d2d2'
-    }
-  },
-  shape: {
-    borderRadius: '2px'
+    black: '#000',
+    white: '#fff',
+    blue01: '#80AEE1',
+    blue02: '#006DAA',
+    yellow02: 'rgb(255, 255, 0)',
+    red02: '#FF0000',
+    green02: '#38b54a',
+    grey10: '#F4F4F4',
+    grey09: '#d2d2d2'
   },
   shadows: {
-    main: '4px 0 20px 0 rgba(37, 38, 94, 0.1)',
-    paper: '0 4px 24px 0 rgba(37, 38, 94, 0.1)',
     scrollbarThumb: '0 0 1px rgba(255, 255, 255, 0.5)',
     scrollbarTrack: 'inset 0 0 5px grey'
   },
-  transitions: {
-    easing: {
-      easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
-      easeOut: 'cubic-bezier(0.0, 0, 0.2, 1)',
-      easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
-      sharp: 'cubic-bezier(0.4, 0, 0.6, 1)'
-    },
-    duration: {
-      shortest: 150,
-      shorter: 200,
-      short: 250,
-      standard: 300,
-      complex: 375,
-      enteringScreen: 225,
-      leavingScreen: 195
-    }
-  },
-  zIndex: {
-    mobileStepper: 1000,
-    speedDial: 1050,
-    appBar: 1100,
-    drawer: 1200,
-    modal: 1300,
-    snackbar: 1400,
-    tooltip: 1500,
-    dropdown: 1700
-  },
   typography: {
     fontFamily: '\'Verdana\', \'Geneva\', sans-serif'
-  },
-  dimensions: {
-    navHeight: '60px',
-    bottomNavHeight: '54px',
-    footerHeight: '54px',
-    footerHeightMobile: '46px',
-    navigationFullDrawerWidth: '240px',
-    navigationShrinkDrawerWidth: '59px',
-    authFormWidth: '600px',
-    authRightSideBarWidth: '350px',
-    inputHeight: '48px',
-    buttonNormalHeight: '35px',
-    buttonSmallHeight: '25px',
-    buttonLargeHeight: '45px'
-  },
-  breakpoints: {
-    mobile: 768,
-    smallDesktop: 1024
-  },
-  breakpointsMedia: {
-    mobile: '@media (max-width: 768px)',
-    smallDesktop: '@media (max-width: 1024px)'
   }
 }

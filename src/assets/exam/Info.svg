@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#FEFEFE;}
+	.st2{fill:#FDFDFD;}
+	.st3{fill:#FCFCFC;}
+	.st4{fill:#FBFBFB;}
+	.st5{fill:#FAFAFA;}
+	.st6{fill:#F9F9F9;}
+	.st7{fill:#F8F8F8;}
+	.st8{fill:#F7F7F7;}
+	.st9{fill:#F6F6F6;}
+	.st10{fill:#F5F5F5;}
+	.st11{fill:#F4F4F4;}
+	.st12{fill:#F3F3F3;}
+	.st13{fill:#F2F2F3;}
+	.st14{fill:#F1F1F2;}
+	.st15{fill:#F0F0F1;}
+	.st16{fill:#EFEFF0;}
+	.st17{fill:#EEEEEF;}
+	.st18{fill:#EDEDEE;}
+	.st19{fill:#ECECED;}
+	.st20{fill:#EBEBEC;}
+	.st21{fill:#EAEBEB;}
+	.st22{fill:#E9EAEA;}
+	.st23{fill:#E8E9E9;}
+	.st24{fill:#E7E8E8;}
+	.st25{fill:#E6E7E7;}
+	.st26{fill:#E5E6E6;}
+	.st27{fill:#E4E5E5;}
+	.st28{fill:#E3E4E4;}
+	.st29{fill:#E2E3E3;}
+	.st30{fill:#E1E2E2;}
+	.st31{fill:#E0E1E1;}
+	.st32{fill:#DFE0E0;}
+	.st33{fill:#DEDFDF;}
+	.st34{fill:#DDDEDE;}
+	.st35{fill:#DCDDDD;}
+	.st36{fill:#DBDCDC;}
+	.st37{fill:#DADBDB;}
+	.st38{fill:#D9DADB;}
+	.st39{fill:#D8D9DA;}
+	.st40{fill:#D7D8D9;}
+	.st41{fill:#D6D7D8;}
+	.st42{fill:#D5D6D7;}
+	.st43{fill:#D4D5D6;}
+	.st44{fill:#D3D4D5;}
+	.st45{fill:#D2D3D4;}
+	.st46{fill:#D1D2D3;}
+	.st47{fill:#D0D1D2;}
+	.st48{fill:#CFD0D1;}
+	.st49{fill:#CECFD0;}
+	.st50{fill:#CDCECF;}
+	.st51{fill:#CCCDCE;}
+	.st52{fill:#CBCCCD;}
+	.st53{fill:#CACBCC;}
+	.st54{fill:#C9CACB;}
+	.st55{fill:#C8C9CA;}
+	.st56{fill:#C7C8C9;}
+	.st57{fill:#C6C7C8;}
+	.st58{fill:#C5C6C7;}
+	.st59{fill:#C4C5C6;}
+	.st60{fill:#C3C4C5;}
+	.st61{fill:#C2C3C4;}
+	.st62{fill:#C1C2C3;}
+	.st63{fill:#C0C1C2;}
+	.st64{fill:#BFC0C1;}
+	.st65{fill:#BEBFC0;}
+	.st66{fill:#BDBEBF;}
+	.st67{fill:#BCBDBE;}
+	.st68{fill:#BBBCBD;}
+	.st69{fill:#BABBBC;}
+	.st70{fill:#B9BABB;}
+	.st71{fill:#B8B9BA;}
+	.st72{fill:#B7B8B9;}
+	.st73{fill:#B6B7B8;}
+	.st74{fill:#B5B6B7;}
+	.st75{fill:#B4B5B6;}
+	.st76{fill:#B3B4B5;}
+	.st77{fill:#B2B3B4;}
+	.st78{fill:#B1B2B3;}
+	.st79{fill:#B0B1B2;}
+	.st80{fill:#AFB0B1;}
+	.st81{fill:#AEAFB0;}
+	.st82{fill:#ADAEAF;}
+	.st83{fill:#ACADAE;}
+	.st84{fill:#ABACAD;}
+	.st85{fill:#AAABAC;}
+	.st86{fill:#A9AAAB;}
+	.st87{fill:#A8A9AB;}
+	.st88{fill:#A7A8AA;}
+	.st89{fill:#A6A7A9;}
+	.st90{fill:#A5A6A8;}
+	.st91{fill:#A4A5A7;}
+	.st92{fill:#A3A4A6;}
+	.st93{fill:#A2A3A5;}
+	.st94{fill:#A1A2A4;}
+	.st95{fill:#A0A1A3;}
+	.st96{fill:#9FA0A2;}
+	.st97{fill:#9E9FA1;}
+	.st98{fill:#9D9EA0;}
+	.st99{fill:#9C9D9F;}
+	.st100{fill:#9B9C9E;}
+	.st101{fill:#9A9B9D;}
+	.st102{fill:#999A9C;}
+	.st103{fill:#98999B;}
+	.st104{fill:#97999A;}
+	.st105{fill:#969899;}
+	.st106{fill:#959798;}
+	.st107{fill:#949697;}
+	.st108{fill:#939596;}
+	.st109{fill:#929495;}
+	.st110{fill:#919394;}
+	.st111{fill:#909293;}
+	.st112{fill:#8F9193;}
+	.st113{fill:#8E9092;}
+	.st114{fill:#8D8F91;}
+	.st115{fill:#8C8E90;}
+	.st116{fill:#8B8D8F;}
+	.st117{fill:#8A8C8E;}
+	.st118{fill:#898B8D;}
+	.st119{fill:#888A8C;}
+	.st120{fill:#87898B;}
+	.st121{fill:#86888A;}
+	.st122{fill:#858789;}
+	.st123{fill:#848688;}
+	.st124{fill:#838587;}
+	.st125{fill:url(#SVGID_1_);}
+	.st126{fill:url(#SVGID_2_);}
+	.st127{fill:url(#SVGID_3_);}
+	.st128{fill:#4882B0;}
+	.st129{fill:#0A3E75;}
+</style>
+<g>
+	<g>
+		<ellipse class="st0" cx="50.1" cy="52.4" rx="41.1" ry="42"/>
+		<ellipse class="st1" cx="50.1" cy="52.4" rx="41.1" ry="42"/>
+		<ellipse class="st2" cx="50.1" cy="52.3" rx="41.1" ry="42"/>
+		<ellipse class="st3" cx="50.1" cy="52.3" rx="41.1" ry="42"/>
+		<ellipse class="st4" cx="50.1" cy="52.3" rx="41.1" ry="42"/>
+		<ellipse class="st5" cx="50.1" cy="52.3" rx="41.1" ry="42"/>
+		<ellipse class="st6" cx="50.1" cy="52.2" rx="41.1" ry="42"/>
+		<ellipse class="st7" cx="50.1" cy="52.2" rx="41.1" ry="42"/>
+		<ellipse class="st8" cx="50.1" cy="52.2" rx="41.1" ry="42"/>
+		<ellipse class="st9" cx="50.1" cy="52.2" rx="41.1" ry="42"/>
+		<ellipse class="st10" cx="50.1" cy="52.1" rx="41.1" ry="42"/>
+		<ellipse class="st11" cx="50.1" cy="52.1" rx="41.1" ry="42"/>
+		<ellipse class="st12" cx="50.1" cy="52.1" rx="41.1" ry="42"/>
+		<ellipse class="st13" cx="50.1" cy="52" rx="41.1" ry="42"/>
+		<ellipse class="st14" cx="50.1" cy="52" rx="41.1" ry="42"/>
+		<ellipse class="st15" cx="50.1" cy="52" rx="41.1" ry="42"/>
+		<ellipse class="st16" cx="50.1" cy="52" rx="41.1" ry="42"/>
+		<ellipse class="st17" cx="50.1" cy="51.9" rx="41.1" ry="42"/>
+		<ellipse class="st18" cx="50.1" cy="51.9" rx="41.1" ry="42"/>
+		<ellipse class="st19" cx="50.1" cy="51.9" rx="41.1" ry="42"/>
+		<ellipse class="st20" cx="50.1" cy="51.9" rx="41.1" ry="42"/>
+		<ellipse class="st21" cx="50.1" cy="51.8" rx="41.1" ry="42"/>
+		<ellipse class="st22" cx="50.1" cy="51.8" rx="41.1" ry="42"/>
+		<ellipse class="st23" cx="50.1" cy="51.8" rx="41.1" ry="42"/>
+		<ellipse class="st24" cx="50.1" cy="51.7" rx="41.1" ry="42"/>
+		<ellipse class="st25" cx="50.1" cy="51.7" rx="41.1" ry="42"/>
+		<ellipse class="st26" cx="50.1" cy="51.7" rx="41.1" ry="42"/>
+		<ellipse class="st27" cx="50.1" cy="51.7" rx="41.1" ry="42"/>
+		<ellipse class="st28" cx="50.1" cy="51.6" rx="41.1" ry="42"/>
+		<ellipse class="st29" cx="50.1" cy="51.6" rx="41.1" ry="42"/>
+		<ellipse class="st30" cx="50.1" cy="51.6" rx="41.1" ry="42"/>
+		<ellipse class="st31" cx="50.1" cy="51.6" rx="41.1" ry="42"/>
+		<ellipse class="st32" cx="50.1" cy="51.5" rx="41.1" ry="42"/>
+		<ellipse class="st33" cx="50.1" cy="51.5" rx="41.1" ry="42"/>
+		<ellipse class="st34" cx="50.1" cy="51.5" rx="41.1" ry="42"/>
+		<ellipse class="st35" cx="50.1" cy="51.5" rx="41.1" ry="42"/>
+		<ellipse class="st36" cx="50.1" cy="51.4" rx="41.1" ry="42"/>
+		<ellipse class="st37" cx="50.1" cy="51.4" rx="41.1" ry="42"/>
+		<ellipse class="st38" cx="50.1" cy="51.4" rx="41.1" ry="42"/>
+		<ellipse class="st39" cx="50.1" cy="51.3" rx="41.1" ry="42"/>
+		<ellipse class="st40" cx="50.1" cy="51.3" rx="41.1" ry="42"/>
+		<ellipse class="st41" cx="50.1" cy="51.3" rx="41.1" ry="42"/>
+		<ellipse class="st42" cx="50.1" cy="51.3" rx="41.1" ry="42"/>
+		<ellipse class="st43" cx="50.1" cy="51.2" rx="41.1" ry="42"/>
+		<ellipse class="st44" cx="50.1" cy="51.2" rx="41.1" ry="42"/>
+		<ellipse class="st45" cx="50.1" cy="51.2" rx="41.1" ry="42"/>
+		<ellipse class="st46" cx="50.1" cy="51.2" rx="41.1" ry="42"/>
+		<ellipse class="st47" cx="50.1" cy="51.1" rx="41.1" ry="42"/>
+		<ellipse class="st48" cx="50.1" cy="51.1" rx="41.1" ry="42"/>
+		<ellipse class="st49" cx="50.1" cy="51.1" rx="41.1" ry="42"/>
+		<ellipse class="st50" cx="50.1" cy="51" rx="41.1" ry="42"/>
+		<ellipse class="st51" cx="50.1" cy="51" rx="41.1" ry="42"/>
+		<ellipse class="st52" cx="50.1" cy="51" rx="41.1" ry="42"/>
+		<ellipse class="st53" cx="50.1" cy="51" rx="41.1" ry="42"/>
+		<ellipse class="st54" cx="50.1" cy="50.9" rx="41.1" ry="42"/>
+		<ellipse class="st55" cx="50.1" cy="50.9" rx="41.1" ry="42"/>
+		<ellipse class="st56" cx="50.1" cy="50.9" rx="41.1" ry="42"/>
+		<ellipse class="st57" cx="50.1" cy="50.9" rx="41.1" ry="42"/>
+		<ellipse class="st58" cx="50.1" cy="50.8" rx="41.1" ry="42"/>
+		<ellipse class="st59" cx="50.1" cy="50.8" rx="41.1" ry="42"/>
+		<ellipse class="st60" cx="50.1" cy="50.8" rx="41.1" ry="42"/>
+		<ellipse class="st61" cx="50.1" cy="50.8" rx="41.1" ry="42"/>
+		<ellipse class="st62" cx="50.1" cy="50.7" rx="41.1" ry="42"/>
+		<ellipse class="st62" cx="50.1" cy="50.7" rx="41.1" ry="42"/>
+		<ellipse class="st63" cx="50.1" cy="50.7" rx="41.1" ry="42"/>
+		<ellipse class="st64" cx="50.1" cy="50.6" rx="41.1" ry="42"/>
+		<ellipse class="st65" cx="50.1" cy="50.6" rx="41.1" ry="42"/>
+		<ellipse class="st66" cx="50.1" cy="50.6" rx="41.1" ry="42"/>
+		<ellipse class="st67" cx="50.1" cy="50.6" rx="41.1" ry="42"/>
+		<ellipse class="st68" cx="50.1" cy="50.5" rx="41.1" ry="42"/>
+		<ellipse class="st69" cx="50.1" cy="50.5" rx="41.1" ry="42"/>
+		<ellipse class="st70" cx="50.1" cy="50.5" rx="41.1" ry="42"/>
+		<ellipse class="st71" cx="50.1" cy="50.5" rx="41.1" ry="42"/>
+		<ellipse class="st72" cx="50.1" cy="50.4" rx="41.1" ry="42"/>
+		<ellipse class="st73" cx="50.1" cy="50.4" rx="41.1" ry="42"/>
+		<ellipse class="st74" cx="50.1" cy="50.4" rx="41.1" ry="42"/>
+		<ellipse class="st75" cx="50.1" cy="50.3" rx="41.1" ry="42"/>
+		<ellipse class="st76" cx="50.1" cy="50.3" rx="41.1" ry="42"/>
+		<ellipse class="st77" cx="50.1" cy="50.3" rx="41.1" ry="42"/>
+		<ellipse class="st78" cx="50.1" cy="50.3" rx="41.1" ry="42"/>
+		<ellipse class="st79" cx="50.1" cy="50.2" rx="41.1" ry="42"/>
+		<ellipse class="st80" cx="50.1" cy="50.2" rx="41.1" ry="42"/>
+		<ellipse class="st81" cx="50.1" cy="50.2" rx="41.1" ry="42"/>
+		<ellipse class="st82" cx="50.1" cy="50.2" rx="41.1" ry="42"/>
+		<ellipse class="st83" cx="50.1" cy="50.1" rx="41.1" ry="42"/>
+		<ellipse class="st84" cx="50.1" cy="50.1" rx="41.1" ry="42"/>
+		<ellipse class="st85" cx="50.1" cy="50.1" rx="41.1" ry="42"/>
+		<ellipse class="st86" cx="50.1" cy="50.1" rx="41.1" ry="42"/>
+		<ellipse class="st87" cx="50.1" cy="50" rx="41.1" ry="42"/>
+		<ellipse class="st88" cx="50.1" cy="50" rx="41.1" ry="42"/>
+		<ellipse class="st89" cx="50.1" cy="50" rx="41.1" ry="42"/>
+		<ellipse class="st90" cx="50.1" cy="49.9" rx="41.1" ry="42"/>
+		<ellipse class="st91" cx="50.1" cy="49.9" rx="41.1" ry="42"/>
+		<ellipse class="st92" cx="50.1" cy="49.9" rx="41.1" ry="42"/>
+		<ellipse class="st93" cx="50.1" cy="49.9" rx="41.1" ry="42"/>
+		<ellipse class="st94" cx="50.1" cy="49.8" rx="41.1" ry="42"/>
+		<ellipse class="st95" cx="50.1" cy="49.8" rx="41.1" ry="42"/>
+		<ellipse class="st96" cx="50.1" cy="49.8" rx="41.1" ry="42"/>
+		<ellipse class="st97" cx="50.1" cy="49.8" rx="41.1" ry="42"/>
+		<ellipse class="st98" cx="50.1" cy="49.7" rx="41.1" ry="42"/>
+		<ellipse class="st99" cx="50.1" cy="49.7" rx="41.1" ry="42"/>
+		<ellipse class="st100" cx="50.1" cy="49.7" rx="41.1" ry="42"/>
+		<ellipse class="st101" cx="50.1" cy="49.6" rx="41.1" ry="42"/>
+		<ellipse class="st102" cx="50.1" cy="49.6" rx="41.1" ry="42"/>
+		<ellipse class="st103" cx="50.1" cy="49.6" rx="41.1" ry="42"/>
+		<ellipse class="st104" cx="50.1" cy="49.6" rx="41.1" ry="42"/>
+		<ellipse class="st105" cx="50.1" cy="49.5" rx="41.1" ry="42"/>
+		<ellipse class="st106" cx="50.1" cy="49.5" rx="41.1" ry="42"/>
+		<ellipse class="st107" cx="50.1" cy="49.5" rx="41.1" ry="42"/>
+		<ellipse class="st108" cx="50.1" cy="49.5" rx="41.1" ry="42"/>
+		<ellipse class="st109" cx="50.1" cy="49.4" rx="41.1" ry="42"/>
+		<ellipse class="st110" cx="50.1" cy="49.4" rx="41.1" ry="42"/>
+		<ellipse class="st111" cx="50.1" cy="49.4" rx="41.1" ry="42"/>
+		<ellipse class="st112" cx="50.1" cy="49.4" rx="41.1" ry="42"/>
+		<ellipse class="st113" cx="50.1" cy="49.3" rx="41.1" ry="42"/>
+		<ellipse class="st114" cx="50.1" cy="49.3" rx="41.1" ry="42"/>
+		<ellipse class="st115" cx="50.1" cy="49.3" rx="41.1" ry="42"/>
+		<ellipse class="st116" cx="50.1" cy="49.2" rx="41.1" ry="42"/>
+		<ellipse class="st117" cx="50.1" cy="49.2" rx="41.1" ry="42"/>
+		<ellipse class="st118" cx="50.1" cy="49.2" rx="41.1" ry="42"/>
+		<ellipse class="st119" cx="50.1" cy="49.2" rx="41.1" ry="42"/>
+		<ellipse class="st120" cx="50.1" cy="49.1" rx="41.1" ry="42"/>
+		<ellipse class="st121" cx="50.1" cy="49.1" rx="41.1" ry="42"/>
+		<ellipse class="st122" cx="50.1" cy="49.1" rx="41.1" ry="42"/>
+		<ellipse class="st123" cx="50.1" cy="49.1" rx="41.1" ry="42"/>
+		<ellipse class="st124" cx="50.1" cy="49" rx="41.1" ry="42"/>
+	</g>
+	<g>
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="50" y1="17.1259" x2="50" y2="87.5425">
+			<stop  offset="0" style="stop-color:#231F20"/>
+			<stop  offset="3.444310e-02" style="stop-color:#3D3B3C"/>
+			<stop  offset="8.241760e-02" style="stop-color:#666769"/>
+			<stop  offset="0.108" style="stop-color:#828385"/>
+			<stop  offset="0.1629" style="stop-color:#C9CACC"/>
+			<stop  offset="0.1703" style="stop-color:#D3D4D6"/>
+			<stop  offset="0.2147" style="stop-color:#DEDFE1"/>
+			<stop  offset="0.3081" style="stop-color:#F1F1F2"/>
+			<stop  offset="0.4063" style="stop-color:#FBFCFC"/>
+			<stop  offset="0.5165" style="stop-color:#FFFFFF"/>
+			<stop  offset="0.6418" style="stop-color:#FCFCFD"/>
+			<stop  offset="0.7189" style="stop-color:#F4F4F5"/>
+			<stop  offset="0.7827" style="stop-color:#E6E6E7"/>
+			<stop  offset="0.8352" style="stop-color:#D3D4D6"/>
+			<stop  offset="0.8607" style="stop-color:#B7B8BA"/>
+			<stop  offset="0.9157" style="stop-color:#707173"/>
+			<stop  offset="0.9231" style="stop-color:#666769"/>
+			<stop  offset="0.9552" style="stop-color:#4C4B4D"/>
+			<stop  offset="1" style="stop-color:#231F20"/>
+		</linearGradient>
+		<path class="st125" d="M76.1,25.7C69.4,19,60.2,14.8,50,14.8c-10.2,0-19.4,4.1-26.1,10.8c-6.7,6.7-10.8,15.9-10.8,26.1
+			c0,10.2,4.1,19.4,10.8,26.1c6.7,6.7,15.9,10.8,26.1,10.8c10.2,0,19.4-4.1,26.1-10.8c6.7-6.7,10.8-15.9,10.8-26.1
+			C86.9,41.6,82.8,32.3,76.1,25.7z M75.8,77.5C69.2,84.1,60.1,88.2,50,88.2c-10.1,0-19.2-4.1-25.8-10.7
+			c-6.6-6.6-10.7-15.7-10.7-25.8c0-10.1,4.1-19.2,10.7-25.8l0,0c6.6-6.6,15.7-10.7,25.8-10.7c10.1,0,19.2,4.1,25.8,10.7
+			c6.6,6.6,10.7,15.7,10.7,25.8C86.4,61.8,82.4,70.9,75.8,77.5z"/>
+	</g>
+	<radialGradient id="SVGID_2_" cx="51.3207" cy="1.4003" r="78.9897" gradientUnits="userSpaceOnUse">
+		<stop  offset="4.014328e-04" style="stop-color:#FAFDFF"/>
+		<stop  offset="2.175036e-02" style="stop-color:#F4FAFD"/>
+		<stop  offset="0.3905" style="stop-color:#91C7E4"/>
+		<stop  offset="0.5826" style="stop-color:#59B3E4"/>
+		<stop  offset="0.9971" style="stop-color:#203D80"/>
+	</radialGradient>
+	<circle class="st126" cx="50" cy="48.3" r="42.7"/>
+	<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="50" y1="35.6418" x2="50" y2="89.8222">
+		<stop  offset="8.337451e-04" style="stop-color:#0063B5"/>
+		<stop  offset="1" style="stop-color:#00345E"/>
+	</linearGradient>
+	<path class="st127" d="M50,83.3c-22.5,0-41-15.9-42.5-38.1c-0.1,1-0.1,2-0.1,3.1c0,23.6,19.1,42.7,42.7,42.7
+		c23.6,0,42.7-19.1,42.7-42.7c0-1,0-2-0.1-3.1C91,67.3,72.5,83.3,50,83.3z"/>
+	<circle class="st128" cx="50" cy="24.3" r="7.5"/>
+	<path class="st129" d="M50,79.8L50,79.8c-4.1,0-7.5-3.4-7.5-7.5V44.8c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5v27.6
+		C57.5,76.5,54.1,79.8,50,79.8z"/>
+	<circle class="st0" cx="50" cy="22.6" r="7.5"/>
+	<path class="st0" d="M50,78.2L50,78.2c-4.1,0-7.5-3.4-7.5-7.5V43.2c0-4.1,3.4-7.5,7.5-7.5h0c4.1,0,7.5,3.4,7.5,7.5v27.6
+		C57.5,74.9,54.1,78.2,50,78.2z"/>
+</g>
+</svg>

@@ -19,6 +19,7 @@ export const FullTable = props => {
       <br />
       <br />
       <EntitiesList
+        size={props.size}
         resultsText={'40 admins'}
         tableActions={<Button startIcon={<AddIcon />}>Add admin</Button>}
         headers={props.headers}
@@ -59,6 +60,7 @@ FullTable.propTypes = {
    * Sort direction by which the table will be sorted on initial state
    */
   defaultSortDirection: PropTypes.oneOf(['DESC', 'ASC']),
+  size: PropTypes.oneOf(['xs', 's', 'm']),
   /**
    * Page number by which the table will be paginated on initial state
    */
@@ -76,5 +78,6 @@ FullTable.defaultProps = {
   rows: rows,
   defaultSortColumnId: 'firstname',
   defaultSortDirection: 'DESC',
+  size: 's',
   defaultPage: 1
 };

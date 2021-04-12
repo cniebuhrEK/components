@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const ExamNavContainer = styled.div`
   height: 40px;
   width: 100%;
-  background-color: ${props => props.theme.palette.primary.main};
-  color: ${props => props.theme.palette.primary.contrastText};
+  background-color: ${props => props.theme.palette.blue02};
+  color: ${props => props.theme.palette.white};
   padding: 0 10px;
   display: flex;
   justify-content: space-between;
@@ -19,10 +19,10 @@ export const ButtonsContainer = styled.div`
 
 export const ExamNavRight = styled.a`
   font-size: 18px;
-  color: ${props => props.theme.palette.primary.contrastText};
+  color: ${props => props.theme.palette.white};
   padding: 0 0 0 10px;
   cursor: pointer;
-  border-left: 1px solid ${props => props.theme.palette.primary.contrastText};
+  border-left: 1px solid ${props => props.theme.palette.white};
   margin-left: 5px;
   height: 30px;
   font-weight: 500;
@@ -50,21 +50,21 @@ export const ExamNavRight = styled.a`
   }
 
   &:hover {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
   }
 
   &:focus,
   &:active {
-    outline: 1px solid ${props => props.theme.palette.primary.contrastText};
+    outline: 1px solid ${props => props.theme.palette.white};
   }
 `
 
 export const ExamNavLeft = styled.a`
   font-size: 18px;
-  color: ${props => props.theme.palette.primary.contrastText};
+  color: ${props => props.theme.palette.white};
   padding: 0 10px 0 0;
   cursor: pointer;
-  border-right: 1px solid ${props => props.theme.palette.primary.contrastText};
+  border-right: 1px solid ${props => props.theme.palette.white};
   margin-right: 5px;
   height: 30px;
   font-weight: 500;
@@ -85,11 +85,11 @@ export const ExamNavLeft = styled.a`
   }
 
   &:hover {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
   }
 
   &:focus,
   &:active {
-    outline: 1px solid ${props => props.theme.palette.primary.contrastText};
+    outline: 1px solid ${props => props.theme.palette.white};
   }
 `

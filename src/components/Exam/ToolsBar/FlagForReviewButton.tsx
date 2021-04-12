@@ -31,7 +31,7 @@ export default StrikethroughButton
 
 export const StrikethroughButtonContainer = styled.div`
   font-size: 16px;
-  color: ${props => props.theme.palette.primary.contrastText};
+  color: ${props => props.theme.palette.white};
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -40,16 +40,16 @@ export const StrikethroughButtonContainer = styled.div`
   .hover-tooltip {
     display: none;
     position: absolute;
-    color: ${props => props.theme.palette.tertiary.contrastText};
-    background-color: ${props => props.theme.palette.tertiary.main};
-    border: 1px solid ${props => props.theme.palette.common.black};
+    color: ${props => props.theme.palette.white};
+    background-color: ${props => props.theme.palette.blue01};
+    border: 1px solid ${props => props.theme.palette.black};
     top: calc(100% + 5px);
     left: 10px;
     padding: 3px 2px;
   }
 
   &.--flagged {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
   }
 
   svg {
@@ -62,7 +62,7 @@ export const StrikethroughButtonContainer = styled.div`
   }
 
   &:hover {
-    color: ${props => props.theme.palette.secondary.main};
+    color: ${props => props.theme.palette.yellow02};
 
     .hover-tooltip {
       display: block;
@@ -71,6 +71,6 @@ export const StrikethroughButtonContainer = styled.div`
 
   &:focus,
   &:active {
-    outline: 1px solid ${props => props.theme.palette.primary.contrastText};
+    outline: 1px solid ${props => props.theme.palette.white};
   }
 `

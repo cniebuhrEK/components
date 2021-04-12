@@ -178,7 +178,7 @@ const PanelContainer = styled.div`
   width: ${props => props.initWidth}px;
   height: ${props => props.initHeight}px;
   box-sizing: border-box;
-  border: 1px solid ${props => props.theme.palette.common.black};
+  border: 1px solid ${props => props.theme.palette.black};
 
   .panel__container {
     height: 100%;
@@ -192,8 +192,8 @@ const PanelContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: ${props => props.theme.palette.primary.main};
-    color: ${props => props.theme.palette.primary.contrastText};
+    background: ${props => props.theme.palette.blue02};
+    color: ${props => props.theme.palette.white};
     overflow: hidden;
   }
 
@@ -203,7 +203,7 @@ const PanelContainer = styled.div`
 
     &::-webkit-scrollbar-track {
       box-shadow: ${props => props.theme.shadows.scrollbarTrack};
-      background-color: ${props => props.theme.palette.primary.contrastText};
+      background-color: ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar {
@@ -213,7 +213,7 @@ const PanelContainer = styled.div`
 
     &::-webkit-scrollbar-thumb {
       -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
-      background-color: ${props => props.theme.palette.tertiary.main};
+      background-color: ${props => props.theme.palette.blue01};
       box-shadow: ${props => props.theme.shadows.scrollbarThumb};
     }
 
@@ -222,7 +222,7 @@ const PanelContainer = styled.div`
       height: 18px;
       width: 18px;
       display: block;
-      background-color: ${props => props.theme.palette.tertiary.main};
+      background-color: ${props => props.theme.palette.blue01};
     }
 
     &::-webkit-scrollbar-button:vertical:increment {
@@ -230,7 +230,7 @@ const PanelContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-top: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar-button:vertical:decrement {
@@ -238,7 +238,7 @@ const PanelContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-bottom: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar-button:horizontal:increment {
@@ -246,7 +246,7 @@ const PanelContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-right: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
 
     &::-webkit-scrollbar-button:horizontal:decrement {
@@ -254,15 +254,15 @@ const PanelContainer = styled.div`
       background-size: cover;
       background-repeat: no-repeat;
       border-left: 1px solid
-        ${props => props.theme.palette.tertiary.contrastText};
+        ${props => props.theme.palette.white};
     }
   }
 
   .panel__header {
-    background: ${props => props.theme.palette.primary.main};
+    background: ${props => props.theme.palette.blue02};
     border-bottom: 1px solid
-      ${props => props.theme.palette.primary.contrastText};
-    color: ${props => props.theme.palette.primary.contrastText};
+      ${props => props.theme.palette.white};
+    color: ${props => props.theme.palette.white};
     height: 28px;
     padding: 0px 20px;
     display: flex;
@@ -283,8 +283,8 @@ const PanelContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: ${props => props.theme.palette.primary.main};
-    color: ${props => props.theme.palette.primary.contrastText};
+    background: ${props => props.theme.palette.blue02};
+    color: ${props => props.theme.palette.white};
   }
 
   .panel__bottom-resize-icons {}
@@ -293,14 +293,14 @@ const PanelContainer = styled.div`
     position: absolute;
     bottom: -2px;
     left: 1px;
-    color: ${props => props.theme.palette.primary.contrastText};
+    color: ${props => props.theme.palette.white};
   }
 
   .panel__bottom-resize-right {
     position: absolute;
     bottom: -2px;
     right: 1px;
-    color: ${props => props.theme.palette.primary.contrastText};
+    color: ${props => props.theme.palette.white};
   }
 
   .panel__bottom-close {
@@ -309,7 +309,7 @@ const PanelContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-      color: ${props => props.theme.palette.secondary.main};
+      color: ${props => props.theme.palette.yellow02};
     }
 
     svg {
@@ -318,8 +318,8 @@ const PanelContainer = styled.div`
   }
 
   .panel_button {
-    color: ${props => props.theme.palette.primary.contrastText};
-    border: 1px solid ${props => props.theme.palette.primary.contrastText};
+    color: ${props => props.theme.palette.white};
+    border: 1px solid ${props => props.theme.palette.white};
     padding: 3px 10px;
     cursor: pointer;
     font-size: 12pt;
@@ -331,7 +331,7 @@ const PanelContainer = styled.div`
     }
 
     &:hover {
-      color: ${props => props.theme.palette.secondary.main};
+      color: ${props => props.theme.palette.yellow02};
     }
   }
 
@@ -344,11 +344,11 @@ const PanelContainer = styled.div`
     top: 5px;
     right: 10px;
     cursor: pointer;
-    color: ${props => props.theme.palette.primary.contrastText};
+    color: ${props => props.theme.palette.white};
     font-size: 16px;
 
     &:hover {
-      color: ${props => props.theme.palette.secondary.main};
+      color: ${props => props.theme.palette.yellow02};
     }
   }
 
