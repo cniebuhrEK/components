@@ -14,5 +14,6 @@ export const IconLink = Template.bind({});
 IconLink.args = {
   isActive: false,
   disabled: false,
+  light: false,
   name: 'Log out'
 };

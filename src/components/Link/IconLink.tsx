@@ -5,13 +5,14 @@ import styled from 'styled-components'
 interface IconLinkProps {
   isActive: boolean
   disabled?: boolean
+  light?: boolean
   onClick: () => void
   name: string
   icon: string | JSX.Element
 }
 
 export const IconLink = (props: IconLinkProps): JSX.Element => {
-  const { isActive, name, icon, disabled, onClick } = props
+  const { isActive, name, icon, disabled, onClick, light } = props
 
   const containerClass = cx({
     '--isActive': isActive,
@@ -23,6 +24,7 @@ export const IconLink = (props: IconLinkProps): JSX.Element => {
       onClick={onClick}
       disabled={disabled}
       className={containerClass}
+      light={light}
     >
       <div className='icon-link__icon'>{icon}</div>
       <div className='icon-link__name'>{name}</div>
@@ -33,7 +35,8 @@ export const IconLink = (props: IconLinkProps): JSX.Element => {
 const IconLinkContainer = styled.a`
   display: flex;
   align-items: center;
-  color: ${props => props.theme.palette.grey07};
+  color: ${props =>
+    props.light ? props.theme.palette.biege : props.theme.palette.grey07};
   font-weight: normal;
   text-decoration: none;
   font-size: ${props => props.theme.typography.fontSizeNormal};

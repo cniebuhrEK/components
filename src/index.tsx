@@ -25,8 +25,8 @@ export { default as Container } from './components/Container'
 export { default as Status } from './components/Status'
 export { default as IconLink } from './components/Link/IconLink'
 export { default as Link } from './components/Link/Link'
-export { default as Header } from './components/Header'
 export { default as AdminSideNavigation } from './components/Navigation/AdminSideNavigation'
+export { default as StudentSideNavigation } from './components/Navigation/StudentSideNavigation'
 export { default as AdminTopNavigation } from './components/Navigation/AdminTopNavigation'
 
 // typography

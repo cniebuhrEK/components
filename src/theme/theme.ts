@@ -72,6 +72,7 @@ export default {
     buttonSmallHeight: '32px',
     buttonSmallMinWidth: '32px',
     adminSideNavWidth: '276px',
+    studentSideNavWidth: '276px',
     adminTopNavHeight: '48px'
   },
   breakpointsMedia: {

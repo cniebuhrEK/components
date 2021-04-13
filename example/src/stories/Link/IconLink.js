@@ -11,6 +11,7 @@ export const IconLink = props => {
 
 IconLink.propTypes = {
   isActive: PropTypes.bool,
+  light: PropTypes.bool,
   disabled: PropTypes.bool,
   name: PropTypes.string,
   icon: PropTypes.node
@@ -19,5 +20,6 @@ IconLink.propTypes = {
 IconLink.defaultProps = {
   isActive: false,
   disabled: false,
+  light: false,
   name: 'Log out'
 };
