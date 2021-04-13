@@ -60,7 +60,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1000001;
+    z-index: ${props => props.theme.zIndex.modal};
     width: 100%;
     height: 100%;
     background: ${props => props.theme.palette.overlay};
