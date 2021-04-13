@@ -53,6 +53,7 @@ export { default as UserIcon } from './icons/User'
 export { default as SuccessIcon } from './icons/Success'
 export { default as InfoIcon } from './icons/Info'
 export { default as WarningIcon } from './icons/Warning'
+export { default as WarningReversed } from './icons/WarningReversed'
 export { default as UsersIcon } from './icons/Users'
 export { default as EditIcon } from './icons/Edit'
 

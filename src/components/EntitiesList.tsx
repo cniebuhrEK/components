@@ -13,6 +13,7 @@ import TableHeader, {
 } from './Table/TableHeader'
 import TableRow from './Table/TableRow'
 import Pagination from './Pagination/Pagination'
+import WarningReversed from '../icons/WarningReversed'
 
 interface CellProps {
   children: JSX.Element | string
@@ -107,7 +108,10 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const renderEmptyState = (
     <TableRow>
       <TableCell colSpan={headers.length}>
-        <TableEmptyState>{emptyStateText}</TableEmptyState>
+        <TableEmptyState>
+          <WarningReversed />
+          {emptyStateText}
+        </TableEmptyState>
       </TableCell>
     </TableRow>
   )
@@ -155,10 +159,14 @@ const TableActionBar = styled.div`
 const TableEmptyState = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin: 60px 0;
-  color: ${props => props.theme.palette.biege};
-  font-size:  ${props => props.theme.typography.fontSizeSmall};
+  color: ${props => props.theme.palette.brown01};
+  font-size: ${props => props.theme.typography.fontSizeSmall};
+
+  svg {
+    color: ${props => props.theme.palette.red05};
+    margin-right: 10px;
+    font-size: 20px;
+  }
 `
 
 EntitiesList.defaultProps = {
