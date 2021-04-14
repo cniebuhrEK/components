@@ -36,7 +36,12 @@ const Answer = (props: AnswerProps): JSX.Element => {
         </div>{' '}
         {!props.answerCodeHidden && `${props.answerCode}. `}
       </div>
-      <div className='answer__content'>{props.answerContent}</div>
+      <div
+        className='answer__content'
+        id={`answer-content-${props.answerCode}`}
+      >
+        {props.answerContent}
+      </div>
     </div>
   )
 }
