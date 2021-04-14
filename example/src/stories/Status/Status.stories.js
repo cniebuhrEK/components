@@ -10,9 +10,11 @@ export default {
 const Template = (args) =>
   <StatusComponent {...args} />;
 
-export const ActiveStatus = Template.bind({});
-ActiveStatus.args = {
-  isActive: false,
-  activeStatus: 'Active',
-  inactiveStatus: 'Inactive'
+export const StatusSeverity = Template.bind({});
+StatusSeverity.args = {
+  success: false,
+  warning: false,
+  error: false,
+  disabled: false,
+  status: 'Active'
 };

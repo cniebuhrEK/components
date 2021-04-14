@@ -10,13 +10,17 @@ export const Status = props => {
 };
 
 Status.propTypes = {
-  isActive: PropTypes.bool,
-  activeStatus: PropTypes.string,
-  inactiveStatus: PropTypes.string
+  success: PropTypes.bool,
+  warning: PropTypes.bool,
+  error: PropTypes.bool,
+  disabled: PropTypes.bool,
+  status: PropTypes.string
 };
 
 Status.defaultProps = {
-  isActive: false,
-  activeStatus: 'Active',
-  inactiveStatus: 'Inactive'
+  success: false,
+  warning: false,
+  error: false,
+  disabled: false,
+  status: 'Active'
 };

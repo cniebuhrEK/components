@@ -3,22 +3,27 @@ import cx from 'classnames'
 import styled from 'styled-components'
 
 interface StatusProps {
-  isActive: boolean
-  activeStatus: string
-  inactiveStatus: string
+  success: boolean
+  warning: boolean
+  error: boolean
+  disabled: boolean
+  status: string
 }
 
 export const Status = (props: StatusProps): JSX.Element => {
-  const { isActive, activeStatus, inactiveStatus } = props
+  const { success, warning, error, disabled, status } = props
 
   const containerClass = cx({
-    '--isActive': isActive
+    '--success': success,
+    '--warning': warning,
+    '--error': error,
+    '--disabled': disabled
   })
 
   return (
     <StatusContainer className={containerClass}>
       <div className='status__icon' />
-      <div>{isActive ? activeStatus : inactiveStatus}</div>
+      <div>{status}</div>
     </StatusContainer>
   )
 }
@@ -36,17 +41,37 @@ const StatusContainer = styled.div`
     background-color: ${props => props.theme.palette.grey08};
   }
 
-  &.--isActive {
+  &.--success {
     .status__icon {
       background-color: ${props => props.theme.palette.green04};
+    }
+  }
+
+  &.--warning {
+    .status__icon {
+      background-color: ${props => props.theme.palette.orange05};
+    }
+  }
+
+  &.--error {
+    .status__icon {
+      background-color: ${props => props.theme.palette.red05};
+    }
+  }
+
+  &.--disabled {
+    .status__icon {
+      background-color: ${props => props.theme.palette.grey08};
     }
   }
 `
 
 Status.defaultProps = {
-  isActive: false,
-  activeStatus: 'Active',
-  inactiveStatus: 'Inactive'
+  success: false,
+  warning: false,
+  error: false,
+  disabled: false,
+  status: 'Active'
 }
 
 export default Status
