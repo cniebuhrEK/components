@@ -14,11 +14,6 @@ interface AnswerProps {
 
 const Answer = (props: AnswerProps): JSX.Element => {
   const handleSelect = () => props.onClick(props.answerCode)
-  const answerIcon = props.isSelected ? (
-    <QuestionAnswered />
-  ) : (
-    <QuestionUnanswered />
-  )
 
   const answerClass = cx({
     answer: true,
@@ -33,7 +28,13 @@ const Answer = (props: AnswerProps): JSX.Element => {
       data-is-selected={`${props.isSelected}`}
     >
       <div className='answer__code'>
-        {answerIcon} {!props.answerCodeHidden && `${props.answerCode}. `}
+        <div className='answer__icon--answered'>
+          <QuestionAnswered />
+        </div>
+        <div className='answer__icon--unanswered'>
+          <QuestionUnanswered />
+        </div>{' '}
+        {!props.answerCodeHidden && `${props.answerCode}. `}
       </div>
       <div className='answer__content'>{props.answerContent}</div>
     </div>
@@ -84,6 +85,26 @@ export const AnswersContainer = styled.div`
     align-items: center;
     cursor: pointer;
     margin-top: 10px;
+
+    &[data-is-selected='true']{
+      .answer__icon--answered {
+        display: inline-block;
+      }
+
+      .answer__icon--unanswered {
+        display: none;
+      }
+    }
+
+    &[data-is-selected='false']{
+      .answer__icon--answered {
+        display: none;
+      }
+
+      .answer__icon--unanswered {
+        display: inline-block;
+      }
+    }
   }
 
   svg {
