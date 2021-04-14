@@ -35,7 +35,7 @@ const PeriodicTable = ({
           <img
             alt='Periodic Table'
             className='periodic-table'
-            src='./assets/exam/PeriodicTable.png'
+            src='/assets/exam/PeriodicTable.png'
           />
         </div>
       </PeriodicTableContainer>

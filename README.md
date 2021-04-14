@@ -82,7 +82,7 @@ and in `/examples` catalog you will run the storybook project so you can preview
 All assets are kept in the `src/assets` directory. To add a new asset you need to remember about few things:
 1. After adding a new asset on development mode, you need to re-run the `yarn start` command, so the script can copy-paste the latest version of the directory
 2. While using assets use relative paths as you are in the build directory, eg:
-  By adding a new asset `src/assets/images/example.png`, the source would be: `./assets/images/example.png`
+  By adding a new asset `src/assets/images/example.png`, the source would be: `/assets/images/example.png`
 
 ## Deploy a new version
 

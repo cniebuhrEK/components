@@ -27,7 +27,7 @@ const ResponseRequiredModal = ({
       {...rest}
     >
       <ResponseRequiredModalContainer>
-        <img className='warning-icon' src='./assets/exam/Info.svg' />
+        <img className='warning-icon' src='/assets/exam/Info.svg' />
         <div className='warning-content'>
           <p>You cannot advance without answering this question.</p>
         </div>

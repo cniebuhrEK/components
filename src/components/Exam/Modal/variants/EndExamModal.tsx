@@ -29,7 +29,7 @@ const EndExamModal = ({
       {...rest}
     >
       <EndExamModalContainer>
-        <img className='warning-icon' src='./assets/exam/Alert.svg' />
+        <img className='warning-icon' src='/assets/exam/Alert.svg' />
         <div className='warning-content'>
           <p>
             By selecting&nbsp;
