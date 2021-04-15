@@ -3,7 +3,7 @@ import React from 'react';
 import { ResponseRequiredModal } from './ResponseRequiredModal';
 
 export default {
-  title: 'Exam/Modal',
+  title: 'Exam/Tooltip',
   component: ResponseRequiredModal
 };
 

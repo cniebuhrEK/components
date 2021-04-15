@@ -3,7 +3,7 @@ import React from 'react';
 import { EndExamModal } from './EndExamModal';
 
 export default {
-  title: 'Exam/Modal',
+  title: 'Exam/Tooltip',
   component: EndExamModal
 };
 
