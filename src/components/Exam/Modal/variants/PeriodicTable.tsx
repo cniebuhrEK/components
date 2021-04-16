@@ -26,8 +26,8 @@ const PeriodicTable = ({
           <PeriodicIcon /> Periodic Table
         </div>
       }
-      initWidth={1100}
-      initHeight={600}
+      initWidth={1015}
+      initHeight={770}
       {...rest}
     >
       <PeriodicTableContainer>
@@ -53,5 +53,10 @@ export const PeriodicTableContainer = styled.div`
   .periodic-table-container {
     max-height: 1000px;
     background-color: ${props => props.theme.palette.white};
+  }
+
+  .periodic-table {
+    width: 1010px;
+    height: 685px;
   }
 `

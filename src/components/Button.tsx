@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Loader from './Loader'
+
 const buttonSizes = {
   normal: 'normal',
   small: 'small'
@@ -26,6 +28,7 @@ interface ButtonProps {
   startIcon?: any
   type?: string
   disabled?: boolean
+  loading?: boolean
   autofocus?: boolean
   name?: string
   value?: string
@@ -45,6 +48,7 @@ const Button = (props: ButtonProps): JSX.Element => {
     autofocus,
     name,
     value,
+    loading,
     id
   } = props
 
@@ -63,7 +67,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       {...props}
     >
       {startIcon && <div className='button__start-icon'>{startIcon}</div>}
-      {children}
+      {loading ? <Loader /> : children}
     </StyledButton>
   )
 }
@@ -154,6 +158,8 @@ export const StyledButton = styled.button`
   }};
   box-shadow: ${props => {
     switch (true) {
+      case props.variant === buttonVariants.outlined:
+        return 'none'
       case props.color === buttonColors.orange:
         return props.theme.shadows.orangeShadow
       case props.color === buttonColors.green:
@@ -186,9 +192,12 @@ export const StyledButton = styled.button`
   transition: all 800ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
 
   &:disabled {
+    cursor: not-allowed;
     color: ${props => props.theme.palette.grey08};
     background-color: ${props => {
       switch (true) {
+        case props.variant === buttonVariants.outlined:
+          return 'transparent'
         case props.color === buttonColors.orange:
           return props.theme.palette.orange10
         case props.color === buttonColors.green:
@@ -198,7 +207,14 @@ export const StyledButton = styled.button`
           return 'transparent'
       }
     }};
-    border-color: transparent;
+    border-color: ${props => {
+      switch (true) {
+        case props.variant === buttonVariants.outlined:
+          return props.theme.palette.grey08
+        default:
+          return 'transparent'
+      }
+    }};
   }
 
   &:hover:enabled,
