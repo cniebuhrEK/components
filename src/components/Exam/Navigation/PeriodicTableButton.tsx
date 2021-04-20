@@ -1,13 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { ExamNavLeft } from './styles'
 import ExamIconPeriodic from '../../../examIcons/Periodic'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface PeriodicTableButtonProps {
   onClick: (e) => any
 }
 
-const PeriodicTableButton = ({ onClick }: PeriodicTableButtonProps): JSX.Element => {
+const PeriodicTableButton = ({
+  onClick
+}: PeriodicTableButtonProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    if (CHECK_SHORTCUT(e).altT) {
+      onClick(e)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
+
   return (
     <div>
       <ExamNavLeft onClick={onClick} id='periodic-table-btn'>

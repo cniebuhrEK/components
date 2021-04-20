@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import cx from 'classnames'
 
 import FlagUnmark from '../../../examIcons/FlagUnmark'
 import FlagMark from '../../../examIcons/FlagMark'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface StrikethroughButtonProps {
   onFlagClick: (e) => void
@@ -15,6 +16,19 @@ const StrikethroughButton = (props: StrikethroughButtonProps): JSX.Element => {
   const buttonClass = cx({
     '--flagged': isFlagged
   })
+  const handleKeyboardShortcut = e => {
+    if (CHECK_SHORTCUT(e).altF) {
+      onFlagClick(e)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
 
   return (
     <StrikethroughButtonContainer className={buttonClass} onClick={onFlagClick}>

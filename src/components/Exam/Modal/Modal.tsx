@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 import DraggableAndResizable from '../DraggableAndResizable'
 
@@ -38,6 +39,20 @@ const ExamModal = ({
   initHeight,
   disableOutsideClick
 }: ExamModalProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    if (CHECK_SHORTCUT(e).altC) {
+      handleClose()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
+
   return open ? (
     <div>
       {disableOutsideClick && <BackgroundLayer />}

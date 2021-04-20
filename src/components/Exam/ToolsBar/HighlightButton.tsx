@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import cx from 'classnames'
 import { highlight } from '../../../utils/exam'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 import DownIcon from '../../../examIcons/Down'
 
@@ -12,6 +13,8 @@ const highlightOptions = {
 
 const HighlightButton = (): JSX.Element => {
   const [open, setIsOpen] = useState(false)
+  const [arrowDownPressed, setArrowDownPressed] = useState(false)
+  const [hKeyPressed, setHKeyPressed] = useState(false)
   const [selectedOption, setSelectedOption] = useState(highlightOptions.add)
 
   const containerClass = cx({
@@ -37,6 +40,52 @@ const HighlightButton = (): JSX.Element => {
     setSelectedOption(option)
     toggleDropdown()
   }
+
+  useEffect(() => {
+    console.log({ arrowDownPressed, hKeyPressed })
+
+    if (hKeyPressed && arrowDownPressed) {
+      setSelectedOption(
+        selectedOption === highlightOptions.add
+          ? highlightOptions.remove
+          : highlightOptions.add
+      )
+    }
+
+    if (hKeyPressed && !arrowDownPressed) {
+      triggerHighlightOption()
+    }
+  }, [arrowDownPressed, hKeyPressed])
+
+  const handleKeyDown = e => {
+    if (CHECK_SHORTCUT(e).altArrowDown) {
+      setArrowDownPressed(true)
+    }
+
+    if (CHECK_SHORTCUT(e).altH) {
+      setHKeyPressed(true)
+    }
+  }
+
+  const handleKeyUp = e => {
+    if (CHECK_SHORTCUT(e).altArrowDown) {
+      setArrowDownPressed(false)
+    }
+
+    if (CHECK_SHORTCUT(e).altH) {
+      setHKeyPressed(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('keyup', handleKeyUp)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keyup', handleKeyUp)
+    }
+  }, [])
 
   return (
     <HighlightButtonContainer className={containerClass}>

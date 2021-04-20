@@ -1,13 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { ExamNavLeft } from './styles'
 import ExamIconEndSection from '../../../examIcons/EndSection'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface ReviewScreenButtonProps {
   onClick: (e) => any
 }
 
 const ReviewScreenButton = (props: ReviewScreenButtonProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    if (CHECK_SHORTCUT(e).altW) {
+      props.onClick(e)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
   return (
     <ExamNavLeft
       className='no-border'
