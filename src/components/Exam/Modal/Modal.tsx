@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 import DraggableAndResizable from '../DraggableAndResizable'
@@ -38,6 +38,20 @@ const ExamModal = ({
   initHeight,
   disableOutsideClick
 }: ExamModalProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    if (e.altKey && e.keyCode === 67) {
+      handleClose()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
+
   return open ? (
     <div>
       {disableOutsideClick && <BackgroundLayer />}

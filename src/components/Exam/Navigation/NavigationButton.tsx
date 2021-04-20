@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { ExamNavRight } from './styles'
 import ExamIconNavigation from '../../../examIcons/Navigation'
@@ -18,6 +18,20 @@ const NavigationButton = ({
 
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
+
+  const handleKeyboardShortcut = e => {
+    if (e.altKey && e.keyCode === 86) {
+      handleOpen()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
 
   return (
     <div>

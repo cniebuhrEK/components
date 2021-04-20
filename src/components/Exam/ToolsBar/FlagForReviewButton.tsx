@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import cx from 'classnames'
 
@@ -15,6 +15,19 @@ const StrikethroughButton = (props: StrikethroughButtonProps): JSX.Element => {
   const buttonClass = cx({
     '--flagged': isFlagged
   })
+  const handleKeyboardShortcut = e => {
+    if (e.altKey && e.keyCode === 70) {
+      onFlagClick(e)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
 
   return (
     <StrikethroughButtonContainer className={buttonClass} onClick={onFlagClick}>

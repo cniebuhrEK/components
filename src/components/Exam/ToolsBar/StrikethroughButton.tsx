@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 import Striketrough from '../../../examIcons/Striketrough'
 import { strikethrough } from '../../../utils/exam'
 
 const StrikethroughButton = (): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    if (e.altKey && e.keyCode === 83) {
+      strikethrough()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [])
+
   return (
     <StrikethroughButtonContainer onMouseDown={strikethrough}>
       <Striketrough />
