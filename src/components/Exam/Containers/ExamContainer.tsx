@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
 interface ExamContainerProps {
-  children: JSX.Element | string
+  children: JSX.Element | JSX.Element[] | string
   [x: string]: any
 }
 
