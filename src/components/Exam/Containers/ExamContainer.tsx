@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 interface ExamContainerProps {
   children: JSX.Element | string
+  [x: string]: any
 }
 
 const ExamContainer = (props: ExamContainerProps): JSX.Element => {
@@ -18,7 +19,9 @@ const ExamContainer = (props: ExamContainerProps): JSX.Element => {
     }
   }, [])
 
-  return <ExamContainerStyles>{props.children}</ExamContainerStyles>
+  return (
+    <ExamContainerStyles {...props.rest}>{props.children}</ExamContainerStyles>
+  )
 }
 
 const ExamContainerStyles = styled.div`
