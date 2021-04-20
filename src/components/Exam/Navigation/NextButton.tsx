@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ExamNavRight } from './styles'
 import ExamIconNext from '../../../examIcons/Next'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface NextButtonProps {
   onClick: (e) => any
@@ -9,7 +10,7 @@ interface NextButtonProps {
 
 const NextButton = (props: NextButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 78) {
+    if (CHECK_SHORTCUT(e).altN) {
       props.onClick(e)
     }
   }

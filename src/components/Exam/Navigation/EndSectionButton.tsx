@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ExamNavLeft } from './styles'
 import ExamIconEndSection from '../../../examIcons/EndSection'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface EndSectionButtonProps {
   onClick: (e) => any
@@ -9,7 +10,7 @@ interface EndSectionButtonProps {
 
 const EndSectionButton = (props: EndSectionButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 69) {
+    if (CHECK_SHORTCUT(e).altE) {
       props.onClick(e)
     }
   }

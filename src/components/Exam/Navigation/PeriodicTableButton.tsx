@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ExamNavLeft } from './styles'
 import ExamIconPeriodic from '../../../examIcons/Periodic'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface PeriodicTableButtonProps {
   onClick: (e) => any
@@ -11,7 +12,7 @@ const PeriodicTableButton = ({
   onClick
 }: PeriodicTableButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 84) {
+    if (CHECK_SHORTCUT(e).altT) {
       onClick(e)
     }
   }

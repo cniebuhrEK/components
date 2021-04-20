@@ -4,6 +4,7 @@ import cx from 'classnames'
 
 import FlagUnmark from '../../../examIcons/FlagUnmark'
 import FlagMark from '../../../examIcons/FlagMark'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface StrikethroughButtonProps {
   onFlagClick: (e) => void
@@ -16,7 +17,7 @@ const StrikethroughButton = (props: StrikethroughButtonProps): JSX.Element => {
     '--flagged': isFlagged
   })
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 70) {
+    if (CHECK_SHORTCUT(e).altF) {
       onFlagClick(e)
     }
   }

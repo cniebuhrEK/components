@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import cx from 'classnames'
 import { highlight } from '../../../utils/exam'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 import DownIcon from '../../../examIcons/Down'
 
@@ -57,21 +58,21 @@ const HighlightButton = (): JSX.Element => {
   }, [arrowDownPressed, hKeyPressed])
 
   const handleKeyDown = e => {
-    if (e.altKey && e.keyCode === 40) {
+    if (CHECK_SHORTCUT(e).altArrowDown) {
       setArrowDownPressed(true)
     }
 
-    if (e.altKey && e.keyCode === 72) {
+    if (CHECK_SHORTCUT(e).altH) {
       setHKeyPressed(true)
     }
   }
 
   const handleKeyUp = e => {
-    if (e.altKey && e.keyCode === 40) {
+    if (CHECK_SHORTCUT(e).altArrowDown) {
       setArrowDownPressed(false)
     }
 
-    if (e.altKey && e.keyCode === 72) {
+    if (CHECK_SHORTCUT(e).altH) {
       setHKeyPressed(false)
     }
   }

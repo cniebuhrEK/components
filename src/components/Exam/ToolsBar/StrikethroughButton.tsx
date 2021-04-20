@@ -3,10 +3,11 @@ import styled from 'styled-components'
 
 import Striketrough from '../../../examIcons/Striketrough'
 import { strikethrough } from '../../../utils/exam'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 const StrikethroughButton = (): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 83) {
+    if (CHECK_SHORTCUT(e).altS) {
       strikethrough()
     }
   }

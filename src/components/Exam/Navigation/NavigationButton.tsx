@@ -6,6 +6,7 @@ import NavigationModal, {
   // eslint-disable-next-line no-unused-vars
   NavigationItemProps
 } from '../Modal/variants/NavigationModal'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface NavigationButtonProps {
   items: NavigationItemProps[]
@@ -20,7 +21,7 @@ const NavigationButton = ({
   const handleClose = () => setIsOpen(false)
 
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 86) {
+    if (CHECK_SHORTCUT(e).altV) {
       handleOpen()
     }
   }

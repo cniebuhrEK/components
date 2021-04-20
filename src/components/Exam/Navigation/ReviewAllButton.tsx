@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ExamNavRight } from './styles'
 import ExamIconReviewAll from '../../../examIcons/ReviewAll'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface ReviewAllButtonProps {
   onClick: (e) => any
@@ -9,7 +10,7 @@ interface ReviewAllButtonProps {
 
 const ReviewAllButton = (props: ReviewAllButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 65) {
+    if (CHECK_SHORTCUT(e).altA) {
       props.onClick(e)
     }
   }

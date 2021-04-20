@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 
 import { ExamNavRight } from './styles'
 import ExamIconReviewIncomplete from '../../../examIcons/Incomplete'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface ReviewIncompleteButtonProps {
   onClick: (e) => any
@@ -9,7 +10,7 @@ interface ReviewIncompleteButtonProps {
 
 const ReviewIncompleteButton = (props: ReviewIncompleteButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 73) {
+    if (CHECK_SHORTCUT(e).altI) {
       props.onClick(e)
     }
   }

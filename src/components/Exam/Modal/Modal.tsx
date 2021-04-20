@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 import DraggableAndResizable from '../DraggableAndResizable'
 
@@ -39,7 +40,7 @@ const ExamModal = ({
   disableOutsideClick
 }: ExamModalProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
-    if (e.altKey && e.keyCode === 67) {
+    if (CHECK_SHORTCUT(e).altC) {
       handleClose()
     }
   }
