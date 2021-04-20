@@ -28,7 +28,7 @@ const StrikethroughButton = (props: StrikethroughButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [onFlagClick, isFlagged])
 
   return (
     <StrikethroughButtonContainer className={buttonClass} onClick={onFlagClick}>

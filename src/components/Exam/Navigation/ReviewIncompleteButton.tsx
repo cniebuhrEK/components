@@ -21,7 +21,7 @@ const ReviewIncompleteButton = (props: ReviewIncompleteButtonProps): JSX.Element
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [props.onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='review-incomplete-btn'>

@@ -21,7 +21,7 @@ const PreviousButton = (props: PreviousButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [props.onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='previous-btn'>

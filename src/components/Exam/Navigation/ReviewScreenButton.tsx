@@ -21,7 +21,7 @@ const ReviewScreenButton = (props: ReviewScreenButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [props.onClick])
   return (
     <ExamNavLeft
       className='no-border'

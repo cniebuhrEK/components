@@ -21,7 +21,7 @@ const ReviewFlaggedButton = (props: ReviewFlaggedButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [props.onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='review-flagged-btn'>
