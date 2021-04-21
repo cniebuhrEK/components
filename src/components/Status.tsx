@@ -37,6 +37,7 @@ const StatusContainer = styled.div`
     width: 8px;
     height: 8px;
     margin-right: 8px;
+    margin-bottom: 3px;
     border-radius: 50%;
     background-color: ${props => props.theme.palette.grey08};
   }

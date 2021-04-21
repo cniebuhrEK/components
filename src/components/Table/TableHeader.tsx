@@ -48,8 +48,13 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
       onClick={handleSort}
       id={id}
     >
+      {sortable && align === 'right' && (
+        <span className='table-header__sort-arrow'>
+          <ArrowDown />
+        </span>
+      )}
       <span>{children}</span>
-      {sortable && (
+      {sortable && align === 'left' && (
         <span className='table-header__sort-arrow'>
           <ArrowDown />
         </span>

@@ -16,6 +16,13 @@ export const headers = [
     sortable: true,
     id: 'role',
     children: 'Role'
+  },
+  {
+    columnId: 'number',
+    sortable: true,
+    id: 'number',
+    children: 'Number',
+    align: 'right'
   }
 ]
 
@@ -37,6 +44,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Master'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -57,6 +69,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Employee'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -77,6 +94,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Employee'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -97,6 +119,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Master'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -117,6 +144,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Employee'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -137,6 +169,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Employee'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -157,6 +194,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Master'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -177,6 +219,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Employee'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -197,6 +244,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Employee'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   },
@@ -217,6 +269,11 @@ export const rows = [
         columnId: 'role',
         cellProps: {},
         children: 'Master'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
       }
     ]
   }
