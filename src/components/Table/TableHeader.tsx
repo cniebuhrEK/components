@@ -69,7 +69,7 @@ const StyledTableHeader = styled.th`
   cursor: ${props => (props.sortable ? 'pointer' : 'text')};
   color: inherit;
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: bottom;
   border-spacing: 0;
   border-style: solid;
   position: ${props => (props.sticky ? 'sticky' : 'static')};
@@ -79,7 +79,6 @@ const StyledTableHeader = styled.th`
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   border-color: ${props => props.theme.palette.grey09};
   border-width: 0 0 1px;
-  border-style: solid;
   text-align: ${props => props.align};
 
   .table-header__sort-arrow {

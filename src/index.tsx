@@ -31,6 +31,7 @@ export { default as StudentSideNavigation } from './components/Navigation/Studen
 export { default as AdminTopNavigation } from './components/Navigation/AdminTopNavigation'
 export { default as StudentTopNavigation } from './components/Navigation/StudentTopNavigation'
 export { default as Loader } from './components/Loader'
+export { default as MediaControl } from './components/MediaControl'
 
 // typography
 export { default as HeaderDecorative } from './components/Typohraphy/HeaderDecorative'
@@ -59,6 +60,9 @@ export { default as WarningIcon } from './icons/Warning'
 export { default as WarningReversed } from './icons/WarningReversed'
 export { default as UsersIcon } from './icons/Users'
 export { default as EditIcon } from './icons/Edit'
+export { default as PlayIcon } from './icons/Play'
+export { default as PauseIcon } from './icons/Pause'
+export { default as StopIcon } from './icons/Stop'
 
 // form elements
 export { default as InputField } from './formElements/InputField'

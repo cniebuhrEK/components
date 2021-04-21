@@ -7,7 +7,7 @@ export const headers = [
   },
   {
     columnId: 'lastname',
-    sortable: true,
+    sortable: false,
     id: 'lastname',
     children: 'Last Name'
   },

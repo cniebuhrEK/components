@@ -125,7 +125,7 @@ export const StyledButton = styled.button`
         return props.theme.palette.brown01
       case props.variant === buttonVariants.contained &&
         props.color === buttonColors.green:
-        return props.theme.palette.brown01
+        return props.theme.palette.biege
       case props.variant === buttonVariants.contained &&
         props.color === buttonColors.transparent:
         return props.theme.palette.grey07
@@ -159,6 +159,7 @@ export const StyledButton = styled.button`
   box-shadow: ${props => {
     switch (true) {
       case props.variant === buttonVariants.outlined:
+      case props.size === buttonSizes.small:
         return 'none'
       case props.color === buttonColors.orange:
         return props.theme.shadows.orangeShadow
@@ -193,11 +194,22 @@ export const StyledButton = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${props => props.theme.palette.grey08};
+    color: ${props => {
+      switch (true) {
+        case props.size === buttonSizes.small &&
+          props.variant === buttonVariants.contained:
+          return props.theme.palette.biege
+        default:
+          return props.theme.palette.grey08
+      }
+    }};
     background-color: ${props => {
       switch (true) {
         case props.variant === buttonVariants.outlined:
           return 'transparent'
+        case props.size === buttonSizes.small &&
+          props.variant === buttonVariants.contained:
+          return props.theme.palette.grey08
         case props.color === buttonColors.orange:
           return props.theme.palette.orange10
         case props.color === buttonColors.green:
@@ -243,6 +255,17 @@ export const StyledButton = styled.button`
       }
     }};
     border-color: transparent;
+    box-shadow: ${props => {
+      switch (true) {
+        case props.color === buttonColors.orange:
+          return props.theme.shadows.orangeShadow
+        case props.color === buttonColors.green:
+          return props.theme.shadows.greenShadow
+        case props.color === buttonColors.transparent:
+        default:
+          return 'none'
+      }
+    }};
   }
 
   .button__start-icon {
