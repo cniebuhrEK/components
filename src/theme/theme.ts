@@ -29,7 +29,8 @@ export default {
   shadows: {
     greenShadow: '0px 4px 8px rgba(60, 85, 49, 0.2)',
     orangeShadow: '0px 4px 8px rgba(168, 129, 33, 0.201547)',
-    beigeShadow: '0px 10px 20px rgba(33, 26, 22, 0.1)'
+    beigeShadow: '0px 10px 20px rgba(33, 26, 22, 0.1)',
+    headerShadow: '0px 2px 16px rgba(33, 26, 22, 0.04)'
   },
   transitions: {
     easing: {

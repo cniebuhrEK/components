@@ -36,6 +36,7 @@ const StudentTopNavigationContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  box-shadow: ${props => props.theme.shadows.headerShadow};
 
   .student-top-nav__content {
     display: flex;
