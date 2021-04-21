@@ -5,7 +5,7 @@ export default styled.td`
   display: table-cell;
   vertical-align: middle;
   border-spacing: 0;
-  text-align: left;
+  text-align: ${props => props.align || 'left'};
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
   padding: 18px;

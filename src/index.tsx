@@ -29,6 +29,7 @@ export { default as Tooltip } from './components/Tooltip'
 export { default as AdminSideNavigation } from './components/Navigation/AdminSideNavigation'
 export { default as StudentSideNavigation } from './components/Navigation/StudentSideNavigation'
 export { default as AdminTopNavigation } from './components/Navigation/AdminTopNavigation'
+export { default as StudentTopNavigation } from './components/Navigation/StudentTopNavigation'
 export { default as Loader } from './components/Loader'
 
 // typography

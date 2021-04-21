@@ -18,6 +18,7 @@ import WarningReversed from '../icons/WarningReversed'
 interface CellProps {
   children: JSX.Element | string
   columnId: string
+  align?: string
   cellProps?: object
 }
 
@@ -82,6 +83,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
 
   const renderHeaders = headers.map((header: TableHeaderProps) => (
     <TableHeader
+      align={header.align}
       key={header.columnId}
       sortable={header.sortable}
       sortDirection={sortDirection}

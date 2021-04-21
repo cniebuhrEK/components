@@ -6,6 +6,7 @@ export interface TableHeaderProps {
   sortable?: boolean
   children: JSX.Element | string
   sortDirection?: string
+  align?: string
   columnId: string
   id: string
   sticky?: boolean
@@ -28,6 +29,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
     onChangeSort,
     isSortActive,
     id,
+    align
   } = props
 
   const handleSort = () => {
@@ -38,6 +40,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 
   return (
     <StyledTableHeader
+      align={align}
       sortable={sortable}
       sticky={sticky}
       sortDirection={sortDirection}
@@ -62,7 +65,6 @@ const StyledTableHeader = styled.th`
   color: inherit;
   display: table-cell;
   vertical-align: middle;
-  text-align: left;
   border-spacing: 0;
   border-style: solid;
   position: ${props => (props.sticky ? 'sticky' : 'static')};
@@ -73,6 +75,7 @@ const StyledTableHeader = styled.th`
   border-color: ${props => props.theme.palette.grey09};
   border-width: 0 0 1px;
   border-style: solid;
+  text-align: ${props => props.align};
 
   .table-header__sort-arrow {
     display: inline-block;
@@ -98,6 +101,7 @@ const StyledTableHeader = styled.th`
 
 TableHeader.defaultProps = {
   sortable: false,
+  align: 'left',
   sortDirection: SORT_DIRECTION.desc,
   sticky: false,
   isSortActive: false,
