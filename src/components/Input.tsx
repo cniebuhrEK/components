@@ -133,7 +133,7 @@ export const InputContainer = styled.div`
         case props.isDisabled:
           return 'transparent'
         default:
-          return props.theme.palette.brown01
+          return props.theme.palette.orange04
       }
     }};
   }

@@ -41,7 +41,7 @@ const IconLinkContainer = styled.a`
   text-decoration: none;
   font-size: ${props => props.theme.typography.fontSizeNormal};
   cursor: pointer;
-  letter-spacing: 0.9px;
+  letter-spacing: 0;
 
   .icon-link__icon {
     display: flex;
@@ -55,7 +55,6 @@ const IconLinkContainer = styled.a`
   &.--isActive {
     text-decoration: none;
     font-weight: 600;
-    letter-spacing: 0;
   }
 
   &.--disabled {

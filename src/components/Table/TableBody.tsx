@@ -9,12 +9,4 @@ export default styled.tbody`
   width: 100%;
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
-
-  tr {
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${props => props.theme.palette.grey10};
-    }
-  }
 `

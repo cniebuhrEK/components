@@ -156,20 +156,7 @@ export const StyledButton = styled.button`
         return 'transparent'
     }
   }};
-  box-shadow: ${props => {
-    switch (true) {
-      case props.variant === buttonVariants.outlined:
-      case props.size === buttonSizes.small:
-        return 'none'
-      case props.color === buttonColors.orange:
-        return props.theme.shadows.orangeShadow
-      case props.color === buttonColors.green:
-        return props.theme.shadows.greenShadow
-      case props.color === buttonColors.transparent:
-      default:
-        return 'none'
-    }
-  }};
+  box-shadow: none;
   border-width: ${props =>
     props.variant === buttonVariants.contained ? '0px' : '1px'};
   border-style: ${props =>
