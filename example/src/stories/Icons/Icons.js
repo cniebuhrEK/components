@@ -19,7 +19,9 @@ import {
   EditIcon,
   PlayIcon,
   PauseIcon,
-  StopIcon
+  StopIcon,
+  PlusIcon,
+  TickmarkIcon
 } from 'components'
 
 /**
@@ -46,6 +48,8 @@ export const Icons = props => {
       <PlayIcon /> &nbsp;&nbsp;PlayIcon <br /><br />
       <PauseIcon /> &nbsp;&nbsp;PauseIcon <br /><br />
       <StopIcon /> &nbsp;&nbsp;StopIcon <br /><br />
+      <PlusIcon /> &nbsp;&nbsp;PlusIcon <br /><br />
+      <TickmarkIcon /> &nbsp;&nbsp;TickmarkIcon <br /><br />
     </IconsContainer>
   );
 };

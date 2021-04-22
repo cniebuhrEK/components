@@ -12,15 +12,15 @@ export const MediaControl = props => {
 MediaControl.propTypes = {
   play: PropTypes.bool,
   pause: PropTypes.bool,
-  stop: PropTypes.bool,
-  disabled: PropTypes.bool,
+  tickmark: PropTypes.bool,
+  plus: PropTypes.bool,
   text: PropTypes.string
 };
 
 MediaControl.defaultProps = {
   play: false,
   pause: false,
-  stop: false,
-  disabled: false,
+  tickmark: false,
+  plus: false,
   text: 'EK-1'
 };

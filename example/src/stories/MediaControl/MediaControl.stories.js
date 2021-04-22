@@ -14,7 +14,7 @@ export const MediaControlSeverity = Template.bind({});
 MediaControlSeverity.args = {
   play: true,
   pause: false,
-  stop: false,
-  disabled: false,
+  tickmark: false,
+  plus: false,
   status: 'EK-1'
 };

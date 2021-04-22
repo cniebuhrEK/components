@@ -4,36 +4,37 @@ import styled from 'styled-components'
 
 import { Pause } from '../icons/Pause'
 import { Play } from '../icons/Play'
-import { Stop } from '../icons/Stop'
+import { Plus } from '../icons/Plus'
+import { Tickmark } from '../icons/Tickmark'
 
 interface MediaControlProps {
   pause: boolean
   play: boolean
-  stop: boolean
-  disabled: boolean
+  tickmark: boolean
+  plus: boolean
   text: string
 }
 
 export const MediaControl = (props: MediaControlProps): JSX.Element => {
-  const { pause, play, stop, disabled, text } = props
+  const { pause, play, tickmark, plus, text } = props
 
   const containerClass = cx({
     '--play': play,
     '--pause': pause,
-    '--stop': stop,
-    '--disabled': disabled
+    '--tickmark': tickmark,
+    '--plus': plus
   })
 
   const getIcon = () => {
     switch (true) {
       case play:
         return <Play />
-      case stop:
-        return <Stop />
+      case tickmark:
+        return <Tickmark />
       case pause:
         return <Pause />
-      case disabled:
-        return <div className='media-control__dot' />
+      case plus:
+        return <Plus />
       default:
         return ''
     }
@@ -58,52 +59,27 @@ const MediaControlContainer = styled.div`
     font-size: 12px;
   }
 
-  .media-control__dot {
-    width: 8px;
-    height: 8px;
-    margin-right: 8px;
-    margin-bottom: 3px;
-    border-radius: 50%;
-    background-color: ${props => props.theme.palette.grey08};
-  }
-
   &.--play {
-    .media-control__dot {
-      background-color: ${props => props.theme.palette.green04};
-    }
-
     .media-control__icon {
       color: ${props => props.theme.palette.green04};
     }
   }
 
   &.--pause {
-    .media-control__dot {
-      background-color: ${props => props.theme.palette.orange05};
-    }
-
     .media-control__icon {
       color: ${props => props.theme.palette.orange05};
     }
   }
 
-  &.--stop {
-    .media-control__dot {
-      background-color: ${props => props.theme.palette.brown01};
-    }
-
+  &.--tickmark {
     .media-control__icon {
       color: ${props => props.theme.palette.brown01};
     }
   }
 
-  &.--disabled {
-    .media-control__dot {
-      background-color: ${props => props.theme.palette.grey08};
-    }
-
+  &.--plus {
     .media-control__icon {
-      color: ${props => props.theme.palette.grey08};
+      color: ${props => props.theme.palette.brown01};
     }
   }
 `
@@ -111,8 +87,8 @@ const MediaControlContainer = styled.div`
 MediaControl.defaultProps = {
   play: false,
   pause: false,
-  stop: false,
-  disabled: false,
+  tickmark: false,
+  plus: false,
   text: 'EK-1'
 }
 
