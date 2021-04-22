@@ -8,8 +8,10 @@ export default styled.td`
   text-align: ${props => props.align || 'left'};
   border-collapse: separate;
   font-family: ${props => props.theme.typography.fontFamily};
-  padding: 17px 18px;
+  padding: 7px 18px;
+  line-height: 37px;
   border-color: ${props => props.theme.palette.grey09};
   border-width: 0 0 1px;
   border-style: solid;
+  position: relative;
 `

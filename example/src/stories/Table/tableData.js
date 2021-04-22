@@ -1,3 +1,6 @@
+import React from 'react'
+import { Button, EditIcon } from 'components'
+
 export const headers = [
   {
     columnId: 'firstname',
@@ -23,6 +26,12 @@ export const headers = [
     id: 'number',
     children: 'Number',
     align: 'right'
+  },
+  {
+    columnId: 'actions',
+    sortable: false,
+    id: 'actions',
+    children: 'Actions'
   }
 ]
 
@@ -49,6 +58,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -74,6 +100,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -99,6 +142,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -124,6 +184,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -149,6 +226,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -174,6 +268,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -199,6 +310,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -224,6 +352,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -249,6 +394,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   },
@@ -274,6 +436,23 @@ export const rows = [
         columnId: 'number',
         cellProps: { align: 'right' },
         children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+        id='edit-exam'
+        name='edit'
+        size='small'
+        variant='outlined'
+        color='green'
+        onClick={() => {}}
+        startIcon={<EditIcon />}
+      >
+        Edit
+      </Button>
+        )
       }
     ]
   }
