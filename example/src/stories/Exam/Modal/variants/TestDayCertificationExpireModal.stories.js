@@ -3,7 +3,7 @@ import React from 'react';
 import { TestDayCertificationExpireModal } from './TestDayCertificationExpireModal';
 
 export default {
-  title: 'Exam/Tooltip',
+  title: 'Exam/Modal',
   component: TestDayCertificationExpireModal
 };
 
