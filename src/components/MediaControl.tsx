@@ -50,12 +50,13 @@ export const MediaControl = (props: MediaControlProps): JSX.Element => {
 
 const MediaControlContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   color: ${props => props.theme.palette.brown01};
+  line-height: 16px;
 
   svg {
     margin-right: 8px;
-    margin-top: 2px;
+    margin-top: 1px;
     font-size: 12px;
   }
 

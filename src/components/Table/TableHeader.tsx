@@ -80,6 +80,7 @@ const StyledTableHeader = styled.th`
   border-color: ${props => props.theme.palette.grey09};
   border-width: 0 0 1px;
   text-align: ${props => props.align};
+  z-index: 1;
 
   .table-header__sort-arrow {
     display: inline-block;
