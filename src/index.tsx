@@ -108,6 +108,7 @@ export { default as ExamIconUp } from './examIcons/Up'
 
 export { default as ExamNavigation } from './components/Exam/Navigation/Navigation'
 export { default as ExamHeader } from './components/Exam/Header/Header'
+export { default as PauseExam } from './components/Exam/Pause/PauseExam'
 export { default as ExamToolsBar } from './components/Exam/ToolsBar/ToolsBar'
 export { default as ExamContainer } from './components/Exam/Containers/ExamContainer'
 export { default as ExamContent } from './components/Exam/Containers/ExamContent'
