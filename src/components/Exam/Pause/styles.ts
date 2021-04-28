@@ -23,4 +23,9 @@ export const PauseButton = styled.a`
   font-family: 'Greek Letters', Verdana, Geneva, sans-serif;
   font-size: 12pt;
   text-decoration: none;
+
+  &:hover {
+    font-weight: 600;
+    text-decoration: underline;
+  }
 `
