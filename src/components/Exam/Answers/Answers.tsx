@@ -87,7 +87,7 @@ export const AnswersContainer = styled.div`
   .answer {
     display: flex;
     font-size: 16px;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
     margin-top: 10px;
 
@@ -131,11 +131,12 @@ export const AnswersContainer = styled.div`
   .answer__code {
     font-weight: 700;
     margin-right: 10px;
-    transform: translateY(-1px);
+    transform: translateY(-3px);
     white-space: nowrap;
   }
 
   .answer__content {
     font-size: 16px;
+    line-height: 20.7104px;
   }
 `
