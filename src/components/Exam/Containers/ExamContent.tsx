@@ -109,6 +109,7 @@ export default styled.div`
     li {
       font-size: 16px;
       margin-bottom: 5px;
+      line-height: 20.7104px;
     }
   }
 
