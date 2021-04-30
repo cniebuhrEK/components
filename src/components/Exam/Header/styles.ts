@@ -57,6 +57,7 @@ export const TimeAndPageElement = styled.a`
   cursor: pointer;
   text-decoration: none;
   font-family: ${props => props.theme.typography.fontFamilySecondary};
+  font-weight: 400 !important;
 
   svg {
     transform: translateY(2px);
@@ -69,6 +70,7 @@ export const TimeAndPageElement = styled.a`
   &:hover {
     color: ${props => props.theme.palette.yellow02};
     text-decoration: none;
+    font-weight: 400 !important;
   }
 
   &:focus,

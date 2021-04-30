@@ -50,8 +50,14 @@ const Header = (props: HeaderProps): JSX.Element => {
     setInitialTimer(timer)
   }, [])
 
-  const toggleTimerVisibility = () => setTimerExpanded(prevState => !prevState)
-  const togglePageVisibility = () => setPageExpanded(prevState => !prevState)
+  const toggleTimerVisibility = (e) => {
+    e.preventDefault()
+    setTimerExpanded(prevState => !prevState)
+  }
+  const togglePageVisibility = (e) => {
+    e.preventDefault()
+    setPageExpanded(prevState => !prevState)
+  }
 
   return (
     <ExamHeaderContainer>

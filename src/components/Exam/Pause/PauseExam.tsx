@@ -9,9 +9,14 @@ interface PauseExamProps {
 const PauseExam = (props: PauseExamProps): JSX.Element => {
   const { handlePause } = props
 
+  const pauseHandler = e => {
+    e.preventDefault()
+    handlePause(e)
+  }
+
   return (
     <PauseExamContainer>
-      <PauseButton id='pause-exam' href='#' onClick={handlePause}>
+      <PauseButton id='pause-exam' href='#' onClick={pauseHandler}>
         Pause
       </PauseButton>
     </PauseExamContainer>
