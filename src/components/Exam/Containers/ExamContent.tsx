@@ -70,8 +70,7 @@ export default styled.div`
   }
 
   p {
-    font-size: 16px;
-    margin: 16px 0;
+    margin-bottom: 25px;
   }
 
   .underline {

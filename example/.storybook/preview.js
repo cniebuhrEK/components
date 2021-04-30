@@ -1,4 +1,4 @@
-import { ThemeProvider, GlobalStyles, Container, examTheme } from 'components';
+import { ThemeProvider, GlobalStyles, ExamGlobalStyles, Container, examTheme } from 'components';
 import { StoryContext, StoryGetter, StoryWrapper } from '@storybook/addons';
 
 const withThemeProvider=(Story,context)=>{
@@ -8,7 +8,7 @@ const withThemeProvider=(Story,context)=>{
 
   return isExamLayout ? (
     <ThemeProvider theme={examTheme}>
-      <GlobalStyles />
+      <ExamGlobalStyles />
         <Story {...context} />
     </ThemeProvider>
   ) : (

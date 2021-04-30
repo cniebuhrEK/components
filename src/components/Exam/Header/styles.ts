@@ -58,6 +58,8 @@ export const TimeAndPageElement = styled.a`
   text-decoration: none;
   font-family: ${props => props.theme.typography.fontFamilySecondary};
   font-weight: 400 !important;
+  line-height: 20px !important;
+  outline: 1px solid transparent;
 
   svg {
     transform: translateY(2px);

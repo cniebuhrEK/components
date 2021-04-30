@@ -1,6 +1,7 @@
 // theme
 export { default as ThemeProvider } from './theme/ThemeProvider'
 export { default as GlobalStyles } from './theme/globalStyles'
+export { default as ExamGlobalStyles } from './theme/examGlobalStyles'
 export { default as examTheme } from './theme/examTheme'
 
 // components
