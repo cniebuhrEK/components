@@ -9,7 +9,8 @@ export default createGlobalStyle`
     margin: 0;
 
     color: ${props => props.theme.palette.black};
-    font-size: 13px;
+    font-size: 16px;
+    font-weight: 400;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
     }
@@ -76,7 +77,7 @@ export default createGlobalStyle`
     transition: color 0.2s ease-in-out;
 
     &:hover {
-        color: ${props => props.theme.palette.black};;
+        color: ${props => props.theme.palette.black};
     }
     }
 

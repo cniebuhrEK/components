@@ -11,6 +11,7 @@ export const ExamHeaderContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 `
 
 export const NotOfficialMCATContainer = styled.div`
@@ -27,8 +28,9 @@ export const NotOfficialMCATContainer = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
-  max-width: 300px;
-  font-size: 12px;
+  max-width: 330px;
+  font-size: 14.66px;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 `
 
 export const TimeAndPageContainer = styled.div`
@@ -36,21 +38,25 @@ export const TimeAndPageContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 `
 
 export const ExamHeaderTitle = styled.h1`
   color: ${props => props.theme.palette.white};
   line-height: 40px;
   font-weight: bold;
-  font-size: 16pt;
+  font-size: 21.33px;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 `
 
-export const TimeAndPageElement = styled.div`
-  font-size: 14px;
+export const TimeAndPageElement = styled.a`
+  font-size: 14.66px;
   color: ${props => props.theme.palette.white};
   display: flex;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 
   svg {
     transform: translateY(2px);
@@ -62,10 +68,12 @@ export const TimeAndPageElement = styled.div`
 
   &:hover {
     color: ${props => props.theme.palette.yellow02};
+    text-decoration: none;
   }
 
   &:focus,
   &:active {
+    color: ${props => props.theme.palette.yellow02};
     outline: 1px solid ${props => props.theme.palette.white};
   }
 

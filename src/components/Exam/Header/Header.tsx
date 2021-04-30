@@ -32,6 +32,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   } = props
 
   const [timerExpanded, setTimerExpanded] = useState(true)
+  const [pageExpanded, setPageExpanded] = useState(true)
   const [initialTimer, setInitialTimer] = useState(timer)
 
   const timerClass = cx({
@@ -41,6 +42,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   })
 
   const pagesClass = cx({
+    '--condensed': !pageExpanded,
     '--hidden': !pagesVisibility
   })
 
@@ -49,6 +51,7 @@ const Header = (props: HeaderProps): JSX.Element => {
   }, [])
 
   const toggleTimerVisibility = () => setTimerExpanded(prevState => !prevState)
+  const togglePageVisibility = () => setPageExpanded(prevState => !prevState)
 
   return (
     <ExamHeaderContainer>
@@ -60,13 +63,18 @@ const Header = (props: HeaderProps): JSX.Element => {
       </NotOfficialMCATContainer>
       <TimeAndPageContainer>
         <TimeAndPageElement
+          href='#'
           onClick={toggleTimerVisibility}
           className={timerClass}
         >
           <TimerIcon />
           <div className='content'>Time Remaining: {timer}</div>
         </TimeAndPageElement>
-        <TimeAndPageElement className={pagesClass}>
+        <TimeAndPageElement
+          href='#'
+          className={pagesClass}
+          onClick={togglePageVisibility}
+        >
           <QuestionIcon />
           <div className='content'>
             {currentPage} of {totalPages}

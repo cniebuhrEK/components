@@ -10,6 +10,10 @@ export const ExamNavContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   user-select: none;
+
+  a:hover {
+    font-weight: 500 !important;
+  }
 `
 
 export const ButtonsContainer = styled.div`
@@ -68,7 +72,7 @@ export const ExamNavLeft = styled.a`
   border-right: 1px solid ${props => props.theme.palette.white};
   margin-right: 5px;
   height: 30px;
-  font-weight: 500;
+  font-weight: 400;
   display: flex;
   align-items: center;
 

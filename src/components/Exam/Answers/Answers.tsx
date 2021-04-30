@@ -132,6 +132,7 @@ export const AnswersContainer = styled.div`
     font-weight: 700;
     margin-right: 10px;
     transform: translateY(-1px);
+    white-space: nowrap;
   }
 
   .answer__content {

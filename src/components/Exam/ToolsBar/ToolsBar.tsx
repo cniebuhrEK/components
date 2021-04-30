@@ -11,6 +11,7 @@ interface HeaderProps {
   strikethroughButton: boolean
   flagForReviewButton: boolean
   onFlagClick: (e) => void
+  afterHtmlChangeCallback: () => void
   isFlagged: boolean
 }
 
@@ -20,14 +21,19 @@ const Header = (props: HeaderProps): JSX.Element => {
     strikethroughButton,
     flagForReviewButton,
     onFlagClick,
-    isFlagged
+    isFlagged,
+    afterHtmlChangeCallback
   } = props
 
   return (
     <ToolsBarContainer>
       <ButtonsContainer>
-        {highlightButton && <HighlightButton />}
-        {strikethroughButton && <StrikethroughButton />}
+        {highlightButton && (
+          <HighlightButton callback={afterHtmlChangeCallback} />
+        )}
+        {strikethroughButton && (
+          <StrikethroughButton callback={afterHtmlChangeCallback} />
+        )}
       </ButtonsContainer>
       <ButtonsContainer>
         {flagForReviewButton && (
@@ -41,6 +47,8 @@ const Header = (props: HeaderProps): JSX.Element => {
   )
 }
 
-Header.defaultProps = {}
+Header.defaultProps = {
+  afterHtmlChangeCallback: () => {}
+}
 
 export default Header

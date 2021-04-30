@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const PauseExamContainer = styled.div`
   user-select: none;
-  height: 28px;
+  min-height: 28px;
   width: 100%;
   background-color: ${props => props.theme.palette.grey08};
   color: ${props => props.theme.palette.white};
-  padding: 0 20px;
+  padding: 2px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +20,7 @@ export const PauseButton = styled.a`
   border: 1px solid ${props => props.theme.palette.white};
   padding: 0 10px;
   cursor: pointer;
-  font-family: 'Greek Letters', Verdana, Geneva, sans-serif;
-  font-size: 12pt;
+  font-size: 16px;
   text-decoration: none;
 
   &:hover {

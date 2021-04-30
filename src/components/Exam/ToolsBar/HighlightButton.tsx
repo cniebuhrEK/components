@@ -11,7 +11,11 @@ const highlightOptions = {
   remove: 'remove-highlight'
 }
 
-const HighlightButton = (): JSX.Element => {
+interface HighlightButtonProps {
+  callback: () => void
+}
+
+const HighlightButton = ({ callback }: HighlightButtonProps): JSX.Element => {
   const [open, setIsOpen] = useState(false)
   const [arrowDownPressed, setArrowDownPressed] = useState(false)
   const [hKeyPressed, setHKeyPressed] = useState(false)
@@ -25,13 +29,18 @@ const HighlightButton = (): JSX.Element => {
 
   const toggleDropdown = () => setIsOpen(prevState => !prevState)
 
+  const handleHighlight = color => {
+    highlight(color)
+    callback()
+  }
+
   const triggerHighlightOption = () => {
     if (selectedOption === highlightOptions.add) {
-      highlight('#ff0')
+      handleHighlight('#ff0')
     }
 
     if (selectedOption === highlightOptions.remove) {
-      highlight('transparent')
+      handleHighlight('transparent')
     }
   }
 
@@ -42,8 +51,6 @@ const HighlightButton = (): JSX.Element => {
   }
 
   useEffect(() => {
-    console.log({ arrowDownPressed, hKeyPressed })
-
     if (hKeyPressed && arrowDownPressed) {
       setSelectedOption(
         selectedOption === highlightOptions.add

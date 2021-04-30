@@ -5,10 +5,21 @@ import Striketrough from '../../../examIcons/Striketrough'
 import { strikethrough } from '../../../utils/exam'
 import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
-const StrikethroughButton = (): JSX.Element => {
+interface StrikethroughButtonProps {
+  callback: () => void
+}
+
+const StrikethroughButton = ({
+  callback
+}: StrikethroughButtonProps): JSX.Element => {
+  const handleStrikeThrough = () => {
+    strikethrough()
+    callback()
+  }
+
   const handleKeyboardShortcut = e => {
     if (CHECK_SHORTCUT(e).altS) {
-      strikethrough()
+      handleStrikeThrough()
     }
   }
 
@@ -21,14 +32,16 @@ const StrikethroughButton = (): JSX.Element => {
   }, [])
 
   return (
-    <StrikethroughButtonContainer onMouseDown={strikethrough}>
+    <StrikethroughButtonContainer onMouseDown={handleStrikeThrough}>
       <Striketrough />
       <span className='underline'>S</span>triketrough
     </StrikethroughButtonContainer>
   )
 }
 
-StrikethroughButton.defaultProps = {}
+StrikethroughButton.defaultProps = {
+  callback: () => {}
+}
 
 export default StrikethroughButton
 

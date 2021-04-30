@@ -16,6 +16,7 @@ export default {
     scrollbarTrack: 'inset 0 0 5px grey'
   },
   typography: {
-    fontFamily: '\'Verdana\', \'Geneva\', sans-serif'
+    fontFamily: '\'Verdana\', \'Geneva\', sans-serif',
+    fontFamilySecondary: '\'Tahoma\', \'Geneva\', sans-serif'
   }
 }
