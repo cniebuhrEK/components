@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import cx from 'classnames'
 
 import {
@@ -33,11 +33,9 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   const [timerExpanded, setTimerExpanded] = useState(true)
   const [pageExpanded, setPageExpanded] = useState(true)
-  const [initialTimer, setInitialTimer] = useState(timer)
 
   const timerClass = cx({
     '--condensed': !timerExpanded,
-    '--warning': timer !== initialTimer,
     '--hidden': !timerVisibility
   })
 
@@ -45,10 +43,6 @@ const Header = (props: HeaderProps): JSX.Element => {
     '--condensed': !pageExpanded,
     '--hidden': !pagesVisibility
   })
-
-  useEffect(() => {
-    setInitialTimer(timer)
-  }, [])
 
   const toggleTimerVisibility = (e) => {
     e.preventDefault()

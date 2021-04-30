@@ -85,10 +85,6 @@ export const TimeAndPageElement = styled.a`
     }
   }
 
-  &.--warning {
-    color: ${props => props.theme.palette.yellow02};
-  }
-
   &.--hidden {
     visibility: hidden;
   }
