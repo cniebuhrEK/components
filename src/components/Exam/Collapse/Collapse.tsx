@@ -39,6 +39,8 @@ Collapse.defaultProps = {}
 export default Collapse
 
 export const CollapseContainer = styled.div`
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
+
   .collapse_header {
     background-color: ${props => props.theme.palette.blue01};
     color: ${props => props.theme.palette.white};
@@ -60,6 +62,7 @@ export const CollapseContainer = styled.div`
       font-size: 18.6667px;
       line-height: 24px;
       font-weight: 400 !important;
+      margin: 0 !important;
     }
   }
 

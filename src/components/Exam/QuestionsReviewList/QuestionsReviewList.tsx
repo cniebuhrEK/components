@@ -101,6 +101,7 @@ export const QuestionReviewListContainer = styled.div`
   overflow: auto;
   max-height: 1000px;
   background-color: ${props => props.theme.palette.white};
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 
   .columns-container {
     display: flex;
