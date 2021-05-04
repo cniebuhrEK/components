@@ -44,7 +44,7 @@ export const TimeAndPageContainer = styled.div`
 export const ExamHeaderTitle = styled.h1`
   color: ${props => props.theme.palette.white};
   line-height: 40px;
-  font-weight: bold;
+  font-weight: 400 !important;
   font-size: 21.33px;
   font-family: ${props => props.theme.typography.fontFamilySecondary};
 `
