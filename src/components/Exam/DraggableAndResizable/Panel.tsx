@@ -179,13 +179,16 @@ const PanelContainer = styled.div`
   height: ${props => props.initHeight}px;
   box-sizing: border-box;
   border: 1px solid ${props => props.theme.palette.black};
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
 
   .panel__container {
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
     height: 100%;
     position: relative;
   }
 
   .panel__content {
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
     position: relative;
     font-size: 16px;
     height: calc(100% - 28px);
@@ -198,6 +201,7 @@ const PanelContainer = styled.div`
   }
 
   .panel__children-container {
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
     height: 100%;
     overflow: auto;
 
@@ -259,6 +263,7 @@ const PanelContainer = styled.div`
   }
 
   .panel__header {
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
     background: ${props => props.theme.palette.blue02};
     border-bottom: 1px solid
       ${props => props.theme.palette.white};
@@ -269,8 +274,12 @@ const PanelContainer = styled.div`
     align-items: center;
     position: relative;
     font-size: 16px;
-    font-weight: 600;
+    line-height: 24px;
     cursor: move;
+
+    strong {
+      font-weight: 700;
+    }
 
     svg {
       transform: translateY(3px);
@@ -278,6 +287,7 @@ const PanelContainer = styled.div`
   }
 
   .panel__buttons-container {
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
     padding: 10px 20px;
     position: relative;
     display: flex;
@@ -285,6 +295,8 @@ const PanelContainer = styled.div`
     justify-content: center;
     background: ${props => props.theme.palette.blue02};
     color: ${props => props.theme.palette.white};
+    font-size: 15px;
+    line-height: 24px;
   }
 
   .panel__bottom-resize-icons {}
@@ -307,6 +319,9 @@ const PanelContainer = styled.div`
     display: inline-block;
     margin-left: auto;
     cursor: pointer;
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
+    font-size: 17px;
+    line-height: 24px;
 
     &:hover {
       color: ${props => props.theme.palette.yellow02};
@@ -322,9 +337,11 @@ const PanelContainer = styled.div`
     border: 1px solid ${props => props.theme.palette.white};
     padding: 3px 10px;
     cursor: pointer;
-    font-size: 12pt;
+    font-size: 15px;
+    line-height: 24px;
     text-decoration: none;
     margin: 10px 0;
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
 
     &:first-letter {
       text-decoration: underline;
@@ -340,12 +357,14 @@ const PanelContainer = styled.div`
   }
 
   .panel__close {
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
     position: absolute;
     top: 5px;
     right: 10px;
     cursor: pointer;
     color: ${props => props.theme.palette.white};
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 24px;
 
     &:hover {
       color: ${props => props.theme.palette.yellow02};

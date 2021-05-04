@@ -10,9 +10,12 @@ export const ExamNavContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   user-select: none;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
+  font-weight: 400 !important;
 
   a:hover {
-    font-weight: 500 !important;
+    font-family: ${props => props.theme.typography.fontFamilySecondary};
+    font-weight: 400 !important;
   }
 `
 
@@ -30,7 +33,8 @@ export const ExamNavRight = styled.a`
   border-left: 1px solid ${props => props.theme.palette.white};
   margin-left: 5px;
   height: 30px;
-  font-weight: 500;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
+  font-weight: 400 !important;
   display: flex;
   align-items: center;
 
@@ -72,7 +76,8 @@ export const ExamNavLeft = styled.a`
   border-right: 1px solid ${props => props.theme.palette.white};
   margin-right: 5px;
   height: 30px;
-  font-weight: 400;
+  font-family: ${props => props.theme.typography.fontFamilySecondary};
+  font-weight: 400 !important;
   display: flex;
   align-items: center;
 

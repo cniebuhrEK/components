@@ -16,7 +16,7 @@ import {
   length
 } from 'ramda'
 
-import PeriodicIcon from '../../../../examIcons/Periodic'
+import NavigationIcon from '../../../../examIcons/Navigation'
 import DownIcon from '../../../../examIcons/Down'
 import UpIcon from '../../../../examIcons/Up'
 import FlagMark from '../../../../examIcons/FlagMark'
@@ -131,7 +131,7 @@ const NavigationModal = ({
       open={open}
       title={
         <div>
-          <PeriodicIcon /> Periodic Table
+          <NavigationIcon /> <strong>Navigation</strong> - select a question to go to it
         </div>
       }
       initWidth={1100}
