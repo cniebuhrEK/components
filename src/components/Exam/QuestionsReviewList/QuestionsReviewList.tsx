@@ -202,6 +202,23 @@ export const QuestionReviewListContainer = styled.div`
     cursor: pointer;
     color: ${props => props.theme.palette.blue02};
     margin: 0 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 20px;
+      border: 1px solid transparent;
+    }
+
+    &:hover {
+      color: ${props => props.theme.palette.grey08};
+    }
+
+    &:focus svg,
+    &:active svg {
+      border: 1px solid ${props => props.theme.palette.black};
+    }
   }
 
   .question-name:hover {
