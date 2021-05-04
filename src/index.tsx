@@ -116,6 +116,8 @@ export { default as ExamContent } from './components/Exam/Containers/ExamContent
 export { default as ExamFrame } from './components/Exam/Containers/ExamFrame'
 export { default as ExamAnswers } from './components/Exam/Answers/Answers'
 export { default as ExamModal } from './components/Exam/Modal/Modal'
+export { default as ExamCollapse } from './components/Exam/Collapse/Collapse'
+export { default as ExamQuestionsReviewList } from './components/Exam/QuestionsReviewList/QuestionsReviewList'
 export { default as EndExamModal } from './components/Exam/Modal/variants/EndExamModal'
 export { default as TimeEndWarning } from './components/Exam/Modal/variants/TimeEndWarning'
 export { default as TimeExpiredModal } from './components/Exam/Modal/variants/TimeExpiredModal'

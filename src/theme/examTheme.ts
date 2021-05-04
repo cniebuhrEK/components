@@ -9,7 +9,8 @@ export default {
     green02: '#38b54a',
     grey10: '#F4F4F4',
     grey09: '#d2d2d2',
-    grey08: '#a6a6a6'
+    grey08: '#a6a6a6',
+    grey07: '#353535'
   },
   shadows: {
     scrollbarThumb: '0 0 1px rgba(255, 255, 255, 0.5)',
@@ -17,6 +18,7 @@ export default {
   },
   typography: {
     fontFamily: '\'Verdana\', \'Geneva\', sans-serif',
-    fontFamilySecondary: '\'Tahoma\', \'Geneva\', sans-serif'
+    fontFamilySecondary: '\'Tahoma\', \'Geneva\', sans-serif',
+    fontFamilyTertiary: '\'Arial\', \'Helvetica\', sans-serif'
   }
 }

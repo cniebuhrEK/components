@@ -22,9 +22,4 @@ export const PauseButton = styled.a`
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
-
-  &:hover {
-    font-weight: 600;
-    text-decoration: underline;
-  }
 `
