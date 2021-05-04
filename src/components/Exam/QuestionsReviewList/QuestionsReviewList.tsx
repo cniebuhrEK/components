@@ -63,7 +63,8 @@ const QuestionReviewList = ({
   const rowsPerColumn =
     items.length > 18 ? Math.round(items.length / 3) : items.length
 
-  const columnsLength = Math.round(items.length / rowsPerColumn)
+  const columnsLength =
+    items.length > 18 ? 3 : Math.round(items.length / rowsPerColumn)
   const organisedItems =
     columnsLength > 1 ? splitEvery(rowsPerColumn, items) : [items]
 
