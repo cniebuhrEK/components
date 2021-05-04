@@ -57,13 +57,13 @@ const NavigationRow = ({
   )
 }
 
-const rowsPerColumn = 18
-
 const QuestionReviewList = ({
   items
 }: QuestionReviewListProps): JSX.Element => {
-  const columnsLength =
-    items.length > 18 ? 3 : Math.round(items.length / rowsPerColumn)
+  const rowsPerColumn =
+    items.length > 18 ? Math.round(items.length / 3) : items.length
+
+  const columnsLength = Math.round(items.length / rowsPerColumn)
   const organisedItems =
     columnsLength > 1 ? splitEvery(rowsPerColumn, items) : [items]
 
@@ -98,9 +98,6 @@ QuestionReviewList.defaultProps = {}
 export default QuestionReviewList
 
 export const QuestionReviewListContainer = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-  max-height: 1000px;
   background-color: ${props => props.theme.palette.white};
   font-family: ${props => props.theme.typography.fontFamilySecondary};
 

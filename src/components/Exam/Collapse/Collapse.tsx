@@ -40,6 +40,10 @@ export default Collapse
 
 export const CollapseContainer = styled.div`
   font-family: ${props => props.theme.typography.fontFamilySecondary};
+  min-height: 0;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
 
   .collapse_header {
     background-color: ${props => props.theme.palette.blue01};
@@ -72,7 +76,9 @@ export const CollapseContainer = styled.div`
 
   .collapse_content {
     overflow: auto;
-    height: 100%;
+    max-height: 100%;
+    min-height: 0;
+    flex-grow: 1;
 
     &::-webkit-scrollbar-track {
       box-shadow: ${props => props.theme.shadows.scrollbarTrack};
