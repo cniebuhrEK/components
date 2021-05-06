@@ -6,6 +6,7 @@ export const PauseExamContainer = styled.div`
   width: 100%;
   background-color: ${props => props.theme.palette.grey08};
   color: ${props => props.theme.palette.white};
+  flex: none;
 `
 
 export const PauseButton = styled.a`
