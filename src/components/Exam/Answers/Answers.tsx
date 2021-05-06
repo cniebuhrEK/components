@@ -135,7 +135,8 @@ export const AnswersContainer = styled.div`
     white-space: nowrap;
 
     & * {
-      background-color: transparent; !important;
+      background-color: transparent !important;
+      text-decoration: none !important;
     }
   }
 
