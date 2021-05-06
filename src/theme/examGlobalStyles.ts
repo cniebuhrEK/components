@@ -63,6 +63,8 @@ export default createGlobalStyle`
 
     * {
       box-sizing: border-box;
+      font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     article,
