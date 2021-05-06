@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ToolsBarContainer = styled.div`
-  height: 45px;
+  height: 41px;
   width: 100%;
   background-color: ${props => props.theme.palette.blue01};
   color: ${props => props.theme.palette.white};
