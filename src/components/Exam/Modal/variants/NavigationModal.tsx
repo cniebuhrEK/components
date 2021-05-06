@@ -117,7 +117,7 @@ const NavigationModal = ({
     setSortedColumnId(columnId)
   }
 
-  const sortIcon = sortDir === 'asc' ? <DownIcon /> : <UpIcon />
+  const sortIcon = sortDir === 'asc' ? <UpIcon /> : <DownIcon />
 
   const toCompleteCount = pipe(
     filter(pipe(propEq('status', questionStatuses.complete), not)),

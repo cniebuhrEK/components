@@ -70,6 +70,16 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   const handleOpenPeriodicTable = () => setPeriodicTableOpen(true)
   const handleClosePeriodicTable = () => setPeriodicTableOpen(false)
 
+  const handleNextClick = (e) => {
+    handleClosePeriodicTable()
+    nextButtonOnClick(e)
+  }
+
+  const handlePrevClick = (e) => {
+    handleClosePeriodicTable()
+    previousButtonOnClick(e)
+  }
+
   return (
     <div>
       <ExamNavContainer>
@@ -96,9 +106,9 @@ const Navigation = (props: NavigationProps): JSX.Element => {
           {reviewFlaggedButton && (
             <ReviewFlaggedButton onClick={reviewFlaggedButtonOnClick} />
           )}
-          {previousButton && <PreviousButton onClick={previousButtonOnClick} />}
+          {previousButton && <PreviousButton onClick={handlePrevClick} />}
           {navigationButton && <NavigationButton items={navigationItems} />}
-          {nextButton && <NextButton onClick={nextButtonOnClick} />}
+          {nextButton && <NextButton onClick={handleNextClick} />}
         </ButtonsContainer>
       </ExamNavContainer>
       <PeriodicTable
