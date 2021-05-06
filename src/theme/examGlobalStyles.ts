@@ -63,7 +63,6 @@ export default createGlobalStyle`
 
     * {
       box-sizing: border-box;
-      font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       text-shadow: ${props => props.theme.shadows.textShadow};
     }
