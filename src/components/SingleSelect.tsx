@@ -13,6 +13,7 @@ interface SingleSelectProps {
   error?: boolean
   errorText?: string
   disabled?: boolean
+  [x: string]: any
 }
 
 export const SingleSelect = (props: SingleSelectProps): JSX.Element => {
