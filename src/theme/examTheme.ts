@@ -14,7 +14,8 @@ export default {
   },
   shadows: {
     scrollbarThumb: '0 0 1px rgba(255, 255, 255, 0.5)',
-    scrollbarTrack: 'inset 0 0 5px grey'
+    scrollbarTrack: 'inset 0 0 5px grey',
+    textShadow: '0 0 1px / 40%'
   },
   typography: {
     fontFamily: '\'Verdana\', \'Geneva\', sans-serif',
