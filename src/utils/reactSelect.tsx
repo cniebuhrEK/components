@@ -10,16 +10,39 @@ export const SELECT_SIZES = {
   small: 'small'
 }
 
+const getHoverBorderColor = (disabled, error) => {
+  switch (true) {
+    case disabled:
+      return 'transparent'
+    case error:
+      return theme.palette.red05
+    default:
+      return theme.palette.brown01
+  }
+}
+
+const getHoverCursos = (disabled, searchable) => {
+  switch (true) {
+    case disabled:
+      return 'not-allowed'
+    case !searchable:
+      return 'pointer'
+    default:
+      return 'text'
+  }
+}
+
 export const REACT_SELECT_STYLES = {
   control: (
     _provided,
     state: {
-      selectProps: { error: boolean; size: string }
+      selectProps: { error: boolean; size: string, isSearchable: boolean }
       isDisabled: boolean
     }
   ) => {
     const {
-      selectProps: { error, size }
+      selectProps: { error, size, isSearchable },
+      isDisabled
     } = state
 
     return {
@@ -43,8 +66,8 @@ export const REACT_SELECT_STYLES = {
       backgroundColor: theme.palette.grey09,
       transition: `all 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
-        cursor: 'text',
-        borderColor: error ? theme.palette.red05 : theme.palette.brown01
+        cursor: getHoverCursos(isDisabled, isSearchable),
+        borderColor: getHoverBorderColor(isDisabled, error)
       },
       '&:focus-within': {
         borderWidth: '1px',
@@ -265,6 +288,7 @@ export const CustomInput = (props: {
 }
 
 const IconContainer = styled.div`
+  cursor: pointer;
   position: absolute;
   right: 14px;
   top: ${props => {
