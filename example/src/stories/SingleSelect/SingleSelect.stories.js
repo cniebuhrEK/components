@@ -12,5 +12,6 @@ const Template = (args) =>
 
 export const BasicSingleSelect = Template.bind({});
 BasicSingleSelect.args = {
-  label: 'Select'
+  label: 'Select',
+  size: 'normal'
 };

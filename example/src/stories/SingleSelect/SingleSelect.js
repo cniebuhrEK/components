@@ -20,6 +20,7 @@ SingleSelect.propTypes = {
   /**
    * required boolean, adds * next to the label
    */
+  size: PropTypes.oneOf(['normal', 'small']),
   required: PropTypes.bool,
   /**
    * disabled boolean
@@ -61,5 +62,6 @@ SingleSelect.defaultProps = {
   label: '',
   error: false,
   errorText: '',
+  size: 'normal'
 };
 

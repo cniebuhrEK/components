@@ -68,6 +68,7 @@ export default {
   },
   dimensions: {
     inputHeight: '43px',
+    inputSmallHeight: '32px',
     buttonNormalHeight: '43px',
     buttonNormalMinWidth: '114px',
     buttonSmallHeight: '32px',

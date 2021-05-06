@@ -1,6 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
-import { CustomInput, REACT_SELECT_STYLES } from '../utils/reactSelect'
+import { CustomInput, REACT_SELECT_STYLES, SELECT_SIZES } from '../utils/reactSelect'
 
 const customComponents = {
   Input: CustomInput
@@ -13,11 +13,12 @@ interface SingleSelectProps {
   error?: boolean
   errorText?: string
   disabled?: boolean
+  size?: string
   [x: string]: any
 }
 
 export const SingleSelect = (props: SingleSelectProps): JSX.Element => {
-  const { required, options, label, error, errorText, disabled } = props
+  const { required, options, label, error, errorText, disabled, size } = props
 
   return (
     <Select
@@ -30,6 +31,7 @@ export const SingleSelect = (props: SingleSelectProps): JSX.Element => {
       error={error}
       errorText={errorText}
       isDisabled={disabled}
+      size={size}
     />
   )
 }
@@ -43,6 +45,7 @@ SingleSelect.defaultProps = {
   label: '',
   error: false,
   errorText: '',
+  size: SELECT_SIZES.normal
 }
 
 export default SingleSelect

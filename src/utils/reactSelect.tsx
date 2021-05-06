@@ -3,14 +3,23 @@ import theme from '../theme/theme'
 import { components } from 'react-select'
 import { isNotNilOrEmpty } from './ramda'
 import styled from 'styled-components'
+import ArrowDownIcon from '../icons/ArrowDown'
+
+export const SELECT_SIZES = {
+  normal: 'normal',
+  small: 'small'
+}
 
 export const REACT_SELECT_STYLES = {
   control: (
     _provided,
-    state: { selectProps: { error: boolean }; isDisabled: boolean }
+    state: {
+      selectProps: { error: boolean; size: string }
+      isDisabled: boolean
+    }
   ) => {
     const {
-      selectProps: { error }
+      selectProps: { error, size }
     } = state
 
     return {
@@ -26,7 +35,10 @@ export const REACT_SELECT_STYLES = {
       borderColor: error ? theme.palette.red05 : 'transparent',
       borderRadius: theme.shape.borderRadiusNormal,
       fontFamily: theme.typography.fontFamily,
-      minHeight: theme.dimensions.inputHeight,
+      minHeight:
+        size === SELECT_SIZES.small
+          ? theme.dimensions.inputSmallHeight
+          : theme.dimensions.inputHeight,
       color: error ? theme.palette.red05 : theme.palette.brown01,
       backgroundColor: theme.palette.grey09,
       transition: `all 200ms ${theme.transitions.easing.easeInOut} 0ms`,
@@ -237,16 +249,36 @@ export const CustomInput = (props: {
         isFocused={isFocused}
         isFocusedOrHasValue={isFocused || hasValue}
         error={selectProps.error}
+        size={selectProps.size}
       >
         {selectProps.label}
         {selectProps.required ? ' *' : ''}
       </InputLabel>
+      <IconContainer size={selectProps.size}>
+        <ArrowDownIcon />
+      </IconContainer>
       <ErrorText id={`${selectProps.name}-error`} error={selectProps.error}>
         {selectProps.errorText}
       </ErrorText>
     </Fragment>
   )
 }
+
+const IconContainer = styled.div`
+  position: absolute;
+  right: 14px;
+  top: ${props => {
+    switch (true) {
+      case props.isFocusedOrHasValue:
+        return '-19px'
+      case props.size === SELECT_SIZES.small:
+        return '8px'
+      default:
+        return '14px'
+    }
+  }};
+  font-size: 16px;
+`
 
 const InputLabel = styled.div`
   color: ${props => {
@@ -260,12 +292,29 @@ const InputLabel = styled.div`
   }};
   position: absolute;
   left: ${props => (props.isFocusedOrHasValue ? '-1px' : '14px')};
-  top: ${props => (props.isFocusedOrHasValue ? '-19px' : '14px')};
-  font-size: ${props => (props.isFocusedOrHasValue ? '12px' : '16px')};
+  top: ${props => {
+    switch (true) {
+      case props.isFocusedOrHasValue:
+        return '-19px'
+      case props.size === SELECT_SIZES.small:
+        return '8px'
+      default:
+        return '14px'
+    }
+  }};
+  font-size: ${props => {
+    switch (true) {
+      case props.isFocusedOrHasValue:
+        return '12px'
+      case props.size === SELECT_SIZES.small:
+        return '14px'
+      default:
+        return '16px'
+    }
+  }};
   line-height: ${props => (props.isFocusedOrHasValue ? '12px' : '16px')};
   background-color: transparent;
-  transition: all 200ms ${props => props.theme.transitions.easing.easeInOut}
-  0ms;
+  transition: all 200ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
 `
 
 const ErrorText = styled.div`
