@@ -133,6 +133,10 @@ export const AnswersContainer = styled.div`
     margin-right: 10px;
     transform: translateY(-3px);
     white-space: nowrap;
+
+    & * {
+      background-color: transparent; !important;
+    }
   }
 
   .answer__content {
