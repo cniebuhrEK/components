@@ -47,6 +47,7 @@ export const ExamHeaderTitle = styled.h1`
   font-weight: 400 !important;
   font-size: 21.33px;
   font-family: ${props => props.theme.typography.fontFamilySecondary};
+  text-shadow: ${props => props.theme.shadows.textShadow};
 `
 
 export const TimeAndPageElement = styled.a`

@@ -5,7 +5,7 @@ export const ExamNavContainer = styled.div`
   width: 100%;
   background-color: ${props => props.theme.palette.blue02};
   color: ${props => props.theme.palette.white};
-  padding: 0 10px;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +26,7 @@ export const ButtonsContainer = styled.div`
 `
 
 export const ExamNavRight = styled.a`
-  font-size: 18px;
+  font-size: 18.6667px;
   color: ${props => props.theme.palette.white};
   padding: 0 10px 0 10px;
   cursor: pointer;
@@ -69,7 +69,7 @@ export const ExamNavRight = styled.a`
 `
 
 export const ExamNavLeft = styled.a`
-  font-size: 18px;
+  font-size: 18.6667px;
   color: ${props => props.theme.palette.white};
   padding: 0 10px 0 10px;
   cursor: pointer;
