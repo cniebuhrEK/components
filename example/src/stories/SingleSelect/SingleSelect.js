@@ -21,6 +21,7 @@ SingleSelect.propTypes = {
    * required boolean, adds * next to the label
    */
   size: PropTypes.oneOf(['normal', 'small']),
+  isSearchable: PropTypes.bool,
   required: PropTypes.bool,
   /**
    * disabled boolean

@@ -1,9 +1,15 @@
 import React from 'react'
 import Select from 'react-select'
-import { CustomInput, REACT_SELECT_STYLES, SELECT_SIZES } from '../utils/reactSelect'
+import {
+  CustomInput,
+  CustomValueContainer,
+  REACT_SELECT_STYLES,
+  SELECT_SIZES
+} from '../utils/reactSelect'
 
 const customComponents = {
-  Input: CustomInput
+  Input: CustomInput,
+  ValueContainer: CustomValueContainer
 }
 
 interface SingleSelectProps {

@@ -45,6 +45,8 @@ export const REACT_SELECT_STYLES = {
       isDisabled
     } = state
 
+    console.log({ isSearchable })
+
     return {
       margin: '30px 0 12px',
       display: 'flex',
@@ -73,7 +75,8 @@ export const REACT_SELECT_STYLES = {
         borderWidth: '1px',
         borderColor: error ? theme.palette.red05 : theme.palette.orange04,
         color: error ? theme.palette.red05 : theme.palette.brown01
-      }
+      },
+      '& input': isSearchable ? {} : { height: '1px' }
     }
   },
   input: (_provided, _state) => {
@@ -264,6 +267,50 @@ export const CustomInput = (props: {
   return (
     <Fragment>
       <components.Input
+        {...props}
+        onFocus={handleOnFocus}
+        onBlur={handleOnBlur}
+      />
+      <InputLabel
+        isFocused={isFocused}
+        isFocusedOrHasValue={isFocused || hasValue}
+        error={selectProps.error}
+        size={selectProps.size}
+      >
+        {selectProps.label}
+        {selectProps.required ? ' *' : ''}
+      </InputLabel>
+      <IconContainer size={selectProps.size}>
+        <ArrowDownIcon />
+      </IconContainer>
+      <ErrorText id={`${selectProps.name}-error`} error={selectProps.error}>
+        {selectProps.errorText}
+      </ErrorText>
+    </Fragment>
+  )
+}
+
+export const CustomValueContainer = (props: {
+  selectProps: any
+  onFocus: (e) => any
+  onBlur: (e) => any
+}): JSX.Element => {
+  const { selectProps } = props
+  const [isFocused, setIsFocused] = useState(false)
+  const hasValue = isNotNilOrEmpty(selectProps.value)
+
+  const handleOnFocus = e => {
+    props.onFocus(e)
+    setIsFocused(true)
+  }
+  const handleOnBlur = e => {
+    props.onBlur(e)
+    setIsFocused(false)
+  }
+
+  return (
+    <Fragment>
+      <components.ValueContainer
         {...props}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
