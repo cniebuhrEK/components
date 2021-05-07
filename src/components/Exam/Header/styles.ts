@@ -64,6 +64,7 @@ export const TimeAndPageElement = styled.a`
 
   svg {
     transform: translateY(2px);
+    height: 20px;
   }
 
   .content {
@@ -86,6 +87,10 @@ export const TimeAndPageElement = styled.a`
     .content {
       display: none;
     }
+  }
+
+  &.--warning {
+    color: ${props => props.theme.palette.yellow02};
   }
 
   &.--hidden {

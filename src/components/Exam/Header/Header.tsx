@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cx from 'classnames'
 
 import {
@@ -14,6 +14,7 @@ import QuestionIcon from '../../../examIcons/Question'
 
 interface HeaderProps {
   title: string
+  timeValueForWaning?: string
   timer?: any
   currentPage?: number
   totalPages?: number
@@ -28,15 +29,18 @@ const Header = (props: HeaderProps): JSX.Element => {
     currentPage,
     totalPages,
     timerVisibility,
-    pagesVisibility
+    pagesVisibility,
+    timeValueForWaning
   } = props
 
   const [timerExpanded, setTimerExpanded] = useState(true)
   const [pageExpanded, setPageExpanded] = useState(true)
+  const [warningReached, setWarningReached] = useState(false)
 
   const timerClass = cx({
     '--condensed': !timerExpanded,
-    '--hidden': !timerVisibility
+    '--hidden': !timerVisibility,
+    '--warning': warningReached
   })
 
   const pagesClass = cx({
@@ -46,12 +50,20 @@ const Header = (props: HeaderProps): JSX.Element => {
 
   const toggleTimerVisibility = (e) => {
     e.preventDefault()
-    setTimerExpanded(prevState => !prevState)
+    !warningReached && setTimerExpanded(prevState => !prevState)
   }
   const togglePageVisibility = (e) => {
     e.preventDefault()
-    setPageExpanded(prevState => !prevState)
+    !warningReached && setPageExpanded(prevState => !prevState)
   }
+
+  useEffect(() => {
+    if (timer === timeValueForWaning) {
+      setWarningReached(true)
+      setPageExpanded(true)
+      setWarningReached(true)
+    }
+  }, [timer])
 
   return (
     <ExamHeaderContainer>
@@ -85,6 +97,8 @@ const Header = (props: HeaderProps): JSX.Element => {
   )
 }
 
-Header.defaultProps = {}
+Header.defaultProps = {
+  timeValueForWaning: '00:05:00'
+}
 
 export default Header
