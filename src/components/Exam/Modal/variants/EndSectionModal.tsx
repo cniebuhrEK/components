@@ -47,7 +47,7 @@ const EndSectionModal = ({
       open={open}
       title='End Section'
       initWidth={700}
-      initHeight={230}
+      initHeight={250}
       showConfirmButton
       showCancelButton
       handleConfirm={handleConfirm}
@@ -56,7 +56,7 @@ const EndSectionModal = ({
     >
       <EndSectionModalContainer>
         <img className='warning-icon' src='/assets/exam/Alert.svg' />
-        {incomplete > 0 ? incompleteContent : completeContent}
+        {Number(incomplete) > 0 ? incompleteContent : completeContent}
       </EndSectionModalContainer>
     </Modal>
   )

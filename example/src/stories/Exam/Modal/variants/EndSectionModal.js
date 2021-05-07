@@ -18,6 +18,7 @@ export const EndSectionModal = props => {
       <ModalComponent
         open={isOpen || props.open}
         handleClose={handleClose}
+        incomplete={props.incomplete}
       />
     </>
   );
