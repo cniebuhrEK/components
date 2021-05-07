@@ -13,7 +13,7 @@ const EndSectionModal = ({
   open,
   handleClose,
   handleConfirm,
-  incomplete,
+  incomplete = 0,
   ...rest
 }: EndSectionModalProps): JSX.Element => {
   const completeContent = (
@@ -29,9 +29,10 @@ const EndSectionModal = ({
   const incompleteContent = (
     <div className='warning-content'>
       <p>
-        You have chosen to end this exam section, bu you have {incomplete}{' '}
-        incomplete questions. Select "Yes" to confirm that you wish to end this
-        exam section, or "No" to return to the Section Review.
+        You have chosen to end this exam section, bu you have{' '}
+        {incomplete.toString()} incomplete questions. Select "Yes" to confirm
+        that you wish to end this exam section, or "No" to return to the Section
+        Review.
       </p>
       <br />
       <p>
@@ -62,7 +63,9 @@ const EndSectionModal = ({
   )
 }
 
-EndSectionModal.defaultProps = {}
+EndSectionModal.defaultProps = {
+  incomplete: 0
+}
 
 export default EndSectionModal
 
