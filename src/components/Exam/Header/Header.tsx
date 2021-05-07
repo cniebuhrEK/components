@@ -61,7 +61,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     if (timer === timeValueForWaning) {
       setWarningReached(true)
       setPageExpanded(true)
-      setWarningReached(true)
+      setTimerExpanded(true)
     }
   }, [timer])
 
