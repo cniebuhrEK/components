@@ -31,7 +31,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     totalPages,
     timerVisibility,
     pagesVisibility,
-    secondsLeftForWarning = 5
+    secondsLeftForWarning = 300
   } = props
 
   const extractedTime = split(':', timer)
@@ -102,7 +102,7 @@ const Header = (props: HeaderProps): JSX.Element => {
 }
 
 Header.defaultProps = {
-  secondsLeftForWarning: 5
+  secondsLeftForWarning: 300
 }
 
 export default Header
