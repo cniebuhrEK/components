@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { split } from 'ramda'
 import cx from 'classnames'
 
 import {
@@ -14,7 +15,7 @@ import QuestionIcon from '../../../examIcons/Question'
 
 interface HeaderProps {
   title: string
-  timeValueForWaning?: string
+  secondsLeftForWarning?: number
   timer?: any
   currentPage?: number
   totalPages?: number
@@ -30,7 +31,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     totalPages,
     timerVisibility,
     pagesVisibility,
-    timeValueForWaning
+    secondsLeftForWarning = 5
   } = props
 
   const [timerExpanded, setTimerExpanded] = useState(true)
@@ -57,8 +58,12 @@ const Header = (props: HeaderProps): JSX.Element => {
     !warningReached && setPageExpanded(prevState => !prevState)
   }
 
+  const extractedTime = split(':', timer)
+  const [hh, mm, ss] = extractedTime
+  const secondsLeft = Number(hh) * 60 * 60 + Number(mm) * 60 + Number(ss)
+
   useEffect(() => {
-    if (timer === timeValueForWaning) {
+    if (secondsLeft <= secondsLeftForWarning) {
       setWarningReached(true)
       setPageExpanded(true)
       setTimerExpanded(true)
@@ -98,7 +103,7 @@ const Header = (props: HeaderProps): JSX.Element => {
 }
 
 Header.defaultProps = {
-  timeValueForWaning: '00:05:00'
+  secondsLeftForWarning: 5
 }
 
 export default Header
