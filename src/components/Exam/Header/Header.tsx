@@ -34,9 +34,13 @@ const Header = (props: HeaderProps): JSX.Element => {
     secondsLeftForWarning = 5
   } = props
 
+  const extractedTime = split(':', timer)
+  const [hh, mm, ss] = extractedTime
+  const secondsLeft = Number(hh) * 60 * 60 + Number(mm) * 60 + Number(ss)
+
   const [timerExpanded, setTimerExpanded] = useState(true)
   const [pageExpanded, setPageExpanded] = useState(true)
-  const [warningReached, setWarningReached] = useState(false)
+  const warningReached = secondsLeft <= secondsLeftForWarning
 
   const timerClass = cx({
     '--condensed': !timerExpanded,
@@ -58,13 +62,8 @@ const Header = (props: HeaderProps): JSX.Element => {
     !warningReached && setPageExpanded(prevState => !prevState)
   }
 
-  const extractedTime = split(':', timer)
-  const [hh, mm, ss] = extractedTime
-  const secondsLeft = Number(hh) * 60 * 60 + Number(mm) * 60 + Number(ss)
-
   useEffect(() => {
     if (secondsLeft <= secondsLeftForWarning) {
-      setWarningReached(true)
       setPageExpanded(true)
       setTimerExpanded(true)
     }
