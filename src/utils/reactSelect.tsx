@@ -44,9 +44,6 @@ export const REACT_SELECT_STYLES = {
       selectProps: { error, size, isSearchable },
       isDisabled
     } = state
-
-    console.log({ isSearchable })
-
     return {
       margin: '30px 0 12px',
       display: 'flex',

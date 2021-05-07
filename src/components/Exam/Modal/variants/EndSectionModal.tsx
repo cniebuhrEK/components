@@ -29,7 +29,7 @@ const EndSectionModal = ({
   const incompleteContent = (
     <div className='warning-content'>
       <p>
-        You have chosen to end this exam section, bu you have {{ incomplete }}{' '}
+        You have chosen to end this exam section, bu you have {incomplete}{' '}
         incomplete questions. Select "Yes" to confirm that you wish to end this
         exam section, or "No" to return to the Section Review.
       </p>

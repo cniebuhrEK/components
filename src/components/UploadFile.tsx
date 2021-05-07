@@ -33,8 +33,6 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
     }
   }, [reset])
 
-  console.log(file)
-
   const handleOnChange = e => {
     e.preventDefault()
     setFile(e.target.files[0])
