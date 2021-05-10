@@ -19,7 +19,7 @@ export default {
     textShadow: '0 0'
   },
   typography: {
-    fontFamily: '\'"Greek Letters"\' \'Verdana\', \'Geneva\', sans-serif',
+    fontFamily: '"Greek Letters" \'Verdana\', \'Geneva\', sans-serif',
     fontFamilySecondary: '\'Tahoma\', \'Geneva\', sans-serif',
     fontFamilyTertiary: '\'Arial\', \'Helvetica\', sans-serif'
   }
