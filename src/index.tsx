@@ -116,6 +116,8 @@ export { default as ExamContent } from './components/Exam/Containers/ExamContent
 export { default as ExamFrame } from './components/Exam/Containers/ExamFrame'
 export { default as ExamAnswers } from './components/Exam/Answers/Answers'
 export { default as ExamModal } from './components/Exam/Modal/Modal'
+export { default as ExamBreakQuestion } from './components/Exam/Break/BreakQuestion'
+export { default as ExamBreakCountDown } from './components/Exam/Break/BreakCountDown'
 export { default as ExamCollapse } from './components/Exam/Collapse/Collapse'
 export { default as ExamCheckbox } from './components/Exam/Checkbox/Checkbox'
 export { default as ExamQuestionsReviewList } from './components/Exam/QuestionsReviewList/QuestionsReviewList'
