@@ -2,6 +2,7 @@ export default {
   palette: {
     black: '#000',
     white: '#fff',
+    beige01: '#E1DECC',
     blue01: '#80AEE1',
     blue02: '#006DAA',
     yellow02: 'rgb(255, 255, 0)',
@@ -18,7 +19,7 @@ export default {
     textShadow: '0 0'
   },
   typography: {
-    fontFamily: '\'Verdana\', \'Geneva\', sans-serif',
+    fontFamily: '\'"Greek Letters"\' \'Verdana\', \'Geneva\', sans-serif',
     fontFamilySecondary: '\'Tahoma\', \'Geneva\', sans-serif',
     fontFamilyTertiary: '\'Arial\', \'Helvetica\', sans-serif'
   }
