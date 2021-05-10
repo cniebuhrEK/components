@@ -16,6 +16,16 @@ interface QuestionBreakProps {
 }
 
 const BreakQuestion = (props: QuestionBreakProps): JSX.Element => {
+  const handleConfirm = e => {
+    e.preventDefault()
+    props.handleConfirm()
+  }
+
+  const handleCancel = e => {
+    e.preventDefault()
+    props.handleCancel()
+  }
+
   return (
     <BreakOverlay>
       <BreakQuestionContainer>
@@ -46,19 +56,11 @@ const BreakQuestion = (props: QuestionBreakProps): JSX.Element => {
           </div>
         </BreakQuestionBody>
         <BreakQuestionFooter>
-          <BreakQuestionButton
-            onClick={props.handleConfirm}
-            href='#'
-            role='button'
-          >
+          <BreakQuestionButton onClick={handleConfirm} href='#' role='button'>
             <span className='underline'>Y</span>
             <span>es</span>
           </BreakQuestionButton>
-          <BreakQuestionButton
-            onClick={props.handleCancel}
-            href='#'
-            role='button'
-          >
+          <BreakQuestionButton onClick={handleCancel} href='#' role='button'>
             <span className='underline'>N</span>
             <span>o</span>
           </BreakQuestionButton>

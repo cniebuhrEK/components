@@ -16,6 +16,11 @@ interface BreakCountDownProps {
 }
 
 const BreakCountDown = (props: BreakCountDownProps): JSX.Element => {
+  const handleResume = e => {
+    e.preventDefault()
+    props.handleResume()
+  }
+
   return (
     <BreakOverlay>
       <BreakCountDownContainer>
@@ -38,11 +43,7 @@ const BreakCountDown = (props: BreakCountDownProps): JSX.Element => {
           </form>
         </BreakCountDownBody>
         <BreakQuestionFooter>
-          <BreakQuestionButton
-            onClick={props.handleResume}
-            href='#'
-            role='button'
-          >
+          <BreakQuestionButton onClick={handleResume} href='#' role='button'>
             Resume
           </BreakQuestionButton>
         </BreakQuestionFooter>
