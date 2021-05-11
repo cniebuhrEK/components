@@ -56,11 +56,21 @@ const BreakQuestion = (props: QuestionBreakProps): JSX.Element => {
           </div>
         </BreakQuestionBody>
         <BreakQuestionFooter>
-          <BreakQuestionButton onClick={handleConfirm} href='#' role='button'>
+          <BreakQuestionButton
+            id='break-answer-yes'
+            onClick={handleConfirm}
+            href='#'
+            role='button'
+          >
             <span className='underline'>Y</span>
             <span>es</span>
           </BreakQuestionButton>
-          <BreakQuestionButton onClick={handleCancel} href='#' role='button'>
+          <BreakQuestionButton
+            id='break-answer-no'
+            onClick={handleCancel}
+            href='#'
+            role='button'
+          >
             <span className='underline'>N</span>
             <span>o</span>
           </BreakQuestionButton>

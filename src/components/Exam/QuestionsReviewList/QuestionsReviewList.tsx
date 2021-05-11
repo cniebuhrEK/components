@@ -51,7 +51,9 @@ const NavigationRow = ({
             {displayName}
           </div>
         </div>
-        <div className={statusClass}>{status}</div>
+        <div className={statusClass}>
+          {status === questionStatuses.complete ? '' : status}
+        </div>
       </div>
     </li>
   )

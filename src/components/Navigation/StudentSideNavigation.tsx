@@ -57,7 +57,7 @@ export const StudentSideNavigation = (
   return (
     <StudentSideNavigationContainer>
       <div className='side-nav__logo-container'>
-        <img className='side-nav__logo' src='/assets/logo/LogoDarkBg.png' />
+        <img className='side-nav__logo' src='/assets/logo/LogoDarkBg.svg' />
       </div>
       <div className='side-nav__links'>{renderLinks}</div>
     </StudentSideNavigationContainer>

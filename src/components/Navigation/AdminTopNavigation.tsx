@@ -15,7 +15,7 @@ export const AdminTopNavigation = (
   return (
     <AdminTopNavigationContainer>
       <div className='admin-top-nav__logo'>
-        <img src='/assets/logo/LogoDarkBg.png' />
+        <img src='/assets/logo/LogoDarkBg.svg' />
       </div>
       <div className='admin-top-nav__content'>
         <div className='admin-top-nav__content-element'>{username}</div>

@@ -43,7 +43,12 @@ const BreakCountDown = (props: BreakCountDownProps): JSX.Element => {
           </form>
         </BreakCountDownBody>
         <BreakQuestionFooter>
-          <BreakQuestionButton onClick={handleResume} href='#' role='button'>
+          <BreakQuestionButton
+            id='break-resume'
+            onClick={handleResume}
+            href='#'
+            role='button'
+          >
             Resume
           </BreakQuestionButton>
         </BreakQuestionFooter>
