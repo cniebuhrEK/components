@@ -19,6 +19,7 @@ import PeriodicTable from '../Modal/variants/PeriodicTable'
 
 interface NavigationProps {
   navigationItems?: NavigationItemProps[]
+  keepPeriodicTable?: boolean
   endExamButton: boolean
   endSectionButton: boolean
   endTestDayCertification: boolean
@@ -44,6 +45,7 @@ interface NavigationProps {
 const Navigation = (props: NavigationProps): JSX.Element => {
   const {
     navigationItems = [],
+    keepPeriodicTable,
     endExamButton,
     endSectionButton,
     endTestDayCertification,
@@ -70,13 +72,13 @@ const Navigation = (props: NavigationProps): JSX.Element => {
   const handleOpenPeriodicTable = () => setPeriodicTableOpen(true)
   const handleClosePeriodicTable = () => setPeriodicTableOpen(false)
 
-  const handleNextClick = (e) => {
-    handleClosePeriodicTable()
+  const handleNextClick = e => {
+    !keepPeriodicTable && handleClosePeriodicTable()
     nextButtonOnClick(e)
   }
 
   const handlePrevClick = (e) => {
-    handleClosePeriodicTable()
+    !keepPeriodicTable && handleClosePeriodicTable()
     previousButtonOnClick(e)
   }
 
@@ -84,7 +86,9 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     <div>
       <ExamNavContainer>
         <ButtonsContainer>
-          {periodicTableButton && <PeriodicTableButton onClick={handleOpenPeriodicTable} />}
+          {periodicTableButton && (
+            <PeriodicTableButton onClick={handleOpenPeriodicTable} />
+          )}
           {endExamButton && <EndExamButton onClick={endExamButtonOnClick} />}
           {endSectionButton && (
             <EndSectionButton onClick={endSectionButtonOnClick} />
