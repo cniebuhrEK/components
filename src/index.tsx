@@ -66,6 +66,7 @@ export { default as PauseIcon } from './icons/Pause'
 export { default as StopIcon } from './icons/Stop'
 export { default as TickmarkIcon } from './icons/Tickmark'
 export { default as PlusIcon } from './icons/Plus'
+export { default as ScoreIcon } from './icons/Score'
 
 // form elements
 export { default as InputField } from './formElements/InputField'

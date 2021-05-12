@@ -21,7 +21,8 @@ import {
   PauseIcon,
   StopIcon,
   PlusIcon,
-  TickmarkIcon
+  TickmarkIcon,
+  ScoreIcon
 } from 'components'
 
 /**
@@ -49,7 +50,7 @@ export const Icons = props => {
       <PauseIcon /> &nbsp;&nbsp;PauseIcon <br /><br />
       <StopIcon /> &nbsp;&nbsp;StopIcon <br /><br />
       <PlusIcon /> &nbsp;&nbsp;PlusIcon <br /><br />
-      <TickmarkIcon /> &nbsp;&nbsp;TickmarkIcon <br /><br />
+      <ScoreIcon /> &nbsp;&nbsp;ScoreIcon <br /><br />
     </IconsContainer>
   );
 };
