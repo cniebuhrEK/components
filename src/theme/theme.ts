@@ -60,7 +60,7 @@ export default {
     dropdown: 1700
   },
   typography: {
-    fontFamily: "'Milliard', sans-serif",
+    fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontSizeNormal: '16px',
     fontSizeSmall: '14px',
