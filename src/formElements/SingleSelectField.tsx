@@ -58,7 +58,7 @@ export const SingleSelectField = (
 
   useEffect(() => {
     _setValue(getOptionByValue(initialValue)(options))
-  }, [initialValue])
+  }, [initialValue, options])
 
   const handleFocus = () => _setTouched(true)
   const handleChange = option => {
