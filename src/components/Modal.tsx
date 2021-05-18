@@ -41,6 +41,7 @@ export function ReactModalAdapter({
 }) {
   return (
     <ReactModal
+      appElement={document.getElementById('root')}
       className={modalClassName}
       portalClassName={className}
       overlayClassName={overlayClassName}
