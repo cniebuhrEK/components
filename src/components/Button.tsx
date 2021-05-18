@@ -28,7 +28,7 @@ interface ButtonProps {
   startIcon?: any
   type?: string
   disabled?: boolean
-  loading?: boolean
+  isLoading?: boolean
   autofocus?: boolean
   name?: string
   value?: string
@@ -48,7 +48,7 @@ const Button = (props: ButtonProps): JSX.Element => {
     autofocus,
     name,
     value,
-    loading,
+    isLoading,
     id
   } = props
 
@@ -67,7 +67,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       {...props}
     >
       {startIcon && <div className='button__start-icon'>{startIcon}</div>}
-      {loading ? <Loader /> : children}
+      {isLoading ? <Loader /> : children}
     </StyledButton>
   )
 }
