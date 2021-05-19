@@ -102,7 +102,7 @@ export { default as ExamIconReviewAll } from './examIcons/ReviewAll'
 export { default as ExamIconRight } from './examIcons/Right'
 export { default as ExamIconScoreReport } from './examIcons/ScoreReport'
 export { default as ExamIconSolution } from './examIcons/Solution'
-export { default as ExamIconStriketrough } from './examIcons/Striketrough'
+export { default as ExamIconStrikethrough } from './examIcons/Strikethrough'
 export { default as ExamIconTimer } from './examIcons/Timer'
 export { default as ExamIconUp } from './examIcons/Up'
 

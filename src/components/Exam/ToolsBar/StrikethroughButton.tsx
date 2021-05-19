@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
-import Striketrough from '../../../examIcons/Striketrough'
+import Strikethrough from '../../../examIcons/Strikethrough'
 import { strikethrough } from '../../../utils/exam'
 import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
@@ -33,8 +33,8 @@ const StrikethroughButton = ({
 
   return (
     <StrikethroughButtonContainer onMouseDown={handleStrikeThrough}>
-      <Striketrough />
-      <span className='underline'>S</span>triketrough
+      <Strikethrough />
+      <span className='underline'>S</span>trikethrough
     </StrikethroughButtonContainer>
   )
 }

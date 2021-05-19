@@ -21,26 +21,28 @@ const Answer = (props: AnswerProps): JSX.Element => {
   })
 
   return (
-    <div
-      className={answerClass}
-      onClick={handleSelect}
-      id={`answer-${props.answerCode}`}
-      data-is-selected={`${props.isSelected}`}
-    >
-      <div className='answer__code'>
-        <div className='answer__icon--answered'>
-          <QuestionAnswered />
-        </div>
-        <div className='answer__icon--unanswered'>
-          <QuestionUnanswered />
-        </div>{' '}
-        {!props.answerCodeHidden && `${props.answerCode}. `}
-      </div>
+    <div>
       <div
-        className='answer__content'
-        id={`answer-content-${props.answerCode}`}
+        className={answerClass}
+        onClick={handleSelect}
+        id={`answer-${props.answerCode}`}
+        data-is-selected={`${props.isSelected}`}
       >
-        {props.answerContent}
+        <div className='answer__code'>
+          <div className='answer__icon--answered'>
+            <QuestionAnswered />
+          </div>
+          <div className='answer__icon--unanswered'>
+            <QuestionUnanswered />
+          </div>{' '}
+          {!props.answerCodeHidden && `${props.answerCode}. `}
+        </div>
+        <div
+          className='answer__content'
+          id={`answer-content-${props.answerCode}`}
+        >
+          {props.answerContent}
+        </div>
       </div>
     </div>
   )
@@ -85,7 +87,7 @@ export default Answers
 
 export const AnswersContainer = styled.div`
   .answer {
-    display: flex;
+    display: inline-flex;
     font-size: 16px;
     align-items: flex-start;
     cursor: pointer;

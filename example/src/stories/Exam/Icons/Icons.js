@@ -29,7 +29,7 @@ import {
   ExamIconRight,
   ExamIconScoreReport,
   ExamIconSolution,
-  ExamIconStriketrough,
+  ExamIconStrikethrough,
   ExamIconTimer,
   ExamIconUp
 } from 'components'
@@ -68,7 +68,7 @@ export const Icons = props => {
       Right: <ExamIconRight /><br /><br />
       ScoreReport: <ExamIconScoreReport /><br /><br />
       Solution: <ExamIconSolution /><br /><br />
-      Striketrough: <ExamIconStriketrough /><br /><br />
+      Strikethrough: <ExamIconStrikethrough /><br /><br />
       Timer: <ExamIconTimer /><br /><br />
       Up: <ExamIconUp /><br /><br />
     </>
