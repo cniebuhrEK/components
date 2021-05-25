@@ -6,13 +6,13 @@ interface IconLinkProps {
   isActive: boolean
   disabled?: boolean
   light?: boolean
-  onClick: () => void
+  href: string
   name: string
   icon: string | JSX.Element
 }
 
 export const IconLink = (props: IconLinkProps): JSX.Element => {
-  const { isActive, name, icon, disabled, onClick, light } = props
+  const { isActive, name, icon, disabled, href, light } = props
 
   const containerClass = cx({
     '--isActive': isActive,
@@ -21,7 +21,7 @@ export const IconLink = (props: IconLinkProps): JSX.Element => {
 
   return (
     <IconLinkContainer
-      onClick={onClick}
+      href={href}
       disabled={disabled}
       className={containerClass}
       light={light}

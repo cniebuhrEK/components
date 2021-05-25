@@ -27,7 +27,7 @@ const AdminSideNavigationLink = (
 
   return (
     <AdminSideNavigationLinkContainer className={containerClass}>
-      <IconLink isActive={isActive} name={name} icon={icon} onClick={onClick} />
+      <IconLink isActive={isActive} name={name} icon={icon} href={href} />
     </AdminSideNavigationLinkContainer>
   )
 }

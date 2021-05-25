@@ -18,7 +18,7 @@ export const Link = (props: LinkProps): JSX.Element => {
 
   return (
     <LinkContainer disabled={disabled} className={containerClass}>
-      <div className='icon-link__name'>{name}</div>
+      {name}
     </LinkContainer>
   )
 }
