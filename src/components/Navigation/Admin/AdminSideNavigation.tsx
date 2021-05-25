@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import IconLink from '../Link/IconLink'
+import IconLink from '../../Link/IconLink'
 
 interface AdminSideNavigationLinkProps {
   name: string
@@ -52,7 +52,7 @@ const AdminSideNavigationLinkContainer = styled.div`
   padding: 4px 21px;
   position: relative;
 
-  ${({ active }) => active} {
+  ${({ active }) => !active} {
     background-color: ${({ theme }) => theme.palette.biege};
 
     &::before {
