@@ -67,6 +67,8 @@ export { default as StopIcon } from './icons/Stop'
 export { default as TickmarkIcon } from './icons/Tickmark'
 export { default as PlusIcon } from './icons/Plus'
 export { default as ScoreIcon } from './icons/Score'
+export { default as ArrowUpFilledIcon } from './icons/ArrowUpFilled'
+export { default as ArrowDownFilledIcon } from './icons/ArrowDownFilled'
 
 // form elements
 export { default as InputField } from './formElements/InputField'
