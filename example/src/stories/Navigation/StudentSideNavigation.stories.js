@@ -1,53 +1,52 @@
-import React from 'react';
+import React from 'react'
 
-import { StudentSideNavigation as StudentSideNavigationComponent } from './StudentSideNavigation';
+import { StudentSideNavigation as StudentSideNavigationComponent } from './StudentSideNavigation'
 import { UserIcon } from 'components'
 
 export default {
   title: 'Atoms/Navigation',
   component: StudentSideNavigationComponent
-};
+}
 
-const Template = (args) =>
-  <StudentSideNavigationComponent {...args} />;
+const Template = args => <StudentSideNavigationComponent {...args} />
 
-export const StudentSideNavigation = Template.bind({});
+export const StudentSideNavigation = Template.bind({})
 StudentSideNavigation.args = {
   links: [
     {
       name: 'Testing',
-      onClick: () => {},
+      href: 'https://www.examkrackers.com',
       isActive: true,
       icon: <UserIcon />,
       id: 'nav-testing'
     },
     {
       name: 'Account',
-      onClick: () => {},
+      href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <UserIcon />,
       id: 'nav-account'
     },
     {
       name: 'Manuals',
-      onClick: () => {},
+      href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <UserIcon />,
       id: 'nav-manuals'
     },
     {
       name: 'F-Cards',
-      onClick: () => {},
+      href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <UserIcon />,
       id: 'nav-f-cards'
     },
     {
       name: 'Video',
-      onClick: () => {},
+      href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <UserIcon />,
       id: 'nav-video'
     }
   ]
-};
+}
