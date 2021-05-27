@@ -116,7 +116,7 @@ export const AnswersContainer = styled.div`
 
   svg {
     transform: translateY(3px);
-    margin-right: 8px;
+    margin-right: 4px;
     font-size: 12px;
     border: 1px solid transparent;
     box-sizing: content-box;
@@ -133,7 +133,7 @@ export const AnswersContainer = styled.div`
   .answer__code {
     font-weight: 700;
     margin-right: 10.3552px;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
     white-space: nowrap;
     font-size: 15px;
 
