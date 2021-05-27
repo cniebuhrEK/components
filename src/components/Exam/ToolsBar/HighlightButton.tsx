@@ -34,19 +34,22 @@ const HighlightButton = ({ callback }: HighlightButtonProps): JSX.Element => {
     callback()
   }
 
-  const triggerHighlightOption = () => {
-    if (selectedOption === highlightOptions.add) {
+  const handleHighlightEvent = option => {
+    if (option === highlightOptions.add) {
       handleHighlight('#ff0')
     }
 
-    if (selectedOption === highlightOptions.remove) {
+    if (option === highlightOptions.remove) {
       handleHighlight('transparent')
     }
   }
 
+  const triggerHighlightOption = () => handleHighlightEvent(selectedOption)
+
   const selectHighlightOption = option => e => {
     e.preventDefault()
     setSelectedOption(option)
+    handleHighlightEvent(option)
     toggleDropdown()
   }
 

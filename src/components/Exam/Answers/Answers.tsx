@@ -91,7 +91,7 @@ export const AnswersContainer = styled.div`
     font-size: 16px;
     align-items: flex-start;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 13.5552px;
 
     &[data-is-selected='true']{
       .answer__icon--answered {
@@ -116,7 +116,7 @@ export const AnswersContainer = styled.div`
 
   svg {
     transform: translateY(3px);
-    margin-right: 5px;
+    margin-right: 8px;
     font-size: 12px;
     border: 1px solid transparent;
     box-sizing: content-box;
@@ -132,9 +132,10 @@ export const AnswersContainer = styled.div`
 
   .answer__code {
     font-weight: 700;
-    margin-right: 10px;
+    margin-right: 10.3552px;
     transform: translateY(-3px);
     white-space: nowrap;
+    font-size: 15px;
 
     & * {
       background-color: transparent !important;
