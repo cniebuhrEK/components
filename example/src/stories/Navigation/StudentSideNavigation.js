@@ -1,57 +1,86 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import {
-  StudentSideNavigation as StudentSideNavigationComponent,
-  UserIcon
-} from 'components'
+import { StudentSideNavigation as StudentSideNavigationComponent } from 'components'
 
 export const StudentSideNavigation = props => {
-  return (
-    <StudentSideNavigationComponent {...props} />
-  );
-};
+  return <StudentSideNavigationComponent {...props} />
+}
 
 StudentSideNavigation.propTypes = {
   links: PropTypes.array
-};
+}
 
 StudentSideNavigation.defaultProps = {
   links: [
     {
-      name: 'Testing',
-      onClick: () => {},
-      isActive: true,
-      icon: <UserIcon />,
-      id: 'nav-testing'
+      exam_id: 12,
+      title: 'EK-1',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
     },
     {
-      name: 'Account',
-      onClick: () => {},
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-account'
+      exam_id: 12,
+      title: 'EK-1',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
     },
     {
-      name: 'Manuals',
-      onClick: () => {},
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-manuals'
-    },
-    {
-      name: 'F-Cards',
-      onClick: () => {},
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-f-cards'
-    },
-    {
-      name: 'Video',
-      onClick: () => {},
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-video'
+      exam_id: 12,
+      title: 'EK-1',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
     }
   ]
-};
+}

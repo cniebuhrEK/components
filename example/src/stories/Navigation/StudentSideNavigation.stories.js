@@ -1,52 +1,85 @@
 import React from 'react'
-
-import { StudentSideNavigation as StudentSideNavigationComponent } from './StudentSideNavigation'
-import { UserIcon } from 'components'
+import { StudentSideNavigation as Component } from './StudentSideNavigation'
+// import { UserIcon } from 'components'
 
 export default {
   title: 'Atoms/Navigation',
-  component: StudentSideNavigationComponent
+  component: Component
 }
 
-const Template = args => <StudentSideNavigationComponent {...args} />
+const Template = args => <Component {...args} />
 
 export const StudentSideNavigation = Template.bind({})
 StudentSideNavigation.args = {
   links: [
     {
-      name: 'Testing',
-      href: 'https://www.examkrackers.com',
-      isActive: true,
-      icon: <UserIcon />,
-      id: 'nav-testing'
+      exam_id: 12,
+      title: 'EK-1',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
     },
     {
-      name: 'Account',
-      href: 'https://www.examkrackers.com',
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-account'
+      exam_id: 12,
+      title: 'EK-1',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
     },
     {
-      name: 'Manuals',
-      href: 'https://www.examkrackers.com',
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-manuals'
-    },
-    {
-      name: 'F-Cards',
-      href: 'https://www.examkrackers.com',
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-f-cards'
-    },
-    {
-      name: 'Video',
-      href: 'https://www.examkrackers.com',
-      isActive: false,
-      icon: <UserIcon />,
-      id: 'nav-video'
+      exam_id: 12,
+      title: 'EK-1',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
     }
   ]
 }
