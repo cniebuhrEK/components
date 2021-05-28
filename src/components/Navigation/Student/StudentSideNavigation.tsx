@@ -1,18 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import Accordion from '../../Accordion'
 
-import IconLink from '../../Link/IconLink'
+interface NavSection {
+  id: number
+  title: string
+}
 
-interface StudentSideNavigationLinkProps {
-  name: string
-  href: string
-  isActive: boolean
-  icon: string | JSX.Element
-  id: string
+interface NavCategory {
+  exam_id: number
+  title: string
+  sections: NavSection[]
 }
 
 interface StudentSideNavigationProps {
-  links: StudentSideNavigationLinkProps[]
+  links: NavCategory[]
 }
 
 export const StudentSideNavigation = (
@@ -21,28 +23,60 @@ export const StudentSideNavigation = (
   const { links } = props
 
   return (
-    <StudentSideNavigationContainer>
+    <Container>
       <div className='side-nav__logo-container'>
         <img className='side-nav__logo' src='/assets/logo/LogoDarkBg.svg' />
       </div>
-      <div className='side-nav__links'>
-        {links.map(l => (
-          <StudentSideNavigationLinkContainer key={l.id} active={l.isActive}>
-            <IconLink
-              light
-              isActive={l.isActive}
-              name={l.name}
-              icon={l.icon}
-              href={l.href}
-            />
-          </StudentSideNavigationLinkContainer>
-        ))}
-      </div>
-    </StudentSideNavigationContainer>
+      <NavLinks>
+        {links.length > 0 &&
+          links.map(l => (
+            <Accordion key={l.exam_id} text={`${l.title} Score Report`}>
+              <Accordion text='Answers / Graph'>
+                {l.sections.length > 0 ? (
+                  l.sections.map(s => (
+                    <Accordion key={s.id} text={s.title}>
+                      <NavList>
+                        <a
+                          href={`/exams/${l.exam_id}/score-report/${s.id}/answer-sheet`}
+                        >
+                          Answer Sheet
+                        </a>
+                        <a
+                          href={`/exams/${l.exam_id}/score-report/${s.id}/diagnostic`}
+                        >
+                          Diagnostic
+                        </a>
+                      </NavList>
+                    </Accordion>
+                  ))
+                ) : (
+                  <span />
+                )}
+              </Accordion>
+              <Accordion text='Score Projection'>
+                <NavList>
+                  <a key={1} href={`/exams/${l.exam_id}/score-projection`}>
+                    Full MCAT
+                  </a>
+
+                  {l.sections.map(s => (
+                    <a
+                      key={s.id + 1}
+                      href={`/exams/${l.exam_id}/score-projection/${s.id}`}
+                    >
+                      {s.title}
+                    </a>
+                  ))}
+                </NavList>
+              </Accordion>
+            </Accordion>
+          ))}
+      </NavLinks>
+    </Container>
   )
 }
 
-const StudentSideNavigationContainer = styled.div`
+const Container = styled.div`
   padding: 20px 0;
   background-color: ${({ theme }) => theme.palette.brown01};
   height: 100vh;
@@ -58,30 +92,27 @@ const StudentSideNavigationContainer = styled.div`
   }
 `
 
-const StudentSideNavigationLinkContainer = styled.div`
-  height: 44px;
-  line-height: 44px;
+const NavList = styled.div`
   display: flex;
-  align-items: center;
-  padding: 4px 21px;
-  position: relative;
+  flex-flow: column;
 
-  ${({ active }) => !active} {
-      background-color: ${({ theme }) => theme.palette.brown02};
+  a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 4px;
+  }
 
-      &::before {
-        content: '';
-        position: absolute;
-        left: 8px;
-        top: 4px;
-        width: 3px;
-        height: calc(100% - 8px);
-        background-color: ${({ theme }) => theme.palette.orange05};
-      }
-    }
+  a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 `
 
-StudentSideNavigation.defaultProps = {}
+const NavLinks = styled.div`
+  padding: 0px 0px 0px 8px;
+`
+
+StudentSideNavigation.defaultProps = {
+  links: []
+}
 
 export default StudentSideNavigation
