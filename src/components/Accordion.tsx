@@ -56,7 +56,8 @@ Accordion.defaultProps = {
 }
 
 const AccordionContainer = styled.div`
-  color: ${({ light }) => (light ? '#000' : '#fff')};
+  color: ${({ light, theme }) =>
+    light ? theme.palette.black : theme.palette.white};
 `
 
 const AccordionButton = styled.div`

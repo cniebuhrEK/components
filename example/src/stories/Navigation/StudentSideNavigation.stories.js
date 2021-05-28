@@ -14,7 +14,30 @@ StudentSideNavigation.args = {
   links: [
     {
       exam_id: 12,
-      title: 'EK-1',
+      title: 'BIO-6',
+      type: 'full length exam',
+      sections: [
+        {
+          title: 'Chem & Phys',
+          id: 34
+        },
+        {
+          title: 'CARS',
+          id: 56
+        },
+        {
+          title: 'Bio',
+          id: 78
+        },
+        {
+          title: 'Psych',
+          id: 90
+        }
+      ]
+    },
+    {
+      exam_id: 12,
+      title: 'EK-3',
       type: 'full length exam',
       sections: [
         {
@@ -37,7 +60,7 @@ StudentSideNavigation.args = {
     },
     {
       exam_id: 12,
-      title: 'EK-1',
+      title: 'EK-2',
       type: 'full length exam',
       sections: [
         {

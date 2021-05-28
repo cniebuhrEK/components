@@ -2,22 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import Accordion from '../../Accordion'
 
-// import IconLink from '../../Link/IconLink'
-
-/*
- interface LinkProps {
-  id: string
+interface NavSection {
+  id: number
   title: string
-  href: string
-  isActive: boolean
-  icon: string | JSX.Element
 }
-	*/
 
 interface NavCategory {
-  id: string
+  exam_id: number
   title: string
-  sections: any[]
+  sections: NavSection[]
 }
 
 interface StudentSideNavigationProps {
@@ -37,19 +30,45 @@ export const StudentSideNavigation = (
       <NavLinks>
         {links.length > 0 &&
           links.map(l => (
-            <Accordion key={l.id} text={l.title}>
-              {l.sections.length > 0 ? (
-                l.sections.map(s => (
-                  <Accordion key={s.id} text={s.title}>
-                    <NavList>
-                      <a href='/answers'>Answer Sheet</a>
-                      <a href='/diagnostics'>Diagnostic</a>
-                    </NavList>
-                  </Accordion>
-                ))
-              ) : (
-                <span />
-              )}
+            <Accordion key={l.exam_id} text={`${l.title} Score Report`}>
+              <Accordion text='Answers / Graph'>
+                {l.sections.length > 0 ? (
+                  l.sections.map(s => (
+                    <Accordion key={s.id} text={s.title}>
+                      <NavList>
+                        <a
+                          href={`/exams/${l.exam_id}/score-report/${s.id}/answer-sheet`}
+                        >
+                          Answer Sheet
+                        </a>
+                        <a
+                          href={`/exams/${l.exam_id}/score-report/${s.id}/diagnostic`}
+                        >
+                          Diagnostic
+                        </a>
+                      </NavList>
+                    </Accordion>
+                  ))
+                ) : (
+                  <span />
+                )}
+              </Accordion>
+              <Accordion text='Score Projection'>
+                <NavList>
+                  <a key={1} href={`/exams/${l.exam_id}/score-projection`}>
+                    Full MCAT
+                  </a>
+
+                  {l.sections.map(s => (
+                    <a
+                      key={s.id + 1}
+                      href={`/exams/${l.exam_id}/score-projection/${s.id}`}
+                    >
+                      {s.title}
+                    </a>
+                  ))}
+                </NavList>
+              </Accordion>
             </Accordion>
           ))}
       </NavLinks>
