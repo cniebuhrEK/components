@@ -1,16 +1,16 @@
-import React from 'react';
-import { headers, rows } from "./tableData";
+import React from 'react'
+import { headers, rows } from './tableData'
 
-import { FullTable } from './Table';
+import { FullTable } from './Table'
 
 export default {
   title: 'Atoms/Table',
   component: FullTable
-};
+}
 
-const Template = (args) => <FullTable {...args} />;
+const Template = args => <FullTable {...args} />
 
-export const EntitiesList = Template.bind({});
+export const EntitiesList = Template.bind({})
 EntitiesList.args = {
   totalPages: 20,
   emptyStateText: 'Rows are empty',
@@ -18,5 +18,5 @@ EntitiesList.args = {
   rows: rows,
   defaultSortColumnId: 'firstname',
   defaultSortDirection: 'DESC',
-  defaultPage: 1,
-};
+  defaultPage: 1
+}

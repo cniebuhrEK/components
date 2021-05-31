@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { Toast as ToastComponent } from 'components'
 
@@ -23,8 +23,8 @@ export const Toast = props => {
         {props.children}
       </ToastComponent>
     </>
-  );
-};
+  )
+}
 
 Toast.propTypes = {
   /**
@@ -42,10 +42,9 @@ Toast.propTypes = {
   /**
    * Toast content
    */
-  children: PropTypes.string,
-};
+  children: PropTypes.string
+}
 
 Toast.defaultProps = {
-  severity: 'info',
-};
-
+  severity: 'info'
+}

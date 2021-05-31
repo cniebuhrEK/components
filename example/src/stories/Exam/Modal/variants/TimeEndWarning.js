@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { TimeEndWarning as ModalComponent } from 'components'
 
@@ -21,8 +21,8 @@ export const TimeEndWarning = props => {
         minLeft={props.minLeft}
       />
     </>
-  );
-};
+  )
+}
 
 TimeEndWarning.propTypes = {
   /**
@@ -34,9 +34,8 @@ TimeEndWarning.propTypes = {
    */
   handleClose: PropTypes.func,
   minLeft: PropTypes.number
-};
+}
 
 TimeEndWarning.defaultProps = {
   minLeft: 30
-};
-
+}

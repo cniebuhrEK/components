@@ -9,7 +9,7 @@ import TablePaginationContainer from './Table/TablePaginationContainer'
 import TableHeader, {
   // eslint-disable-next-line no-unused-vars
   TableHeaderProps,
-  SORT_DIRECTION,
+  SORT_DIRECTION
 } from './Table/TableHeader'
 import TableRow from './Table/TableRow'
 import Pagination from './Pagination/Pagination'
@@ -68,7 +68,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     onTableStateChange({
       sortBy: sortedColumnId,
       dir: sortDirection,
-      page: currentPage,
+      page: currentPage
     })
   }, [sortedColumnId, sortDirection, currentPage])
 

@@ -8,6 +8,9 @@ interface NavSection {
 }
 
 interface NavCategory {
+  // TODO(Brett, Daria): It would be nice if API endpoints returned all fields
+  // in camelcase. Eslint screams otherwise.
+  /* eslint-disable camelcase */
   exam_id: number
   title: string
   sections: NavSection[]

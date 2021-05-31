@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import {
   AdminSideNavigation as AdminSideNavigationComponent,
@@ -9,14 +9,12 @@ import {
 } from 'components'
 
 export const AdminSideNavigation = props => {
-  return (
-    <AdminSideNavigationComponent {...props} />
-  );
-};
+  return <AdminSideNavigationComponent {...props} />
+}
 
 AdminSideNavigation.propTypes = {
   links: PropTypes.array
-};
+}
 
 AdminSideNavigation.defaultProps = {
   links: [
@@ -42,4 +40,4 @@ AdminSideNavigation.defaultProps = {
       id: 'students-list'
     }
   ]
-};
+}

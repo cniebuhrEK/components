@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { ExamCollapse as ExamCollapseComponent } from 'components'
 
@@ -11,15 +11,16 @@ export const ExamCollapse = props => {
     <>
       <ExamCollapseComponent {...props} />
     </>
-  );
-};
+  )
+}
 
 ExamCollapse.propTypes = {
   header: PropTypes.string,
   content: PropTypes.string
-};
+}
 
 ExamCollapse.defaultProps = {
   header: 'Instructions',
-  content: 'Lorem ipsum lorem ipsum lorem ipsum lorem ipsum Lorem ipsum lorem ipsum lorem ipsum lorem ipsumLorem ipsum lorem ipsum lorem ipsum lorem ipsumLorem ipsum lorem ipsum lorem ipsum lorem ipsum'
-};
+  content:
+    'Lorem ipsum lorem ipsum lorem ipsum lorem ipsum Lorem ipsum lorem ipsum lorem ipsum lorem ipsumLorem ipsum lorem ipsum lorem ipsum lorem ipsumLorem ipsum lorem ipsum lorem ipsum lorem ipsum'
+}

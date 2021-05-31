@@ -64,16 +64,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -106,16 +106,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -148,16 +148,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -190,16 +190,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -232,16 +232,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -274,16 +274,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -316,16 +316,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -358,16 +358,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -400,16 +400,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]
@@ -442,16 +442,16 @@ export const rows = [
         cellProps: {},
         children: (
           <Button
-        id='edit-exam'
-        name='edit'
-        size='small'
-        variant='outlined'
-        color='green'
-        onClick={() => {}}
-        startIcon={<EditIcon />}
-      >
-        Edit
-      </Button>
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='green'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
         )
       }
     ]

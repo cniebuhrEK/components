@@ -15,7 +15,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
     'exam-checkbox--selected': props.isSelected
   })
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.preventDefault()
     props.onChange(!props.isSelected)
   }

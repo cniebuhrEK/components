@@ -77,7 +77,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     nextButtonOnClick(e)
   }
 
-  const handlePrevClick = (e) => {
+  const handlePrevClick = e => {
     !keepPeriodicTable && handleClosePeriodicTable()
     previousButtonOnClick(e)
   }

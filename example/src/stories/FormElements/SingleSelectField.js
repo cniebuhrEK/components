@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { SingleSelectField as SingleSelectComponent } from 'components'
 
@@ -7,10 +7,8 @@ import { SingleSelectField as SingleSelectComponent } from 'components'
  * Primary UI component for user interaction
  */
 export const SingleSelect = props => {
-  return (
-    <SingleSelectComponent {...props} />
-  );
-};
+  return <SingleSelectComponent {...props} />
+}
 
 SingleSelect.propTypes = {
   /**
@@ -40,13 +38,13 @@ SingleSelect.propTypes = {
    * translation handler, passed from i18n to translate the error key
    */
   t: PropTypes.func
-};
+}
 
 SingleSelect.defaultProps = {
   options: [
-    {label: 'Option 1', value: 'option-1'},
-    {label: 'Option 2', value: 'option-2'},
-    {label: 'Option 3', value: 'option-3'},
+    { label: 'Option 1', value: 'option-1' },
+    { label: 'Option 2', value: 'option-2' },
+    { label: 'Option 3', value: 'option-3' }
   ],
   name: 'test',
   id: 'test',
@@ -59,5 +57,4 @@ SingleSelect.defaultProps = {
   disabled: false,
   reset: false,
   t: (key, options) => {}
-};
-
+}

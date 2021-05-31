@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { TestDayCertificationExpireModal as ModalComponent } from 'components'
 
@@ -15,13 +15,10 @@ export const TestDayCertificationExpireModal = props => {
   return (
     <>
       <div onClick={handleOpen}>Click here to open the modal</div>
-      <ModalComponent
-        open={isOpen || props.open}
-        handleClose={handleClose}
-      />
+      <ModalComponent open={isOpen || props.open} handleClose={handleClose} />
     </>
-  );
-};
+  )
+}
 
 TestDayCertificationExpireModal.propTypes = {
   /**
@@ -32,7 +29,6 @@ TestDayCertificationExpireModal.propTypes = {
    * triggers close of the modal
    */
   handleClose: PropTypes.func
-};
+}
 
-TestDayCertificationExpireModal.defaultProps = {};
-
+TestDayCertificationExpireModal.defaultProps = {}

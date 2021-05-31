@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { ExamNavigation as NavigationComponent } from 'components'
 
@@ -11,8 +11,8 @@ export const Navigation = props => {
     <>
       <NavigationComponent {...props} />
     </>
-  );
-};
+  )
+}
 
 Navigation.propTypes = {
   navigationItems: PropTypes.array,
@@ -35,8 +35,8 @@ Navigation.propTypes = {
   reviewAllButtonOnClick: PropTypes.func,
   reviewFlaggedButtonOnClick: PropTypes.func,
   reviewIncompleteButtonOnClick: PropTypes.func,
-  reviewScreenButtonOnClick: PropTypes.func,
-};
+  reviewScreenButtonOnClick: PropTypes.func
+}
 
 Navigation.defaultProps = {
   navigationItems: [
@@ -80,14 +80,13 @@ Navigation.defaultProps = {
   reviewFlaggedButton: false,
   reviewIncompleteButton: false,
   reviewScreenButton: false,
-  endExamButtonOnClick: (e) => console.log(e),
-  endSectionButtonOnClick: (e) => console.log(e),
-  endTestDayCertificationOnClick: (e) => console.log(e),
-  nextButtonOnClick: (e) => console.log(e),
-  previousButtonOnClick: (e) => console.log(e),
-  reviewAllButtonOnClick: (e) => console.log(e),
-  reviewFlaggedButtonOnClick: (e) => console.log(e),
-  reviewIncompleteButtonOnClick: (e) => console.log(e),
-  reviewScreenButtonOnClick: (e) => console.log(e)
-};
-
+  endExamButtonOnClick: e => console.log(e),
+  endSectionButtonOnClick: e => console.log(e),
+  endTestDayCertificationOnClick: e => console.log(e),
+  nextButtonOnClick: e => console.log(e),
+  previousButtonOnClick: e => console.log(e),
+  reviewAllButtonOnClick: e => console.log(e),
+  reviewFlaggedButtonOnClick: e => console.log(e),
+  reviewIncompleteButtonOnClick: e => console.log(e),
+  reviewScreenButtonOnClick: e => console.log(e)
+}

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { Icons } from './Icons';
+import { Icons } from './Icons'
 
 export default {
   title: 'Exam/Icons',
   component: Icons
-};
+}
 
-const Template = (args) => <Icons />;
+const Template = args => <Icons />
 
-export const ExamIcons = Template.bind({});
-ExamIcons.args = {};
+export const ExamIcons = Template.bind({})
+ExamIcons.args = {}

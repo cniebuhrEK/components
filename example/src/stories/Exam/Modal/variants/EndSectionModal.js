@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { EndSectionModal as ModalComponent } from 'components'
 
@@ -21,8 +21,8 @@ export const EndSectionModal = props => {
         incomplete={props.incomplete}
       />
     </>
-  );
-};
+  )
+}
 
 EndSectionModal.propTypes = {
   /**
@@ -34,9 +34,8 @@ EndSectionModal.propTypes = {
    */
   handleClose: PropTypes.func,
   incomplete: PropTypes.number
-};
+}
 
 EndSectionModal.defaultProps = {
   incomplete: 12
-};
-
+}

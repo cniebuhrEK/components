@@ -53,11 +53,11 @@ const Header = (props: HeaderProps): JSX.Element => {
     '--hidden': !pagesVisibility
   })
 
-  const toggleTimerVisibility = (e) => {
+  const toggleTimerVisibility = e => {
     e.preventDefault()
     !warningReached && setTimerExpanded(prevState => !prevState)
   }
-  const togglePageVisibility = (e) => {
+  const togglePageVisibility = e => {
     e.preventDefault()
     !warningReached && setPageExpanded(prevState => !prevState)
   }

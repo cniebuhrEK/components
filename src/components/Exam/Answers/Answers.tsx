@@ -93,7 +93,7 @@ export const AnswersContainer = styled.div`
     cursor: pointer;
     margin-top: 13.5552px;
 
-    &[data-is-selected='true']{
+    &[data-is-selected='true'] {
       .answer__icon--answered {
         display: inline-block;
       }
@@ -103,7 +103,7 @@ export const AnswersContainer = styled.div`
       }
     }
 
-    &[data-is-selected='false']{
+    &[data-is-selected='false'] {
       .answer__icon--answered {
         display: none;
       }

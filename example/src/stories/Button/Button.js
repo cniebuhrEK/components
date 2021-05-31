@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Button as ButtonComponent } from 'components'
 
@@ -7,10 +7,8 @@ import { Button as ButtonComponent } from 'components'
  * Primary UI component for user interaction
  */
 export const Button = props => {
-  return (
-    <ButtonComponent {...props}>{props.children}</ButtonComponent>
-  );
-};
+  return <ButtonComponent {...props}>{props.children}</ButtonComponent>
+}
 
 Button.propTypes = {
   children: PropTypes.string,
@@ -23,7 +21,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
   autoFocus: PropTypes.bool
-};
+}
 
 Button.defaultProps = {
   disabled: false,
@@ -32,4 +30,4 @@ Button.defaultProps = {
   size: 'normal',
   variant: 'contained',
   color: 'orange'
-};
+}

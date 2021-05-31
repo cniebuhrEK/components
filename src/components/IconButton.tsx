@@ -47,7 +47,8 @@ export const StyledButton = styled.button`
   background-color: transparent;
   box-shadow: none;
   border: none;
-  transition: all 300ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${props =>
+    props.theme.transitions.easing.easeInOut} 0ms;
 
   svg {
     color: ${props => props.theme.palette.grey07};

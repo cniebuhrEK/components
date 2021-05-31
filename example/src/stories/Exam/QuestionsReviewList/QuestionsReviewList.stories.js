@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { ExamQuestionsReviewList as QuestionsReviewList } from './QuestionsReviewList';
+import { ExamQuestionsReviewList as QuestionsReviewList } from './QuestionsReviewList'
 
 export default {
   title: 'Exam/QuestionsReviewList',
   component: QuestionsReviewList
-};
+}
 
-const Template = (args) => <QuestionsReviewList {...args} />;
+const Template = args => <QuestionsReviewList {...args} />
 
-export const ExamQuestionsReviewList = Template.bind({});
+export const ExamQuestionsReviewList = Template.bind({})
 ExamQuestionsReviewList.args = {
   items: [
     {
@@ -377,4 +377,4 @@ ExamQuestionsReviewList.args = {
       displayName: 'Question 12'
     }
   ]
-};
+}

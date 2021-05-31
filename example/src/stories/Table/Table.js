@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { EntitiesList, Button, AddIcon } from 'components'
-import { headers, rows } from "./tableData";
+import { headers, rows } from './tableData'
 
 export const FullTable = props => {
-  const [tableState, setTableState] = useState({ sortBy: 'firstname', dir: 'DESC', page: 1 })
+  const [tableState, setTableState] = useState({
+    sortBy: 'firstname',
+    dir: 'DESC',
+    page: 1
+  })
 
   const handleTableStateChange = state => {
     setTableState(state)
@@ -14,13 +18,14 @@ export const FullTable = props => {
   return (
     <div>
       <div>
-        sortBy: {tableState.sortBy} dir: {tableState.dir} page: {tableState.page}
+        sortBy: {tableState.sortBy} dir: {tableState.dir} page:{' '}
+        {tableState.page}
       </div>
       <br />
       <br />
       <EntitiesList
         size={props.size}
-        resultsText={'40 admins'}
+        resultsText='40 admins'
         tableActions={<Button startIcon={<AddIcon />}>Add admin</Button>}
         headers={props.headers}
         rows={props.rows}
@@ -80,4 +85,4 @@ FullTable.defaultProps = {
   defaultSortDirection: 'DESC',
   size: 's',
   defaultPage: 1
-};
+}

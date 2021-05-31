@@ -1,13 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { UploadFile as UploadFileComponent } from 'components'
 
 export const UploadFile = props => {
-  return (
-    <UploadFileComponent {...props} />
-  );
-};
+  return <UploadFileComponent {...props} />
+}
 
 UploadFile.propTypes = {
   disabled: PropTypes.bool,
@@ -19,7 +17,7 @@ UploadFile.propTypes = {
   required: PropTypes.bool,
   error: PropTypes.bool,
   errorText: PropTypes.string
-};
+}
 
 UploadFile.defaultProps = {
   disabled: false,
@@ -31,4 +29,4 @@ UploadFile.defaultProps = {
   required: false,
   error: false,
   errorText: 'required field'
-};
+}

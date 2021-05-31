@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { ExamHeader as HeaderComponent } from 'components'
 
@@ -11,8 +11,8 @@ export const Header = props => {
     <>
       <HeaderComponent {...props} />
     </>
-  );
-};
+  )
+}
 
 Header.propTypes = {
   title: PropTypes.string,
@@ -21,7 +21,7 @@ Header.propTypes = {
   totalPages: PropTypes.number,
   timerVisibility: PropTypes.bool,
   pagesVisibility: PropTypes.bool
-};
+}
 
 Header.defaultProps = {
   title: 'Exam title',
@@ -30,5 +30,4 @@ Header.defaultProps = {
   totalPages: 59,
   timerVisibility: true,
   pagesVisibility: true
-};
-
+}

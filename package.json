@@ -5,6 +5,7 @@
   "author": "DeSmart",
   "license": "MIT",
   "repository": "https://git.desmart.com/examkrackers/components",
+  "homepage": "https://desmart.github.io/components",
   "main": "build/index.js",
   "module": "build/index.modern.js",
   "source": "src/index.tsx",
@@ -21,15 +22,18 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
+    "storybook:start": "start-storybook -p 6006 --static-dir public",
+    "storybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets && cp -R ../src/assets ./public",
     "predeploy": "cd example && yarn && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
-  "peerDependencies": {
-    "react": "^16.0.0"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "classnames": "^2.2.6",
+    "depcheck": "^1.4.1",
     "ramda": "^0.27.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-modal": "^3.12.1",
     "react-select": "^4.2.1",
     "react-tooltip": "^4.2.17",
@@ -37,13 +41,22 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.3",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/cli": "^6.2.9",
+    "@storybook/node-logger": "^6.1.21",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.1.21",
     "@types/jest": "^25.1.4",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^2.26.0",
     "@typescript-eslint/parser": "^2.26.0",
-    "babel-eslint": "^10.0.3",
+    "babel-loader": "8.1.0",
     "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
+    "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
@@ -55,13 +68,18 @@
     "eslint-plugin-standard": "^4.0.1",
     "fork-ts-checker-webpack-plugin": "^6.1.1",
     "gh-pages": "^2.2.0",
+    "jest": "26.6.0",
     "microbundle-crl": "^0.13.8",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react": "^17.0.1",
-    "react-dom": "^16.13.1",
     "react-scripts": "^4.0.3"
   },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "files": [
     "build"
   ]

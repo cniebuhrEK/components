@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { ResponseRequiredModal as ModalComponent } from 'components'
 
@@ -15,13 +15,10 @@ export const ResponseRequiredModal = props => {
   return (
     <>
       <div onClick={handleOpen}>Click here to open the modal</div>
-      <ModalComponent
-        open={isOpen || props.open}
-        handleClose={handleClose}
-      />
+      <ModalComponent open={isOpen || props.open} handleClose={handleClose} />
     </>
-  );
-};
+  )
+}
 
 ResponseRequiredModal.propTypes = {
   /**
@@ -32,7 +29,6 @@ ResponseRequiredModal.propTypes = {
    * triggers close of the modal
    */
   handleClose: PropTypes.func
-};
+}
 
-ResponseRequiredModal.defaultProps = {};
-
+ResponseRequiredModal.defaultProps = {}
