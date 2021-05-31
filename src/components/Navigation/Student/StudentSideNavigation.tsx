@@ -33,19 +33,25 @@ export const StudentSideNavigation = (
       <NavLinks>
         {links.length > 0 &&
           links.map(l => (
-            <Accordion key={l.exam_id} text={`${l.title} Score Report`}>
+            <Accordion
+              key={`exam-score-report-${l.exam_id}`}
+              text={`${l.title} Score Report`}
+            >
               <Accordion text='Answers / Graph'>
                 {l.sections.length > 0 ? (
                   l.sections.map(s => (
-                    <Accordion key={s.id} text={s.title}>
+                    <Accordion
+                      key={`section-answer-diagnostic-${s.id}`}
+                      text={s.title}
+                    >
                       <NavList>
                         <a
-                          href={`/exams/${l.exam_id}/score-report/${s.id}/answer-sheet`}
+                          href={`/exam/${l.exam_id}/score-report/${s.id}/answer-sheet`}
                         >
                           Answer Sheet
                         </a>
                         <a
-                          href={`/exams/${l.exam_id}/score-report/${s.id}/diagnostic`}
+                          href={`/exam/${l.exam_id}/score-report/${s.id}/diagnostic`}
                         >
                           Diagnostic
                         </a>
@@ -58,14 +64,17 @@ export const StudentSideNavigation = (
               </Accordion>
               <Accordion text='Score Projection'>
                 <NavList>
-                  <a key={1} href={`/exams/${l.exam_id}/score-projection`}>
+                  <a
+                    key={`full-mcat-projection-${l.exam_id}`}
+                    href={`/exam/${l.exam_id}/score-projection`}
+                  >
                     Full MCAT
                   </a>
 
                   {l.sections.map(s => (
                     <a
-                      key={s.id + 1}
-                      href={`/exams/${l.exam_id}/score-projection/${s.id}`}
+                      key={`section-projection-${s.id}`}
+                      href={`/exam/${l.exam_id}/score-projection/${s.id}`}
                     >
                       {s.title}
                     </a>
