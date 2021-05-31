@@ -16,7 +16,7 @@ export interface TableHeaderProps {
 
 export const SORT_DIRECTION = {
   asc: 'asc',
-  desc: 'desc',
+  desc: 'desc'
 }
 
 const TableHeader = (props: TableHeaderProps): JSX.Element => {
@@ -110,7 +110,7 @@ TableHeader.defaultProps = {
   sortDirection: SORT_DIRECTION.desc,
   sticky: false,
   isSortActive: false,
-  onChangeSort: () => {},
+  onChangeSort: () => {}
 }
 
 export default TableHeader

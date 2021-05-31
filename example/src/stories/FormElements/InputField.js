@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { InputField as InputComponent } from 'components'
 
@@ -7,10 +7,8 @@ import { InputField as InputComponent } from 'components'
  * Primary UI component for user interaction
  */
 export const Input = props => {
-  return (
-    <InputComponent {...props} />
-  );
-};
+  return <InputComponent {...props} />
+}
 
 Input.propTypes = {
   name: PropTypes.string,
@@ -36,7 +34,7 @@ Input.propTypes = {
    * translation handler, passed from i18n to translate the error key
    */
   t: PropTypes.func
-};
+}
 
 Input.defaultProps = {
   name: 'test',
@@ -50,4 +48,4 @@ Input.defaultProps = {
   disabled: false,
   reset: false,
   t: (key, options) => {}
-};
+}

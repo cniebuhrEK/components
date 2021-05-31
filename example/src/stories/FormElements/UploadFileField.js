@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { UploadFileField as InputComponent } from 'components'
 
@@ -7,10 +7,8 @@ import { UploadFileField as InputComponent } from 'components'
  * Primary UI component for user interaction
  */
 export const UploadFile = props => {
-  return (
-    <InputComponent {...props} />
-  );
-};
+  return <InputComponent {...props} />
+}
 
 UploadFile.propTypes = {
   name: PropTypes.string,
@@ -36,7 +34,7 @@ UploadFile.propTypes = {
    * translation handler, passed from i18n to translate the error key
    */
   t: PropTypes.func
-};
+}
 
 UploadFile.defaultProps = {
   name: 'test',
@@ -50,4 +48,4 @@ UploadFile.defaultProps = {
   disabled: false,
   reset: false,
   t: (key, options) => {}
-};
+}

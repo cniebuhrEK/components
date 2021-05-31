@@ -17,17 +17,8 @@ interface UploadFileProps {
 }
 
 export const UploadFileField = (props: UploadFileProps): JSX.Element => {
-  const {
-    name,
-    id,
-    onChange,
-    validate,
-    label,
-    required,
-    disabled,
-    reset,
-    t
-  } = props
+  const { name, id, onChange, validate, label, required, disabled, reset, t } =
+    props
   const [touched, _setTouched] = useState(false)
   const [value, _setValue] = useState(null)
   const [{ valid, error }, _validate] = useState({

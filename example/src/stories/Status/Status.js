@@ -1,13 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Status as StatusComponent } from 'components'
 
 export const Status = props => {
-  return (
-    <StatusComponent {...props} />
-  );
-};
+  return <StatusComponent {...props} />
+}
 
 Status.propTypes = {
   success: PropTypes.bool,
@@ -15,7 +13,7 @@ Status.propTypes = {
   error: PropTypes.bool,
   disabled: PropTypes.bool,
   status: PropTypes.string
-};
+}
 
 Status.defaultProps = {
   success: false,
@@ -23,4 +21,4 @@ Status.defaultProps = {
   error: false,
   disabled: false,
   status: 'Active'
-};
+}

@@ -19,8 +19,8 @@ export default {
     textShadow: '0 0'
   },
   typography: {
-    fontFamily: '\'Verdana\', \'Geneva\', sans-serif',
-    fontFamilySecondary: '\'Tahoma\', \'Geneva\', sans-serif',
-    fontFamilyTertiary: '\'Arial\', \'Helvetica\', sans-serif'
+    fontFamily: "'Verdana', 'Geneva', sans-serif",
+    fontFamilySecondary: "'Tahoma', 'Geneva', sans-serif",
+    fontFamilyTertiary: "'Arial', 'Helvetica', sans-serif"
   }
 }

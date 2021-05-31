@@ -1,16 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { UploadFile as UploadFileComponent } from './UploadFile';
+import { UploadFile as UploadFileComponent } from './UploadFile'
 
 export default {
   title: 'Atoms/File',
   component: UploadFileComponent
-};
+}
 
-const Template = (args) =>
-  <UploadFileComponent {...args} />;
+const Template = args => <UploadFileComponent {...args} />
 
-export const UploadFile = Template.bind({});
+export const UploadFile = Template.bind({})
 UploadFile.args = {
   disabled: false,
   onChange: () => {},
@@ -21,4 +20,4 @@ UploadFile.args = {
   required: false,
   error: false,
   errorText: 'required field'
-};
+}

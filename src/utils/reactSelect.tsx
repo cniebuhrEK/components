@@ -36,7 +36,7 @@ export const REACT_SELECT_STYLES = {
   control: (
     _provided,
     state: {
-      selectProps: { error: boolean; size: string, isSearchable: boolean }
+      selectProps: { error: boolean; size: string; isSearchable: boolean }
       isDisabled: boolean
     }
   ) => {

@@ -14,6 +14,7 @@ export const getHeadErrorOrEmptyObj = pipe(
   ifElse(isEmpty, always({}), head)
 )
 
-export const getOptionByValue = (value: string | number | boolean) => (
-  options: { label: string; value: string | number | boolean }[]
-) => pipe(find(propEq('value', value)))(options)
+export const getOptionByValue =
+  (value: string | number | boolean) =>
+  (options: { label: string; value: string | number | boolean }[]) =>
+    pipe(find(propEq('value', value)))(options)

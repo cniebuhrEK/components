@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { TimeExpiredModal as ModalComponent } from 'components'
 
@@ -21,8 +21,8 @@ export const TimeExpiredModal = props => {
         handleConfirm={props.handleConfirm}
       />
     </>
-  );
-};
+  )
+}
 
 TimeExpiredModal.propTypes = {
   /**
@@ -34,9 +34,8 @@ TimeExpiredModal.propTypes = {
    */
   handleClose: PropTypes.func,
   handleConfirm: PropTypes.func
-};
+}
 
 TimeExpiredModal.defaultProps = {
   handleConfirm: () => console.log('confirm')
-};
-
+}

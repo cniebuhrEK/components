@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { ExamQuestionsReviewList as ExamQuestionsReviewListComponent } from 'components'
 
@@ -11,12 +11,12 @@ export const ExamQuestionsReviewList = props => {
     <>
       <ExamQuestionsReviewListComponent {...props} />
     </>
-  );
-};
+  )
+}
 
 ExamQuestionsReviewList.propTypes = {
   items: PropTypes.array
-};
+}
 
 ExamQuestionsReviewList.defaultProps = {
   items: [
@@ -49,4 +49,4 @@ ExamQuestionsReviewList.defaultProps = {
       displayName: 'Question 4'
     }
   ]
-};
+}

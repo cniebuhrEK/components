@@ -8,7 +8,9 @@ interface ReviewIncompleteButtonProps {
   onClick: (e) => any
 }
 
-const ReviewIncompleteButton = (props: ReviewIncompleteButtonProps): JSX.Element => {
+const ReviewIncompleteButton = (
+  props: ReviewIncompleteButtonProps
+): JSX.Element => {
   const handleKeyboardShortcut = e => {
     if (CHECK_SHORTCUT(e).altI) {
       props.onClick(e)

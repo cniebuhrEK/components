@@ -53,7 +53,7 @@ export function ReactModalAdapter({
 export const StyledReactModal = styled(ReactModalAdapter).attrs({
   overlayClassName: 'Overlay',
   modalClassName: 'Modal',
-  portalClassName: 'Portal',
+  portalClassName: 'Portal'
 })`
   & .Overlay {
     position: fixed;

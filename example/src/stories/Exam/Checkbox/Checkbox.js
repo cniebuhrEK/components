@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { ExamCheckbox as ExamCheckboxComponent } from 'components'
 
@@ -13,19 +13,23 @@ export const ExamCheckbox = props => {
 
   return (
     <>
-      <ExamCheckboxComponent {...props} isSelected={checked} onChange={onChange} />
+      <ExamCheckboxComponent
+        {...props}
+        isSelected={checked}
+        onChange={onChange}
+      />
     </>
-  );
-};
+  )
+}
 
 ExamCheckbox.propTypes = {
   name: PropTypes.string,
   isSelected: PropTypes.bool,
   onChange: PropTypes.func
-};
+}
 
 ExamCheckbox.defaultProps = {
   name: 'question',
   isSelected: true,
   onChange: () => {}
-};
+}

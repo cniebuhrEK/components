@@ -45,7 +45,7 @@ export const InputField = (props: InputProps): JSX.Element => {
   const [value, _setValue] = useState(initialValue)
   const [{ valid, error }, _validate] = useState({
     valid: true,
-    error: {},
+    error: {}
   })
 
   useEffect(() => {
@@ -97,7 +97,7 @@ export const InputField = (props: InputProps): JSX.Element => {
 InputField.defaultProps = {
   value: '',
   onChange: () => {},
-  validate: () => {},
+  validate: () => {}
 }
 
 export default InputField

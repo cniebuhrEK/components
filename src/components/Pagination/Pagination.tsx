@@ -105,7 +105,7 @@ const StyledPagination = styled.ul`
   margin: 0;
   width: 100%;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size:  ${props => props.theme.typography.fontSizeSmall};
+  font-size: ${props => props.theme.typography.fontSizeSmall};
 
   li {
     list-style-type: none;

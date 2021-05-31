@@ -44,5 +44,4 @@ export default styled.div`
       box-shadow: 0 -${props => props.size || 4}px 0 0;
     }
   }
-
 `

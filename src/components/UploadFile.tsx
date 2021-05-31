@@ -15,16 +15,8 @@ interface UploadFileProps {
 }
 
 const UploadFile = (props: UploadFileProps): JSX.Element => {
-  const {
-    onChange,
-    reset,
-    id,
-    label,
-    required,
-    errorText,
-    error,
-    disabled
-  } = props
+  const { onChange, reset, id, label, required, errorText, error, disabled } =
+    props
   const [file, setFile] = useState(null)
 
   useEffect(() => {

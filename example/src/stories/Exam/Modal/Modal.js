@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { ExamModal as ModalComponent } from 'components'
 
@@ -23,8 +23,8 @@ export const Modal = props => {
         {props.children}
       </ModalComponent>
     </>
-  );
-};
+  )
+}
 
 Modal.propTypes = {
   /**
@@ -42,10 +42,9 @@ Modal.propTypes = {
   /**
    * EndExamModal content
    */
-  children: PropTypes.string,
-};
+  children: PropTypes.string
+}
 
 Modal.defaultProps = {
   title: 'EndExamModal title'
-};
-
+}

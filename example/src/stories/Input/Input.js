@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { Input as InputComponent } from 'components'
 
@@ -7,10 +7,8 @@ import { Input as InputComponent } from 'components'
  * Primary UI component for user interaction
  */
 export const Input = props => {
-  return (
-    <InputComponent {...props} />
-  );
-};
+  return <InputComponent {...props} />
+}
 
 Input.propTypes = {
   /**
@@ -61,7 +59,7 @@ Input.propTypes = {
    * onFocus handler
    */
   onFocus: PropTypes.func
-};
+}
 
 Input.defaultProps = {
   label: 'Test',
@@ -74,4 +72,4 @@ Input.defaultProps = {
   onFocus: () => {},
   onBlur: () => {},
   inputProps: {}
-};
+}

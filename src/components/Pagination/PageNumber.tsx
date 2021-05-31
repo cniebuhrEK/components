@@ -17,17 +17,22 @@ const PageNumber = (props: PageNumberProps): JSX.Element => {
   const pageClass = cx({
     page_number: true,
     'page_number--last': isLast,
-    'page_number--first': isFirst,
+    'page_number--first': isFirst
   })
 
-  const getTitleIfString = typeof children === 'string' ? `Page number: ${children}` : 'Page number'
+  const getTitleIfString =
+    typeof children === 'string' ? `Page number: ${children}` : 'Page number'
 
   return (
     <StyledPageNumber id={id} onClick={onClick}>
       {isCurrent ? (
-        <span title={getTitleIfString} className='page_number--current'>{children}</span>
+        <span title={getTitleIfString} className='page_number--current'>
+          {children}
+        </span>
       ) : (
-        <span title={getTitleIfString} className={pageClass}>{children}</span>
+        <span title={getTitleIfString} className={pageClass}>
+          {children}
+        </span>
       )}
     </StyledPageNumber>
   )
@@ -47,7 +52,7 @@ const StyledPageNumber = styled.li`
     line-height: 16px;
     display: inline-block;
     text-align: center;
-    font-size:  ${props => props.theme.typography.fontSizeSmall};
+    font-size: ${props => props.theme.typography.fontSizeSmall};
     color: ${props => props.theme.palette.brown01};
     transition: all 0.2s ${props => props.theme.transitions.easing.easeInOut} 0s;
 
@@ -64,7 +69,7 @@ const StyledPageNumber = styled.li`
   .page_number--last {
     margin-left: 28px;
     position: relative;
-    font-size:  ${props => props.theme.typography.fontSizeSmall};
+    font-size: ${props => props.theme.typography.fontSizeSmall};
     line-height: 16px;
 
     &:before {
@@ -84,7 +89,7 @@ const StyledPageNumber = styled.li`
   .page_number--first {
     margin-right: 28px;
     position: relative;
-    font-size:  ${props => props.theme.typography.fontSizeSmall};
+    font-size: ${props => props.theme.typography.fontSizeSmall};
     line-height: 16px;
 
     &:after {

@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import { PauseExam as PauseExamComponent } from 'components'
 
@@ -11,14 +11,13 @@ export const PauseExam = props => {
     <>
       <PauseExamComponent {...props} />
     </>
-  );
-};
+  )
+}
 
 PauseExam.propTypes = {
   handlePause: PropTypes.func
-};
+}
 
 PauseExam.defaultProps = {
-  handlePause: (e) => {}
-};
-
+  handlePause: e => {}
+}

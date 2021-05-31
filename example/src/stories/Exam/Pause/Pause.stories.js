@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { PauseExam } from './Pause';
+import { PauseExam } from './Pause'
 
 export default {
   title: 'Exam/Pause',
   component: PauseExam
-};
+}
 
-const Template = (args) => <PauseExam {...args} />;
+const Template = args => <PauseExam {...args} />
 
-export const ExamPause = Template.bind({});
+export const ExamPause = Template.bind({})
 ExamPause.args = {
-  handlePause: (e) => {}
-};
+  handlePause: e => {}
+}

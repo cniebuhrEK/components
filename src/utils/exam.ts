@@ -7,7 +7,8 @@ function componentFromStr(numStr, percent) {
     : Math.min(255, num)
 }
 
-const rgbRegex = /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/
+const rgbRegex =
+  /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/
 const hexRegex = /^#?([a-f\d]{6})$/
 const shortHexRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/
 
@@ -103,7 +104,7 @@ export function highlight(colour) {
 
 // @ts-ignore
 // eslint-disable-next-line no-unused-vars
-let getComputedStyleProperty
+export let getComputedStyleProperty
 
 if (typeof window.getComputedStyle !== 'undefined') {
   getComputedStyleProperty = function (el, propName) {

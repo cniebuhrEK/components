@@ -57,7 +57,7 @@ const StyledToast = styled.div`
   right: 20px;
   padding: 4px 14px 4px 4px;
   font-family: ${props => props.theme.typography.fontFamily};
-  font-size:  ${props => props.theme.typography.fontSizeSmall};
+  font-size: ${props => props.theme.typography.fontSizeSmall};
   min-width: 300px;
   max-width: 350px;
   z-index: ${props => props.theme.zIndex.snackbar};
@@ -77,7 +77,7 @@ const StyledToast = styled.div`
         return props.theme.palette.grey09
     }
   }};
-  color: ${props => (props.theme.palette.brown01)};
+  color: ${props => props.theme.palette.brown01};
   border-radius: ${props => props.theme.shape.borderRadiusBig};
   opacity: ${props => (props.open ? '1' : '0')};
   transform: ${props => (props.open ? 'none' : 'scale(0.75, 0.75)')};
