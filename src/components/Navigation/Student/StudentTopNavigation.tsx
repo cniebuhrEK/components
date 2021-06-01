@@ -19,7 +19,7 @@ export const StudentTopNavigation = (
         <img src='/assets/logo/LogoDarkBg.svg' alt='logo icon' />
       </NavbarLogo>
       <NavbarLinks>
-        <a href='/exams'>Student Exams</a>
+        <Link href='/exams'>Student Exams</Link>
       </NavbarLinks>
       <NavbarRight>
         <NavbarUser>
@@ -59,9 +59,17 @@ const NavbarLinks = styled.div`
   flex: 1 1 auto;
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   padding: 0 32px;
+  text-decoration: none;
+`
 
-  a:hover {
+const Link = styled.a`
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  text-decoration: none;
+  letter-spacing: -0.1px;
+
+  &:hover {
     color: ${({ theme }) => theme.palette.white};
+    text-decoration: none;
   }
 `
 
@@ -96,14 +104,12 @@ const LogoutButton = styled.div`
 
   &:hover {
     color: ${({ theme }) => theme.palette.white};
-    text-decoration: underline;
   }
 `
 
 StudentTopNavigation.defaultProps = {
   username: 'error',
-  avatar:
-    'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
+  avatar: '/assets/illustrations/AvatarPlaceholder.png',
   logoutName: 'Log out',
   handleLogout: () => {}
 }
