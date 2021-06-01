@@ -76,9 +76,9 @@ export default {
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
-    fontSizeNormal: '16px',
-    fontSizeSmall: '14px',
-    fontSizeExtraSmall: '12px'
+    fontSizeNormal: '1rem',
+    fontSizeSmall: '0.875rem',
+    fontSizeExtraSmall: '0.75rem'
   },
   dimensions: {
     inputHeight: '43px',
