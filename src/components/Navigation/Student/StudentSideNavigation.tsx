@@ -99,7 +99,7 @@ const NavList = styled.div`
 
   a {
     color: ${({ theme }) => theme.palette.white};
-    font-size: 1.2rem;
+    font-size: 1rem;
     padding: 4px;
     text-decoration: none;
   }
