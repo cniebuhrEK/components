@@ -11,7 +11,9 @@ const Template = args => <StudentTopNavigationComponent {...args} />
 
 export const StudentTopNavigation = Template.bind({})
 StudentTopNavigation.args = {
-  username: 'Hi, Username',
+  username: 'username',
+  avatar:
+    'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
   logoutName: 'Log out',
   handleLogout: () => {}
 }

@@ -27,9 +27,6 @@ export const StudentSideNavigation = (
 
   return (
     <Container>
-      <div className='side-nav__logo-container'>
-        <img className='side-nav__logo' src='/assets/logo/LogoDarkBg.svg' />
-      </div>
       <NavLinks>
         {links.length > 0 &&
           links.map(l => (
@@ -94,14 +91,6 @@ const Container = styled.div`
   height: 100vh;
   width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
   overflow: auto;
-
-  .side-nav__logo-container {
-    padding: 0 20px 12px;
-  }
-
-  .side-nav__logo {
-    max-height: 32px;
-  }
 `
 
 const NavList = styled.div`
