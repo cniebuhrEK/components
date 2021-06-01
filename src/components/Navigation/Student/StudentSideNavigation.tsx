@@ -98,13 +98,16 @@ const NavList = styled.div`
   flex-flow: column;
 
   a {
-    text-decoration: none;
+    color: ${({ theme }) => theme.palette.white};
     font-size: 1.2rem;
     padding: 4px;
+    text-decoration: none;
   }
 
   a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 400;
+    text-decoration: none;
   }
 `
 
