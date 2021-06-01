@@ -10,9 +10,11 @@ export default {
     grey08: '#E7E6E5',
     grey09: '#F0EFEE',
     grey10: '#F2F1F0',
+    grey11: '#F2F2F2',
     biege: '#FCFBFA',
     orange04: '#FAAD4C',
     orange05: '#FF9E33',
+    orange08: '#FFD5BB',
     orange09: '#FFC488',
     orange10: '#FFE6C6',
     orange11: '#FFE6C7',
@@ -29,6 +31,7 @@ export default {
     gray1: '#2E2D2C',
     gray2: '#343432',
     gray3: '#848484',
+    gray4: '#4D4D4D',
     overlay: 'rgba(0, 0, 0, 0.6)'
   },
   shape: {
