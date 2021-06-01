@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { StudentTopNavigation as StudentTopNavigationComponent } from './StudentTopNavigation'
 
 export default {
@@ -11,7 +10,8 @@ const Template = args => <StudentTopNavigationComponent {...args} />
 
 export const StudentTopNavigation = Template.bind({})
 StudentTopNavigation.args = {
-  username: 'Hi, Username',
+  username: 'username',
+  avatar: '/assets/illustrations/AvatarPlaceholder.png',
   logoutName: 'Log out',
   handleLogout: () => {}
 }

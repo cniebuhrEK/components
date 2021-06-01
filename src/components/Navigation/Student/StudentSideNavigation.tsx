@@ -27,9 +27,6 @@ export const StudentSideNavigation = (
 
   return (
     <Container>
-      <div className='side-nav__logo-container'>
-        <img className='side-nav__logo' src='/assets/logo/LogoDarkBg.svg' />
-      </div>
       <NavLinks>
         {links.length > 0 &&
           links.map(l => (
@@ -94,14 +91,6 @@ const Container = styled.div`
   height: 100vh;
   width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
   overflow: auto;
-
-  .side-nav__logo-container {
-    padding: 0 20px 12px;
-  }
-
-  .side-nav__logo {
-    max-height: 32px;
-  }
 `
 
 const NavList = styled.div`
@@ -109,13 +98,16 @@ const NavList = styled.div`
   flex-flow: column;
 
   a {
-    text-decoration: none;
+    color: ${({ theme }) => theme.palette.white};
     font-size: 1.2rem;
     padding: 4px;
+    text-decoration: none;
   }
 
   a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
+    font-weight: 400;
+    text-decoration: none;
   }
 `
 
