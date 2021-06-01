@@ -2,6 +2,7 @@
 
 export { default as AddIcon } from './Add'
 export { default as ArrowDownIcon } from './ArrowDown'
+export { default as ArrowRightIcon } from './ArrowRight'
 export { default as CloseIcon } from './Close'
 export { default as EyeIcon } from './Eye'
 export { default as HideIcon } from './Hide'

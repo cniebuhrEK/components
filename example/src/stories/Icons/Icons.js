@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {
   AddIcon,
   ArrowDownIcon,
+  ArrowRightIcon,
   CloseIcon,
   EyeIcon,
   HideIcon,
@@ -35,6 +36,8 @@ export const Icons = props => {
       <AddIcon /> &nbsp;&nbsp;AddIcon <br />
       <br />
       <ArrowDownIcon /> &nbsp;&nbsp;ArrowDownIcon <br />
+      <br />
+      <ArrowRightIcon /> &nbsp;&nbsp;ArrowRightIcon <br />
       <br />
       <CloseIcon /> &nbsp;&nbsp;CloseIcon <br />
       <br />

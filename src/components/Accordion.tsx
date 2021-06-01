@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ArrowDown from '../icons/ArrowDown'
+import ArrowRight from '../icons/ArrowRight'
+
 interface AccordionProps {
   children?: JSX.Element[] | JSX.Element | string
   text: string
@@ -20,29 +23,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
   return (
     <AccordionContainer light={light}>
       <AccordionButton onClick={onClick}>
-        {open ? (
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            height='24px'
-            viewBox='0 0 24 24'
-            width='20px'
-            fill='#FF9E33'
-          >
-            <path d='M0 0h24v24H0V0z' fill='none' />
-            <path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z' />
-          </svg>
-        ) : (
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            height='24px'
-            viewBox='0 0 24 24'
-            width='20px'
-            fill='#FF9E33'
-          >
-            <path d='M0 0h24v24H0V0z' fill='none' />
-            <path d='M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z' />
-          </svg>
-        )}
+        {open ? <ArrowDown /> : <ArrowRight />}
         <p>{text}</p>
       </AccordionButton>
       {open && <AccordionChildren>{children}</AccordionChildren>}
@@ -67,8 +48,13 @@ const AccordionButton = styled.div`
   padding: 4px;
 
   p {
-    font-size: 1.2rem;
+    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
     user-select: none;
+  }
+
+  svg {
+    color: ${({ theme }) => theme.palette.orange05};
+    font-size: 1.5rem;
   }
 
   &:hover {
