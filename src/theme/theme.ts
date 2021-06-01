@@ -5,6 +5,7 @@ export default {
     brown01: '#2E241F',
     brown02: '#58453B',
     brown03: '#6F574D',
+    grey05: '#AAAAAA',
     grey06: '#464240',
     grey07: '#9F9F9F',
     grey08: '#E7E6E5',
