@@ -92,7 +92,8 @@ const AccordionButton = styled.div`
 `
 
 const AccordionChildren = styled.div`
-  visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
+  position: ${({ active }) => (active ? 'relative' : 'absolute')};
+  left: ${({ active }) => (active ? '0' : '-99999px')};
 `
 
 export default Accordion
