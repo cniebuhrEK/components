@@ -77,7 +77,7 @@ const AccordionButton = styled.div`
   padding: ${({ pad }) => `4px 4px 4px ${pad}px`};
 
   p {
-    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+    font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     user-select: none;
   }
 
