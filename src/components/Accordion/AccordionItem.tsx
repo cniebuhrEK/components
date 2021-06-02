@@ -14,7 +14,7 @@ const AccordionItemContainer = styled.div`
   &:hover::after {
     content: '';
     position: absolute;
-    width: 2px;
+    width: 3px;
     height: 100%;
     top: 0px;
     left: 8px;
@@ -26,7 +26,7 @@ const AccordionItem = ({ children, light }) => {
   const { level } = React.useContext(AccordionContext)
 
   return (
-    <AccordionItemContainer pad={level * 18} light={light}>
+    <AccordionItemContainer pad={(level + 1) * 20} light={light}>
       {children}
     </AccordionItemContainer>
   )

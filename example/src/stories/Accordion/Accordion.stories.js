@@ -8,9 +8,11 @@ export default {
 
 const Template = args => (
   <Component {...args}>
-    <Component text='Accordion 2' light={args.light} level={2}>
-      <Component text='Accordion 3' light={args.light} level={3}>
-        <AccordionItem light={args.light}>Hello, world!</AccordionItem>
+    <Component text='Accordion 2' light={args.light} level={1}>
+      <Component text='Accordion 3' light={args.light} level={2}>
+        <AccordionItem light={args.light}>
+          <p className={args.active ? '--isActive' : ''}>Hello, world!</p>
+        </AccordionItem>
       </Component>
     </Component>
   </Component>
@@ -20,5 +22,6 @@ export const Accordion = Template.bind({})
 Accordion.args = {
   text: 'Accordion',
   light: true,
-  level: 1
+  level: 0,
+  active: false
 }

@@ -18,24 +18,25 @@ interface AccordionProps {
   // The section is open?
   active: boolean
 
-  // Show the arrow icon?
-  arrow: boolean
-
   // What level of nesting are we at?
   level: number
 }
 
 // Collapsable and expandable accordion
 const Accordion = (props: AccordionProps): JSX.Element => {
-  const { children, text, light, active, arrow, level } = props
+  const { children, text, light, active, level } = props
   const [open, setOpen] = React.useState<boolean>(active)
   const ref = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {
-    if (ref.current && ref.current.getElementsByClassName('active')) {
-      setOpen(true)
+    if (ref.current) {
+      const tmp = ref.current.querySelector('.--isActive')
+
+      if (tmp) {
+        setOpen(true)
+      }
     }
-  }, [])
+  }, [children])
 
   function onClick(e: any): void {
     e.preventDefault()
@@ -46,10 +47,12 @@ const Accordion = (props: AccordionProps): JSX.Element => {
     <AccordionContext.Provider value={{ level }}>
       <AccordionContainer light={light}>
         <AccordionButton pad={20 * level} onClick={onClick}>
-          {open && arrow ? <ArrowDown /> : <ArrowRight />}
+          {open ? <ArrowDown /> : <ArrowRight />}
           <p>{text}</p>
         </AccordionButton>
-        <AccordionChildren ref={ref}>{open && children}</AccordionChildren>
+        <AccordionChildren ref={ref} active={open}>
+          {children}
+        </AccordionChildren>
       </AccordionContainer>
     </AccordionContext.Provider>
   )
@@ -59,8 +62,7 @@ Accordion.defaultProps = {
   text: 'Accordion',
   light: false,
   active: false,
-  arrow: true,
-  level: 1
+  level: 0
 }
 
 const AccordionContainer = styled.div`
@@ -72,8 +74,7 @@ const AccordionButton = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 4px;
-  padding-left: ${({ pad }) => `${pad}px`};
+  padding: ${({ pad }) => `4px 4px 4px ${pad}px`};
 
   p {
     font-size: ${({ theme }) => theme.typography.fontSizeNormal};
@@ -90,6 +91,8 @@ const AccordionButton = styled.div`
   }
 `
 
-const AccordionChildren = styled.div``
+const AccordionChildren = styled.div`
+  visibility: ${({ active }) => (active ? 'visible' : 'hidden')};
+`
 
 export default Accordion
