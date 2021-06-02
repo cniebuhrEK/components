@@ -6,6 +6,7 @@ export * from './Navigation'
 export * from './Pagination'
 export * from './Table'
 export * from './Typography'
+export * from './Accordion'
 
 // Uncategorized component exports
 export { default as Button } from './Button'
@@ -21,4 +22,3 @@ export { default as Status } from './Status'
 export { default as Tooltip } from './Tooltip'
 export { default as Loader } from './Loader'
 export { default as MediaControl } from './MediaControl'
-export { default as Accordion } from './Accordion'
