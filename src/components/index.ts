@@ -7,6 +7,7 @@ export * from './Pagination'
 export * from './Table'
 export * from './Typography'
 export * from './Accordion'
+export * from './Tabs'
 
 // Uncategorized component exports
 export { default as Button } from './Button'
