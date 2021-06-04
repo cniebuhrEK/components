@@ -8,6 +8,7 @@ export * from './Table'
 export * from './Typography'
 export * from './Accordion'
 export * from './Tabs'
+export * from './Breadcrumbs'
 
 // Uncategorized component exports
 export { default as Button } from './Button'
