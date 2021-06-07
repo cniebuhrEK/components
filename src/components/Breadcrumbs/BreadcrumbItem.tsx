@@ -16,6 +16,11 @@ const BreadcrumbItem = (props: BreadcrumbItemProps): JSX.Element => {
   )
 }
 
+BreadcrumbItem.defaultProps = {
+  children: [],
+  active: false
+}
+
 const BreadcrumbItemContainer = styled.div`
   a {
     color: ${({ theme }) => theme.palette.black};
