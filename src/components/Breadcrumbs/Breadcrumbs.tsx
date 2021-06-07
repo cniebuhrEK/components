@@ -11,9 +11,21 @@ const Breadcrumbs = ({ children }): JSX.Element => {
   return (
     <BreadcrumbContainer>
       {children
-        .map((child: JSX.Element, i: number) => (
-          <BreadcrumbItem key={`breadcrumb-item-${i}`}>{child}</BreadcrumbItem>
-        ))
+        .map((child: JSX.Element, i: number) => {
+          if (i < children.length - 1) {
+            return (
+              <BreadcrumbItem key={`breadcrumb-item-${i}`}>
+                {child}
+              </BreadcrumbItem>
+            )
+          }
+
+          return (
+            <BreadcrumbItem key={`breadcrumb-item-${i}`} active>
+              {child}
+            </BreadcrumbItem>
+          )
+        })
         .reduce((acc, child: JSX.Element, i: number) => {
           if (i < children.length - 1) {
             acc.push(
