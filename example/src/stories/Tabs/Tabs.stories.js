@@ -8,10 +8,10 @@ export default {
 
 const Template = args => (
   <Component {...args}>
-    <div className='item' label='Answer Sheet'>
+    <div className='item' data-label='Answer Sheet'>
       The view for tab1 should now be visible.
     </div>
-    <div className='item' label='Diagnostic'>
+    <div className='item' data-label='Diagnostic'>
       The view for tab2 should now be visible.
     </div>
   </Component>

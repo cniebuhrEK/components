@@ -4,7 +4,7 @@ import Tab from './Tab'
 
 export const Tabs = ({ children }) => {
   const [activeTab, setActiveTab] = React.useState<string>(
-    children[0].props.label
+    children[0].props['data-label']
   )
   return (
     <TabsContainer>
@@ -12,15 +12,15 @@ export const Tabs = ({ children }) => {
         {children.map((child: JSX.Element) => (
           <Tab
             activeTab={activeTab}
-            key={child.props.label}
-            label={child.props.label}
+            key={child.props['data-label']}
+            label={child.props['data-label']}
             onClick={(tab: string) => setActiveTab(tab)}
           />
         ))}
       </TabsHeader>
       <TabContent>
         {children.map((child: JSX.Element) => {
-          if (child.props.label !== activeTab) {
+          if (child.props['data-label'] !== activeTab) {
             return undefined
           }
 
