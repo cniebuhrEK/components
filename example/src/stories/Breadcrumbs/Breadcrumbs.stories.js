@@ -17,7 +17,7 @@ const Template = args => (
     <BreadcrumbItem>
       <a href='/link3'>Link 3</a>
     </BreadcrumbItem>
-    <BreadcrumbItem>
+    <BreadcrumbItem active>
       <a href='/link4'>Link 4</a>
     </BreadcrumbItem>
   </Component>
