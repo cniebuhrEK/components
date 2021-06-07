@@ -45,9 +45,10 @@ const Breadcrumbs = ({ children }): JSX.Element => {
 }
 
 const BreadcrumbContainer = styled.ol`
+  padding: 0;
   list-style: none;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 `
 
 const SeperatorContainer = styled.li`
