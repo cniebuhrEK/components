@@ -1,14 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const BreadcrumbItem = ({ children, ...props }): JSX.Element => (
-  <BreadcrumbItemContainer {...props}>{children}</BreadcrumbItemContainer>
-)
+interface BreadcrumbItemProps {
+  children: JSX.Element[] | JSX.Element | null
+  active: boolean
+}
+
+const BreadcrumbItem = (props: BreadcrumbItemProps): JSX.Element => {
+  const { children, active } = props
+
+  return (
+    <BreadcrumbItemContainer active={active}>
+      {children}
+    </BreadcrumbItemContainer>
+  )
+}
 
 const BreadcrumbItemContainer = styled.div`
   a {
     color: ${({ theme }) => theme.palette.black};
     text-decoration: none;
+    font-weight: ${({ active }) => (active ? '600' : '400')};
   }
 
   a:hover {
