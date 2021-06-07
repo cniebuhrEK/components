@@ -48,6 +48,7 @@ const StudentTopNavigationContainer = styled.div`
 const NavbarLogo = styled.div`
   display: flex;
   height: 100%;
+  width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
   color: ${({ theme }) => theme.palette.biege};
 
   img {
@@ -59,7 +60,6 @@ const NavbarLinks = styled.div`
   color: ${({ theme }) => theme.palette.white};
   flex: 1 1 auto;
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  padding: 0 32px;
   text-decoration: none;
 `
 
