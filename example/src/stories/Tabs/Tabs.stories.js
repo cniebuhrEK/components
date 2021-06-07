@@ -6,7 +6,7 @@ export default {
   component: Component
 }
 
-const Template = args => (
+const MultipleTemplate = args => (
   <Component {...args}>
     <div className='item' data-label='Answer Sheet'>
       The view for tab1 should now be visible.
@@ -17,5 +17,14 @@ const Template = args => (
   </Component>
 )
 
-export const Tabs = Template.bind({})
-Tabs.args = {}
+const SingleTemplate = args => (
+  <Component {...args}>
+    <div className='item' data-label='Answer Sheet'>
+      The view for tab1 should now be visible.
+    </div>
+  </Component>
+)
+
+export const Multiple = MultipleTemplate.bind({})
+export const Single = SingleTemplate.bind({})
+Multiple.args = {}

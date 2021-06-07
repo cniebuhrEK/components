@@ -2,14 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import Tab from './Tab'
 
-export const Tabs = ({ children }) => {
+interface TabsProps {
+  children: React.ReactNode
+}
+
+export const Tabs = (props: TabsProps) => {
+  const children: any = React.Children.toArray(props.children)
   const [activeTab, setActiveTab] = React.useState<string>(
     children[0].props['data-label']
   )
+
   return (
     <TabsContainer>
       <TabsHeader>
-        {children.map((child: JSX.Element) => (
+        {children.map((child: any) => (
           <Tab
             activeTab={activeTab}
             key={child.props['data-label']}
@@ -19,7 +25,7 @@ export const Tabs = ({ children }) => {
         ))}
       </TabsHeader>
       <TabContent>
-        {children.map((child: JSX.Element) => {
+        {children.map((child: any) => {
           if (child.props['data-label'] !== activeTab) {
             return undefined
           }
@@ -28,6 +34,14 @@ export const Tabs = ({ children }) => {
         })}
       </TabContent>
     </TabsContainer>
+  )
+}
+
+Tabs.defaultProps = {
+  children: (
+    <div className='tab-panel' data-label='Default'>
+      Please add some child elements to create tabs.
+    </div>
   )
 }
 
