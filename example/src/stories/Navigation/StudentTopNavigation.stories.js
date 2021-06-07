@@ -1,17 +1,17 @@
 import React from 'react'
-import { StudentTopNavigation as StudentTopNavigationComponent } from './StudentTopNavigation'
+import { StudentTopNavigation as Component } from 'components'
 
 export default {
   title: 'Atoms/Navigation',
-  component: StudentTopNavigationComponent
+  component: Component
 }
 
-const Template = args => <StudentTopNavigationComponent {...args} />
+const Template = args => <Component {...args} />
 
 export const StudentTopNavigation = Template.bind({})
 StudentTopNavigation.args = {
-  username: 'username',
   avatar: '/assets/illustrations/AvatarPlaceholder.png',
-  logoutName: 'Log out',
+  helloText: 'Hi, user',
+  logoutText: 'Log out',
   handleLogout: () => {}
 }

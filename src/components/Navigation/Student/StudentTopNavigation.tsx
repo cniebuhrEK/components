@@ -2,16 +2,17 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface StudentTopNavigationProps {
-  username: string
   avatar: string
-  logoutName: string
+  username: string
+  helloText: string
+  logoutText: string
   handleLogout: () => void
 }
 
 export const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { username, avatar, logoutName, handleLogout } = props
+  const { avatar, helloText, logoutText, handleLogout } = props
 
   return (
     <StudentTopNavigationContainer>
@@ -19,15 +20,15 @@ export const StudentTopNavigation = (
         <img src='/assets/logo/LogoDarkBg.svg' alt='logo icon' />
       </NavbarLogo>
       <NavbarLinks>
-        <Link href='/exams'>Student Exams</Link>
+        <Link href='/exams'>Practice Exams</Link>
       </NavbarLinks>
       <NavbarRight>
         <NavbarUser>
           <NavbarUserIcon src={avatar} alt='profile icon' />
-          <p>{`Hi, ${username}`}</p>
+          <p>{helloText}</p>
         </NavbarUser>
       </NavbarRight>
-      <LogoutButton onClick={handleLogout}>{logoutName}</LogoutButton>
+      <LogoutButton onClick={handleLogout}>{logoutText}</LogoutButton>
     </StudentTopNavigationContainer>
   )
 }
@@ -110,7 +111,8 @@ const LogoutButton = styled.div`
 StudentTopNavigation.defaultProps = {
   username: 'error',
   avatar: '/assets/illustrations/AvatarPlaceholder.png',
-  logoutName: 'Log out',
+  logoutText: 'Log out',
+  helloText: 'Hi, Username',
   handleLogout: () => {}
 }
 
