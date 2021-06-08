@@ -82,6 +82,8 @@ const Input = ({
         onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        // @ts-ignore
+        onWheel={e => e.target.blur()}
         {...inputProps}
         {...rest}
       />
