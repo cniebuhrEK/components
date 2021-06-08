@@ -75,11 +75,6 @@ export default createGlobalStyle`
       text-decoration: none;
       background-color: transparent;
       transition: color 0.2s ease-in-out;
-
-    &:hover {
-        font-weight: 600;
-        text-decoration: underline;
-      }
     }
 
     input:-webkit-autofill {
