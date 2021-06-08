@@ -28,7 +28,6 @@ const TabContainer = styled.li`
   }
 
   &.--isActive {
-    background-color: white;
     border: solid #fb9e34;
     border-width: 0px 0px 3px 0px;
     font-weight: 600;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Tab from './Tab'
 
 interface TabsProps {
-  children: React.ReactNode
+  children: JSX.Element[] | JSX.Element | undefined
 }
 
 export const Tabs = (props: TabsProps) => {
