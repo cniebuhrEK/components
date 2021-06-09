@@ -24,7 +24,9 @@ import {
   PlusIcon,
   ScoreIcon,
   ArrowUpFilledIcon,
-  ArrowDownFilledIcon
+  ArrowDownFilledIcon,
+  MCATIcon,
+  MiniMCATIcon
 } from 'components'
 
 /**
@@ -78,6 +80,10 @@ export const Icons = props => {
       <ArrowUpFilledIcon /> &nbsp;&nbsp;ArrowUpFilledIcon <br />
       <br />
       <ArrowDownFilledIcon /> &nbsp;&nbsp;ArrowDownFilledIcon <br />
+      <br />
+      <MCATIcon /> &nbsp;&nbsp;MCATIcon <br />
+      <br />
+      <MiniMCATIcon /> &nbsp;&nbsp;MiniMCATIcon <br />
       <br />
     </IconsContainer>
   )
