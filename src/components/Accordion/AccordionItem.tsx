@@ -6,12 +6,14 @@ const AccordionItemContainer = styled.div`
   position: relative;
   padding: ${({ pad }) => ` 4px 4px 4px ${pad}px`};
 
-  &:hover {
+  &:hover,
+  &.--isActive {
     background-color: ${({ light }) =>
       light ? 'rgba(0, 0, 0, 0.25)' : 'rgba(255, 255, 255, 0.05)'};
   }
 
-  &:hover::after {
+  &:hover::after,
+  &.--isActive::after {
     content: '';
     position: absolute;
     width: 3px;
@@ -26,7 +28,7 @@ const AccordionItem = ({ children, light }) => {
   const { level } = React.useContext(AccordionContext)
 
   return (
-    <AccordionItemContainer pad={(level + 1) * 20} light={light}>
+    <AccordionItemContainer pad={(level + 1) * 16} light={light}>
       {children}
     </AccordionItemContainer>
   )
