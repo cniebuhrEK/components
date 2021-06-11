@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import classnames from 'classnames'
 import AccordionContext from './context'
 
 import ArrowDown from '../../icons/ArrowDown'
@@ -28,10 +29,22 @@ interface AccordionProps {
 // Collapsable and expandable accordion
 const Accordion = (props: AccordionProps): JSX.Element => {
   const { children, light, active, arrow, button: component, link } = props
+
+  // Get the current level of nesting from context
   const { level } = React.useContext(AccordionContext)
+
+  // Decide whether the accordion is open or not
   const [open, setOpen] = React.useState<boolean>(active)
+
+  // Ref for accordion children
   const ref = React.useRef<HTMLDivElement>(null)
 
+  // Active class for accordion toggled.
+  // This is used to keep nested accordions open when only the child expander is open
+  // and no accordion item is selected.
+  const cx = classnames({ '--isActive': active })
+
+  // If any accordion child is open, set the accordion to open
   React.useEffect(() => {
     if (ref.current) {
       const tmp = ref.current.querySelector('.--isActive')
@@ -49,7 +62,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
 
   return (
     <AccordionContext.Provider value={{ level: level + 1 }}>
-      <AccordionContainer light={light}>
+      <AccordionContainer className={cx} light={light}>
         <AccordionButton
           pad={level === 1 ? 20 : 18 * level}
           light={light}
