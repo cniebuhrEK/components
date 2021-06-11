@@ -19,13 +19,13 @@ Button.propTypes = {
   startIcon: PropTypes.string,
   type: PropTypes.string,
   disabled: PropTypes.bool,
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
   autoFocus: PropTypes.bool
 }
 
 Button.defaultProps = {
   disabled: false,
-  loading: false,
+  isLoading: false,
   type: 'button',
   size: 'normal',
   variant: 'contained',
