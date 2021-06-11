@@ -8,10 +8,10 @@ export default {
 
 const Template = args => (
   <Component {...args}>
-    <Component text='Accordion 2' light={args.light} level={1}>
-      <Component text='Accordion 3' light={args.light} level={2}>
-        <AccordionItem light={args.light}>
-          <p className={args.active ? '--isActive' : ''}>Hello, world!</p>
+    <Component button='Accordion 2' light={args.light} arrow>
+      <Component button='Accordion 3' light={args.light} arrow>
+        <AccordionItem active={args.active} light={args.light}>
+          <p>Hello, world!</p>
         </AccordionItem>
       </Component>
     </Component>
@@ -20,8 +20,8 @@ const Template = args => (
 
 export const Accordion = Template.bind({})
 Accordion.args = {
-  text: 'Accordion',
+  button: 'Accordion 1',
   light: true,
-  level: 0,
-  active: false
+  active: true,
+  arrow: true
 }

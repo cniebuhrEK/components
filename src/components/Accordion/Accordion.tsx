@@ -9,22 +9,26 @@ interface AccordionProps {
   // React child elements
   children?: JSX.Element[] | JSX.Element | string
 
-  // Text of the expander/collapser
-  text: string
-
   // Use light theme?
   light: boolean
 
   // The section is open?
   active: boolean
 
-  // What level of nesting are we at?
-  level: number
+  // Show an arrow
+  arrow: boolean
+
+  // Component for the accordion button
+  button: JSX.Element | string
+
+  // Is the accordion part of a navbar?
+  link: boolean
 }
 
 // Collapsable and expandable accordion
 const Accordion = (props: AccordionProps): JSX.Element => {
-  const { children, text, light, active, level } = props
+  const { children, light, active, arrow, button: component, link } = props
+  const { level } = React.useContext(AccordionContext)
   const [open, setOpen] = React.useState<boolean>(active)
   const ref = React.useRef<HTMLDivElement>(null)
 
@@ -44,11 +48,15 @@ const Accordion = (props: AccordionProps): JSX.Element => {
   }
 
   return (
-    <AccordionContext.Provider value={{ level }}>
+    <AccordionContext.Provider value={{ level: level + 1 }}>
       <AccordionContainer light={light}>
-        <AccordionButton pad={20 * level} onClick={onClick}>
-          {open ? <ArrowDown /> : <ArrowRight />}
-          <p>{text}</p>
+        <AccordionButton
+          pad={level === 1 ? 20 : 18 * level}
+          light={light}
+          onClick={link ? null : onClick}
+        >
+          {arrow ? open ? <ArrowDown /> : <ArrowRight /> : undefined}
+          {component}
         </AccordionButton>
         <AccordionChildren ref={ref} active={open}>
           {children}
@@ -62,7 +70,8 @@ Accordion.defaultProps = {
   text: 'Accordion',
   light: false,
   active: false,
-  level: 0
+  arrow: false,
+  link: false
 }
 
 const AccordionContainer = styled.div`
@@ -71,6 +80,7 @@ const AccordionContainer = styled.div`
 `
 
 const AccordionButton = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -83,11 +93,23 @@ const AccordionButton = styled.div`
 
   svg {
     color: ${({ theme }) => theme.palette.orange05};
-    font-size: 1.5rem;
+    font-size: 20px;
   }
 
   &:hover {
+    background-color: ${({ light }) =>
+      light ? 'rgba(0, 0, 0, 0.25)' : 'rgba(255, 255, 255, 0.05)'};
     cursor: pointer;
+  }
+
+  &:hover::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    top: 0px;
+    left: 8px;
+    background-color: ${({ theme }) => theme.palette.orange05};
   }
 `
 

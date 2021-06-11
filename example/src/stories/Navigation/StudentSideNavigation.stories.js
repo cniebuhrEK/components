@@ -1,18 +1,33 @@
 import React from 'react'
+import styled from 'styled-components'
 import { StudentSideNavigation as Component } from './StudentSideNavigation'
 import { Accordion, AccordionItem } from 'components'
-// import { UserIcon } from 'components'
 
 export default {
   title: 'Atoms/Navigation',
   component: Component
 }
 
+const LinkContainer = styled.a`
+  &.--isActive {
+    background-color: ${({ light }) =>
+      light ? 'rgba(0, 0, 0, 0.25)' : 'rgba(255, 255, 255, 0.05)'};
+  }
+`
+
+const Link = () => {
+  return (
+    <LinkContainer href='https://examkrackers.com' light>
+      Accordion
+    </LinkContainer>
+  )
+}
+
 const Template = args => (
   <Component {...args}>
-    <Accordion text='Accordion 1' level={1}>
-      <Accordion text='Accordion 2' level={2}>
-        <Accordion text='Accordion 3' level={3}>
+    <Accordion button={<Link />} link>
+      <Accordion button={<Link />} link arrow>
+        <Accordion button={<Link />} link arrow>
           <AccordionItem>Hello, world!</AccordionItem>
           <AccordionItem>Hello, world!</AccordionItem>
         </Accordion>

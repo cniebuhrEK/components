@@ -7,7 +7,7 @@ export const StudentSideNavigation = ({ children }): JSX.Element => {
 
 const Container = styled.div`
   position: relative;
-  padding: 20px;
+  padding: 20px 0;
   background-color: ${({ theme }) => theme.palette.brown01};
   height: 100vh;
   width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
