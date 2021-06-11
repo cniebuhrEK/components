@@ -39,4 +39,9 @@ const AccordionItem = ({ children, light, active }) => {
   )
 }
 
+AccordionItem.defaultProps = {
+  light: false,
+  active: false
+}
+
 export default AccordionItem
