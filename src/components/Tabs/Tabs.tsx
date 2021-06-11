@@ -17,7 +17,8 @@ export const Tabs = (props: TabsProps) => {
 
   // Set the active tab
   const [activeTab, setActiveTab] = React.useState<string>(
-    defaultEl.props['data-label'] || children[0].props['data-label']
+    (defaultEl && defaultEl.props['data-label']) ||
+      children[0].props['data-label']
   )
 
   return (
