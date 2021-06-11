@@ -36,7 +36,7 @@ const Accordion = (props: AccordionProps): JSX.Element => {
     if (ref.current) {
       const tmp = ref.current.querySelector('.--isActive')
 
-      if (tmp) {
+      if (tmp || active) {
         setOpen(true)
       }
     }
