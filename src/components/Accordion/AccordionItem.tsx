@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import classnames from 'classnames'
 import AccordionContext from './context'
 
 const AccordionItemContainer = styled.div`
@@ -24,11 +25,15 @@ const AccordionItemContainer = styled.div`
   }
 `
 
-const AccordionItem = ({ children, light }) => {
+const AccordionItem = ({ children, light, active }) => {
   const { level } = React.useContext(AccordionContext)
 
   return (
-    <AccordionItemContainer pad={(level + 1) * 16} light={light}>
+    <AccordionItemContainer
+      className={classnames({ '--isActive': active })}
+      pad={(level + 1) * 16}
+      light={light}
+    >
       {children}
     </AccordionItemContainer>
   )

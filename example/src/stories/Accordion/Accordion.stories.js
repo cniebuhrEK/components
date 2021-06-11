@@ -10,8 +10,8 @@ const Template = args => (
   <Component {...args}>
     <Component button='Accordion 2' light={args.light} arrow>
       <Component button='Accordion 3' light={args.light} arrow>
-        <AccordionItem light={args.light}>
-          <p className={args.active ? '--isActive' : ''}>Hello, world!</p>
+        <AccordionItem active={args.active} light={args.light}>
+          <p>Hello, world!</p>
         </AccordionItem>
       </Component>
     </Component>
@@ -22,6 +22,6 @@ export const Accordion = Template.bind({})
 Accordion.args = {
   button: 'Accordion 1',
   light: true,
-  active: false,
+  active: true,
   arrow: true
 }
