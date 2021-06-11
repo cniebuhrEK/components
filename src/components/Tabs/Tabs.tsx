@@ -7,9 +7,17 @@ interface TabsProps {
 }
 
 export const Tabs = (props: TabsProps) => {
+  // Transform react children to array.
   const children: any = React.Children.toArray(props.children)
+
+  // Check if there is a manual default
+  const defaultEl = children.find(
+    (el: any): JSX.Element => el.props['data-active']
+  )
+
+  // Set the active tab
   const [activeTab, setActiveTab] = React.useState<string>(
-    children[0].props['data-label']
+    defaultEl.props['data-label'] || children[0].props['data-label']
   )
 
   return (
