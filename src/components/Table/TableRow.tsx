@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled.tr`
+const TableRow = styled.tr`
   color: inherit;
   display: table-row;
   outline: 0;
@@ -15,7 +15,15 @@ export default styled.tr`
   border-width: 0 0 1px;
   border-color: inherit;
 
-  &:hover {
-    background: #dae6d5;
+  ${({ highlight }) => !highlight} {
+    &:hover {
+      background: #dae6d5;
+    }
   }
 `
+
+TableRow.defaultProps = {
+  highlight: false
+}
+
+export default TableRow
