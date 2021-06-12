@@ -1,28 +1,28 @@
 import React from 'react'
-import { Tabs as Component } from 'components'
+import { Tabs, TabPanel } from 'components'
 
 export default {
   title: 'Atoms/Tabs',
-  component: Component
+  component: Tabs
 }
 
 const MultipleTemplate = args => (
-  <Component {...args}>
-    <div className='item' data-label='Answer Sheet'>
+  <Tabs {...args}>
+    <TabPanel label='Answer Sheet'>
       The view for tab1 should now be visible.
-    </div>
-    <div className='item' data-label='Diagnostic' data-active>
+    </TabPanel>
+    <TabPanel label='Diagnostics' active>
       The view for tab2 should now be visible.
-    </div>
-  </Component>
+    </TabPanel>
+  </Tabs>
 )
 
 const SingleTemplate = args => (
-  <Component {...args}>
-    <div className='item' data-label='Answer Sheet'>
+  <Tabs {...args}>
+    <TabPanel label='Answer Sheet'>
       The view for tab1 should now be visible.
-    </div>
-  </Component>
+    </TabPanel>
+  </Tabs>
 )
 
 export const Multiple = MultipleTemplate.bind({})
