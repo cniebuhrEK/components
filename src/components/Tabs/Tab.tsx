@@ -2,16 +2,38 @@ import React from 'react'
 import styled from 'styled-components'
 import classnames from 'classnames'
 
-export const Tab = ({ activeTab, label, onClick }) => {
+interface TabProps {
+  activeTab: string
+  label: string
+  to: string
+  onClick: any
+}
+
+export const Tab = (props: TabProps) => {
+  const { activeTab, label, to, onClick } = props
   const cx = classnames({
     '--isActive': activeTab === label
   })
 
-  return (
-    <TabContainer className={cx} onClick={() => onClick(label)}>
-      {label}
-    </TabContainer>
-  )
+  if (to !== '') {
+    return (
+      <TabContainer className={cx}>
+        <a href={to}>{label}</a>
+      </TabContainer>
+    )
+  } else {
+    return (
+      <TabContainer className={cx} onClick={() => onClick(label)}>
+        {label}
+      </TabContainer>
+    )
+  }
+}
+
+Tab.defaultProps = {
+  label: 'Default',
+  to: '',
+  onClick: () => {}
 }
 
 const TabContainer = styled.li`
@@ -30,6 +52,11 @@ const TabContainer = styled.li`
   &.--isActive {
     border: solid #fb9e34;
     border-width: 0px 0px 3px 0px;
+    font-weight: 600;
+  }
+
+  a {
+    color: ${({ theme }) => theme.palette.black};
     font-weight: 600;
   }
 `
