@@ -2,7 +2,7 @@ import React from 'react'
 
 interface TabPanelProps {
   label: string
-  children: JSX.Element[] | JSX.Element | string | undefined
+  children?: JSX.Element[] | JSX.Element | string | undefined
   active: boolean
   to: string
 }
