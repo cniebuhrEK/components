@@ -43,6 +43,9 @@ interface EntitiesListProps {
     dir: string
     page: number
   }) => any
+
+  // Highlight table rows when hovered
+  highlight: boolean
 }
 
 const EntitiesList = (props: EntitiesListProps): JSX.Element => {
@@ -57,7 +60,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     defaultSortDirection,
     resultsText,
     tableActions,
-    size
+    size,
+    highlight
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -98,7 +102,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   ))
 
   const renderRows = rows.map(row => (
-    <TableRow key={row.id} id={row.id}>
+    <TableRow key={row.id} id={row.id} highlight={highlight}>
       {row.cells.map(cell => (
         <TableCell key={cell.columnId} {...cell.cellProps}>
           {cell.children}
@@ -108,7 +112,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   ))
 
   const renderEmptyState = (
-    <TableRow>
+    <TableRow highlight={highlight}>
       <TableCell colSpan={headers.length}>
         <TableEmptyState>
           <WarningReversed />
@@ -126,7 +130,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
       </TableActionBar>
       <Table size={size}>
         <TableHead>
-          <TableRow>{renderHeaders}</TableRow>
+          <TableRow highlight={highlight}>{renderHeaders}</TableRow>
         </TableHead>
         <TableBody>
           {rows.length === 0 ? renderEmptyState : renderRows}
@@ -151,21 +155,21 @@ const TableActionBar = styled.div`
 
   .table-results {
     font-weight: 600;
-    font-size: ${props => props.theme.typography.fontSizeNormal};
+    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
     line-height: 19px;
     letter-spacing: -0.00450187px;
-    color: ${props => props.theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.brown01};
   }
 `
 
 const TableEmptyState = styled.div`
   display: flex;
   align-items: center;
-  color: ${props => props.theme.palette.brown01};
-  font-size: ${props => props.theme.typography.fontSizeSmall};
+  color: ${({ theme }) => theme.palette.brown01};
+  font-size: ${({ theme }) => theme.typography.fontSizeSmall};
 
   svg {
-    color: ${props => props.theme.palette.red05};
+    color: ${({ theme }) => theme.palette.red05};
     margin-right: 10px;
     font-size: 20px;
   }
@@ -173,7 +177,8 @@ const TableEmptyState = styled.div`
 
 EntitiesList.defaultProps = {
   defaultSortDirection: SORT_DIRECTION.desc,
-  defaultPage: 1
+  defaultPage: 1,
+  highlight: false
 }
 
 export default EntitiesList

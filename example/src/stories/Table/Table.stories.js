@@ -18,5 +18,6 @@ EntitiesList.args = {
   rows: rows,
   defaultSortColumnId: 'firstname',
   defaultSortDirection: 'DESC',
-  defaultPage: 1
+  defaultPage: 1,
+  highlight: true
 }

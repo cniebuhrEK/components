@@ -35,6 +35,7 @@ export const FullTable = props => {
         defaultSortDirection='DESC'
         defaultPage={1}
         onTableStateChange={handleTableStateChange}
+        highlight={props.highlight}
       />
     </div>
   )
@@ -73,7 +74,12 @@ FullTable.propTypes = {
   /**
    * Function that is triggered when the sort or page is changed
    */
-  onTableStateChange: PropTypes.func
+  onTableStateChange: PropTypes.func,
+
+  /**
+   * Flag to set a background to a table row while hovering.
+   */
+  highlight: PropTypes.bool
 }
 
 FullTable.defaultProps = {
@@ -84,5 +90,6 @@ FullTable.defaultProps = {
   defaultSortColumnId: 'firstname',
   defaultSortDirection: 'DESC',
   size: 's',
-  defaultPage: 1
+  defaultPage: 1,
+  highlight: false
 }
