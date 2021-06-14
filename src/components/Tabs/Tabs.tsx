@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Tab from './Tab'
 import TabPanel from './TabPanel'
@@ -18,6 +18,16 @@ export const Tabs = (props: TabsProps) => {
   const [activeTab, setActiveTab] = React.useState<string>(
     (defaultEl && defaultEl.props.label) || children[0].props.label
   )
+
+  const setDefaultActiveTab = () => {
+    setActiveTab(
+      (defaultEl && defaultEl.props.label) || children[0].props.label
+    )
+  }
+
+  useEffect(() => {
+    setDefaultActiveTab()
+  }, [children])
 
   return (
     <TabsContainer>
