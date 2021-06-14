@@ -121,12 +121,12 @@ export const rows = [
     ]
   },
   {
-    id: 'Barbra',
+    id: 'Barbara',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'Barbra'
+        children: 'Barbara'
       },
       {
         columnId: 'lastname',
@@ -163,12 +163,12 @@ export const rows = [
     ]
   },
   {
-    id: 'John',
+    id: 'Sandra',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'John'
+        children: 'Sandra'
       },
       {
         columnId: 'lastname',
@@ -205,12 +205,12 @@ export const rows = [
     ]
   },
   {
-    id: 'Ann',
+    id: 'Annabelle',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'Ann'
+        children: 'Annabelle'
       },
       {
         columnId: 'lastname',
@@ -247,12 +247,12 @@ export const rows = [
     ]
   },
   {
-    id: 'Barbra',
+    id: 'Jayda',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'Barbra'
+        children: 'Jayda'
       },
       {
         columnId: 'lastname',
@@ -289,12 +289,12 @@ export const rows = [
     ]
   },
   {
-    id: 'John',
+    id: 'Aaron',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'John'
+        children: 'Aaron'
       },
       {
         columnId: 'lastname',
@@ -331,12 +331,12 @@ export const rows = [
     ]
   },
   {
-    id: 'Ann',
+    id: 'Michael',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'Ann'
+        children: 'Michael'
       },
       {
         columnId: 'lastname',
@@ -373,12 +373,12 @@ export const rows = [
     ]
   },
   {
-    id: 'Barbra',
+    id: 'Terry',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'Barbra'
+        children: 'Terry'
       },
       {
         columnId: 'lastname',
@@ -415,12 +415,12 @@ export const rows = [
     ]
   },
   {
-    id: 'John',
+    id: 'Jake',
     cells: [
       {
         columnId: 'firstname',
         cellProps: {},
-        children: 'John'
+        children: 'Jake'
       },
       {
         columnId: 'lastname',
