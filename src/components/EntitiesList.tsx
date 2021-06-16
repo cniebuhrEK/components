@@ -125,17 +125,23 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   return (
     <div>
       <TableActionBar>
-        <div className='table-results'>{resultsText}</div>
-        <div className='table-actions'>{tableActions}</div>
+        {resultsText !== undefined && (
+          <div className='table-results'>{resultsText}</div>
+        )}
+        {tableActions !== undefined && (
+          <div className='table-actions'>{tableActions}</div>
+        )}
       </TableActionBar>
-      <Table size={size}>
-        <TableHead>
-          <TableRow highlight={highlight}>{renderHeaders}</TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.length === 0 ? renderEmptyState : renderRows}
-        </TableBody>
-      </Table>
+      <TableContainer>
+        <Table size={size}>
+          <TableHead>
+            <TableRow highlight={highlight}>{renderHeaders}</TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.length === 0 ? renderEmptyState : renderRows}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <TablePaginationContainer>
         <Pagination
           currentPage={currentPage}
@@ -173,6 +179,10 @@ const TableEmptyState = styled.div`
     margin-right: 10px;
     font-size: 20px;
   }
+`
+
+const TableContainer = styled.div`
+  overflow-x: auto;
 `
 
 EntitiesList.defaultProps = {
