@@ -4,8 +4,8 @@ import classnames from 'classnames'
 
 interface TabProps {
   activeTab: string
-  label: string
-  to: string
+  label: string | JSX.Element
+  to?: string
   onClick: any
 }
 
