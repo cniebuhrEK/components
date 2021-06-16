@@ -10,10 +10,6 @@ export default createGlobalStyle`
     font-size: 16px;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
-
-      @media (min-width: 1800px) {
-        font-size: 19px;
-      }
     }
 
     body {
