@@ -1,10 +1,11 @@
 import React from 'react'
 
-interface TabPanelProps {
-  label: JSX.Element | string
+export interface TabPanelProps {
+  label: string
   children?: JSX.Element[] | JSX.Element | string | undefined
   active: boolean
   to?: string
+  onClick?: () => any
 }
 
 const TabPanel = (props: TabPanelProps) => {
@@ -19,7 +20,8 @@ const TabPanel = (props: TabPanelProps) => {
 
 TabPanel.defaultProps = {
   to: '',
-  active: false
+  active: false,
+  onClick: () => {}
 }
 
 export default TabPanel

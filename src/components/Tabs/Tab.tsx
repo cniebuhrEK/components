@@ -4,9 +4,10 @@ import classnames from 'classnames'
 
 interface TabProps {
   activeTab: string
-  label: string | JSX.Element
+  label: string
+  button?: string | JSX.Element
   to?: string
-  onClick: any
+  onClick: (e) => any
 }
 
 export const Tab = (props: TabProps) => {

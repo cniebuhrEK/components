@@ -32,13 +32,16 @@ export const Tabs = (props: TabsProps) => {
   return (
     <TabsContainer>
       <TabsHeader>
-        {children.map((child: any) => (
+        {children.map(child => (
           <Tab
             activeTab={activeTab}
             key={child.props.label}
             label={child.props.label}
             to={child.props.to}
-            onClick={(tab: string) => setActiveTab(tab)}
+            onClick={(tab: string) => {
+              child.props.onClick && child.props.onClick()
+              return setActiveTab(tab)
+            }}
           />
         ))}
       </TabsHeader>
