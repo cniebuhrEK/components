@@ -1,10 +1,10 @@
 import React from 'react'
 
 interface TabPanelProps {
-  label: string
+  label: JSX.Element | string
   children?: JSX.Element[] | JSX.Element | string | undefined
   active: boolean
-  to: string
+  to?: string
 }
 
 const TabPanel = (props: TabPanelProps) => {
