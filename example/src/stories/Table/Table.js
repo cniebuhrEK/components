@@ -21,8 +21,6 @@ export const FullTable = props => {
         sortBy: {tableState.sortBy} dir: {tableState.dir} page:{' '}
         {tableState.page}
       </div>
-      <br />
-      <br />
       <EntitiesList
         size={props.size}
         resultsText='40 admins'

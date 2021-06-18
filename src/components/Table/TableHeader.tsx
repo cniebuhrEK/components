@@ -49,58 +49,63 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
       id={id}
     >
       {sortable && align === 'right' && (
-        <span className='table-header__sort-arrow'>
+        <ArrowContainer>
           <ArrowDown />
-        </span>
+        </ArrowContainer>
       )}
-      <span>{children}</span>
+      {children}
       {sortable && align === 'left' && (
-        <span className='table-header__sort-arrow'>
+        <ArrowContainer
+          isSortActive={isSortActive}
+          sortDirection={sortDirection}
+        >
           <ArrowDown />
-        </span>
+        </ArrowContainer>
       )}
     </StyledTableHeader>
   )
 }
 
 const StyledTableHeader = styled.th`
-  box-sizing: border-box;
-  padding: 8px 18px;
-  cursor: ${props => (props.sortable ? 'pointer' : 'text')};
-  color: inherit;
-  display: table-cell;
-  vertical-align: bottom;
+  background-color: ${({ sticky, theme }) =>
+    sticky ? theme.palette.biege : 'transparent'};
+  border-color: ${({ theme }) => theme.palette.grey09};
   border-spacing: 0;
   border-style: solid;
-  position: ${props => (props.sticky ? 'sticky' : 'static')};
-  background-color: ${props =>
-    props.sticky ? props.theme.palette.biege : 'transparent'};
+  border-width: 0 0 1px;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: ${({ sortable }) => (sortable ? 'pointer' : 'text')};
+  display: table-cell;
+  padding: 8px 18px;
+  position: ${({ sticky }) => (sticky ? 'sticky' : 'static')};
+  text-align: ${({ align }) => align};
   top: 0;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  border-color: ${props => props.theme.palette.grey09};
-  border-width: 0 0 1px;
-  text-align: ${props => props.align};
+  vertical-align: bottom;
+  white-space: nowrap;
   z-index: 1;
+`
 
-  .table-header__sort-arrow {
-    display: inline-block;
-    opacity: ${props => (props.isSortActive ? '1' : '0')};
-    color: ${props => props.theme.palette.brown01};
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    padding: 0 5px;
-    line-height: 14px;
-    font-size: ${props => props.theme.typography.fontSizeNormal};
-    transform: rotate(
-        ${props =>
-          props.sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
-      )
-      translateY(
-        ${props => (props.sortDirection === SORT_DIRECTION.asc ? '10%' : '0')}
-      );
-  }
+const ArrowContainer = styled.div`
+  color: ${({ theme }) => theme.palette.brown01};
+  display: inline-block;
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  line-height: 14px;
+  opacity: ${({ isSortActive }) => (isSortActive ? '1' : '0')};
+  padding: 0 5px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  transform: rotate(
+      ${({ sortDirection }) =>
+        sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
+    )
+    translateY(
+      ${({ sortDirection }) =>
+        sortDirection === SORT_DIRECTION.asc ? '10%' : '0'}
+    );
 
-  &:hover .table-header__sort-arrow {
-    opacity: ${props => (props.isSortActive ? '1' : '0.5')};
+  &:hover {
+    opacity: ${({ isSortActive }) => (isSortActive ? '1' : '0.5')};
   }
 `
 
