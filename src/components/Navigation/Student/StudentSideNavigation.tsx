@@ -9,7 +9,7 @@ const Container = styled.div`
   position: relative;
   padding: 20px 0;
   background-color: ${({ theme }) => theme.palette.brown01};
-  height: 100vh;
+  height: 100%;
   width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
   overflow: auto;
 `

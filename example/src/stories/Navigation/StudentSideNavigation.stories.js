@@ -23,17 +23,25 @@ const Link = () => {
   )
 }
 
+const PageMock = styled.div`
+  position: relative;
+  height: 100vh;
+  width: 100%;
+`
+
 const Template = args => (
-  <Component {...args}>
-    <Accordion button={<Link />} link>
-      <Accordion button={<Link />} link arrow>
+  <PageMock>
+    <Component {...args}>
+      <Accordion button={<Link />} link>
         <Accordion button={<Link />} link arrow>
-          <AccordionItem>Hello, world!</AccordionItem>
-          <AccordionItem>Hello, world!</AccordionItem>
+          <Accordion button={<Link />} link arrow>
+            <AccordionItem>Hello, world!</AccordionItem>
+            <AccordionItem>Hello, world!</AccordionItem>
+          </Accordion>
         </Accordion>
       </Accordion>
-    </Accordion>
-  </Component>
+    </Component>
+  </PageMock>
 )
 
 export const StudentSideNavigation = Template.bind({})
