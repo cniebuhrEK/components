@@ -68,7 +68,13 @@ const Accordion = (props: AccordionProps): JSX.Element => {
           light={light}
           onClick={link ? null : onClick}
         >
-          {arrow ? open ? <ArrowDown /> : <ArrowRight /> : undefined}
+          {arrow ? (
+            open ? (
+              <ArrowDown onClick={onClick} />
+            ) : (
+              <ArrowRight onClick={onClick} />
+            )
+          ) : undefined}
           {component}
         </AccordionButton>
         <AccordionChildren ref={ref} active={open}>
@@ -98,10 +104,10 @@ const AccordionButton = styled.div`
   align-items: center;
   width: 100%;
   padding: ${({ pad }) => `4px 4px 4px ${pad}px`};
+  user-select: none;
 
   p {
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
-    user-select: none;
   }
 
   svg {
