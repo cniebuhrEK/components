@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+// Toast/Toast.stories.js - Toast story
+
+import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Toast as ToastComponent } from 'components'
+import Toast from './Toast'
 
 /**
  * Primary UI component for user interaction
  */
-export const Toast = props => {
-  const [isOpen, setIsOpen] = useState(false)
+export const ToastContainer = props => {
+  const [isOpen, setIsOpen] = React.useState(false)
 
   const handleOpen = () => setIsOpen(true)
   const handleClose = () => setIsOpen(false)
@@ -15,18 +17,18 @@ export const Toast = props => {
   return (
     <>
       <div onClick={handleOpen}>Click here to open the toast</div>
-      <ToastComponent
+      <Toast
         open={isOpen || props.open}
         handleClose={handleClose}
         severity={props.severity}
       >
         {props.children}
-      </ToastComponent>
+      </Toast>
     </>
   )
 }
 
-Toast.propTypes = {
+ToastContainer.propTypes = {
   /**
    * defines if toast is visible or not
    */
@@ -45,6 +47,22 @@ Toast.propTypes = {
   children: PropTypes.string
 }
 
-Toast.defaultProps = {
+ToastContainer.defaultProps = {
+  open: false,
+  severity: 'info',
+  handleClose: () => {},
+  children: []
+}
+
+const Template = args => <Toast {...args}>{args.children}</Toast>
+
+export const ToastNotification = Template.bind({})
+ToastNotification.args = {
+  children: 'Hello world!',
   severity: 'info'
+}
+
+export default {
+  title: 'Atoms/Toast',
+  component: Toast
 }

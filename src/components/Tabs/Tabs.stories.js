@@ -1,5 +1,8 @@
+// Tabs/Tabs.stories.js - Tabs story
+
 import React from 'react'
-import { Tabs, TabPanel } from 'components'
+import Tabs from './Tabs'
+import TabPanel from './TabPanel'
 
 export default {
   title: 'Atoms/Tabs',
