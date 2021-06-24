@@ -1,12 +1,10 @@
+// Navigation/Student/SideNav.stories.js - SideNav story
+
 import React from 'react'
 import styled from 'styled-components'
-import { StudentSideNavigation as Component } from './StudentSideNavigation'
-import { Accordion, AccordionItem } from 'components'
-
-export default {
-  title: 'Atoms/Navigation',
-  component: Component
-}
+import SideNav from './SideNav'
+import Accordion from '../../Accordion/Accordion'
+import AccordionItem from '../../Accordion/AccordionItem'
 
 const LinkContainer = styled.a`
   &.--isActive {
@@ -24,7 +22,7 @@ const Link = () => {
 }
 
 const Template = args => (
-  <Component {...args}>
+  <SideNav {...args}>
     <Accordion button={<Link />} link>
       <Accordion button={<Link />} link arrow>
         <Accordion button={<Link />} link arrow>
@@ -33,9 +31,13 @@ const Template = args => (
         </Accordion>
       </Accordion>
     </Accordion>
-  </Component>
+  </SideNav>
 )
 
-export const StudentSideNavigation = Template.bind({})
+export const SideNavigation = Template.bind({})
+SideNavigation.args = {}
 
-StudentSideNavigation.args = {}
+export default {
+  title: 'Layout/Navigation/Student',
+  component: SideNav
+}

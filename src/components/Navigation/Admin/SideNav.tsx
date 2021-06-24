@@ -1,3 +1,5 @@
+// Navigation/Admin/SideNav.tsx - Side navigation component
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -15,9 +17,7 @@ interface AdminSideNavigationProps {
   links: AdminSideNavigationLinkProps[]
 }
 
-export const AdminSideNavigation = (
-  props: AdminSideNavigationProps
-): JSX.Element => {
+const AdminSideNavigation = (props: AdminSideNavigationProps): JSX.Element => {
   const { links } = props
 
   return (

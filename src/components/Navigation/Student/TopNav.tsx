@@ -1,3 +1,5 @@
+// Navigation/Student/TopNav.tsx - Top navigation component
+
 import React from 'react'
 import styled from 'styled-components'
 

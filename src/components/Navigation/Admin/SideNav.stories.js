@@ -1,17 +1,13 @@
+// Navigation/Admin/SideNav.stories.js - SideNav story
+
 import React from 'react'
+import SideNav from './SideNav'
+import { ListIcon, UserIcon } from '../../../icons'
 
-import { AdminSideNavigation as AdminSideNavigationComponent } from './AdminSideNavigation'
-import { ListIcon, UserIcon } from 'components'
+const Template = args => <SideNav {...args} />
 
-export default {
-  title: 'Atoms/Navigation',
-  component: AdminSideNavigationComponent
-}
-
-const Template = args => <AdminSideNavigationComponent {...args} />
-
-export const AdminSideNavigation = Template.bind({})
-AdminSideNavigation.args = {
+export const SideNavigation = Template.bind({})
+SideNavigation.args = {
   links: [
     {
       name: 'Admins Manager',
@@ -35,4 +31,9 @@ AdminSideNavigation.args = {
       id: 'students-list'
     }
   ]
+}
+
+export default {
+  title: 'Layout/Navigation/Admin',
+  component: SideNav
 }

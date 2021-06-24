@@ -1,3 +1,5 @@
+// Navigation/Admin/TopNav.tsx - Top navigation component
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -7,9 +9,7 @@ interface AdminTopNavigationProps {
   handleLogout: () => void
 }
 
-export const AdminTopNavigation = (
-  props: AdminTopNavigationProps
-): JSX.Element => {
+const AdminTopNavigation = (props: AdminTopNavigationProps): JSX.Element => {
   const { username, logoutName, handleLogout } = props
 
   return (

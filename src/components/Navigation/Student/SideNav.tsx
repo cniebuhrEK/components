@@ -1,3 +1,5 @@
+// Navigation/Student/SideNav.tsx - Side navigation component
+
 import React from 'react'
 import styled from 'styled-components'
 
