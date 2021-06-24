@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { propOr } from 'ramda'
 import { getHeadErrorOrEmptyObj } from '../utils/form'
-import UploadFile from '../components/UploadFile'
+import { UploadFile } from '../components'
 
 interface UploadFileProps {
   onChange: (name, value) => any

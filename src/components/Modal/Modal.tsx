@@ -1,3 +1,5 @@
+// Modal/Modal.tsx - Modal component
+
 import React from 'react'
 import ReactModal from 'react-modal'
 import styled from 'styled-components'

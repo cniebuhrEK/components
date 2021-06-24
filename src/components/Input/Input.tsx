@@ -1,9 +1,11 @@
+// Input/Input.tsx - Input field component
+
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { isNotNilOrEmpty } from '../utils/ramda'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
-import EyeIcon from '../icons/Eye'
-import HideIcon from '../icons/Hide'
+import EyeIcon from '../../icons/Eye'
+import HideIcon from '../../icons/Hide'
 
 interface InputProps {
   name?: string
@@ -18,9 +20,9 @@ interface InputProps {
   error?: boolean
   inputProps?: object
   inputRef?: any
-  onChange: (e) => any
-  onFocus?: (e) => any
-  onBlur?: (e) => any
+  onChange: (e: any) => any
+  onFocus?: (e: any) => any
+  onBlur?: (e: any) => any
   errorText?: string
   [x: string]: any
 }

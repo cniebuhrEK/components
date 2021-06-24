@@ -1,11 +1,13 @@
+// MediaControl/MediaControl.tsx - Media Control component
+
 import React from 'react'
 import cx from 'classnames'
 import styled from 'styled-components'
 
-import { Pause } from '../icons/Pause'
-import { Play } from '../icons/Play'
-import { Plus } from '../icons/Plus'
-import { Tickmark } from '../icons/Tickmark'
+import { Pause } from '../../icons/Pause'
+import { Play } from '../../icons/Play'
+import { Plus } from '../../icons/Plus'
+import { Tickmark } from '../../icons/Tickmark'
 
 interface MediaControlProps {
   pause: boolean

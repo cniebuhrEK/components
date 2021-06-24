@@ -1,3 +1,5 @@
+// IconButton/IconButton.tsx - Icon button component
+
 import React from 'react'
 import styled from 'styled-components'
 

@@ -1,7 +1,9 @@
+// UploadFile/UploadFile.tsx - File input component
+
 import React, { useState, useEffect } from 'react'
 import { propOr } from 'ramda'
 import styled from 'styled-components'
-import { isNotNilOrEmpty } from '../utils/ramda'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface UploadFileProps {
   disabled?: boolean

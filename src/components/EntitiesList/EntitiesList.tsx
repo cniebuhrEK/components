@@ -1,19 +1,21 @@
+// EntitiesList/EntitiesList.tsx - Full functional table component
+
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import Table from './Table/Table'
-import TableBody from './Table/TableBody'
-import TableCell from './Table/TableCell'
-import TableHead from './Table/TableHead'
-import TablePaginationContainer from './Table/TablePaginationContainer'
+import Table from '../Table/Table'
+import TableBody from '../Table/TableBody'
+import TableCell from '../Table/TableCell'
+import TableHead from '../Table/TableHead'
+import TablePaginationContainer from '../Table/TablePaginationContainer'
 import TableHeader, {
   // eslint-disable-next-line no-unused-vars
   TableHeaderProps,
   SORT_DIRECTION
-} from './Table/TableHeader'
-import TableRow from './Table/TableRow'
-import Pagination from './Pagination/Pagination'
-import WarningReversed from '../icons/WarningReversed'
+} from '../Table/TableHeader'
+import TableRow from '../Table/TableRow'
+import Pagination from '../Pagination/Pagination'
+import WarningReversed from '../../icons/WarningReversed'
 
 interface CellProps {
   children: JSX.Element | string

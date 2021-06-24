@@ -1,13 +1,15 @@
+// Toast/Toast.tsx - Toast component
+
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 
-import Success from '../icons/Success'
-import Info from '../icons/Info'
-import Warning from '../icons/Warning'
-import Close from '../icons/Close'
+import Success from '../../icons/Success'
+import Info from '../../icons/Info'
+import Warning from '../../icons/Warning'
+import Close from '../../icons/Close'
 
 interface ToastProps {
-  handleClose: (e) => any
+  handleClose: (e: any) => any
   children: JSX.Element | string
   severity: string
   open: boolean

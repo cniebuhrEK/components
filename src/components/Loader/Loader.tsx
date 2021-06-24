@@ -1,6 +1,8 @@
+// Loader/Loader.tsx - Loader component
+
 import styled from 'styled-components'
 
-export default styled.div`
+const Loader = styled.div`
   &,
   &:before,
   &:after {
@@ -45,3 +47,5 @@ export default styled.div`
     }
   }
 `
+
+export default Loader

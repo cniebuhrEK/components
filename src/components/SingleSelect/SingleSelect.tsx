@@ -1,3 +1,5 @@
+// SingleSelect/SingleSelect.tsx - Single select field component
+
 import React from 'react'
 import Select from 'react-select'
 import {
@@ -5,7 +7,7 @@ import {
   CustomValueContainer,
   REACT_SELECT_STYLES,
   SELECT_SIZES
-} from '../utils/reactSelect'
+} from '../../utils/reactSelect'
 
 const customComponents = {
   Input: CustomInput,
@@ -23,7 +25,7 @@ interface SingleSelectProps {
   [x: string]: any
 }
 
-export const SingleSelect = (props: SingleSelectProps): JSX.Element => {
+const SingleSelect = (props: SingleSelectProps): JSX.Element => {
   const { required, options, label, error, errorText, disabled, size } = props
 
   return (
