@@ -1,3 +1,5 @@
+// ExamIcons/AllIcons.tsx - All Icons
+
 import React from 'react'
 
 import {
@@ -32,12 +34,12 @@ import {
   ExamIconStrikethrough,
   ExamIconTimer,
   ExamIconUp
-} from 'components'
+} from './'
 
 /**
  * Primary UI component for user interaction
  */
-export const Icons = props => {
+export const AllIcons = () => {
   return (
     <>
       Close: <ExamIconClose />
@@ -137,6 +139,7 @@ export const Icons = props => {
   )
 }
 
-Icons.propTypes = {}
+AllIcons.propTypes = {}
+AllIcons.defaultProps = {}
 
-Icons.defaultProps = {}
+export default AllIcons

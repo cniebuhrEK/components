@@ -1,11 +1,7 @@
+// Exam/QuestionsReviewList/QuestionsReviewList.stories.js
+
 import React from 'react'
-
-import { ExamQuestionsReviewList as QuestionsReviewList } from './QuestionsReviewList'
-
-export default {
-  title: 'Exam/QuestionsReviewList',
-  component: QuestionsReviewList
-}
+import QuestionsReviewList from './QuestionsReviewList'
 
 const Template = args => <QuestionsReviewList {...args} />
 
@@ -377,4 +373,9 @@ ExamQuestionsReviewList.args = {
       displayName: 'Question 12'
     }
   ]
+}
+
+export default {
+  title: 'Exam/QuestionsReviewList',
+  component: QuestionsReviewList
 }

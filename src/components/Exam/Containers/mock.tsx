@@ -1,16 +1,33 @@
+// Exam/Containers/mock.tsx - Exam frame mock
+
 import React from 'react'
+import ExamFrame from './ExamFrame'
 
-import { ExamFrame } from './ExamFrame'
-
-export default {
-  title: 'Exam/ExamFrame',
-  component: ExamFrame
+interface ExamFrameProps {
+  /**
+   * ExamFrame left content
+   */
+  left: any
+  /**
+   * ExamFrame right content
+   */
+  right: any
 }
 
-const Template = args => <ExamFrame {...args} />
+/**
+ * Primary UI component for user interaction
+ */
+const ExamFrameContainer = (props: ExamFrameProps) => {
+  const { left, right } = props
 
-export const ExamFrameWithPanels = Template.bind({})
-ExamFrameWithPanels.args = {
+  return (
+    <div style={{ height: '700px' }}>
+      <ExamFrame left={left} right={right} />
+    </div>
+  )
+}
+
+ExamFrameContainer.defaultProps = {
   left: (
     <div>
       <h2>
@@ -158,3 +175,5 @@ ExamFrameWithPanels.args = {
     </div>
   )
 }
+
+export default ExamFrameContainer

@@ -1,44 +1,12 @@
+// Exam/Navigation/Navigation.stories.js - Navigation story
+
 import React from 'react'
-import PropTypes from 'prop-types'
+import Navigation from './Navigation'
 
-import { ExamNavigation as NavigationComponent } from 'components'
+const Template = args => <Navigation {...args} />
 
-/**
- * Primary UI component for user interaction
- */
-export const Navigation = props => {
-  return (
-    <>
-      <NavigationComponent {...props} />
-    </>
-  )
-}
-
-Navigation.propTypes = {
-  navigationItems: PropTypes.array,
-  endExamButton: PropTypes.bool,
-  endSectionButton: PropTypes.bool,
-  endTestDayCertification: PropTypes.bool,
-  navigationButton: PropTypes.bool,
-  nextButton: PropTypes.bool,
-  periodicTableButton: PropTypes.bool,
-  previousButton: PropTypes.bool,
-  reviewAllButton: PropTypes.bool,
-  reviewFlaggedButton: PropTypes.bool,
-  reviewIncompleteButton: PropTypes.bool,
-  reviewScreenButton: PropTypes.bool,
-  endExamButtonOnClick: PropTypes.func,
-  endSectionButtonOnClick: PropTypes.func,
-  endTestDayCertificationOnClick: PropTypes.func,
-  nextButtonOnClick: PropTypes.func,
-  previousButtonOnClick: PropTypes.func,
-  reviewAllButtonOnClick: PropTypes.func,
-  reviewFlaggedButtonOnClick: PropTypes.func,
-  reviewIncompleteButtonOnClick: PropTypes.func,
-  reviewScreenButtonOnClick: PropTypes.func
-}
-
-Navigation.defaultProps = {
+export const ExamNavigation = Template.bind({})
+ExamNavigation.args = {
   navigationItems: [
     {
       status: 'complete',
@@ -89,4 +57,9 @@ Navigation.defaultProps = {
   reviewFlaggedButtonOnClick: e => console.log(e),
   reviewIncompleteButtonOnClick: e => console.log(e),
   reviewScreenButtonOnClick: e => console.log(e)
+}
+
+export default {
+  title: 'Exam/Navigation',
+  component: Navigation
 }

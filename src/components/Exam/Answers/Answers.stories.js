@@ -1,13 +1,14 @@
-import React from 'react'
+// Exam/Answers/Answers.stories.js - Answers story
 
-import { Answers } from './Answers'
+import React from 'react'
+import AnswersMock from './mock'
 
 export default {
   title: 'Exam/Answers',
-  component: Answers
+  component: AnswersMock
 }
 
-const Template = args => <Answers {...args} />
+const Template = args => <AnswersMock {...args} />
 
 export const ExamAnswers = Template.bind({})
 ExamAnswers.args = {

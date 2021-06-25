@@ -1,19 +1,26 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+// Exam/ToolsBar/mock.tsx - ToolsBar mock
 
-import {
-  ExamToolsBar as ToolsBarComponent,
-  ExamContainer,
-  ExamContent
-} from 'components'
+import React from 'react'
+import ToolsBar from './ToolsBar'
+import ExamContainer from '../Containers/ExamContainer'
+import ExamContent from '../Containers/ExamContent'
+
+interface ToolsBarProps {
+  highlightButton: boolean
+  strikethroughButton: boolean
+  flagForReviewButton: boolean
+  handleStrikethrough: any
+  onFlagClick: any
+  isFlagged: boolean
+}
 
 /**
  * Primary UI component for user interaction
  */
-export const ToolsBar = props => {
+export const ToolsBarContainer = (props: ToolsBarProps) => {
   return (
     <ExamContainer>
-      <ToolsBarComponent {...props} />
+      <ToolsBar {...props} />
       <ExamContent>
         <h2>
           Differences between AAMC MCAT® Official Prep Practice Exams and the
@@ -89,16 +96,7 @@ export const ToolsBar = props => {
   )
 }
 
-ToolsBar.propTypes = {
-  highlightButton: PropTypes.bool,
-  strikethroughButton: PropTypes.bool,
-  flagForReviewButton: PropTypes.bool,
-  handleStrikethrough: PropTypes.func,
-  onFlagClick: PropTypes.func,
-  isFlagged: PropTypes.bool
-}
-
-ToolsBar.defaultProps = {
+ToolsBarContainer.defaultProps = {
   highlightButton: true,
   strikethroughButton: true,
   flagForReviewButton: true,
@@ -106,3 +104,5 @@ ToolsBar.defaultProps = {
   onFlagClick: e => console.log(e),
   isFlagged: false
 }
+
+export default ToolsBarContainer

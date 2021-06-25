@@ -1,33 +1,12 @@
+// Exam/ExamFrame.stories.js - ExamFrame story
+
 import React from 'react'
-import PropTypes from 'prop-types'
+import ExamFrame from './ExamFrame'
 
-import { ExamFrame as ExamFrameComponent } from 'components'
+const Template = args => <ExamFrame {...args} />
 
-/**
- * Primary UI component for user interaction
- */
-export const ExamFrame = props => {
-  const { left, right } = props
-
-  return (
-    <div style={{ height: '700px' }}>
-      <ExamFrameComponent left={left} right={right} />
-    </div>
-  )
-}
-
-ExamFrame.propTypes = {
-  /**
-   * ExamFrame left content
-   */
-  left: PropTypes.node,
-  /**
-   * ExamFrame right content
-   */
-  right: PropTypes.node
-}
-
-ExamFrame.defaultProps = {
+export const ExamFrameWithPanels = Template.bind({})
+ExamFrameWithPanels.args = {
   left: (
     <div>
       <h2>
@@ -174,4 +153,9 @@ ExamFrame.defaultProps = {
       </p>
     </div>
   )
+}
+
+export default {
+  title: 'Exam/ExamFrame',
+  component: ExamFrame
 }

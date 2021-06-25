@@ -1,11 +1,7 @@
+// Exam/Header/Header.stories.js - Header story
+
 import React from 'react'
-
-import { Header } from './Header'
-
-export default {
-  title: 'Exam/Header',
-  component: Header
-}
+import Header from './Header'
 
 const Template = args => <Header {...args} />
 
@@ -17,4 +13,9 @@ ExamHeader.args = {
   totalPages: 59,
   timerVisibility: true,
   pagesVisibility: true
+}
+
+export default {
+  title: 'Exam/Header',
+  component: Header
 }
