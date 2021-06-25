@@ -1,12 +1,8 @@
+// Button/Button.stories.js - Button story
+
 import React from 'react'
-
-import { Button } from './Button'
-import { PlayIcon } from 'components'
-
-export default {
-  title: 'Atoms/Button',
-  component: Button
-}
+import Button from './Button'
+import { PlayIcon } from '../../icons'
 
 const PrimaryTemplate = args => <Button {...args}>{args.children}</Button>
 const StartIconTemplate = args => <Button {...args}>{args.children}</Button>
@@ -22,4 +18,9 @@ StartIcon.args = {
   color: 'green',
   children: 'Button',
   startIcon: <PlayIcon />
+}
+
+export default {
+  title: 'Atoms/Button',
+  component: Button
 }

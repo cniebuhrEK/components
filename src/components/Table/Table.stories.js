@@ -1,12 +1,8 @@
+// Table/Table.stories.js - Table story
+
 import React from 'react'
-import { headers, rows } from './tableData'
-
-import { FullTable } from './Table'
-
-export default {
-  title: 'Atoms/Table',
-  component: FullTable
-}
+import { headers, rows } from './mockData'
+import FullTable from './mockFullTable'
 
 const Template = args => <FullTable {...args} />
 
@@ -20,4 +16,9 @@ EntitiesList.args = {
   defaultSortDirection: 'DESC',
   defaultPage: 1,
   highlight: true
+}
+
+export default {
+  title: 'Atoms/Table',
+  component: FullTable
 }

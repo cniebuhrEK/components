@@ -1,3 +1,5 @@
+// Icons/AllIcons.tsx - All icons
+
 import React from 'react'
 import styled from 'styled-components'
 
@@ -28,12 +30,12 @@ import {
   MCATIcon,
   MiniMCATIcon,
   FlagIcon
-} from 'components'
+} from './'
 
 /**
  * Primary UI component for user interaction
  */
-export const Icons = props => {
+const AllIcons = () => {
   return (
     <IconsContainer>
       <AddIcon /> &nbsp;&nbsp;AddIcon <br />
@@ -92,12 +94,12 @@ export const Icons = props => {
   )
 }
 
-Icons.propTypes = {}
-
-Icons.defaultProps = {}
+AllIcons.defaultProps = {}
 
 const IconsContainer = styled.div`
   svg {
     font-size: 20px;
   }
 `
+
+export default AllIcons

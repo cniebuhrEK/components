@@ -1,5 +1,8 @@
+// Table/mockData.js - Table seed data for story
+
 import React from 'react'
-import { Button, EditIcon } from 'components'
+import Button from '../Button/Button'
+import { EditIcon } from '../../icons'
 
 export const headers = [
   {

@@ -21,7 +21,7 @@ interface SingleSelectProps {
   error?: boolean
   errorText?: string
   disabled?: boolean
-  size: 'normal' | 'small'
+  size?: 'normal' | 'small'
   [x: string]: any
 }
 
