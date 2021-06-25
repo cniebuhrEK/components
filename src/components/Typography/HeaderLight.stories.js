@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { HeaderLight as HeaderLightComponent } from './HeaderLight'
+import HeaderLightComponent from './HeaderLight'
 
 export default {
   title: 'Typography/Header',

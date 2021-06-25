@@ -1,6 +1,5 @@
 import React from 'react'
-
-import { SubheaderLight as SubheaderLightComponent } from './SubheaderLight'
+import SubheaderLightComponent from './SubheaderLight'
 
 export default {
   title: 'Typography/Subheader',
