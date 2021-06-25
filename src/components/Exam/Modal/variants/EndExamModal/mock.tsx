@@ -16,7 +16,7 @@ interface EndExamModalProps {
 /**
  * Primary UI component for user interaction
  */
-export const EndExamModalContainer = (props: EndExamModalProps) => {
+const EndExamModalContainer = (props: EndExamModalProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const handleOpen = () => setIsOpen(true)
@@ -38,3 +38,5 @@ EndExamModalContainer.defaultProps = {
   open: false,
   handleClose: () => {}
 }
+
+export default EndExamModalContainer

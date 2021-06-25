@@ -16,7 +16,7 @@ interface TimeExpiredModalProps {
 /**
  * Primary UI component for user interaction
  */
-export const TimeExpiredModalContainer = (props: TimeExpiredModalProps) => {
+const TimeExpiredModalContainer = (props: TimeExpiredModalProps) => {
   const [isOpen, setIsOpen] = React.useState(false)
 
   const handleOpen = () => setIsOpen(true)
@@ -37,3 +37,5 @@ export const TimeExpiredModalContainer = (props: TimeExpiredModalProps) => {
 TimeExpiredModalContainer.defaultProps = {
   handleConfirm: () => console.log('confirm')
 }
+
+export default TimeExpiredModalContainer

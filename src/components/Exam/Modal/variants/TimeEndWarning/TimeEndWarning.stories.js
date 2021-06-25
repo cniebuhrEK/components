@@ -1,5 +1,5 @@
 import React from 'react'
-import TimeEndWarning from './TimeEndWarning'
+import TimeEndWarning from './mock'
 
 const Template = args => <TimeEndWarning {...args} />
 

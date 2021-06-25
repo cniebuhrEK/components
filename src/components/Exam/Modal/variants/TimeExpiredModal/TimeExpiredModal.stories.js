@@ -1,5 +1,5 @@
 import React from 'react'
-import TimeExpiredModal from './TimeExpiredModal'
+import TimeExpiredModal from './mock'
 
 const Template = args => <TimeExpiredModal {...args} />
 
