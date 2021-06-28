@@ -1,12 +1,15 @@
+// Breadcrumbs/Breadcrumbs.tsx - Breadcrumbs container component
+
 import React from 'react'
 import styled from 'styled-components'
-
 import BreadcrumbItem from './BreadcrumbItem'
 
+// Component for breadcrumb child seperators
 const BreadcrumbSeparator = ({ children, ...props }) => (
   <SeperatorContainer {...props}>{children}</SeperatorContainer>
 )
 
+// Simple breadcrumbs component
 const Breadcrumbs = ({ children }): JSX.Element => {
   return (
     <BreadcrumbContainer>
@@ -26,7 +29,7 @@ const Breadcrumbs = ({ children }): JSX.Element => {
             </BreadcrumbItem>
           )
         })
-        .reduce((acc, child: JSX.Element, i: number) => {
+        .reduce((acc: any, child: JSX.Element, i: number) => {
           if (i < children.length - 1) {
             acc.push(
               child,

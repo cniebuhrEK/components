@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { propOr } from 'ramda'
 import { getHeadErrorOrEmptyObj, getOptionByValue } from '../utils/form'
-import SingleSelect from '../components/SingleSelect'
+import { SingleSelect } from '../components'
 
 interface SingleSelectFieldProps {
   name?: string

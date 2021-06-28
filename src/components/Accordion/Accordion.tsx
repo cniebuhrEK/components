@@ -1,3 +1,5 @@
+// Accordion/Accordion.tsx - Accordion container component
+
 import React from 'react'
 import styled from 'styled-components'
 import classnames from 'classnames'

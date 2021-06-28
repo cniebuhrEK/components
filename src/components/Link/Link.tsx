@@ -1,3 +1,5 @@
+// IconLink/Link.tsx - Link component
+
 import React from 'react'
 import cx from 'classnames'
 import styled from 'styled-components'
@@ -8,7 +10,7 @@ interface LinkProps {
   name: string
 }
 
-export const Link = (props: LinkProps): JSX.Element => {
+const Link = (props: LinkProps): JSX.Element => {
   const { isActive, name, disabled } = props
 
   const containerClass = cx({

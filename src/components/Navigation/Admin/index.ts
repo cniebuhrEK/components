@@ -1,4 +1,4 @@
 // Navigation/Admin/index.ts - Admin nav components module exports
 
-export { default as AdminSideNavigation } from './AdminSideNavigation'
-export { default as AdminTopNavigation } from './AdminTopNavigation'
+export { default as AdminSideNavigation } from './SideNav'
+export { default as AdminTopNavigation } from './TopNav'

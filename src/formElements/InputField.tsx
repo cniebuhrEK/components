@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { propOr } from 'ramda'
 import { getHeadErrorOrEmptyObj } from '../utils/form'
-import Input from '../components/Input'
+import { Input } from '../components'
 
 interface InputProps {
   name?: string
