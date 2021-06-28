@@ -23,9 +23,7 @@
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
     "storybook:start": "rm -rf ./public && mkdir -p ./public/assets && cp -R ./src/assets ./public && start-storybook -p 6006 --static-dir public",
-    "storybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets && cp -R ../src/assets ./public",
-    "predeploy": "cd example && yarn && yarn run build",
-    "deploy": "gh-pages -d example/build"
+    "storybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets && cp -R ./src/assets ./public"
   },
   "peerDependencies": {},
   "dependencies": {
