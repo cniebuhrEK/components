@@ -4,6 +4,7 @@ import { ExamNavContainer, ButtonsContainer } from './styles'
 // eslint-disable-next-line no-unused-vars
 import { NavigationItemProps } from '../Modal/variants/NavigationModal'
 
+import AnswerSheetButton from './AnswerSheetButton'
 import EndExamButton from './EndExamButton'
 import EndSectionButton from './EndSectionButton'
 import EndTestDayCertification from './EndTestDayCertification'
@@ -31,6 +32,7 @@ interface NavigationProps {
   reviewFlaggedButton: boolean
   reviewIncompleteButton: boolean
   reviewScreenButton: boolean
+  answerSheetButton: boolean
   endExamButtonOnClick: (e) => void
   endSectionButtonOnClick: (e) => void
   endTestDayCertificationOnClick: (e) => void
@@ -40,6 +42,7 @@ interface NavigationProps {
   reviewFlaggedButtonOnClick: (e) => void
   reviewIncompleteButtonOnClick: (e) => void
   reviewScreenButtonOnClick: (e) => void
+  answerSheetButtonOnClick: (e) => void
 }
 
 const Navigation = (props: NavigationProps): JSX.Element => {
@@ -57,6 +60,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     reviewFlaggedButton,
     reviewIncompleteButton,
     reviewScreenButton,
+    answerSheetButton,
     endExamButtonOnClick,
     endSectionButtonOnClick,
     endTestDayCertificationOnClick,
@@ -65,7 +69,8 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     reviewAllButtonOnClick,
     reviewFlaggedButtonOnClick,
     reviewIncompleteButtonOnClick,
-    reviewScreenButtonOnClick
+    reviewScreenButtonOnClick,
+    answerSheetButtonOnClick
   } = props
   const [isPeriodicTableOpen, setPeriodicTableOpen] = useState(false)
 
@@ -90,6 +95,9 @@ const Navigation = (props: NavigationProps): JSX.Element => {
             <PeriodicTableButton onClick={handleOpenPeriodicTable} />
           )}
           {endExamButton && <EndExamButton onClick={endExamButtonOnClick} />}
+          {answerSheetButton && (
+            <AnswerSheetButton onClick={answerSheetButtonOnClick} />
+          )}
           {endSectionButton && (
             <EndSectionButton onClick={endSectionButtonOnClick} />
           )}

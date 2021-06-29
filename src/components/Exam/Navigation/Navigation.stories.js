@@ -48,6 +48,7 @@ ExamNavigation.args = {
   reviewFlaggedButton: false,
   reviewIncompleteButton: false,
   reviewScreenButton: false,
+  answerSheetButton: false,
   endExamButtonOnClick: e => console.log(e),
   endSectionButtonOnClick: e => console.log(e),
   endTestDayCertificationOnClick: e => console.log(e),
@@ -56,7 +57,8 @@ ExamNavigation.args = {
   reviewAllButtonOnClick: e => console.log(e),
   reviewFlaggedButtonOnClick: e => console.log(e),
   reviewIncompleteButtonOnClick: e => console.log(e),
-  reviewScreenButtonOnClick: e => console.log(e)
+  reviewScreenButtonOnClick: e => console.log(e),
+  answerSheetButtonOnClick: e => console.log(e)
 }
 
 export default {
