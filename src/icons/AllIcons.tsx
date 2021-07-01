@@ -29,7 +29,18 @@ import {
   ArrowDownFilledIcon,
   MCATIcon,
   MiniMCATIcon,
-  FlagIcon
+  FlagIcon,
+  SelectIcon,
+  LineIcon,
+  SquareIcon,
+  CircleIcon,
+  PaletteIcon,
+  ImageIcon,
+  TextIcon,
+  UndoIcon,
+  RedoIcon,
+  DownloadIcon,
+  SaveIcon
 } from './'
 
 /**
@@ -89,6 +100,28 @@ const AllIcons = () => {
       <MiniMCATIcon /> &nbsp;&nbsp;MiniMCATIcon <br />
       <br />
       <FlagIcon /> &nbsp;&nbsp;FlagIcon <br />
+      <br />
+      <SelectIcon /> &nbsp;&nbsp;SelectIcon <br />
+      <br />
+      <LineIcon /> &nbsp;&nbsp;LineIcon <br />
+      <br />
+      <SquareIcon /> &nbsp;&nbsp;SquareIcon <br />
+      <br />
+      <CircleIcon /> &nbsp;&nbsp;CircleIcon <br />
+      <br />
+      <PaletteIcon /> &nbsp;&nbsp;PaletteIcon <br />
+      <br />
+      <ImageIcon /> &nbsp;&nbsp;ImageIcon <br />
+      <br />
+      <TextIcon /> &nbsp;&nbsp;TextIcon <br />
+      <br />
+      <UndoIcon /> &nbsp;&nbsp;UndoIcon <br />
+      <br />
+      <RedoIcon /> &nbsp;&nbsp;RedoIcon <br />
+      <br />
+      <DownloadIcon /> &nbsp;&nbsp;DownloadIcon <br />
+      <br />
+      <SaveIcon /> &nbsp;&nbsp;SaveIcon <br />
       <br />
     </IconsContainer>
   )
