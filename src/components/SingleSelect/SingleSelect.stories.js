@@ -22,6 +22,7 @@ Basic.args = {
   ],
   required: false,
   size: 'normal',
+  disabled: false,
   onBlur: () => {},
   onFocus: () => {},
   onChange: () => {}

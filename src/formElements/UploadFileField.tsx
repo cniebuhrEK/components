@@ -1,46 +1,54 @@
-import React, { useEffect, useState } from 'react'
-import { propOr } from 'ramda'
+import React from 'react'
+import * as R from 'ramda'
 import { getHeadErrorOrEmptyObj } from '../utils/form'
 import { UploadFile } from '../components'
 
 interface UploadFileProps {
-  onChange: (name, value) => any
+  onChange: (name: string, value: any) => any
   reset: boolean
   id: string
-  name?: string
+  name: string
   label: string | JSX.Element
-  required?: boolean
-  errorText?: string
-  t: (key, options) => string
-  validate: (name, v) => any
-  disabled?: boolean
+  required: boolean
+  errorText: string
+  t: (key: string, options: any) => string
+  validate: (name: string, v: any) => any
+  disabled: boolean
 }
 
+// Form field for uploading files
 export const UploadFileField = (props: UploadFileProps): JSX.Element => {
   const { name, id, onChange, validate, label, required, disabled, reset, t } =
     props
-  const [touched, _setTouched] = useState(false)
-  const [value, _setValue] = useState(null)
-  const [{ valid, error }, _validate] = useState({
+
+  // Indicator for whether the input is open or not
+  const [touched, _setTouched] = React.useState(false)
+
+  // Current value of the file field
+  const [value, _setValue] = React.useState(null)
+
+  // Validator state
+  const [{ valid, error }, _validate] = React.useState({
     valid: true,
     error: {}
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (touched && !reset) {
-      validate(name, v => {
+      validate(name, (v: any) => {
         _validate({ valid: v.valid, error: getHeadErrorOrEmptyObj(v) })
       })
     }
   }, [value, touched, reset])
 
-  useEffect(() => {
+  // Wait for reset
+  React.useEffect(() => {
     if (reset) {
       _setValue(null)
     }
   }, [reset])
 
-  const handleChange = file => {
+  const handleChange = (file: any) => {
     _setTouched(true)
     _setValue(file)
     onChange(name, file)
@@ -49,7 +57,7 @@ export const UploadFileField = (props: UploadFileProps): JSX.Element => {
   const errorText =
     valid || disabled
       ? ''
-      : t(propOr('', 'key', error), propOr({}, 'options', error))
+      : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
 
   const hasError = !valid && !disabled
 
@@ -65,6 +73,15 @@ export const UploadFileField = (props: UploadFileProps): JSX.Element => {
       errorText={errorText}
     />
   )
+}
+
+UploadFileField.defaultProps = {
+  id: '',
+  reset: false,
+  name: '',
+  disabled: false,
+  required: false,
+  errorText: ''
 }
 
 export default UploadFileField

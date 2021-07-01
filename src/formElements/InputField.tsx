@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { propOr } from 'ramda'
+import React from 'react'
+import * as R from 'ramda'
 import { getHeadErrorOrEmptyObj } from '../utils/form'
 import { Input } from '../components'
 
 interface InputProps {
-  name?: string
+  name: string
   id?: string
   label?: string
   required?: boolean
@@ -16,13 +16,13 @@ interface InputProps {
   error?: boolean
   inputProps?: object
   inputRef?: any
-  onChange: (name, value) => any
-  onFocus?: (e) => any
-  onBlur?: (e) => any
-  validate: (name, v) => any
+  onChange: (name: string, value: string | number) => any
+  onFocus?: (e: any) => any
+  onBlur?: (e: any) => any
+  validate: (name: string, v: any) => any
   errorText?: string
   reset?: boolean
-  t: (key, options) => string
+  t: (key: string, options: any) => string
   [x: string]: any
 }
 
@@ -41,14 +41,16 @@ export const InputField = (props: InputProps): JSX.Element => {
     t,
     ...rest
   } = props
-  const [touched, _setTouched] = useState(false)
-  const [value, _setValue] = useState(initialValue)
-  const [{ valid, error }, _validate] = useState({
+
+  // Has the input been touched
+  const [touched, _setTouched] = React.useState<boolean>(false)
+  const [value, _setValue] = React.useState(initialValue)
+  const [{ valid, error }, _validate] = React.useState({
     valid: true,
     error: {}
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (touched && !reset) {
       validate(name, v => {
         _validate({ valid: v.valid, error: getHeadErrorOrEmptyObj(v) })
@@ -56,16 +58,19 @@ export const InputField = (props: InputProps): JSX.Element => {
     }
   }, [value, touched, reset])
 
-  useEffect(() => {
+  // When the initial value changes
+  React.useEffect(() => {
     _setValue(initialValue)
   }, [initialValue])
 
-  useEffect(() => {
+  // When a reset occurs, set the value to the initial value
+  React.useEffect(() => {
     if (reset) {
       _setValue(initialValue || '')
     }
   }, [reset])
 
+  // Change the focus
   const handleFocus = () => _setTouched(true)
   const handleChange = (e: { target: { value: string } }) => {
     _setValue(e.target.value)
@@ -83,7 +88,7 @@ export const InputField = (props: InputProps): JSX.Element => {
       errorText={
         valid || disabled
           ? ''
-          : t(propOr('', 'key', error), propOr({}, 'options', error))
+          : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
       }
       type={type}
       error={!valid && !disabled}
@@ -95,6 +100,7 @@ export const InputField = (props: InputProps): JSX.Element => {
 }
 
 InputField.defaultProps = {
+  name: '',
   value: '',
   onChange: () => {},
   validate: () => {}

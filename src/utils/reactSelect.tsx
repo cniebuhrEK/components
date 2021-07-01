@@ -62,7 +62,7 @@ export const REACT_SELECT_STYLES = {
           ? theme.dimensions.inputSmallHeight
           : theme.dimensions.inputHeight,
       color: error ? theme.palette.red05 : theme.palette.brown01,
-      backgroundColor: theme.palette.grey09,
+      backgroundColor: isDisabled ? theme.palette.grey08 : theme.palette.grey09,
       transition: `all 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
         cursor: getHoverCursos(isDisabled, isSearchable),

@@ -1,13 +1,13 @@
 // UploadFile/UploadFile.tsx - File input component
 
-import React, { useState, useEffect } from 'react'
-import { propOr } from 'ramda'
+import React from 'react'
+import * as R from 'ramda'
 import styled from 'styled-components'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface UploadFileProps {
   disabled?: boolean
-  onChange: (e) => any
+  onChange: (e: any) => any
   reset: boolean
   id: string
   label: string | JSX.Element
@@ -19,15 +19,15 @@ interface UploadFileProps {
 const UploadFile = (props: UploadFileProps): JSX.Element => {
   const { onChange, reset, id, label, required, errorText, error, disabled } =
     props
-  const [file, setFile] = useState(null)
+  const [file, setFile] = React.useState(null)
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (reset) {
       setFile(null)
     }
   }, [reset])
 
-  const handleOnChange = e => {
+  const handleOnChange = (e: any) => {
     e.preventDefault()
     setFile(e.target.files[0])
     onChange(e.target.files[0])
@@ -36,7 +36,7 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
   return (
     <UploadFileContainer
       error={error}
-      disabled={disabled}
+      isDisabled={disabled}
       hasValue={isNotNilOrEmpty(file)}
     >
       <div className='file-upload__wrapper'>
@@ -45,7 +45,9 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
             {label}
             {required && ' *'}
           </div>
-          <span className='file-upload__name'>{propOr('', 'name', file)}</span>
+          <span className='file-upload__name'>
+            {R.propOr('', 'name', file)}
+          </span>
         </label>
         <input
           disabled={disabled}
@@ -66,36 +68,38 @@ export const UploadFileContainer = styled.div`
   }
 
   .file-upload__wrapper {
-    display: inline-flex;
     align-items: center;
-    width: 100%;
-    margin: 25px 0 21px;
+    background-color: ${({ theme, isDisabled }) =>
+      isDisabled ? theme.palette.grey08 : theme.palette.grey09};
     box-sizing: border-box;
-    position: relative;
-    height: ${props => props.theme.dimensions.inputHeight};
-    border-width: 1px;
     border-style: solid;
-    border-radius: ${props => props.theme.shape.borderRadiusNormal};
-    border-color: ${props =>
-      props.error ? props.theme.palette.red05 : 'transparent'};
+    border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
+    border-color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : 'transparent'};
+    border-width: 1px;
+    color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : theme.palette.brown01};
+    display: inline-flex;
+    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+    font-family: ${({ theme }) => theme.typography.fontFamily};
+    height: ${({ theme }) => theme.dimensions.inputHeight};
+    margin: 25px 0 21px;
     padding: 0 16px;
-    font-size: ${props => props.theme.typography.fontSizeNormal};
-    font-family: ${props => props.theme.typography.fontFamily};
-    transition: all 200ms ${props => props.theme.transitions.easing.easeInOut}
+    position: relative;
+    transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
-    background-color: ${props => props.theme.palette.grey09};
-    color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+    user-select: ${({ isDisabled }) => (isDisabled ? 'none' : 'initial')};
+    width: 100%;
 
     &:hover {
-      border-color: ${props => {
+      border-color: ${({ theme, error, isDisabled }) => {
         switch (true) {
-          case props.error:
-            return props.theme.palette.red05
-          case props.isDisabled:
+          case error:
+            return theme.palette.red05
+          case isDisabled:
             return 'transparent'
           default:
-            return props.theme.palette.brown01
+            return theme.palette.brown01
         }
       }};
     }
@@ -107,38 +111,38 @@ export const UploadFileContainer = styled.div`
   }
 
   .file-upload__name {
-    color: ${props => props.theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.brown01};
   }
 
   .file-upload__label {
     box-sizing: border-box;
-    color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+    color: ${({ theme, error }) =>
+      error ? theme.palette.red05 : theme.palette.brown01};
     position: absolute;
-    font-size: ${props => (props.hasValue ? '12px' : '16px')};
-    line-height: ${props => (props.hasValue ? '12px' : '16px')};
-    left: ${props => (props.hasValue ? '-6px' : '14px')};
-    top: ${props => (props.hasValue ? '-19px' : '14px')};
+    font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+    line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+    left: ${({ hasValue }) => (hasValue ? '-6px' : '14px')};
+    top: ${({ hasValue }) => (hasValue ? '-19px' : '14px')};
     z-index: 1;
-    padding: ${props => (props.hasValue ? '0 5px' : '0')};
+    padding: ${({ hasValue }) => (hasValue ? '0 5px' : '0')};
     background-color: transparent;
-    transition: all 200ms ${props => props.theme.transitions.easing.easeInOut}
+    transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
   }
 
   &:focus-within .file-upload__label {
     font-size: 12px;
     line-height: 12px;
-    left: ${props => (props.hasValue ? '-6px' : '-1px')};
+    left: ${({ hasValue }) => (hasValue ? '-6px' : '-1px')};
     top: -19px;
     background-color: transparent;
-    color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+    color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : theme.palette.brown01};
   }
 
   .file-upload__error {
-    display: ${props => (props.error ? 'block' : 'none')};
-    color: ${props => props.theme.palette.red05};
+    display: ${({ error }) => (error ? 'block' : 'none')};
+    color: ${({ theme }) => theme.palette.red05};
     font-size: 12px;
     position: absolute;
     left: -1px;
