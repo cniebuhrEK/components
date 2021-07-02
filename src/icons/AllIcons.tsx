@@ -32,7 +32,7 @@ import {
   FlagIcon,
   SelectIcon,
   LineIcon,
-  SquareIcon,
+  PolygonIcon,
   CircleIcon,
   PaletteIcon,
   ImageIcon,
@@ -105,7 +105,7 @@ const AllIcons = () => {
       <br />
       <LineIcon /> &nbsp;&nbsp;LineIcon <br />
       <br />
-      <SquareIcon /> &nbsp;&nbsp;SquareIcon <br />
+      <PolygonIcon /> &nbsp;&nbsp;PolygonIcon <br />
       <br />
       <CircleIcon /> &nbsp;&nbsp;CircleIcon <br />
       <br />
