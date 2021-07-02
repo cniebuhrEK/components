@@ -15,12 +15,12 @@ const customComponents = {
 }
 
 interface SingleSelectProps {
-  required?: boolean
+  required: boolean
   options: { label: string; value: string | number | boolean }[]
   label: string
-  error?: boolean
-  errorText?: string
-  disabled?: boolean
+  error: boolean
+  errorText: string
+  disabled: boolean
   size?: 'normal' | 'small'
   [x: string]: any
 }
@@ -52,6 +52,7 @@ SingleSelect.defaultProps = {
   onFocus: () => {},
   label: '',
   error: false,
+  disabled: false,
   errorText: '',
   size: SELECT_SIZES.normal
 }

@@ -1,28 +1,29 @@
-import React, { useEffect, useState } from 'react'
-import { propOr } from 'ramda'
+import React from 'react'
+import * as R from 'ramda'
 import { getHeadErrorOrEmptyObj, getOptionByValue } from '../utils/form'
 import { SingleSelect } from '../components'
 
 interface SingleSelectFieldProps {
-  name?: string
-  required?: boolean
+  name: string
+  required: boolean
   options: { label: string; value: string | boolean | number }[]
   label: string
   error?: boolean
   errorText?: string
-  disabled?: boolean
-  t: (key, options) => string
+  disabled: boolean
+  t: (key: string, options: any) => string
   reset?: boolean
   value: string | boolean | number
   id: string
-  onChange: (name, value) => any
-  validate: (name, v) => any
+  onChange: (name: string, value: string | boolean | number) => any
+  validate: (name: string, v: any) => any
 }
 
 export const SingleSelectField = (
   props: SingleSelectFieldProps
 ): JSX.Element => {
   const {
+    disabled,
     options,
     name,
     label,
@@ -33,35 +34,44 @@ export const SingleSelectField = (
     reset,
     t
   } = props
+
   const defaultOption = getOptionByValue(initialValue)(options)
 
-  const [value, _setValue] = useState(defaultOption || '')
-  const [touched, _setTouched] = useState(false)
-  const [{ valid, error }, _validate] = useState({
+  // Current select option value
+  const [value, _setValue] = React.useState(defaultOption || '')
+
+  // Indicator for whether the field is open or not.
+  const [touched, _setTouched] = React.useState<boolean>(false)
+
+  // Validator state
+  const [{ valid, error }, _validate] = React.useState({
     valid: true,
     error: {}
   })
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (touched && !reset) {
-      validate(name, v => {
+      validate(name, (v: any) => {
         _validate({ valid: v.valid, error: getHeadErrorOrEmptyObj(v) })
       })
     }
   }, [value, touched, reset])
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (reset) {
       _setValue(getOptionByValue(initialValue)(options) || '')
     }
   }, [reset])
 
-  useEffect(() => {
+  React.useEffect(() => {
     _setValue(getOptionByValue(initialValue)(options))
   }, [initialValue, options])
 
+  // Handle the state on focus
   const handleFocus = () => _setTouched(true)
-  const handleChange = option => {
+
+  // Handle changing the value state
+  const handleChange = (option: any) => {
     _setValue(option)
     onChange(name, option.value)
   }
@@ -72,11 +82,13 @@ export const SingleSelectField = (
       options={options}
       onFocus={handleFocus}
       label={label}
-      // @ts-ignore
       value={value}
       error={!valid}
+      disabled={disabled}
       errorText={
-        valid ? '' : t(propOr('', 'key', error), propOr({}, 'options', error))
+        valid
+          ? ''
+          : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
       }
       onChange={handleChange}
       instanceId={name}
@@ -86,6 +98,10 @@ export const SingleSelectField = (
 }
 
 SingleSelectField.defaultProps = {
+  name: '',
+  label: '',
+  disabled: false,
+  required: false,
   validate: () => {},
   variant: 'outlined'
 }

@@ -1,6 +1,6 @@
 // Input/Input.tsx - Input field component
 
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 
@@ -46,16 +46,18 @@ const Input = ({
   errorText,
   ...rest
 }: InputProps): JSX.Element => {
-  const [inputValue, setInputValue] = useState(value)
-  const [inputType, setInputType] = useState(type)
+  // Current value of the inputn field
+  const [inputValue, setInputValue] = React.useState(value)
+  // Current type of the input field
+  const [inputType, setInputType] = React.useState(type)
 
-  const handleOnChange = e => {
+  const handleOnChange = (e: any) => {
     e.preventDefault()
     setInputValue(e.target.value)
     onChange(e)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     setInputValue(value)
   }, [value])
 
@@ -107,103 +109,104 @@ const Input = ({
     </InputContainer>
   )
 }
-
 export const InputContainer = styled.div`
-  display: inline-flex;
   align-items: center;
-  width: 100%;
-  margin: 25px 0 21px;
+  background-color: ${({ theme, isDisabled }) =>
+    isDisabled ? theme.palette.grey08 : theme.palette.grey09};
   box-sizing: border-box;
-  position: relative;
-  height: ${props => props.theme.dimensions.inputHeight};
-  border-width: 1px;
+  color: ${({ theme, error }) =>
+    error ? theme.palette.red05 : theme.palette.brown01};
+  display: inline-flex;
+  border-color: ${({ theme, error }) =>
+    error ? theme.palette.red05 : 'transparent'};
+  border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-style: solid;
-  border-radius: ${props => props.theme.shape.borderRadiusNormal};
-  border-color: ${props =>
-    props.error ? props.theme.palette.red05 : 'transparent'};
+  border-width: 1px;
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  height: ${({ theme }) => theme.dimensions.inputHeight};
+  margin: 25px 0 21px;
   padding: 0 16px;
-  font-size: ${props => props.theme.typography.fontSizeNormal};
-  font-family: ${props => props.theme.typography.fontFamily};
-  transition: all 200ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
-  background-color: ${props => props.theme.palette.grey09};
-  color: ${props =>
-    props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+  position: relative;
+  transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+  width: 100%;
 
   &:hover {
-    border-color: ${props => {
+    border-color: ${({ error, isDisabled, theme }) => {
       switch (true) {
-        case props.error:
-          return props.theme.palette.red05
-        case props.isDisabled:
+        case error:
+          return theme.palette.red05
+        case isDisabled:
           return 'transparent'
         default:
-          return props.theme.palette.orange04
+          return theme.palette.orange04
       }
     }};
   }
 
   &:focus-within {
     border-width: 1px;
-    border-color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.orange04};
-    color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+    border-color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : theme.palette.orange04};
+    color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : theme.palette.brown01};
   }
 
   .input-container__label {
     box-sizing: border-box;
-    color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+    color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : theme.palette.brown01};
     position: absolute;
-    font-size: ${props => (props.hasValue ? '12px' : '16px')};
-    line-height: ${props => (props.hasValue ? '12px' : '16px')};
-    left: ${props => (props.hasValue ? '-6px' : '14px')};
-    top: ${props => (props.hasValue ? '-19px' : '14px')};
+    font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+    line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+    left: ${({ hasValue }) => (hasValue ? '-6px' : '14px')};
+    top: ${({ hasValue }) => (hasValue ? '-19px' : '14px')};
     z-index: 1;
-    padding: ${props => (props.hasValue ? '0 5px' : '0')};
+    padding: ${({ hasValue }) => (hasValue ? '0 5px' : '0')};
     background-color: transparent;
-    transition: all 200ms ${props => props.theme.transitions.easing.easeInOut}
+    transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
   }
 
   &:focus-within .input-container__label {
     font-size: 12px;
     line-height: 12px;
-    left: ${props => (props.hasValue ? '-6px' : '-1px')};
+    left: ${({ hasValue }) => (hasValue ? '-6px' : '-1px')};
     top: -19px;
     background-color: transparent;
-    color: ${props =>
-      props.error ? props.theme.palette.red05 : props.theme.palette.brown01};
+    color: ${({ error, theme }) =>
+      error ? theme.palette.red05 : theme.palette.brown01};
   }
 
   .input-container__input {
     position: relative;
     z-index: 2;
-    font-size: ${props => props.theme.typography.fontSizeNormal};
+    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
     background-color: transparent;
     border: none;
-    color: ${props => props.theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.brown01};
     padding: 0;
     margin: 0;
     outline: none;
-    cursor: ${props => (props.isDisabled ? 'not-allowed' : 'text')};
-    width: ${props => (props.hasPasswordType ? 'calc(100% - 20px)' : '100%')};
+    cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'text')};
+    width: ${({ hasPasswordType }) =>
+      hasPasswordType ? 'calc(100% - 20px)' : '100%'};
   }
 
   input:-webkit-autofill {
-    color: ${props => props.theme.palette.brown01} !important;
+    color: ${({ theme }) => theme.palette.brown01} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${props => props.theme.palette.grey09} inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.grey09} inset;
     height: 100%;
   }
 
   .input-container__input:disabled {
-    color: ${props => props.theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.brown01};
   }
 
   .input-container__error {
-    display: ${props => (props.error ? 'block' : 'none')};
-    color: ${props => props.theme.palette.red05};
+    display: ${({ error }) => (error ? 'block' : 'none')};
+    color: ${({ theme }) => theme.palette.red05};
     font-size: 12px;
     position: absolute;
     left: -1px;
@@ -212,16 +215,16 @@ export const InputContainer = styled.div`
   }
 
   .input-container__toggle-visibility {
-    display: ${props => (props.hasPasswordType ? 'flex' : 'none')};
-    color: ${props => props.theme.palette.brown01};
+    display: ${({ hasPasswordType }) => (hasPasswordType ? 'flex' : 'none')};
+    color: ${({ theme }) => theme.palette.brown01};
     cursor: pointer;
     position: absolute;
     right: 14px;
     top: 0;
     font-size: 20px;
-    height: ${props => props.theme.dimensions.inputHeight};
+    height: ${({ theme }) => theme.dimensions.inputHeight};
     align-items: center;
-    transition: color 200ms ${props => props.theme.transitions.easing.easeInOut}
+    transition: color 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
 
     &:hover {
@@ -230,20 +233,20 @@ export const InputContainer = styled.div`
 
     .input-container__toggle-visibility--hide {
       transition: opacity 200ms
-        ${props => props.theme.transitions.easing.easeInOut} 0ms;
+        ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
       position: absolute;
       right: 0;
-      opacity: ${props => (props.isPasswordVisible ? '1' : '0')};
-      z-index: ${props => (props.isPasswordVisible ? '1' : '0')};
+      opacity: ${({ isPasswordVisible }) => (isPasswordVisible ? '1' : '0')};
+      z-index: ${({ isPasswordVisible }) => (isPasswordVisible ? '1' : '0')};
     }
 
     .input-container__toggle-visibility--show {
       transition: opacity 200ms
-        ${props => props.theme.transitions.easing.easeInOut} 0ms;
+        ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
       position: absolute;
       right: 0;
-      opacity: ${props => (props.isPasswordVisible ? '0' : '1')};
-      z-index: ${props => (props.isPasswordVisible ? '0' : '1')};
+      opacity: ${({ isPasswordVisible }) => (isPasswordVisible ? '0' : '1')};
+      z-index: ${({ isPasswordVisible }) => (isPasswordVisible ? '0' : '1')};
     }
   }
 `
