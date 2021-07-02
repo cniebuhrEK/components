@@ -20,7 +20,7 @@ interface SingleSelectProps {
   label: string
   error: boolean
   errorText: string
-  disabled: boolean
+  disabled?: boolean
   size?: 'normal' | 'small'
   [x: string]: any
 }
