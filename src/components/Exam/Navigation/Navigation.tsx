@@ -5,6 +5,7 @@ import { ExamNavContainer, ButtonsContainer } from './styles'
 import { NavigationItemProps } from '../Modal/variants/NavigationModal'
 
 import AnswerSheetButton from './AnswerSheetButton'
+import MarkExamButton from './MarkExamButton'
 import EndExamButton from './EndExamButton'
 import EndSectionButton from './EndSectionButton'
 import EndTestDayCertification from './EndTestDayCertification'
@@ -33,6 +34,7 @@ interface NavigationProps {
   reviewIncompleteButton: boolean
   reviewScreenButton: boolean
   answerSheetButton: boolean
+  markExamButton?: boolean
   endExamButtonOnClick: (e) => void
   endSectionButtonOnClick: (e) => void
   endTestDayCertificationOnClick: (e) => void
@@ -43,6 +45,7 @@ interface NavigationProps {
   reviewIncompleteButtonOnClick: (e) => void
   reviewScreenButtonOnClick: (e) => void
   answerSheetButtonOnClick: (e) => void
+  markExamButtonOnClick?: (e) => void
 }
 
 const Navigation = (props: NavigationProps): JSX.Element => {
@@ -61,6 +64,7 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     reviewIncompleteButton,
     reviewScreenButton,
     answerSheetButton,
+    markExamButton,
     endExamButtonOnClick,
     endSectionButtonOnClick,
     endTestDayCertificationOnClick,
@@ -70,7 +74,8 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     reviewFlaggedButtonOnClick,
     reviewIncompleteButtonOnClick,
     reviewScreenButtonOnClick,
-    answerSheetButtonOnClick
+    answerSheetButtonOnClick,
+    markExamButtonOnClick
   } = props
   const [isPeriodicTableOpen, setPeriodicTableOpen] = useState(false)
 
@@ -106,6 +111,9 @@ const Navigation = (props: NavigationProps): JSX.Element => {
           )}
           {reviewScreenButton && (
             <ReviewScreenButton onClick={reviewScreenButtonOnClick} />
+          )}
+          {markExamButton && markExamButtonOnClick && (
+            <MarkExamButton onClick={markExamButtonOnClick} />
           )}
         </ButtonsContainer>
         <ButtonsContainer>
