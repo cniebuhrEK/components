@@ -15,11 +15,11 @@ const customComponents = {
 }
 
 interface SingleSelectProps {
-  required: boolean
+  required?: boolean
   options: { label: string; value: string | number | boolean }[]
   label: string
-  error: boolean
-  errorText: string
+  error?: boolean
+  errorText?: string
   disabled?: boolean
   size?: 'normal' | 'small'
   [x: string]: any
