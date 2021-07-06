@@ -32,7 +32,7 @@ interface DateFieldProps {
   value: Date
 
   // Flag to allow clearing of the input
-  clearable?: boolean
+  isClearable?: boolean
 
   // Flag to indicate whether the field is required or not.
   required?: boolean
@@ -43,8 +43,12 @@ interface DateFieldProps {
   // Flag to quickly reset the form state
   reset?: boolean
 
+  // Translation dependancy injection
+  t: (key: string, options: any) => string
+
   // Handler function to be called every time the input is updated.
   onChange: (name: string, value: any) => void
+  [x: string]: any
 }
 
 // Date input field component
@@ -54,13 +58,13 @@ const DateField = (props: DateFieldProps) => {
     id,
     allowPast,
     value: initialValue,
-    clearable,
     validate,
     required,
     disabled,
+    t,
     reset,
-    className,
-    onChange
+    onChange,
+    ...rest
   } = props
 
   // Has the input been touched
@@ -78,9 +82,6 @@ const DateField = (props: DateFieldProps) => {
         _validate({ valid: v.valid, error: getHeadErrorOrEmptyObj(v) })
       })
     }
-
-    // Temporary
-    console.error(error)
   }, [value, touched, reset])
 
   // When the initial value changes
@@ -104,20 +105,23 @@ const DateField = (props: DateFieldProps) => {
     onChange(name, date)
   }
 
+  const errorText =
+    valid || disabled
+      ? ''
+      : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
+
   return (
     <DatePickerContainer>
       <DatePicker
-        name={name}
+        {...rest}
         id={id || name}
-        className={className}
         disabled={disabled || !valid}
-        required={required}
         minDate={!allowPast ? new Date() : null}
         selected={value}
-        isClearable={clearable}
         onFocus={handleFocus}
         onChange={handleChange}
       />
+      <ErrorContainer error={!valid}>{errorText}</ErrorContainer>
     </DatePickerContainer>
   )
 }
@@ -126,7 +130,7 @@ DateField.defaultProps = {
   allowPast: false,
   value: new Date(),
   required: false,
-  clearable: false,
+  isClearable: false,
   validate: () => {}
 }
 
@@ -142,6 +146,16 @@ const DatePickerContainer = styled.div`
     display: block;
     width: 100%;
   }
+`
+
+const ErrorContainer = styled.div`
+  display: ${({ error }) => (error ? 'block' : 'none')};
+  color: ${({ theme }) => theme.palette.red05};
+  font-size: 12px;
+  position: absolute;
+  left: -1px;
+  bottom: -20px;
+  white-space: nowrap;
 `
 
 export default DateField
