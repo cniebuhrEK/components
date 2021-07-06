@@ -26,7 +26,7 @@ interface DateFieldProps {
   disabled?: boolean
 
   // Flag to allow setting dates before the current date.
-  allowPast: boolean
+  allowPast?: boolean
 
   // Current date
   value: Date
