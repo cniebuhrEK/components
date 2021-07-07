@@ -9,7 +9,7 @@ interface MarkExamButtonProps {
 const MarkExamButton = (props: MarkExamButtonProps): JSX.Element => {
   return (
     <ExamNavLeft onClick={props.onClick} id='mark-exam-btn'>
-      Mark on <span className='underline'>E</span>xam
+      Mark on&nbsp;<span className='underline'>E</span>xam
     </ExamNavLeft>
   )
 }
