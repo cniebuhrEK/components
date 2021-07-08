@@ -62,7 +62,7 @@ const StyledToast = styled.div`
   font-size: ${props => props.theme.typography.fontSizeSmall};
   min-width: 300px;
   max-width: 350px;
-  z-index: ${props => props.theme.zIndex.snackbar};
+  z-index: ${props => (props.open ? props.theme.zIndex.snackbar : 'unset')};
   background-color: ${props => props.theme.palette.biege};
   border-width: 1px;
   border-style: solid;

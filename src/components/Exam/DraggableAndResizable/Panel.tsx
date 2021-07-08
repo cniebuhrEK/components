@@ -186,6 +186,7 @@ const PanelContainer = styled.div`
   box-sizing: border-box;
   border: 1px solid ${props => props.theme.palette.black};
   font-family: ${props => props.theme.typography.fontFamilySecondary};
+  z-index: 1300;
 
   .panel__container {
     font-family: ${props => props.theme.typography.fontFamilySecondary};
