@@ -14,10 +14,10 @@ const ExamFrame = (props: ExamFrameProps): JSX.Element => {
   return (
     <FrameContainer>
       <div className='panel'>
-        <ExamContent>{left}</ExamContent>
+        <ExamContent id='exam-left-panel'>{left}</ExamContent>
       </div>
       <div className='panel'>
-        <ExamContent>{right}</ExamContent>
+        <ExamContent id='exam-right-panel'>{right}</ExamContent>
       </div>
     </FrameContainer>
   )
