@@ -175,6 +175,7 @@ export const BreakCountDownBody = styled.div`
 
   legend {
     padding: 0 4px;
+    font-weight: bold;
   }
 
   p {
