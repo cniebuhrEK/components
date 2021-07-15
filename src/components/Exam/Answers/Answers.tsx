@@ -92,6 +92,7 @@ export const AnswersContainer = styled.div`
     align-items: flex-start;
     cursor: pointer;
     margin-top: 13.5552px;
+    user-select: none;
 
     &[data-is-selected='true'] {
       .answer__icon--answered {
@@ -136,6 +137,7 @@ export const AnswersContainer = styled.div`
     transform: translateY(-4px);
     white-space: nowrap;
     font-size: 15px;
+    user-select: none;
 
     & * {
       background-color: transparent !important;
@@ -146,5 +148,6 @@ export const AnswersContainer = styled.div`
   .answer__content {
     font-size: 16px;
     line-height: 20.7104px;
+    user-select: all;
   }
 `
