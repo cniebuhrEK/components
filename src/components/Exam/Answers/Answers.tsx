@@ -93,6 +93,7 @@ export const AnswersContainer = styled.div`
     cursor: pointer;
     margin-top: 13.5552px;
     user-select: none;
+    background-color: #fff !important;
 
     &[data-is-selected='true'] {
       .answer__icon--answered {
