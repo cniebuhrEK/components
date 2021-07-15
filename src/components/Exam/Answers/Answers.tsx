@@ -139,9 +139,10 @@ export const AnswersContainer = styled.div`
     white-space: nowrap;
     font-size: 15px;
     user-select: none;
+    background-color: #fff !important;
 
     & * {
-      background-color: transparent !important;
+      background-color: #fff !important;
       text-decoration: none !important;
     }
   }
