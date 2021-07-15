@@ -29,7 +29,7 @@ const StrikethroughButton = ({
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [callback])
 
   return (
     <StrikethroughButtonContainer onMouseDown={handleStrikeThrough}>
