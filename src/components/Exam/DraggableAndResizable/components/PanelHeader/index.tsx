@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import IconClose from '../../../../../examIcons/Close'
 
 const PanelHeader = ({ onDrag, title, handleClose }) => {
-  const [mouseDown, setMouseDown] = useState(false)
+  const [mouseDown, setMouseDown] = React.useState(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleMouseUp = () => setMouseDown(false)
 
     window.addEventListener('mouseup', handleMouseUp)
 
     return () => {
-      window.addEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('mouseup', handleMouseUp)
     }
   }, [])
 
-  useEffect(() => {
-    const handleMouseMove = e => onDrag(e.movementX, e.movementY)
+  React.useEffect(() => {
+    const handleMouseMove = (e: any) => onDrag(e.movementX, e.movementY)
 
     if (mouseDown) {
       window.addEventListener('mousemove', handleMouseMove)
