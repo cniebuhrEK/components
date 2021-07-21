@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { ExamNavContainer, ButtonsContainer } from './styles'
 // eslint-disable-next-line no-unused-vars
@@ -35,17 +35,17 @@ interface NavigationProps {
   reviewScreenButton: boolean
   answerSheetButton: boolean
   markExamButton?: boolean
-  endExamButtonOnClick: (e) => void
-  endSectionButtonOnClick: (e) => void
-  endTestDayCertificationOnClick: (e) => void
-  nextButtonOnClick: (e) => void
-  previousButtonOnClick: (e) => void
-  reviewAllButtonOnClick: (e) => void
-  reviewFlaggedButtonOnClick: (e) => void
-  reviewIncompleteButtonOnClick: (e) => void
-  reviewScreenButtonOnClick: (e) => void
-  answerSheetButtonOnClick: (e) => void
-  markExamButtonOnClick?: (e) => void
+  endExamButtonOnClick: (e: any) => void
+  endSectionButtonOnClick: (e: any) => void
+  endTestDayCertificationOnClick: (e: any) => void
+  nextButtonOnClick: (e: any) => void
+  previousButtonOnClick: (e: any) => void
+  reviewAllButtonOnClick: (e: any) => void
+  reviewFlaggedButtonOnClick: (e: any) => void
+  reviewIncompleteButtonOnClick: (e: any) => void
+  reviewScreenButtonOnClick: (e: any) => void
+  answerSheetButtonOnClick: (e: any) => void
+  markExamButtonOnClick?: (e: any) => void
 }
 
 const Navigation = (props: NavigationProps): JSX.Element => {
@@ -77,17 +77,17 @@ const Navigation = (props: NavigationProps): JSX.Element => {
     answerSheetButtonOnClick,
     markExamButtonOnClick
   } = props
-  const [isPeriodicTableOpen, setPeriodicTableOpen] = useState(false)
+  const [isPeriodicTableOpen, setPeriodicTableOpen] = React.useState(false)
 
   const handleOpenPeriodicTable = () => setPeriodicTableOpen(true)
   const handleClosePeriodicTable = () => setPeriodicTableOpen(false)
 
-  const handleNextClick = e => {
+  const handleNextClick = (e: any) => {
     !keepPeriodicTable && handleClosePeriodicTable()
     nextButtonOnClick(e)
   }
 
-  const handlePrevClick = e => {
+  const handlePrevClick = (e: any) => {
     !keepPeriodicTable && handleClosePeriodicTable()
     previousButtonOnClick(e)
   }

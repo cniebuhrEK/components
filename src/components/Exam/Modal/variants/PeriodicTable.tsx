@@ -45,18 +45,19 @@ const PeriodicTable = ({
 
 PeriodicTable.defaultProps = {}
 
-export default PeriodicTable
-
 export const PeriodicTableContainer = styled.div`
   height: 100%;
 
   .periodic-table-container {
     max-height: 1000px;
-    background-color: ${props => props.theme.palette.white};
+    background-color: ${({ theme }) => theme.palette.white};
   }
 
   .periodic-table {
     width: 1010px;
     height: 685px;
+    user-select: none;
   }
 `
+
+export default PeriodicTable

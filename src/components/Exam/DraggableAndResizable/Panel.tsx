@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import PanelHeader from './components/PanelHeader'
@@ -22,57 +22,84 @@ const Panel = ({
   handleClose,
   children
 }) => {
-  const panelRef = useRef(null)
+  const panelRef = React.useRef<HTMLDivElement>(null)
 
-  const handleDrag = (movementX, movementY) => {
+  // Handle the dragging of the panel.
+  // Use movement and enforce collisions inside the window.
+  function handleDrag(movementX: number, movementY: number): void {
     const panel = panelRef.current
     if (!panel) return
 
-    // @ts-ignore
-    const { x, y } = panel.getBoundingClientRect()
+    const { x, y, width, height } = panel.getBoundingClientRect()
 
-    // @ts-ignore
+    const parentX: number = window.innerWidth
+    const parentY: number = window.innerHeight
+    const newX: number = x + movementX
+    const newY: number = y + movementY
+
+    // Left collisions
+    if (newX < 0) {
+      panel.style.left = `0px`
+      return
+    }
+
+    // Top collisions
+    if (newY < 0) {
+      panel.style.top = `0px`
+      return
+    }
+
+    // Right collisions
+    if (newX + width >= parentX) {
+      panel.style.left = `${parentX - width}px`
+      return
+    }
+
+    // Bottom collisions
+    if (newY + height >= parentY) {
+      panel.style.top = `${parentY - height}px`
+      return
+    }
+
+    // Handle moving
     panel.style.left = `${x + movementX}px`
-    // @ts-ignore
     panel.style.top = `${y + movementY}px`
   }
 
-  const handleResize = (direction, movementX, movementY) => {
+  // Handle resizing the panel
+  function handleResize(
+    direction: string,
+    movementX: number,
+    movementY: number
+  ): void {
     const panel = panelRef.current
     if (!panel) return
 
-    // @ts-ignore
     const { width, height, x, y } = panel.getBoundingClientRect()
 
     const resizeTop = () => {
-      // @ts-ignore
       panel.style.height = `${
         height - movementY < 400 ? 400 : height - movementY
       }px`
-      // @ts-ignore
       panel.style.top = `${y + movementY}px`
     }
 
     const resizeRight = () => {
-      // @ts-ignore
       panel.style.width = `${
         width + movementX < 400 ? 400 : width + movementX
       }px`
     }
 
     const resizeBottom = () => {
-      // @ts-ignore
       panel.style.height = `${
         height + movementY < 400 ? 400 : height + movementY
       }px`
     }
 
     const resizeLeft = () => {
-      // @ts-ignore
       panel.style.width = `${
         width - movementX < 400 ? 400 : width - movementX
       }px`
-      // @ts-ignore
       panel.style.left = `${x + movementX}px`
     }
 
@@ -174,8 +201,6 @@ const Panel = ({
     </PanelContainer>
   )
 }
-
-export default Panel
 
 const PanelContainer = styled.div`
   position: fixed;
@@ -286,6 +311,8 @@ const PanelContainer = styled.div`
     svg {
       transform: translateY(3px);
     }
+
+    user-select: none;
   }
 
   .panel__buttons-container {
@@ -465,3 +492,5 @@ const PanelContainer = styled.div`
     top: 0;
   }
 `
+
+export default Panel
