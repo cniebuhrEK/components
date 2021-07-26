@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { split } from 'ramda'
+import React from 'react'
+import * as R from 'ramda'
 import cx from 'classnames'
 
 import {
@@ -34,12 +34,12 @@ const Header = (props: HeaderProps): JSX.Element => {
     secondsLeftForWarning = 300
   } = props
 
-  const extractedTime = split(':', timer)
+  const extractedTime = R.split(':', timer)
   const [hh, mm, ss] = extractedTime
   const secondsLeft = Number(hh) * 60 * 60 + Number(mm) * 60 + Number(ss)
 
-  const [timerExpanded, setTimerExpanded] = useState(true)
-  const [pageExpanded, setPageExpanded] = useState(true)
+  const [timerExpanded, setTimerExpanded] = React.useState(true)
+  const [pageExpanded, setPageExpanded] = React.useState(true)
   const warningReached = secondsLeft <= secondsLeftForWarning
 
   const timerClass = cx({
@@ -53,16 +53,16 @@ const Header = (props: HeaderProps): JSX.Element => {
     '--hidden': !pagesVisibility
   })
 
-  const toggleTimerVisibility = e => {
+  const toggleTimerVisibility = (e: any): void => {
     e.preventDefault()
     !warningReached && setTimerExpanded(prevState => !prevState)
   }
-  const togglePageVisibility = e => {
+  const togglePageVisibility = (e: any): void => {
     e.preventDefault()
     !warningReached && setPageExpanded(prevState => !prevState)
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (secondsLeft <= secondsLeftForWarning) {
       setPageExpanded(true)
       setTimerExpanded(true)
@@ -73,7 +73,7 @@ const Header = (props: HeaderProps): JSX.Element => {
     <ExamHeaderContainer>
       <ExamHeaderTitle>{title}</ExamHeaderTitle>
       <NotOfficialMCATContainer>
-        This is not an official MCAT
+        This is not an official MCAT.
         <br />
         Examkrackers is not affiliated with the AAMC.
       </NotOfficialMCATContainer>
