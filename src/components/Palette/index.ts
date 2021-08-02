@@ -1,1 +1,1 @@
-export { Palette as Default } from './Palette.tsx'
+export { default as Palette } from './Palette'
