@@ -4,30 +4,19 @@ export default styled.table`
   border-collapse: separate;
   box-sizing: border-box;
   display: table;
-  font-family: ${props => props.theme.typography.fontFamily};
-  background-color: ${props => props.theme.palette.biege};
-  border-radius: ${props => props.theme.shape.borderRadiusBig};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
   width: 100%;
   border-spacing: 0;
-  padding: ${props => {
+  font-size: ${({ size, theme }) => {
     switch (true) {
-      case props.size === 'm':
-        return '40px'
-      case props.size === 's':
-      case props.size === 'xs':
+      case size === 'xs':
+        return theme.typography.fontSizeExtraSmall
+      case size === 'm':
+        return theme.typography.fontSizeNormal
+      case size === 's':
       default:
-        return '32px'
-    }
-  }};
-  font-size: ${props => {
-    switch (true) {
-      case props.size === 'xs':
-        return props.theme.typography.fontSizeExtraSmall
-      case props.size === 'm':
-        return props.theme.typography.fontSizeNormal
-      case props.size === 's':
-      default:
-        return props.theme.typography.fontSizeSmall
+        return theme.typography.fontSizeSmall
     }
   }};
 
@@ -38,27 +27,27 @@ export default styled.table`
   td,
   tr,
   div {
-    font-size: ${props => {
+    font-size: ${({ theme, size }) => {
       switch (true) {
-        case props.size === 'xs':
-          return props.theme.typography.fontSizeExtraSmall
-        case props.size === 'm':
-          return props.theme.typography.fontSizeNormal
-        case props.size === 's':
+        case size === 'xs':
+          return theme.typography.fontSizeExtraSmall
+        case size === 'm':
+          return theme.typography.fontSizeNormal
+        case size === 's':
         default:
-          return props.theme.typography.fontSizeSmall
+          return theme.typography.fontSizeSmall
       }
     }};
   }
 
   td {
     &:first-child {
-      margin-left: ${props => {
+      margin-left: ${({ size }) => {
         switch (true) {
-          case props.size === 'm':
+          case size === 'm':
             return '40px'
-          case props.size === 's':
-          case props.size === 'xs':
+          case size === 's':
+          case size === 'xs':
           default:
             return '32px'
         }
@@ -66,12 +55,12 @@ export default styled.table`
     }
 
     &:last-child {
-      margin-right: ${props => {
+      margin-right: ${({ size }) => {
         switch (true) {
-          case props.size === 'm':
+          case size === 'm':
             return '40px'
-          case props.size === 's':
-          case props.size === 'xs':
+          case size === 's':
+          case size === 'xs':
           default:
             return '32px'
         }
