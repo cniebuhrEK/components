@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled.thead`
+const TableHead = styled.thead`
   box-sizing: border-box;
   display: table-header-group;
   vertical-align: middle;
@@ -8,5 +8,7 @@ export default styled.thead`
   border-spacing: 0;
   width: 100%;
   border-collapse: separate;
-  font-family: ${props => props.theme.typography.fontFamily};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
 `
+
+export default TableHead

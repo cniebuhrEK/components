@@ -11,7 +11,7 @@ export interface TableHeaderProps {
   id: string
   sticky?: boolean
   isSortActive?: boolean
-  onChangeSort?: (e) => any
+  onChangeSort?: (e: any) => any
 }
 
 export const SORT_DIRECTION = {
@@ -67,8 +67,6 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 }
 
 const StyledTableHeader = styled.th`
-  background-color: ${({ sticky, theme }) =>
-    sticky ? theme.palette.biege : 'transparent'};
   border-color: ${({ theme }) => theme.palette.grey09};
   border-spacing: 0;
   border-style: solid;

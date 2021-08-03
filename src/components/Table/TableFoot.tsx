@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export default styled.tfoot`
+const TableFoot = styled.tfoot`
   box-sizing: border-box;
   display: table-footer-group;
   vertical-align: middle;
@@ -8,9 +8,11 @@ export default styled.tfoot`
   border-spacing: 0;
   width: 100%;
   border-collapse: separate;
-  font-family: ${props => props.theme.typography.fontFamily};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
 
   td {
     border: none;
   }
 `
+
+export default TableFoot
