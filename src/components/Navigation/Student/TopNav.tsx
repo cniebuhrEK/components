@@ -2,52 +2,63 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from '../../Button'
+
+type MenuLink = {
+  label: string
+  url: string
+}
 
 interface StudentTopNavigationProps {
   avatar: string
-  username: string
-  helloText: string
-  logoutText: string
-  handleLogout: () => void
+  greeting: string
+  menu: string
+  links: MenuLink[]
+  onMenuClick: () => void
 }
 
-export const StudentTopNavigation = (
+const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, helloText, logoutText, handleLogout } = props
+  const { avatar, menu, greeting, onMenuClick } = props
 
   return (
-    <StudentTopNavigationContainer>
-      <NavbarLogo>
+    <Container>
+      <LogoContainer>
         <img src='/assets/logo/LogoDarkBg.svg' alt='logo icon' />
-      </NavbarLogo>
-      <NavbarLinks>
-        <Link href='/exams'>Practice Exams</Link>
-      </NavbarLinks>
-      <NavbarRight>
-        <NavbarUser>
-          <NavbarUserIcon src={avatar} alt='profile icon' />
-          <p>{helloText}</p>
-        </NavbarUser>
-      </NavbarRight>
-      <LogoutButton onClick={handleLogout}>{logoutText}</LogoutButton>
-    </StudentTopNavigationContainer>
+      </LogoContainer>
+      <NavRight>
+        <UserContainer>
+          {avatar && <IconContainer src={avatar} alt='profile icon' />}
+          <p>{greeting}</p>
+        </UserContainer>
+        <Button onClick={onMenuClick}>{menu}</Button>
+      </NavRight>
+    </Container>
   )
 }
 
-const StudentTopNavigationContainer = styled.div`
+StudentTopNavigation.defaultProps = {
+  avatar: '',
+  menu: '',
+  greeting: '',
+  onMenuClick: () => {}
+}
+
+const Container = styled.div`
   align-items: center;
-  background-color: ${({ theme }) => theme.palette.black};
-  box-shadow: ${({ theme }) => theme.shadows.headerShadow};
+  background-color: none;
   display: flex;
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   padding: 0 32px;
   width: 100%;
+  max-width: 1280px;
+  margin: auto;
 `
 
-const NavbarLogo = styled.div`
+const LogoContainer = styled.div`
   display: flex;
   height: 100%;
   width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
@@ -58,34 +69,20 @@ const NavbarLogo = styled.div`
   }
 `
 
-const NavbarLinks = styled.div`
-  color: ${({ theme }) => theme.palette.white};
-  flex: 1 1 auto;
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  text-decoration: none;
-`
-
-const Link = styled.a`
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  text-decoration: none;
-  letter-spacing: -0.1px;
-
-  &:hover {
-    color: ${({ theme }) => theme.palette.white};
-    text-decoration: none;
-  }
-`
-
-const NavbarUser = styled.div`
+const UserContainer = styled.div`
   display: flex;
   align-items: center;
   flex-flow: row;
   color: ${({ theme }) => theme.palette.grey07};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  letter-spacing: -0.1px;
+  margin-right: 2em;
+
+  p {
+    white-space: nowrap;
+  }
 `
 
-const NavbarUserIcon = styled.img`
+const IconContainer = styled.img`
   border-radius: 100%;
   background: ${({ theme }) => theme.palette.white};
   height: 48px;
@@ -93,29 +90,11 @@ const NavbarUserIcon = styled.img`
   margin: 0 16px 0 0;
 `
 
-const NavbarRight = styled.div`
+const NavRight = styled.div`
   align-items: center;
+  justify-content: space-between;
   display: flex;
+  width: auto;
 `
-
-const LogoutButton = styled.div`
-  color: ${({ theme }) => theme.palette.grey07};
-  cursor: pointer;
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  letter-spacing: -0.1px;
-  margin-left: 64px;
-
-  &:hover {
-    color: ${({ theme }) => theme.palette.white};
-  }
-`
-
-StudentTopNavigation.defaultProps = {
-  username: 'error',
-  avatar: '/assets/illustrations/AvatarPlaceholder.png',
-  logoutText: 'Log out',
-  helloText: 'Hi, Username',
-  handleLogout: () => {}
-}
 
 export default StudentTopNavigation
