@@ -6,16 +6,16 @@ export default createGlobalStyle`
 
     margin: 0;
 
-    color: ${props => props.theme.palette.brown01};
-    font-size: 16px;
+    color: ${({ theme }) => theme.palette.brown01};
+    font-size: 14px;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
     }
 
     body {
-    background-color: ${props => props.theme.palette.white};
+    background-color: ${({ theme }) => theme.palette.white};
     margin: 0;
-    font-family: ${props => props.theme.typography.fontFamily};
+    font-family: ${({ theme }) => theme.typography.fontFamily};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     }
@@ -66,7 +66,7 @@ export default createGlobalStyle`
     }
 
     a {
-      color: ${props => props.theme.palette.grey07};
+      color: ${({ theme }) => theme.palette.grey07};
       font-weight: 400;
       text-decoration: none;
       background-color: transparent;
@@ -75,9 +75,9 @@ export default createGlobalStyle`
 
     input:-webkit-autofill {
       height: 100%;
-      color: ${props => props.theme.palette.brown01}; !important;
+      color: ${({ theme }) => theme.palette.brown01}; !important;
       background-color: unset;
-      box-shadow: 0 0 0px 1000px ${props => props.theme.palette.biege} inset;
+      box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.biege} inset;
     }
 
     input::-ms-clear, input::-ms-reveal {
