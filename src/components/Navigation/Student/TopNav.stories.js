@@ -7,10 +7,10 @@ const Template = args => <TopNav {...args} />
 
 export const TopNavigation = Template.bind({})
 TopNavigation.args = {
-  avatar: '/assets/illustrations/AvatarPlaceholder.png',
-  helloText: 'Hi, user',
-  logoutText: 'Log out',
-  handleLogout: () => {}
+  avatar: '',
+  menu: 'Menu',
+  greeting: 'Hi, Jack!',
+  onMenuClick: () => {}
 }
 
 export default {
