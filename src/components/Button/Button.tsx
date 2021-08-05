@@ -22,8 +22,8 @@ const buttonColors = {
 
 interface ButtonProps {
   onClick?: (e: any) => void
-  onHover?: (e: any) => void
-  onBlur?: (e: any) => void
+  onMouseEnter?: (e: any) => void
+  onMouseLeave?: (e: any) => void
   children?: JSX.Element | string
   size?: string
   color?: string
@@ -41,8 +41,8 @@ interface ButtonProps {
 const Button = (props: ButtonProps): JSX.Element => {
   const {
     onClick,
-    onHover,
-    onBlur,
+    onMouseEnter,
+    onMouseLeave,
     children,
     size,
     color,
@@ -60,8 +60,8 @@ const Button = (props: ButtonProps): JSX.Element => {
   return (
     <StyledButton
       onClick={onClick}
-      onMouseEnter={onHover}
-      onMouseLeave={onBlur}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       name={name}
       value={value}
       autoFocus={autofocus}

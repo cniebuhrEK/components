@@ -33,7 +33,7 @@ const StudentTopNavigation = (
           <p>{greeting}</p>
         </UserContainer>
         <MenuContainer onMouseLeave={() => setOpen(false)}>
-          <Button onHover={() => setOpen(true)}>{menu}</Button>
+          <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
           <NavMenu open={open}>
             {links.map((l: MenuLink, i: number) => (
               <NavMenuItem key={`nav-menu-link-${i}`}>
