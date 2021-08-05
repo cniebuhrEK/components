@@ -14,13 +14,13 @@ interface StudentTopNavigationProps {
   greeting: string
   menu: string
   links: MenuLink[]
-  onMenuClick: () => void
 }
 
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, menu, greeting, onMenuClick } = props
+  const { avatar, menu, greeting, links } = props
+  const [open, setOpen] = React.useState(false)
 
   return (
     <Container>
@@ -32,7 +32,16 @@ const StudentTopNavigation = (
           {avatar && <IconContainer src={avatar} alt='profile icon' />}
           <p>{greeting}</p>
         </UserContainer>
-        <Button onClick={onMenuClick}>{menu}</Button>
+        <MenuContainer onMouseLeave={() => setOpen(false)}>
+          <Button onHover={() => setOpen(true)}>{menu}</Button>
+          <NavMenu open={open}>
+            {links.map((l: MenuLink, i: number) => (
+              <NavMenuItem key={`nav-menu-link-${i}`}>
+                <a href={l.url}>{l.label}</a>
+              </NavMenuItem>
+            ))}
+          </NavMenu>
+        </MenuContainer>
       </NavRight>
     </Container>
   )
@@ -42,7 +51,8 @@ StudentTopNavigation.defaultProps = {
   avatar: '',
   menu: '',
   greeting: '',
-  onMenuClick: () => {}
+  links: [],
+  onMenuHover: () => {}
 }
 
 const Container = styled.div`
@@ -95,6 +105,39 @@ const NavRight = styled.div`
   justify-content: space-between;
   display: flex;
   width: auto;
+`
+
+const MenuContainer = styled.div`
+  position: relative;
+`
+
+const NavMenu = styled.div`
+    min-width: 120px;
+    background-color ${({ theme }) => theme.palette.white};
+    position: absolute;
+    top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+    border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
+    right: 0;
+    height: auto;
+    box-shadow: 0px 10px 20px #CDC5BB;
+    display: ${({ open }) => (open ? 'block' : 'none')};
+`
+
+const NavMenuItem = styled.div`
+  line-height: normal;
+  padding: 12px 16px;
+  color: ${({ theme }) => theme.palette.darkblue01};
+
+  a {
+    color: ${({ theme }) => theme.palette.darkblue01};
+    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  }
+
+  &:hover {
+    border-left: 3px solid ${({ theme }) => theme.palette.orange02};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
 `
 
 export default StudentTopNavigation
