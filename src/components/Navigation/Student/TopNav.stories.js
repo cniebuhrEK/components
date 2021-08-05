@@ -10,7 +10,11 @@ TopNavigation.args = {
   avatar: '',
   menu: 'Menu',
   greeting: 'Hi, Jack!',
-  onMenuClick: () => {}
+  links: [
+    { label: 'Exams', url: 'https://examkrackers.com' },
+    { label: 'Projections', url: 'https://examkrackers.com' },
+    { label: 'Log Out', url: 'https://examkrackers.com' }
+  ]
 }
 
 export default {
