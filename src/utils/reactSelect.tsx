@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react'
+import React from 'react'
 import theme from '../theme/theme'
 import { components } from 'react-select'
 import { isNotNilOrEmpty } from './ramda'
@@ -10,18 +10,18 @@ export const SELECT_SIZES = {
   small: 'small'
 }
 
-const getHoverBorderColor = (disabled, error) => {
+const getHoverBorderColor = (disabled: boolean, error: any) => {
   switch (true) {
     case disabled:
       return 'transparent'
     case error:
       return theme.palette.red05
     default:
-      return theme.palette.brown01
+      return theme.palette.darkblue01
   }
 }
 
-const getHoverCursos = (disabled, searchable) => {
+const getHoverCursor = (disabled: boolean, searchable: boolean) => {
   switch (true) {
     case disabled:
       return 'not-allowed'
@@ -50,28 +50,28 @@ export const REACT_SELECT_STYLES = {
       alignItems: 'center',
       boxSizing: 'border-box',
       position: 'relative',
-      borderWidth: '1px',
+      backgroundColor: isDisabled ? theme.palette.grey08 : theme.palette.white,
+      borderColor: error ? theme.palette.red05 : theme.palette.darkblue01,
+      borderRadius: theme.shape.borderRadiusSmall,
       borderStyle: 'solid',
+      borderWidth: '1px',
+      color: error ? theme.palette.red05 : theme.palette.darkblue01,
       fontSize: '13px',
       padding: '0 14px',
-      borderColor: error ? theme.palette.red05 : 'transparent',
-      borderRadius: theme.shape.borderRadiusNormal,
       fontFamily: theme.typography.fontFamily,
       minHeight:
         size === SELECT_SIZES.small
           ? theme.dimensions.inputSmallHeight
           : theme.dimensions.inputHeight,
-      color: error ? theme.palette.red05 : theme.palette.brown01,
-      backgroundColor: isDisabled ? theme.palette.grey08 : theme.palette.grey09,
       transition: `all 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
-        cursor: getHoverCursos(isDisabled, isSearchable),
+        cursor: getHoverCursor(isDisabled, isSearchable),
         borderColor: getHoverBorderColor(isDisabled, error)
       },
       '&:focus-within': {
         borderWidth: '1px',
         borderColor: error ? theme.palette.red05 : theme.palette.orange04,
-        color: error ? theme.palette.red05 : theme.palette.brown01
+        color: error ? theme.palette.red05 : theme.palette.darkblue01
       },
       '& input': isSearchable ? {} : { height: '1px' }
     }
@@ -81,7 +81,7 @@ export const REACT_SELECT_STYLES = {
       fontSize: '13px',
       backgroundColor: 'transparent',
       border: 'none',
-      color: theme.palette.brown01,
+      color: theme.palette.darkblue01,
       padding: '0',
       margin: '0',
       outline: 'none',
@@ -119,7 +119,7 @@ export const REACT_SELECT_STYLES = {
   option: (_provided, state: { isFocused: boolean }) => {
     const { isFocused } = state
     return {
-      color: theme.palette.brown01,
+      color: theme.palette.darkblue01,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -164,7 +164,7 @@ export const REACT_SELECT_STYLES = {
       alignItems: 'center',
       padding: '6px',
       backgroundColor: theme.palette.grey09,
-      borderRadius: theme.shape.borderRadiusNormal,
+      borderRadius: theme.shape.borderRadiusSmall,
       marginRight: '9px',
       wordBreak: 'keep-all'
     }
@@ -188,7 +188,7 @@ export const REACT_SELECT_STYLES = {
   },
   noOptionsMessage: (_provided, _state) => {
     return {
-      color: theme.palette.brown01,
+      color: theme.palette.darkblue01,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -202,7 +202,7 @@ export const REACT_SELECT_STYLES = {
   },
   loadingMessage: (_provided, _state) => {
     return {
-      color: theme.palette.brown01,
+      color: theme.palette.darkblue01,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -226,13 +226,13 @@ export const REACT_SELECT_STYLES = {
   indicatorsContainer: (_provided, _state) => {},
   clearIndicator: (_provided, _state) => {
     return {
-      color: theme.palette.brown01,
+      color: theme.palette.darkblue01,
       cursor: 'pointer'
     }
   },
   loadingIndicator: (_provided, _state) => {
     return {
-      color: theme.palette.brown01,
+      color: theme.palette.darkblue01,
       display: 'flex',
       alignItems: 'center',
       fontSize: '4px'
@@ -245,24 +245,24 @@ export const REACT_SELECT_STYLES = {
 
 export const CustomInput = (props: {
   selectProps: any
-  onFocus: (e) => any
-  onBlur: (e) => any
+  onFocus: (e: any) => any
+  onBlur: (e: any) => any
 }): JSX.Element => {
   const { selectProps } = props
-  const [isFocused, setIsFocused] = useState(false)
+  const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
 
-  const handleOnFocus = e => {
+  const handleOnFocus = (e: any) => {
     props.onFocus(e)
     setIsFocused(true)
   }
-  const handleOnBlur = e => {
+  const handleOnBlur = (e: any) => {
     props.onBlur(e)
     setIsFocused(false)
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       <components.Input
         {...props}
         onFocus={handleOnFocus}
@@ -283,30 +283,30 @@ export const CustomInput = (props: {
       <ErrorText id={`${selectProps.name}-error`} error={selectProps.error}>
         {selectProps.errorText}
       </ErrorText>
-    </Fragment>
+    </React.Fragment>
   )
 }
 
 export const CustomValueContainer = (props: {
   selectProps: any
-  onFocus: (e) => any
-  onBlur: (e) => any
+  onFocus: (e: any) => any
+  onBlur: (e: any) => any
 }): JSX.Element => {
   const { selectProps } = props
-  const [isFocused, setIsFocused] = useState(false)
+  const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
 
-  const handleOnFocus = e => {
+  const handleOnFocus = (e: any) => {
     props.onFocus(e)
     setIsFocused(true)
   }
-  const handleOnBlur = e => {
+  const handleOnBlur = (e: any) => {
     props.onBlur(e)
     setIsFocused(false)
   }
 
   return (
-    <Fragment>
+    <React.Fragment>
       <components.ValueContainer
         {...props}
         onFocus={handleOnFocus}
@@ -327,7 +327,7 @@ export const CustomValueContainer = (props: {
       <ErrorText id={`${selectProps.name}-error`} error={selectProps.error}>
         {selectProps.errorText}
       </ErrorText>
-    </Fragment>
+    </React.Fragment>
   )
 }
 
@@ -335,11 +335,11 @@ const IconContainer = styled.div`
   cursor: pointer;
   position: absolute;
   right: 14px;
-  top: ${props => {
+  top: ${({ isFocusedOrHasValue, size }) => {
     switch (true) {
-      case props.isFocusedOrHasValue:
+      case isFocusedOrHasValue:
         return '-19px'
-      case props.size === SELECT_SIZES.small:
+      case size === SELECT_SIZES.small:
         return '8px'
       default:
         return '14px'
@@ -349,45 +349,46 @@ const IconContainer = styled.div`
 `
 
 const InputLabel = styled.div`
-  color: ${props => {
+  color: ${({ error, isFocused, theme }) => {
     switch (true) {
-      case props.error:
-        return props.theme.palette.red05
-      case props.isFocused:
+      case error:
+        return theme.palette.red05
+      case isFocused:
       default:
-        return props.theme.palette.brown01
+        return theme.palette.darkblue01
     }
   }};
   position: absolute;
-  left: ${props => (props.isFocusedOrHasValue ? '-1px' : '14px')};
-  top: ${props => {
+  left: ${({ isFocusedOrHasValue }) => (isFocusedOrHasValue ? '-1px' : '14px')};
+  top: ${({ isFocusedOrHasValue, size }) => {
     switch (true) {
-      case props.isFocusedOrHasValue:
+      case isFocusedOrHasValue:
         return '-19px'
-      case props.size === SELECT_SIZES.small:
+      case size === SELECT_SIZES.small:
         return '8px'
       default:
         return '14px'
     }
   }};
-  font-size: ${props => {
+  font-size: ${({ isFocusedOrHasValue, size }) => {
     switch (true) {
-      case props.isFocusedOrHasValue:
+      case isFocusedOrHasValue:
         return '12px'
-      case props.size === SELECT_SIZES.small:
+      case size === SELECT_SIZES.small:
         return '14px'
       default:
         return '16px'
     }
   }};
-  line-height: ${props => (props.isFocusedOrHasValue ? '12px' : '16px')};
+  line-height: ${({ isFocusedOrHasValue }) =>
+    isFocusedOrHasValue ? '12px' : '16px'};
   background-color: transparent;
-  transition: all 200ms ${props => props.theme.transitions.easing.easeInOut} 0ms;
+  transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 `
 
 const ErrorText = styled.div`
-  display: ${props => (props.error ? 'block' : 'none')};
-  color: ${props => props.theme.palette.red05};
+  display: ${({ error }) => (error ? 'block' : 'none')};
+  color: ${({ theme }) => theme.palette.red05};
   font-size: 12px;
   position: absolute;
   left: -1px;

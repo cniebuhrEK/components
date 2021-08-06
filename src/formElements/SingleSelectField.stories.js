@@ -2,7 +2,7 @@ import React from 'react'
 import SingleSelect from './SingleSelectField'
 
 const Template = args => (
-  <div style={{ marginBottom: '100px' }}>
+  <div style={{ marginBottom: '100px', maxWidth: '512px' }}>
     <SingleSelect {...args} />
   </div>
 )
