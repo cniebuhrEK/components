@@ -26,8 +26,8 @@ interface ButtonProps {
   onMouseLeave?: (e: any) => void
   children?: JSX.Element | string
   size?: string
-  color?: string
-  variant?: string
+  color?: 'orange' | 'green' | 'blue' | 'transparent'
+  variant?: 'contained' | 'outlined'
   startIcon?: any
   type?: string
   disabled?: boolean
@@ -39,56 +39,17 @@ interface ButtonProps {
 }
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const {
-    onClick,
-    onMouseEnter,
-    onMouseLeave,
-    children,
-    size,
-    color,
-    variant,
-    startIcon,
-    type,
-    disabled,
-    autofocus,
-    name,
-    value,
-    isLoading,
-    id
-  } = props
+  const { children, startIcon, isLoading, autofocus } = props
 
   return (
-    <StyledButton
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      name={name}
-      value={value}
-      autoFocus={autofocus}
-      disabled={disabled}
-      type={type}
-      size={size}
-      color={color}
-      variant={variant}
-      id={id}
-      {...props}
-    >
-      {startIcon && <div className='button__start-icon'>{startIcon}</div>}
+    <StyledButton {...props} autoFocus={autofocus}>
+      {startIcon && <StartIcon>{startIcon}</StartIcon>}
       {isLoading ? <Loader /> : children}
     </StyledButton>
   )
 }
 
 export const StyledButton = styled.button`
-  border-radius: ${({ size, theme }) => {
-    switch (size) {
-      case buttonSizes.small:
-        return theme.shape.borderRadiusSmall
-      case buttonSizes.normal:
-      default:
-        return theme.shape.borderRadiusNormal
-    }
-  }};
   display: inline-flex;
   align-items: center;
   outline: none;
@@ -101,7 +62,7 @@ export const StyledButton = styled.button`
         return theme.typography.fontSizeSmall
       case buttonSizes.normal:
       default:
-        return theme.typography.fontSizeSmall
+        return theme.typography.fontSizeNormal
     }
   }};
   font-family: ${({ theme }) => theme.typography.fontFamily};
@@ -139,7 +100,7 @@ export const StyledButton = styled.button`
         return theme.palette.grey07
 
       case variant === buttonVariants.outlined && color === buttonColors.orange:
-        return theme.palette.orange05
+        return theme.palette.orange02
       case variant === buttonVariants.outlined && color === buttonColors.green:
         return theme.palette.green04
       case variant === buttonVariants.outlined && color === buttonColors.blue:
@@ -167,6 +128,16 @@ export const StyledButton = styled.button`
     }
   }};
   box-shadow: none;
+  border-radius: ${({ size, theme }) => {
+    switch (size) {
+      case buttonSizes.small:
+        return theme.shape.borderRadiusSmall
+      case buttonSizes.normal:
+      default:
+        return theme.shape.borderRadiusNormal
+    }
+  }};
+
   border-width: ${({ variant }) =>
     variant === buttonVariants.contained ? '0px' : '1px'};
   border-style: ${({ variant }) =>
@@ -174,7 +145,7 @@ export const StyledButton = styled.button`
   border-color: ${({ variant, color, theme }) => {
     switch (true) {
       case variant === buttonVariants.outlined && color === buttonColors.orange:
-        return theme.palette.orange05
+        return theme.palette.orange02
       case variant === buttonVariants.outlined && color === buttonColors.green:
         return theme.palette.green04
       case variant === buttonVariants.outlined && color === buttonColors.blue:
@@ -191,10 +162,10 @@ export const StyledButton = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${({ size, variant, theme }) => {
+    color: ${({ theme }) => {
       switch (true) {
-        case size === buttonSizes.small && variant === buttonVariants.contained:
-          return theme.palette.grey08
+        default:
+          return theme.palette.inactive
       }
     }};
     background-color: ${({ variant, size, color, theme }) => {
@@ -204,7 +175,7 @@ export const StyledButton = styled.button`
         case size === buttonSizes.small && variant === buttonVariants.contained:
           return theme.palette.grey08
         case color === buttonColors.orange:
-          return theme.palette.orange10
+          return theme.palette.orange05
         case color === buttonColors.green:
           return theme.palette.green10
         case color === buttonColors.transparent:
@@ -227,19 +198,23 @@ export const StyledButton = styled.button`
     color: ${({ color, theme }) => {
       switch (true) {
         case color === buttonColors.orange:
-          return theme.palette.biege
+          return theme.palette.background
+        case color === buttonColors.blue:
+          return theme.palette.background
         case color === buttonColors.green:
           return theme.palette.biege
         case color === buttonColors.transparent:
         default:
-          return theme.palette.grey07
+          return theme.palette.orange01
       }
     }};
 
     background-color: ${({ color, theme }) => {
       switch (true) {
         case color === buttonColors.orange:
-          return theme.palette.orange04
+          return theme.palette.orange01
+        case color === buttonColors.blue:
+          return theme.palette.darkblue04
         case color === buttonColors.green:
           return theme.palette.green04
         case color === buttonColors.transparent:
@@ -260,13 +235,11 @@ export const StyledButton = styled.button`
       }
     }};
   }
+`
 
-  .button__start-icon {
-    margin-right: 8px;
-    margin-left: -2px;
-    line-height: 16px;
-    height: 16px;
-  }
+const StartIcon = styled.div`
+  margin-right: 8px;
+  height: 16px;
 `
 
 Button.defaultProps = {

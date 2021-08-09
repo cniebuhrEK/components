@@ -2,22 +2,22 @@
 
 import React from 'react'
 import Button from './Button'
-import { PlayIcon } from '../../icons'
+import { PlusIcon } from '../../icons'
 
-const PrimaryTemplate = args => <Button {...args}>{args.children}</Button>
-const StartIconTemplate = args => <Button {...args}>{args.children}</Button>
+const DefaultTemplate = args => <Button {...args}>{args.children}</Button>
+const IconTemplate = args => <Button {...args}>{args.children}</Button>
 
-export const Primary = PrimaryTemplate.bind({})
-Primary.args = {
+export const Default = DefaultTemplate.bind({})
+Default.args = {
   color: 'orange',
   children: 'Button'
 }
 
-export const StartIcon = StartIconTemplate.bind({})
-StartIcon.args = {
-  color: 'green',
+export const IconButton = IconTemplate.bind({})
+IconButton.args = {
+  color: 'blue',
   children: 'Button',
-  startIcon: <PlayIcon />
+  startIcon: <PlusIcon />
 }
 
 export default {

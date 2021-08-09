@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface ButtonProps {
-  onClick?: (e) => any
+  onClick?: (e: any) => void
   icon?: any
   type?: string
   disabled?: boolean
@@ -38,33 +38,33 @@ export const StyledButton = styled.button`
   outline: none;
   box-sizing: border-box;
   letter-spacing: -0.1px;
-  font-size:  ${props => props.theme.typography.fontSizeNormal};
-  font-family: ${props => props.theme.typography.fontFamily};
+  font-size:  ${({ theme }) => theme.typography.fontSizeNormal};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 600;
   height: 32px;
   width: 32px;
   align-items: center;
   justify-content: center;
-  color: ${props => props.theme.palette.grey07};
+  color: ${({ theme }) => theme.palette.grey07};
   background-color: transparent;
   box-shadow: none;
   border: none;
-  transition: all 300ms ${props =>
-    props.theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${({ theme }) =>
+    theme.transitions.easing.easeInOut} 0ms;
 
   svg {
-    color: ${props => props.theme.palette.grey07};
+    color: ${({ theme }) => theme.palette.grey07};
   }
 
   &:disabled {
     svg {
-      color: ${props => props.theme.palette.grey08};
+      color: ${({ theme }) => theme.palette.grey08};
     }
   }
 
   &:hover:enabled,
   &:active:enabled {
-    background-color: ${props => props.theme.palette.grey10}};
+    background-color: ${({ theme }) => theme.palette.grey10}};
   }
 `
 
