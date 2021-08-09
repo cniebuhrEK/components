@@ -1,17 +1,19 @@
 import React from 'react'
 import IconLink from './IconLink'
+import { UsersIcon } from '../../icons'
 
 const Template = args => <IconLink {...args} />
 
-export const Icon = Template.bind({})
-Icon.args = {
+export const Default = Template.bind({})
+Default.args = {
   isActive: false,
   disabled: false,
-  light: false,
+  light: true,
+  icon: <UsersIcon />,
   name: 'Log out'
 }
 
 export default {
-  title: 'Atoms/Link',
+  title: 'Atoms/Link Button',
   component: IconLink
 }
