@@ -44,6 +44,7 @@ const Container = styled.a`
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   cursor: pointer;
   letter-spacing: 0;
+  border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
 
   &:hover,
   &:active,
@@ -71,6 +72,7 @@ const Name = styled.div``
 
 IconLink.defaultProps = {
   isActive: false,
+  light: true,
   name: '',
   icon: '',
   onClick: () => {}

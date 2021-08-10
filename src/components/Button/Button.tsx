@@ -162,8 +162,10 @@ export const StyledButton = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${({ theme }) => {
+    color: ${({ color, theme }) => {
       switch (true) {
+        case color === buttonColors.blue:
+          return theme.palette.background
         default:
           return theme.palette.inactive
       }
@@ -178,6 +180,8 @@ export const StyledButton = styled.button`
           return theme.palette.orange05
         case color === buttonColors.green:
           return theme.palette.green10
+        case color === buttonColors.blue:
+          return theme.palette.inactive
         case color === buttonColors.transparent:
         default:
           return 'transparent'
@@ -227,6 +231,8 @@ export const StyledButton = styled.button`
       switch (true) {
         case color === buttonColors.orange:
           return theme.shadows.orangeShadow
+        case color === buttonColors.blue:
+          return theme.shadows.blueShadow
         case color === buttonColors.green:
           return theme.shadows.greenShadow
         case color === buttonColors.transparent:

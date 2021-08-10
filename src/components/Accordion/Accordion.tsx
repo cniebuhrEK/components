@@ -113,7 +113,7 @@ const AccordionButton = styled.div`
   }
 
   svg {
-    color: ${({ theme }) => theme.palette.orange05};
+    color: ${({ theme }) => theme.palette.orange01};
     font-size: 20px;
   }
 
@@ -130,7 +130,7 @@ const AccordionButton = styled.div`
     height: 100%;
     top: 0px;
     left: 8px;
-    background-color: ${({ theme }) => theme.palette.orange05};
+    background-color: ${({ theme }) => theme.palette.orange01};
   }
 `
 

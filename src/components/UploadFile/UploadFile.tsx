@@ -70,15 +70,16 @@ export const UploadFileContainer = styled.div`
   .file-upload__wrapper {
     align-items: center;
     background-color: ${({ theme, isDisabled }) =>
-      isDisabled ? theme.palette.grey08 : theme.palette.grey09};
+      isDisabled ? theme.palette.grey08 : theme.palette.background};
     box-sizing: border-box;
     border-style: solid;
     border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
     border-color: ${({ error, theme }) =>
       error ? theme.palette.red05 : 'transparent'};
     border-width: 1px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
     color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+      error ? theme.palette.red05 : theme.palette.darkblue01};
     display: inline-flex;
     font-size: ${({ theme }) => theme.typography.fontSizeNormal};
     font-family: ${({ theme }) => theme.typography.fontFamily};
@@ -99,7 +100,7 @@ export const UploadFileContainer = styled.div`
           case isDisabled:
             return 'transparent'
           default:
-            return theme.palette.brown01
+            return theme.palette.darkblue01
         }
       }};
     }
@@ -111,13 +112,13 @@ export const UploadFileContainer = styled.div`
   }
 
   .file-upload__name {
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.darkblue01};
   }
 
   .file-upload__label {
     box-sizing: border-box;
     color: ${({ theme, error }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+      error ? theme.palette.red05 : theme.palette.darkblue01};
     position: absolute;
     font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
     line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
@@ -137,7 +138,7 @@ export const UploadFileContainer = styled.div`
     top: -19px;
     background-color: transparent;
     color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+      error ? theme.palette.red05 : theme.palette.darkblue01};
   }
 
   .file-upload__error {

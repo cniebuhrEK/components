@@ -11,6 +11,7 @@ interface AdminSideNavigationLinkProps {
   isActive: boolean
   icon: string | JSX.Element
   id: string
+  disabled?: boolean
 }
 
 interface AdminSideNavigationProps {
@@ -21,49 +22,62 @@ const AdminSideNavigation = (props: AdminSideNavigationProps): JSX.Element => {
   const { links } = props
 
   return (
-    <AdminSideNavigationContainer>
+    <Container>
       {links.map(l => (
-        <AdminSideNavigationLinkContainer key={l.id} active={l.isActive}>
+        <LinkContainer key={l.id} active={l.isActive}>
           <IconLink
+            light
             isActive={l.isActive}
             name={l.name}
             icon={l.icon}
             href={l.href}
+            disabled={l.disabled}
           />
-        </AdminSideNavigationLinkContainer>
+        </LinkContainer>
       ))}
-    </AdminSideNavigationContainer>
+    </Container>
   )
 }
 
-const AdminSideNavigationContainer = styled.div`
+const Container = styled.div`
   padding: 32px 0;
-  background-color: ${({ theme }) => theme.palette.grey09};
   height: calc(100vh - ${({ theme }) => theme.dimensions.adminTopNavHeight});
   width: ${({ theme }) => theme.dimensions.adminSideNavWidth};
   overflow: auto;
 `
 
-const AdminSideNavigationLinkContainer = styled.div`
+const LinkContainer = styled.div`
   height: 44px;
   line-height: 44px;
   display: flex;
   align-items: center;
-  padding: 4px 21px;
+  padding: 0px 21px;
   position: relative;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.biege};
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
 
   ${({ active }) => !active} {
     background-color: ${({ theme }) => theme.palette.biege};
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 
     &::before {
       content: '';
       position: absolute;
-      left: 8px;
-      top: 4px;
+      left: 0px;
+      top: 0px;
       width: 3px;
-      height: calc(100% - 8px);
-      background-color: ${({ theme }) => theme.palette.orange05};
+      height: 100%;
+      background-color: ${({ theme }) => theme.palette.orange01};
     }
+  }
+
+  ${({ disabled }) => !disabled} {
+    background-color: ${({ theme }) => theme.palette.biege};
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   }
 `
 

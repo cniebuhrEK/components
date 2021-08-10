@@ -26,11 +26,12 @@ interface SingleSelectProps {
 }
 
 const SingleSelect = (props: SingleSelectProps): JSX.Element => {
-  const { disabled } = props
+  const { disabled, options, label } = props
 
   return (
     <Select
       {...props}
+      defaultValue={options[0] || label}
       styles={REACT_SELECT_STYLES}
       components={customComponents}
       isDisabled={disabled}

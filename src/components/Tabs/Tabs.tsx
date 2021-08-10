@@ -72,7 +72,7 @@ const TabsContainer = styled.div`
 
 const TabsHeader = styled.ol`
   border-bottom: 2px solid #ccc;
-  padding: 4px 8px;
+  padding: 0px;
 `
 
 const TabContent = styled.div`

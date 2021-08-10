@@ -1,6 +1,6 @@
 // Toast/Toast.tsx - Toast component
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
 import Success from '../../icons/Success'
@@ -25,7 +25,7 @@ const SEVERITY = {
 const Toast = (props: ToastProps): JSX.Element => {
   const { open, children, severity, handleClose } = props
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (open) {
       setTimeout(handleClose, 6000)
     }
@@ -44,90 +44,90 @@ const Toast = (props: ToastProps): JSX.Element => {
 
   return (
     <StyledToast id={`toast-${severity}`} open={open} severity={severity}>
-      <div className='toast__icon'>{getIconByType()}</div>
-      <div className='toast__children'>{children}</div>
-      <div onClick={handleClose} className='toast__close'>
+      <IconContainer severity={severity}>{getIconByType()}</IconContainer>
+      <ChildrenContainer>{children}</ChildrenContainer>
+      <CloseContainer onClick={handleClose}>
         <Close />
-      </div>
+      </CloseContainer>
     </StyledToast>
   )
 }
+
+const IconContainer = styled.div`
+  margin-right: 16px;
+  display: flex;
+  align-items: flex-start;
+  font-size: 32px;
+  color: ${({ severity, theme }) => {
+    switch (severity) {
+      case SEVERITY.success:
+        return theme.palette.green05
+      case SEVERITY.error:
+        return theme.palette.red05
+      case SEVERITY.warning:
+        return theme.palette.orange04
+      case SEVERITY.info:
+      default:
+        return theme.palette.darkblue01
+    }
+  }};
+`
+
+const ChildrenContainer = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+`
+
+const CloseContainer = styled.div`
+  padding: 8px 0 0 10px;
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  cursor: pointer;
+  transition: color 225ms ${({ theme }) => theme.transitions.easing.easeInOut}
+    0ms;
+
+  &:hover {
+    color: ${({ theme }) => theme.palette.darkblue01};
+  }
+`
 
 const StyledToast = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
   padding: 4px 14px 4px 4px;
-  font-family: ${props => props.theme.typography.fontFamily};
-  font-size: ${props => props.theme.typography.fontSizeSmall};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
+  font-size: ${({ theme }) => theme.typography.fontSizeSmall};
   min-width: 300px;
   max-width: 350px;
-  z-index: ${props => (props.open ? props.theme.zIndex.snackbar : 'unset')};
-  background-color: ${props => props.theme.palette.biege};
+  z-index: ${({ open, theme }) => (open ? theme.zIndex.snackbar : 'unset')};
+  background-color: ${({ theme }) => theme.palette.biege};
   border-width: 1px;
   border-style: solid;
-  border-color: ${props => {
-    switch (props.severity) {
+  border-color: ${({ severity, theme }) => {
+    switch (severity) {
       case SEVERITY.success:
-        return props.theme.palette.green10
+        return theme.palette.green10
       case SEVERITY.error:
-        return props.theme.palette.red10
+        return theme.palette.red10
       case SEVERITY.warning:
-        return props.theme.palette.orange10
+        return theme.palette.orange10
       case SEVERITY.info:
       default:
-        return props.theme.palette.grey09
+        return theme.palette.grey09
     }
   }};
-  color: ${props => props.theme.palette.brown01};
-  border-radius: ${props => props.theme.shape.borderRadiusBig};
-  opacity: ${props => (props.open ? '1' : '0')};
-  transform: ${props => (props.open ? 'none' : 'scale(0.75, 0.75)')};
-  transition: opacity 225ms ${props => props.theme.transitions.easing.easeInOut}
+  color: ${({ theme }) => theme.palette.darkblue01};
+  border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
+  opacity: ${({ open }) => (open ? '1' : '0')};
+  transform: ${({ open }) => (open ? 'none' : 'scale(0.75, 0.75)')};
+  transition: opacity 225ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms,
-    transform 150ms ${props => props.theme.transitions.easing.easeInOut};
+    transform 150ms ${({ theme }) => theme.transitions.easing.easeInOut};
   display: flex;
   justify-content: space-between;
 
-  .toast__icon {
-    margin-right: 16px;
-    display: flex;
-    align-items: flex-start;
-    font-size: 32px;
-    color: ${props => {
-      switch (props.severity) {
-        case SEVERITY.success:
-          return props.theme.palette.green05
-        case SEVERITY.error:
-          return props.theme.palette.red05
-        case SEVERITY.warning:
-          return props.theme.palette.orange04
-        case SEVERITY.info:
-        default:
-          return props.theme.palette.brown01
-      }
-    }};
-  }
-
-  .toast__children {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-  }
-
-  .toast__close {
-    padding: 8px 0 0 10px;
-    font-size: ${props => props.theme.typography.fontSizeNormal};
-    cursor: pointer;
-    transition: color 225ms ${props => props.theme.transitions.easing.easeInOut}
-      0ms;
-
-    &:hover {
-      color: ${props => props.theme.palette.brown01};
-    }
-  }
-
-  ${props => props.theme.breakpointsMedia.mobile} {
+  ${({ theme }) => theme.breakpointsMedia.mobile} {
     min-width: calc(100vw - 40px);
     max-width: calc(100vw - 40px);
     right: auto;

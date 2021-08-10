@@ -23,7 +23,7 @@ const AccordionItemContainer = styled.div`
     height: 100%;
     top: 0px;
     left: 8px;
-    background-color: ${({ theme }) => theme.palette.orange05};
+    background-color: ${({ theme }) => theme.palette.orange01};
   }
 `
 
