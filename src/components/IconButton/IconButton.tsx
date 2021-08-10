@@ -11,10 +11,16 @@ interface ButtonProps {
   autofocus?: boolean
   id?: string
   name?: string
+  variant?: 'filled' | 'transparent'
 }
 
-const Button = (props: ButtonProps): JSX.Element => {
-  const { onClick, icon, type, disabled, autofocus, id, name } = props
+const variants = {
+  filled: 'filled',
+  transparent: 'transparent'
+}
+
+const IconButton = (props: ButtonProps): JSX.Element => {
+  const { onClick, icon, type, disabled, autofocus, id, name, variant } = props
 
   return (
     <StyledButton
@@ -24,6 +30,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       disabled={disabled}
       type={type}
       id={id}
+      variant={variant}
       {...props}
     >
       {icon}
@@ -38,22 +45,42 @@ export const StyledButton = styled.button`
   outline: none;
   box-sizing: border-box;
   letter-spacing: -0.1px;
-  font-size:  ${({ theme }) => theme.typography.fontSizeNormal};
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 600;
   height: 32px;
   width: 32px;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.palette.grey07};
-  background-color: transparent;
+  color: ${({ theme, variant }) => {
+    switch (true) {
+      case variant === variants.filled:
+        return theme.palette.darkblue01
+      default:
+        return theme.palette.darkblue01
+    }
+  }};
+  background-color: ${({ theme, variant }) => {
+    switch (true) {
+      case variant === variants.filled:
+        return theme.palette.orange02
+      default:
+        return 'none'
+    }
+  }};
   box-shadow: none;
   border: none;
-  transition: all 300ms ${({ theme }) =>
-    theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
   svg {
-    color: ${({ theme }) => theme.palette.grey07};
+    color: ${({ theme, variant }) => {
+      switch (true) {
+        case variant === variants.filled:
+          return theme.palette.darkblue01
+        default:
+          return theme.palette.darkblue01
+      }
+    }};
   }
 
   &:disabled {
@@ -64,13 +91,21 @@ export const StyledButton = styled.button`
 
   &:hover:enabled,
   &:active:enabled {
-    background-color: ${({ theme }) => theme.palette.grey10}};
+    background-color: ${({ theme, variant }) => {
+      switch (true) {
+        case variant === variants.filled:
+          return theme.palette.orange01
+        default:
+          return theme.palette.gray10
+      }
+    }};
   }
 `
 
-Button.defaultProps = {
+IconButton.defaultProps = {
   disabled: false,
-  type: 'button'
+  type: 'button',
+  variant: 'transparent'
 }
 
-export default Button
+export default IconButton
