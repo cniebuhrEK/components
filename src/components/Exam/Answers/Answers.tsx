@@ -140,6 +140,7 @@ export const AnswersContainer = styled.div`
     font-size: 15px;
     user-select: none;
     background-color: #fff !important;
+    text-decoration: none !important;
 
     & * {
       background-color: #fff !important;
