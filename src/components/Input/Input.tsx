@@ -13,7 +13,7 @@ interface InputProps {
   label?: string
   required?: boolean
   disabled?: boolean
-  type?: string
+  type?: 'text' | 'password' | 'email'
   autoComplete?: any
   autoFocus?: any
   value?: string | number
@@ -112,16 +112,17 @@ const Input = ({
 export const InputContainer = styled.div`
   align-items: center;
   background-color: ${({ theme, isDisabled }) =>
-    isDisabled ? theme.palette.grey08 : theme.palette.grey09};
+    isDisabled ? theme.palette.grey08 : theme.palette.background};
   box-sizing: border-box;
   color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : theme.palette.brown01};
+    error ? theme.palette.red05 : theme.palette.darkblue01};
   display: inline-flex;
   border-color: ${({ theme, error }) =>
     error ? theme.palette.red05 : 'transparent'};
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-style: solid;
   border-width: 1px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   height: ${({ theme }) => theme.dimensions.inputHeight};
@@ -147,7 +148,7 @@ export const InputContainer = styled.div`
   &:focus-within {
     border-width: 1px;
     border-color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.orange04};
+      error ? theme.palette.red05 : theme.palette.orange01};
     color: ${({ error, theme }) =>
       error ? theme.palette.red05 : theme.palette.brown01};
   }
@@ -216,7 +217,7 @@ export const InputContainer = styled.div`
 
   .input-container__toggle-visibility {
     display: ${({ hasPasswordType }) => (hasPasswordType ? 'flex' : 'none')};
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.darkblue01};
     cursor: pointer;
     position: absolute;
     right: 14px;

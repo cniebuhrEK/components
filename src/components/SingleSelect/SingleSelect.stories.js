@@ -4,7 +4,7 @@ import React from 'react'
 import SingleSelect from './SingleSelect'
 
 const Template = args => (
-  <div style={{ marginBottom: '100px' }}>
+  <div style={{ maxWidth: '256px', marginBottom: '100px' }}>
     <SingleSelect {...args} />
   </div>
 )
