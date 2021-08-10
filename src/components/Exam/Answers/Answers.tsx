@@ -28,14 +28,16 @@ const Answer = (props: AnswerProps): JSX.Element => {
         id={`answer-${props.answerCode}`}
         data-is-selected={`${props.isSelected}`}
       >
-        <div className='answer__code'>
-          <div className='answer__icon--answered'>
-            <QuestionAnswered />
+        <div className='answer__code-wrapper'>
+          <div className='answer__code'>
+            <div className='answer__icon--answered'>
+              <QuestionAnswered />
+            </div>
+            <div className='answer__icon--unanswered'>
+              <QuestionUnanswered />
+            </div>{' '}
+            {!props.answerCodeHidden && `${props.answerCode}. `}
           </div>
-          <div className='answer__icon--unanswered'>
-            <QuestionUnanswered />
-          </div>{' '}
-          {!props.answerCodeHidden && `${props.answerCode}. `}
         </div>
         <div
           className='answer__content'
@@ -93,7 +95,6 @@ export const AnswersContainer = styled.div`
     cursor: pointer;
     margin-top: 13.5552px;
     user-select: none;
-    background-color: #fff !important;
 
     &[data-is-selected='true'] {
       .answer__icon--answered {
@@ -130,6 +131,10 @@ export const AnswersContainer = styled.div`
       border: 1px solid #000000;
       padding: 2px;
     }
+  }
+
+  .answer__code-wrapper {
+    background-color: #fff !important;
   }
 
   .answer__code {
