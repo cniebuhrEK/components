@@ -44,7 +44,9 @@ const Toast = (props: ToastProps): JSX.Element => {
 
   return (
     <StyledToast id={`toast-${severity}`} open={open} severity={severity}>
-      <IconContainer severity={severity}>{getIconByType()}</IconContainer>
+      <IconContainer severity={severity} open={open}>
+        {getIconByType()}
+      </IconContainer>
       <ChildrenContainer>{children}</ChildrenContainer>
       <CloseContainer onClick={handleClose}>
         <Close />
@@ -54,6 +56,7 @@ const Toast = (props: ToastProps): JSX.Element => {
 }
 
 const IconContainer = styled.div`
+  opacity: ${({ open }) => (open ? '1' : '0')};
   margin-right: 16px;
   display: flex;
   align-items: flex-start;
@@ -95,14 +98,14 @@ const StyledToast = styled.div`
   position: fixed;
   top: 20px;
   right: 20px;
-  padding: 4px 14px 4px 4px;
+  padding: ${({ open }) => (open ? '4px 14px 4px 4px' : '0')};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-size: ${({ theme }) => theme.typography.fontSizeSmall};
-  min-width: 300px;
-  max-width: 350px;
+  min-width: ${({ open }) => (open ? '300px' : '0px')};
+  max-width: ${({ open }) => (open ? '350px' : '0px')};
   z-index: ${({ open, theme }) => (open ? theme.zIndex.snackbar : 'unset')};
   background-color: ${({ theme }) => theme.palette.biege};
-  border-width: 1px;
+  border-width: ${({ open }) => (open ? '1px' : '0')};
   border-style: solid;
   border-color: ${({ severity, theme }) => {
     switch (severity) {
@@ -123,7 +126,8 @@ const StyledToast = styled.div`
   transform: ${({ open }) => (open ? 'none' : 'scale(0.75, 0.75)')};
   transition: opacity 225ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms,
-    transform 150ms ${({ theme }) => theme.transitions.easing.easeInOut};
+    width 100ms ${({ theme }) => theme.transitions.easing.easeIn},
+    transform 100ms ${({ theme }) => theme.transitions.easing.easeInOut};
   display: flex;
   justify-content: space-between;
 
