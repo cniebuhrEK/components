@@ -159,9 +159,9 @@ export default {
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
-    fontSizeNormal: '1rem',
-    fontSizeSmall: '0.875rem',
-    fontSizeExtraSmall: '0.75rem'
+    fontSizeNormal: '16px',
+    fontSizeSmall: '14px',
+    fontSizeExtraSmall: '12px'
   },
   dimensions: {
     inputHeight: '43px',

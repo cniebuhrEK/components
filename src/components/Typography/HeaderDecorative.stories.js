@@ -1,7 +1,7 @@
 import React from 'react'
-import HeaderDecorativeComponent from './HeaderDecorative'
+import Component from './HeaderDecorative'
 
-const Template = args => <HeaderDecorativeComponent {...args} />
+const Template = args => <Component {...args} />
 
 export const HeaderDecorative = Template.bind({})
 HeaderDecorative.args = {
@@ -9,6 +9,6 @@ HeaderDecorative.args = {
 }
 
 export default {
-  title: 'Typography/Header',
-  component: HeaderDecorativeComponent
+  title: 'Atoms/Typography',
+  component: Component
 }
