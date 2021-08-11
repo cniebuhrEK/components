@@ -14,10 +14,23 @@ const Template = args => (
   </Container>
 )
 
-export const BasicInput = Template.bind({})
-BasicInput.args = {
+export const Default = Template.bind({})
+export const Password = Template.bind({})
+export const Search = Template.bind({})
+
+Default.args = {
   type: 'text',
   label: 'Input'
+}
+
+Password.args = {
+  type: 'password',
+  label: 'Input'
+}
+
+Search.args = {
+  type: 'search',
+  placeholder: 'Search anything...'
 }
 
 export default {
