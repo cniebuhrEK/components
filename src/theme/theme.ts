@@ -127,7 +127,8 @@ export default {
     greenShadow: '0px 4px 4px rgba(60, 85, 49, 0.2)',
     orangeShadow: '0px 4px 4px 0px rgba(249, 175, 77, 0.25)',
     blueShadow: '0px 4px 4px 0px rgba(11, 44, 66, 0.25)',
-    headerShadow: '0px 2px 16px rgba(33, 26, 22, 0.04)'
+    headerShadow: '0px 2px 16px rgba(33, 26, 22, 0.04)',
+    darkShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)'
   },
   transitions: {
     easing: {
