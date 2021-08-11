@@ -40,11 +40,13 @@ const ArrowNav = (props: ArrowNavProps): JSX.Element => {
 const LeftIcon = styled.div`
   position: absolute;
   left: 0;
+  cursor: pointer;
 `
 
 const RightIcon = styled.div`
   position: absolute;
   right: 0;
+  cursor: pointer;
 `
 
 const Container = styled.div`
