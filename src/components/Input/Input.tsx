@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 
+import SpyglassIcon from '../../icons/Spyglass'
 import EyeIcon from '../../icons/Eye'
 import HideIcon from '../../icons/Hide'
 
@@ -24,28 +25,31 @@ interface InputProps {
   onFocus?: (e: any) => any
   onBlur?: (e: any) => any
   errorText?: string
+  icon?: JSX.Element
   [x: string]: any
 }
 
-const Input = ({
-  name,
-  id,
-  label,
-  required,
-  disabled,
-  type,
-  autoComplete,
-  autoFocus,
-  value,
-  error,
-  inputProps,
-  inputRef,
-  onChange,
-  onFocus,
-  onBlur,
-  errorText,
-  ...rest
-}: InputProps): JSX.Element => {
+const InputField = (props: InputProps): JSX.Element => {
+  const {
+    name,
+    id,
+    label,
+    required,
+    disabled,
+    type,
+    autoComplete,
+    autoFocus,
+    value,
+    error,
+    inputProps,
+    inputRef,
+    onChange,
+    onFocus,
+    onBlur,
+    errorText,
+    ...rest
+  } = props
+
   // Current value of the inputn field
   const [inputValue, setInputValue] = React.useState(value)
   // Current type of the input field
@@ -63,40 +67,56 @@ const Input = ({
 
   const previewPassword = () => setInputType('text')
   const hidePassword = () => setInputType('password')
+  const isPasswordVisible = () => type === 'password' && inputType === 'text'
+  const hasSearchType = () => type === 'search'
+  const hasPasswordType = () => type === 'password'
 
   return (
-    <InputContainer
+    <Container
       isDisabled={disabled}
-      hasPasswordType={type === 'password'}
-      isPasswordVisible={type === 'password' && inputType === 'text'}
+      hasPasswordType={hasPasswordType()}
+      isPasswordVisible={isPasswordVisible()}
       hasValue={isNotNilOrEmpty(inputValue) || inputValue === 0}
       error={error}
     >
-      <input
-        className='input-container__input'
-        value={value}
-        ref={inputRef}
+      {hasSearchType() && (
+        <SearchIcon>
+          <SpyglassIcon />
+        </SearchIcon>
+      )}
+      <Input
         id={id || name}
+        type={inputType}
+        value={value}
+        hasPasswordType={hasPasswordType()}
+        ref={inputRef}
         name={name}
         required={required}
         disabled={disabled}
-        type={inputType}
         autoComplete={autoComplete}
         autoFocus={autoFocus}
         onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
         // @ts-ignore
-        onWheel={e => e.target.blur()}
+        onWheel={(e: any) => e.target.blur()}
         {...inputProps}
         {...rest}
       />
-      <label htmlFor={name} className='input-container__label'>
+      <Label
+        htmlFor={name}
+        error={error}
+        hasSearchType={hasSearchType()}
+        hasValue={isNotNilOrEmpty(inputValue) || inputValue === 0}
+      >
         {label}
         {required && ' *'}
-      </label>
-      <div className='input-container__error'>{errorText}</div>
-      <div className='input-container__toggle-visibility'>
+      </Label>
+      <Errors error={error}>{errorText}</Errors>
+      <PasswordIcon
+        hasPasswordType={hasPasswordType()}
+        isPasswordVisible={isPasswordVisible()}
+      >
         <EyeIcon
           className='input-container__toggle-visibility--hide'
           onClick={hidePassword}
@@ -105,11 +125,115 @@ const Input = ({
           className='input-container__toggle-visibility--show'
           onClick={previewPassword}
         />
-      </div>
-    </InputContainer>
+      </PasswordIcon>
+    </Container>
   )
 }
-export const InputContainer = styled.div`
+
+const Label = styled.label`
+  box-sizing: border-box;
+  color: ${({ error, theme }) =>
+    error ? theme.palette.red05 : theme.palette.brown01};
+  position: absolute;
+  font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+  line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+  left: ${({ hasValue, hasSearchType }) => {
+    switch (true) {
+      case !hasValue && hasSearchType:
+        return '40px'
+      case hasValue:
+        return '-6px'
+      default:
+        return '14px'
+    }
+  }};
+  top: ${({ hasValue }) => (hasValue ? '-19px' : '14px')};
+  z-index: 1;
+  padding: ${({ hasValue }) => (hasValue ? '0 5px' : '0')};
+  background-color: transparent;
+  transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+`
+
+const Input = styled.input`
+  position: relative;
+  z-index: 2;
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  background-color: transparent;
+  border: none;
+  color: ${({ theme }) => theme.palette.brown01};
+  padding: 0;
+  margin: 0;
+  outline: none;
+  cursor: 'text';
+  width: ${({ hasPasswordType }) =>
+    hasPasswordType ? 'calc(100% - 20px)' : '100%'};
+
+  &:-webkit-autofill {
+    color: ${({ theme }) => theme.palette.brown01} !important;
+    background-color: unset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.grey09} inset;
+    height: 100%;
+  }
+
+  &:disabled {
+    color: ${({ theme }) => theme.palette.brown01};
+    cursor: 'not-allowed';
+  }
+`
+
+const Errors = styled.div`
+  display: ${({ error }) => (error ? 'block' : 'none')};
+  color: ${({ theme }) => theme.palette.red05};
+  font-size: 12px;
+  position: absolute;
+  left: -1px;
+  bottom: -20px;
+  white-space: nowrap;
+`
+
+const PasswordIcon = styled.div`
+  display: ${({ hasPasswordType }) => (hasPasswordType ? 'flex' : 'none')};
+  color: ${({ theme }) => theme.palette.darkblue01};
+  cursor: pointer;
+  position: absolute;
+  right: 14px;
+  top: 0;
+  font-size: 20px;
+  height: ${({ theme }) => theme.dimensions.inputHeight};
+  align-items: center;
+  transition: color 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
+    0ms;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .input-container__toggle-visibility--hide {
+    transition: opacity 200ms
+      ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+    position: absolute;
+    right: 0;
+    opacity: ${({ isPasswordVisible }) => (isPasswordVisible ? '1' : '0')};
+    z-index: ${({ isPasswordVisible }) => (isPasswordVisible ? '1' : '0')};
+  }
+
+  .input-container__toggle-visibility--show {
+    transition: opacity 200ms
+      ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+    position: absolute;
+    right: 0;
+    opacity: ${({ isPasswordVisible }) => (isPasswordVisible ? '0' : '1')};
+    z-index: ${({ isPasswordVisible }) => (isPasswordVisible ? '0' : '1')};
+  }
+`
+
+const SearchIcon = styled.div`
+  margin-right: 12px;
+  width: 14px;
+  height: 14px;
+`
+
+const Container = styled.div`
   align-items: center;
   background-color: ${({ theme, isDisabled }) =>
     isDisabled ? theme.palette.grey08 : theme.palette.background};
@@ -153,23 +277,7 @@ export const InputContainer = styled.div`
       error ? theme.palette.red05 : theme.palette.brown01};
   }
 
-  .input-container__label {
-    box-sizing: border-box;
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
-    position: absolute;
-    font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
-    line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
-    left: ${({ hasValue }) => (hasValue ? '-6px' : '14px')};
-    top: ${({ hasValue }) => (hasValue ? '-19px' : '14px')};
-    z-index: 1;
-    padding: ${({ hasValue }) => (hasValue ? '0 5px' : '0')};
-    background-color: transparent;
-    transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
-      0ms;
-  }
-
-  &:focus-within .input-container__label {
+  &:focus-within ${Label} {
     font-size: 12px;
     line-height: 12px;
     left: ${({ hasValue }) => (hasValue ? '-6px' : '-1px')};
@@ -178,81 +286,9 @@ export const InputContainer = styled.div`
     color: ${({ error, theme }) =>
       error ? theme.palette.red05 : theme.palette.brown01};
   }
-
-  .input-container__input {
-    position: relative;
-    z-index: 2;
-    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-    background-color: transparent;
-    border: none;
-    color: ${({ theme }) => theme.palette.brown01};
-    padding: 0;
-    margin: 0;
-    outline: none;
-    cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'text')};
-    width: ${({ hasPasswordType }) =>
-      hasPasswordType ? 'calc(100% - 20px)' : '100%'};
-  }
-
-  input:-webkit-autofill {
-    color: ${({ theme }) => theme.palette.brown01} !important;
-    background-color: unset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.grey09} inset;
-    height: 100%;
-  }
-
-  .input-container__input:disabled {
-    color: ${({ theme }) => theme.palette.brown01};
-  }
-
-  .input-container__error {
-    display: ${({ error }) => (error ? 'block' : 'none')};
-    color: ${({ theme }) => theme.palette.red05};
-    font-size: 12px;
-    position: absolute;
-    left: -1px;
-    bottom: -20px;
-    white-space: nowrap;
-  }
-
-  .input-container__toggle-visibility {
-    display: ${({ hasPasswordType }) => (hasPasswordType ? 'flex' : 'none')};
-    color: ${({ theme }) => theme.palette.darkblue01};
-    cursor: pointer;
-    position: absolute;
-    right: 14px;
-    top: 0;
-    font-size: 20px;
-    height: ${({ theme }) => theme.dimensions.inputHeight};
-    align-items: center;
-    transition: color 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
-      0ms;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    .input-container__toggle-visibility--hide {
-      transition: opacity 200ms
-        ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
-      position: absolute;
-      right: 0;
-      opacity: ${({ isPasswordVisible }) => (isPasswordVisible ? '1' : '0')};
-      z-index: ${({ isPasswordVisible }) => (isPasswordVisible ? '1' : '0')};
-    }
-
-    .input-container__toggle-visibility--show {
-      transition: opacity 200ms
-        ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
-      position: absolute;
-      right: 0;
-      opacity: ${({ isPasswordVisible }) => (isPasswordVisible ? '0' : '1')};
-      z-index: ${({ isPasswordVisible }) => (isPasswordVisible ? '0' : '1')};
-    }
-  }
 `
 
-Input.defaultProps = {
+InputField.defaultProps = {
   label: '',
   required: false,
   disabled: false,
@@ -265,4 +301,4 @@ Input.defaultProps = {
   inputProps: {}
 }
 
-export default Input
+export default InputField
