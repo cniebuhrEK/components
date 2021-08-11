@@ -43,7 +43,7 @@ const Button = (props: ButtonProps): JSX.Element => {
 
   return (
     <StyledButton {...props} autoFocus={autofocus}>
-      {startIcon && <StartIcon>{startIcon}</StartIcon>}
+      {startIcon && <IconContainer>{startIcon}</IconContainer>}
       {isLoading ? <Loader /> : children}
     </StyledButton>
   )
@@ -243,9 +243,13 @@ export const StyledButton = styled.button`
   }
 `
 
-const StartIcon = styled.div`
+const IconContainer = styled.div`
   margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 16px;
+  width: 16px;
 `
 
 Button.defaultProps = {

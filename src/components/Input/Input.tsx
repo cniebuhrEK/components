@@ -13,7 +13,7 @@ interface InputProps {
   label?: string
   required?: boolean
   disabled?: boolean
-  type?: 'text' | 'password' | 'email'
+  type?: string
   autoComplete?: any
   autoFocus?: any
   value?: string | number
