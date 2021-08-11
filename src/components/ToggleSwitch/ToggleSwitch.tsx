@@ -56,11 +56,11 @@ const Slider = styled.span`
   }
 
   ${Input}:checked + & {
-    background-color: ${({ theme }) => theme.palette.green01};
+    background-color: ${({ theme }) => theme.palette.background};
   }
 
   ${Input}:checked + &::before {
-    background-color: ${({ theme }) => theme.palette.background};
+    background-color: ${({ theme }) => theme.palette.green01};
     -webkit-transform: translateX(12px);
     -ms-transform: translateX(12px);
     transform: translateX(12px);
