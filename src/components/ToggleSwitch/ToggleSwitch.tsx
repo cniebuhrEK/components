@@ -87,7 +87,6 @@ function ToggleSwitch(props: ToggleSwitchProps) {
   const [active, setActive] = React.useState(checked)
 
   function handleOnChange(e: any): void {
-    e.preventDefault()
     setActive(!active)
     onChange(e)
   }
