@@ -14,21 +14,24 @@ SideNavigation.args = {
       href: 'https://www.examkrackers.com',
       isActive: true,
       icon: <UserIcon />,
-      id: 'admins-manager'
+      id: 'admins-manager',
+      disabled: false
     },
     {
       name: 'Exam Editor',
       href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <ListIcon />,
-      id: 'exam-editor'
+      id: 'exam-editor',
+      disabled: false
     },
     {
       name: 'Students list',
       href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <UserIcon />,
-      id: 'students-list'
+      id: 'students-list',
+      disabled: true
     }
   ]
 }

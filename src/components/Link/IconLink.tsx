@@ -22,35 +22,29 @@ const IconLink = (props: IconLinkProps): JSX.Element => {
   })
 
   return (
-    <IconLinkContainer
+    <Container
       href={href}
       disabled={disabled}
       className={containerClass}
       light={light}
     >
-      <div className='icon-link__icon'>{icon}</div>
-      <div className='icon-link__name'>{name}</div>
-    </IconLinkContainer>
+      <Icon>{icon}</Icon>
+      <Name>{name}</Name>
+    </Container>
   )
 }
 
-const IconLinkContainer = styled.a`
+const Container = styled.a`
   display: flex;
   align-items: center;
-  color: ${props =>
-    props.light ? props.theme.palette.biege : props.theme.palette.grey07};
+  color: ${({ light, theme }) =>
+    light ? theme.palette.darkblue01 : theme.palette.grey07};
   font-weight: normal;
   text-decoration: none;
-  font-size: ${props => props.theme.typography.fontSizeNormal};
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   cursor: pointer;
   letter-spacing: 0;
-
-  .icon-link__icon {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    margin-right: 10px;
-  }
+  border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
 
   &:hover,
   &:active,
@@ -60,17 +54,27 @@ const IconLinkContainer = styled.a`
   }
 
   &.--disabled {
-    color: ${props => props.theme.palette.grey08};
+    color: ${({ theme }) => theme.palette.inactive};
     letter-spacing: 0;
     font-weight: 600;
     cursor: not-allowed;
   }
 `
 
+const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  margin-right: 10px;
+`
+
+const Name = styled.div``
+
 IconLink.defaultProps = {
   isActive: false,
-  name: 'Log out',
-  icon: 'x',
+  light: true,
+  name: '',
+  icon: '',
   onClick: () => {}
 }
 

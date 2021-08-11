@@ -71,7 +71,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -113,7 +113,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -155,7 +155,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -197,7 +197,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -239,7 +239,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -281,7 +281,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -323,7 +323,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -365,7 +365,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -407,7 +407,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >
@@ -449,7 +449,7 @@ export const rows = [
             name='edit'
             size='small'
             variant='outlined'
-            color='green'
+            color='blue'
             onClick={() => {}}
             startIcon={<EditIcon />}
           >

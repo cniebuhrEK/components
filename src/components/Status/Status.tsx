@@ -33,7 +33,7 @@ export const Status = (props: StatusProps): JSX.Element => {
 const StatusContainer = styled.div`
   display: flex;
   align-items: center;
-  color: ${props => props.theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.darkblue01};
 
   .status__icon {
     width: 8px;
@@ -41,30 +41,30 @@ const StatusContainer = styled.div`
     margin-right: 8px;
     margin-bottom: 3px;
     border-radius: 50%;
-    background-color: ${props => props.theme.palette.grey08};
+    background-color: ${({ theme }) => theme.palette.grey08};
   }
 
   &.--success {
     .status__icon {
-      background-color: ${props => props.theme.palette.green04};
+      background-color: ${({ theme }) => theme.palette.green01};
     }
   }
 
   &.--warning {
     .status__icon {
-      background-color: ${props => props.theme.palette.orange05};
+      background-color: ${({ theme }) => theme.palette.orange05};
     }
   }
 
   &.--error {
     .status__icon {
-      background-color: ${props => props.theme.palette.red05};
+      background-color: ${({ theme }) => theme.palette.red05};
     }
   }
 
   &.--disabled {
     .status__icon {
-      background-color: ${props => props.theme.palette.grey08};
+      background-color: ${({ theme }) => theme.palette.inactive};
     }
   }
 `

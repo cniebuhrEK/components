@@ -69,16 +69,17 @@ export const REACT_SELECT_STYLES = {
         borderColor: getHoverBorderColor(isDisabled, error)
       },
       '&:focus-within': {
+        background: theme.palette.darkblue01,
         borderWidth: '1px',
-        borderColor: error ? theme.palette.red05 : theme.palette.orange04,
-        color: error ? theme.palette.red05 : theme.palette.darkblue01
+        borderColor: error ? theme.palette.red05 : theme.palette.darkblue01,
+        color: error ? theme.palette.red05 : theme.palette.orange01
       },
       '& input': isSearchable ? {} : { height: '1px' }
     }
   },
   input: (_provided, _state) => {
     return {
-      fontSize: '13px',
+      fontSize: '14px',
       backgroundColor: 'transparent',
       border: 'none',
       color: theme.palette.darkblue01,
@@ -123,7 +124,7 @@ export const REACT_SELECT_STYLES = {
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
-      fontSize: '13px',
+      fontSize: '14px',
       padding: '6px 16px',
       lineHeight: '1.5',
       overflow: 'visible',
@@ -154,6 +155,10 @@ export const REACT_SELECT_STYLES = {
   },
   singleValue: (_provided, _state) => {
     return {
+      '&:hover': {
+        color: theme.palette.orange01
+      },
+      fontSize: '14px',
       wordBreak: 'keep-all'
     }
   },

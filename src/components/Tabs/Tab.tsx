@@ -7,7 +7,7 @@ interface TabProps {
   label: string
   button?: string | JSX.Element
   to?: string
-  onClick: (e) => any
+  onClick: (e: any) => any
 }
 
 export const Tab = (props: TabProps) => {
@@ -42,7 +42,7 @@ const TabContainer = styled.li`
   list-style: none;
   margin-right: 24px;
   margin-bottom: -1px;
-  padding: 0.5rem 0.25rem;
+  padding: 4px 0;
   user-select: none;
 
   &:hover {
@@ -51,14 +51,13 @@ const TabContainer = styled.li`
   }
 
   &.--isActive {
-    border: solid #fb9e34;
+    border: solid ${({ theme }) => theme.palette.orange01};
     border-width: 0px 0px 3px 0px;
-    font-weight: 600;
   }
 
   a {
-    color: ${({ theme }) => theme.palette.black};
-    font-weight: 600;
+    color: ${({ theme }) => theme.palette.darkblue01};
+    font-weight: 400;
   }
 `
 

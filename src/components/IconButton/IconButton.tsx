@@ -4,17 +4,23 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface ButtonProps {
-  onClick?: (e) => any
+  onClick?: (e: any) => void
   icon?: any
   type?: string
   disabled?: boolean
   autofocus?: boolean
   id?: string
   name?: string
+  variant?: 'filled' | 'transparent'
 }
 
-const Button = (props: ButtonProps): JSX.Element => {
-  const { onClick, icon, type, disabled, autofocus, id, name } = props
+const variants = {
+  filled: 'filled',
+  transparent: 'transparent'
+}
+
+const IconButton = (props: ButtonProps): JSX.Element => {
+  const { onClick, icon, type, disabled, autofocus, id, name, variant } = props
 
   return (
     <StyledButton
@@ -24,6 +30,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       disabled={disabled}
       type={type}
       id={id}
+      variant={variant}
       {...props}
     >
       {icon}
@@ -38,39 +45,67 @@ export const StyledButton = styled.button`
   outline: none;
   box-sizing: border-box;
   letter-spacing: -0.1px;
-  font-size:  ${props => props.theme.typography.fontSizeNormal};
-  font-family: ${props => props.theme.typography.fontFamily};
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 600;
   height: 32px;
   width: 32px;
   align-items: center;
   justify-content: center;
-  color: ${props => props.theme.palette.grey07};
-  background-color: transparent;
+  color: ${({ theme, variant }) => {
+    switch (true) {
+      case variant === variants.filled:
+        return theme.palette.darkblue01
+      default:
+        return theme.palette.darkblue01
+    }
+  }};
+  background-color: ${({ theme, variant }) => {
+    switch (true) {
+      case variant === variants.filled:
+        return theme.palette.orange02
+      default:
+        return 'none'
+    }
+  }};
   box-shadow: none;
   border: none;
-  transition: all 300ms ${props =>
-    props.theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
   svg {
-    color: ${props => props.theme.palette.grey07};
+    color: ${({ theme, variant }) => {
+      switch (true) {
+        case variant === variants.filled:
+          return theme.palette.darkblue01
+        default:
+          return theme.palette.darkblue01
+      }
+    }};
   }
 
   &:disabled {
     svg {
-      color: ${props => props.theme.palette.grey08};
+      color: ${({ theme }) => theme.palette.grey08};
     }
   }
 
   &:hover:enabled,
   &:active:enabled {
-    background-color: ${props => props.theme.palette.grey10}};
+    background-color: ${({ theme, variant }) => {
+      switch (true) {
+        case variant === variants.filled:
+          return theme.palette.orange01
+        default:
+          return theme.palette.gray10
+      }
+    }};
   }
 `
 
-Button.defaultProps = {
+IconButton.defaultProps = {
   disabled: false,
-  type: 'button'
+  type: 'button',
+  variant: 'transparent'
 }
 
-export default Button
+export default IconButton

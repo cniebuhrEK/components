@@ -1,13 +1,23 @@
 // Input/Input.stories.js - Input story
 
 import React from 'react'
+import styled from 'styled-components'
 import Input from './Input'
 
-const Template = args => <Input {...args} />
+const Container = styled.div`
+  max-width: 256px;
+`
+
+const Template = args => (
+  <Container>
+    <Input {...args} />
+  </Container>
+)
 
 export const BasicInput = Template.bind({})
 BasicInput.args = {
-  type: 'text'
+  type: 'text',
+  label: 'Input'
 }
 
 export default {

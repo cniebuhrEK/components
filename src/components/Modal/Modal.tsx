@@ -3,6 +3,7 @@
 import React from 'react'
 import ReactModal from 'react-modal'
 import styled from 'styled-components'
+import CloseIcon from '../../icons/Close'
 
 interface ReactModalProps {
   children: JSX.Element
@@ -21,12 +22,10 @@ const Modal = ({
 }: ReactModalProps): JSX.Element => {
   return (
     <StyledReactModal onRequestClose={handleClose} isOpen={open} {...rest}>
-      <div onClick={handleClose} className='modal__title'>
-        {title}
-      </div>
-      <div onClick={handleClose} className='modal__close'>
-        ✕
-      </div>
+      <Title onClick={handleClose}>{title}</Title>
+      <Close onClick={handleClose}>
+        <CloseIcon />
+      </Close>
       {children}
     </StyledReactModal>
   )
@@ -63,15 +62,15 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: ${props => props.theme.zIndex.modal};
+    z-index: ${({ theme }) => theme.zIndex.modal};
     width: 100%;
     height: 100%;
-    background: ${props => props.theme.palette.overlay};
+    background: ${({ theme }) => theme.palette.overlay};
     overflow-y: auto;
     padding: 40px 0;
     text-align: center;
     transition: opacity 0.2s
-      ${props => props.theme.transitions.easing.easeInOut} 0s;
+      ${({ theme }) => theme.transitions.easing.easeInOut} 0s;
 
     &[class*='--after-open'] {
       opacity: 1;
@@ -83,40 +82,34 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
   }
 
   & .Modal {
-    font-family: ${props => props.theme.typography.fontFamily};
+    font-family: ${({ theme }) => theme.typography.fontFamily};
     text-align: left;
     position: relative;
     display: inline-block;
     padding: 64px 72px;
-    background: ${props => props.theme.palette.biege};
-    box-shadow: ${props => props.theme.shadows.beigeShadow};
-    color: ${props => props.theme.palette.brown01};
+    background: ${({ theme }) => theme.palette.biege};
+    box-shadow: ${({ theme }) => theme.shadows.beigeShadow};
+    color: ${({ theme }) => theme.palette.brown01};
     border-radius: 3px;
     outline: 0;
     min-width: 500px;
     margin-top: 100px;
-    font-size: ${props => props.theme.typography.fontSizeSmall};
+    font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
-
-    .modal__close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      cursor: pointer;
-      color: ${props => props.theme.palette.grey07};
-      transition: color 0.2s
-        ${props => props.theme.transitions.easing.easeInOut} 0s;
-
-      &:hover {
-        color: ${props => props.theme.palette.brown01};
-      }
-    }
-
-    .modal__title {
-      color: ${props => props.theme.palette.brown01};
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 24px;
-    }
   }
+`
+
+const Close = styled.div`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+  color: ${({ theme }) => theme.palette.darkblue01};
+  transition: color 0.2s ${({ theme }) => theme.transitions.easing.easeInOut} 0s;
+`
+const Title = styled.div`
+  color: ${({ theme }) => theme.palette.brown01};
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
 `
