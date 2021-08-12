@@ -52,7 +52,8 @@ const FullTable = (props: FullTableProps): JSX.Element => {
   const [tableState, setTableState] = React.useState({
     sortBy: 'firstname',
     dir: 'DESC',
-    page: 1
+    page: 1,
+    take: 10
   })
 
   const handleTableStateChange = (state: any) => {
@@ -63,7 +64,7 @@ const FullTable = (props: FullTableProps): JSX.Element => {
     <div>
       <div>
         sortBy: {tableState.sortBy} dir: {tableState.dir} page:{' '}
-        {tableState.page}
+        {tableState.page} take: {tableState.take}
       </div>
       <EntitiesList
         size={props.size}
@@ -78,6 +79,7 @@ const FullTable = (props: FullTableProps): JSX.Element => {
         defaultPage={1}
         onTableStateChange={handleTableStateChange}
         highlight={props.highlight}
+        defaultRowsPerPage={10}
       />
     </div>
   )

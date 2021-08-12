@@ -15,7 +15,10 @@ import TableHeader, {
 } from '../Table/TableHeader'
 import TableRow from '../Table/TableRow'
 import Pagination from '../Pagination/Pagination'
+import RowsPerPage from '../RowsPerPage/RowsPerPage'
 import WarningReversed from '../../icons/WarningReversed'
+
+const DEFAULT_ROWS_PER_PAGE = 10
 
 interface CellProps {
   children: JSX.Element | string
@@ -38,12 +41,14 @@ interface EntitiesListProps {
   resultsText: string
   size?: string
   defaultPage: number
+  defaultRowsPerPage?: 10 | 50 | 100 | undefined
   defaultSortColumnId: string
   defaultSortDirection: string
   onTableStateChange: (state: {
     sortBy: string
     dir: string
     page: number
+    take: number
   }) => any
 
   // Highlight table rows when hovered
@@ -63,20 +68,23 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     resultsText,
     tableActions,
     size,
-    highlight
+    highlight,
+    defaultRowsPerPage
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
   const [currentPage, setCurrentPage] = useState(defaultPage)
+  const [rowsPerPage, setRowsPerPage] = useState(defaultRowsPerPage)
 
   useEffect(() => {
     onTableStateChange({
       sortBy: sortedColumnId,
       dir: sortDirection,
-      page: currentPage
+      page: currentPage,
+      take: rowsPerPage || DEFAULT_ROWS_PER_PAGE
     })
-  }, [sortedColumnId, sortDirection, currentPage])
+  }, [sortedColumnId, sortDirection, currentPage, rowsPerPage])
 
   const setNewSortedColumnId = id => () => {
     setSortedColumnId(id)
@@ -145,11 +153,19 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         </Table>
       </TableContainer>
       <TablePaginationContainer>
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+        {defaultRowsPerPage && (
+          <RowsPerPage
+            onChange={setRowsPerPage}
+            defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
+          />
+        )}
+        <div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       </TablePaginationContainer>
     </div>
   )
