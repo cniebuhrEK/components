@@ -77,12 +77,14 @@ export const REACT_SELECT_STYLES = {
       '& input': isSearchable ? {} : { height: '1px' }
     }
   },
-  input: (_provided, _state) => {
+  input: (_provided, state: { isFocused: boolean }) => {
+    const { isFocused } = state
+
     return {
       fontSize: '14px',
       backgroundColor: 'transparent',
       border: 'none',
-      color: theme.palette.darkblue01,
+      color: isFocused ? theme.palette.orange01 : theme.palette.darkblue01,
       padding: '0',
       margin: '0',
       outline: 'none',
@@ -272,6 +274,7 @@ export const CustomInput = (props: {
         {...props}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
+        isFocused={isFocused}
       />
       <InputLabel
         isFocused={isFocused}
@@ -316,8 +319,10 @@ export const CustomValueContainer = (props: {
         {...props}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
+        isFocused={isFocused}
       />
       <InputLabel
+        isValueContainer
         isFocused={isFocused}
         isFocusedOrHasValue={isFocused || hasValue}
         error={selectProps.error}
@@ -354,10 +359,12 @@ const IconContainer = styled.div`
 `
 
 const InputLabel = styled.div`
-  color: ${({ error, isFocused, theme }) => {
+  color: ${({ error, isFocused, theme, isValueContainer }) => {
     switch (true) {
       case error:
         return theme.palette.red05
+      case isValueContainer:
+        return 'transparent'
       case isFocused:
       default:
         return theme.palette.darkblue01
