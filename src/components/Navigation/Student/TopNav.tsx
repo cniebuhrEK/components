@@ -7,6 +7,7 @@ import { Button } from '../../Button'
 type MenuLink = {
   label: string
   url: string
+  icon?: JSX.Element
 }
 
 interface StudentTopNavigationProps {
@@ -27,17 +28,20 @@ const StudentTopNavigation = (
       <LogoContainer>
         <img src='/assets/logo/LogoDarkBg.svg' alt='logo icon' />
       </LogoContainer>
+
       <NavRight>
         <UserContainer>
           {avatar && <IconContainer src={avatar} alt='profile icon' />}
           <p>{greeting}</p>
         </UserContainer>
+
         <MenuContainer onMouseLeave={() => setOpen(false)}>
           <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
           <NavMenu open={open}>
             {links.map((l: MenuLink, i: number) => (
               <NavMenuItem key={`nav-menu-link-${i}`}>
-                <a href={l.url}>{l.label}</a>
+                {l.icon && <NavMenuIcon>{l.icon}</NavMenuIcon>}
+                <NavMenuLink href={l.url}>{l.label}</NavMenuLink>
               </NavMenuItem>
             ))}
           </NavMenu>
@@ -78,7 +82,9 @@ const LogoContainer = styled.div`
     width: 200px;
   }
 `
-
+//
+// Navigation User
+//
 const UserContainer = styled.div`
   display: flex;
   align-items: center;
@@ -107,36 +113,55 @@ const NavRight = styled.div`
   width: auto;
 `
 
+//
+// Navigation Menu
+//
+
 const MenuContainer = styled.div`
   position: relative;
 `
 
 const NavMenu = styled.div`
-    min-width: 120px;
     background-color ${({ theme }) => theme.palette.white};
-    position: absolute;
-    top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
     border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
-    right: 0;
-    height: auto;
     box-shadow: 0px 10px 20px #CDC5BB;
     display: ${({ open }) => (open ? 'block' : 'none')};
+    height: auto;
+    min-width: 120px;
+    position: absolute;
+    right: 0;
+    top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+    width: auto; 
+    z-index: 9999;
+`
+
+const NavMenuLink = styled.a`
+  color: ${({ theme }) => theme.palette.darkblue01};
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  white-space: nowrap;
+`
+
+const NavMenuIcon = styled.div`
+  margin: 0 8px 0 0;
 `
 
 const NavMenuItem = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   line-height: normal;
+  width: auto;
   padding: 12px 16px;
   color: ${({ theme }) => theme.palette.darkblue01};
-
-  a {
-    color: ${({ theme }) => theme.palette.darkblue01};
-    font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  }
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     cursor: pointer;
+  }
+
+  &:hover ${NavMenuLink} {
+    font-weight: 600;
   }
 `
 

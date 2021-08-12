@@ -11,9 +11,18 @@ TopNavigation.args = {
   menu: 'Menu',
   greeting: 'Hi, Jack!',
   links: [
-    { label: 'Exams', url: 'https://examkrackers.com' },
-    { label: 'Projections', url: 'https://examkrackers.com' },
-    { label: 'Log Out', url: 'https://examkrackers.com' }
+    {
+      label: 'Exams',
+      url: 'https://examkrackers.com'
+    },
+    {
+      label: 'Projections',
+      url: 'https://examkrackers.com'
+    },
+    {
+      label: 'Log Out',
+      url: 'https://examkrackers.com'
+    }
   ]
 }
 
