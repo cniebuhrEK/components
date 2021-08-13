@@ -79,9 +79,23 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     &[class*='--before-close'] {
       opacity: 0;
     }
+
+    &::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(2px);
+      z-index: ${({ theme }) => theme.zIndex.modal};
+    }
   }
 
   & .Modal {
+    z-index: ${({ theme }) => theme.zIndex.modal + 10};
     font-family: ${({ theme }) => theme.typography.fontFamily};
     text-align: left;
     position: relative;
