@@ -23,6 +23,11 @@ const StudentTopNavigation = (
   const { avatar, menu, greeting, links } = props
   const [open, setOpen] = React.useState(false)
 
+  const handleMouseLeave = e => {
+    console.log(e)
+    setOpen(false)
+  }
+
   return (
     <Container>
       <LogoContainer>
@@ -36,7 +41,7 @@ const StudentTopNavigation = (
         </UserContainer>
 
         <Overlay open={open} />
-        <MenuContainer onMouseLeave={() => setOpen(false)}>
+        <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
           <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
           <NavMenu open={open}>
             {links.map((l: MenuLink, i: number) => (
@@ -77,13 +82,16 @@ const Overlay = styled.div`
   width: ${({ open }) => (open ? '100%' : '0')};
   height: ${({ open }) => (open ? '100%' : '0')};
   opacity: ${({ open }) => (open ? 1 : 0)};
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
+  bottom: 0;
+  right: 0;
   background: ${({ theme }) => theme.palette.overlay};
   filter: blur(2px);
   backdrop-filter: blur(2px);
   transition: opacity 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
+  z-index: ${({ theme }) => theme.zIndex.menu - 10};
 `
 
 const LogoContainer = styled.div`
@@ -133,6 +141,7 @@ const NavRight = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
+  z-index: ${({ theme }) => theme.zIndex.menu};
 `
 
 const NavMenu = styled.div`
@@ -140,13 +149,16 @@ const NavMenu = styled.div`
     border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
     box-shadow: 0px 10px 20px #CDC5BB;
     display: ${({ open }) => (open ? 'block' : 'none')};
-    height: auto;
-    min-width: 200px;
+    opacity: ${({ open }) => (open ? '1' : '0')};
+    width: ${({ open }) => (open ? 'auto' : '0')};
+    height: ${({ open }) => (open ? 'auto' : '0')};
+    min-width: ${({ open }) => (open ? '200px' : '0')};
     position: absolute;
     right: 0;
     top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
-    width: auto;
-    z-index: 9999;
+    z-index: ${({ theme }) => theme.zIndex.menu};
+    transition: opacity 700ms ${({ theme }) =>
+      theme.transitions.easing.easeInOut};
 `
 
 const NavMenuLink = styled.a`

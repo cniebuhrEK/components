@@ -155,7 +155,8 @@ export default {
     modal: 1300,
     snackbar: 1400,
     tooltip: 1500,
-    dropdown: 1700
+    dropdown: 1700,
+    menu: 9000
   },
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
