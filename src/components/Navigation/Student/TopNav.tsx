@@ -35,6 +35,7 @@ const StudentTopNavigation = (
           <p>{greeting}</p>
         </UserContainer>
 
+        <Overlay open={open} />
         <MenuContainer onMouseLeave={() => setOpen(false)}>
           <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
           <NavMenu open={open}>
@@ -70,6 +71,19 @@ const Container = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: auto;
+`
+
+const Overlay = styled.div`
+  width: ${({ open }) => (open ? '100%' : '0')};
+  height: ${({ open }) => (open ? '100%' : '0')};
+  opacity: ${({ open }) => (open ? 1 : 0)};
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: ${({ theme }) => theme.palette.overlay};
+  filter: blur(2px);
+  backdrop-filter: blur(2px);
+  transition: opacity 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
 `
 
 const LogoContainer = styled.div`
@@ -127,11 +141,11 @@ const NavMenu = styled.div`
     box-shadow: 0px 10px 20px #CDC5BB;
     display: ${({ open }) => (open ? 'block' : 'none')};
     height: auto;
-    min-width: 120px;
+    min-width: 200px;
     position: absolute;
     right: 0;
     top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
-    width: auto; 
+    width: auto;
     z-index: 9999;
 `
 
@@ -153,6 +167,7 @@ const NavMenuItem = styled.div`
   width: auto;
   padding: 12px 16px;
   color: ${({ theme }) => theme.palette.darkblue01};
+  border-left: 3px solid transparent;
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
