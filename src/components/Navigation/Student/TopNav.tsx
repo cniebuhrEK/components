@@ -23,10 +23,7 @@ const StudentTopNavigation = (
   const { avatar, menu, greeting, links } = props
   const [open, setOpen] = React.useState(false)
 
-  const handleMouseLeave = e => {
-    console.log(e)
-    setOpen(false)
-  }
+  const handleMouseLeave = () => setOpen(false)
 
   return (
     <Container>
