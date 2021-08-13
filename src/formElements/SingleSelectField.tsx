@@ -64,7 +64,7 @@ export const SingleSelectField = (
   }, [reset])
 
   React.useEffect(() => {
-    _setValue(getOptionByValue(initialValue)(options))
+    _setValue(getOptionByValue(initialValue)(options) || '')
   }, [initialValue, options])
 
   // Handle the state on focus
