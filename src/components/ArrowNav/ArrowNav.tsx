@@ -4,8 +4,9 @@ import NavArrowLeftIcon from '../../icons/NavArrowLeft'
 import NavArrowRightIcon from '../../icons/NavArrowRight'
 
 interface ArrowNavProps {
-  direction: 'left' | 'right'
-  text: string
+  direction?: 'left' | 'right'
+  text?: string
+  onClick?: (e: any) => void
 }
 
 const directions = {
@@ -14,11 +15,11 @@ const directions = {
 }
 
 const ArrowNav = (props: ArrowNavProps): JSX.Element => {
-  const { direction, text } = props
+  const { direction, text, onClick } = props
 
   if (direction === directions.left) {
     return (
-      <Container>
+      <Container onClick={onClick}>
         <LeftIcon>
           <NavArrowLeftIcon />
         </LeftIcon>
@@ -28,7 +29,7 @@ const ArrowNav = (props: ArrowNavProps): JSX.Element => {
   }
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <span>{text}</span>
       <RightIcon>
         <NavArrowRightIcon />
@@ -59,6 +60,16 @@ const Container = styled.div`
   color: ${({ theme }) => theme.palette.darkblue01};
   font-weight: 700;
   font-size: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `
+
+ArrowNav.defaultProps = {
+  direction: 'left',
+  text: '',
+  onClick: () => {}
+}
 
 export default ArrowNav

@@ -6,7 +6,8 @@ const Template = args => <ArrowNav {...args} />
 export const Default = Template.bind({})
 Default.args = {
   text: 'Next Page',
-  direction: 'right'
+  direction: 'right',
+  onClick: () => console.log('Clicked!')
 }
 
 export default {
