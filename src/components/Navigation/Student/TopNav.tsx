@@ -108,7 +108,7 @@ const UserContainer = styled.div`
   display: flex;
   align-items: center;
   flex-flow: row;
-  color: ${({ theme }) => theme.palette.grey07};
+  color: ${({ theme }) => theme.palette.brown01};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   margin-right: 2em;
 
