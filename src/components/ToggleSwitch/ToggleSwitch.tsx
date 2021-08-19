@@ -86,6 +86,11 @@ function ToggleSwitch(props: ToggleSwitchProps) {
   const { checked, onChange, name, id, disabled, label } = props
   const [active, setActive] = React.useState(checked)
 
+  // set initial value if it comes as a promise
+  React.useEffect(() => {
+    setActive(checked)
+  }, [checked])
+
   function handleOnChange(e: any): void {
     setActive(!active)
     onChange(e)
