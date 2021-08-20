@@ -8,6 +8,7 @@ export const Default = Template.bind({})
 Default.args = {
   name: 'question',
   isSelected: true,
+  intersection: false,
   onChange: () => {}
 }
 

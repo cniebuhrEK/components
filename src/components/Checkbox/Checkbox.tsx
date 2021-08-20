@@ -6,6 +6,7 @@ import cx from 'classnames'
 interface CheckboxProps {
   name: string
   isSelected: boolean
+  intersection?: boolean
   onChange: (e: any) => void
 }
 
@@ -28,12 +29,19 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
       onClick={handleClick}
     >
       <div className='exam-checkbox--checked'>
-        <CheckmarkIcon />
+        {!props.intersection ? <CheckmarkIcon /> : <MinusIcon />}
       </div>
       <div className='exam-checkbox--unchecked'> </div>
     </Container>
   )
 }
+
+export const MinusIcon = styled.div`
+  width: 10px;
+  height: 3px;
+  border-radius: 4px;
+  background-color: ${({ theme }) => theme.palette.orange01};
+`
 
 export const Container = styled.div`
   display: flex;
@@ -51,7 +59,9 @@ export const Container = styled.div`
   &[data-is-selected='true'] {
     background: ${({ theme }) => theme.palette.darkblue01};
     .exam-checkbox--checked {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: ${({ theme }) => theme.palette.orange01};
       height: 14px;
       width: 14px;
