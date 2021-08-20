@@ -26,12 +26,15 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
       className={checkboxClass}
       id={`exam-checkbox-${props.name}`}
       data-is-selected={`${props.isSelected}`}
+      data-is-intersected={`${props.intersection}`}
       onClick={handleClick}
     >
       <div className='exam-checkbox--checked'>
-        {!props.intersection ? <CheckmarkIcon /> : <MinusIcon />}
+        <CheckmarkIcon />
       </div>
-      <div className='exam-checkbox--unchecked'> </div>
+      <div className='exam-checkbox--unchecked'>
+        {props.intersection && <MinusIcon />}
+      </div>
     </Container>
   )
 }
@@ -70,6 +73,10 @@ export const Container = styled.div`
     .exam-checkbox--unchecked {
       display: none;
     }
+  }
+
+  &[data-is-intersected='true'] {
+    background: ${({ theme }) => theme.palette.darkblue01};
   }
 
   &[data-is-selected='false'] {
