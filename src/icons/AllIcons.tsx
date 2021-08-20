@@ -40,7 +40,8 @@ import {
   UndoIcon,
   RedoIcon,
   DownloadIcon,
-  SaveIcon
+  SaveIcon,
+  ToggleIcon
 } from './'
 
 /**
@@ -122,6 +123,8 @@ const AllIcons = () => {
       <DownloadIcon /> &nbsp;&nbsp;DownloadIcon <br />
       <br />
       <SaveIcon /> &nbsp;&nbsp;SaveIcon <br />
+      <br />
+      <ToggleIcon /> &nbsp;&nbsp;ToggleIcon <br />
       <br />
     </IconsContainer>
   )
