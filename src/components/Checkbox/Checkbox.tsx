@@ -39,7 +39,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  line-height: 20px;
   width: 24px;
   height: 24px;
   border: 1px solid #000000;
