@@ -126,6 +126,7 @@ const AllIcons = () => {
       <SaveIcon /> &nbsp;&nbsp;SaveIcon <br />
       <br />
       <ToggleIcon /> &nbsp;&nbsp;ToggleIcon <br />
+      <br />
       <LogoutIcon /> &nbsp;&nbsp;LogoutIcon <br />
       <br />
     </IconsContainer>
