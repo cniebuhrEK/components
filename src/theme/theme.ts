@@ -153,10 +153,10 @@ export default {
     appBar: 1100,
     drawer: 1200,
     modal: 1300,
-    snackbar: 1400,
+    snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,
-    menu: 9000
+    menu: 1800
   },
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
