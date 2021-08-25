@@ -42,7 +42,8 @@ import {
   RedoIcon,
   DownloadIcon,
   SaveIcon,
-  ToggleIcon
+  ToggleIcon,
+  ExcelIcon
 } from './'
 
 /**
@@ -128,6 +129,8 @@ const AllIcons = () => {
       <ToggleIcon /> &nbsp;&nbsp;ToggleIcon <br />
       <br />
       <LogoutIcon /> &nbsp;&nbsp;LogoutIcon <br />
+      <br />
+      <ExcelIcon /> &nbsp;&nbsp;ExcelIcon <br />
       <br />
     </IconsContainer>
   )
