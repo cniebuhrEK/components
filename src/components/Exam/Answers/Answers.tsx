@@ -159,6 +159,6 @@ export const AnswersContainer = styled.div`
     font-size: 16px;
     line-height: 20.7104px;
     user-select: all;
-    display: inline-block;
+    display: inline-flex;
   }
 `
