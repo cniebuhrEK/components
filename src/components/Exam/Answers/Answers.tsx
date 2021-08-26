@@ -135,6 +135,7 @@ export const AnswersContainer = styled.div`
 
   .answer__code-wrapper {
     background-color: #fff !important;
+    display: inline-block;
   }
 
   .answer__code {
@@ -146,6 +147,7 @@ export const AnswersContainer = styled.div`
     user-select: none;
     background-color: #fff !important;
     text-decoration: none !important;
+    display: inline-block;
 
     & * {
       background-color: #fff !important;
@@ -157,5 +159,6 @@ export const AnswersContainer = styled.div`
     font-size: 16px;
     line-height: 20.7104px;
     user-select: all;
+    display: inline-block;
   }
 `
