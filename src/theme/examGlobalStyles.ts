@@ -124,7 +124,7 @@ export default createGlobalStyle`
     input:-webkit-autofill {
       height: 100%;
       color: ${props => props.theme.palette.black}; !important;
-      background-color: unset;
+      background-color: unset !important;
       box-shadow: 0 0 0px 1000px ${props => props.theme.palette.white} inset;
     }
 
