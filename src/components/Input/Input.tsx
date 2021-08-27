@@ -171,7 +171,7 @@ const Input = styled.input`
   &:-webkit-autofill {
     color: ${({ theme }) => theme.palette.brown01} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.grey09} inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.biege} inset;
     height: 100%;
   }
 
