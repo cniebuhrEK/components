@@ -17,7 +17,7 @@ export default {
 
     // Purples
     purple01: '#9b115f',
-    purple02: '#9b115f',
+    purple02: '#ca167c',
     purple03: '#e72392',
     purple04: '#eb47a4',
     purple05: '#ef6cb6',
