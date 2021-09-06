@@ -23,14 +23,14 @@ const ArrowNav = (props: ArrowNavProps): JSX.Element => {
         <LeftIcon>
           <NavArrowLeftIcon />
         </LeftIcon>
-        <span>{text}</span>
+        <TextContainer direction={directions.left}>{text}</TextContainer>
       </Container>
     )
   }
 
   return (
     <Container onClick={onClick}>
-      <span>{text}</span>
+      <TextContainer direction={directions.right}>{text}</TextContainer>
       <RightIcon>
         <NavArrowRightIcon />
       </RightIcon>
@@ -39,14 +39,12 @@ const ArrowNav = (props: ArrowNavProps): JSX.Element => {
 }
 
 const LeftIcon = styled.div`
-  position: absolute;
-  left: 0;
+  margin-right: 8px;
   cursor: pointer;
 `
 
 const RightIcon = styled.div`
-  position: absolute;
-  right: 0;
+  margin-left: 8px;
   cursor: pointer;
 `
 
@@ -54,9 +52,7 @@ const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   height: 32px;
-  width: 132px;
   color: ${({ theme }) => theme.palette.darkblue01};
   font-weight: 700;
   font-size: 14px;
@@ -64,6 +60,10 @@ const Container = styled.div`
   &:hover {
     cursor: pointer;
   }
+`
+
+const TextContainer = styled.span`
+  text-align: ${({ direction }) => direction};
 `
 
 ArrowNav.defaultProps = {
