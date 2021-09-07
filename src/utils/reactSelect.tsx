@@ -161,7 +161,11 @@ export const REACT_SELECT_STYLES = {
         color: theme.palette.orange01
       },
       fontSize: '14px',
-      wordBreak: 'keep-all'
+      wordBreak: 'keep-all',
+      maxWidth: 'calc(100% - 25px)',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
     }
   },
   multiValue: (_provided, _state) => {
