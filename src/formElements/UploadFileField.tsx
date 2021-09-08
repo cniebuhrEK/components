@@ -14,12 +14,23 @@ interface UploadFileProps {
   t: (key: string, options: any) => string
   validate: (name: string, v: any) => any
   disabled: boolean
+  revalidate?: boolean
 }
 
 // Form field for uploading files
 export const UploadFileField = (props: UploadFileProps): JSX.Element => {
-  const { name, id, onChange, validate, label, required, disabled, reset, t } =
-    props
+  const {
+    name,
+    id,
+    onChange,
+    validate,
+    label,
+    required,
+    disabled,
+    reset,
+    t,
+    revalidate
+  } = props
 
   // Indicator for whether the input is open or not
   const [touched, _setTouched] = React.useState(false)
@@ -34,12 +45,12 @@ export const UploadFileField = (props: UploadFileProps): JSX.Element => {
   })
 
   React.useEffect(() => {
-    if (touched && !reset) {
+    if ((touched && !reset) || revalidate) {
       validate(name, (v: any) => {
         _validate({ valid: v.valid, error: getHeadErrorOrEmptyObj(v) })
       })
     }
-  }, [value, touched, reset])
+  }, [value, touched, reset, revalidate])
 
   // Wait for reset
   React.useEffect(() => {
