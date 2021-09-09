@@ -1,4 +1,4 @@
-// Exam/Checkbox/mock.tsx - Mock component
+// Exam/CheckboxDanger/CheckboxDangerMock.tsx - Mock component
 
 import React from 'react'
 import CheckboxDanger from './CheckboxDanger'

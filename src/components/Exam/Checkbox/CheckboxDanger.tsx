@@ -4,13 +4,13 @@ import cx from 'classnames'
 
 interface CheckboxProps {
   name: string
-  label: string
+  label?: string
   isSelected: boolean
   onChange: (e) => void
 }
 
 const Checkbox = (props: CheckboxProps): JSX.Element => {
-  const { isSelected } = props
+  const { isSelected, label } = props
 
   const checkboxClass = cx({
     'exam-checkbox': true,
@@ -31,9 +31,11 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
         checked={isSelected}
         onChange={handleClick}
       />
-      <label htmlFor={`exam-checkbox-danger-${props.name}`}>
-        {props.label}
-      </label>
+      {label && (
+        <label htmlFor={`exam-checkbox-danger-${props.name}`}>
+          {props.label}
+        </label>
+      )}
     </CheckboxContainer>
   )
 }
