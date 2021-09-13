@@ -33,7 +33,9 @@ import {
   ExamIconSolution,
   ExamIconStrikethrough,
   ExamIconTimer,
-  ExamIconUp
+  ExamIconUp,
+  ExamIconArrowUp,
+  ExamIconArrowDown
 } from './'
 
 /**
@@ -133,6 +135,12 @@ export const AllIcons = () => {
       <br />
       <br />
       Up: <ExamIconUp />
+      <br />
+      <br />
+      Arrow Up: <ExamIconArrowUp />
+      <br />
+      <br />
+      Arrow Down: <ExamIconArrowDown />
       <br />
       <br />
     </>
