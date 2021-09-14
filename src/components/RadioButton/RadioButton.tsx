@@ -3,7 +3,6 @@ import styled from 'styled-components'
 
 interface RadioButtonProps {
   isChecked?: boolean
-  defaultChecked?: boolean
   id?: string
   name: string
   value: any
