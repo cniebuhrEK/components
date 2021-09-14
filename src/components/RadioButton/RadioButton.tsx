@@ -20,7 +20,7 @@ const RadioButton = (props: RadioButtonProps) => {
 
   return (
     <RadioContainer>
-      {label}
+      {label && label}
       <input
         id={id}
         name={name}
