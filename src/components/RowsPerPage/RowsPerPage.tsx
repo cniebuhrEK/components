@@ -48,6 +48,6 @@ export default RowsPerPage
 
 const RowsPerPageContainer = styled.div`
   display: inline-block;
-  min-width: 5rem;
+  min-width: 6rem;
   margin-top: -15px;
 `

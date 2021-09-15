@@ -458,5 +458,47 @@ export const rows = [
         )
       }
     ]
+  },
+  {
+    id: 'Sam',
+    cells: [
+      {
+        columnId: 'firstname',
+        cellProps: {},
+        children: 'Sam'
+      },
+      {
+        columnId: 'lastname',
+        cellProps: {},
+        children: 'Duke'
+      },
+      {
+        columnId: 'role',
+        cellProps: {},
+        children: 'Master'
+      },
+      {
+        columnId: 'number',
+        cellProps: { align: 'right' },
+        children: '2'
+      },
+      {
+        columnId: 'action',
+        cellProps: {},
+        children: (
+          <Button
+            id='edit-exam'
+            name='edit'
+            size='small'
+            variant='outlined'
+            color='blue'
+            onClick={() => {}}
+            startIcon={<EditIcon />}
+          >
+            Edit
+          </Button>
+        )
+      }
+    ]
   }
 ]

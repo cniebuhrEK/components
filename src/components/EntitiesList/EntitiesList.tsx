@@ -153,7 +153,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         </Table>
       </TableContainer>
       <TablePaginationContainer>
-        {defaultRowsPerPage && (
+        {defaultRowsPerPage && rows.length > 10 && (
           <RowsPerPage
             onChange={setRowsPerPage}
             defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
