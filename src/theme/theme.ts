@@ -161,6 +161,7 @@ export default {
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
+    fontFamilySalty: "'Comic Sans MS', 'Comic Sans', cursive",
     fontSizeNormal: '16px',
     fontSizeSmall: '14px',
     fontSizeExtraSmall: '12px'
