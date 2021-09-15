@@ -14,7 +14,7 @@ interface RadioButtonProps {
 const RadioButton = (props: RadioButtonProps) => {
   const { id, name, label, onChange, isChecked, isDisabled, value } = props
 
-  function handleOnChange(e: any): void {
+  function handleOnChange(): void {
     onChange(value)
   }
 
