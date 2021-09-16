@@ -115,7 +115,8 @@ export default {
     gray4: '#4D4D4D',
     overlay: 'rgba(252, 251, 250, 0.6)',
     inactive: '#979797',
-    background: '#FCFBFA'
+    background: '#FCFBFA',
+    textDark: '#061F2D'
   },
   shape: {
     borderRadiusSmall: '2px',

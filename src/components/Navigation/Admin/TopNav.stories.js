@@ -18,7 +18,7 @@ TopNavigation.args = {
       icon: <UsersIcon width='24px' height='24px' />
     },
     {
-      label: 'Exam Editor',
+      label: 'Exam Wysiwyg',
       url: 'https://examkrackers.com',
 
       icon: <UsersIcon width='24px' height='24px' />
