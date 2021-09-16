@@ -18,7 +18,7 @@ SideNavigation.args = {
       disabled: false
     },
     {
-      name: 'Exam Editor',
+      name: 'Exam Wysiwyg',
       href: 'https://www.examkrackers.com',
       isActive: false,
       icon: <ListIcon />,
