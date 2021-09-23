@@ -30,6 +30,7 @@ interface ToolbarProps {
     blockquote?: boolean
     formula?: boolean
     glossary?: boolean
+    clean?: boolean
   }
 }
 
@@ -54,7 +55,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       blockquote,
       direction,
       formula,
-      glossary
+      glossary,
+      clean
     }
   } = props
 
@@ -83,6 +85,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
   ])
 
   const hasFormulaFormats = R.any(R.equals(true), [formula])
+
+  const hasCleanFormats = R.any(R.equals(true), [clean])
 
   const hasAdditionalFormats = R.any(R.equals(true), [glossary])
 
@@ -135,6 +139,10 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
     </span>
   )
 
+  const cleanFormats = hasCleanFormats && (
+    <span className='ql-clean'>{clean && <button className='ql-clean' />}</span>
+  )
+
   const formulaFormats = hasFormulaFormats && (
     <span className='ql-formats'>
       {formula && <button className='ql-formula' />}
@@ -159,6 +167,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       {sectionFormats}
       {textFormats}
       {formulaFormats}
+      {cleanFormats}
       {additionalFormats}
     </div>
   )

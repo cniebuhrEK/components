@@ -30,6 +30,7 @@ interface TextEditorProps {
     blockquote?: boolean
     formula?: boolean
     glossary?: boolean
+    clean?: boolean
   }
   glossaryDefinitions?: {
     id: string

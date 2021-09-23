@@ -27,6 +27,7 @@ interface WysiwygEditorFieldProps {
     blockquote?: boolean
     formula?: boolean
     glossary?: boolean
+    clean?: boolean
   }
   glossaryDefinitions?: {
     id: string
