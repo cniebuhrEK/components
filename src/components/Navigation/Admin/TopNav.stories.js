@@ -11,6 +11,7 @@ TopNavigation.args = {
   avatar: '',
   menu: 'Menu',
   greeting: 'Hi, Jack!',
+  showCrackUniversityLogo: false,
   links: [
     {
       label: 'Admin Manager',

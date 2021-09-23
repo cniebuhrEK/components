@@ -8,6 +8,11 @@ import SpyglassIcon from '../../icons/Spyglass'
 import EyeIcon from '../../icons/Eye'
 import HideIcon from '../../icons/Hide'
 
+export const INPUT_SIZES = {
+  normal: 'normal',
+  small: 'small'
+}
+
 interface InputProps {
   name?: string
   id?: string
@@ -25,6 +30,7 @@ interface InputProps {
   onFocus?: (e: any) => any
   onBlur?: (e: any) => any
   errorText?: string
+  size?: string
   icon?: JSX.Element
   [x: string]: any
 }
@@ -47,6 +53,7 @@ const InputField = (props: InputProps): JSX.Element => {
     onFocus,
     onBlur,
     errorText,
+    size,
     ...rest
   } = props
 
@@ -78,13 +85,15 @@ const InputField = (props: InputProps): JSX.Element => {
       isPasswordVisible={isPasswordVisible()}
       hasValue={isNotNilOrEmpty(inputValue) || inputValue === 0}
       error={error}
+      size={size}
     >
       {hasSearchType() && (
-        <SearchIcon>
+        <SearchIcon size={size}>
           <SpyglassIcon />
         </SearchIcon>
       )}
       <Input
+        size={size}
         id={id || name}
         type={inputType}
         value={value}
@@ -104,6 +113,7 @@ const InputField = (props: InputProps): JSX.Element => {
         {...rest}
       />
       <Label
+        size={size}
         htmlFor={name}
         error={error}
         hasSearchType={hasSearchType()}
@@ -114,6 +124,7 @@ const InputField = (props: InputProps): JSX.Element => {
       </Label>
       <Errors error={error}>{errorText}</Errors>
       <PasswordIcon
+        size={size}
         hasPasswordType={hasPasswordType()}
         isPasswordVisible={isPasswordVisible()}
       >
@@ -135,7 +146,16 @@ const Label = styled.label`
   color: ${({ error, theme }) =>
     error ? theme.palette.red05 : theme.palette.brown01};
   position: absolute;
-  font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
+  font-size: ${({ hasValue, size }) => {
+    switch (true) {
+      case hasValue:
+        return '12px'
+      case size === INPUT_SIZES.small:
+        return '14px'
+      default:
+        return '16px'
+    }
+  }};
   line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
   left: ${({ hasValue, hasSearchType }) => {
     switch (true) {
@@ -147,7 +167,16 @@ const Label = styled.label`
         return '14px'
     }
   }};
-  top: ${({ hasValue }) => (hasValue ? '-19px' : '14px')};
+  top: ${({ hasValue, size }) => {
+    switch (true) {
+      case hasValue:
+        return '-19px'
+      case size === INPUT_SIZES.small:
+        return '8px'
+      default:
+        return '14px'
+    }
+  }};
   z-index: 1;
   padding: ${({ hasValue }) => (hasValue ? '0 5px' : '0')};
   background-color: transparent;
@@ -157,7 +186,14 @@ const Label = styled.label`
 const Input = styled.input`
   position: relative;
   z-index: 2;
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  font-size: ${({ size, theme }) => {
+    switch (true) {
+      case size === INPUT_SIZES.small:
+        return theme.typography.fontSizeSmall
+      default:
+        return theme.typography.fontSizeNormal
+    }
+  }};
   background-color: transparent;
   border: none;
   color: ${({ theme }) => theme.palette.brown01};
@@ -199,7 +235,10 @@ const PasswordIcon = styled.div`
   right: 14px;
   top: 0;
   font-size: 20px;
-  height: ${({ theme }) => theme.dimensions.inputHeight};
+  height: ${({ theme, size }) =>
+    size === INPUT_SIZES.normal
+      ? theme.dimensions.inputHeight
+      : theme.dimensions.inputSmallHeight};
   align-items: center;
   transition: color 200ms ${({ theme }) => theme.transitions.easing.easeInOut}
     0ms;
@@ -231,6 +270,14 @@ const SearchIcon = styled.div`
   margin-right: 12px;
   width: 14px;
   height: 14px;
+  font-size: ${({ size, theme }) => {
+    switch (true) {
+      case size === INPUT_SIZES.small:
+        return theme.typography.fontSizeSmall
+      default:
+        return theme.typography.fontSizeNormal
+    }
+  }};
 `
 
 const Container = styled.div`
@@ -247,9 +294,19 @@ const Container = styled.div`
   border-style: solid;
   border-width: 1px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
+  font-size: ${({ size, theme }) => {
+    switch (true) {
+      case size === INPUT_SIZES.small:
+        return theme.typography.fontSizeSmall
+      default:
+        return theme.typography.fontSizeNormal
+    }
+  }};
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  height: ${({ theme }) => theme.dimensions.inputHeight};
+  height: ${({ theme, size }) =>
+    size === INPUT_SIZES.normal
+      ? theme.dimensions.inputHeight
+      : theme.dimensions.inputSmallHeight};
   margin: 25px 0 21px;
   padding: 0 16px;
   position: relative;
@@ -293,6 +350,7 @@ InputField.defaultProps = {
   required: false,
   disabled: false,
   type: 'text',
+  size: INPUT_SIZES.normal,
   autoComplete: 'false',
   autoFocus: false,
   onChange: () => {},

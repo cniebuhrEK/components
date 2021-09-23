@@ -20,7 +20,8 @@ export const Search = Template.bind({})
 
 Default.args = {
   type: 'text',
-  label: 'Input'
+  label: 'Input',
+  size: 'normal'
 }
 
 Password.args = {

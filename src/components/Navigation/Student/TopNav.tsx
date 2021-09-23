@@ -14,21 +14,26 @@ interface StudentTopNavigationProps {
   avatar: string
   greeting: string
   menu: string
+  showCrackUniversityLogo?: boolean
   links: MenuLink[]
 }
 
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, menu, greeting, links } = props
+  const { avatar, menu, greeting, links, showCrackUniversityLogo } = props
   const [open, setOpen] = React.useState(false)
 
   const handleMouseLeave = () => setOpen(false)
 
+  const logoUrl = showCrackUniversityLogo
+    ? '/assets/logo/CrackUniversityLogo.svg'
+    : '/assets/logo/LogoDarkBg.svg'
+
   return (
     <Container>
       <LogoContainer>
-        <img src='/assets/logo/LogoDarkBg.svg' alt='logo icon' />
+        <img src={logoUrl} alt='logo icon' />
       </LogoContainer>
 
       <NavRight>

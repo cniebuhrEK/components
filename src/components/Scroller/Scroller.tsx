@@ -1,17 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
 
-type ScrollerProps = {
-  children?: JSX.Element[] | JSX.Element | string
-}
-
-const Scroller = (props: ScrollerProps): JSX.Element => {
-  const { children } = props
-
-  return <Container>{children}</Container>
-}
-
-const Container = styled.div`
+const Scroller = styled.div`
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
@@ -24,12 +13,14 @@ const Container = styled.div`
     width: 3px;
   }
 
-  &::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.palette.brown09};
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: ${({ theme }) => theme.palette.brown01};
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: ${({ theme }) => theme.palette.brown01};
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: ${({ theme }) => theme.palette.brown09};
   }
 `
 

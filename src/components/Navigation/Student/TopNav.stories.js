@@ -10,6 +10,7 @@ TopNavigation.args = {
   avatar: '',
   menu: 'Menu',
   greeting: 'Hi, Jack!',
+  showCrackUniversityLogo: true,
   links: [
     {
       label: 'Exams',
