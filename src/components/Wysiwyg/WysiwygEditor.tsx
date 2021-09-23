@@ -9,6 +9,11 @@ import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import ReactTooltip from 'react-tooltip'
 
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
+// @ts-ignore
+window.katex = katex
+
 interface TextEditorProps {
   id: string
   onChange: (e: any) => void

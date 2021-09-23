@@ -10,6 +10,11 @@ import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import { addGlossaryBlotToQuill } from './customBlots'
 
+import katex from 'katex'
+import 'katex/dist/katex.min.css'
+// @ts-ignore
+window.katex = katex
+
 interface TextEditorProps {
   id: string
   value: any
