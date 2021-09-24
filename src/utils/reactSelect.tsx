@@ -13,7 +13,7 @@ export const SELECT_SIZES = {
 const getHoverBorderColor = (disabled: boolean, error: any) => {
   switch (true) {
     case disabled:
-      return theme.palette.grey07
+      return theme.palette.biege
     case error:
       return theme.palette.red05
     default:
@@ -37,7 +37,7 @@ const getBorderColor = (disabled: boolean, error: boolean) => {
     case error:
       return theme.palette.red05
     case disabled:
-      return theme.palette.grey07
+      return theme.palette.biege
     default:
       return theme.palette.darkblue01
   }
@@ -48,7 +48,7 @@ const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
     case isFocused:
       return theme.palette.orange01
     case isDisabled:
-      return theme.palette.grey07
+      return theme.palette.biege
     default:
       return theme.palette.darkblue01
   }
@@ -73,7 +73,7 @@ export const REACT_SELECT_STYLES = {
       alignItems: 'center',
       boxSizing: 'border-box',
       position: 'relative',
-      backgroundColor: isDisabled ? theme.palette.grey09 : 'transparent',
+      backgroundColor: isDisabled ? theme.palette.grey08 : 'transparent',
       borderRadius: theme.shape.borderRadiusSmall,
       borderStyle: 'solid',
       borderWidth: '1px',
