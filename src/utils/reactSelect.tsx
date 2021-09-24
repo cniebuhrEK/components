@@ -178,10 +178,12 @@ export const REACT_SELECT_STYLES = {
       flexGrow: '1'
     }
   },
-  singleValue: (_provided, _state) => {
+  singleValue: (_provided, state: { isDisabled: boolean }) => {
+    const { isDisabled } = state
+
     return {
       '&:hover': {
-        color: theme.palette.orange01
+        color: isDisabled ? theme.palette.biege : theme.palette.orange01
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
