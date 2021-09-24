@@ -13,7 +13,7 @@ export const SELECT_SIZES = {
 const getHoverBorderColor = (disabled: boolean, error: any) => {
   switch (true) {
     case disabled:
-      return 'transparent'
+      return theme.palette.grey07
     case error:
       return theme.palette.red05
     default:
@@ -32,6 +32,28 @@ const getHoverCursor = (disabled: boolean, searchable: boolean) => {
   }
 }
 
+const getBorderColor = (disabled: boolean, error: boolean) => {
+  switch (true) {
+    case error:
+      return theme.palette.red05
+    case disabled:
+      return theme.palette.grey07
+    default:
+      return theme.palette.darkblue01
+  }
+}
+
+const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
+  switch (true) {
+    case isFocused:
+      return theme.palette.orange01
+    case isDisabled:
+      return theme.palette.grey07
+    default:
+      return theme.palette.darkblue01
+  }
+}
+
 export const REACT_SELECT_STYLES = {
   control: (
     _provided,
@@ -44,18 +66,19 @@ export const REACT_SELECT_STYLES = {
       selectProps: { error, size, isSearchable },
       isDisabled
     } = state
+
     return {
       margin: '30px 0 12px',
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',
       position: 'relative',
-      backgroundColor: isDisabled ? theme.palette.grey08 : theme.palette.white,
-      borderColor: error ? theme.palette.red05 : theme.palette.darkblue01,
+      backgroundColor: isDisabled ? theme.palette.grey09 : 'transparent',
       borderRadius: theme.shape.borderRadiusSmall,
       borderStyle: 'solid',
       borderWidth: '1px',
-      color: error ? theme.palette.red05 : theme.palette.darkblue01,
+      borderColor: getBorderColor(isDisabled, error),
+      color: getBorderColor(isDisabled, error),
       fontSize: '13px',
       padding: '0 14px',
       fontFamily: theme.typography.fontFamily,
@@ -71,20 +94,20 @@ export const REACT_SELECT_STYLES = {
       '&:focus-within': {
         background: theme.palette.darkblue01,
         borderWidth: '1px',
-        borderColor: error ? theme.palette.red05 : theme.palette.darkblue01,
+        borderColor: getBorderColor(isDisabled, error),
         color: error ? theme.palette.red05 : theme.palette.orange01
       },
       '& input': isSearchable ? {} : { height: '1px' }
     }
   },
-  input: (_provided, state: { isFocused: boolean }) => {
-    const { isFocused } = state
+  input: (_provided, state: { isFocused: boolean; isDisabled: boolean }) => {
+    const { isFocused, isDisabled } = state
 
     return {
       fontSize: '14px',
       backgroundColor: 'transparent',
       border: 'none',
-      color: isFocused ? theme.palette.orange01 : theme.palette.darkblue01,
+      color: getFontColor(isFocused, isDisabled),
       padding: '0',
       margin: '0',
       outline: 'none',
