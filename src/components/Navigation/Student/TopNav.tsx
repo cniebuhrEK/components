@@ -47,9 +47,9 @@ const StudentTopNavigation = (
           <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
           <NavMenu open={open}>
             {links.map((l: MenuLink, i: number) => (
-              <NavMenuItem key={`nav-menu-link-${i}`}>
+              <NavMenuItem key={`nav-menu-link-${i}`} href={l.url}>
                 {l.icon && <NavMenuIcon>{l.icon}</NavMenuIcon>}
-                <NavMenuLink href={l.url}>{l.label}</NavMenuLink>
+                <NavMenuLink>{l.label}</NavMenuLink>
               </NavMenuItem>
             ))}
           </NavMenu>
@@ -163,7 +163,7 @@ const NavMenu = styled.div`
       theme.transitions.easing.easeInOut};
 `
 
-const NavMenuLink = styled.a`
+const NavMenuLink = styled.span`
   color: ${({ theme }) => theme.palette.darkblue01};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   white-space: nowrap;
@@ -173,7 +173,7 @@ const NavMenuIcon = styled.div`
   margin: 0 8px 0 0;
 `
 
-const NavMenuItem = styled.div`
+const NavMenuItem = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-start;
