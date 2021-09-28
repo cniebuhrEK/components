@@ -25,7 +25,7 @@ interface TextEditorProps {
   }[]
 }
 
-const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
+const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const { id, glossaryDefinitions, value } = props
   const [quill, setQuill] = React.useState()
 
@@ -79,6 +79,10 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   )
 }
 
+WysiwygViewer.defaultProps = {
+  glossaryDefinitions: []
+}
+
 const TextViewerContainer = styled.div`
   strong {
     font-weight: bold;
@@ -125,4 +129,4 @@ const TooltipsContainer = styled.div`
   }
 `
 
-export default WysiwygEditor
+export default WysiwygViewer
