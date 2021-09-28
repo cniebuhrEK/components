@@ -164,6 +164,10 @@ const TextEditorContainer = styled.div`
 `
 
 const WysiwygContainer = styled.div`
+  strong {
+    font-weight: bold;
+  }
+
   .glossary-word {
     font-weight: bold;
     text-decoration: underline;

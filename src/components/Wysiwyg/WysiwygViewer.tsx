@@ -80,6 +80,10 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
 }
 
 const TextViewerContainer = styled.div`
+  strong {
+    font-weight: bold;
+  }
+
   .glossary-word {
     font-weight: bold;
     text-decoration: underline;
