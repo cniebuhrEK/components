@@ -94,7 +94,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
 
     const handleTextChange = () => {
       // @ts-ignore
-      onChange(quill.getContents())
+      onChange(quill)
     }
 
     // @ts-ignore
