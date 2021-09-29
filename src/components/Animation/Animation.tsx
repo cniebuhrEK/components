@@ -142,13 +142,15 @@ const SpeedSelection = styled.div`
 
   .speed-options {
     opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+    height: ${({ isOpen }) => (isOpen ? 0 : 'auto')};
+    overflow: hidden;
     position: absolute;
     background-color: ${({ theme }) => theme.palette.biege};
     box-shadow: ${props => props.theme.shadows.darkShadow};
     width: 100%;
     top: calc(100% + 5px);
     left: 0;
-    transition: opacity 300ms
+    transition: all 300ms
       ${({ theme }) => theme.transitions.easing.easeInOut};
   }
 
