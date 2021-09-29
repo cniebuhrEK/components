@@ -5,8 +5,8 @@ import UploadFile from './UploadFile'
 
 const Template = args => <UploadFile {...args} />
 
-export const Upload = Template.bind({})
-Upload.args = {
+export const Default = Template.bind({})
+Default.args = {
   disabled: false,
   onChange: () => {},
   reset: false,
