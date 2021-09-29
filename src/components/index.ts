@@ -1,6 +1,7 @@
 // components/index.ts - Component module exports
 
 export * from './Accordion'
+export * from './Animation'
 export * from './ArrowNav'
 export * from './Breadcrumbs'
 export * from './Button'
