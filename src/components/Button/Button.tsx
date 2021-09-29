@@ -162,9 +162,10 @@ export const StyledButton = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${({ color, theme }) => {
+    color: ${({ color, theme, variant }) => {
       switch (true) {
-        case color === buttonColors.blue:
+        case color === buttonColors.blue &&
+          variant === buttonVariants.contained:
           return theme.palette.background
         default:
           return theme.palette.inactive
