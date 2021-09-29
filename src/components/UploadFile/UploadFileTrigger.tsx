@@ -28,9 +28,7 @@ const UploadFileTrigger = (props: UploadFileTriggerProps): JSX.Element => {
 
   return (
     <UploadFileTriggerContainer>
-      <label htmlFor={id} className='file-upload__trigger'>
-        <div onClick={onTriggerClick}>{children}</div>
-      </label>
+      <div onClick={onTriggerClick}>{children}</div>
       <input
         disabled={disabled}
         className='file-upload__input'
