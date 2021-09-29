@@ -1,6 +1,7 @@
 // ExamIcons/AllIcons.tsx - All Icons
 
 import React from 'react'
+import styled from 'styled-components'
 
 import {
   ExamIconClose,
@@ -35,115 +36,74 @@ import {
   ExamIconTimer,
   ExamIconUp,
   ExamIconArrowUp,
+  ExamIconArrowLeft,
+  ExamIconArrowRight,
   ExamIconArrowDown
 } from './'
+
+const IconContainer = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+  flex-flow: row;
+  align-items: center;
+
+  p {
+    margin-right: 8px;
+  }
+`
 
 /**
  * Primary UI component for user interaction
  */
 export const AllIcons = () => {
+  const icons = [
+    { component: ExamIconClose, title: 'Close' },
+    { component: ExamIconCorrect, title: 'Correct' },
+    { component: ExamIconDown, title: 'Down' },
+    { component: ExamIconEnd, title: 'End' },
+    { component: ExamIconEndSection, title: 'End Section' },
+    { component: ExamIconFlagMark, title: 'Flag Mark' },
+    { component: ExamIconFlagUnmark, title: 'Flag Unmark' },
+    { component: ExamIconIncomplete, title: 'Incomplete' },
+    { component: ExamIconIncorrect, title: 'Incorrect' },
+    { component: ExamIconLeft, title: 'Left' },
+    { component: ExamIconMinusSign, title: 'Minus Sign' },
+    { component: ExamIconNavigation, title: 'Navigation' },
+    { component: ExamIconNext, title: 'Next' },
+    { component: ExamIconNoteFill, title: 'Note Fill' },
+    { component: ExamIconNoteOutline, title: 'Note Outline' },
+    { component: ExamIconPeriodic, title: 'Periodic' },
+    { component: ExamIconPlusSign, title: 'Plus Sign' },
+    { component: ExamIconPrevious, title: 'Previous' },
+    { component: ExamIconPrint, title: 'Print' },
+    { component: ExamIconQuestion, title: 'Question' },
+    { component: ExamIconQuestionAnswered, title: 'Question Answered' },
+    { component: ExamIconQuestionUnanswered, title: 'Question Unanswered' },
+    { component: ExamIconResizeLeft, title: 'Resize Left' },
+    { component: ExamIconResizeRight, title: 'Resize Right' },
+    { component: ExamIconReviewAll, title: 'Review All' },
+    { component: ExamIconRight, title: 'Right' },
+    { component: ExamIconScoreReport, title: 'Score Report' },
+    { component: ExamIconSolution, title: 'Solution' },
+    { component: ExamIconStrikethrough, title: 'Strikethrough' },
+    { component: ExamIconTimer, title: 'Timer' },
+    { component: ExamIconUp, title: 'Up' },
+    { component: ExamIconArrowUp, title: 'Arrow Up' },
+    { component: ExamIconArrowLeft, title: 'Arrow Left' },
+    { component: ExamIconArrowRight, title: 'Arrow Right' },
+    { component: ExamIconArrowDown, title: 'Arrow Down' }
+  ]
   return (
-    <>
-      Close: <ExamIconClose />
-      <br />
-      <br />
-      Correct: <ExamIconCorrect />
-      <br />
-      <br />
-      Down: <ExamIconDown />
-      <br />
-      <br />
-      End: <ExamIconEnd />
-      <br />
-      <br />
-      EndSection: <ExamIconEndSection />
-      <br />
-      <br />
-      FlagMark: <ExamIconFlagMark />
-      <br />
-      <br />
-      FlagUnmark: <ExamIconFlagUnmark />
-      <br />
-      <br />
-      Incomplete: <ExamIconIncomplete />
-      <br />
-      <br />
-      Incorrect: <ExamIconIncorrect />
-      <br />
-      <br />
-      Left: <ExamIconLeft />
-      <br />
-      <br />
-      MinusSign: <ExamIconMinusSign />
-      <br />
-      <br />
-      Navigation: <ExamIconNavigation />
-      <br />
-      <br />
-      Next: <ExamIconNext />
-      <br />
-      <br />
-      NoteFill: <ExamIconNoteFill />
-      <br />
-      <br />
-      NoteOutline: <ExamIconNoteOutline />
-      <br />
-      <br />
-      Periodic: <ExamIconPeriodic />
-      <br />
-      <br />
-      PlusSign: <ExamIconPlusSign />
-      <br />
-      <br />
-      Previous: <ExamIconPrevious />
-      <br />
-      <br />
-      Print: <ExamIconPrint />
-      <br />
-      <br />
-      Question: <ExamIconQuestion />
-      <br />
-      <br />
-      QuestionAnswered: <ExamIconQuestionAnswered />
-      <br />
-      <br />
-      QuestionUnanswered: <ExamIconQuestionUnanswered />
-      <br />
-      <br />
-      ResizeLeft: <ExamIconResizeLeft />
-      <br />
-      <br />
-      ResizeRight: <ExamIconResizeRight />
-      <br />
-      <br />
-      ReviewAll: <ExamIconReviewAll />
-      <br />
-      <br />
-      Right: <ExamIconRight />
-      <br />
-      <br />
-      ScoreReport: <ExamIconScoreReport />
-      <br />
-      <br />
-      Solution: <ExamIconSolution />
-      <br />
-      <br />
-      Strikethrough: <ExamIconStrikethrough />
-      <br />
-      <br />
-      Timer: <ExamIconTimer />
-      <br />
-      <br />
-      Up: <ExamIconUp />
-      <br />
-      <br />
-      Arrow Up: <ExamIconArrowUp />
-      <br />
-      <br />
-      Arrow Down: <ExamIconArrowDown />
-      <br />
-      <br />
-    </>
+    <React.Fragment>
+      {icons.map(
+        ({ component: I, title }, i: number): JSX.Element => (
+          <IconContainer key={i}>
+            <p>{`${title}:`}</p>
+            <I />
+          </IconContainer>
+        )
+      )}
+    </React.Fragment>
   )
 }
 
