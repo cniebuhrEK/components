@@ -7,7 +7,6 @@ interface UploadFileTriggerProps {
   disabled?: boolean
   onChange: (e: any) => any
   id: string
-  label: string | JSX.Element
   children: string | JSX.Element | JSX.Element[]
 }
 
@@ -22,10 +21,15 @@ const UploadFileTrigger = (props: UploadFileTriggerProps): JSX.Element => {
     }
   }
 
+  const onTriggerClick = () => {
+    // @ts-ignore
+    document.getElementById(id).click()
+  }
+
   return (
     <UploadFileTriggerContainer>
       <label htmlFor={id} className='file-upload__trigger'>
-        {children}
+        <div onClick={onTriggerClick}>{children}</div>
       </label>
       <input
         disabled={disabled}
@@ -44,8 +48,7 @@ export const UploadFileTriggerContainer = styled.div`
   }
 
   .file-upload__trigger {
-    display: inline-flex;
-    align-items: center;
+    display: block;
   }
 `
 
