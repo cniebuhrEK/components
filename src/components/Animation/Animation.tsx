@@ -20,8 +20,8 @@ const Animation = (props: AnimationProps): JSX.Element => {
   const [speed, setSpeed] = React.useState(1)
 
   const handleStop = () => setIsStopped(true)
-  const handlePlay = () => setIsStopped(false)
-  const handlePause = () => setIsPaused(!isPaused)
+  const handlePlay = () => (isPaused ? setIsPaused(false) : setIsStopped(false))
+  const handlePause = () => setIsPaused(true)
   const openSpeedMenu = () => setIsSpeedOpen(true)
   const handleSelectSpeed = speed => () => {
     setSpeed(speed)
@@ -49,7 +49,11 @@ const Animation = (props: AnimationProps): JSX.Element => {
   }, [dropdownRef])
 
   return (
-    <AnimationContainer>
+    <AnimationContainer
+      isStopped={isStopped}
+      isPaused={isPaused}
+      isOpen={isSpeedOpen}
+    >
       <Lottie
         options={options}
         isStopped={isStopped}
@@ -121,6 +125,18 @@ export const AnimationContainer = styled.div`
   .play {
     color: ${({ theme }) => theme.palette.orange01};
   }
+
+  .pause {
+    color: ${({ theme, isPaused, isStopped }) =>
+      isPaused || isStopped
+        ? theme.palette.inactive
+        : theme.palette.darkblue02};
+  }
+
+  .stop {
+    color: ${({ theme, isStopped }) =>
+      isStopped ? theme.palette.inactive : theme.palette.darkblue02};
+  }
 `
 
 const SpeedSelection = styled.div`
@@ -142,7 +158,7 @@ const SpeedSelection = styled.div`
 
   .speed-options {
     opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-    height: ${({ isOpen }) => (isOpen ? 0 : 'auto')};
+    height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;
     position: absolute;
     background-color: ${({ theme }) => theme.palette.biege};
