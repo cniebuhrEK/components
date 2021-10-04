@@ -1,11 +1,12 @@
 // Wysiwyg/Wysiwyg.tsx - Wysiwyg component
 
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { EditorImageIcon } from '../../icons'
 import * as R from 'ramda'
 
 import { CUSTOM_IMAGE_BLOT_NAME, addImageBlotToQuill } from './customBlots'
+import { Loader } from '../Loader'
 
 interface AddCustomImageButtonProps {
   editorInstance: any
@@ -17,6 +18,7 @@ const AddCustomImageButton = (
   props: AddCustomImageButtonProps
 ): JSX.Element => {
   const { editorInstance, id, handleS3Upload } = props
+  const [isLoading, setIsLoading] = useState(false)
 
   React.useEffect(() => {
     addImageBlotToQuill()
@@ -39,16 +41,28 @@ const AddCustomImageButton = (
 
   const handleOnChange = async (e: any) => {
     e.preventDefault()
+    setIsLoading(true)
     const response = await handleS3Upload(e.target.files[0])
     const data = R.propOr({ url: '', id: '' }, 'data', response)
 
     addImage(data.url, data.id)
+    setIsLoading(false)
   }
 
   return (
-    <ButtonContainer>
-      <button className='ql-s3-image' onClick={onTriggerClick}>
-        <EditorImageIcon />
+    <ButtonContainer isLoading={isLoading}>
+      <button
+        disabled={isLoading}
+        className='ql-s3-image'
+        onClick={onTriggerClick}
+      >
+        {isLoading ? (
+          <div className='loader-container'>
+            <Loader />
+          </div>
+        ) : (
+          <EditorImageIcon />
+        )}
       </button>
       <input
         className='file-upload__input'
@@ -66,15 +80,18 @@ const ButtonContainer = styled.div`
   display: inline-block;
 
   * {
-    color: ${({ theme }) => theme.palette.orange01} !important;
+    color: ${({ theme, isLoading }) =>
+      isLoading ? theme.palette.biege : theme.palette.orange01} !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
   }
 
   button {
     cursor: pointer !important;
-    background-color: ${({ theme }) => theme.palette.darkblue01} !important;
-    color: ${({ theme }) => theme.palette.orange01} !important;
+    background-color: ${({ theme, isLoading }) =>
+      isLoading ? theme.palette.inactive : theme.palette.darkblue01} !important;
+    color: ${({ theme, isLoading }) =>
+      isLoading ? theme.palette.biege : theme.palette.orange01} !important;
     width: 19px !important;
     height: 19px !important;
     line-height: 19px !important;
@@ -88,27 +105,42 @@ const ButtonContainer = styled.div`
 
     svg {
       float: unset !important;
-      color: ${({ theme }) => theme.palette.orange01} !important;
+      color: ${({ theme, isLoading }) =>
+        isLoading ? theme.palette.biege : theme.palette.orange01} !important;
     }
   }
 
   &:hover {
     * {
-      color: ${({ theme }) => theme.palette.background} !important;
+      color: ${({ theme, isLoading }) =>
+        isLoading ? theme.palette.biege : theme.palette.background} !important;
     }
 
     button {
-      background-color: ${({ theme }) => theme.palette.darkblue04} !important;
-      color: ${({ theme }) => theme.palette.background} !important;
+      background-color: ${({ theme, isLoading }) =>
+        isLoading
+          ? theme.palette.inactive
+          : theme.palette.darkblue04} !important;
+      color: ${({ theme, isLoading }) =>
+        isLoading ? theme.palette.biege : theme.palette.background} !important;
 
       svg {
         float: unset !important;
-        color: ${({ theme }) => theme.palette.background} !important;
+        color: ${({ theme, isLoading }) =>
+          isLoading
+            ? theme.palette.biege
+            : theme.palette.background} !important;
       }
     }
   }
 
   input[type='file'] {
     display: none;
+  }
+
+  .loader-container {
+    transform: scale(0.5);
+    display: flex;
+    justify-content: center;
   }
 `
