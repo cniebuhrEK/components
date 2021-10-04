@@ -7,6 +7,7 @@ import {
   AddIcon,
   ArrowDownIcon,
   ArrowRightIcon,
+  BookIcon,
   CloseIcon,
   EyeIcon,
   HideIcon,
@@ -47,94 +48,73 @@ import {
   OtherExamIcon
 } from './'
 
-/**
- * Primary UI component for user interaction
- */
+const IconContainer = styled.div`
+  display: flex;
+  margin-bottom: 16px;
+  flex-flow: row;
+  align-items: center;
+
+  p {
+    margin-right: 8px;
+  }
+`
+
 const AllIcons = () => {
+  const icons = [
+    { component: AddIcon, title: 'AddIcon' },
+    { component: ArrowDownIcon, title: 'ArrowDownIcon' },
+    { component: ArrowRightIcon, title: 'ArrowRightIcon' },
+    { component: BookIcon, title: 'BookIcon' },
+    { component: CloseIcon, title: 'CloseIcon' },
+    { component: EyeIcon, title: 'EyeIcon' },
+    { component: HideIcon, title: 'HideIcon' },
+    { component: ListIcon, title: 'ListIcon' },
+    { component: StudentIcon, title: 'StudentIcon' },
+    { component: TrashIcon, title: 'TrashIcon' },
+    { component: UserIcon, title: 'UserIcon' },
+    { component: SuccessIcon, title: 'SuccessIcon' },
+    { component: InfoIcon, title: 'InfoIcon' },
+    { component: WarningIcon, title: 'WarningIcon' },
+    { component: WarningReversed, title: 'WarningReversed' },
+    { component: UsersIcon, title: 'UsersIcon' },
+    { component: EditIcon, title: 'EditIcon' },
+    { component: PlayIcon, title: 'PlayIcon' },
+    { component: PauseIcon, title: 'PauseIcon' },
+    { component: StopIcon, title: 'StopIcon' },
+    { component: PlusIcon, title: 'PlusIcon' },
+    { component: ScoreIcon, title: 'ScoreIcon' },
+    { component: ArrowUpFilledIcon, title: 'ArrowUpFilledIcon' },
+    { component: ArrowDownFilledIcon, title: 'ArrowDownFilledIcon' },
+    { component: MCATIcon, title: 'MCATIcon' },
+    { component: MiniMCATIcon, title: 'MiniMCATIcon' },
+    { component: FlagIcon, title: 'FlagIcon' },
+    { component: SelectIcon, title: 'SelectIcon' },
+    { component: LineIcon, title: 'LineIcon' },
+    { component: LogoutIcon, title: 'LogoutIcon' },
+    { component: PolygonIcon, title: 'PolygonIcon' },
+    { component: CircleIcon, title: 'CircleIcon' },
+    { component: PaletteIcon, title: 'PaletteIcon' },
+    { component: ImageIcon, title: 'ImageIcon' },
+    { component: TextIcon, title: 'TextIcon' },
+    { component: UndoIcon, title: 'UndoIcon' },
+    { component: RedoIcon, title: 'RedoIcon' },
+    { component: DownloadIcon, title: 'DownloadIcon' },
+    { component: SaveIcon, title: 'SaveIcon' },
+    { component: ToggleIcon, title: 'ToggleIcon' },
+    { component: ExcelIcon, title: 'ExcelIcon' },
+    { component: OtherExamIcon, title: 'OtherExamIcon' }
+  ]
+
   return (
     <IconsContainer>
-      <AddIcon /> &nbsp;&nbsp;AddIcon <br />
-      <br />
-      <ArrowDownIcon /> &nbsp;&nbsp;ArrowDownIcon <br />
-      <br />
-      <ArrowRightIcon /> &nbsp;&nbsp;ArrowRightIcon <br />
-      <br />
-      <CloseIcon /> &nbsp;&nbsp;CloseIcon <br />
-      <br />
-      <EyeIcon /> &nbsp;&nbsp;EyeIcon <br />
-      <br />
-      <HideIcon /> &nbsp;&nbsp;HideIcon <br />
-      <br />
-      <ListIcon /> &nbsp;&nbsp;ListIcon <br />
-      <br />
-      <StudentIcon /> &nbsp;&nbsp;StudentIcon <br />
-      <br />
-      <TrashIcon /> &nbsp;&nbsp;TrashIcon <br />
-      <br />
-      <UserIcon /> &nbsp;&nbsp;UserIcon <br />
-      <br />
-      <SuccessIcon /> &nbsp;&nbsp;SuccessIcon <br />
-      <br />
-      <InfoIcon /> &nbsp;&nbsp;InfoIcon <br />
-      <br />
-      <WarningIcon /> &nbsp;&nbsp;WarningIcon <br />
-      <br />
-      <WarningReversed /> &nbsp;&nbsp;WarningReversed <br />
-      <br />
-      <UsersIcon /> &nbsp;&nbsp;UsersIcon <br />
-      <br />
-      <EditIcon /> &nbsp;&nbsp;EditIcon <br />
-      <br />
-      <PlayIcon /> &nbsp;&nbsp;PlayIcon <br />
-      <br />
-      <PauseIcon /> &nbsp;&nbsp;PauseIcon <br />
-      <br />
-      <StopIcon /> &nbsp;&nbsp;StopIcon <br />
-      <br />
-      <PlusIcon /> &nbsp;&nbsp;PlusIcon <br />
-      <br />
-      <ScoreIcon /> &nbsp;&nbsp;ScoreIcon <br />
-      <br />
-      <ArrowUpFilledIcon /> &nbsp;&nbsp;ArrowUpFilledIcon <br />
-      <br />
-      <ArrowDownFilledIcon /> &nbsp;&nbsp;ArrowDownFilledIcon <br />
-      <br />
-      <MCATIcon /> &nbsp;&nbsp;MCATIcon <br />
-      <br />
-      <MiniMCATIcon /> &nbsp;&nbsp;MiniMCATIcon <br />
-      <br />
-      <FlagIcon /> &nbsp;&nbsp;FlagIcon <br />
-      <br />
-      <SelectIcon /> &nbsp;&nbsp;SelectIcon <br />
-      <br />
-      <LineIcon /> &nbsp;&nbsp;LineIcon <br />
-      <br />
-      <PolygonIcon /> &nbsp;&nbsp;PolygonIcon <br />
-      <br />
-      <CircleIcon /> &nbsp;&nbsp;CircleIcon <br />
-      <br />
-      <PaletteIcon /> &nbsp;&nbsp;PaletteIcon <br />
-      <br />
-      <ImageIcon /> &nbsp;&nbsp;ImageIcon <br />
-      <br />
-      <TextIcon /> &nbsp;&nbsp;TextIcon <br />
-      <br />
-      <UndoIcon /> &nbsp;&nbsp;UndoIcon <br />
-      <br />
-      <RedoIcon /> &nbsp;&nbsp;RedoIcon <br />
-      <br />
-      <DownloadIcon /> &nbsp;&nbsp;DownloadIcon <br />
-      <br />
-      <SaveIcon /> &nbsp;&nbsp;SaveIcon <br />
-      <br />
-      <ToggleIcon /> &nbsp;&nbsp;ToggleIcon <br />
-      <br />
-      <LogoutIcon /> &nbsp;&nbsp;LogoutIcon <br />
-      <br />
-      <ExcelIcon /> &nbsp;&nbsp;ExcelIcon <br />
-      <br />
-      <OtherExamIcon /> &nbsp;&nbsp;OtherExamIcon <br />
-      <br />
+      {icons.map(
+        ({ component: I, title }, i: number): JSX.Element => (
+          <IconContainer key={i}>
+            <p>{`${title}:`}</p>
+            <I />
+          </IconContainer>
+        )
+      )}
     </IconsContainer>
   )
 }

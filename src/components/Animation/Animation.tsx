@@ -150,8 +150,7 @@ const SpeedSelection = styled.div`
     width: 100%;
     top: calc(100% + 5px);
     left: 0;
-    transition: all 300ms
-      ${({ theme }) => theme.transitions.easing.easeInOut};
+    transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
   }
 
   .speed-option {
