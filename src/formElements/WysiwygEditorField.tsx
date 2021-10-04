@@ -57,7 +57,8 @@ export const WysiwygEditorField = (
     t,
     formats,
     glossaryDefinitions,
-    initialValue
+    initialValue,
+    handleS3Upload
   } = props
 
   // Indicator for whether the input is open or not
@@ -103,6 +104,7 @@ export const WysiwygEditorField = (
       formats={formats}
       glossaryDefinitions={glossaryDefinitions}
       initialValue={initialValue}
+      handleS3Upload={handleS3Upload}
     />
   )
 }
