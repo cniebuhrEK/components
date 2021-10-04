@@ -45,7 +45,8 @@ import {
   SaveIcon,
   ToggleIcon,
   ExcelIcon,
-  OtherExamIcon
+  OtherExamIcon,
+  EditorImageIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -102,7 +103,8 @@ const AllIcons = () => {
     { component: SaveIcon, title: 'SaveIcon' },
     { component: ToggleIcon, title: 'ToggleIcon' },
     { component: ExcelIcon, title: 'ExcelIcon' },
-    { component: OtherExamIcon, title: 'OtherExamIcon' }
+    { component: OtherExamIcon, title: 'OtherExamIcon' },
+    { component: EditorImageIcon, title: 'EditorImageIcon' }
   ]
 
   return (

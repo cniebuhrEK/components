@@ -16,6 +16,7 @@ window.katex = katex
 
 interface TextEditorProps {
   id: string
+  handleS3Upload?: (e: any) => void
   onChange: (e: any) => void
   formats: {
     size?: boolean
@@ -52,6 +53,7 @@ interface TextEditorProps {
 const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const {
     id,
+    handleS3Upload,
     formats,
     glossaryDefinitions,
     onChange,
@@ -118,6 +120,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         glossaryDefinitions={glossaryDefinitions}
         formats={formats}
         editorInstance={quill}
+        handleS3Upload={handleS3Upload}
+        id={id}
       />
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}

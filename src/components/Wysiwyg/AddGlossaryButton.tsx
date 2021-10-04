@@ -110,6 +110,8 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 export default AddGlossaryButton
 
 const ButtonContainer = styled.div`
+  display: inline-block;
+
   .__react_component_tooltip {
     text-align: center !important;
     background-color: ${({ theme }) => theme.palette.biege} !important;

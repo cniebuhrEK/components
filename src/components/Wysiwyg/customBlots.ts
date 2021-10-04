@@ -1,6 +1,7 @@
 import Quill from 'quill'
 
 export const GLOSSARY_BLOT_NAME = 'glossary'
+export const CUSTOM_IMAGE_BLOT_NAME = 's3-image'
 
 export const addGlossaryBlotToQuill = () => {
   const InlineBlot = Quill.import('blots/inline')
@@ -36,4 +37,39 @@ export const addGlossaryBlotToQuill = () => {
   GlossaryBlot.className = 'glossary-word'
 
   Quill.register(GlossaryBlot)
+}
+
+export const addImageBlotToQuill = () => {
+  const ImageBlot = Quill.import('formats/image')
+
+  // Converts the HTML tag to image blot
+  class CustomImageBlot extends ImageBlot {
+    static create(value) {
+      const node = super.create()
+      // Set attributes that are needed for img tag
+      node.setAttribute('src', value.url)
+      node.setAttribute('data-attr', value.name)
+      return node
+    }
+
+    // Converts the image blot to HTML tag
+    static value(node) {
+      const blot = { url: '', data_attr: '' }
+
+      blot.url = node.getAttribute('url')
+      blot.data_attr = node.getAttribute('data-attr')
+
+      return blot
+    }
+  }
+
+  // Set custom blot name that will be used as a format
+  // @ts-ignore
+  CustomImageBlot.blotName = CUSTOM_IMAGE_BLOT_NAME
+
+  // Set custom blot html tag name
+  // @ts-ignore
+  CustomImageBlot.tagName = 'img'
+
+  Quill.register(CustomImageBlot)
 }

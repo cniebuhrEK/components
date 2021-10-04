@@ -4,9 +4,12 @@ import React from 'react'
 import AddGlossaryButton from './AddGlossaryButton'
 
 import * as R from 'ramda'
+import AddCustomImageButton from './AddCustomImageButton'
 
 interface ToolbarProps {
   editorInstance: any
+  handleS3Upload?: (e: any) => void
+  id: string
   glossaryDefinitions?: {
     id: string
     word: string
@@ -31,6 +34,7 @@ interface ToolbarProps {
     formula?: boolean
     glossary?: boolean
     clean?: boolean
+    customImage?: boolean
   }
 }
 
@@ -38,6 +42,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
   const {
     glossaryDefinitions,
     editorInstance,
+    handleS3Upload,
+    id,
     formats: {
       size,
       header,
@@ -56,7 +62,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       direction,
       formula,
       glossary,
-      clean
+      clean,
+      customImage
     }
   } = props
 
@@ -88,7 +95,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
 
   const hasCleanFormats = R.any(R.equals(true), [clean])
 
-  const hasAdditionalFormats = R.any(R.equals(true), [glossary])
+  const hasAdditionalFormats = R.any(R.equals(true), [glossary, customImage])
 
   const sizeFormats = hasSizeFormats && (
     <span className='ql-formats'>
@@ -149,8 +156,18 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
     </span>
   )
 
+  const actionPlaceholder = () => {}
+  const S3Handler = handleS3Upload || actionPlaceholder
+
   const additionalFormats = hasAdditionalFormats && (
     <span className='ql-formats'>
+      {customImage && (
+        <AddCustomImageButton
+          editorInstance={editorInstance}
+          id={id}
+          handleS3Upload={S3Handler}
+        />
+      )}
       {glossary && (
         <AddGlossaryButton
           glossaryDefinitions={glossaryDefinitions}

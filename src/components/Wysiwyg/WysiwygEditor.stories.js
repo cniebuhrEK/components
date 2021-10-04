@@ -11,6 +11,15 @@ Default.args = {
   error: false,
   errorText: 'required field',
   id: 'text-editor-container',
+  handleS3Upload: file => {
+    const result = URL.createObjectURL(file)
+    return {
+      data: {
+        url: result,
+        data: 'data'
+      }
+    }
+  },
   onChange: e => console.log(e),
   formats: {
     size: true,
@@ -29,7 +38,8 @@ Default.args = {
     scriptSub: true,
     blockquote: true,
     formula: true,
-    glossary: true
+    glossary: true,
+    customImage: true
   },
   glossaryDefinitions: [
     {
