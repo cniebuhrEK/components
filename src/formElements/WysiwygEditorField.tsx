@@ -9,6 +9,7 @@ interface WysiwygEditorFieldProps {
   validate: (name: string, v: any) => any
   id: string
   onChange: (name: string, value: any) => any
+  handleS3Upload?: (e: any) => void
   formats: {
     size?: boolean
     header?: boolean
@@ -28,6 +29,7 @@ interface WysiwygEditorFieldProps {
     formula?: boolean
     glossary?: boolean
     clean?: boolean
+    customImage?: boolean
   }
   glossaryDefinitions?: {
     id: string

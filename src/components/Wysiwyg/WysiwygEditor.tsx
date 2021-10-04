@@ -37,6 +37,7 @@ interface TextEditorProps {
     formula?: boolean
     glossary?: boolean
     clean?: boolean
+    customImage?: boolean
   }
   glossaryDefinitions?: {
     id: string
