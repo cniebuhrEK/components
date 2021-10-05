@@ -177,11 +177,13 @@ export const StyledButton = styled.button`
           return 'transparent'
         case size === buttonSizes.small && variant === buttonVariants.contained:
           return theme.palette.grey08
-        case color === buttonColors.orange:
+        case color === buttonColors.orange &&
+          variant !== buttonVariants.outlined:
           return theme.palette.orange05
-        case color === buttonColors.green:
+        case color === buttonColors.green &&
+          variant !== buttonVariants.outlined:
           return theme.palette.green10
-        case color === buttonColors.blue:
+        case color === buttonColors.blue && variant !== buttonVariants.outlined:
           return theme.palette.inactive
         case color === buttonColors.transparent:
         default:
