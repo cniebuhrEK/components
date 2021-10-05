@@ -2,6 +2,7 @@ import Quill from 'quill'
 
 export const GLOSSARY_BLOT_NAME = 'glossary'
 export const CUSTOM_IMAGE_BLOT_NAME = 's3-image'
+export const ADMIN_HIGHLIGHTS_BLOT_NAME = 'blablabla'
 
 export const addGlossaryBlotToQuill = () => {
   const InlineBlot = Quill.import('blots/inline')
@@ -72,4 +73,21 @@ export const addImageBlotToQuill = () => {
   CustomImageBlot.tagName = 'img'
 
   Quill.register(CustomImageBlot)
+}
+
+export const addAdminHighlightsBlotToQuill = () => {
+  const InlineBlot = Quill.import('blots/inline')
+
+  // Creates a new blot based on 'inline' blot
+  class AdminHighlightsBlot extends InlineBlot {
+    static blotName = ADMIN_HIGHLIGHTS_BLOT_NAME
+    static className = 'admin-highlights'
+    static tagName = 'span'
+
+    static formats(): boolean {
+      return true
+    }
+  }
+
+  Quill.register(AdminHighlightsBlot)
 }

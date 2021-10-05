@@ -46,7 +46,8 @@ UploadFileField.args = {
     scriptSub: true,
     blockquote: true,
     formula: true,
-    glossary: true
+    glossary: true,
+    adminHighlights: true
   },
   glossaryDefinitions: [
     {

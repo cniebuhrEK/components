@@ -38,6 +38,7 @@ interface TextEditorProps {
     glossary?: boolean
     clean?: boolean
     customImage?: boolean
+    adminHighlights?: boolean
   }
   glossaryDefinitions?: {
     id: string
@@ -182,6 +183,10 @@ const WysiwygContainer = styled.div`
     white-space: nowrap;
     word-break: keep-all;
     min-width: 200px;
+  }
+
+  .admin-highlights {
+    color: ${({ theme }) => theme.palette.inactive} !important;
   }
 `
 

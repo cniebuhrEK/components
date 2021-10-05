@@ -102,6 +102,7 @@ const ButtonContainer = styled.div`
     box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
+    margin: 0 3px !important;
 
     svg {
       float: unset !important;

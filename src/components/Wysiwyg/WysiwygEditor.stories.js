@@ -39,7 +39,8 @@ Default.args = {
     blockquote: true,
     formula: true,
     glossary: true,
-    customImage: true
+    customImage: true,
+    adminHighlights: true
   },
   glossaryDefinitions: [
     {

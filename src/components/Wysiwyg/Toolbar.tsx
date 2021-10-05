@@ -5,6 +5,7 @@ import AddGlossaryButton from './AddGlossaryButton'
 
 import * as R from 'ramda'
 import AddCustomImageButton from './AddCustomImageButton'
+import AddAdminHighlightsButton from './AddAdminHighlightsButton'
 
 interface ToolbarProps {
   editorInstance: any
@@ -35,6 +36,7 @@ interface ToolbarProps {
     glossary?: boolean
     clean?: boolean
     customImage?: boolean
+    adminHighlights?: boolean
   }
 }
 
@@ -63,7 +65,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       formula,
       glossary,
       clean,
-      customImage
+      customImage,
+      adminHighlights
     }
   } = props
 
@@ -95,7 +98,11 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
 
   const hasCleanFormats = R.any(R.equals(true), [clean])
 
-  const hasAdditionalFormats = R.any(R.equals(true), [glossary, customImage])
+  const hasAdditionalFormats = R.any(R.equals(true), [
+    glossary,
+    customImage,
+    adminHighlights
+  ])
 
   const sizeFormats = hasSizeFormats && (
     <span className='ql-formats'>
@@ -167,6 +174,9 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
           id={id}
           handleS3Upload={S3Handler}
         />
+      )}
+      {adminHighlights && (
+        <AddAdminHighlightsButton editorInstance={editorInstance} />
       )}
       {glossary && (
         <AddGlossaryButton

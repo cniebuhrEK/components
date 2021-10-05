@@ -30,6 +30,7 @@ interface WysiwygEditorFieldProps {
     glossary?: boolean
     clean?: boolean
     customImage?: boolean
+    adminHighlights?: boolean
   }
   glossaryDefinitions?: {
     id: string

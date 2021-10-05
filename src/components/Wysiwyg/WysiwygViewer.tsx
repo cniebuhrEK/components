@@ -8,7 +8,10 @@ import * as R from 'ramda'
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
-import { addGlossaryBlotToQuill } from './customBlots'
+import {
+  addAdminHighlightsBlotToQuill,
+  addGlossaryBlotToQuill
+} from './customBlots'
 
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
@@ -33,6 +36,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   // as soon as the element is rendered on the page it will use this callback
   const wrapperRef = React.useCallback(wrapper => {
     addGlossaryBlotToQuill()
+    addAdminHighlightsBlotToQuill()
     // make sure if we have the wrapper
     if (!wrapper) return
 
@@ -105,6 +109,10 @@ const TextViewerContainer = styled.div`
 
   .ql-container.ql-snow.ql-disabled {
     border: none;
+  }
+
+  .admin-highlights {
+    color: ${({ theme }) => theme.palette.inactive} !important;
   }
 `
 
