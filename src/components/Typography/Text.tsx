@@ -16,6 +16,7 @@ const Text = (props: TextProps) => (
 const Container = styled.p`
   margin: 0;
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
+  font-family: ${({ theme }) => theme.typography.fontFamily};
 
   font-size: ${({ size, theme }) => {
     switch (true) {

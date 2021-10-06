@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface Heading2Props {
-  bold: boolean
+  bold?: boolean
   children: React.ReactNode
 }
 
