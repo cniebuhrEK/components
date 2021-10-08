@@ -47,7 +47,11 @@ import {
   ExcelIcon,
   OtherExamIcon,
   EditorImageIcon,
-  EditorHighlightIcon
+  EditorHighlightIcon,
+  ToMuchInformationIcon,
+  VideoIcon,
+  ClinicalContextIcon,
+  MCATThinkIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -106,7 +110,11 @@ const AllIcons = () => {
     { component: ExcelIcon, title: 'ExcelIcon' },
     { component: OtherExamIcon, title: 'OtherExamIcon' },
     { component: EditorImageIcon, title: 'EditorImageIcon' },
-    { component: EditorHighlightIcon, title: 'EditorHighlightIcon' }
+    { component: EditorHighlightIcon, title: 'EditorHighlightIcon' },
+    { component: ToMuchInformationIcon, title: 'ToMuchInformationIcon' },
+    { component: VideoIcon, title: 'VideoIcon' },
+    { component: ClinicalContextIcon, title: 'ClinicalContextIcon' },
+    { component: MCATThinkIcon, title: 'MCATThinkIcon' }
   ]
 
   return (
