@@ -11,10 +11,19 @@ type MenuLink = {
 }
 
 interface StudentTopNavigationProps {
+  // URL of the user avatar
   avatar: string
+
+  // Text greeting for the user
   greeting: string
+
+  // Text for the menu button
   menu: string
+
+  // Should the KRACK UNIVERSITY banner be shown?
   showCrackUniversityLogo?: boolean
+
+  // Links for the menu
   links: MenuLink[]
 }
 
@@ -22,11 +31,12 @@ const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
   const { avatar, menu, greeting, links, showCrackUniversityLogo } = props
-  const [open, setOpen] = React.useState(false)
+
+  const [open, setOpen] = React.useState<boolean>(false)
 
   const handleMouseLeave = () => setOpen(false)
 
-  const logoUrl = showCrackUniversityLogo
+  const logoUrl: string = showCrackUniversityLogo
     ? '/assets/logo/CrackUniversityLogo.svg'
     : '/assets/logo/LogoDarkBg.svg'
 
@@ -106,6 +116,7 @@ const LogoContainer = styled.div`
     width: 200px;
   }
 `
+
 //
 // Navigation User
 //
@@ -127,6 +138,7 @@ const IconContainer = styled.img`
   background: ${({ theme }) => theme.palette.white};
   height: 48px;
   width: 48px;
+  justify-content: flex-start;
   margin: 0 16px 0 0;
 `
 
