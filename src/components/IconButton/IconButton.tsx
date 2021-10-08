@@ -111,7 +111,8 @@ export const StyledButton = styled.button`
   }};
   box-shadow: none;
   border: none;
-  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${({ theme }) =>
+    theme.transitions.easing.easeInOut} 0ms;
 
   svg {
     color: ${({ theme, variant, color }) => {
@@ -141,8 +142,10 @@ export const StyledButton = styled.button`
   }
 
   &:disabled {
+    background-color ${({ theme }) => theme.palette.inactive};
+
     svg {
-      color: ${({ theme }) => theme.palette.grey08};
+      color: ${({ theme }) => theme.palette.background};
     }
   }
 
