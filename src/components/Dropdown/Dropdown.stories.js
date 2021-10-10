@@ -8,7 +8,7 @@ Default.args = {
   label: 'Dropdown',
   disabled: false,
   options: [
-    { label: 'Option #1' },
+    { label: 'Option #1', onClick: () => console.log('1') },
     { label: 'Option #2' },
     { label: 'Option #3' },
     { label: 'Option #4' }

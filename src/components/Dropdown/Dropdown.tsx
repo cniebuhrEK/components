@@ -12,7 +12,6 @@ type DropdownButtonProps = {
   isOpen: boolean
   isDisabled: boolean
   onClick: () => void
-  onBlur: () => void
 }
 
 type DropdownProps = {
@@ -22,14 +21,10 @@ type DropdownProps = {
 }
 
 const DropdownButton = (props: DropdownButtonProps): JSX.Element => {
-  const { label, isOpen, isDisabled, onClick, onBlur } = props
+  const { label, isOpen, isDisabled, onClick } = props
 
   return (
-    <DropdownButtonContainer
-      disabled={isDisabled}
-      onBlur={onBlur}
-      onClick={onClick}
-    >
+    <DropdownButtonContainer disabled={isDisabled} onClick={onClick}>
       {label}
       <IconContainer isOpen={isOpen}>
         <ArrowDownIcon />
@@ -48,6 +43,7 @@ DropdownButton.defaultProps = {
 const Dropdown = (props: DropdownProps): JSX.Element => {
   const { label, options, disabled } = props
   const [open, setOpen] = React.useState<boolean>(false)
+  const ref = React.useRef<HTMLDivElement>()
 
   function handleToggle(): void {
     setOpen(!open)
@@ -57,14 +53,24 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
     setOpen(false)
   }
 
+  React.useEffect(() => {
+    function handleClickOutside(e: any): void {
+      if (open && ref.current && !ref.current.contains(e.target)) {
+        handleClose()
+      }
+    }
+
+    window.addEventListener('mousedown', handleClickOutside)
+    return () => window.removeEventListener('mousedown', handleClickOutside)
+  }, [open])
+
   return (
-    <Container>
+    <Container ref={ref}>
       <DropdownButton
         label={label}
         isOpen={open}
         isDisabled={disabled}
         onClick={handleToggle}
-        onBlur={handleClose}
       />
       <Menu open={open}>
         {options.map((l: MenuOption, i: number) => (
