@@ -91,7 +91,7 @@ Dropdown.defaultProps = {
 
 const Container = styled.div`
   position: relative;
-  display: initial;
+  display: block;
   z-index: ${({ theme }) => theme.zIndex.menu};
 `
 
@@ -104,7 +104,8 @@ const Menu = styled.div`
   z-index: ${({ theme }) => theme.zIndex.menu};
   transition: opacity 700ms ${({ theme }) =>
     theme.transitions.easing.easeInOut};
-  width: 100%;
+  min-width: 128px;
+  width: fit-content;
 `
 
 const MenuItem = styled.div`
@@ -114,6 +115,7 @@ const MenuItem = styled.div`
   padding: 12px 16px;
   color: ${({ theme }) => theme.palette.darkblue01};
   border-left: 3px solid transparent;
+  white-space: nowrap;
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
