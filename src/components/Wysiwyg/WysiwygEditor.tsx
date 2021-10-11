@@ -91,6 +91,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     if (isNotNilOrEmpty(quill) && prevInitialValue !== initialValue) {
       // @ts-ignore
       quill.setContents(initialValue)
+      console.log('WYSIWYG', { initialValue, quill })
       glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
