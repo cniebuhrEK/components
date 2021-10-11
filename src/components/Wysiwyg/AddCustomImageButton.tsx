@@ -24,13 +24,13 @@ const AddCustomImageButton = (
     addImageBlotToQuill()
   }, [])
 
-  const addImage = (url, data) => {
+  const addImage = (url, id) => {
     const selection = editorInstance.getSelection()
     const index = R.propOr(1, 'index', selection)
 
     editorInstance.insertEmbed(index, CUSTOM_IMAGE_BLOT_NAME, {
       url,
-      data
+      id
     })
   }
 

@@ -49,16 +49,16 @@ export const addImageBlotToQuill = () => {
       const node = super.create()
       // Set attributes that are needed for img tag
       node.setAttribute('src', value.url)
-      node.setAttribute('data-attr', value.name)
+      node.setAttribute('alt', value.id)
       return node
     }
 
     // Converts the image blot to HTML tag
     static value(node) {
-      const blot = { url: '', data_attr: '' }
+      const blot = { url: '', alt: '' }
 
-      blot.url = node.getAttribute('url')
-      blot.data_attr = node.getAttribute('data-attr')
+      blot.url = node.getAttribute('src')
+      blot.alt = node.getAttribute('alt')
 
       return blot
     }
