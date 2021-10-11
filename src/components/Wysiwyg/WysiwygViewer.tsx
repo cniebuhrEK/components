@@ -10,7 +10,8 @@ import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import {
   addAdminHighlightsBlotToQuill,
-  addGlossaryBlotToQuill
+  addGlossaryBlotToQuill,
+  addImageBlotToQuill
 } from './customBlots'
 
 import katex from 'katex'
@@ -37,6 +38,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const wrapperRef = React.useCallback(wrapper => {
     addGlossaryBlotToQuill()
     addAdminHighlightsBlotToQuill()
+    addImageBlotToQuill()
     // make sure if we have the wrapper
     if (!wrapper) return
 
