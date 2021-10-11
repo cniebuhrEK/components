@@ -154,7 +154,9 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
   )
 
   const cleanFormats = hasCleanFormats && (
-    <span className='ql-clean'>{clean && <button className='ql-clean' />}</span>
+    <span className='ql-formats'>
+      {clean && <button className='ql-clean' />}
+    </span>
   )
 
   const formulaFormats = hasFormulaFormats && (
