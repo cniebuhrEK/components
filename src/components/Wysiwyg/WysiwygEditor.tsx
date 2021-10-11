@@ -4,7 +4,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
 import Toolbar from './Toolbar'
-import * as R from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
