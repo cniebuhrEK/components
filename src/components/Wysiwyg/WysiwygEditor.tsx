@@ -4,6 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
 import Toolbar from './Toolbar'
+import * as R from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
@@ -88,10 +89,12 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   }, [])
 
   React.useEffect(() => {
-    if (isNotNilOrEmpty(quill) && prevInitialValue !== initialValue) {
+    if (
+      isNotNilOrEmpty(quill) &&
+      R.not(R.equals(initialValue, prevInitialValue))
+    ) {
       // @ts-ignore
       quill.setContents(initialValue)
-      console.log('WYSIWYG', { initialValue, quill })
       glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
