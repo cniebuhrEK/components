@@ -11,6 +11,7 @@ import ReactTooltip from 'react-tooltip'
 
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import usePrevious from '../../hooks/usePrevious'
 // @ts-ignore
 window.katex = katex
 
@@ -67,6 +68,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   } = props
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
+  const prevInitialValue = usePrevious(initialValue)
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
   // as soon as the element is rendered on the page it will use this callback
@@ -86,10 +88,9 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   }, [])
 
   React.useEffect(() => {
-    if (isNotNilOrEmpty(quill)) {
+    if (isNotNilOrEmpty(quill) && prevInitialValue !== initialValue) {
       // @ts-ignore
       quill.setContents(initialValue)
-      console.log('WYSIWYG', { initialValue })
       glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
