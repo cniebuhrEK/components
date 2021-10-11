@@ -65,6 +65,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     errorText,
     initialValue
   } = props
+  const { glossary } = formats
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -88,7 +89,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(initialValue)
-      ReactTooltip.rebuild()
+      console.log('WYSIWYG', { initialValue })
+      glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
 
