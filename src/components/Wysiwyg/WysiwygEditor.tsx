@@ -89,10 +89,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   }, [])
 
   React.useEffect(() => {
-    if (
-      isNotNilOrEmpty(quill) &&
-      R.not(R.equals(initialValue, prevInitialValue))
-    ) {
+    if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(initialValue)
       glossary && ReactTooltip.rebuild()
