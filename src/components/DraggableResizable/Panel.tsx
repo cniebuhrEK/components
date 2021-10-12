@@ -152,7 +152,7 @@ const Panel = (props: PanelProps): JSX.Element => {
         onDrag={handleDrag}
         panelRef={panelRef}
       />
-      <>{children}</>
+      <React.Fragment>{children}</React.Fragment>
     </Container>
   )
 }

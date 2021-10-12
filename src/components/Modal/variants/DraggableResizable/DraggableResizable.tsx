@@ -27,7 +27,7 @@ const DraggableResizableModal = (
     )
   }
 
-  return <></>
+  return <React.Fragment />
 }
 
 DraggableResizableModal.defaultArgs = {
