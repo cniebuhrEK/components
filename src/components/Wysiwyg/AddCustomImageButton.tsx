@@ -115,16 +115,13 @@ const ButtonContainer = styled.div`
   &:hover {
     * {
       color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.biege : theme.palette.background} !important;
+        isLoading ? theme.palette.biege : theme.palette.darkblue01} !important;
     }
 
     button {
       background-color: ${({ theme, isLoading }) =>
-        isLoading
-          ? theme.palette.inactive
-          : theme.palette.darkblue04} !important;
-      color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.biege : theme.palette.background} !important;
+        isLoading ? theme.palette.inactive : theme.palette.orange01} !important;
+      color: ${({ theme }) => theme.palette.darkblue01} !important;
 
       svg {
         float: unset !important;
