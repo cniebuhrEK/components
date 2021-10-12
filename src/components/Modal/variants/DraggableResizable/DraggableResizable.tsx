@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DraggableResizable } from '../../DraggableResizable'
+import { DraggableResizable } from '../../../DraggableResizable'
 
-type KrackUModalProps = {
+type DraggableResizableModalProps = {
   children: React.ReactNode
   height: number
   width: number
@@ -10,7 +10,9 @@ type KrackUModalProps = {
   isStatic?: boolean
 }
 
-const KrackUModal = (props: KrackUModalProps): JSX.Element => {
+const DraggableResizableModal = (
+  props: DraggableResizableModalProps
+): JSX.Element => {
   const { children, height, width, open, isStatic } = props
 
   if (open) {
@@ -28,7 +30,7 @@ const KrackUModal = (props: KrackUModalProps): JSX.Element => {
   return <></>
 }
 
-KrackUModal.defaultArgs = {
+DraggableResizableModal.defaultArgs = {
   open: false,
   isStatic: false
 }
@@ -58,4 +60,4 @@ const Content = styled.div`
   width: 100%;
 `
 
-export default KrackUModal
+export default DraggableResizableModal

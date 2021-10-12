@@ -150,6 +150,7 @@ const Panel = (props: PanelProps): JSX.Element => {
         title={title}
         handleClose={handleClose}
         onDrag={handleDrag}
+        panelRef={panelRef}
       />
       <>{children}</>
     </Container>

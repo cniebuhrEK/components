@@ -1,19 +1,19 @@
 import React from 'react'
-import KrackUModal from './KrackU'
-import { Heading1, Text } from '../../Typography'
+import Modal from './DraggableResizable'
+import { Heading1, Text } from '../../../Typography'
 
 const Template = args => (
-  <KrackUModal {...args}>
+  <Modal {...args}>
     <Heading1 bold>KrackU Modal</Heading1>
     <Text size='s'>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus turpis
       mi, egestas in tortor id, fringilla elementum tellus.
     </Text>
-  </KrackUModal>
+  </Modal>
 )
 
-export const Default = Template.bind({})
-Default.args = {
+export const DraggableResizableModal = Template.bind({})
+DraggableResizableModal.args = {
   width: 512,
   height: 320,
   isStatic: false,
@@ -21,6 +21,6 @@ Default.args = {
 }
 
 export default {
-  title: 'KrackU/Modal',
-  component: KrackUModal
+  title: 'Atoms/Modal',
+  component: Modal
 }
