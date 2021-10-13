@@ -97,6 +97,8 @@ export const StyledButton = styled.button`
   }};
   background-color: ${({ variant, color, theme }) => {
     switch (true) {
+      case variant === variants.transparent:
+        return 'transparent'
       case variant === variants.filled && color === buttonColors.orange:
         return theme.palette.orange02
       case variant === variants.filled && color === buttonColors.green:
