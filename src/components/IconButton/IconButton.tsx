@@ -104,7 +104,7 @@ export const StyledButton = styled.button`
       case variant === variants.filled && color === buttonColors.blue:
         return theme.palette.darkblue01
       case variant === variants.filled && color === buttonColors.transparent:
-        return 'none'
+        return 'transparent'
       default:
         return theme.palette.orange02
     }
