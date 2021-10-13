@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ArrowDownIcon } from '../../icons'
 
 type MenuOption = {
+  id: string
   label: string
   onClick?: () => void
 }
@@ -17,6 +18,7 @@ type DropdownButtonProps = {
 type DropdownProps = {
   label?: string
   options: MenuOption[]
+  activeId: string
   disabled?: boolean
 }
 
@@ -41,7 +43,7 @@ DropdownButton.defaultProps = {
 }
 
 const Dropdown = (props: DropdownProps): JSX.Element => {
-  const { label, options, disabled } = props
+  const { label, options, disabled, activeId } = props
   const [open, setOpen] = React.useState<boolean>(false)
   const ref = React.useRef<HTMLDivElement>()
 
@@ -64,6 +66,14 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
     return () => window.removeEventListener('mousedown', handleClickOutside)
   }, [open])
 
+  const handleOnClick = (handler?: VoidFunction) => (): void => {
+    if (handler) {
+      handler()
+    }
+
+    setOpen(false)
+  }
+
   return (
     <Container ref={ref}>
       <DropdownButton
@@ -74,9 +84,13 @@ const Dropdown = (props: DropdownProps): JSX.Element => {
       />
       <Menu open={open}>
         {options.map((l: MenuOption, i: number) => (
-          <MenuItem key={`dropdown-menu-item-${i}`} onClick={l.onClick}>
+          <ItemContainer
+            key={`dropdown-menu-item-${i}`}
+            isBold={l.id === activeId}
+            onClick={handleOnClick(l.onClick)}
+          >
             {l.label}
-          </MenuItem>
+          </ItemContainer>
         ))}
       </Menu>
     </Container>
@@ -106,9 +120,28 @@ const Menu = styled.div`
     theme.transitions.easing.easeInOut};
   min-width: 128px;
   width: fit-content;
+  max-height: 172px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: ${({ theme }) => theme.palette.brown01}
+    ${({ theme }) => theme.palette.brown09};
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: ${({ theme }) => theme.palette.brown01};
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: ${({ theme }) => theme.palette.brown09};
+  }
 `
 
-const MenuItem = styled.div`
+const ItemContainer = styled.div`
   display: block;
   line-height: normal;
   width: 100%;
@@ -116,6 +149,7 @@ const MenuItem = styled.div`
   color: ${({ theme }) => theme.palette.darkblue01};
   border-left: 3px solid transparent;
   white-space: nowrap;
+  font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
