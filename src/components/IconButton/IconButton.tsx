@@ -11,12 +11,13 @@ interface ButtonProps {
   autofocus?: boolean
   id?: string
   name?: string
-  variant?: 'filled' | 'transparent'
+  variant?: 'filled' | 'outlined' | 'transparent'
   color?: 'orange' | 'green' | 'blue' | 'transparent'
 }
 
 const variants = {
   filled: 'filled',
+  outlined: 'outlined',
   transparent: 'transparent'
 }
 
@@ -73,6 +74,7 @@ export const StyledButton = styled.button`
   justify-content: center;
   color: ${({ variant, color, theme }) => {
     switch (true) {
+      // Filled variant
       case variant === variants.filled && color === buttonColors.orange:
         return theme.palette.darkblue01
       case variant === variants.filled && color === buttonColors.green:
@@ -82,6 +84,17 @@ export const StyledButton = styled.button`
       case variant === variants.filled && color === buttonColors.transparent:
         return theme.palette.grey07
 
+      // Outlined variant
+      case variant === variants.outlined && color === buttonColors.orange:
+        return theme.palette.orange02
+      case variant === variants.outlined && color === buttonColors.green:
+        return theme.palette.green04
+      case variant === variants.outlined && color === buttonColors.blue:
+        return theme.palette.darkblue01
+      case variant === variants.outlined && color === buttonColors.transparent:
+        return theme.palette.grey07
+
+      // Transparent variant
       case variant === variants.transparent && color === buttonColors.orange:
         return theme.palette.orange02
       case variant === variants.transparent && color === buttonColors.green:
@@ -107,18 +120,35 @@ export const StyledButton = styled.button`
         return theme.palette.darkblue01
       case variant === variants.filled && color === buttonColors.transparent:
         return 'transparent'
+      case variant === variants.outlined:
+        return theme.palette.white
       default:
         return theme.palette.orange02
     }
   }};
   box-shadow: none;
-  border: none;
+  border-width: ${({ variant }) =>
+    variant === variants.outlined ? '1px' : '0px'};
+  border-style: solid;
+  border-color: ${({ variant, theme, color }) => {
+    switch (true) {
+      case variant === variant.outlined && color === buttonColors.orange:
+        return theme.palette.orange02
+      case variant === variant.outlined && color === buttonColors.green:
+        return theme.palette.green04
+      case variant === variant.outlined && color === buttonColors.blue:
+        return theme.palette.darkblue01
+      default:
+        return 'unset'
+    }
+  }};
   transition: all 300ms ${({ theme }) =>
     theme.transitions.easing.easeInOut} 0ms;
 
   svg {
-    color: ${({ theme, variant, color }) => {
+    fill: ${({ theme, variant, color }) => {
       switch (true) {
+        // Filled variant
         case variant === variants.filled && color === buttonColors.orange:
           return theme.palette.darkblue01
         case variant === variants.filled && color === buttonColors.green:
@@ -128,6 +158,15 @@ export const StyledButton = styled.button`
         case variant === variants.filled && color === buttonColors.transparent:
           return theme.palette.grey07
 
+        // Outlined variant
+        case variant === variant.outlined && color === buttonColors.orange:
+          return theme.palette.orange02
+        case variant === variant.outlined && color === buttonColors.green:
+          return theme.palette.green04
+        case variant === variant.outlined && color === buttonColors.blue:
+          return theme.palette.darkblue01
+
+        // Transparent variant
         case variant === variants.transparent && color === buttonColors.orange:
           return theme.palette.orange02
         case variant === variants.transparent && color === buttonColors.green:
@@ -145,6 +184,7 @@ export const StyledButton = styled.button`
 
   &:disabled {
     background-color ${({ theme }) => theme.palette.inactive};
+    border-color: ${({ theme }) => theme.palette.inactive};
 
     svg {
       color: ${({ theme }) => theme.palette.background};
