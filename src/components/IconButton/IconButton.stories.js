@@ -2,7 +2,7 @@
 
 import React from 'react'
 import IconButton from './IconButton'
-import StartIcon from '../../icons/Add'
+import TrashIcon from '../../icons/Trash'
 
 const DefaultComponent = args => (
   <IconButton {...args}>{args.children}</IconButton>
@@ -10,7 +10,7 @@ const DefaultComponent = args => (
 
 export const Default = DefaultComponent.bind({})
 Default.args = {
-  icon: <StartIcon />,
+  icon: <TrashIcon />,
   variant: 'filled'
 }
 
