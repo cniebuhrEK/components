@@ -12,7 +12,7 @@ interface TextareaProps {
   disabled?: boolean
   autoComplete?: any
   autoFocus?: any
-  value: string
+  value?: string
   maxHeight?: string
   error?: boolean
   inputProps?: object
@@ -48,9 +48,9 @@ const TextareaField = (props: TextareaProps): JSX.Element => {
   } = props
 
   // Current value of the input field
-  const [inputValue, setInputValue] = React.useState<string>(value)
+  const [inputValue, setInputValue] = React.useState<string | undefined>(value)
 
-  const handleOnChange = (e: any) => {
+  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
     setInputValue(e.target.value)
     onChange(e)
