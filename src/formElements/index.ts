@@ -2,6 +2,7 @@
 
 export * from './DatePicker'
 export { default as InputField } from './InputField'
+export { default as TextareaField } from './TextareaField'
 export { default as SingleSelectField } from './SingleSelectField'
 export { default as SingleSelectCreatableField } from './SingleSelectCreatableField'
 export { default as UploadFileField } from './UploadFileField'
