@@ -61,14 +61,18 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   }, [query])
 
   React.useEffect(() => {
-    setQuery(prevState => ({
-      ...prevState,
-      limit: {
-        page: R.propOr(1, 'page', pagination),
-        take: R.propOr(10, 'take', pagination)
-      }
-    }))
-  }, [pagination])
+    const paginationPage = R.propOr(1, 'page', pagination)
+    const currentPage = R.pathOr(1, ['limit', 'page'], pagination)
+
+    if (currentPage !== paginationPage)
+      setQuery(prevState => ({
+        ...prevState,
+        limit: {
+          page: R.propOr(1, 'page', pagination),
+          take: R.propOr(10, 'take', pagination)
+        }
+      }))
+  }, [pagination, query])
 
   const handleGlossary = e => {
     e.preventDefault()
@@ -319,7 +323,8 @@ export const StyledModal = styled(ReactModalAdapter).attrs({
     color: ${({ theme }) => theme.palette.brown01};
     border-radius: 6px;
     outline: 0;
-    min-width: 500px;
+    max-width: 408px;
+    min-width: 408px;
     margin-top: 19px;
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
