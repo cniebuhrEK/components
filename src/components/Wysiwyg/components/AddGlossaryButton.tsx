@@ -12,13 +12,10 @@ import SelectGlossary, {
   // eslint-disable-next-line no-unused-vars
   PaginationProps
 } from './SelectGlossary'
-import { getGlossaryIds } from '../utils'
-import GlossaryTooltips from './GlossaryTooltips'
 
 interface AddGlossaryButtonProps {
   editorInstance: any
   handleFetchGlossaryList?: (e: any) => void
-  getPhraseDetails?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
 }
@@ -27,7 +24,6 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
   const {
     editorInstance,
     glossaryEntries,
-    getPhraseDetails,
     handleFetchGlossaryList,
     glossaryEntriesPagination
   } = props
@@ -40,20 +36,11 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
     addGlossaryBlotToQuill()
   }, [])
 
-  // @ts-ignore
-  const glossaryIds = editorInstance
-    ? getGlossaryIds(editorInstance.getContents())
-    : []
-
   return (
     <ButtonContainer>
       <button className='ql-glossary' onClick={handleOpen}>
         <GlossaryIcon />
       </button>
-      <GlossaryTooltips
-        getPhraseDetails={getPhraseDetails}
-        glossaryIds={glossaryIds}
-      />
       <SelectGlossary
         pagination={glossaryEntriesPagination}
         open={isOpen}

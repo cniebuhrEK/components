@@ -56,10 +56,12 @@ UploadFileField.args = {
     recordsTotal: 2,
     pagesTotal: 1
   },
-  getPhraseDetails: () => ({
-    id: 'foo-123',
-    phrase: 'ipsum',
-    explanation: 'Lorem ipsum'
+  getPhraseDetails: async () => ({
+    data: {
+      id: 'foo-123',
+      phrase: 'ipsum',
+      explanation: 'Lorem ipsum'
+    }
   }),
   glossaryEntries: [
     {

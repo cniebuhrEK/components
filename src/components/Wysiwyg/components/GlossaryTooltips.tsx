@@ -17,8 +17,6 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
 
   const handleFetchData = () => {
     const handleSuccess = response => {
-      console.log({ response })
-
       const tooltipData = R.propOr(
         {
           id,
@@ -38,8 +36,6 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
         explanation: ''
       })
     }
-
-    console.log({ id })
 
     getPhraseDetails({ id }).then(handleSuccess).catch(handleError)
   }
@@ -78,7 +74,6 @@ export default GlossaryTooltips
 
 const TooltipsContainer = styled.div`
   .__react_component_tooltip {
-    text-align: center !important;
     background-color: ${({ theme }) => theme.palette.biege} !important;
     opacity: 1 !important;
     color: ${({ theme }) => theme.palette.textDark} !important;
@@ -87,14 +82,20 @@ const TooltipsContainer = styled.div`
     padding: 10px !important;
     margin-top: 0px !important;
     box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: -0.1px;
+    max-width: 189px !important;
+    text-align: left !important;
+    font-size: 11px !important;
+    line-height: 19px !important;
+    letter-spacing: -0.1px !important;
 
     &::before,
     &::after {
       display: none;
     }
+  }
+
+  .content {
+    color: ${({ theme }) => theme.palette.textDark} !important;
   }
 
   .phrase {

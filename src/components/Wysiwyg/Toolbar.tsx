@@ -14,7 +14,6 @@ interface ToolbarProps {
   handleS3Upload?: (e: any) => void
   id: string
   handleFetchGlossaryList?: (e: any) => void
-  getPhraseDetails?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
   formats: {
@@ -45,7 +44,6 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
   const {
     glossaryEntries,
     handleFetchGlossaryList,
-    getPhraseDetails,
     glossaryEntriesPagination,
     editorInstance,
     handleS3Upload,
@@ -188,7 +186,6 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
         <AddGlossaryButton
           glossaryEntries={glossaryEntries}
           handleFetchGlossaryList={handleFetchGlossaryList}
-          getPhraseDetails={getPhraseDetails}
           editorInstance={editorInstance}
           glossaryEntriesPagination={glossaryEntriesPagination}
         />
