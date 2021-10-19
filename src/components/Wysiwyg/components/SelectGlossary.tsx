@@ -68,7 +68,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   React.useEffect(() => {
     const paginationPage = R.propOr(1, 'page', pagination)
-    const currentPage = R.pathOr(1, ['limit', 'page'], pagination)
+    const currentPage = R.pathOr(1, ['limit', 'page'], query)
 
     if (currentPage !== paginationPage) {
       console.log('handle pagination Page')
