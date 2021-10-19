@@ -9,7 +9,26 @@ export interface GlossaryTooltipsProps {
 }
 
 const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
-  console.log(getPhraseDetails)
+  const [data, setData] = React.useState({
+    id,
+    phrase: '',
+    explanation: ''
+  })
+
+  const handleFetchData = async () => {
+    const response = getPhraseDetails(id)
+    const data = R.propOr(
+      {
+        id,
+        phrase: '',
+        explanation: ''
+      },
+      'data',
+      response
+    )
+
+    setData(data)
+  }
 
   return (
     <ReactTooltip
@@ -18,8 +37,11 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       effect='solid'
       data-class='tooltip-content'
       clickable
+      getContent={handleFetchData}
     >
-      test
+      <div className='content'>
+        <span className='phrase'>{data.phrase};</span> {data.explanation}
+      </div>
     </ReactTooltip>
   )
 }
@@ -46,8 +68,9 @@ const TooltipsContainer = styled.div`
     background-color: ${({ theme }) => theme.palette.biege} !important;
     opacity: 1 !important;
     color: ${({ theme }) => theme.palette.textDark} !important;
-    padding: 10px;
-    border: none !important;
+    border: 1px solid ${({ theme }) => theme.palette.darkblue03} !important;
+    border-radius: ${({ theme }) => theme.shape.borderRadiusBig} !important;
+    padding: 10px !important;
     margin-top: 0px !important;
     box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
     font-size: 12px;
@@ -58,5 +81,9 @@ const TooltipsContainer = styled.div`
     &::after {
       display: none;
     }
+  }
+
+  .phrase {
+    font-weight: bold;
   }
 `
