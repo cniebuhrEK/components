@@ -16,24 +16,28 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
   })
 
   const handleFetchData = async () => {
-    const response = await getPhraseDetails({ id })
-    const tooltipData = R.propOr(
-      {
+    const handleSuccess = response => {
+      const tooltipData = R.propOr(
+        {
+          id,
+          phrase: '',
+          explanation: ''
+        },
+        'data',
+        response
+      )
+      setData(tooltipData)
+    }
+    const handleError = e => {
+      console.error(e)
+      setData({
         id,
         phrase: '',
         explanation: ''
-      },
-      'data',
-      response
-    )
+      })
+    }
 
-    console.log({
-      tooltipData,
-      data,
-      setData
-    })
-
-    setData(data)
+    getPhraseDetails({ id }).then(handleSuccess).catch(handleError)
   }
 
   return (
