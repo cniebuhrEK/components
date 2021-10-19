@@ -4,7 +4,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
 import Toolbar from './Toolbar'
-import ReactTooltip from 'react-tooltip'
 
 import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
@@ -71,7 +70,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     errorText,
     initialValue
   } = props
-  const { glossary } = formats
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -95,7 +93,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(initialValue)
-      glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
 

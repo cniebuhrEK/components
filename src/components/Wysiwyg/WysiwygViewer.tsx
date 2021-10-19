@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import Quill from 'quill'
 
 import 'quill/dist/quill.snow.css'
-import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import { getGlossaryIds } from './utils'
 import {
@@ -57,7 +56,6 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(value)
-      ReactTooltip.rebuild()
     }
   }, [quill, value])
 
