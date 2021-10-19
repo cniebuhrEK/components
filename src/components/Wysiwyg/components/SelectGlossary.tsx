@@ -9,6 +9,7 @@ import { Button } from '../../Button'
 import { Input } from '../../Input'
 import { AddIcon, CheckmarkIcon } from '../../../icons'
 import { Pagination } from '../../Pagination'
+import usePrevious from '../../../hooks/usePrevious'
 
 export interface GlossaryPhrase {
   id: string
@@ -45,7 +46,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   const [query, setQuery] = React.useState({
     limit: {
       page: 1,
-      take: 10
+      take: 8
     },
     order: {
       by: 'phrase',
@@ -56,9 +57,17 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     }
   })
 
+  const prevQuery = usePrevious(query)
+
+  React.useEffect(() => {
+    if (query !== prevQuery) {
+      handleFetchGlossaryList && handleFetchGlossaryList(query)
+    }
+  }, [query])
+
   React.useEffect(() => {
     handleFetchGlossaryList && handleFetchGlossaryList(query)
-  }, [query])
+  }, [])
 
   React.useEffect(() => {
     const paginationPage = R.propOr(1, 'page', pagination)
@@ -69,7 +78,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
         ...prevState,
         limit: {
           page: R.propOr(1, 'page', pagination),
-          take: R.propOr(10, 'take', pagination)
+          take: R.propOr(8, 'take', pagination)
         }
       }))
   }, [pagination, query])
@@ -116,7 +125,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
       ...prevState,
       limit: {
         page: 1,
-        take: 10
+        take: 8
       },
       filter: { search: R.pathOr('', ['target', 'value'], e) }
     }))
@@ -136,41 +145,41 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           onChange={debounceHandler}
         />
       </SearchContainer>
-      <div>
+      <div className='list'>
         <GlossaryHeadingContainer>
           <div className='left'>Word</div>
           <div className='middle'>Explanation:</div>
           <div className='right'>Action</div>
         </GlossaryHeadingContainer>
         {renderGlossaryPhrases}
-        <ButtonsContainer>
-          <Button
-            id='select-glossary-cancel'
-            color='blue'
-            size='small'
-            variant='outlined'
-            onClick={handleClose}
-          >
-            Cancel
-          </Button>
-          <Button
-            id='select-glossary-submit'
-            type='submit'
-            color='blue'
-            size='small'
-            onClick={handleGlossary}
-          >
-            Save
-          </Button>
-        </ButtonsContainer>
-        <PaginationContainer>
-          <Pagination
-            currentPage={R.propOr(1, 'page', pagination)}
-            totalPages={R.propOr(1, 'pagesTotal', pagination)}
-            onPageChange={handlePageChange}
-          />
-        </PaginationContainer>
       </div>
+      <ButtonsContainer>
+        <Button
+          id='select-glossary-cancel'
+          color='blue'
+          size='small'
+          variant='outlined'
+          onClick={handleClose}
+        >
+          Cancel
+        </Button>
+        <Button
+          id='select-glossary-submit'
+          type='submit'
+          color='blue'
+          size='small'
+          onClick={handleGlossary}
+        >
+          Save
+        </Button>
+      </ButtonsContainer>
+      <PaginationContainer>
+        <Pagination
+          currentPage={R.propOr(1, 'page', pagination)}
+          totalPages={R.propOr(1, 'pagesTotal', pagination)}
+          onPageChange={handlePageChange}
+        />
+      </PaginationContainer>
     </StyledModal>
   )
 }
@@ -180,6 +189,7 @@ export default SelectGlossary
 const SearchContainer = styled.div`
   display: inline-block;
   margin-bottom: 25px;
+  max-width: 200px;
 
   & > div {
     margin: 0;
@@ -203,6 +213,10 @@ const ButtonsContainer = styled.div`
 const PaginationContainer = styled.div`
   color: ${({ theme }) => theme.palette.textDark};
   margin-top: 7px;
+
+  * {
+    color: ${({ theme }) => theme.palette.textDark};
+  }
 `
 
 const GlossaryHeadingContainer = styled.div`
@@ -259,7 +273,7 @@ const GlossaryContainer = styled.div`
     width: 30%;
 
     button {
-      width: 100%;
+      width: 80%;
     }
   }
 `
@@ -316,7 +330,6 @@ export const StyledModal = styled(ReactModalAdapter).attrs({
     font-family: ${({ theme }) => theme.typography.fontFamily};
     text-align: left;
     position: relative;
-    display: inline-block;
     padding: 20px;
     background: ${({ theme }) => theme.palette.biege};
     box-shadow: ${({ theme }) => theme.shadows.darkShadow};
@@ -328,5 +341,12 @@ export const StyledModal = styled(ReactModalAdapter).attrs({
     margin-top: 19px;
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
+    max-height: calc(100% - 40px);
+    display: inline-flex;
+    flex-direction: column;
+  }
+
+  .list {
+    overflow-y: auto;
   }
 `
