@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { EditorImageIcon } from '../../icons'
+import { EditorImageIcon } from '../../../icons'
 import * as R from 'ramda'
 
-import { CUSTOM_IMAGE_BLOT_NAME, addImageBlotToQuill } from './customBlots'
-import { Loader } from '../Loader'
+import { CUSTOM_IMAGE_BLOT_NAME, addImageBlotToQuill } from './../customBlots'
+import { Loader } from '../../Loader'
 
 interface AddCustomImageButtonProps {
   editorInstance: any

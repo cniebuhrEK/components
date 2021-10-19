@@ -4,13 +4,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
 import Toolbar from './Toolbar'
+import ReactTooltip from 'react-tooltip'
 
 import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
-import ReactTooltip from 'react-tooltip'
 
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+
+// eslint-disable-next-line no-unused-vars
+import { GlossaryPhrase, PaginationProps } from './components/SelectGlossary'
+
 // @ts-ignore
 window.katex = katex
 
@@ -40,11 +44,10 @@ interface TextEditorProps {
     customImage?: boolean
     adminHighlights?: boolean
   }
-  glossaryDefinitions?: {
-    id: string
-    word: string
-    content: string
-  }[]
+  handleFetchGlossaryList?: (e: any) => void
+  getPhraseDetails?: (e: any) => void
+  glossaryEntries?: GlossaryPhrase[]
+  glossaryEntriesPagination?: PaginationProps
   required?: boolean
   error?: boolean
   errorText?: string
@@ -54,10 +57,13 @@ interface TextEditorProps {
 
 const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const {
+    glossaryEntries,
+    handleFetchGlossaryList,
+    getPhraseDetails,
+    glossaryEntriesPagination,
     id,
     handleS3Upload,
     formats,
-    glossaryDefinitions,
     onChange,
     label,
     required,
@@ -120,7 +126,10 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         </label>
       )}
       <Toolbar
-        glossaryDefinitions={glossaryDefinitions}
+        glossaryEntriesPagination={glossaryEntriesPagination}
+        glossaryEntries={glossaryEntries}
+        handleFetchGlossaryList={handleFetchGlossaryList}
+        getPhraseDetails={getPhraseDetails}
         formats={formats}
         editorInstance={quill}
         handleS3Upload={handleS3Upload}

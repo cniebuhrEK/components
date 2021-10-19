@@ -3,6 +3,9 @@ import * as R from 'ramda'
 import { getHeadErrorOrEmptyObj } from '../utils/form'
 import { WysiwygEditor } from '../components'
 
+// eslint-disable-next-line no-unused-vars
+import { GlossaryPhrase } from '../components/Wysiwyg/components/SelectGlossary'
+
 interface WysiwygEditorFieldProps {
   name: string
   t: (key: string, options: any) => string
@@ -32,11 +35,9 @@ interface WysiwygEditorFieldProps {
     customImage?: boolean
     adminHighlights?: boolean
   }
-  glossaryDefinitions?: {
-    id: string
-    word: string
-    content: string
-  }[]
+  handleFetchGlossaryList?: (e: any) => void
+  getPhraseDetails?: (e: any) => void
+  glossaryEntries?: GlossaryPhrase[]
   required?: boolean
   error?: boolean
   errorText?: string
@@ -57,7 +58,9 @@ export const WysiwygEditorField = (
     required,
     t,
     formats,
-    glossaryDefinitions,
+    glossaryEntries,
+    handleFetchGlossaryList,
+    getPhraseDetails,
     initialValue,
     handleS3Upload
   } = props
@@ -103,7 +106,9 @@ export const WysiwygEditorField = (
       id={id}
       onChange={handleChange}
       formats={formats}
-      glossaryDefinitions={glossaryDefinitions}
+      glossaryEntries={glossaryEntries}
+      handleFetchGlossaryList={handleFetchGlossaryList}
+      getPhraseDetails={getPhraseDetails}
       initialValue={initialValue}
       handleS3Upload={handleS3Upload}
     />
