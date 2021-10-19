@@ -67,11 +67,6 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   }, [query])
 
   React.useEffect(() => {
-    console.log('mount')
-    handleFetchGlossaryList && handleFetchGlossaryList(query)
-  }, [])
-
-  React.useEffect(() => {
     const paginationPage = R.propOr(1, 'page', pagination)
     const currentPage = R.pathOr(1, ['limit', 'page'], pagination)
 
