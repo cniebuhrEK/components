@@ -75,14 +75,15 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     const paginationPage = R.propOr(1, 'page', pagination)
     const currentPage = R.pathOr(1, ['limit', 'page'], pagination)
 
-    if (currentPage !== paginationPage)
-      setQuery(prevState => ({
-        ...prevState,
-        limit: {
-          page: R.propOr(1, 'page', pagination),
-          take: R.propOr(8, 'take', pagination)
-        }
-      }))
+    if (currentPage !== paginationPage) console.log('handle pagination Page')
+
+    setQuery(prevState => ({
+      ...prevState,
+      limit: {
+        page: R.propOr(1, 'page', pagination),
+        take: R.propOr(8, 'take', pagination)
+      }
+    }))
   }, [pagination, query])
 
   const handleGlossary = e => {
@@ -94,6 +95,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   const handleSelect = id => () => setSelectedId(id)
   const handlePageChange = page => {
+    console.log('handle Page Change')
+
     setQuery(prevState => ({
       ...prevState,
       limit: {
@@ -123,6 +126,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   ))(glossaryEntries)
 
   const handleSearch = e => {
+    console.log('handle search')
+
     setQuery(prevState => ({
       ...prevState,
       limit: {
