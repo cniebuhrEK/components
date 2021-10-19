@@ -3,8 +3,12 @@ import * as R from 'ramda'
 import { getHeadErrorOrEmptyObj } from '../utils/form'
 import { WysiwygEditor } from '../components'
 
-// eslint-disable-next-line no-unused-vars
-import { GlossaryPhrase } from '../components/Wysiwyg/components/SelectGlossary'
+import {
+  // eslint-disable-next-line no-unused-vars
+  GlossaryPhrase,
+  // eslint-disable-next-line no-unused-vars
+  PaginationProps
+} from '../components/Wysiwyg/components/SelectGlossary'
 
 interface WysiwygEditorFieldProps {
   name: string
@@ -38,6 +42,7 @@ interface WysiwygEditorFieldProps {
   handleFetchGlossaryList?: (e: any) => void
   getPhraseDetails?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
+  glossaryEntriesPagination?: PaginationProps
   required?: boolean
   error?: boolean
   errorText?: string
@@ -59,6 +64,7 @@ export const WysiwygEditorField = (
     t,
     formats,
     glossaryEntries,
+    glossaryEntriesPagination,
     handleFetchGlossaryList,
     getPhraseDetails,
     initialValue,
@@ -109,6 +115,7 @@ export const WysiwygEditorField = (
       glossaryEntries={glossaryEntries}
       handleFetchGlossaryList={handleFetchGlossaryList}
       getPhraseDetails={getPhraseDetails}
+      glossaryEntriesPagination={glossaryEntriesPagination}
       initialValue={initialValue}
       handleS3Upload={handleS3Upload}
     />
