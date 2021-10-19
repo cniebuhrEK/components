@@ -16,7 +16,7 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
   })
 
   const handleFetchData = async () => {
-    const response = getPhraseDetails(id)
+    const response = await getPhraseDetails({ id })
     const tooltipData = R.propOr(
       {
         id,
@@ -32,6 +32,8 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       data,
       setData
     })
+
+    setData(data)
   }
 
   return (
