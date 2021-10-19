@@ -9,7 +9,6 @@ import { Button } from '../../Button'
 import { Input } from '../../Input'
 import { AddIcon, CheckmarkIcon } from '../../../icons'
 import { Pagination } from '../../Pagination'
-import usePrevious from '../../../hooks/usePrevious'
 
 export interface GlossaryPhrase {
   id: string
@@ -43,45 +42,25 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     open
   } = props
   const [selectedId, setSelectedId] = React.useState(null)
-  const [query, setQuery] = React.useState({
-    limit: {
-      page: 1,
-      take: 8
-    },
-    order: {
-      by: 'phrase',
-      dir: 'desc'
-    },
-    filter: {
-      search: ''
-    }
-  })
-
-  const prevQuery = usePrevious(query)
+  const [page, setPage] = React.useState(1)
+  const [searchQuery, setSearchQuery] = React.useState('')
 
   React.useEffect(() => {
-    if (R.not(R.equals(query, prevQuery))) {
-      console.log('query update', { query, prevQuery })
-      handleFetchGlossaryList && handleFetchGlossaryList(query)
-    }
-  }, [query])
-
-  React.useEffect(() => {
-    const paginationPage = R.propOr(1, 'page', pagination)
-    const currentPage = R.pathOr(1, ['limit', 'page'], query)
-
-    if (currentPage !== paginationPage) {
-      console.log('handle pagination Page')
-
-      setQuery(prevState => ({
-        ...prevState,
+    handleFetchGlossaryList &&
+      handleFetchGlossaryList({
         limit: {
-          page: R.propOr(1, 'page', pagination),
+          page: page,
           take: 8
+        },
+        order: {
+          by: 'phrase',
+          dir: 'desc'
+        },
+        filter: {
+          search: searchQuery
         }
-      }))
-    }
-  }, [pagination, query])
+      })
+  }, [page, searchQuery])
 
   const handleGlossary = e => {
     e.preventDefault()
@@ -90,21 +69,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     handleClose()
   }
 
-  const handleSelect = id => () => {
-    console.log('handle select')
-    setSelectedId(id)
-  }
-  const handlePageChange = page => {
-    console.log('handle Page Change')
-
-    setQuery(prevState => ({
-      ...prevState,
-      limit: {
-        page,
-        take: prevState.limit.take
-      }
-    }))
-  }
+  const handleSelect = id => () => setSelectedId(id)
+  const handlePageChange = page => setPage(page)
 
   const actionButton = id =>
     id !== selectedId ? (
@@ -125,21 +91,10 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     </GlossaryContainer>
   ))(glossaryEntries)
 
-  const handleSearch = e => {
-    console.log('handle search')
-
-    setQuery(prevState => ({
-      ...prevState,
-      limit: {
-        page: 1,
-        take: 8
-      },
-      filter: { search: R.pathOr('', ['target', 'value'], e) }
-    }))
-  }
+  const handleSearch = e => setSearchQuery(R.pathOr('', ['target', 'value'], e))
 
   const debounceHandler = React.useCallback(debounce(handleSearch, 500), [
-    query
+    searchQuery
   ])
 
   return (
