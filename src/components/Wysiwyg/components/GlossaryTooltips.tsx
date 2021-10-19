@@ -17,7 +17,7 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
 
   const handleFetchData = async () => {
     const response = getPhraseDetails(id)
-    const data = R.propOr(
+    const tooltipData = R.propOr(
       {
         id,
         phrase: '',
@@ -27,7 +27,11 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       response
     )
 
-    setData(data)
+    console.log({
+      tooltipData,
+      data,
+      setData
+    })
   }
 
   return (
