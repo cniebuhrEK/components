@@ -15,8 +15,10 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
     explanation: ''
   })
 
-  const handleFetchData = async () => {
+  const handleFetchData = () => {
     const handleSuccess = response => {
+      console.log({ response })
+
       const tooltipData = R.propOr(
         {
           id,
@@ -37,6 +39,8 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       })
     }
 
+    console.log({ id })
+
     getPhraseDetails({ id }).then(handleSuccess).catch(handleError)
   }
 
@@ -47,7 +51,7 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       effect='solid'
       data-class='tooltip-content'
       clickable
-      getContent={handleFetchData}
+      afterShow={handleFetchData}
     >
       <div className='content'>
         <span className='phrase'>{data.phrase};</span> {data.explanation}
