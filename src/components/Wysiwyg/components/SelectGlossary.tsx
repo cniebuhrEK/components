@@ -76,7 +76,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
       ...prevState,
       limit: {
         page: R.propOr(1, 'page', pagination),
-        take: R.propOr(8, 'take', pagination)
+        take: 8
       }
     }))
   }, [pagination, query])
