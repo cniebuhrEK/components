@@ -60,12 +60,14 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   const prevQuery = usePrevious(query)
 
   React.useEffect(() => {
-    if (query !== prevQuery) {
+    if (R.not(R.equals(query, prevQuery))) {
+      console.log('query update', { query, prevQuery })
       handleFetchGlossaryList && handleFetchGlossaryList(query)
     }
   }, [query])
 
   React.useEffect(() => {
+    console.log('mount')
     handleFetchGlossaryList && handleFetchGlossaryList(query)
   }, [])
 
@@ -145,14 +147,12 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           onChange={debounceHandler}
         />
       </SearchContainer>
-      <div className='list'>
-        <GlossaryHeadingContainer>
-          <div className='left'>Word</div>
-          <div className='middle'>Explanation:</div>
-          <div className='right'>Action</div>
-        </GlossaryHeadingContainer>
-        {renderGlossaryPhrases}
-      </div>
+      <GlossaryHeadingContainer>
+        <div className='left'>Word</div>
+        <div className='middle'>Explanation:</div>
+        <div className='right'>Action</div>
+      </GlossaryHeadingContainer>
+      <div className='list'>{renderGlossaryPhrases}</div>
       <ButtonsContainer>
         <Button
           id='select-glossary-cancel'
