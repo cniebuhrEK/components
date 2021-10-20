@@ -48,7 +48,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   React.useEffect(() => {
     if (open) {
-      const selection = editorInstance.getSelection(true)
+      const selection = editorInstance.getSelection()
       const index = R.propOr(0, 'index', selection)
       const length = R.propOr(1, 'length', selection)
       const selectedText = editorInstance.getText(index, length)
@@ -83,7 +83,6 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   const handleCancel = e => {
     e.preventDefault()
-    console.log(initialDelta)
     editorInstance.setContents(initialDelta)
     setSelectedId(null)
     handleClose()
