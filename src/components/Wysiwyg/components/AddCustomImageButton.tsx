@@ -54,8 +54,7 @@ const AddCustomImageButton = (
       <button
         disabled={isLoading}
         className='ql-s3-image'
-        onClick={onTriggerClick}
-        onMouseDown={() => {}}
+        onMouseDown={onTriggerClick}
       >
         {isLoading ? (
           <div className='loader-container'>
