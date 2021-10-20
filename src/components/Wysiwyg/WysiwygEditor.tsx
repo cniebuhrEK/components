@@ -4,13 +4,20 @@ import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
 import Toolbar from './Toolbar'
+import ReactTooltip from 'react-tooltip'
+import GlossaryTooltips from './components/GlossaryTooltips'
+import * as R from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
-import ReactTooltip from 'react-tooltip'
 
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+
+// eslint-disable-next-line no-unused-vars
+import { GlossaryPhrase, PaginationProps } from './components/SelectGlossary'
+import { getGlossaryIds } from './utils'
+
 // @ts-ignore
 window.katex = katex
 
@@ -40,11 +47,10 @@ interface TextEditorProps {
     customImage?: boolean
     adminHighlights?: boolean
   }
-  glossaryDefinitions?: {
-    id: string
-    word: string
-    content: string
-  }[]
+  handleFetchGlossaryList?: (e: any) => void
+  getPhraseDetails?: (e: any) => void
+  glossaryEntries?: GlossaryPhrase[]
+  glossaryEntriesPagination?: PaginationProps
   required?: boolean
   error?: boolean
   errorText?: string
@@ -54,10 +60,13 @@ interface TextEditorProps {
 
 const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const {
+    glossaryEntries,
+    handleFetchGlossaryList,
+    getPhraseDetails,
+    glossaryEntriesPagination,
     id,
     handleS3Upload,
     formats,
-    glossaryDefinitions,
     onChange,
     label,
     required,
@@ -89,6 +98,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(initialValue)
+      // @ts-ignore
+      quill.update()
       glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
@@ -111,6 +122,22 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     }
   }, [quill, onChange])
 
+  const hasContent = () => {
+    // @ts-ignore
+    if (quill) {
+      // @ts-ignore
+      const raw = quill.getText()
+      return R.isEmpty(raw) || R.isNil(raw) || R.not(R.equals(raw, '\n'))
+    }
+
+    return false
+  }
+
+  const glossaryIds = getGlossaryIds(
+    // @ts-ignore
+    hasContent() ? quill.getContents() : initialValue
+  )
+
   return (
     <TextEditorContainer error={error}>
       {label && (
@@ -120,7 +147,9 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         </label>
       )}
       <Toolbar
-        glossaryDefinitions={glossaryDefinitions}
+        glossaryEntriesPagination={glossaryEntriesPagination}
+        glossaryEntries={glossaryEntries}
+        handleFetchGlossaryList={handleFetchGlossaryList}
         formats={formats}
         editorInstance={quill}
         handleS3Upload={handleS3Upload}
@@ -128,6 +157,10 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
       />
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}
+      <GlossaryTooltips
+        getPhraseDetails={getPhraseDetails}
+        glossaryIds={glossaryIds}
+      />
     </TextEditorContainer>
   )
 }
