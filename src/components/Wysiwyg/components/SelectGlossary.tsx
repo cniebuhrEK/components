@@ -44,6 +44,19 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   const [selectedId, setSelectedId] = React.useState(null)
   const [page, setPage] = React.useState(1)
   const [searchQuery, setSearchQuery] = React.useState('')
+  const [initialDelta, setInitialDelta] = React.useState(null)
+
+  React.useEffect(() => {
+    if (open) {
+      const selection = editorInstance.getSelection(true)
+      const index = R.propOr(0, 'index', selection)
+      const length = R.propOr(1, 'length', selection)
+      const selectedText = editorInstance.getText(index, length)
+      const initialContent = editorInstance.getContents()
+      setInitialDelta(initialContent)
+      setSearchQuery(selectedText)
+    }
+  }, [open, editorInstance])
 
   React.useEffect(() => {
     handleFetchGlossaryList &&
@@ -62,14 +75,24 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
       })
   }, [page, searchQuery])
 
-  const handleGlossary = e => {
+  const handleSubmit = e => {
     e.preventDefault()
-    // @ts-ignore
-    editorInstance.format(GLOSSARY_BLOT_NAME, selectedId)
+    setSelectedId(null)
     handleClose()
   }
 
-  const handleSelect = id => () => setSelectedId(id)
+  const handleCancel = e => {
+    e.preventDefault()
+    console.log(initialDelta)
+    editorInstance.setContents(initialDelta)
+    setSelectedId(null)
+    handleClose()
+  }
+
+  const handleSelect = id => () => {
+    setSelectedId(id)
+    editorInstance.format(GLOSSARY_BLOT_NAME, id)
+  }
   const handlePageChange = page => setPage(page)
 
   const actionButton = id =>
@@ -104,6 +127,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           type='search'
           size='small'
           placeholder=''
+          value={searchQuery}
           onChange={debounceHandler}
         />
       </SearchContainer>
@@ -119,7 +143,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           color='blue'
           size='small'
           variant='outlined'
-          onClick={handleClose}
+          onClick={handleCancel}
         >
           Cancel
         </Button>
@@ -128,7 +152,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           type='submit'
           color='blue'
           size='small'
-          onClick={handleGlossary}
+          onClick={handleSubmit}
         >
           Save
         </Button>
@@ -233,7 +257,7 @@ const GlossaryContainer = styled.div`
     width: 30%;
 
     button {
-      width: 80%;
+      width: 90%;
     }
   }
 `

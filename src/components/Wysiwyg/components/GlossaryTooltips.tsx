@@ -59,10 +59,10 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
 export const GlossaryTooltips = (props: GlossaryTooltipsProps): JSX.Element => {
   const { getPhraseDetails, glossaryIds } = props
 
-  const renderTooltips = R.map(id => (
+  const renderTooltips = R.addIndex(R.map)((id, index) => (
     <PhraseTooltip
       id={id}
-      key={`phrase-tooltip-${id}`}
+      key={`phrase-tooltip-${id}-${index}`}
       getPhraseDetails={getPhraseDetails}
     />
   ))(glossaryIds)
