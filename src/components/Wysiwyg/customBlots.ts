@@ -11,13 +11,16 @@ export const addGlossaryBlotToQuill = () => {
   class GlossaryBlot extends InlineBlot {
     static create(id) {
       const node = super.create()
-      // Set attributes that are needed for react-tooltip component
-      node.setAttribute('data-tip', 'true')
 
-      // Set id attribute that are needed for react-tooltip component
-      // this is necessary for matching correct tooltip with correct glossary word
-      node.setAttribute('data-for', id)
-      return node
+      if (typeof id === 'string') {
+        // Set attributes that are needed for react-tooltip component
+        node.setAttribute('data-tip', 'true')
+
+        // Set id attribute that are needed for react-tooltip component
+        // this is necessary for matching correct tooltip with correct glossary word
+        node.setAttribute('data-for', id)
+        return node
+      }
     }
 
     static formats(node) {

@@ -49,16 +49,30 @@ UploadFileField.args = {
     glossary: true,
     adminHighlights: true
   },
-  glossaryDefinitions: [
+  handleFetchGlossaryList: query => console.log(query),
+  glossaryEntriesPagination: {
+    page: 1,
+    take: 10,
+    recordsTotal: 2,
+    pagesTotal: 1
+  },
+  getPhraseDetails: async () => ({
+    data: {
+      id: 'foo-123',
+      phrase: 'ipsum',
+      explanation: 'Lorem ipsum'
+    }
+  }),
+  glossaryEntries: [
     {
       id: 'foo-123',
-      word: 'ipsum',
-      content: 'Lorem ipsum'
+      phrase: 'ipsum',
+      explanation: 'Lorem ipsum'
     },
     {
       id: 'foo-456',
-      word: 'dolor',
-      content: 'Dolor sit amet'
+      phrase: 'dolor',
+      explanation: 'Dolor sit amet'
     }
   ]
 }

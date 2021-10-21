@@ -1,84 +1,81 @@
 // Wysiwyg/Wysiwyg.tsx - Wysiwyg component
 
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { EditorImageIcon } from '../../icons'
-import * as R from 'ramda'
 
-import { CUSTOM_IMAGE_BLOT_NAME, addImageBlotToQuill } from './customBlots'
-import { Loader } from '../Loader'
+import { GlossaryIcon } from '../../../icons'
 
-interface AddCustomImageButtonProps {
+import { addGlossaryBlotToQuill } from './../customBlots'
+import SelectGlossary, {
+  // eslint-disable-next-line no-unused-vars
+  GlossaryPhrase,
+  // eslint-disable-next-line no-unused-vars
+  PaginationProps
+} from './SelectGlossary'
+
+interface AddGlossaryButtonProps {
   editorInstance: any
-  id: string
-  handleS3Upload: (e: any) => void
+  handleFetchGlossaryList?: (e: any) => void
+  glossaryEntries?: GlossaryPhrase[]
+  glossaryEntriesPagination?: PaginationProps
 }
 
-const AddCustomImageButton = (
-  props: AddCustomImageButtonProps
-): JSX.Element => {
-  const { editorInstance, id, handleS3Upload } = props
-  const [isLoading, setIsLoading] = useState(false)
+const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
+  const {
+    editorInstance,
+    glossaryEntries,
+    handleFetchGlossaryList,
+    glossaryEntriesPagination
+  } = props
+  const [isOpen, setVisibility] = React.useState(false)
+
+  const handleOpen = () => setVisibility(true)
+  const handleClose = () => setVisibility(false)
 
   React.useEffect(() => {
-    addImageBlotToQuill()
+    addGlossaryBlotToQuill()
   }, [])
 
-  const addImage = (url, id) => {
-    const selection = editorInstance.getSelection()
-    const index = R.propOr(1, 'index', selection)
-
-    editorInstance.insertEmbed(index, CUSTOM_IMAGE_BLOT_NAME, {
-      url,
-      id
-    })
-  }
-
-  const onTriggerClick = () => {
-    // @ts-ignore
-    document.getElementById(`${id}-s3-upload`).click()
-  }
-
-  const handleOnChange = async (e: any) => {
-    e.preventDefault()
-    setIsLoading(true)
-    const response = await handleS3Upload(e.target.files[0])
-    const data = R.propOr({ url: '', id: '' }, 'data', response)
-
-    addImage(data.url, data.id)
-    setIsLoading(false)
-  }
-
   return (
-    <ButtonContainer isLoading={isLoading}>
-      <button
-        disabled={isLoading}
-        className='ql-s3-image'
-        onClick={onTriggerClick}
-        onMouseDown={() => {}}
-      >
-        {isLoading ? (
-          <div className='loader-container'>
-            <Loader />
-          </div>
-        ) : (
-          <EditorImageIcon />
-        )}
+    <ButtonContainer>
+      <button className='ql-glossary' onClick={handleOpen}>
+        <GlossaryIcon />
       </button>
-      <input
-        className='file-upload__input'
-        id={`${id}-s3-upload`}
-        onChange={handleOnChange}
-        type='file'
+      <SelectGlossary
+        pagination={glossaryEntriesPagination}
+        open={isOpen}
+        handleClose={handleClose}
+        handleFetchGlossaryList={handleFetchGlossaryList}
+        glossaryEntries={glossaryEntries}
+        editorInstance={editorInstance}
       />
     </ButtonContainer>
   )
 }
 
-export default AddCustomImageButton
+export default AddGlossaryButton
 
 const ButtonContainer = styled.div`
   display: inline-block;
+
+  .__react_component_tooltip {
+    text-align: center !important;
+    background-color: ${({ theme }) => theme.palette.biege} !important;
+    opacity: 1 !important;
+    color: ${({ theme }) => theme.palette.textDark} !important;
+    padding: 10px;
+    border: none !important;
+    margin-top: 0px !important;
+    box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.1px;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
 
   * {
     color: ${({ theme, isLoading }) =>
