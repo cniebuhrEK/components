@@ -3,17 +3,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
-import * as R from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
+import { getGlossaryIds } from './utils'
 import {
   addAdminHighlightsBlotToQuill,
   addGlossaryBlotToQuill,
   addImageBlotToQuill
 } from './customBlots'
 
+import GlossaryTooltips from './components/GlossaryTooltips'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
 // @ts-ignore
@@ -22,15 +23,11 @@ window.katex = katex
 interface TextEditorProps {
   id: string
   value: any
-  glossaryDefinitions?: {
-    id: string
-    word: string
-    content: string
-  }[]
+  getPhraseDetails?: (e: any) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, glossaryDefinitions, value } = props
+  const { id, getPhraseDetails, value } = props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -64,23 +61,15 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     }
   }, [quill, value])
 
-  const renderTooltips = R.map(definition => (
-    <ReactTooltip
-      id={definition.id}
-      key={`${definition.id}-tooltip`}
-      place='top'
-      effect='solid'
-      data-class='tooltip-content'
-      clickable
-    >
-      {definition.content}
-    </ReactTooltip>
-  ))(glossaryDefinitions)
+  const glossaryIds = getGlossaryIds(value)
 
   return (
     <div>
       <TextViewerContainer ref={wrapperRef} id={id} />
-      <TooltipsContainer>{renderTooltips}</TooltipsContainer>
+      <GlossaryTooltips
+        getPhraseDetails={getPhraseDetails}
+        glossaryIds={glossaryIds}
+      />
     </div>
   )
 }
@@ -115,27 +104,6 @@ const TextViewerContainer = styled.div`
 
   .admin-highlights {
     color: ${({ theme }) => theme.palette.inactive} !important;
-  }
-`
-
-const TooltipsContainer = styled.div`
-  .__react_component_tooltip {
-    text-align: center !important;
-    background-color: ${({ theme }) => theme.palette.biege} !important;
-    opacity: 1 !important;
-    color: ${({ theme }) => theme.palette.textDark} !important;
-    padding: 10px;
-    border: none !important;
-    margin-top: 0px !important;
-    box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: -0.1px;
-
-    &::before,
-    &::after {
-      display: none;
-    }
   }
 `
 

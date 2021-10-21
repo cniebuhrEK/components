@@ -2,13 +2,13 @@
 
 import React from 'react'
 import styled from 'styled-components'
-import { EditorHighlightIcon } from '../../icons'
+import { EditorHighlightIcon } from '../../../icons'
 import * as R from 'ramda'
 
 import {
   addAdminHighlightsBlotToQuill,
   ADMIN_HIGHLIGHTS_BLOT_NAME
-} from './customBlots'
+} from './../customBlots'
 
 interface AddAdminHighlightsButtonProps {
   editorInstance: any

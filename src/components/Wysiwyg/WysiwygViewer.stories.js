@@ -22,16 +22,23 @@ Viewer.args = {
       }
     ]
   },
-  glossaryDefinitions: [
+  getPhraseDetails: async () => ({
+    data: {
+      id: 'foo-123',
+      phrase: 'ipsum',
+      explanation: 'Lorem ipsum'
+    }
+  }),
+  glossaryEntries: [
     {
       id: 'foo-123',
-      word: 'ipsum',
-      content: 'Lorem ipsum'
+      phrase: 'ipsum',
+      explanation: 'Lorem ipsum'
     },
     {
       id: 'foo-456',
-      word: 'dolor',
-      content: 'Dolor sit amet'
+      phrase: 'dolor',
+      explanation: 'Dolor sit amet'
     }
   ]
 }
