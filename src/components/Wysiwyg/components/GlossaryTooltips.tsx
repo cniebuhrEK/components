@@ -87,6 +87,7 @@ const TooltipsContainer = styled.div`
     font-size: 11px !important;
     line-height: 19px !important;
     letter-spacing: -0.1px !important;
+    z-index: ${({ theme }) => theme.zIndex.modal} !important;
 
     &::before,
     &::after {
