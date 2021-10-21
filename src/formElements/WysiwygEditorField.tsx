@@ -40,6 +40,7 @@ interface WysiwygEditorFieldProps {
     adminHighlights?: boolean
   }
   handleFetchGlossaryList?: (e: any) => void
+  handleScanGlossaryList?: (e: any) => void
   getPhraseDetails?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
@@ -66,6 +67,7 @@ export const WysiwygEditorField = (
     glossaryEntries,
     glossaryEntriesPagination,
     handleFetchGlossaryList,
+    handleScanGlossaryList,
     getPhraseDetails,
     initialValue,
     handleS3Upload
@@ -114,6 +116,7 @@ export const WysiwygEditorField = (
       formats={formats}
       glossaryEntries={glossaryEntries}
       handleFetchGlossaryList={handleFetchGlossaryList}
+      handleScanGlossaryList={handleScanGlossaryList}
       getPhraseDetails={getPhraseDetails}
       glossaryEntriesPagination={glossaryEntriesPagination}
       initialValue={initialValue}

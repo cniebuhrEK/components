@@ -17,10 +17,13 @@ UploadFileField.args = {
         insert: 'Lorem '
       },
       {
-        attributes: {
-          glossary: 'foo-123'
-        },
         insert: 'ipsum'
+      },
+      {
+        insert: ' dolor sit amet'
+      },
+      {
+        insert: ' ipsum sit amet'
       },
       {
         insert: ' dolor sit amet\n'
@@ -47,9 +50,44 @@ UploadFileField.args = {
     blockquote: true,
     formula: true,
     glossary: true,
-    adminHighlights: true
+    adminHighlights: true,
+    customImage: true
+  },
+  handleS3Upload: file => {
+    const result = URL.createObjectURL(file)
+    return {
+      data: {
+        url: result,
+        data: 'data'
+      }
+    }
   },
   handleFetchGlossaryList: query => console.log(query),
+  handleScanGlossaryList: async ({ raw, skipIds, query }) => {
+    console.log({ raw, skipIds, query })
+    return {
+      data: {
+        data: [
+          {
+            id: 'foo-123',
+            phrase: 'ipsum',
+            explanation: 'Lorem ipsum'
+          },
+          {
+            id: 'foo-456',
+            phrase: 'dolor',
+            explanation: 'Dolor sit amet'
+          }
+        ],
+        meta: {
+          page: 1,
+          take: 5,
+          recordsTotal: 3,
+          pagesTotal: 1
+        }
+      }
+    }
+  },
   glossaryEntriesPagination: {
     page: 1,
     take: 10,
