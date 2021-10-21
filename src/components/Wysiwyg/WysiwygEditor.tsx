@@ -48,6 +48,7 @@ interface TextEditorProps {
     adminHighlights?: boolean
   }
   handleFetchGlossaryList?: (e: any) => void
+  handleScanGlossaryList?: (e: any) => void
   getPhraseDetails?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
@@ -62,6 +63,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const {
     glossaryEntries,
     handleFetchGlossaryList,
+    handleScanGlossaryList,
     getPhraseDetails,
     glossaryEntriesPagination,
     id,
@@ -150,6 +152,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         glossaryEntriesPagination={glossaryEntriesPagination}
         glossaryEntries={glossaryEntries}
         handleFetchGlossaryList={handleFetchGlossaryList}
+        handleScanGlossaryList={handleScanGlossaryList}
         formats={formats}
         editorInstance={quill}
         handleS3Upload={handleS3Upload}

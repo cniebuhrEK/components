@@ -43,6 +43,31 @@ Default.args = {
     adminHighlights: true
   },
   handleFetchGlossaryList: query => console.log(query),
+  handleScanGlossaryList: async ({ raw, skipIds, query }) => {
+    console.log({ raw, skipIds, query })
+    return {
+      data: {
+        data: [
+          {
+            id: 'foo-123',
+            phrase: 'ipsum',
+            explanation: 'Lorem ipsum'
+          },
+          {
+            id: 'foo-456',
+            phrase: 'dolor',
+            explanation: 'Dolor sit amet'
+          }
+        ],
+        meta: {
+          page: 1,
+          take: 5,
+          recordsTotal: 3,
+          pagesTotal: 1
+        }
+      }
+    }
+  },
   glossaryEntriesPagination: {
     page: 1,
     take: 10,

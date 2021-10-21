@@ -8,11 +8,13 @@ import AddCustomImageButton from './components/AddCustomImageButton'
 import AddAdminHighlightsButton from './components/AddAdminHighlightsButton'
 // eslint-disable-next-line no-unused-vars
 import { GlossaryPhrase, PaginationProps } from './components/SelectGlossary'
+import ScanGlossaryButton from './components/ScanGlossaryButton'
 
 interface ToolbarProps {
   editorInstance: any
   handleS3Upload?: (e: any) => void
   id: string
+  handleScanGlossaryList?: (e: any) => void
   handleFetchGlossaryList?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
@@ -43,6 +45,7 @@ interface ToolbarProps {
 const Toolbar = (props: ToolbarProps): JSX.Element => {
   const {
     glossaryEntries,
+    handleScanGlossaryList,
     handleFetchGlossaryList,
     glossaryEntriesPagination,
     editorInstance,
@@ -188,6 +191,12 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
           handleFetchGlossaryList={handleFetchGlossaryList}
           editorInstance={editorInstance}
           glossaryEntriesPagination={glossaryEntriesPagination}
+        />
+      )}
+      {glossary && (
+        <ScanGlossaryButton
+          handleScanGlossaryList={handleScanGlossaryList}
+          editorInstance={editorInstance}
         />
       )}
     </span>
