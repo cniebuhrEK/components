@@ -2,16 +2,22 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface TextProps {
-  bold: boolean
-  size: 'xs' | 's' | 'm'
+  bold?: boolean
+  size?: 'xs' | 's' | 'm'
   children: React.ReactNode
 }
 
+// Text is a simple component for displaying paragraph text.
 const Text = (props: TextProps) => (
   <Container isBold={props.bold} size={props.size}>
     {props.children}
   </Container>
 )
+
+Text.defaultProps = {
+  bold: false,
+  size: 's'
+}
 
 const Container = styled.p`
   margin: 0;
