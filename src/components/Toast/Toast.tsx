@@ -27,7 +27,7 @@ const Toast = (props: ToastProps): JSX.Element => {
 
   React.useEffect(() => {
     if (open) {
-      setTimeout(handleClose, 6000)
+      setTimeout(handleClose, 8000)
     }
   }, [open])
 
@@ -43,15 +43,17 @@ const Toast = (props: ToastProps): JSX.Element => {
   }
 
   return (
-    <StyledToast id={`toast-${severity}`} open={open} severity={severity}>
-      <IconContainer severity={severity} open={open}>
-        {getIconByType()}
-      </IconContainer>
-      <ChildrenContainer>{children}</ChildrenContainer>
-      <CloseContainer onClick={handleClose}>
-        <Close />
-      </CloseContainer>
-    </StyledToast>
+    <Container open={open}>
+      <StyledToast id={`toast-${severity}`} open={open} severity={severity}>
+        <IconContainer severity={severity} open={open}>
+          {getIconByType()}
+        </IconContainer>
+        <ChildrenContainer>{children}</ChildrenContainer>
+        <CloseContainer onClick={handleClose}>
+          <Close />
+        </CloseContainer>
+      </StyledToast>
+    </Container>
   )
 }
 
@@ -94,10 +96,16 @@ const CloseContainer = styled.div`
   }
 `
 
-const StyledToast = styled.div`
+const Container = styled.div`
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 0;
+  width: ${({ open }) => (open ? '100vw' : '0px')};
+  display: flex;
+  justify-content: center;
+`
+
+const StyledToast = styled.div`
   padding: ${({ open }) => (open ? '4px 14px 4px 4px' : '0')};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-size: ${({ theme }) => theme.typography.fontSizeSmall};
