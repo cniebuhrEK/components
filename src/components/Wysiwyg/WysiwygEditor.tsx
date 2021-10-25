@@ -225,6 +225,31 @@ const WysiwygContainer = styled.div`
   .admin-highlights {
     color: ${({ theme }) => theme.palette.inactive} !important;
   }
+
+  .ql-editor h1 {
+    font-size: 22px !important;
+    line-height: 29px !important;
+  }
+
+  .ql-editor h2 {
+    font-size: 19px !important;
+    line-height: 23px !important;
+  }
+
+  .ql-size-huge {
+    font-size: 22px !important;
+    line-height: 29px !important;
+  }
+
+  .ql-size-large {
+    font-size: 19px !important;
+    line-height: 23px !important;
+  }
+
+  .ql-size-small {
+    font-size: 12px !important;
+    line-height: 14px !important;
+  }
 `
 
 export default WysiwygEditor
