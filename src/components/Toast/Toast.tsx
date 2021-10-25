@@ -103,6 +103,7 @@ const Container = styled.div`
   width: ${({ open }) => (open ? '100vw' : '0px')};
   display: flex;
   justify-content: center;
+  z-index: ${({ open, theme }) => (open ? theme.zIndex.snackbar : 'unset')};
 `
 
 const StyledToast = styled.div`
