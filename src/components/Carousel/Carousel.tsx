@@ -30,7 +30,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <Container>
-      {showNumbers ? <Index>{`${active + 1}.`}</Index> : <></>}
+      <Index>{showNumbers ? `${active + 1}.` : ''}</Index>
       <Panel>{items.filter((_, i: number) => i === active)}</Panel>
       <Controls>
         <Hoverable>
