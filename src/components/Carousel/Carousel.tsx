@@ -8,10 +8,11 @@ import {
 type CarouselProps = {
   children?: JSX.Element[] | JSX.Element | string
   controls?: JSX.Element[] | JSX.Element | string
+  showNumbers?: boolean
 }
 
 const Carousel = (props: CarouselProps): JSX.Element => {
-  const { children, controls } = props
+  const { children, controls, showNumbers } = props
   const items: any[] = React.Children.toArray(children)
   const [active, setActive] = React.useState(0)
 
@@ -29,7 +30,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <Container>
-      <Index>{`${active + 1}.`}</Index>
+      {showNumbers ? <Index>{`${active + 1}.`}</Index> : <></>}
       <Panel>{items.filter((_, i: number) => i === active)}</Panel>
       <Controls>
         <Hoverable>
@@ -58,6 +59,10 @@ const Carousel = (props: CarouselProps): JSX.Element => {
       </Controls>
     </Container>
   )
+}
+
+Carousel.defaultProps = {
+  showNumbers: false
 }
 
 const Container = styled.div`
