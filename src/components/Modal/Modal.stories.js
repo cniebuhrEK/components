@@ -8,7 +8,8 @@ const Template = args => <Modal {...args}>{args.children}</Modal>
 export const PlainModal = Template.bind({})
 PlainModal.args = {
   children: 'Hello world!',
-  title: 'EndExamModal title'
+  title: 'Plain modal title',
+  open: true
 }
 
 export default {

@@ -4,31 +4,35 @@ import React from 'react'
 import ReactModal from 'react-modal'
 import styled from 'styled-components'
 import CloseIcon from '../../icons/Close'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface ReactModalProps {
   children: JSX.Element
   handleClose: () => void
-  open: boolean
-  title: string
+  open?: boolean
+  title?: string
   [x: string]: any
 }
 
-const Modal = ({
-  children,
-  handleClose,
-  open,
-  title,
-  ...rest
-}: ReactModalProps): JSX.Element => {
+const Modal = (props: ReactModalProps): JSX.Element => {
+  const { children, handleClose, open, title, ...rest } = props
+
   return (
     <StyledReactModal onRequestClose={handleClose} isOpen={open} {...rest}>
-      <Title onClick={handleClose}>{title}</Title>
+      <Title isVisible={isNotNilOrEmpty(title)} onClick={handleClose}>
+        {title}
+      </Title>
       <Close onClick={handleClose}>
         <CloseIcon />
       </Close>
       {children}
     </StyledReactModal>
   )
+}
+
+Modal.defaultProps = {
+  title: '',
+  open: false
 }
 
 export default Modal
@@ -126,4 +130,5 @@ const Title = styled.div`
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
+  display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
 `
