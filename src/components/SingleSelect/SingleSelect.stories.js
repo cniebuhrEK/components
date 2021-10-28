@@ -11,10 +11,12 @@ const Template = args => (
 
 export const Basic = Template.bind({})
 Basic.args = {
+  id: 'select-id',
   error: false,
   errorText: '',
   label: 'Select',
   isSearchable: true,
+  isClearable: true,
   options: [
     { label: 'Option 1', value: 'option-1' },
     { label: 'Option 2', value: 'option-2' },

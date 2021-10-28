@@ -287,6 +287,7 @@ export const CustomInput = (props: {
   const { selectProps } = props
   const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
+  const { isClearable } = selectProps
 
   const handleOnFocus = (e: any) => {
     props.onFocus(e)
@@ -314,7 +315,11 @@ export const CustomInput = (props: {
         {selectProps.label}
         {selectProps.required ? ' *' : ''}
       </InputLabel>
-      <IconContainer size={selectProps.size}>
+      <IconContainer
+        hasValue={hasValue}
+        isClearable={isClearable}
+        size={selectProps.size}
+      >
         <ArrowDownIcon />
       </IconContainer>
       <ErrorText id={`${selectProps.name}-error`} error={selectProps.error}>
@@ -332,6 +337,7 @@ export const CustomValueContainer = (props: {
   const { selectProps } = props
   const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
+  const { isClearable } = selectProps
 
   const handleOnFocus = (e: any) => {
     props.onFocus(e)
@@ -360,7 +366,11 @@ export const CustomValueContainer = (props: {
         {selectProps.label}
         {selectProps.required ? ' *' : ''}
       </InputLabel>
-      <IconContainer size={selectProps.size}>
+      <IconContainer
+        hasValue={hasValue}
+        isClearable={isClearable}
+        size={selectProps.size}
+      >
         <ArrowDownIcon />
       </IconContainer>
       <ErrorText id={`${selectProps.name}-error`} error={selectProps.error}>
@@ -371,6 +381,8 @@ export const CustomValueContainer = (props: {
 }
 
 const IconContainer = styled.div`
+  visibility: ${({ isClearable, hasValue }) =>
+    hasValue && isClearable ? 'hidden' : 'visible'};
   cursor: pointer;
   position: absolute;
   right: 14px;
