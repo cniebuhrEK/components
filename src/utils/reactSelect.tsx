@@ -260,9 +260,10 @@ export const REACT_SELECT_STYLES = {
     return { display: 'none' }
   },
   indicatorsContainer: (_provided, _state) => {},
-  clearIndicator: (_provided, _state) => {
+  clearIndicator: (_provided, state: { isFocused: boolean }) => {
+    const { isFocused } = state
     return {
-      color: theme.palette.darkblue01,
+      color: isFocused ? theme.palette.orange01 : theme.palette.darkblue01,
       cursor: 'pointer'
     }
   },
