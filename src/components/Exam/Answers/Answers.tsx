@@ -144,7 +144,6 @@ export const AnswersContainer = styled.div`
     transform: translateY(-4px);
     white-space: nowrap;
     font-size: 15px;
-    user-select: none;
     background-color: #fff !important;
     text-decoration: none !important;
     display: inline-block;
@@ -158,7 +157,8 @@ export const AnswersContainer = styled.div`
   .answer__content {
     font-size: 16px;
     line-height: 20.7104px;
-    user-select: all;
+    user-select: text;
     display: inline-flex;
+    cursor: text;
   }
 `
