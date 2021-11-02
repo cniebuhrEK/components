@@ -9,6 +9,7 @@ const Container = styled.div`
 
   p {
     text-align: center;
+    margin-bottom: 16px;
   }
 `
 
