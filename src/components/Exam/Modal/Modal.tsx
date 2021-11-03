@@ -17,6 +17,7 @@ interface ExamModalProps {
   showCancelButton?: boolean
   showBottomCloseButton?: boolean
   showBottomResizeIcons?: boolean
+  noOverflow?: boolean
   disableOutsideClick?: boolean
   cancelButtonName?: string
   handleCancel?: () => void
@@ -37,7 +38,8 @@ const ExamModal = ({
   handleCancel,
   initWidth,
   initHeight,
-  disableOutsideClick
+  disableOutsideClick,
+  noOverflow
 }: ExamModalProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
     if (CHECK_SHORTCUT(e).altC) {
@@ -57,6 +59,7 @@ const ExamModal = ({
     <div>
       {disableOutsideClick && <BackgroundLayer />}
       <DraggableAndResizable
+        noOverflow={noOverflow}
         title={title}
         handleClose={handleClose}
         initWidth={initWidth}

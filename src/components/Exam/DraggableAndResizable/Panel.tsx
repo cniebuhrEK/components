@@ -20,7 +20,8 @@ const Panel = ({
   showBottomCloseButton,
   showBottomResizeIcons,
   handleClose,
-  children
+  children,
+  noOverflow
 }) => {
   const panelRef = React.useRef<HTMLDivElement>(null)
 
@@ -147,6 +148,7 @@ const Panel = ({
 
   return (
     <PanelContainer
+      noOverflow={noOverflow}
       ref={panelRef}
       initWidth={initWidth}
       initHeight={initHeight}
@@ -182,7 +184,7 @@ const Panel = ({
             {showBottomCloseButton && (
               <div className='panel__bottom-close' onClick={handleClose}>
                 <CloseIcon />
-                Close
+                <span className='underline'>C</span>lose
               </div>
             )}
           </div>
@@ -235,7 +237,7 @@ const PanelContainer = styled.div`
   .panel__children-container {
     font-family: ${props => props.theme.typography.fontFamilySecondary};
     height: 100%;
-    overflow: auto;
+    overflow: ${props => (props?.noOverflow ? 'hidden' : 'auto')};
 
     &::-webkit-scrollbar-track {
       box-shadow: ${props => props.theme.shadows.scrollbarTrack};
@@ -370,6 +372,10 @@ const PanelContainer = styled.div`
 
     svg {
       transform: translateY(3px);
+    }
+
+    .underline {
+      text-decoration: underline;
     }
   }
 

@@ -126,6 +126,7 @@ const NavigationModal = ({
 
   return (
     <Modal
+      noOverflow
       disableOutsideClick
       handleClose={handleClose}
       open={open}
