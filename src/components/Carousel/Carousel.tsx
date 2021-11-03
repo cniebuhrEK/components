@@ -6,15 +6,15 @@ import {
 } from '../../examIcons'
 
 type CarouselProps = {
-  children?: JSX.Element[] | JSX.Element | string
-  controls?: JSX.Element[] | JSX.Element | string
+  children?: React.ReactNode | React.ReactNode[]
+  controls?: React.ReactNode
+  activeItem?: number
   showNumbers?: boolean
 }
 
 const Carousel = (props: CarouselProps): JSX.Element => {
-  const { children, controls, showNumbers } = props
-  const items: any[] = React.Children.toArray(children)
-  const [active, setActive] = React.useState(0)
+  const items: React.ReactNode[] = React.Children.toArray(props.children)
+  const [active, setActive] = React.useState<number>(props.activeItem || 0)
 
   function handlePreviousClick(): void {
     if (active > 0) {
@@ -28,9 +28,15 @@ const Carousel = (props: CarouselProps): JSX.Element => {
     }
   }
 
+  React.useEffect(() => {
+    if (props.activeItem && props.activeItem > 0) {
+      setActive(props.activeItem)
+    }
+  }, [props.activeItem])
+
   return (
     <Container>
-      <Index>{showNumbers ? `${active + 1}.` : ''}</Index>
+      <Index>{props.showNumbers ? `${active + 1}.` : ''}</Index>
       <Panel>{items.filter((_, i: number) => i === active)}</Panel>
       <Controls>
         <Hoverable>
@@ -44,7 +50,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
             />
           )}
         </Hoverable>
-        <ControlsCenter>{controls}</ControlsCenter>
+        <ControlsCenter>{props.controls}</ControlsCenter>
         <Hoverable>
           {active >= items.length - 1 ? (
             <Empty />
@@ -62,7 +68,8 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 }
 
 Carousel.defaultProps = {
-  showNumbers: false
+  showNumbers: false,
+  activeItem: 0
 }
 
 const Container = styled.div`
@@ -83,7 +90,7 @@ const Index = styled.div`
 `
 
 const Panel = styled.div`
-  height: 80%;
+  height: auto;
 `
 
 const Controls = styled.div`
@@ -91,7 +98,7 @@ const Controls = styled.div`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 20%;
+  height: fit-content;
   color: ${({ theme }) => theme.palette.darkblue01};
 `
 
