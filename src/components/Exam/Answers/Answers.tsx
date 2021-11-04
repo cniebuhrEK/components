@@ -88,6 +88,10 @@ Answers.defaultProps = {
 export default Answers
 
 export const AnswersContainer = styled.div`
+  strike {
+    display: flex;
+  }
+
   .answer {
     display: inline-flex;
     font-size: 16px;
