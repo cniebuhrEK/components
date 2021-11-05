@@ -13,7 +13,7 @@ const Mock = props => {
     <Container>
       <RadioButton
         {...props}
-        label='Option #1'
+        label='Option OptionOptionO ptionOptionO ption Option Option Option #1'
         value='A'
         isChecked={value === 'A'}
         onChange={onChange}
@@ -32,7 +32,9 @@ const Mock = props => {
         isChecked={value === 'C'}
         onChange={onChange}
       />
-
+      <br />
+      <br />
+      <br />
       <div>Value is: {value}</div>
     </Container>
   )

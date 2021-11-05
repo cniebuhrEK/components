@@ -15,24 +15,20 @@ const RadioButton = (props: RadioButtonProps) => {
   const { id, name, label, onChange, isChecked, isDisabled, value } = props
 
   function handleOnChange(): void {
-    onChange(value)
+    !isDisabled && onChange(value)
   }
 
   return (
-    <RadioContainer>
-      {label && label}
-      <input
-        id={id}
-        name={name}
-        type='radio'
-        value={value}
-        disabled={isDisabled}
-        checked={isChecked}
-        onChange={handleOnChange}
-      />
-
-      <Checkmark />
-    </RadioContainer>
+    <Container
+      id={id}
+      name={name}
+      onClick={handleOnChange}
+      isChecked={isChecked}
+      isDisabled={isDisabled}
+    >
+      <div className='radio-icon' />
+      {label && <div className='radio-label'>{label}</div>}
+    </Container>
   )
 }
 
@@ -45,48 +41,42 @@ RadioButton.defaultProps = {
   onChange: () => {}
 }
 
-const Checkmark = styled.span`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.palette.background};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: ${({ theme }) => theme.palette.inactive};
-  }
-`
-
-const RadioContainer = styled.label`
-  box-sizing: border-box;
+const Container = styled.div`
+  display: flex;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
   cursor: pointer;
-  display: block;
-  font-size: 16px;
-  margin: 0 0 12px 0;
-  min-height: 22px;
-  padding: 0 0 0 24px;
-  position: relative;
   user-select: none;
+  margin-top: 5px;
 
-  input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+  .radio-icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    background-color: ${({ theme }) => theme.palette.biege};
+    box-shadow: ${({ theme }) => theme.shadows.darkShadow};
+    border-radius: 50%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      top: 4px;
+      left: 4px;
+      border-radius: 50%;
+      background-color: ${({ theme, isChecked }) =>
+        isChecked ? theme.palette.brown01 : theme.palette.inactive};
+    }
   }
 
-  input:checked ~ ${Checkmark}:after {
-    background-color: ${({ theme }) => theme.palette.green01};
+  .radio-label {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -0.1px;
+    color: ${({ theme }) => theme.palette.brown01};
+    margin-left: 10px;
   }
 `
 

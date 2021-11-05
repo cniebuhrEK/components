@@ -43,11 +43,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           {active <= 0 ? (
             <Empty />
           ) : (
-            <ArrowLeft
-              width='1.6em'
-              height='1.6em'
-              onClick={handlePreviousClick}
-            />
+            <ArrowLeft onClick={handlePreviousClick} />
           )}
         </Hoverable>
         <ControlsCenter>{props.controls}</ControlsCenter>
@@ -55,11 +51,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           {active >= items.length - 1 ? (
             <Empty />
           ) : (
-            <ArrowRight
-              width='1.6em'
-              height='1.6em'
-              onClick={handleNextClick}
-            />
+            <ArrowRight onClick={handleNextClick} />
           )}
         </Hoverable>
       </Controls>
@@ -110,6 +102,8 @@ const ControlsCenter = styled.div`
 `
 
 const Hoverable = styled.div`
+  font-size: 14px;
+
   &:hover {
     cursor: pointer;
   }
