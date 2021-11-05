@@ -36,7 +36,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <Container>
-      <div>
+      <div className='container-inner'>
         <Index>{props.showNumbers ? `${active + 1}.` : ''}</Index>
         <Panel>{items.filter((_, i: number) => i === active)}</Panel>
       </div>
@@ -74,6 +74,11 @@ const Container = styled.div`
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
+
+  .container-inner {
+    flex-grow: 1;
+    width: 100%;
+  }
 `
 
 const Index = styled.div`
