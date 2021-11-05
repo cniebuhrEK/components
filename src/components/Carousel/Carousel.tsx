@@ -36,8 +36,10 @@ const Carousel = (props: CarouselProps): JSX.Element => {
 
   return (
     <Container>
-      <Index>{props.showNumbers ? `${active + 1}.` : ''}</Index>
-      <Panel>{items.filter((_, i: number) => i === active)}</Panel>
+      <div>
+        <Index>{props.showNumbers ? `${active + 1}.` : ''}</Index>
+        <Panel>{items.filter((_, i: number) => i === active)}</Panel>
+      </div>
       <Controls>
         <Hoverable>
           {active <= 0 ? (
@@ -66,9 +68,12 @@ Carousel.defaultProps = {
 
 const Container = styled.div`
   position: relative;
-  display: block;
+  display: flex;
   height: 100%;
   width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 `
 
 const Index = styled.div`
