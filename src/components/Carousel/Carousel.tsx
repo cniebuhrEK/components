@@ -101,6 +101,7 @@ const Controls = styled.div`
   width: 100%;
   height: fit-content;
   color: ${({ theme }) => theme.palette.darkblue01};
+  z-index: ${({ theme }) => theme.zIndex.drawer + 200};
 `
 
 const ControlsCenter = styled.div`
