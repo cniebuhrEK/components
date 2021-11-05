@@ -55,7 +55,8 @@ import {
   ScannerIcon,
   GlossaryIcon,
   ResizeIcon,
-  SaltyBucksIcon
+  SaltyBucksIcon,
+  ReloadIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -122,7 +123,8 @@ const AllIcons = () => {
     { component: ScannerIcon, title: 'Scanner' },
     { component: GlossaryIcon, title: 'GlossaryIcon' },
     { component: ResizeIcon, title: 'ResizeIcon' },
-    { component: SaltyBucksIcon, title: 'SaltyBucksIcon' }
+    { component: SaltyBucksIcon, title: 'SaltyBucksIcon' },
+    { component: ReloadIcon, title: 'ReloadIcon' }
   ]
 
   return (
