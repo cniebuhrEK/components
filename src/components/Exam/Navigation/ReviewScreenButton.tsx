@@ -10,6 +10,7 @@ interface ReviewScreenButtonProps {
 
 const ReviewScreenButton = (props: ReviewScreenButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altW) {
       props.onClick(e)
     }

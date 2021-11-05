@@ -12,6 +12,7 @@ const ReviewIncompleteButton = (
   props: ReviewIncompleteButtonProps
 ): JSX.Element => {
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altI) {
       props.onClick(e)
     }

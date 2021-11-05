@@ -42,6 +42,8 @@ const ExamModal = ({
   noOverflow
 }: ExamModalProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
+
     if (CHECK_SHORTCUT(e).altC) {
       handleClose()
     }

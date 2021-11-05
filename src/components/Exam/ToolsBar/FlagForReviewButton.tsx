@@ -17,6 +17,7 @@ const StrikethroughButton = (props: StrikethroughButtonProps): JSX.Element => {
     '--flagged': isFlagged
   })
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altF) {
       onFlagClick(e)
     }

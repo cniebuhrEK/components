@@ -10,6 +10,7 @@ interface ReviewAllButtonProps {
 
 const ReviewAllButton = (props: ReviewAllButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altA) {
       props.onClick(e)
     }

@@ -21,6 +21,7 @@ const NavigationButton = ({
   const handleClose = () => setIsOpen(false)
 
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altV) {
       handleOpen()
     }

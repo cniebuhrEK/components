@@ -10,6 +10,7 @@ interface EndSectionButtonProps {
 
 const EndSectionButton = (props: EndSectionButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altE) {
       props.onClick(e)
     }

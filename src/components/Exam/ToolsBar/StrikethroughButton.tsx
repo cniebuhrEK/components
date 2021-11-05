@@ -18,6 +18,7 @@ const StrikethroughButton = ({
   }
 
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altS) {
       handleStrikeThrough()
     }

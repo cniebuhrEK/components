@@ -10,6 +10,7 @@ interface NextButtonProps {
 
 const NextButton = (props: NextButtonProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
+    e.preventDefault()
     if (CHECK_SHORTCUT(e).altN) {
       props.onClick(e)
     }
