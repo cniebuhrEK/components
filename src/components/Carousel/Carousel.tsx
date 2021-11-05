@@ -34,6 +34,10 @@ const Carousel = (props: CarouselProps): JSX.Element => {
     }
   }, [props.activeItem])
 
+  React.useEffect(() => {
+    setActive(items.length - 1)
+  }, [props.children])
+
   return (
     <Container>
       <div className='container-inner'>
