@@ -55,7 +55,7 @@ const ExamModal = ({
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [handleClose])
 
   return open ? (
     <div>

@@ -11,6 +11,8 @@ interface ReviewIncompleteButtonProps {
 const ReviewIncompleteButton = (
   props: ReviewIncompleteButtonProps
 ): JSX.Element => {
+  const { onClick } = props
+
   const handleKeyboardShortcut = e => {
     e.preventDefault()
     if (CHECK_SHORTCUT(e).altI) {
@@ -24,7 +26,7 @@ const ReviewIncompleteButton = (
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [props.onClick])
+  }, [onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='review-incomplete-btn'>

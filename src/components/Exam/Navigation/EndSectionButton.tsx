@@ -9,6 +9,8 @@ interface EndSectionButtonProps {
 }
 
 const EndSectionButton = (props: EndSectionButtonProps): JSX.Element => {
+  const { onClick } = props
+
   const handleKeyboardShortcut = e => {
     e.preventDefault()
     if (CHECK_SHORTCUT(e).altE) {
@@ -22,7 +24,7 @@ const EndSectionButton = (props: EndSectionButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [onClick])
 
   return (
     <ExamNavLeft onClick={props.onClick} id='end-section-btn'>

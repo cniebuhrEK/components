@@ -9,6 +9,8 @@ interface ReviewFlaggedButtonProps {
 }
 
 const ReviewFlaggedButton = (props: ReviewFlaggedButtonProps): JSX.Element => {
+  const { onClick } = props
+
   const handleKeyboardShortcut = e => {
     e.preventDefault()
     if (CHECK_SHORTCUT(e).altR) {
@@ -22,7 +24,7 @@ const ReviewFlaggedButton = (props: ReviewFlaggedButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [props.onClick])
+  }, [onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='review-flagged-btn'>

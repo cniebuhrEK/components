@@ -95,7 +95,7 @@ const HighlightButton = ({ callback }: HighlightButtonProps): JSX.Element => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('keyup', handleKeyUp)
     }
-  }, [])
+  }, [callback])
 
   return (
     <HighlightButtonContainer className={containerClass}>

@@ -9,6 +9,8 @@ interface ReviewAllButtonProps {
 }
 
 const ReviewAllButton = (props: ReviewAllButtonProps): JSX.Element => {
+  const { onClick } = props
+
   const handleKeyboardShortcut = e => {
     e.preventDefault()
     if (CHECK_SHORTCUT(e).altA) {
@@ -22,7 +24,7 @@ const ReviewAllButton = (props: ReviewAllButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [props.onClick])
+  }, [onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='review-all-btn'>

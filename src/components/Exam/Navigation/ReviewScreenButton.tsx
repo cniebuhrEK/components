@@ -9,6 +9,8 @@ interface ReviewScreenButtonProps {
 }
 
 const ReviewScreenButton = (props: ReviewScreenButtonProps): JSX.Element => {
+  const { onClick } = props
+
   const handleKeyboardShortcut = e => {
     e.preventDefault()
     if (CHECK_SHORTCUT(e).altW) {
@@ -22,7 +24,7 @@ const ReviewScreenButton = (props: ReviewScreenButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [props.onClick])
+  }, [onClick])
   return (
     <ExamNavLeft
       className='no-border'

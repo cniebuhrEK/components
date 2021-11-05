@@ -23,7 +23,7 @@ const PeriodicTableButton = ({
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [])
+  }, [onClick])
 
   return (
     <div>

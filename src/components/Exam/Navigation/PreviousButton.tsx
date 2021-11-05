@@ -9,6 +9,8 @@ interface PreviousButtonProps {
 }
 
 const PreviousButton = (props: PreviousButtonProps): JSX.Element => {
+  const { onClick } = props
+
   const handleKeyboardShortcut = e => {
     e.preventDefault()
     if (CHECK_SHORTCUT(e).altP) {
@@ -22,7 +24,7 @@ const PreviousButton = (props: PreviousButtonProps): JSX.Element => {
     return () => {
       document.removeEventListener('keydown', handleKeyboardShortcut)
     }
-  }, [props.onClick])
+  }, [onClick])
 
   return (
     <ExamNavRight onClick={props.onClick} id='previous-btn'>
