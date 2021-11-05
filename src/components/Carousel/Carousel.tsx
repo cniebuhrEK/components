@@ -69,7 +69,6 @@ const Container = styled.div`
   display: block;
   height: 100%;
   width: 100%;
-  padding: 1em;
 `
 
 const Index = styled.div`
