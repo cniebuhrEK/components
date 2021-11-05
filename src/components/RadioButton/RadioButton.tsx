@@ -77,6 +77,7 @@ const Container = styled.div`
     letter-spacing: -0.1px;
     color: ${({ theme }) => theme.palette.brown01};
     margin-left: 10px;
+    transform: translateY(2px);
   }
 `
 
