@@ -6,7 +6,7 @@ interface RadioButtonProps {
   id?: string
   name: string
   value: any
-  label?: string
+  label?: JSX.Element | string
   onChange: (e: any) => void
   isDisabled?: boolean
 }
