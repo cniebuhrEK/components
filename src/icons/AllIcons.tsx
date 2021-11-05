@@ -53,7 +53,9 @@ import {
   ClinicalContextIcon,
   MCATThinkIcon,
   ScannerIcon,
-  GlossaryIcon
+  GlossaryIcon,
+  ResizeIcon,
+  SaltyBucksIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -118,7 +120,9 @@ const AllIcons = () => {
     { component: ClinicalContextIcon, title: 'ClinicalContextIcon' },
     { component: MCATThinkIcon, title: 'MCATThinkIcon' },
     { component: ScannerIcon, title: 'Scanner' },
-    { component: GlossaryIcon, title: 'GlossaryIcon' }
+    { component: GlossaryIcon, title: 'GlossaryIcon' },
+    { component: ResizeIcon, title: 'ResizeIcon' },
+    { component: SaltyBucksIcon, title: 'SaltyBucksIcon' }
   ]
 
   return (
