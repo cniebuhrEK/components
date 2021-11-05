@@ -57,6 +57,7 @@ const Container = styled.div`
     background-color: ${({ theme }) => theme.palette.biege};
     box-shadow: ${({ theme }) => theme.shadows.darkShadow};
     border-radius: 50%;
+    flex: none;
 
     &::after {
       content: '';
