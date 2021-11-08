@@ -68,7 +68,10 @@ const PhraseTooltip = ({
     const subchapterOrder = R.propOr('', 'subchapter_order', occurance)
 
     const isCurrent = bookContentId === id
-    const handleClick = e => e.preventDefault()
+    const handleClick = e => {
+      e.stopPropagation()
+      e.preventDefault()
+    }
 
     return (
       <OccuranceElement
