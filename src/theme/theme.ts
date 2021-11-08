@@ -85,6 +85,18 @@ export default {
     orange05: '#fde4c4',
     orange06: '#fef6eb',
 
+    // Math Purple
+    mathPurple06: '#a5a6f6',
+    mathPurple08: '#d6d7f1',
+
+    // Aquamarine
+    aquamarine06: '#d2e598',
+    aquamarine08: '#dbe2c6',
+
+    // Turquoise
+    turquoise06: '#d6f1f1',
+    turquoise08: '#93f4f4',
+
     //
     // Old Palette
     //
@@ -177,7 +189,8 @@ export default {
     adminSideNavWidth: '276px',
     studentSideNavWidth: '276px',
     studentTopNavHeight: '64px',
-    adminTopNavHeight: '48px'
+    adminTopNavHeight: '48px',
+    tagHeight: '21px'
   },
   breakpointsMedia: {
     mobile: '@media (max-width: 768px)',
