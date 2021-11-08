@@ -162,6 +162,7 @@ const OccuranceElement = styled.a`
     isCurrent ? theme.palette.inactive : theme.palette.textDark};
   margin-right: 3px;
   cursor: pointer;
+  white-space: nowrap;
 
   strong {
     font-weight: bold;
