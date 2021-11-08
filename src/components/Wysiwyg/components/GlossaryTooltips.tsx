@@ -70,7 +70,10 @@ const PhraseTooltip = ({
     const isCurrent = bookContentId === id
     const handleClick = e => {
       e.stopPropagation()
-      e.preventDefault()
+
+      if (!isCurrent) {
+        window.location.href = `/books/${bookId}/chapter/${chapterOrder}/part/${partOrder}?selectedBookContentId=${id}`
+      }
     }
 
     return (
@@ -78,11 +81,6 @@ const PhraseTooltip = ({
         onClick={handleClick}
         isCurrent={isCurrent}
         key={`${index}-${id}`}
-        href={
-          isCurrent
-            ? '#'
-            : `/books/${bookId}/chapter/${chapterOrder}/part/${partOrder}?selectedBookContentId=${id}`
-        }
       >
         <strong>{getTagOrBookShortcut(occurance)}:</strong> {chapterOrder}.{' '}
         {subchapterOrder}
