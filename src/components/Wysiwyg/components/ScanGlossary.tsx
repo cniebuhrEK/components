@@ -108,7 +108,8 @@ export const ScanGlossary = (props: ScanGlossaryProps): JSX.Element => {
     return indexes
   }
 
-  const handleSelect = (id, phrase) => () => {
+  const handleSelect = (id, originalPhrase) => () => {
+    const phrase = R.toLower(originalPhrase)
     const delta = editorInstance.getContents()
     const totalText = getRealTextWithAdditionalInsertsAsPlaceholders(delta)
     const re = new RegExp(phrase, 'g')

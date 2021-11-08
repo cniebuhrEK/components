@@ -39,7 +39,6 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
   }, [])
 
   const saveSelectionState = () => {
-    saveSelectionState()
     if (editorInstance) {
       const selection = editorInstance.getSelection()
       const selectionLength = R.propOr(0, 'length', selection)
@@ -49,6 +48,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
   }
 
   React.useEffect(() => {
+    saveSelectionState()
     window.addEventListener('mouseup', saveSelectionState)
     window.addEventListener('keyup', saveSelectionState)
 

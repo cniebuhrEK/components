@@ -16,5 +16,6 @@ export const getRealTextWithAdditionalInsertsAsPlaceholders = deltaObject =>
         R.ifElse(ins => typeof ins === 'string', R.identity, R.always(' '))
       )
     ),
-    R.join('')
+    R.join(''),
+    R.toLower
   )(deltaObject)
