@@ -36,6 +36,7 @@ const ScanGlossaryButton = (props: ScanGlossaryButtonProps): JSX.Element => {
   }
 
   React.useEffect(() => {
+    saveSelectionState()
     window.addEventListener('mouseup', saveSelectionState)
     window.addEventListener('keyup', saveSelectionState)
 
