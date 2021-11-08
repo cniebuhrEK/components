@@ -154,6 +154,8 @@ const TooltipsContainer = styled.div`
   }
 
   .occurances {
+    display: flex;
+    flex-wrap: wrap;
   }
 `
 
@@ -161,8 +163,11 @@ const OccuranceElement = styled.a`
   color: ${({ theme, isCurrent }) =>
     isCurrent ? theme.palette.inactive : theme.palette.textDark};
   margin-right: 3px;
-  cursor: pointer;
-  white-space: nowrap;
+
+  .content {
+    white-space: nowrap;
+    cursor: pointer;
+  }
 
   strong {
     font-weight: bold;
