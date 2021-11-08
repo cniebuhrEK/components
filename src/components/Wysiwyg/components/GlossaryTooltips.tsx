@@ -6,13 +6,29 @@ import styled from 'styled-components'
 export interface GlossaryTooltipsProps {
   getPhraseDetails?: (e: any) => void
   glossaryIds?: string[]
+  bookContentId?: string
 }
 
-const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
+const getTagOrBookShortcut = details =>
+  R.pipe(
+    R.propOr(null, 'book_tag'),
+    R.ifElse(
+      R.isNil,
+      () => R.pipe(R.propOr('', 'book_title'), R.take(3))(details),
+      R.identity
+    )
+  )(details)
+
+const PhraseTooltip = ({
+  id,
+  getPhraseDetails,
+  bookContentId
+}): JSX.Element => {
   const [data, setData] = React.useState({
     id,
     phrase: '',
-    explanation: ''
+    explanation: '',
+    occurances: []
   })
 
   const handleFetchData = () => {
@@ -33,12 +49,41 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       setData({
         id,
         phrase: '',
-        explanation: ''
+        explanation: '',
+        occurances: []
       })
     }
 
     getPhraseDetails({ id }).then(handleSuccess).catch(handleError)
   }
+  const occurances = R.pipe(
+    R.propOr([], 'occurances'),
+    R.uniqBy(R.prop('id'))
+  )(data)
+  const renderOccurances = occurances.map((occurance, index) => {
+    const id = R.propOr('', 'id', occurance)
+    const bookId = R.propOr('', 'book_id', occurance)
+    const chapterOrder = R.propOr('', 'chapter_order', occurance)
+    const partOrder = R.propOr('', 'part', occurance)
+    const subchapterOrder = R.propOr('', 'subchapter_order', occurance)
+
+    const isCurrent = bookContentId === id
+
+    return (
+      <OccuranceElement
+        isCurrent={isCurrent}
+        key={`${index}-${id}`}
+        href={
+          isCurrent
+            ? '#'
+            : `/books/${bookId}/chapter/${chapterOrder}/part/${partOrder}?selectedBookContentId=${id}`
+        }
+      >
+        <strong>{getTagOrBookShortcut(occurance)}:</strong> {chapterOrder}.{' '}
+        {subchapterOrder}
+      </OccuranceElement>
+    )
+  })
 
   return (
     <ReactTooltip
@@ -52,18 +97,20 @@ const PhraseTooltip = ({ id, getPhraseDetails }): JSX.Element => {
       <div className='content'>
         <span className='phrase'>{data.phrase};</span> {data.explanation}
       </div>
+      <div className='occurances'>{renderOccurances}</div>
     </ReactTooltip>
   )
 }
 
 export const GlossaryTooltips = (props: GlossaryTooltipsProps): JSX.Element => {
-  const { getPhraseDetails, glossaryIds } = props
+  const { getPhraseDetails, glossaryIds, bookContentId } = props
 
   const renderTooltips = R.addIndex(R.map)((id, index) => (
     <PhraseTooltip
       id={id}
       key={`phrase-tooltip-${id}-${index}`}
       getPhraseDetails={getPhraseDetails}
+      bookContentId={bookContentId}
     />
   ))(glossaryIds)
 
@@ -101,5 +148,22 @@ const TooltipsContainer = styled.div`
 
   .phrase {
     font-weight: bold;
+  }
+
+  .occurances {
+  }
+`
+
+const OccuranceElement = styled.a`
+  color: ${({ theme, isCurrent }) =>
+    isCurrent ? theme.palette.inactive : theme.palette.textDark};
+  margin-right: 3px;
+
+  strong {
+    font-weight: bold;
+  }
+
+  &:not(:last-child)::after {
+    content: ';';
   }
 `

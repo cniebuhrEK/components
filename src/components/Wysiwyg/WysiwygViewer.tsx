@@ -22,12 +22,13 @@ window.katex = katex
 
 interface TextEditorProps {
   id: string
+  bookContentId?: string
   value: any
   getPhraseDetails?: (e: any) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, getPhraseDetails, value } = props
+  const { id, getPhraseDetails, value, bookContentId } = props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -67,6 +68,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     <div>
       <TextViewerContainer ref={wrapperRef} id={id} />
       <GlossaryTooltips
+        bookContentId={bookContentId}
         getPhraseDetails={getPhraseDetails}
         glossaryIds={glossaryIds}
       />

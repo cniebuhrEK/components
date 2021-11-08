@@ -57,6 +57,7 @@ interface TextEditorProps {
   errorText?: string
   label?: string | JSX.Element
   initialValue?: any
+  bookContentId?: string
 }
 
 const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
@@ -74,7 +75,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     required,
     error,
     errorText,
-    initialValue
+    initialValue,
+    bookContentId
   } = props
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
@@ -161,6 +163,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}
       <GlossaryTooltips
+        bookContentId={bookContentId}
         getPhraseDetails={getPhraseDetails}
         glossaryIds={glossaryIds}
       />

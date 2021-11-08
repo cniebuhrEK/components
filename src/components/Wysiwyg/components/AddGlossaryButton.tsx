@@ -2,6 +2,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import * as R from 'ramda'
 
 import { GlossaryIcon } from '../../../icons'
 
@@ -28,17 +29,41 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
     glossaryEntriesPagination
   } = props
   const [isOpen, setVisibility] = React.useState(false)
+  const [isDisabled, setDisabled] = React.useState(true)
 
-  const handleOpen = () => setVisibility(true)
+  const handleOpen = () => (isDisabled ? {} : setVisibility(true))
   const handleClose = () => setVisibility(false)
 
   React.useEffect(() => {
     addGlossaryBlotToQuill()
   }, [])
 
+  const saveSelectionState = () => {
+    if (editorInstance) {
+      const selection = editorInstance.getSelection()
+      const selectionLength = R.propOr(0, 'length', selection)
+      const hasSelected = selectionLength > 0
+      setDisabled(!hasSelected)
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener('mouseup', saveSelectionState)
+    window.addEventListener('keyup', saveSelectionState)
+
+    return () => {
+      window.removeEventListener('mouseup', saveSelectionState)
+      window.removeEventListener('keyup', saveSelectionState)
+    }
+  }, [editorInstance])
+
   return (
-    <ButtonContainer>
-      <button className='ql-glossary' onClick={handleOpen}>
+    <ButtonContainer isDisabled={isDisabled}>
+      <button
+        disabled={isDisabled}
+        className='ql-glossary'
+        onClick={handleOpen}
+      >
         <GlossaryIcon />
       </button>
       <SelectGlossary
@@ -78,18 +103,25 @@ const ButtonContainer = styled.div`
   }
 
   * {
-    color: ${({ theme, isLoading }) =>
-      isLoading ? theme.palette.biege : theme.palette.orange01} !important;
+    color: ${({ theme, isLoading, isDisabled }) =>
+      isLoading || isDisabled
+        ? theme.palette.biege
+        : theme.palette.orange01} !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
   }
 
   button {
-    cursor: pointer !important;
-    background-color: ${({ theme, isLoading }) =>
-      isLoading ? theme.palette.inactive : theme.palette.darkblue01} !important;
-    color: ${({ theme, isLoading }) =>
-      isLoading ? theme.palette.biege : theme.palette.orange01} !important;
+    cursor: ${({ isDisabled }) =>
+      isDisabled ? 'not-allowed' : 'pointer'} !important;
+    background-color: ${({ theme, isLoading, isDisabled }) =>
+      isLoading || isDisabled
+        ? theme.palette.inactive
+        : theme.palette.darkblue01} !important;
+    color: ${({ theme, isLoading, isDisabled }) =>
+      isLoading || isDisabled
+        ? theme.palette.biege
+        : theme.palette.orange01} !important;
     width: 19px !important;
     height: 19px !important;
     line-height: 19px !important;
@@ -104,26 +136,46 @@ const ButtonContainer = styled.div`
 
     svg {
       float: unset !important;
-      color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.biege : theme.palette.orange01} !important;
+      color: ${({ theme, isLoading, isDisabled }) =>
+        isLoading || isDisabled
+          ? theme.palette.biege
+          : theme.palette.orange01} !important;
+    }
+
+    svg g {
+      color: ${({ theme, isLoading, isDisabled }) =>
+        isLoading || isDisabled
+          ? theme.palette.biege
+          : theme.palette.orange01} !important;
     }
   }
 
   &:hover {
     * {
-      color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.biege : theme.palette.darkblue01} !important;
+      color: ${({ theme, isLoading, isDisabled }) =>
+        isLoading || isDisabled
+          ? theme.palette.biege
+          : theme.palette.darkblue01} !important;
     }
 
     button {
-      background-color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.inactive : theme.palette.orange01} !important;
+      background-color: ${({ theme, isLoading, isDisabled }) =>
+        isLoading || isDisabled
+          ? theme.palette.inactive
+          : theme.palette.orange01} !important;
       color: ${({ theme }) => theme.palette.darkblue01} !important;
 
       svg {
         float: unset !important;
-        color: ${({ theme, isLoading }) =>
-          isLoading
+        color: ${({ theme, isLoading, isDisabled }) =>
+          isLoading || isDisabled
+            ? theme.palette.biege
+            : theme.palette.background} !important;
+      }
+
+      svg g {
+        color: ${({ theme, isLoading, isDisabled }) =>
+          isLoading || isDisabled
             ? theme.palette.biege
             : theme.palette.background} !important;
       }

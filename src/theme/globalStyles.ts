@@ -6,8 +6,7 @@ export default createGlobalStyle`
 
     margin: 0;
 
-    color: ${({ theme }) => theme.palette.brown01};
-    font-size: 14px;
+§    font-size: 14px;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
     }

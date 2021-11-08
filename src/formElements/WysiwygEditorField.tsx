@@ -49,6 +49,7 @@ interface WysiwygEditorFieldProps {
   errorText?: string
   initialValue?: any
   label?: string | JSX.Element
+  bookContentId?: string
 }
 
 // Form field for uploading files
@@ -70,7 +71,8 @@ export const WysiwygEditorField = (
     handleScanGlossaryList,
     getPhraseDetails,
     initialValue,
-    handleS3Upload
+    handleS3Upload,
+    bookContentId
   } = props
 
   // Indicator for whether the input is open or not
@@ -121,6 +123,7 @@ export const WysiwygEditorField = (
       glossaryEntriesPagination={glossaryEntriesPagination}
       initialValue={initialValue}
       handleS3Upload={handleS3Upload}
+      bookContentId={bookContentId}
     />
   )
 }
