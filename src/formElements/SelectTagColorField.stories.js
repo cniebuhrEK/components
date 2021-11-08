@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import SelectTagColor from './SelectTagColor'
+import SelectTagColor from './SelectTagColorField'
 
 const Template = args => {
   const [selectedColor, setSelectedColor] = useState(null)
