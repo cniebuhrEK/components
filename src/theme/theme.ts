@@ -94,8 +94,12 @@ export default {
     aquamarine08: '#dbe2c6',
 
     // Turquoise
-    turquoise06: '#d6f1f1',
-    turquoise08: '#93f4f4',
+    turquoise06: '#93f4f4',
+    turquoise08: '#d6f1f1',
+
+    // Yellow
+    yellow06: '#fde19d',
+    yellow08: '#fde19d',
 
     //
     // Old Palette
@@ -190,7 +194,8 @@ export default {
     studentSideNavWidth: '276px',
     studentTopNavHeight: '64px',
     adminTopNavHeight: '48px',
-    tagHeight: '21px'
+    tagHeight: '21px',
+    tagWidth: '50px'
   },
   breakpointsMedia: {
     mobile: '@media (max-width: 768px)',

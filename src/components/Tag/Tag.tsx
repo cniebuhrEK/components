@@ -10,7 +10,8 @@ const tagColors = {
   brown: 'brown',
   mathPurple: 'mathPurple',
   aquamarine: 'aquamarine',
-  turquoise: 'turquoise'
+  turquoise: 'turquoise',
+  yellow: 'yellow'
 }
 
 interface TagProps {
@@ -24,7 +25,7 @@ interface TagProps {
     | 'mathPurple'
     | 'aquamarine'
     | 'turquoise'
-  onClick?: (e: any, color: any) => void
+  onClick?: (e: any) => void
   text: string | JSX.Element
   id?: string
   name?: string
@@ -37,7 +38,10 @@ export const Tag = (props: TagProps): JSX.Element => {
   const { uppercase, id, name, text, color, isActive, isStatic, onClick } =
     props
 
-  const handleClick = e => (onClick ? onClick(e, color) : {})
+  const handleClick = e => {
+    e.preventDefault()
+    return onClick ? onClick(color) : {}
+  }
 
   return (
     <TagContainer
@@ -63,6 +67,8 @@ export default Tag
 const TagContainer = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.darkShadow};
   line-height: ${({ theme }) => theme.dimensions.tagHeight};
+  min-height: ${({ theme }) => theme.dimensions.tagHeight};
+  min-width: ${({ theme }) => theme.dimensions.tagWidth};
   cursor: ${({ isStatic }) => (isStatic ? 'text' : 'pointer')};
   padding: 0 11px;
   font-size: 10px;
@@ -98,6 +104,10 @@ const TagContainer = styled.div`
         return theme.palette.orange04
       case color === tagColors.orange && !isActive:
         return theme.palette.orange06
+      case color === tagColors.brown && isActive:
+        return theme.palette.brown08
+      case color === tagColors.brown && !isActive:
+        return theme.palette.brown10
       case color === tagColors.mathPurple && isActive:
         return theme.palette.mathPurple06
       case color === tagColors.mathPurple && !isActive:
@@ -110,6 +120,10 @@ const TagContainer = styled.div`
         return theme.palette.turquoise06
       case color === tagColors.turquoise && !isActive:
         return theme.palette.turquoise08
+      case color === tagColors.yellow && isActive:
+        return theme.palette.yellow06
+      case color === tagColors.yellow && !isActive:
+        return theme.palette.yellow08
       default:
         return theme.palette.orange06
     }
@@ -141,6 +155,10 @@ const TagContainer = styled.div`
           return theme.palette.orange04
         case color === tagColors.orange && isStatic:
           return theme.palette.orange06
+        case color === tagColors.brown && !isStatic:
+          return theme.palette.brown08
+        case color === tagColors.brown && isStatic:
+          return theme.palette.brown10
         case color === tagColors.mathPurple && !isStatic:
           return theme.palette.mathPurple06
         case color === tagColors.mathPurple && isStatic:
@@ -153,6 +171,10 @@ const TagContainer = styled.div`
           return theme.palette.turquoise06
         case color === tagColors.turquoise && isStatic:
           return theme.palette.turquoise08
+        case color === tagColors.yellow && !isStatic:
+          return theme.palette.yellow06
+        case color === tagColors.yellow && isStatic:
+          return theme.palette.yellow08
         default:
           return theme.palette.orange06
       }
