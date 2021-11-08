@@ -68,9 +68,11 @@ const PhraseTooltip = ({
     const subchapterOrder = R.propOr('', 'subchapter_order', occurance)
 
     const isCurrent = bookContentId === id
+    const handleClick = e => e.preventDefault()
 
     return (
       <OccuranceElement
+        onClick={handleClick}
         isCurrent={isCurrent}
         key={`${index}-${id}`}
         href={
@@ -134,7 +136,7 @@ const TooltipsContainer = styled.div`
     font-size: 11px !important;
     line-height: 19px !important;
     letter-spacing: -0.1px !important;
-    z-index: ${({ theme }) => theme.zIndex.modal} !important;
+    z-index: ${({ theme }) => theme.zIndex.snackbar} !important;
 
     &::before,
     &::after {
