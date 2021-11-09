@@ -49,13 +49,14 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   React.useEffect(() => {
     if (open && editorInstance) {
-      const selection = editorInstance.getSelection()
+      const selection = editorInstance.getSelection(true)
       const index = R.propOr(0, 'index', selection)
       const length = R.propOr(1, 'length', selection)
       const selectedText = editorInstance.getText(index, length)
+      setSearchQuery(selectedText)
+
       const initialContent = editorInstance.getContents()
       setInitialDelta(initialContent)
-      setSearchQuery(selectedText)
     }
   }, [open, editorInstance])
 
