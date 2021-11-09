@@ -123,7 +123,10 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     </GlossaryContainer>
   ))(glossaryEntries)
 
-  const handleSearch = e => setSearchQuery(R.pathOr('', ['target', 'value'], e))
+  const handleSearch = e => {
+    e.stopPropagation()
+    setSearchQuery(R.pathOr('', ['target', 'value'], e))
+  }
 
   const debounceHandler = React.useCallback(debounce(handleSearch, 500), [
     searchQuery
