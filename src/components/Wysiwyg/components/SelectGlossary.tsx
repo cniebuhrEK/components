@@ -29,6 +29,7 @@ interface SelectGlossaryProps {
   open: boolean
   editorInstance: any
   selectedText: any
+  initialDelta: any
   glossaryEntries?: GlossaryPhrase[]
   handleFetchGlossaryList?: (e: any) => void
   handleClose: () => void
@@ -42,19 +43,12 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     editorInstance,
     handleClose,
     open,
-    selectedText
+    selectedText,
+    initialDelta
   } = props
   const [selectedId, setSelectedId] = React.useState(null)
   const [page, setPage] = React.useState(1)
   const [searchQuery, setSearchQuery] = React.useState('')
-  const [initialDelta, setInitialDelta] = React.useState(null)
-
-  React.useEffect(() => {
-    if (open && editorInstance) {
-      const initialContent = editorInstance.getContents()
-      setInitialDelta(initialContent)
-    }
-  }, [open, editorInstance])
 
   React.useEffect(() => {
     if (selectedText) {
