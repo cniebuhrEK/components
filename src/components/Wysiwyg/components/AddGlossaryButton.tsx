@@ -75,12 +75,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
   return (
     <ButtonContainer isDisabled={isDisabled}>
-      <button
-        type='button'
-        disabled={isDisabled}
-        className='ql-glossary'
-        onClick={handleOpen}
-      >
+      <button type='button' disabled={isDisabled} onClick={handleOpen}>
         <GlossaryIcon />
       </button>
       <SelectGlossary
