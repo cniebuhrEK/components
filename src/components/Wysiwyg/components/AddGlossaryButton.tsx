@@ -49,7 +49,10 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
       const selectionLength = R.propOr(0, 'length', selection)
       const selectionIndex = R.propOr(0, 'index', selection)
       const hasSelected = selectionLength > 0
-      const selectedText = editorInstance.getText(selectionIndex, selectionLength)
+      const selectedText = editorInstance.getText(
+        selectionIndex,
+        selectionLength
+      )
       setDisabled(!hasSelected)
       setSelectedText(selectedText)
     }
