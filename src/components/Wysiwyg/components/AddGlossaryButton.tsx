@@ -61,14 +61,21 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
     }
   }
 
+  const handleListener = e => {
+    const targetTagName = R.pathOr('', ['target', 'localName'], e)
+    if (targetTagName !== 'input') {
+      saveSelectionState()
+    }
+  }
+
   React.useEffect(() => {
     saveSelectionState()
-    window.addEventListener('mouseup', saveSelectionState)
-    window.addEventListener('keyup', saveSelectionState)
+    window.addEventListener('mouseup', handleListener)
+    window.addEventListener('keyup', handleListener)
 
     return () => {
-      window.removeEventListener('mouseup', saveSelectionState)
-      window.removeEventListener('keyup', saveSelectionState)
+      window.removeEventListener('mouseup', handleListener)
+      window.removeEventListener('keyup', handleListener)
     }
   }, [editorInstance])
 

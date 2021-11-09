@@ -35,7 +35,7 @@ const Animation = (props: AnimationProps): JSX.Element => {
     e.stopPropagation()
     setIsSpeedOpen(true)
   }
-  const handleSelectSpeed = speed => (e) => {
+  const handleSelectSpeed = speed => e => {
     e.stopPropagation()
     setSpeed(speed)
     setIsSpeedOpen(false)
