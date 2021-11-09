@@ -49,6 +49,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   React.useEffect(() => {
     if (open && editorInstance) {
+      editorInstance.update()
       const selection = editorInstance.getSelection(true)
       const index = R.propOr(0, 'index', selection)
       const length = R.propOr(1, 'length', selection)
