@@ -35,7 +35,6 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
   const handleOpen = e => {
     e.preventDefault()
-    e.stopPropagation()
     !isDisabled && setVisibility(true)
   }
   const handleClose = () => setVisibility(false)
