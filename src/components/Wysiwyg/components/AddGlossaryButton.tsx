@@ -31,7 +31,11 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
   const [isOpen, setVisibility] = React.useState(false)
   const [isDisabled, setDisabled] = React.useState(true)
 
-  const handleOpen = () => (isDisabled ? {} : setVisibility(true))
+  const handleOpen = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    !isDisabled && setVisibility(true)
+  }
   const handleClose = () => setVisibility(false)
 
   React.useEffect(() => {
