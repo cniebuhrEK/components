@@ -43,6 +43,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
     setInitialDelta(initialContent)
     setSelectedText(selectedText)
+    setVisibility(true)
   }
   const handleClose = () => setVisibility(false)
 
