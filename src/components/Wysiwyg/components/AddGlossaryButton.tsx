@@ -35,7 +35,14 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
   const handleOpen = e => {
     e.preventDefault()
-    !isDisabled && setVisibility(true)
+    const selection = editorInstance.getSelection(true)
+    const selectionLength = R.propOr(0, 'length', selection)
+    const selectionIndex = R.propOr(0, 'index', selection)
+    const selectedText = editorInstance.getText(selectionIndex, selectionLength)
+    const initialContent = editorInstance.getContents()
+
+    setInitialDelta(initialContent)
+    setSelectedText(selectedText)
   }
   const handleClose = () => setVisibility(false)
 
@@ -47,17 +54,9 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
     if (editorInstance) {
       const selection = editorInstance.getSelection(true)
       const selectionLength = R.propOr(0, 'length', selection)
-      const selectionIndex = R.propOr(0, 'index', selection)
       const hasSelected = selectionLength > 0
-      const selectedText = editorInstance.getText(
-        selectionIndex,
-        selectionLength
-      )
-      const initialContent = editorInstance.getContents()
 
-      setInitialDelta(initialContent)
       setDisabled(!hasSelected)
-      setSelectedText(selectedText)
     }
   }
 
