@@ -99,11 +99,21 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   const actionButton = id =>
     id !== selectedId ? (
-      <Button size='small' startIcon={<AddIcon />} onClick={handleSelect(id)}>
+      <Button
+        type='button'
+        size='small'
+        startIcon={<AddIcon />}
+        onClick={handleSelect(id)}
+      >
         Add
       </Button>
     ) : (
-      <Button size='small' startIcon={<CheckmarkIcon />} color='blue'>
+      <Button
+        type='button'
+        size='small'
+        startIcon={<CheckmarkIcon />}
+        color='blue'
+      >
         Added
       </Button>
     )
@@ -141,6 +151,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
       <div className='list'>{renderGlossaryPhrases}</div>
       <ButtonsContainer>
         <Button
+          type='button'
           id='select-glossary-cancel'
           color='blue'
           size='small'
@@ -151,7 +162,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
         </Button>
         <Button
           id='select-glossary-submit'
-          type='submit'
+          type='button'
           color='blue'
           size='small'
           onClick={handleSubmit}

@@ -135,6 +135,7 @@ export const ScanGlossary = (props: ScanGlossaryProps): JSX.Element => {
 
     return !isSelected ? (
       <Button
+        type='button'
         size='small'
         startIcon={<AddIcon />}
         onClick={handleSelect(id, phrase)}
@@ -142,7 +143,12 @@ export const ScanGlossary = (props: ScanGlossaryProps): JSX.Element => {
         Add
       </Button>
     ) : (
-      <Button size='small' startIcon={<CheckmarkIcon />} color='blue'>
+      <Button
+        type='button'
+        size='small'
+        startIcon={<CheckmarkIcon />}
+        color='blue'
+      >
         Added
       </Button>
     )
@@ -168,6 +174,7 @@ export const ScanGlossary = (props: ScanGlossaryProps): JSX.Element => {
       <div className='list'>{renderGlossaryPhrases}</div>
       <ButtonsContainer>
         <Button
+          type='button'
           id='select-glossary-cancel'
           color='blue'
           size='small'

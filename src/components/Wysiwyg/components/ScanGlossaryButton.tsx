@@ -52,7 +52,7 @@ const ScanGlossaryButton = (props: ScanGlossaryButtonProps): JSX.Element => {
 
   return (
     <ButtonContainer isDisabled={isDisabled}>
-      <button onClick={handleOpen}>
+      <button type='button' onClick={handleOpen}>
         <ScannerIcon />
       </button>
       <ScanGlossary
