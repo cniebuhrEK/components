@@ -48,7 +48,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   const [initialDelta, setInitialDelta] = React.useState(null)
 
   React.useEffect(() => {
-    if (open) {
+    if (open && editorInstance) {
       const selection = editorInstance.getSelection()
       const index = R.propOr(0, 'index', selection)
       const length = R.propOr(1, 'length', selection)
