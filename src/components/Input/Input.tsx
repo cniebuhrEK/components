@@ -31,6 +31,7 @@ interface InputProps {
   onBlur?: (e: any) => any
   errorText?: string
   size?: string
+  initialValue?: string
   icon?: JSX.Element
   [x: string]: any
 }
@@ -96,7 +97,7 @@ const InputField = (props: InputProps): JSX.Element => {
         size={size}
         id={id || name}
         type={inputType}
-        value={value}
+        value={inputValue}
         hasPasswordType={hasPasswordType()}
         ref={inputRef}
         name={name}
