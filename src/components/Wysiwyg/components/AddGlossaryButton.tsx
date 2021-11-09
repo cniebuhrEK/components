@@ -30,6 +30,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
   } = props
   const [isOpen, setVisibility] = React.useState(false)
   const [isDisabled, setDisabled] = React.useState(true)
+  const [selectedText, setSelectedText] = React.useState('')
 
   const handleOpen = e => {
     e.preventDefault()
@@ -46,8 +47,11 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
     if (editorInstance) {
       const selection = editorInstance.getSelection(true)
       const selectionLength = R.propOr(0, 'length', selection)
+      const selectionIndex = R.propOr(0, 'index', selection)
       const hasSelected = selectionLength > 0
+      const selectedText = editorInstance.getText(selectionIndex, selectionLength)
       setDisabled(!hasSelected)
+      setSelectedText(selectedText)
     }
   }
 
@@ -73,6 +77,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
         <GlossaryIcon />
       </button>
       <SelectGlossary
+        selectedText={selectedText}
         pagination={glossaryEntriesPagination}
         open={isOpen}
         handleClose={handleClose}

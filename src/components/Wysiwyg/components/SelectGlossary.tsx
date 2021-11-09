@@ -28,6 +28,7 @@ interface SelectGlossaryProps {
   pagination?: PaginationProps
   open: boolean
   editorInstance: any
+  selectedText: any
   glossaryEntries?: GlossaryPhrase[]
   handleFetchGlossaryList?: (e: any) => void
   handleClose: () => void
@@ -40,7 +41,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     handleFetchGlossaryList,
     editorInstance,
     handleClose,
-    open
+    open,
+    selectedText
   } = props
   const [selectedId, setSelectedId] = React.useState(null)
   const [page, setPage] = React.useState(1)
@@ -49,17 +51,16 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
   React.useEffect(() => {
     if (open && editorInstance) {
-      editorInstance.update()
-      const selection = editorInstance.getSelection(true)
-      const index = R.propOr(0, 'index', selection)
-      const length = R.propOr(1, 'length', selection)
-      const selectedText = editorInstance.getText(index, length)
       const initialContent = editorInstance.getContents()
-
-      setSearchQuery(selectedText)
       setInitialDelta(initialContent)
     }
   }, [open, editorInstance])
+
+  React.useEffect(() => {
+    if (selectedText) {
+      setSearchQuery(selectedText)
+    }
+  }, [selectedText])
 
   React.useEffect(() => {
     handleFetchGlossaryList &&
