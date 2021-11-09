@@ -81,6 +81,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
 
+  console.log(Quill)
+
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
   // as soon as the element is rendered on the page it will use this callback
   const wrapperRef = React.useCallback(wrapper => {

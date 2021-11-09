@@ -24,7 +24,8 @@ const Animation = (props: AnimationProps): JSX.Element => {
     setIsStopped(true)
   }
   const handlePlay = e => {
-    e.stopPropagation()(isPaused ? setIsPaused(false) : setIsStopped(false))
+    e.stopPropagation()
+    isPaused ? setIsPaused(false) : setIsStopped(false)
   }
   const handlePause = e => {
     e.stopPropagation()
