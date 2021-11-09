@@ -28,6 +28,8 @@ interface SelectGlossaryProps {
   pagination?: PaginationProps
   open: boolean
   editorInstance: any
+  selectedText: any
+  initialDelta: any
   glossaryEntries?: GlossaryPhrase[]
   handleFetchGlossaryList?: (e: any) => void
   handleClose: () => void
@@ -40,25 +42,19 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     handleFetchGlossaryList,
     editorInstance,
     handleClose,
-    open
+    open,
+    selectedText,
+    initialDelta
   } = props
   const [selectedId, setSelectedId] = React.useState(null)
   const [page, setPage] = React.useState(1)
   const [searchQuery, setSearchQuery] = React.useState('')
-  const [initialDelta, setInitialDelta] = React.useState(null)
 
   React.useEffect(() => {
-    if (open && editorInstance) {
-      const selection = editorInstance.getSelection(true)
-      const index = R.propOr(0, 'index', selection)
-      const length = R.propOr(1, 'length', selection)
-      const selectedText = editorInstance.getText(index, length)
+    if (selectedText) {
       setSearchQuery(selectedText)
-
-      const initialContent = editorInstance.getContents()
-      setInitialDelta(initialContent)
     }
-  }, [open, editorInstance])
+  }, [selectedText])
 
   React.useEffect(() => {
     handleFetchGlossaryList &&
@@ -127,7 +123,10 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     </GlossaryContainer>
   ))(glossaryEntries)
 
-  const handleSearch = e => setSearchQuery(R.pathOr('', ['target', 'value'], e))
+  const handleSearch = e => {
+    e.stopPropagation()
+    setSearchQuery(R.pathOr('', ['target', 'value'], e))
+  }
 
   const debounceHandler = React.useCallback(debounce(handleSearch, 500), [
     searchQuery

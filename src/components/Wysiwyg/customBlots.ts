@@ -8,6 +8,7 @@ export const addGlossaryBlotToQuill = () => {
   const InlineBlot = Quill.import('blots/inline')
 
   // Creates a new blot based on 'inline' blot
+  // @ts-ignore
   class GlossaryBlot extends InlineBlot {
     static create(id) {
       const node = super.create()
@@ -47,6 +48,7 @@ export const addImageBlotToQuill = () => {
   const ImageBlot = Quill.import('formats/image')
 
   // Converts the HTML tag to image blot
+  // @ts-ignore
   class CustomImageBlot extends ImageBlot {
     static create(value) {
       const node = super.create()
@@ -82,6 +84,7 @@ export const addAdminHighlightsBlotToQuill = () => {
   const InlineBlot = Quill.import('blots/inline')
 
   // Creates a new blot based on 'inline' blot
+  // @ts-ignore
   class AdminHighlightsBlot extends InlineBlot {
     static blotName = ADMIN_HIGHLIGHTS_BLOT_NAME
     static className = 'admin-highlights'

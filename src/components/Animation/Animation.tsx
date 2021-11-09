@@ -24,7 +24,8 @@ const Animation = (props: AnimationProps): JSX.Element => {
     setIsStopped(true)
   }
   const handlePlay = e => {
-    e.stopPropagation()(isPaused ? setIsPaused(false) : setIsStopped(false))
+    e.stopPropagation()
+    isPaused ? setIsPaused(false) : setIsStopped(false)
   }
   const handlePause = e => {
     e.stopPropagation()
@@ -34,7 +35,8 @@ const Animation = (props: AnimationProps): JSX.Element => {
     e.stopPropagation()
     setIsSpeedOpen(true)
   }
-  const handleSelectSpeed = speed => () => {
+  const handleSelectSpeed = speed => (e) => {
+    e.stopPropagation()
     setSpeed(speed)
     setIsSpeedOpen(false)
   }
@@ -168,6 +170,7 @@ const SpeedSelection = styled.div`
   //}
 
   .speed-options {
+    z-index: ${({ theme, isOpen }) => (isOpen ? theme.zIndex.modal : 0)};
     opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
     height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;

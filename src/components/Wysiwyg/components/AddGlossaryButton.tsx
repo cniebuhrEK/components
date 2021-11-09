@@ -30,8 +30,21 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
   } = props
   const [isOpen, setVisibility] = React.useState(false)
   const [isDisabled, setDisabled] = React.useState(true)
+  const [selectedText, setSelectedText] = React.useState('')
+  const [initialDelta, setInitialDelta] = React.useState(null)
 
-  const handleOpen = () => (isDisabled ? {} : setVisibility(true))
+  const handleOpen = e => {
+    e.preventDefault()
+    const selection = editorInstance.getSelection(true)
+    const selectionLength = R.propOr(0, 'length', selection)
+    const selectionIndex = R.propOr(0, 'index', selection)
+    const selectedText = editorInstance.getText(selectionIndex, selectionLength)
+    const initialContent = editorInstance.getContents()
+
+    setInitialDelta(initialContent)
+    setSelectedText(selectedText)
+    setVisibility(true)
+  }
   const handleClose = () => setVisibility(false)
 
   React.useEffect(() => {
@@ -43,6 +56,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
       const selection = editorInstance.getSelection(true)
       const selectionLength = R.propOr(0, 'length', selection)
       const hasSelected = selectionLength > 0
+
       setDisabled(!hasSelected)
     }
   }
@@ -60,15 +74,12 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
   return (
     <ButtonContainer isDisabled={isDisabled}>
-      <button
-        type='button'
-        disabled={isDisabled}
-        className='ql-glossary'
-        onClick={handleOpen}
-      >
+      <button type='button' onClick={handleOpen}>
         <GlossaryIcon />
       </button>
       <SelectGlossary
+        initialDelta={initialDelta}
+        selectedText={selectedText}
         pagination={glossaryEntriesPagination}
         open={isOpen}
         handleClose={handleClose}
