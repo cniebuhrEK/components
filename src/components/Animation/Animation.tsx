@@ -19,10 +19,21 @@ const Animation = (props: AnimationProps): JSX.Element => {
   const [isStopped, setIsStopped] = React.useState(true)
   const [speed, setSpeed] = React.useState(1)
 
-  const handleStop = () => setIsStopped(true)
-  const handlePlay = () => (isPaused ? setIsPaused(false) : setIsStopped(false))
-  const handlePause = () => setIsPaused(true)
-  const openSpeedMenu = () => setIsSpeedOpen(true)
+  const handleStop = e => {
+    e.stopPropagation()
+    setIsStopped(true)
+  }
+  const handlePlay = e => {
+    e.stopPropagation()(isPaused ? setIsPaused(false) : setIsStopped(false))
+  }
+  const handlePause = e => {
+    e.stopPropagation()
+    setIsPaused(true)
+  }
+  const openSpeedMenu = e => {
+    e.stopPropagation()
+    setIsSpeedOpen(true)
+  }
   const handleSelectSpeed = speed => () => {
     setSpeed(speed)
     setIsSpeedOpen(false)
