@@ -238,6 +238,7 @@ const GlossaryHeadingContainer = styled.div`
   }
   .middle {
     width: 40%;
+    padding-right: 20px;
   }
   .right {
     width: 30%;
@@ -266,8 +267,13 @@ const GlossaryContainer = styled.div`
     line-height: 19px;
     text-align: center;
     letter-spacing: -0.1px;
-    text-align: center;
     width: 40%;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 20px;
   }
   .right {
     text-align: center;
