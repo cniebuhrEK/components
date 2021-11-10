@@ -200,6 +200,7 @@ const TableEmptyState = styled.div`
 `
 
 const TableContainer = styled.div`
+  border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.darkShadow};
   padding: 0 21px 36px;
 `
