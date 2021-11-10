@@ -89,7 +89,7 @@ export default Answers
 
 export const AnswersContainer = styled.div`
   strike {
-    display: flex;
+    display: inline-flex;
   }
 
   .answer {
@@ -163,6 +163,12 @@ export const AnswersContainer = styled.div`
     line-height: 20.7104px;
     user-select: text;
     display: inline-flex;
+    align-items: center;
     cursor: text;
+    transform: translateY(-3px);
+
+    span {
+      line-height: 21px;
+    }
   }
 `
