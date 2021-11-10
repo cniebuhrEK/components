@@ -107,7 +107,7 @@ export const BreakQuestionButton = styled.a`
 export const BreakCountDownContainer = styled.div`
   background-color: ${props => props.theme.palette.beige01};
   width: 450px;
-  height: 650px;
+  min-height: 650px;
   margin: 0 auto;
   margin-top: 125px;
   position: absolute;
