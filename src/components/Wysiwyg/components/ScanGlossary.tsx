@@ -269,7 +269,7 @@ const GlossaryContainer = styled.div`
     letter-spacing: -0.1px;
     width: 40%;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
