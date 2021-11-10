@@ -201,7 +201,7 @@ const TableEmptyState = styled.div`
 
 const TableContainer = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.darkShadow};
-  padding-bottom: 36px;
+  padding: 0 21px 36px;
 `
 
 EntitiesList.defaultProps = {
