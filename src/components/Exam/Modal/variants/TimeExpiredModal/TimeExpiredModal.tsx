@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Modal from '../../Modal'
 import styled from 'styled-components'
+import { CHECK_SHORTCUT } from '../../../../../utils/shortcuts'
 
 interface TimeExpiredModalProps {
   handleClose: () => void
@@ -15,6 +16,21 @@ const TimeExpiredModal = ({
   handleConfirm,
   ...rest
 }: TimeExpiredModalProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    e.preventDefault()
+    if (CHECK_SHORTCUT(e).altO) {
+      handleClose()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [handleClose])
+
   return (
     <Modal
       disableOutsideClick

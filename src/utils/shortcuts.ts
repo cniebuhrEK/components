@@ -12,5 +12,7 @@ export const CHECK_SHORTCUT = e => ({
   altA: e.altKey && e.keyCode === 65,
   altI: e.altKey && e.keyCode === 73,
   altR: e.altKey && e.keyCode === 82,
+  altY: e.altKey && e.keyCode === 89,
+  altO: e.altKey && e.keyCode === 79,
   altE: e.altKey && e.keyCode === 69
 })

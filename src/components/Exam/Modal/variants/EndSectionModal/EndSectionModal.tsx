@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Modal from '../../Modal'
 import styled from 'styled-components'
+import { CHECK_SHORTCUT } from '../../../../../utils/shortcuts'
 
 interface EndSectionModalProps {
   handleConfirm: () => void
@@ -16,6 +17,26 @@ const EndSectionModal = ({
   incomplete = 0,
   ...rest
 }: EndSectionModalProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    e.preventDefault()
+
+    if (CHECK_SHORTCUT(e).altY) {
+      handleConfirm && handleConfirm()
+    }
+
+    if (CHECK_SHORTCUT(e).altN) {
+      handleClose()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [handleClose])
+
   const completeContent = (
     <div className='warning-content'>
       <p>
