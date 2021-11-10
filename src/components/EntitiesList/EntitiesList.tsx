@@ -200,7 +200,8 @@ const TableEmptyState = styled.div`
 `
 
 const TableContainer = styled.div`
-  overflow-x: auto;
+  box-shadow: ${({ theme }) => theme.shadows.darkShadow};
+  padding-bottom: 36px;
 `
 
 EntitiesList.defaultProps = {
