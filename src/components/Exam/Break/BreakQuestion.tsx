@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   BreakOverlay,
   BreakQuestionContainer,
@@ -7,6 +7,7 @@ import {
   BreakQuestionFooter,
   BreakQuestionButton
 } from './styles'
+import { CHECK_SHORTCUT } from '../../../utils/shortcuts'
 
 interface QuestionBreakProps {
   handleConfirm: () => void
@@ -16,6 +17,26 @@ interface QuestionBreakProps {
 }
 
 const BreakQuestion = (props: QuestionBreakProps): JSX.Element => {
+  const handleKeyboardShortcut = e => {
+    e.preventDefault()
+
+    if (CHECK_SHORTCUT(e).altY) {
+      props.handleConfirm && props.handleConfirm()
+    }
+
+    if (CHECK_SHORTCUT(e).altN) {
+      props.handleCancel()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyboardShortcut)
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyboardShortcut)
+    }
+  }, [props.handleConfirm])
+
   const handleConfirm = e => {
     e.preventDefault()
     props.handleConfirm()
