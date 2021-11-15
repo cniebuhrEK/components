@@ -8,6 +8,7 @@ import {
 type CarouselProps = {
   children?: React.ReactNode | React.ReactNode[]
   controls?: React.ReactNode
+  onSlideChange?: () => void
   activeItem?: number
   showNumbers?: boolean
 }
@@ -19,12 +20,14 @@ const Carousel = (props: CarouselProps): JSX.Element => {
   function handlePreviousClick(): void {
     if (active > 0) {
       setActive(active - 1)
+      props.onSlideChange && props.onSlideChange()
     }
   }
 
   function handleNextClick(): void {
     if (active < items.length - 1) {
       setActive(active + 1)
+      props.onSlideChange && props.onSlideChange()
     }
   }
 
@@ -35,7 +38,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
   }, [props.activeItem])
 
   React.useEffect(() => {
-    setActive(items.length - 1)
+    setActive(0)
   }, [props.children])
 
   return (
