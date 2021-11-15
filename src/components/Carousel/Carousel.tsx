@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+import * as R from 'ramda'
 import {
   ExamIconArrowLeft as ArrowLeft,
   ExamIconArrowRight as ArrowRight
 } from '../../examIcons'
+import usePrevious from '../../hooks/usePrevious'
 
 type CarouselProps = {
   children?: React.ReactNode | React.ReactNode[]
@@ -16,6 +18,7 @@ type CarouselProps = {
 const Carousel = (props: CarouselProps): JSX.Element => {
   const items: React.ReactNode[] = React.Children.toArray(props.children)
   const [active, setActive] = React.useState<number>(props.activeItem || 0)
+  const prevChildren = usePrevious(props.children)
 
   function handlePreviousClick(): void {
     if (active > 0) {
@@ -38,7 +41,12 @@ const Carousel = (props: CarouselProps): JSX.Element => {
   }, [props.activeItem])
 
   React.useEffect(() => {
-    setActive(0)
+    const prevLength = R.propOr(0, 'length', prevChildren)
+    const currentLength = R.pathOr(0, ['children', 'length'], props)
+
+    if (R.not(R.equals(prevLength, currentLength))) {
+      setActive(0)
+    }
   }, [props.children])
 
   return (
