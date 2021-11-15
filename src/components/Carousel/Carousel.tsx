@@ -45,7 +45,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
     const currentLength = R.pathOr(0, ['children', 'length'], props)
 
     if (R.not(R.equals(prevLength, currentLength))) {
-      setActive(0)
+      setActive(currentLength - 1)
     }
   }, [props.children])
 
