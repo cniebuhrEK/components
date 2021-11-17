@@ -44,7 +44,11 @@ const Button = (props: ButtonProps): JSX.Element => {
   return (
     <StyledButton {...props} autoFocus={autofocus}>
       {startIcon && <IconContainer>{startIcon}</IconContainer>}
-      {isLoading ? <Loader /> : children}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <span className='children-container'>{children}</span>
+      )}
     </StyledButton>
   )
 }
@@ -243,6 +247,12 @@ export const StyledButton = styled.button`
           return 'none'
       }
     }};
+  }
+
+  .children-container {
+    min-width: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 `
 
