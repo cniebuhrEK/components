@@ -203,7 +203,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
   )
 
   return (
-    <div id='toolbar'>
+    <div id={`toolbar-${id}`}>
       {sizeFormats}
       {inlineFormats}
       {sectionFormats}

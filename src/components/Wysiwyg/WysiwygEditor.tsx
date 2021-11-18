@@ -93,7 +93,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     wrapper.append(editor)
     const q = new Quill(editor, {
       theme: 'snow',
-      modules: { toolbar: '#toolbar' }
+      modules: { toolbar: `#toolbar-${id}` }
     })
     setQuill(q)
   }, [])
