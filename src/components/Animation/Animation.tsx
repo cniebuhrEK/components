@@ -21,22 +21,27 @@ const Animation = (props: AnimationProps): JSX.Element => {
 
   const handleStop = e => {
     e.stopPropagation()
+    e.preventDefault()
     setIsStopped(true)
   }
   const handlePlay = e => {
     e.stopPropagation()
+    e.preventDefault()
     isPaused ? setIsPaused(false) : setIsStopped(false)
   }
   const handlePause = e => {
     e.stopPropagation()
+    e.preventDefault()
     setIsPaused(true)
   }
   const openSpeedMenu = e => {
     e.stopPropagation()
+    e.preventDefault()
     setIsSpeedOpen(true)
   }
   const handleSelectSpeed = speed => e => {
     e.stopPropagation()
+    e.preventDefault()
     setSpeed(speed)
     setIsSpeedOpen(false)
   }
