@@ -146,8 +146,8 @@ const Hoverable = styled.div`
 
 // The height and width here should be the same as the icons.
 const Empty = styled.div`
-  height: 1.6em;
-  width: 1.6em;
+  height: 19px;
+  width: 16px;
 `
 
 export default Carousel
