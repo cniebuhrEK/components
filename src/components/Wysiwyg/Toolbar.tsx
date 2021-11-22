@@ -114,9 +114,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       {size && (
         <select className='ql-size'>
           <option value='small'>Small</option>
-          <option value='normal' selected>
-            Normal
-          </option>
+          <option selected />
           <option value='large'>Large</option>
           <option value='huge'>Huge</option>
         </select>

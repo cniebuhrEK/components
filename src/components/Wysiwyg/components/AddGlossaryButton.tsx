@@ -81,7 +81,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
   return (
     <ButtonContainer isDisabled={isDisabled}>
-      <button type='button' onClick={handleOpen}>
+      <button disabled={isDisabled} type='button' onClick={handleOpen}>
         <GlossaryIcon />
       </button>
       <SelectGlossary
