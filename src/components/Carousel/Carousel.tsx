@@ -13,6 +13,7 @@ type CarouselProps = {
   onSlideChange?: () => void
   activeItem?: number
   showNumbers?: boolean
+  disabled?: boolean
 }
 
 const Carousel = (props: CarouselProps): JSX.Element => {
@@ -21,14 +22,14 @@ const Carousel = (props: CarouselProps): JSX.Element => {
   const prevChildren = usePrevious(props.children)
 
   function handlePreviousClick(): void {
-    if (active > 0) {
+    if (active > 0 && !props.disabled) {
       setActive(active - 1)
       props.onSlideChange && props.onSlideChange()
     }
   }
 
   function handleNextClick(): void {
-    if (active < items.length - 1) {
+    if (active < items.length - 1 && !props.disabled) {
       setActive(active + 1)
       props.onSlideChange && props.onSlideChange()
     }
@@ -62,8 +63,8 @@ const Carousel = (props: CarouselProps): JSX.Element => {
         <Index>{props.showNumbers ? `${active + 1}.` : ''}</Index>
         <Panel>{items.filter((_, i: number) => i === active)}</Panel>
       </div>
-      <Controls>
-        <Hoverable>
+      <Controls disabled={props.disabled}>
+        <Hoverable disabled={props.disabled}>
           {active <= 0 ? (
             <Empty />
           ) : (
@@ -71,7 +72,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
           )}
         </Hoverable>
         <ControlsCenter>{props.controls}</ControlsCenter>
-        <Hoverable>
+        <Hoverable disabled={props.disabled}>
           {active >= items.length - 1 ? (
             <Empty />
           ) : (
@@ -124,6 +125,7 @@ const Controls = styled.div`
   height: fit-content;
   color: ${({ theme }) => theme.palette.darkblue01};
   z-index: ${({ theme }) => theme.zIndex.drawer + 200};
+  opacity: ${({ disabled }) => (disabled ? '0.2' : '1')};
 `
 
 const ControlsCenter = styled.div`
@@ -138,6 +140,7 @@ const Hoverable = styled.div`
 
   &:hover {
     cursor: pointer;
+    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   }
 `
 
