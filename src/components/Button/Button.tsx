@@ -45,7 +45,9 @@ const Button = (props: ButtonProps): JSX.Element => {
     <StyledButton {...props} autoFocus={autofocus}>
       {startIcon && <IconContainer>{startIcon}</IconContainer>}
       {isLoading ? (
-        <Loader />
+        <div className='loader'>
+          <Loader />
+        </div>
       ) : (
         <span className='children-container'>{children}</span>
       )}
@@ -163,6 +165,10 @@ export const StyledButton = styled.button`
   }};
   background-position: center;
   transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+
+  .loader {
+    margin: 0 auto;
+  }
 
   &:disabled {
     cursor: not-allowed;

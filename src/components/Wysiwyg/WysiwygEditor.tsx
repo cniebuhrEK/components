@@ -249,8 +249,8 @@ const WysiwygContainer = styled.div`
   }
 
   .ql-size-small {
-    font-size: 12px !important;
-    line-height: 14px !important;
+    font-size: 10px !important;
+    line-height: 12px !important;
   }
 `
 
