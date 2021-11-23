@@ -215,8 +215,7 @@ const WysiwygContainer = styled.div`
   }
 
   .glossary-word {
-    font-weight: bold;
-    text-decoration: underline;
+    color: ${({ theme }) => theme.palette.darkblue04} !important;
   }
 
   .ql-formats .ql-glossary {

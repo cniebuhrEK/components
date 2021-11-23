@@ -85,9 +85,8 @@ const TextViewerContainer = styled.div`
     font-weight: bold;
   }
 
-  .glossary-word {
-    font-weight: bold;
-    text-decoration: underline;
+  .glossary-word:hover {
+    color: ${({ theme }) => theme.palette.darkblue04} !important;
   }
 
   .ql-formats .ql-glossary {
