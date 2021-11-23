@@ -2,7 +2,9 @@ import Quill from 'quill'
 
 export const GLOSSARY_BLOT_NAME = 'glossary'
 export const CUSTOM_IMAGE_BLOT_NAME = 's3-image'
-export const ADMIN_HIGHLIGHTS_BLOT_NAME = 'blablabla'
+export const ADMIN_HIGHLIGHTS_BLOT_NAME = 'a-highlights'
+
+Quill.debug('error')
 
 export const addGlossaryBlotToQuill = () => {
   const InlineBlot = Quill.import('blots/inline')
