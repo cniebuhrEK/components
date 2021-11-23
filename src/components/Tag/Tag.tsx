@@ -25,6 +25,7 @@ interface TagProps {
     | 'mathPurple'
     | 'aquamarine'
     | 'turquoise'
+    | 'yellow'
   onClick?: (e: any) => void
   text: string | JSX.Element
   id?: string

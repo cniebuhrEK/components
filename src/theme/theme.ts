@@ -98,7 +98,7 @@ export default {
     turquoise08: '#d6f1f1',
 
     // Yellow
-    yellow06: '#fde19d',
+    yellow06: '#ffc22a',
     yellow08: '#fde19d',
 
     //

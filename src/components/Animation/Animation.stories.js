@@ -6,7 +6,9 @@ const Template = args => <Animation {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  data: example
+  data: example,
+  hideControls: false,
+  autoplay: false
 }
 
 export default {

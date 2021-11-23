@@ -8,15 +8,17 @@ import StopIcon from '../../icons/Stop'
 
 interface AnimationProps {
   data: any
+  hideControls?: boolean
+  autoplay?: boolean
 }
 
 const Animation = (props: AnimationProps): JSX.Element => {
-  const { data } = props
+  const { data, hideControls, autoplay } = props
   const dropdownRef = React.useRef(null)
 
   const [isSpeedOpen, setIsSpeedOpen] = React.useState(false)
   const [isPaused, setIsPaused] = React.useState(false)
-  const [isStopped, setIsStopped] = React.useState(true)
+  const [isStopped, setIsStopped] = React.useState(!autoplay)
   const [speed, setSpeed] = React.useState(1)
 
   const handleStop = e => {
@@ -48,7 +50,7 @@ const Animation = (props: AnimationProps): JSX.Element => {
 
   const options = {
     animationData: data,
-    autoplay: false
+    autoplay: autoplay
   }
 
   React.useEffect(() => {
@@ -79,42 +81,43 @@ const Animation = (props: AnimationProps): JSX.Element => {
         width={208}
         speed={speed}
       />
-      <div className='controls-container'>
-        <SpeedSelection isOpen={isSpeedOpen} ref={dropdownRef}>
-          <div className='selected-speed' onClick={openSpeedMenu}>
-            {speed} x
-          </div>
-          <div className='speed-options'>
-            <div className='speed-option' onClick={handleSelectSpeed(1)}>
-              1 x
+      {!hideControls && (
+        <div className='controls-container'>
+          <SpeedSelection isOpen={isSpeedOpen} ref={dropdownRef}>
+            <div className='selected-speed' onClick={openSpeedMenu}>
+              {speed} x
             </div>
-            <div className='speed-option' onClick={handleSelectSpeed(1.5)}>
-              1.5 x
+            <div className='speed-options'>
+              <div className='speed-option' onClick={handleSelectSpeed(1)}>
+                1 x
+              </div>
+              <div className='speed-option' onClick={handleSelectSpeed(1.5)}>
+                1.5 x
+              </div>
+              <div className='speed-option' onClick={handleSelectSpeed(2)}>
+                2 x
+              </div>
             </div>
-            <div className='speed-option' onClick={handleSelectSpeed(2)}>
-              2 x
-            </div>
-          </div>
-        </SpeedSelection>
-        <button className='animation-control stop' onClick={handleStop}>
-          <StopIcon />
-        </button>
-        <button className='animation-control play' onClick={handlePlay}>
-          <PlayIcon />
-        </button>
-        <button className='animation-control pause' onClick={handlePause}>
-          <PauseIcon />
-        </button>
-      </div>
+          </SpeedSelection>
+          <button className='animation-control stop' onClick={handleStop}>
+            <StopIcon />
+          </button>
+          <button className='animation-control play' onClick={handlePlay}>
+            <PlayIcon />
+          </button>
+          <button className='animation-control pause' onClick={handlePause}>
+            <PauseIcon />
+          </button>
+        </div>
+      )}
     </AnimationContainer>
   )
 }
 
 Animation.defaultProps = {
-  loop: false,
-  autoplay: false,
-  isPaused: false,
-  speed: 1
+  data: {},
+  hideControls: false,
+  autoplay: false
 }
 
 export default Animation
