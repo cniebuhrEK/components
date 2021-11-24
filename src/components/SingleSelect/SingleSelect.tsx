@@ -30,9 +30,9 @@ const SingleSelect = (props: SingleSelectProps): JSX.Element => {
 
   return (
     <Select
+      styles={REACT_SELECT_STYLES}
       {...props}
       defaultValue={options[0] || label}
-      styles={REACT_SELECT_STYLES}
       components={customComponents}
       isDisabled={disabled}
     />
