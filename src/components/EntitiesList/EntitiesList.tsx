@@ -78,6 +78,14 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const [rowsPerPage, setRowsPerPage] = useState(defaultRowsPerPage)
 
   useEffect(() => {
+    setRowsPerPage(defaultRowsPerPage)
+  }, [defaultRowsPerPage])
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [rowsPerPage])
+
+  useEffect(() => {
     onTableStateChange({
       sortBy: sortedColumnId,
       dir: sortDirection,
