@@ -124,7 +124,7 @@ export const REACT_SELECT_STYLES = {
   menu: (_provided, _state) => {
     return {
       position: 'absolute',
-      width: '100%',
+      minWidth: '100%',
       top: '100%',
       left: '0',
       margin: '0',
