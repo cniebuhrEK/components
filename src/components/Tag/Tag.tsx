@@ -72,9 +72,10 @@ const TagContainer = styled.div`
   min-width: ${({ theme }) => theme.dimensions.tagWidth};
   cursor: ${({ isStatic }) => (isStatic ? 'text' : 'pointer')};
   padding: 0 11px;
-  font-size: 10px;
+  font-size: 10px !important;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border: 1px solid
     ${({ theme, isActive }) =>
       isActive ? theme.palette.brown01 : 'transparent'};
