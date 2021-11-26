@@ -219,16 +219,22 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
       const responseId = R.pathOr('', ['data', 'id'], response)
       editorInstance.format(GLOSSARY_BLOT_NAME, responseId)
       ReactTooltip.rebuild()
-      console.log({ response, responseId })
       setSelectedId(null)
-      handleClose()
       handleCloseCreateNew()
+      setPhraseExplanation('')
+      setPhraseWord('')
+      handleClose()
     }
 
     const handleError = e => {
       setIsCreateNewLoading(false)
       R.pipe(
-        R.pathOr('Something went wrong', ['response', 'data', 'message']),
+        R.pathOr('Something went wrong', [
+          'response',
+          'data',
+          'error',
+          'message'
+        ]),
         setToastMessage
       )(e)
       openToastMessage()
