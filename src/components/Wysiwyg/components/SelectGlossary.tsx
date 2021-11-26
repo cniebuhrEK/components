@@ -8,6 +8,7 @@ import ReactTooltip from 'react-tooltip'
 import { GLOSSARY_BLOT_NAME } from '../customBlots'
 import { Button } from '../../Button'
 import { Input } from '../../Input'
+import { Textarea } from '../../Textarea'
 import { AddIcon, CheckmarkIcon } from '../../../icons'
 import { Pagination } from '../../Pagination'
 
@@ -32,6 +33,7 @@ interface SelectGlossaryProps {
   initialDelta: any
   glossaryEntries?: GlossaryPhrase[]
   handleFetchGlossaryList?: (e: any) => void
+  handleCreateNew?: (e: any) => Promise<void>
   handleClose: () => void
 }
 
@@ -44,11 +46,28 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     handleClose,
     open,
     selectedText,
-    initialDelta
+    initialDelta,
+    handleCreateNew
   } = props
   const [selectedId, setSelectedId] = React.useState(null)
   const [page, setPage] = React.useState(1)
   const [searchQuery, setSearchQuery] = React.useState('')
+  const [phraseWord, setPhraseWord] = React.useState('')
+  const [phraseExplanation, setPhraseExplanation] = React.useState('')
+  const [isCreateNewOpen, setIsCreateNewOpen] = React.useState(false)
+  const [isCreateNewLoading, setIsCreateNewLoading] = React.useState(false)
+
+  const handleOpenCreateNew = () => setIsCreateNewOpen(true)
+  const handleCloseCreateNew = () => setIsCreateNewOpen(false)
+
+  const handleChangeWord = e => {
+    e.preventDefault()
+    setPhraseWord(e.target.value)
+  }
+  const handleChangeExplanation = e => {
+    e.preventDefault()
+    setPhraseExplanation(e.target.value)
+  }
 
   React.useEffect(() => {
     if (selectedText) {
@@ -132,8 +151,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     searchQuery
   ])
 
-  return (
-    <StyledModal isOpen={open} onRequestClose={handleClose}>
+  const SelectExistingGlossary = (
+    <React.Fragment>
       <SearchContainer>
         <Input
           type='search'
@@ -150,6 +169,11 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
       </GlossaryHeadingContainer>
       <div className='list'>{renderGlossaryPhrases}</div>
       <ButtonsContainer>
+        {handleCreateNew && (
+          <CreateNewTrigger onClick={handleOpenCreateNew}>
+            Create new?
+          </CreateNewTrigger>
+        )}
         <Button
           type='button'
           id='select-glossary-cancel'
@@ -166,6 +190,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           color='blue'
           size='small'
           onClick={handleSubmit}
+          isLoading={isCreateNewLoading}
         >
           Save
         </Button>
@@ -177,6 +202,75 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           onPageChange={handlePageChange}
         />
       </PaginationContainer>
+    </React.Fragment>
+  )
+
+  const handleSubmitCreateNew = () => {
+    setIsCreateNewLoading(true)
+
+    const handleSuccess = response => {
+      setIsCreateNewLoading(false)
+      const responseId = R.pathOr('', ['data', 'id'], response)
+      handleSelect(responseId)
+      setSelectedId(null)
+      handleClose()
+      handleCloseCreateNew()
+    }
+
+    const handleError = e => {
+      setIsCreateNewLoading(false)
+      console.error(e)
+    }
+
+    handleCreateNew &&
+      handleCreateNew({
+        phrase: phraseWord,
+        explanation: phraseExplanation
+      })
+        .then(handleSuccess)
+        .catch(handleError)
+  }
+
+  const CreateNew = (
+    <CreateNewContainer>
+      <CreateNewTitle>Create new glossary record</CreateNewTitle>
+      <Input label='Word' value={phraseWord} onChange={handleChangeWord} />
+      <Textarea
+        label='Explanation'
+        value={phraseExplanation}
+        onChange={handleChangeExplanation}
+      />
+      <CreateNewButtonsContainer>
+        <Button
+          type='button'
+          id='select-glossary-cancel'
+          color='blue'
+          size='small'
+          variant='outlined'
+          onClick={handleCloseCreateNew}
+        >
+          Cancel
+        </Button>
+        <Button
+          id='select-glossary-submit'
+          type='button'
+          color='blue'
+          size='small'
+          onClick={handleSubmitCreateNew}
+          disabled={R.or(
+            R.isEmpty(phraseExplanation.trim()),
+            R.isEmpty(phraseWord.trim())
+          )}
+        >
+          Save
+        </Button>
+      </CreateNewButtonsContainer>
+    </CreateNewContainer>
+  )
+
+  return (
+    <StyledModal isOpen={open} onRequestClose={handleClose}>
+      {isCreateNewOpen ? CreateNew : SelectExistingGlossary}
     </StyledModal>
   )
 }
@@ -197,6 +291,20 @@ const ButtonsContainer = styled.div`
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
+
+  button {
+    min-width: 157px;
+  }
+
+  button + button {
+    margin-left: 24px;
+  }
+`
+
+const CreateNewButtonsContainer = styled.div`
+  margin-top: 29px;
+  display: flex;
+  justify-content: center;
 
   button {
     min-width: 157px;
@@ -339,8 +447,8 @@ export const StyledModal = styled(ReactModalAdapter).attrs({
     color: ${({ theme }) => theme.palette.brown01};
     border-radius: 6px;
     outline: 0;
-    max-width: 408px;
-    min-width: 408px;
+    max-width: 473px;
+    min-width: 473px;
     margin-top: 19px;
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
@@ -352,4 +460,28 @@ export const StyledModal = styled(ReactModalAdapter).attrs({
   .list {
     overflow-y: auto;
   }
+`
+
+const CreateNewTrigger = styled.div`
+  font-size: 12px;
+  letter-spacing: -0.1px;
+  text-decoration-line: underline;
+  color: ${({ theme }) => theme.palette.textDark};
+  min-width: 70px;
+  white-space: nowrap;
+  margin-right: 25px;
+  line-height: 32px;
+  cursor: pointer;
+`
+
+const CreateNewTitle = styled.div`
+  color: ${({ theme }) => theme.palette.brown01};
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+`
+
+const CreateNewContainer = styled.div`
+  max-width: 327px;
+  margin: 0 auto;
 `

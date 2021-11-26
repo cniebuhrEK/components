@@ -39,6 +39,7 @@ interface WysiwygEditorFieldProps {
     customImage?: boolean
     adminHighlights?: boolean
   }
+  handleCreateNew?: (e: any) => Promise<void>
   handleFetchGlossaryList?: (e: any) => void
   handleScanGlossaryList?: (e: any) => void
   getPhraseDetails?: (e: any) => void
@@ -72,7 +73,8 @@ export const WysiwygEditorField = (
     getPhraseDetails,
     initialValue,
     handleS3Upload,
-    bookContentId
+    bookContentId,
+    handleCreateNew
   } = props
 
   // Indicator for whether the input is open or not
@@ -124,6 +126,7 @@ export const WysiwygEditorField = (
       initialValue={initialValue}
       handleS3Upload={handleS3Upload}
       bookContentId={bookContentId}
+      handleCreateNew={handleCreateNew}
     />
   )
 }

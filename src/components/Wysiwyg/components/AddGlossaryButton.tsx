@@ -17,6 +17,7 @@ import SelectGlossary, {
 interface AddGlossaryButtonProps {
   editorInstance: any
   handleFetchGlossaryList?: (e: any) => void
+  handleCreateNew?: (e: any) => Promise<void>
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
 }
@@ -26,7 +27,8 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
     editorInstance,
     glossaryEntries,
     handleFetchGlossaryList,
-    glossaryEntriesPagination
+    glossaryEntriesPagination,
+    handleCreateNew
   } = props
   const [isOpen, setVisibility] = React.useState(false)
   const [isDisabled, setDisabled] = React.useState(true)
@@ -63,7 +65,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
 
   const handleListener = e => {
     const targetTagName = R.pathOr('', ['target', 'localName'], e)
-    if (targetTagName !== 'input') {
+    if (targetTagName !== 'input' && targetTagName !== 'textarea') {
       saveSelectionState()
     }
   }
@@ -93,6 +95,7 @@ const AddGlossaryButton = (props: AddGlossaryButtonProps): JSX.Element => {
         handleFetchGlossaryList={handleFetchGlossaryList}
         glossaryEntries={glossaryEntries}
         editorInstance={editorInstance}
+        handleCreateNew={handleCreateNew}
       />
     </ButtonContainer>
   )

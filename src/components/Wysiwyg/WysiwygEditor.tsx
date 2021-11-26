@@ -49,6 +49,7 @@ interface TextEditorProps {
   }
   handleFetchGlossaryList?: (e: any) => void
   handleScanGlossaryList?: (e: any) => void
+  handleCreateNew?: (e: any) => Promise<void>
   getPhraseDetails?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
@@ -76,7 +77,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     error,
     errorText,
     initialValue,
-    bookContentId
+    bookContentId,
+    handleCreateNew
   } = props
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
@@ -159,6 +161,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         editorInstance={quill}
         handleS3Upload={handleS3Upload}
         id={id}
+        handleCreateNew={handleCreateNew}
       />
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}
