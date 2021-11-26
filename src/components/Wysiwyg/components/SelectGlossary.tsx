@@ -106,6 +106,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     editorInstance.setContents(initialDelta)
     ReactTooltip.rebuild()
     setSelectedId(null)
+    setPhraseExplanation('')
+    setPhraseWord('')
     handleClose()
   }
 
