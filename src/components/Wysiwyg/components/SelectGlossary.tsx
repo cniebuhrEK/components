@@ -255,6 +255,12 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     }
   }
 
+  const handleCancelCreateNew = () => {
+    setPhraseExplanation('')
+    setPhraseWord('')
+    handleCloseCreateNew()
+  }
+
   const CreateNew = (
     <CreateNewContainer>
       <CreateNewTitle>Create new glossary record</CreateNewTitle>
@@ -271,7 +277,7 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
           color='blue'
           size='small'
           variant='outlined'
-          onClick={handleCloseCreateNew}
+          onClick={handleCancelCreateNew}
         >
           Cancel
         </Button>
