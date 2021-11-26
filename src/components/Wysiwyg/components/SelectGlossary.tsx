@@ -11,6 +11,7 @@ import { Input } from '../../Input'
 import { Textarea } from '../../Textarea'
 import { AddIcon, CheckmarkIcon } from '../../../icons'
 import { Pagination } from '../../Pagination'
+import { Toast } from '../../Toast'
 
 export interface GlossaryPhrase {
   id: string
@@ -56,6 +57,8 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   const [phraseExplanation, setPhraseExplanation] = React.useState('')
   const [isCreateNewOpen, setIsCreateNewOpen] = React.useState(false)
   const [isCreateNewLoading, setIsCreateNewLoading] = React.useState(false)
+  const [showToastMessage, setShowToastMessage] = React.useState(false)
+  const [toastMessage, setToastMessage] = React.useState('')
 
   const handleOpenCreateNew = () => setIsCreateNewOpen(true)
   const handleCloseCreateNew = () => setIsCreateNewOpen(false)
@@ -205,7 +208,10 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     </React.Fragment>
   )
 
-  const handleSubmitCreateNew = () => {
+  const openToastMessage = () => setShowToastMessage(true)
+  const hideToastMessage = () => setShowToastMessage(false)
+
+  const handleSubmitCreateNew = async () => {
     setIsCreateNewLoading(true)
 
     const handleSuccess = response => {
@@ -221,16 +227,24 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
 
     const handleError = e => {
       setIsCreateNewLoading(false)
-      console.error(e)
+      R.pipe(
+        R.pathOr('Something went wrong', ['response', 'data', 'message']),
+        setToastMessage
+      )(e)
+      openToastMessage()
     }
 
-    handleCreateNew &&
-      handleCreateNew({
-        phrase: phraseWord,
-        explanation: phraseExplanation
-      })
-        .then(handleSuccess)
-        .catch(handleError)
+    if (handleCreateNew) {
+      try {
+        const response = await handleCreateNew({
+          phrase: phraseWord,
+          explanation: phraseExplanation
+        })
+        handleSuccess(response)
+      } catch (e) {
+        handleError(e)
+      }
+    }
   }
 
   const CreateNew = (
@@ -273,6 +287,13 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   return (
     <StyledModal isOpen={open} onRequestClose={handleClose}>
       {isCreateNewOpen ? CreateNew : SelectExistingGlossary}
+      <Toast
+        severity='error'
+        handleClose={hideToastMessage}
+        open={showToastMessage}
+      >
+        {toastMessage}
+      </Toast>
     </StyledModal>
   )
 }
