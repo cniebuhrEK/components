@@ -211,7 +211,9 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
     const handleSuccess = response => {
       setIsCreateNewLoading(false)
       const responseId = R.pathOr('', ['data', 'id'], response)
-      handleSelect(responseId)
+      editorInstance.format(GLOSSARY_BLOT_NAME, responseId)
+      ReactTooltip.rebuild()
+      console.log({ response, responseId })
       setSelectedId(null)
       handleClose()
       handleCloseCreateNew()
