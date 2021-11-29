@@ -59,7 +59,8 @@ import {
   ReloadIcon,
   SubtractIcon,
   BoxClosedIcon,
-  AttachmentIcon
+  AttachmentIcon,
+  PreviewIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -130,7 +131,8 @@ const AllIcons = () => {
     { component: ReloadIcon, title: 'ReloadIcon' },
     { component: SubtractIcon, title: 'SubtractIcon' },
     { component: BoxClosedIcon, title: 'BoxClosedIcon' },
-    { component: AttachmentIcon, title: 'AttachmentIcon' }
+    { component: AttachmentIcon, title: 'AttachmentIcon' },
+    { component: PreviewIcon, title: 'PreviewIcon' }
   ]
 
   return (
