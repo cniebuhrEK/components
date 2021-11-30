@@ -264,8 +264,14 @@ export const SelectGlossary = (props: SelectGlossaryProps): JSX.Element => {
   const CreateNew = (
     <CreateNewContainer>
       <CreateNewTitle>Create new glossary record</CreateNewTitle>
-      <Input label='Word' value={phraseWord} onChange={handleChangeWord} />
+      <Input
+        required
+        label='Word'
+        value={phraseWord}
+        onChange={handleChangeWord}
+      />
       <Textarea
+        required
         label='Explanation'
         value={phraseExplanation}
         onChange={handleChangeExplanation}
