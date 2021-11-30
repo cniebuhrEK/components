@@ -88,6 +88,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const wrapperRef = React.useCallback(wrapper => {
     // make sure if we have wrapper instance
     if (!wrapper) return
+    const Delta = Quill.import('delta')
 
     // this is to reset the code on each component mount
     wrapper.innerHTML = ''
@@ -95,7 +96,23 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     wrapper.append(editor)
     const q = new Quill(editor, {
       theme: 'snow',
-      modules: { toolbar: `#toolbar-${id}` }
+      modules: {
+        toolbar: `#toolbar-${id}`,
+        clipboard: {
+          matchers: [
+            [
+              Node.ELEMENT_NODE,
+              (_node, delta) =>
+                delta.compose(
+                  new Delta().retain(delta.length(), {
+                    color: false,
+                    background: false
+                  })
+                )
+            ]
+          ]
+        }
+      }
     })
     setQuill(q)
   }, [])
