@@ -2,6 +2,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import * as R from 'ramda'
 
 import {
   AddIcon,
@@ -61,7 +62,14 @@ import {
   BoxClosedIcon,
   AttachmentIcon,
   PreviewIcon,
-  VideoCameraIcon
+  VideoCameraIcon,
+  ExamEditorIcon,
+  StudentContainedIcon,
+  CoursesIcon,
+  GlossaryContainedIcon,
+  BooksContainedIcon,
+  FlashcardsIcon,
+  WalletsIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -134,12 +142,21 @@ const AllIcons = () => {
     { component: BoxClosedIcon, title: 'BoxClosedIcon' },
     { component: AttachmentIcon, title: 'AttachmentIcon' },
     { component: PreviewIcon, title: 'PreviewIcon' },
+    { component: ExamEditorIcon, title: 'ExamEditorIcon' },
+    { component: StudentContainedIcon, title: 'StudentContainedIcon' },
+    { component: CoursesIcon, title: 'CoursesIcon' },
+    { component: GlossaryContainedIcon, title: 'GlossaryContainedIcon' },
+    { component: BooksContainedIcon, title: 'BooksContainedIcon' },
+    { component: FlashcardsIcon, title: 'FlashcardsIcon' },
+    { component: WalletsIcon, title: 'WalletsIcon' },
     { component: VideoCameraIcon, title: 'VideoCameraIcon' }
   ]
 
+  const sortedIcons = R.sortBy(R.prop('title'))(icons)
+
   return (
     <IconsContainer>
-      {icons.map(
+      {sortedIcons.map(
         ({ component: I, title }, i: number): JSX.Element => (
           <IconContainer key={i}>
             <p>{`${title}:`}</p>
