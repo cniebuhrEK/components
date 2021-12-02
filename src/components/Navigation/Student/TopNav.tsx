@@ -25,32 +25,28 @@ type MenuLink = {
 }
 
 interface StudentTopNavigationProps {
-  // URL of the user avatar
   avatar: string
-
-  // Text greeting for the user
   greeting: string
-
-  // Text for the menu button
   menu: string
-
-  // Should the KRACK UNIVERSITY banner be shown?
   showCrackUniversityLogo?: boolean
-
-  // Links for the menu
   links: MenuLink[]
+  onMenuOpen?: () => any
 }
 
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, menu, greeting, links, showCrackUniversityLogo } = props
+  const { avatar, menu, greeting, links, showCrackUniversityLogo, onMenuOpen } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
 
   const handleMouseLeave = () => setOpen(false)
+  const handleMouseEnter = () => {
+    setOpen(true)
+    onMenuOpen && onMenuOpen()
+  }
 
   const logoUrl: string = showCrackUniversityLogo
     ? '/assets/logo/CrackUniversityLogo.svg'
@@ -70,7 +66,8 @@ const StudentTopNavigation = (
       </NavStaticMenuItem>
     ))
 
-  const handleLevel2 = value => () => {
+  const handleLevel2 = value => e => {
+    e.preventDefault()
     linkLevel2 === value ? resetLevel2() : setLevel2(value)
   }
 
@@ -106,7 +103,8 @@ const StudentTopNavigation = (
       )
     })
 
-  const handleLevel1 = value => () => {
+  const handleLevel1 = value => e => {
+    e.preventDefault()
     linkLevel1 === value ? resetLevel1() : setLevel1(value)
   }
 
@@ -160,7 +158,7 @@ const StudentTopNavigation = (
 
         <Overlay open={open} />
         <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
-          <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
+          <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
           <NavMenu open={open}>{generateLinks}</NavMenu>
         </MenuContainer>
       </NavRight>
@@ -172,8 +170,7 @@ StudentTopNavigation.defaultProps = {
   avatar: '',
   menu: '',
   greeting: '',
-  links: [],
-  onMenuHover: () => {}
+  links: []
 }
 
 const Container = styled.div`
