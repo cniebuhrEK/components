@@ -36,13 +36,24 @@ interface StudentTopNavigationProps {
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, menu, greeting, links, showCrackUniversityLogo, onMenuOpen } = props
+  const { avatar, menu, greeting, links, showCrackUniversityLogo, onMenuOpen } =
+    props
 
   const [open, setOpen] = React.useState<boolean>(false)
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
 
-  const handleMouseLeave = () => setOpen(false)
+  const setLevel1 = value => setLinkLevel1(value)
+  const setLevel2 = value => setLinkLevel2(value)
+
+  const resetLevel1 = () => setLinkLevel1('')
+  const resetLevel2 = () => setLinkLevel2('')
+
+  const handleMouseLeave = () => {
+    setOpen(false)
+    resetLevel1()
+    resetLevel2()
+  }
   const handleMouseEnter = () => {
     setOpen(true)
     onMenuOpen && onMenuOpen()
@@ -52,18 +63,12 @@ const StudentTopNavigation = (
     ? '/assets/logo/CrackUniversityLogo.svg'
     : '/assets/logo/LogoDarkBg.svg'
 
-  const setLevel1 = value => setLinkLevel1(value)
-  const setLevel2 = value => setLinkLevel2(value)
-
-  const resetLevel1 = () => setLinkLevel1('')
-  const resetLevel2 = () => setLinkLevel2('')
-
   const generateLevel2Links = links =>
     links.map((link, index) => (
-      <NavStaticMenuItem href={link.url} key={`nav-menu-link-level-1-${index}`}>
+      <NavMenuItem href={link.url} key={`nav-menu-link-level-1-${index}`}>
         {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
         <NavMenuLink>{link.label}</NavMenuLink>
-      </NavStaticMenuItem>
+      </NavMenuItem>
     ))
 
   const handleLevel2 = value => e => {
@@ -118,7 +123,7 @@ const StudentTopNavigation = (
     const isSelected = index === openedLeveledLinkIndex
 
     const shouldHide =
-      openedLeveledLinkIndex > 0 && index > openedLeveledLinkIndex
+      openedLeveledLinkIndex >= 0 && index > openedLeveledLinkIndex
 
     const MainLink = has1level ? (
       <NavStaticMenuItem
@@ -255,26 +260,30 @@ const MenuContainer = styled.div`
 `
 
 const NavMenu = styled.div`
-    background-color ${({ theme }) => theme.palette.white};
-    border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
-    box-shadow: 0px 10px 20px #CDC5BB;
-    display: ${({ open }) => (open ? 'block' : 'none')};
-    opacity: ${({ open }) => (open ? '1' : '0')};
-    width: ${({ open }) => (open ? 'auto' : '0')};
-    height: ${({ open }) => (open ? 'auto' : '0')};
-    min-width: ${({ open }) => (open ? '200px' : '0')};
-    position: absolute;
-    right: 0;
-    top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
-    z-index: ${({ theme }) => theme.zIndex.menu};
-    transition: opacity 700ms ${({ theme }) =>
-      theme.transitions.easing.easeInOut};
+  background-color ${({ theme }) => theme.palette.white};
+  border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
+  box-shadow: 0px 10px 20px #CDC5BB;
+  display: ${({ open }) => (open ? 'block' : 'none')};
+  opacity: ${({ open }) => (open ? '1' : '0')};
+  width: ${({ open }) => (open ? 'auto' : '0')};
+  height: ${({ open }) => (open ? 'auto' : '0')};
+  min-width: ${({ open }) => (open ? '200px' : '0')};
+  position: absolute;
+  right: 0;
+  top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  z-index: ${({ theme }) => theme.zIndex.menu};
+  transition: opacity 700ms ${({ theme }) =>
+    theme.transitions.easing.easeInOut};
+  max-width: 210px;
+  min-width: 210px;
 `
 
 const NavMenuLink = styled.span`
   color: ${({ theme }) => theme.palette.darkblue01};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `
 
 const NavMenuIcon = styled.div`
@@ -286,10 +295,13 @@ const NavMenuItem = styled.a`
   align-items: center;
   justify-content: flex-start;
   line-height: normal;
-  width: auto;
   padding: 12px 16px;
   color: ${({ theme }) => theme.palette.darkblue01};
   border-left: 3px solid transparent;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
@@ -307,7 +319,6 @@ const NavStaticMenuItem = styled.div`
   align-items: center;
   justify-content: flex-start;
   line-height: normal;
-  width: auto;
   padding: 12px 16px;
   color: ${({ theme }) => theme.palette.darkblue01};
   border-left: ${({ isSelected, theme }) =>
@@ -316,6 +327,10 @@ const NavStaticMenuItem = styled.div`
     isSelected ? '0px 4px 4px rgba(0, 0, 0, 0.15)' : 'none'};
   text-decoration: ${({ isSelectedAsLevel1 }) =>
     isSelectedAsLevel1 ? 'underline' : 'none'};
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
