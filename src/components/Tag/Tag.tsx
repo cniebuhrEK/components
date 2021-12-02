@@ -11,7 +11,8 @@ const tagColors = {
   mathPurple: 'mathPurple',
   aquamarine: 'aquamarine',
   turquoise: 'turquoise',
-  yellow: 'yellow'
+  yellow: 'yellow',
+  grey: 'grey'
 }
 
 interface TagProps {
@@ -26,6 +27,7 @@ interface TagProps {
     | 'aquamarine'
     | 'turquoise'
     | 'yellow'
+    | 'grey'
   onClick?: (e: any) => void
   text: string | JSX.Element
   id?: string
@@ -126,6 +128,10 @@ const TagContainer = styled.div`
         return theme.palette.yellow06
       case color === tagColors.yellow && !isActive:
         return theme.palette.yellow08
+      case color === tagColors.grey && isActive:
+        return theme.palette.gray01
+      case color === tagColors.grey && !isActive:
+        return theme.palette.gray01
       default:
         return theme.palette.orange06
     }
@@ -177,6 +183,10 @@ const TagContainer = styled.div`
           return theme.palette.yellow06
         case color === tagColors.yellow && isStatic:
           return theme.palette.yellow08
+        case color === tagColors.grey && !isStatic:
+          return theme.palette.gray01
+        case color === tagColors.grey && isStatic:
+          return theme.palette.gray01
         default:
           return theme.palette.orange06
       }
