@@ -69,7 +69,10 @@ import {
   GlossaryContainedIcon,
   BooksContainedIcon,
   FlashcardsIcon,
-  WalletsIcon
+  WalletsIcon,
+  GearIcon,
+  NavArrowLeftIcon,
+  NavArrowRightIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -149,7 +152,10 @@ const AllIcons = () => {
     { component: BooksContainedIcon, title: 'BooksContainedIcon' },
     { component: FlashcardsIcon, title: 'FlashcardsIcon' },
     { component: WalletsIcon, title: 'WalletsIcon' },
-    { component: VideoCameraIcon, title: 'VideoCameraIcon' }
+    { component: VideoCameraIcon, title: 'VideoCameraIcon' },
+    { component: NavArrowRightIcon, title: 'NavArrowRightIcon' },
+    { component: NavArrowLeftIcon, title: 'NavArrowLeftIcon' },
+    { component: GearIcon, title: 'GearIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
