@@ -1,13 +1,27 @@
 // Navigation/Student/TopNav.tsx - Top navigation component
 
 import React from 'react'
+import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
+import { isNotNilOrEmpty } from '../../../utils/ramda'
+
+type PureLink = {
+  label: string
+  url?: string
+}
+
+type NextLevelLink = {
+  label: string
+  url?: string
+  nextLevel?: PureLink[]
+}
 
 type MenuLink = {
   label: string
-  url: string
+  url?: string
   icon?: JSX.Element
+  nextLevel?: NextLevelLink[]
 }
 
 interface StudentTopNavigationProps {
@@ -33,12 +47,104 @@ const StudentTopNavigation = (
   const { avatar, menu, greeting, links, showCrackUniversityLogo } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
+  const [linkLevel1, setLinkLevel1] = React.useState('')
+  const [linkLevel2, setLinkLevel2] = React.useState('')
 
   const handleMouseLeave = () => setOpen(false)
 
   const logoUrl: string = showCrackUniversityLogo
     ? '/assets/logo/CrackUniversityLogo.svg'
     : '/assets/logo/LogoDarkBg.svg'
+
+  const setLevel1 = value => setLinkLevel1(value)
+  const setLevel2 = value => setLinkLevel2(value)
+
+  const resetLevel1 = () => setLinkLevel1('')
+  const resetLevel2 = () => setLinkLevel2('')
+
+  const generateLevel2Links = links =>
+    links.map((link, index) => (
+      <NavStaticMenuItem href={link.url} key={`nav-menu-link-level-1-${index}`}>
+        {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+        <NavMenuLink>{link.label}</NavMenuLink>
+      </NavStaticMenuItem>
+    ))
+
+  const handleLevel2 = value => () => {
+    linkLevel2 === value ? resetLevel2() : setLevel2(value)
+  }
+
+  const generateLevel1Links = links =>
+    links.map((link, index) => {
+      const nextLevelLinks = R.propOr([], 'nextLevel')(link)
+      const has2level = isNotNilOrEmpty(nextLevelLinks)
+      const isOtherLeveledLinkSelected =
+        linkLevel2 !== link.label && isNotNilOrEmpty(linkLevel2)
+      const isSelected = linkLevel2 === link.label
+
+      const Level1Link = has2level ? (
+        <NavStaticMenuItem
+          onClick={handleLevel2(link.label)}
+          isHidden={isOtherLeveledLinkSelected}
+          isSelectedAsLevel1={isSelected}
+        >
+          {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+          <NavMenuLink>{link.label}</NavMenuLink>
+        </NavStaticMenuItem>
+      ) : (
+        <NavMenuItem href={link.url}>
+          {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+          <NavMenuLink>{link.label}</NavMenuLink>
+        </NavMenuItem>
+      )
+
+      return (
+        <React.Fragment key={`nav-menu-link-level-1-${index}`}>
+          {Level1Link}
+          {link.label === linkLevel2 && generateLevel2Links(nextLevelLinks)}
+        </React.Fragment>
+      )
+    })
+
+  const handleLevel1 = value => () => {
+    linkLevel1 === value ? resetLevel1() : setLevel1(value)
+  }
+
+  const generateLinks = links.map((link: MenuLink, index) => {
+    const nextLevelLinks = R.propOr([], 'nextLevel')(link)
+    const has1level = isNotNilOrEmpty(nextLevelLinks)
+
+    const openedLeveledLinkIndex = R.findIndex(R.propEq('label', linkLevel1))(
+      links
+    )
+    const isSelected = index === openedLeveledLinkIndex
+
+    const shouldHide =
+      openedLeveledLinkIndex > 0 && index > openedLeveledLinkIndex
+
+    const MainLink = has1level ? (
+      <NavStaticMenuItem
+        isHidden={shouldHide}
+        onClick={handleLevel1(link.label)}
+        isSelected={isSelected}
+      >
+        {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+        <NavMenuLink>{link.label}</NavMenuLink>
+      </NavStaticMenuItem>
+    ) : (
+      <NavMenuItem isHidden={shouldHide} href={link.url}>
+        {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+        <NavMenuLink>{link.label}</NavMenuLink>
+      </NavMenuItem>
+    )
+
+    return (
+      <React.Fragment key={`nav-menu-link-${index}`}>
+        {MainLink}
+        {linkLevel1 === link.label && generateLevel1Links(nextLevelLinks)}
+      </React.Fragment>
+    )
+  })
 
   return (
     <Container>
@@ -55,14 +161,7 @@ const StudentTopNavigation = (
         <Overlay open={open} />
         <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
           <Button onMouseEnter={() => setOpen(true)}>{menu}</Button>
-          <NavMenu open={open}>
-            {links.map((l: MenuLink, i: number) => (
-              <NavMenuItem key={`nav-menu-link-${i}`} href={l.url}>
-                {l.icon && <NavMenuIcon>{l.icon}</NavMenuIcon>}
-                <NavMenuLink>{l.label}</NavMenuLink>
-              </NavMenuItem>
-            ))}
-          </NavMenu>
+          <NavMenu open={open}>{generateLinks}</NavMenu>
         </MenuContainer>
       </NavRight>
     </Container>
@@ -186,7 +285,7 @@ const NavMenuIcon = styled.div`
 `
 
 const NavMenuItem = styled.a`
-  display: flex;
+  display: ${({ isHidden }) => (isHidden ? 'none' : 'flex')};
   align-items: center;
   justify-content: flex-start;
   line-height: normal;
@@ -194,6 +293,32 @@ const NavMenuItem = styled.a`
   padding: 12px 16px;
   color: ${({ theme }) => theme.palette.darkblue01};
   border-left: 3px solid transparent;
+
+  &:hover {
+    border-left: 3px solid ${({ theme }) => theme.palette.orange02};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+
+  &:hover ${NavMenuLink} {
+    font-weight: 600;
+  }
+`
+
+const NavStaticMenuItem = styled.div`
+  display: ${({ isHidden }) => (isHidden ? 'none' : 'flex')};
+  align-items: center;
+  justify-content: flex-start;
+  line-height: normal;
+  width: auto;
+  padding: 12px 16px;
+  color: ${({ theme }) => theme.palette.darkblue01};
+  border-left: ${({ isSelected, theme }) =>
+    `3px solid ${isSelected ? theme.palette.orange02 : 'transparent'}`};
+  box-shadow: ${({ isSelected }) =>
+    isSelected ? '0px 4px 4px rgba(0, 0, 0, 0.15)' : 'none'};
+  text-decoration: ${({ isSelectedAsLevel1 }) =>
+    isSelectedAsLevel1 ? 'underline' : 'none'};
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};

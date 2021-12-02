@@ -2,6 +2,12 @@
 
 import React from 'react'
 import TopNav from './TopNav'
+import BooksContainedIcon from '../../../icons/BooksContained'
+import DashboardIcon from '../../../icons/Dashboard'
+import GamesIcon from '../../../icons/Games'
+import VideoCameraIcon from '../../../icons/VideoCamera'
+import ExamEditorIcon from '../../../icons/ExamEditor'
+import LogoutIcon from '../../../icons/Logout'
 
 const Template = args => <TopNav {...args} />
 
@@ -13,16 +19,100 @@ TopNavigation.args = {
   showCrackUniversityLogo: true,
   links: [
     {
-      label: 'Exams',
-      url: 'https://examkrackers.com'
+      label: 'Dashboard',
+      icon: <DashboardIcon />,
+      url: '#'
+    },
+    {
+      label: 'Books',
+      icon: <BooksContainedIcon />,
+      url: '',
+      nextLevel: [
+        {
+          label: 'Biology',
+          url: '',
+          nextLevel: [
+            {
+              label: '1',
+              url: '/1'
+            },
+            {
+              label: '2',
+              url: '/2'
+            },
+            {
+              label: '3',
+              url: '/3'
+            }
+          ]
+        },
+        {
+          label: 'Physics',
+          url: '',
+          nextLevel: [
+            {
+              label: '1',
+              url: '/1'
+            },
+            {
+              label: '2',
+              url: '/2'
+            },
+            {
+              label: '3',
+              url: '/3'
+            }
+          ]
+        },
+        {
+          label: 'Chemistry',
+          url: '',
+          nextLevel: [
+            {
+              label: '1',
+              url: '/1'
+            },
+            {
+              label: '2',
+              url: '/2'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      label: 'Games',
+      icon: <GamesIcon />,
+      url: '#'
+    },
+    {
+      label: 'Videos',
+      icon: <VideoCameraIcon />,
+      url: '#'
+    },
+    {
+      label: 'Practice Exams',
+      url: '',
+      icon: <ExamEditorIcon />,
+      nextLevel: [
+        {
+          label: 'Mini',
+          url: '#'
+        },
+        {
+          label: 'Full',
+          url: '#'
+        }
+      ]
     },
     {
       label: 'Projections',
-      url: 'https://examkrackers.com'
+      url: '#'
     },
     {
       label: 'Log Out',
-      url: 'https://examkrackers.com'
+      icon: <LogoutIcon />,
+      url: '#'
     }
   ]
 }
