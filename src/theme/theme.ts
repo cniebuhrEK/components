@@ -101,6 +101,9 @@ export default {
     yellow06: '#ffc22a',
     yellow08: '#fde19d',
 
+    // Grey
+    gray01: '#c2c2c2',
+
     //
     // Old Palette
     //

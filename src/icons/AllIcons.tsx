@@ -2,6 +2,7 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import * as R from 'ramda'
 
 import {
   AddIcon,
@@ -61,6 +62,20 @@ import {
   BoxClosedIcon,
   AttachmentIcon,
   PreviewIcon,
+  VideoCameraIcon,
+  ExamEditorIcon,
+  StudentContainedIcon,
+  CoursesIcon,
+  GlossaryContainedIcon,
+  BooksContainedIcon,
+  FlashcardsIcon,
+  WalletsIcon,
+  GearIcon,
+  NavArrowLeftIcon,
+  NavArrowRightIcon,
+  DashboardIcon,
+  GamesIcon,
+  NotesIcon,
   VideoPreviewIcon
 } from './'
 
@@ -134,12 +149,28 @@ const AllIcons = () => {
     { component: BoxClosedIcon, title: 'BoxClosedIcon' },
     { component: AttachmentIcon, title: 'AttachmentIcon' },
     { component: PreviewIcon, title: 'PreviewIcon' },
+    { component: ExamEditorIcon, title: 'ExamEditorIcon' },
+    { component: StudentContainedIcon, title: 'StudentContainedIcon' },
+    { component: CoursesIcon, title: 'CoursesIcon' },
+    { component: GlossaryContainedIcon, title: 'GlossaryContainedIcon' },
+    { component: BooksContainedIcon, title: 'BooksContainedIcon' },
+    { component: FlashcardsIcon, title: 'FlashcardsIcon' },
+    { component: WalletsIcon, title: 'WalletsIcon' },
+    { component: VideoCameraIcon, title: 'VideoCameraIcon' },
+    { component: NavArrowRightIcon, title: 'NavArrowRightIcon' },
+    { component: NavArrowLeftIcon, title: 'NavArrowLeftIcon' },
+    { component: GearIcon, title: 'GearIcon' },
+    { component: DashboardIcon, title: 'DashboardIcon' },
+    { component: GamesIcon, title: 'GamesIcon' },
+    { component: NotesIcon, title: 'NotesIcon' },
     { component: VideoPreviewIcon, title: 'VideoPreviewIcon' }
   ]
 
+  const sortedIcons = R.sortBy(R.prop('title'))(icons)
+
   return (
     <IconsContainer>
-      {icons.map(
+      {sortedIcons.map(
         ({ component: I, title }, i: number): JSX.Element => (
           <IconContainer key={i}>
             <p>{`${title}:`}</p>

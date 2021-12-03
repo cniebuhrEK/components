@@ -8,10 +8,11 @@ interface UploadFileTriggerProps {
   onChange: (e: any) => any
   id: string
   children: string | JSX.Element | JSX.Element[]
+  inputProps?: any
 }
 
 const UploadFileTrigger = (props: UploadFileTriggerProps): JSX.Element => {
-  const { onChange, id, disabled, children } = props
+  const { onChange, id, disabled, children, inputProps } = props
 
   const handleClick = (e: any) => {
     e.target.value = null
@@ -40,6 +41,7 @@ const UploadFileTrigger = (props: UploadFileTriggerProps): JSX.Element => {
         onChange={handleOnChange}
         onClick={handleClick}
         type='file'
+        {...inputProps}
       />
     </UploadFileTriggerContainer>
   )
