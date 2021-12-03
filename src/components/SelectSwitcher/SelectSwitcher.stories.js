@@ -9,6 +9,7 @@ export const Default = DefaultTemplate.bind({})
 
 Default.args = {
   id: 'select-switcher',
+  onChange: () => {},
   value: 'y',
   options: [
     {

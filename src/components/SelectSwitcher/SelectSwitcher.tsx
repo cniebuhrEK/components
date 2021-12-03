@@ -4,6 +4,7 @@ import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface SelectSwitcherProps {
   value: string
+  onChange: (v) => void
   id: string
   options: {
     label: string
@@ -12,7 +13,7 @@ interface SelectSwitcherProps {
 }
 
 export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
-  const { options, value: defaultValue, id } = props
+  const { options, value: defaultValue, id, onChange = () => {} } = props
 
   const [dimensionLeft, setDimensionLeft] = React.useState(0)
   const [value, setValue] = React.useState(defaultValue)
@@ -38,6 +39,7 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
 
   React.useEffect(() => {
     saveDimensions()
+    onChange(value)
   }, [value])
 
   const handleClick = value => () => setValue(value)
