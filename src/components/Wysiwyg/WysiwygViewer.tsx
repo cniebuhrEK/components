@@ -88,7 +88,7 @@ WysiwygViewer.defaultProps = {
 const TextViewerContainer = styled.div`
   &.with-highlights {
     * {
-      color: ${({ theme }) => theme.palette.inactive};
+      color: ${({ theme }) => theme.palette.inactive} !important;
     }
 
     .admin-highlights {
