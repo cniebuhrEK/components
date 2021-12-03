@@ -24,11 +24,12 @@ interface TextEditorProps {
   id: string
   bookContentId?: string
   value: any
+  withHighlights?: boolean
   getPhraseDetails?: (e: any) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, getPhraseDetails, value, bookContentId } = props
+  const { id, getPhraseDetails, value, bookContentId, withHighlights } = props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -66,7 +67,11 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
 
   return (
     <div>
-      <TextViewerContainer ref={wrapperRef} id={id} />
+      <TextViewerContainer
+        className={withHighlights ? 'with-highlights' : ''}
+        ref={wrapperRef}
+        id={id}
+      />
       <GlossaryTooltips
         bookContentId={bookContentId}
         getPhraseDetails={getPhraseDetails}
@@ -81,6 +86,16 @@ WysiwygViewer.defaultProps = {
 }
 
 const TextViewerContainer = styled.div`
+  &.with-highlights {
+    * {
+      color: ${({ theme }) => theme.palette.inactive};
+    }
+
+    .admin-highlights {
+      color: ${({ theme }) => theme.palette.darkblue01} !important;
+    }
+  }
+
   strong {
     font-weight: bold;
   }
@@ -101,10 +116,6 @@ const TextViewerContainer = styled.div`
 
   .ql-container.ql-snow.ql-disabled {
     border: none;
-  }
-
-  .admin-highlights {
-    color: ${({ theme }) => theme.palette.inactive} !important;
   }
 
   .ql-editor h1 {

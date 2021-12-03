@@ -82,6 +82,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   } = props
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
+  const [hasAdminHighlights, setHasAdminHighlights] = React.useState(false)
   const Delta = Quill.import('delta')
   console.log(new Delta())
 
@@ -119,12 +120,26 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     setQuill(q)
   }, [])
 
+  const checkAdminHighlight = q => {
+    // @ts-ignore
+    const deltaObject = q.getContents()
+
+    const hasHighlights = R.pipe(
+      R.propOr([], 'ops'),
+      R.find(R.pipe(R.path(['attributes', 'a-highlights']), R.equals(true))),
+      R.isNil,
+      R.not
+    )(deltaObject)
+    setHasAdminHighlights(hasHighlights)
+  }
+
   React.useEffect(() => {
     if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(initialValue)
       // @ts-ignore
       quill.update()
+      checkAdminHighlight(quill)
       glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
@@ -136,6 +151,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     const handleTextChange = () => {
       // @ts-ignore
       onChange(quill)
+      checkAdminHighlight(quill)
     }
 
     // @ts-ignore
@@ -164,7 +180,10 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   )
 
   return (
-    <TextEditorContainer error={error}>
+    <TextEditorContainer
+      error={error}
+      className={hasAdminHighlights ? 'with-highlights' : ''}
+    >
       {label && (
         <label htmlFor={id} className='editor-label'>
           {label}
@@ -197,6 +216,16 @@ const TextEditorContainer = styled.div`
   &,
   * {
     color: ${({ theme }) => theme.palette.darkblue01};
+  }
+
+  &.with-highlights {
+    .ql-container * {
+      color: ${({ theme }) => theme.palette.inactive} !important;
+    }
+
+    .ql-container .admin-highlights {
+      color: ${({ theme }) => theme.palette.darkblue01} !important;
+    }
   }
 
   .ql-stroke {
@@ -244,10 +273,6 @@ const WysiwygContainer = styled.div`
     white-space: nowrap;
     word-break: keep-all;
     min-width: 200px;
-  }
-
-  .admin-highlights {
-    color: ${({ theme }) => theme.palette.inactive} !important;
   }
 
   .ql-editor h1 {

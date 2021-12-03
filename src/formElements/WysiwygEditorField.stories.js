@@ -27,6 +27,12 @@ UploadFileField.args = {
         insert: ' ipsum sit amet'
       },
       {
+        attributes: {
+          'a-highlights': true
+        },
+        insert: ' ipsum'
+      },
+      {
         insert: ' dolor sit amet\n'
       }
     ]
