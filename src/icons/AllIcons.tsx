@@ -75,7 +75,8 @@ import {
   NavArrowRightIcon,
   DashboardIcon,
   GamesIcon,
-  NotesIcon
+  NotesIcon,
+  VideoPreviewIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -161,7 +162,8 @@ const AllIcons = () => {
     { component: GearIcon, title: 'GearIcon' },
     { component: DashboardIcon, title: 'DashboardIcon' },
     { component: GamesIcon, title: 'GamesIcon' },
-    { component: NotesIcon, title: 'NotesIcon' }
+    { component: NotesIcon, title: 'NotesIcon' },
+    { component: VideoPreviewIcon, title: 'VideoPreviewIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
