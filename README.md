@@ -5,19 +5,12 @@
 [![NPM](https://img.shields.io/npm/v/components.svg)](https://www.npmjs.com/package/components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 
-## How to develop on local project:
-1. Clone the components git repository
-2. Install packages by running `yarn`
-3. Run `yarn start` to build the library with tracking changes
+## How to develop with local components library:
+1. Clone the components git repository in the same catalog where you keep your **local project**
+2. In components project install packages by running `yarn`
+3. In components project run `yarn start` to build the library with tracking changes
 4. Go to your **local project**, and edit your package.json dependencies:
 ```
-    "@testing-library/jest-dom": "link:../components/node_modules/@testing-library/jest-dom",
-    "@testing-library/react": "link:../components/node_modules/@testing-library/react",
-    "@testing-library/user-event": "link:../components/node_modules/@testing-library/user-event",
-    "@types/jest": "link:../components/node_modules/@types/jest",
-    "@types/node": "link:../components/node_modules/@types/node",
-    "@types/react": "link:../components/node_modules/@types/react",
-    "@types/react-dom": "link:../components/node_modules/@types/react-dom",
     "examkrackers-components": "link:../components",
     "styled-components": "link:../components/node_modules/styled-components",
     "react": "link:../components/node_modules/react",
