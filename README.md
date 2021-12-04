@@ -4,9 +4,41 @@
 
 [![NPM](https://img.shields.io/npm/v/components.svg)](https://www.npmjs.com/package/components) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-## Install
 
-To install in the project add:
+## How to develop on local project:
+1. Clone the components git repository
+2. Install packages by running `yarn`
+3. Run `yarn start` to build the library with tracking changes
+4. Go to your **local project**, and edit your package.json dependencies:
+```
+    "@testing-library/jest-dom": "link:../components/node_modules/@testing-library/jest-dom",
+    "@testing-library/react": "link:../components/node_modules/@testing-library/react",
+    "@testing-library/user-event": "link:../components/node_modules/@testing-library/user-event",
+    "@types/jest": "link:../components/node_modules/@types/jest",
+    "@types/node": "link:../components/node_modules/@types/node",
+    "@types/react": "link:../components/node_modules/@types/react",
+    "@types/react-dom": "link:../components/node_modules/@types/react-dom",
+    "examkrackers-components": "link:../components",
+    "styled-components": "link:../components/node_modules/styled-components",
+    "react": "link:../components/node_modules/react",
+    "react-dom": "link:../components/node_modules/react-dom"
+```
+5. In your **local project** remove yarn.lock file and run yarn install (or run `yarn reset` if it is defined in package.json)
+6. In your **local project** run `yarn start`
+
+### Now every change in 'components' will be visible in your local project :)
+
+> **⚠ WARNING:** Remember to remove the changes from package.json and reset yarn.lock of the **local project** when you are finished.
+
+
+## Storybook Development
+1. Clone the components git repository
+2. Install packages by running `yarn`
+3. Run `yarn storybook:start` to build the storybook
+
+## Install in your project
+
+1. To install in the project add:
 
 ```
 {
@@ -16,12 +48,9 @@ To install in the project add:
     }
 }
 ```
-in your project dependencies and run
-```
-    yarn
-```
+in your project dependencies and run `yarn` or remove yarn.lock and then run `yarn`
 
-Then import the ThemeProvider and wrap your application with it:
+2. Import the ThemeProvider and wrap your application with it:
 
 ```
 ...
@@ -53,29 +82,6 @@ const SubmitButton = (props) => {
 }
 
 ```
-
-## Development
-
-install the dependencies by running:
-```
-yarn
-cd examples
-yarn
-```
-
-then in first terminal tab inside the root run:
-
-```
-yarn start
-```
-
-in second terminal tab open the examples catalog and run
-```
-yarn start
-```
-
-after that in the root repo you will start a build watcher for the new changes inside `/src` catalog
-and in `/examples` catalog you will run the storybook project so you can preview the components from the root
 
 ## Adding assets
 
