@@ -19,9 +19,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
 
   return (
     <StyledReactModal onRequestClose={handleClose} isOpen={open} {...rest}>
-      <Title isVisible={isNotNilOrEmpty(title)} onClick={handleClose}>
-        {title}
-      </Title>
+      <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
       <Close onClick={handleClose}>
         <CloseIcon />
       </Close>
