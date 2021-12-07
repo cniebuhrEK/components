@@ -1,5 +1,6 @@
 import React from 'react'
 import VimeoPlayer from 'react-player/vimeo'
+import styled from 'styled-components'
 
 type VideoPlayerProps = {
   url: string
@@ -46,23 +47,25 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   } = props
 
   return (
-    <VimeoPlayer
-      controls={controls}
-      playing={playing}
-      url={url}
-      styles={styles}
-      width={width}
-      height={height}
-      muted={muted}
-      light={light}
-      loop={loop}
-      onReady={onReady}
-      onStart={onStart}
-      onPlay={onPlay}
-      onPause={onPause}
-      onEnded={onEnded}
-      onError={onError}
-    />
+    <VideoContainer width={width} height={height}>
+      <VimeoPlayer
+        controls={controls}
+        playing={playing}
+        url={url}
+        styles={styles}
+        width={width}
+        height={height}
+        muted={muted}
+        light={light}
+        loop={loop}
+        onReady={onReady}
+        onStart={onStart}
+        onPlay={onPlay}
+        onPause={onPause}
+        onEnded={onEnded}
+        onError={onError}
+      />
+    </VideoContainer>
   )
 }
 
@@ -78,3 +81,13 @@ VideoPlayer.defaultProps = {
 }
 
 export default VideoPlayer
+
+const VideoContainer = styled.div`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+
+  iframe {
+    width: ${({ width }) => width} !important;
+    height: ${({ height }) => height} !important;
+  }
+`
