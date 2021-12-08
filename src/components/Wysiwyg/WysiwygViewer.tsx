@@ -142,6 +142,10 @@ const TextViewerContainer = styled.div`
     font-size: 10px !important;
     line-height: 12px !important;
   }
+
+  * {
+    overflow-x: hidden;
+  }
 `
 
 export default WysiwygViewer
