@@ -13,15 +13,11 @@ interface ThemeProviderProps {
 const ThemeProvider = ({
   theme = {},
   children
-}: ThemeProviderProps): JSX.Element => {
-  console.log({ theme, defaultTheme })
-
-  return (
-    <StyledThemeProvider theme={mergeDeepRight(defaultTheme, theme)}>
-      <Fonts />
-      {children}
-    </StyledThemeProvider>
-  )
-}
+}: ThemeProviderProps): JSX.Element => (
+  <StyledThemeProvider theme={mergeDeepRight(defaultTheme, theme)}>
+    <Fonts />
+    {children}
+  </StyledThemeProvider>
+)
 
 export default ThemeProvider
