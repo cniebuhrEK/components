@@ -145,6 +145,7 @@ const TextViewerContainer = styled.div`
 
   * {
     overflow-x: hidden;
+    overflow-y: hidden;
   }
 `
 
