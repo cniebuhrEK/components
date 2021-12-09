@@ -8,6 +8,7 @@ const DefaultTemplate = args => <SelectSwitcher {...args} />
 export const Default = DefaultTemplate.bind({})
 
 Default.args = {
+  label: 'Highlights',
   id: 'select-switcher',
   onChange: () => {},
   value: 'y',

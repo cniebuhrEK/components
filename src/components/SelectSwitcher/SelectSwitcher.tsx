@@ -4,6 +4,7 @@ import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface SelectSwitcherProps {
   value: string
+  label?: string
   onChange: (v) => void
   id: string
   options: {
@@ -13,9 +14,10 @@ interface SelectSwitcherProps {
 }
 
 export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
-  const { options, value: defaultValue, id, onChange = () => {} } = props
+  const { options, value: defaultValue, id, onChange = () => {}, label } = props
 
   const [dimensionLeft, setDimensionLeft] = React.useState(0)
+  const [containerWidth, setContainerWidth] = React.useState(0)
   const [value, setValue] = React.useState(defaultValue)
 
   const saveDimensions = () => {
@@ -26,6 +28,8 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
       const activeElementDimensions = activeElement.getBoundingClientRect()
       const containerElementDimensions =
         containerElement.getBoundingClientRect()
+
+      setContainerWidth(containerElementDimensions.width)
 
       const offset =
         activeElementDimensions.left - containerElementDimensions.left
@@ -63,14 +67,17 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
   ))
 
   return (
-    <SwitcherContainer id={id}>
-      {RenderOptions}
-      <ActiveOption
-        isVisible={isNotNilOrEmpty(value)}
-        dimensionLeft={dimensionLeft}
-      />
-      <SwitcherTriggers>{RenderTriggers}</SwitcherTriggers>
-    </SwitcherContainer>
+    <>
+      {label && <SwitcherLabel width={containerWidth}>{label}</SwitcherLabel>}
+      <SwitcherContainer id={id}>
+        {RenderOptions}
+        <ActiveOption
+          isVisible={isNotNilOrEmpty(value)}
+          dimensionLeft={dimensionLeft}
+        />
+        <SwitcherTriggers>{RenderTriggers}</SwitcherTriggers>
+      </SwitcherContainer>
+    </>
   )
 }
 
@@ -119,6 +126,15 @@ const SwitcherTrigger = styled.div`
   position: relative;
   width: ${({ width }) => width}%;
   height: 100%;
+`
+
+const SwitcherLabel = styled.div`
+  display: block;
+  text-align: center;
+  width: ${({ width }) => width}px;
+  margin-bottom: 6px;
+  letter-spacing: -0.1px;
+  color: ${props => props.theme.palette.brown01};
 `
 
 const SwitcherOptionLabel = styled.span`

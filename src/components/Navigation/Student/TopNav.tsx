@@ -185,7 +185,6 @@ const Container = styled.div`
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
-  padding: 0 32px;
   width: 100%;
   max-width: 1280px;
   margin: auto;
