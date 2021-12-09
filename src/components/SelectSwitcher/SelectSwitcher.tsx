@@ -67,7 +67,7 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
   ))
 
   return (
-    <>
+    <React.Fragment>
       {label && <SwitcherLabel width={containerWidth}>{label}</SwitcherLabel>}
       <SwitcherContainer id={id}>
         {RenderOptions}
@@ -77,7 +77,7 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
         />
         <SwitcherTriggers>{RenderTriggers}</SwitcherTriggers>
       </SwitcherContainer>
-    </>
+    </React.Fragment>
   )
 }
 
