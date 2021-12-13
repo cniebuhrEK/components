@@ -1,82 +1,110 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import Tab from './Tab'
-import TabPanel from './TabPanel'
+import { propOr, find, propEq } from 'ramda'
 
-interface TabsProps {
-  children: JSX.Element[] | JSX.Element | undefined
+interface TabProps {
+  hideTabs?: boolean
+  activeTab: string
+  position: 'bottomRight' | 'bottomLeft' | 'topRight' | 'topLeft'
+  tabs: {
+    label: string
+    value: string
+  }[]
+  tabContents: {
+    value: string
+    content: JSX.Element[] | JSX.Element | null
+  }[]
 }
 
-export const Tabs = (props: TabsProps) => {
-  // Transform react children to array.
-  const children: any = React.Children.toArray(props.children)
+export const Tabs = (props: TabProps) => {
+  const { position, tabs, activeTab, tabContents, hideTabs } = props
 
-  // Check if there is a manual default
-  const defaultEl = children.find((el: any): JSX.Element => el.props.active)
+  const [active, setActive] = React.useState(activeTab)
 
-  // Set the active tab
-  const [activeTab, setActiveTab] = React.useState<string>(
-    (defaultEl && defaultEl.props.label) || children[0].props.label
-  )
+  const handleSetActive = value => () => setActive(value)
 
-  const setDefaultActiveTab = () => {
-    setActiveTab(
-      (defaultEl && defaultEl.props.label) || children[0].props.label
-    )
-  }
+  React.useEffect(() => {
+    setActive(activeTab)
+  }, [activeTab])
 
-  useEffect(() => {
-    setDefaultActiveTab()
-  }, [children])
+  const renderTabTriggers = tabs.map(tab => (
+    <TabTrigger
+      position={position}
+      active={active === propOr('', 'value', tab)}
+      onClick={handleSetActive(propOr('', 'value', tab))}
+      className='tab-trigger'
+      key={`tab-trigger-${propOr('', 'value', tab)}`}
+    >
+      {propOr('', 'label', tab)}
+    </TabTrigger>
+  ))
+
+  const activeContent = find(propEq('value', active))(tabContents)
 
   return (
-    <TabsContainer>
-      <TabsHeader>
-        {children.map(child => (
-          <Tab
-            activeTab={activeTab}
-            key={child.props.label}
-            label={child.props.label}
-            to={child.props.to}
-            onClick={(tab: string) => {
-              child.props.onClick && child.props.onClick()
-              return setActiveTab(tab)
-            }}
-          />
-        ))}
-      </TabsHeader>
-      <TabContent>
-        {children.map((child: any) => {
-          if (child.props.label !== activeTab) {
-            return undefined
-          }
-
-          return child
-        })}
-      </TabContent>
-    </TabsContainer>
+    <Container position={position}>
+      <TabContent>{propOr('', 'content', activeContent)}</TabContent>
+      {!hideTabs && (
+        <TabTriggersContainer position={position}>
+          {renderTabTriggers}
+        </TabTriggersContainer>
+      )}
+    </Container>
   )
 }
-
-Tabs.defaultProps = {
-  children: (
-    <TabPanel label='Default'>
-      Please add some child elements to create tabs.
-    </TabPanel>
-  )
-}
-
-const TabsContainer = styled.div`
-  display: block;
+const Container = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: ${props => props.theme.shadows.darkShadow};
 `
 
-const TabsHeader = styled.ol`
-  border-bottom: 2px solid #ccc;
-  padding: 0px;
+const TabTriggersContainer = styled.div`
+  position: absolute;
+  top: ${({ position }) =>
+    position === 'topRight' || position === 'topLeft' ? 0 : 'auto'};
+  bottom: ${({ position }) =>
+    position === 'bottomRight' || position === 'bottomLeft' ? 0 : 'auto'};
+  left: ${({ position }) =>
+    position === 'topLeft' || position === 'bottomLeft' ? 0 : 'auto'};
+  right: ${({ position }) =>
+    position === 'topRight' || position === 'bottomRight' ? 0 : 'auto'};
+  display: flex;
+  align-items: ${({ position }) =>
+    position === 'topRight' || position === 'topLeft'
+      ? 'flex-end'
+      : 'flex-start'};
+  gap: 18px;
+  transform: translateY(
+    ${({ position }) =>
+      position === 'topRight' || position === 'topLeft' ? '-100%' : '100%'}
+  );
+`
+
+const TabTrigger = styled.div`
+  cursor: pointer;
+  background-color: ${({ theme, active }) =>
+    active ? theme.palette.orange01 : theme.palette.darkblue01};
+  color: ${({ theme, active }) =>
+    active ? theme.palette.darkblue01 : theme.palette.orange01};
+  box-shadow: ${props => props.theme.shadows.darkShadow};
+  min-width: 89px;
+  text-align: center;
+  line-height: ${({ active }) => (active ? '29px' : '19px')};
+  height: ${({ active }) => (active ? '29px' : '19px')};
+  font-weight: bold;
+  font-size: 11px;
+  letter-spacing: -0.1px;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
+  border-radius: ${({ position }) =>
+    position === 'bottomRight' || position === 'bottomLeft'
+      ? '0px 0px 6px 6px'
+      : '6px 6px 0px 0px'};
 `
 
 const TabContent = styled.div`
-  display: block;
+  width: 100%;
+  height: 100%;
 `
 
 export default Tabs
