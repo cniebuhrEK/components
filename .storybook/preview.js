@@ -8,8 +8,6 @@ import {
 } from '../src'
 
 const withThemeProvider = (Story, context) => {
-  console.log({ Story, context })
-
   const isExamLayout = /Exam/i.test(context.kind)
 
   return isExamLayout ? (
