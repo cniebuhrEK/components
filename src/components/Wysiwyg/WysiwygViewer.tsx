@@ -3,15 +3,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
+import { includes, values, propOr } from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
-import { getGlossaryIds } from './utils'
+import { getGlossaryIds, HIGHLIGHT_BLOTS } from './utils'
 import {
   addAdminHighlightsBlotToQuill,
   addGlossaryBlotToQuill,
-  addImageBlotToQuill
+  addImageBlotToQuill,
+  addHighlightBlots
 } from './customBlots'
 
 import GlossaryTooltips from './components/GlossaryTooltips'
@@ -25,11 +27,21 @@ interface TextEditorProps {
   bookContentId?: string
   value: any
   withHighlights?: boolean
+  withYoursHighlights?: boolean
   getPhraseDetails?: (e: any) => void
+  onHighlightChange?: (e) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, getPhraseDetails, value, bookContentId, withHighlights } = props
+  const {
+    id,
+    getPhraseDetails,
+    value,
+    bookContentId,
+    withHighlights,
+    withYoursHighlights,
+    onHighlightChange
+  } = props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -37,6 +49,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const wrapperRef = React.useCallback(wrapper => {
     addGlossaryBlotToQuill()
     addAdminHighlightsBlotToQuill()
+    addHighlightBlots()
     addImageBlotToQuill()
     // make sure if we have the wrapper
     if (!wrapper) return
@@ -65,10 +78,62 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
 
   const glossaryIds = getGlossaryIds(value)
 
+  const removeHighlights = () => {
+    // @ts-ignore
+    values(HIGHLIGHT_BLOTS).map(blot => quill.format(blot, false, 'api'))
+  }
+
+  const handleMouseDown = e => {
+    const targetElement = e.target
+    const highlightData = targetElement.getAttribute('data-highlight')
+    const farthestViewportElement = propOr(
+      {},
+      'farthestViewportElement',
+      targetElement
+    )
+    const elementId = propOr('null', 'id', targetElement)
+    const farthestViewportElementId = propOr(
+      'null',
+      'id',
+      farthestViewportElement
+    )
+    const isColorPicker = includes('color-', highlightData || 'null')
+    const isDeleteButton =
+      includes('delete-highlight', elementId) ||
+      includes('delete-highlight', farthestViewportElementId)
+
+    if (isColorPicker && isNotNilOrEmpty(quill)) {
+      removeHighlights()
+      // @ts-ignore
+      quill.format(HIGHLIGHT_BLOTS[highlightData], true, 'api')
+      // @ts-ignore
+      quill.setSelection(0, 0)
+      onHighlightChange && onHighlightChange(quill)
+    }
+
+    if (isDeleteButton && isNotNilOrEmpty(quill)) {
+      removeHighlights()
+      // @ts-ignore
+      quill.setSelection(0, 0)
+      onHighlightChange && onHighlightChange(quill)
+    }
+  }
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleMouseDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handleMouseDown)
+    }
+  }, [quill])
+
+  const adminHighlightClassName = withHighlights ? 'admin-highlights' : ''
+  const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
+
   return (
     <div>
       <TextViewerContainer
-        className={withHighlights ? 'with-highlights' : ''}
+        className={`${adminHighlightClassName} ${yourHighlightClassName}`}
         ref={wrapperRef}
         id={id}
       />
@@ -86,7 +151,7 @@ WysiwygViewer.defaultProps = {
 }
 
 const TextViewerContainer = styled.div`
-  &.with-highlights {
+  &.admin-highlights {
     * {
       color: ${({ theme }) => theme.palette.inactive} !important;
     }
@@ -146,6 +211,32 @@ const TextViewerContainer = styled.div`
   * {
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+
+  &.your-highlights {
+    .green-highlight {
+      background-color: ${({ theme }) => theme.palette.highlightGreen};
+    }
+
+    .purple-highlight {
+      background-color: ${({ theme }) => theme.palette.purple08};
+    }
+
+    .red-highlight {
+      background-color: ${({ theme }) => theme.palette.deepred07};
+    }
+
+    .yellow-highlight {
+      background-color: ${({ theme }) => theme.palette.highlightYellow};
+    }
+
+    .blue-highlight {
+      background-color: ${({ theme }) => theme.palette.lightblue05};
+    }
+
+    .orange-highlight {
+      background-color: ${({ theme }) => theme.palette.orange05};
+    }
   }
 `
 

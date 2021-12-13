@@ -104,6 +104,10 @@ export default {
     // Grey
     gray01: '#c2c2c2',
 
+    // Highlights
+    highlightGreen: '#13fb03',
+    highlightYellow: '#ffff00',
+
     //
     // Old Palette
     //

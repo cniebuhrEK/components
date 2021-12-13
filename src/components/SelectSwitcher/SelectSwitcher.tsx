@@ -68,20 +68,26 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
 
   return (
     <React.Fragment>
-      {label && <SwitcherLabel width={containerWidth}>{label}</SwitcherLabel>}
-      <SwitcherContainer id={id}>
-        {RenderOptions}
-        <ActiveOption
-          isVisible={isNotNilOrEmpty(value)}
-          dimensionLeft={dimensionLeft}
-        />
-        <SwitcherTriggers>{RenderTriggers}</SwitcherTriggers>
-      </SwitcherContainer>
+      <Container>
+        {label && <SwitcherLabel width={containerWidth}>{label}</SwitcherLabel>}
+        <SwitcherContainer id={id}>
+          {RenderOptions}
+          <ActiveOption
+            isVisible={isNotNilOrEmpty(value)}
+            dimensionLeft={dimensionLeft}
+          />
+          <SwitcherTriggers>{RenderTriggers}</SwitcherTriggers>
+        </SwitcherContainer>
+      </Container>
     </React.Fragment>
   )
 }
 
 export default SelectSwitcher
+
+const Container = styled.div`
+  display: inline-block;
+`
 
 const SwitcherContainer = styled.div`
   position: relative;
