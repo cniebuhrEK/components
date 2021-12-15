@@ -3,15 +3,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
+import { includes, values, propOr, any, propEq } from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
-import { getGlossaryIds } from './utils'
+import { getGlossaryIds, HIGHLIGHT_BLOTS } from './utils'
 import {
   addAdminHighlightsBlotToQuill,
   addGlossaryBlotToQuill,
-  addImageBlotToQuill
+  addImageBlotToQuill,
+  addHighlightBlots
 } from './customBlots'
 
 import GlossaryTooltips from './components/GlossaryTooltips'
@@ -25,11 +27,21 @@ interface TextEditorProps {
   bookContentId?: string
   value: any
   withHighlights?: boolean
+  withYoursHighlights?: boolean
   getPhraseDetails?: (e: any) => void
+  onHighlightChange?: (e) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, getPhraseDetails, value, bookContentId, withHighlights } = props
+  const {
+    id,
+    getPhraseDetails,
+    value,
+    bookContentId,
+    withHighlights,
+    withYoursHighlights,
+    onHighlightChange
+  } = props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -37,6 +49,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const wrapperRef = React.useCallback(wrapper => {
     addGlossaryBlotToQuill()
     addAdminHighlightsBlotToQuill()
+    addHighlightBlots()
     addImageBlotToQuill()
     // make sure if we have the wrapper
     if (!wrapper) return
@@ -65,10 +78,84 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
 
   const glossaryIds = getGlossaryIds(value)
 
+  const removeHighlights = () => {
+    // @ts-ignore
+    values(HIGHLIGHT_BLOTS).map(blot => quill.format(blot, false, 'api'))
+  }
+
+  const isClickedInside = mouseEvent => {
+    const path = propOr([], 'path', mouseEvent)
+    return any(propEq('id', id))(path)
+  }
+
+  const handleMouseDown = e => {
+    const targetElement = e.target
+    const highlightData = targetElement.getAttribute('data-highlight')
+    const farthestViewportElement = propOr(
+      {},
+      'farthestViewportElement',
+      targetElement
+    )
+    const elementId = propOr('null', 'id', targetElement)
+    const farthestViewportElementId = propOr(
+      'null',
+      'id',
+      farthestViewportElement
+    )
+    const isColorPicker = includes('color-', highlightData || 'null')
+    const isDeleteButton =
+      includes('delete-highlight', elementId) ||
+      includes('delete-highlight', farthestViewportElementId)
+
+    // This is to reset the lastRange when user clicks outside of the area
+    // because of the issue, when user selects another area in different
+    // quill editor, then the highlight is set on the editor which loses focus
+    // because of lastRange saved
+    if (!isClickedInside(e) && !isColorPicker) {
+      // @ts-ignore
+      quill.setSelection(0, 0)
+    }
+
+    if (isColorPicker && isNotNilOrEmpty(quill)) {
+      // @ts-ignore
+      quill.update()
+      removeHighlights()
+      // @ts-ignore
+      quill.format(HIGHLIGHT_BLOTS[highlightData], true, 'api')
+      // @ts-ignore
+      quill.setSelection(0, 0)
+      onHighlightChange && onHighlightChange(quill)
+    }
+
+    if (isDeleteButton && isNotNilOrEmpty(quill)) {
+      // @ts-ignore
+      quill.update()
+      removeHighlights()
+      // @ts-ignore
+      quill.setSelection(0, 0)
+      onHighlightChange && onHighlightChange(quill)
+    }
+  }
+
+  React.useEffect(() => {
+    document.addEventListener('mousedown', handleMouseDown)
+
+    return () => {
+      document.removeEventListener('mousedown', handleMouseDown)
+    }
+  }, [quill])
+
+  const adminHighlightClassName = withHighlights ? 'admin-highlights' : ''
+  const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
+
   return (
-    <div>
+    // This is a workaround to allow selecting only within the div
+    // because of the issue, when user selects multiple quill areas at once
+    // and wants to highlight the selected text - selection can be done
+    // only within one quill editor context
+    <Container contentEditable>
       <TextViewerContainer
-        className={withHighlights ? 'with-highlights' : ''}
+        className={`${adminHighlightClassName} ${yourHighlightClassName}`}
         ref={wrapperRef}
         id={id}
       />
@@ -77,7 +164,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         getPhraseDetails={getPhraseDetails}
         glossaryIds={glossaryIds}
       />
-    </div>
+    </Container>
   )
 }
 
@@ -85,8 +172,13 @@ WysiwygViewer.defaultProps = {
   glossaryDefinitions: []
 }
 
+const Container = styled.div`
+  outline: none;
+  border: none;
+`
+
 const TextViewerContainer = styled.div`
-  &.with-highlights {
+  &.admin-highlights {
     * {
       color: ${({ theme }) => theme.palette.inactive} !important;
     }
@@ -112,6 +204,11 @@ const TextViewerContainer = styled.div`
 
   .ql-editor {
     padding: 0;
+    caret-color: transparent;
+  }
+
+  .ql-container {
+    border: none !important;
   }
 
   .ql-container.ql-snow.ql-disabled {
@@ -146,6 +243,32 @@ const TextViewerContainer = styled.div`
   * {
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+
+  &.your-highlights {
+    .green-highlight {
+      background-color: ${({ theme }) => theme.palette.highlightGreen};
+    }
+
+    .purple-highlight {
+      background-color: ${({ theme }) => theme.palette.purple08};
+    }
+
+    .red-highlight {
+      background-color: ${({ theme }) => theme.palette.deepred07};
+    }
+
+    .yellow-highlight {
+      background-color: ${({ theme }) => theme.palette.highlightYellow};
+    }
+
+    .blue-highlight {
+      background-color: ${({ theme }) => theme.palette.lightblue05};
+    }
+
+    .orange-highlight {
+      background-color: ${({ theme }) => theme.palette.orange05};
+    }
   }
 `
 

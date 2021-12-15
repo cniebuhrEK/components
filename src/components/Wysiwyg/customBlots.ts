@@ -3,6 +3,12 @@ import Quill from 'quill'
 export const GLOSSARY_BLOT_NAME = 'glossary'
 export const CUSTOM_IMAGE_BLOT_NAME = 's3-image'
 export const ADMIN_HIGHLIGHTS_BLOT_NAME = 'a-highlights'
+export const GREEN_HIGHLIGHTS_BLOT_NAME = 'green-highlights'
+export const YELLOW_HIGHLIGHTS_BLOT_NAME = 'yellow-highlights'
+export const PURPLE_HIGHLIGHTS_BLOT_NAME = 'purple-highlights'
+export const BLUE_HIGHLIGHTS_BLOT_NAME = 'blue-highlights'
+export const RED_HIGHLIGHTS_BLOT_NAME = 'red-highlights'
+export const ORANGE_HIGHLIGHTS_BLOT_NAME = 'orange-highlights'
 
 Quill.debug('error')
 
@@ -98,4 +104,55 @@ export const addAdminHighlightsBlotToQuill = () => {
   }
 
   Quill.register(AdminHighlightsBlot)
+}
+
+const createColorBlot = (blotName, className) => {
+  const InlineBlot = Quill.import('blots/inline')
+
+  // Creates a new blot based on 'inline' blot
+  // @ts-ignore
+  class colorBlot extends InlineBlot {
+    static blotName = blotName
+    static className = className
+    static tagName = 'span'
+
+    static formats(): boolean {
+      return true
+    }
+  }
+
+  Quill.register(colorBlot)
+}
+
+export const addGreenHighlightsBlotToQuill = () => {
+  createColorBlot(GREEN_HIGHLIGHTS_BLOT_NAME, 'green-highlight')
+}
+
+export const addYellowHighlightsBlotToQuill = () => {
+  createColorBlot(YELLOW_HIGHLIGHTS_BLOT_NAME, 'yellow-highlight')
+}
+
+export const addPurpleHighlightsBlotToQuill = () => {
+  createColorBlot(PURPLE_HIGHLIGHTS_BLOT_NAME, 'purple-highlight')
+}
+
+export const addBlueHighlightsBlotToQuill = () => {
+  createColorBlot(BLUE_HIGHLIGHTS_BLOT_NAME, 'blue-highlight')
+}
+
+export const addRedHighlightsBlotToQuill = () => {
+  createColorBlot(RED_HIGHLIGHTS_BLOT_NAME, 'red-highlight')
+}
+
+export const addOrangeHighlightsBlotToQuill = () => {
+  createColorBlot(ORANGE_HIGHLIGHTS_BLOT_NAME, 'orange-highlight')
+}
+
+export const addHighlightBlots = () => {
+  addGreenHighlightsBlotToQuill()
+  addYellowHighlightsBlotToQuill()
+  addPurpleHighlightsBlotToQuill()
+  addBlueHighlightsBlotToQuill()
+  addRedHighlightsBlotToQuill()
+  addOrangeHighlightsBlotToQuill()
 }
