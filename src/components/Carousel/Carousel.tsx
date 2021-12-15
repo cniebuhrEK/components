@@ -17,9 +17,10 @@ type CarouselProps = {
 }
 
 const Carousel = (props: CarouselProps): JSX.Element => {
-  const items: React.ReactNode[] = React.Children.toArray(props.children)
+  const { children } = props
+  const items: React.ReactNode[] = React.Children.toArray(children)
   const [active, setActive] = React.useState<number>(props.activeItem || 0)
-  const prevChildren = usePrevious(props.children)
+  const prevChildren = usePrevious(children)
 
   function handlePreviousClick(): void {
     if (active > 0 && !props.disabled) {
@@ -55,7 +56,7 @@ const Carousel = (props: CarouselProps): JSX.Element => {
     if (R.isNil(prevChildren)) {
       setActive(0)
     }
-  }, [props.children])
+  }, [children])
 
   return (
     <Container>
@@ -139,8 +140,10 @@ const Hoverable = styled.div`
   font-size: 14px;
 
   &:hover {
-    cursor: pointer;
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    svg {
+      cursor: pointer;
+      cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    }
   }
 `
 
