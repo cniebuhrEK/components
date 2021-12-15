@@ -3,7 +3,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
-import { includes, values, propOr } from 'ramda'
+import { includes, values, propOr, any, propEq } from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
@@ -83,6 +83,11 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     values(HIGHLIGHT_BLOTS).map(blot => quill.format(blot, false, 'api'))
   }
 
+  const isClickedInside = mouseEvent => {
+    const path = propOr([], 'path', mouseEvent)
+    return any(propEq('id', id))(path)
+  }
+
   const handleMouseDown = e => {
     const targetElement = e.target
     const highlightData = targetElement.getAttribute('data-highlight')
@@ -102,7 +107,18 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
       includes('delete-highlight', elementId) ||
       includes('delete-highlight', farthestViewportElementId)
 
+    // This is to reset the lastRange when user clicks outside of the area
+    // because of the issue, when user selects another area in different
+    // quill editor, then the highlight is set on the editor which loses focus
+    // because of lastRange saved
+    if (!isClickedInside(e) && !isColorPicker) {
+      // @ts-ignore
+      quill.setSelection(0, 0)
+    }
+
     if (isColorPicker && isNotNilOrEmpty(quill)) {
+      // @ts-ignore
+      quill.update()
       removeHighlights()
       // @ts-ignore
       quill.format(HIGHLIGHT_BLOTS[highlightData], true, 'api')
@@ -112,6 +128,8 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     }
 
     if (isDeleteButton && isNotNilOrEmpty(quill)) {
+      // @ts-ignore
+      quill.update()
       removeHighlights()
       // @ts-ignore
       quill.setSelection(0, 0)
@@ -131,7 +149,11 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
 
   return (
-    <div>
+    // This is a workaround to allow selecting only within the div
+    // because of the issue, when user selects multiple quill areas at once
+    // and wants to highlight the selected text - selection can be done
+    // only within one quill editor context
+    <Container contentEditable>
       <TextViewerContainer
         className={`${adminHighlightClassName} ${yourHighlightClassName}`}
         ref={wrapperRef}
@@ -142,13 +164,18 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         getPhraseDetails={getPhraseDetails}
         glossaryIds={glossaryIds}
       />
-    </div>
+    </Container>
   )
 }
 
 WysiwygViewer.defaultProps = {
   glossaryDefinitions: []
 }
+
+const Container = styled.div`
+  outline: none;
+  border: none;
+`
 
 const TextViewerContainer = styled.div`
   &.admin-highlights {
@@ -177,6 +204,11 @@ const TextViewerContainer = styled.div`
 
   .ql-editor {
     padding: 0;
+    caret-color: transparent;
+  }
+
+  .ql-container {
+    border: none !important;
   }
 
   .ql-container.ql-snow.ql-disabled {
