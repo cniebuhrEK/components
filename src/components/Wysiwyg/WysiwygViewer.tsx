@@ -80,7 +80,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
 
   const removeHighlights = () => {
     // @ts-ignore
-    values(HIGHLIGHT_BLOTS).map(blot => quill.format(blot, false, 'api'))
+    values(HIGHLIGHT_BLOTS).forEach(blot => quill.format(blot, false, 'api'))
   }
 
   const isClickedInside = mouseEvent => {
@@ -111,7 +111,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     // because of the issue, when user selects another area in different
     // quill editor, then the highlight is set on the editor which loses focus
     // because of lastRange saved
-    if (!isClickedInside(e) && !isColorPicker) {
+    if (!isClickedInside(e) && !isColorPicker && !isDeleteButton) {
       // @ts-ignore
       quill.setSelection(0, 0)
     }
