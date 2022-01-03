@@ -6,6 +6,7 @@ import {
   ExamIconArrowRight as ArrowRight
 } from '../../examIcons'
 import usePrevious from '../../hooks/usePrevious'
+import { isNotNilOrEmpty, isNilOrEmpty } from '../../utils/ramda'
 
 type CarouselProps = {
   children?: React.ReactNode | React.ReactNode[]
@@ -46,15 +47,13 @@ const Carousel = (props: CarouselProps): JSX.Element => {
     const prevLength = R.propOr(0, 'length', prevChildren)
     const currentLength = R.pathOr(0, ['children', 'length'], props)
 
-    if (
-      R.not(R.isNil(prevChildren)) &&
+    if (isNilOrEmpty(prevChildren)) {
+      setActive(0)
+    } else if (
+      isNotNilOrEmpty(prevChildren) &&
       R.not(R.equals(prevLength, currentLength))
     ) {
       setActive(currentLength - 1)
-    }
-
-    if (R.isNil(prevChildren)) {
-      setActive(0)
     }
   }, [children])
 
