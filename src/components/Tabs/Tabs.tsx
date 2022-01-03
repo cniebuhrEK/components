@@ -4,6 +4,7 @@ import { propOr, find, propEq } from 'ramda'
 
 interface TabProps {
   hideTabs?: boolean
+  onChange?: (e: any) => void
   activeTab: string
   position: 'bottomRight' | 'bottomLeft' | 'topRight' | 'topLeft'
   tabs: {
@@ -17,11 +18,16 @@ interface TabProps {
 }
 
 export const Tabs = (props: TabProps) => {
-  const { position, tabs, activeTab, tabContents, hideTabs } = props
+  const { position, tabs, activeTab, tabContents, hideTabs, onChange } = props
 
   const [active, setActive] = React.useState(activeTab)
 
-  const handleSetActive = value => () => setActive(value)
+  const handleSetActive = value => () => {
+    setActive(value)
+    if (onChange) {
+      onChange(value)
+    }
+  }
 
   React.useEffect(() => {
     setActive(activeTab)
@@ -30,7 +36,9 @@ export const Tabs = (props: TabProps) => {
   const renderTabTriggers = tabs.map(tab => (
     <TabTrigger
       position={position}
+      name={propOr('', 'value', tab)}
       active={active === propOr('', 'value', tab)}
+      data-active={active === propOr('', 'value', tab)}
       onClick={handleSetActive(propOr('', 'value', tab))}
       className='tab-trigger'
       key={`tab-trigger-${propOr('', 'value', tab)}`}

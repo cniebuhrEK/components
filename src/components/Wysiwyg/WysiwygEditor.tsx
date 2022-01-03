@@ -83,8 +83,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
   const [hasAdminHighlights, setHasAdminHighlights] = React.useState(false)
-  const Delta = Quill.import('delta')
-  console.log(new Delta())
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
   // as soon as the element is rendered on the page it will use this callback
