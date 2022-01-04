@@ -3,7 +3,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
-import { includes, values, propOr, any, propEq } from 'ramda'
+import { includes, values, propOr, any, propEq, pipe } from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
@@ -85,7 +85,12 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
 
   const isClickedInside = mouseEvent => {
     const path = propOr([], 'path', mouseEvent)
-    return any(propEq('id', id))(path)
+    const isClickedInsideSelf = any(propEq('id', id))(path)
+    const isClickedInsideOtherEditor = any(
+      pipe(propOr('', 'className'), includes('text-editor-container'))
+    )(path)
+
+    return isClickedInsideSelf || isClickedInsideOtherEditor
   }
 
   const handleMouseDown = e => {

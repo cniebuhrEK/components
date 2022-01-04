@@ -180,7 +180,9 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
   return (
     <TextEditorContainer
       error={error}
-      className={hasAdminHighlights ? 'with-highlights' : ''}
+      className={`${
+        hasAdminHighlights ? 'with-highlights' : ''
+      } text-editor-container`}
     >
       {label && (
         <label htmlFor={id} className='editor-label'>
@@ -246,6 +248,11 @@ const TextEditorContainer = styled.div`
   .ql-container.ql-snow {
     border-color: ${({ error, theme }) =>
       error ? theme.palette.red05 : theme.palette.darkblue01};
+  }
+
+  .ql-toolbar.ql-snow button {
+    padding: 3px !important;
+    width: 20px !important;
   }
 
   .ql-toolbar {
