@@ -145,7 +145,7 @@ export default createGlobalStyle`
     }
 
     sup {
-    top: -0.5em;
+    top: -0.4em;
     }
 
     sub {
