@@ -19,6 +19,7 @@ interface SingleSelectProps {
   options: { label: string; value: string | number | boolean }[]
   label: string
   error?: boolean
+  removeTopLabel?: boolean
   errorText?: string
   disabled?: boolean
   size?: 'normal' | 'small'
@@ -26,11 +27,12 @@ interface SingleSelectProps {
 }
 
 const SingleSelect = (props: SingleSelectProps): JSX.Element => {
-  const { disabled, options, label } = props
+  const { disabled, options, label, removeTopLabel } = props
 
   return (
     <Select
       styles={REACT_SELECT_STYLES}
+      removeTopLabel={removeTopLabel}
       {...props}
       defaultValue={options[0] || label}
       components={customComponents}

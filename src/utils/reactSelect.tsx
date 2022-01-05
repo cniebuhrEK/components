@@ -288,7 +288,7 @@ export const CustomInput = (props: {
   const { selectProps } = props
   const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
-  const { isClearable } = selectProps
+  const { isClearable, removeTopLabel } = selectProps
 
   const handleOnFocus = (e: any) => {
     props.onFocus(e)
@@ -308,6 +308,7 @@ export const CustomInput = (props: {
         isFocused={isFocused}
       />
       <InputLabel
+        removeTopLabel={removeTopLabel}
         isFocused={isFocused}
         isFocusedOrHasValue={isFocused || hasValue}
         error={selectProps.error}
@@ -338,7 +339,7 @@ export const CustomValueContainer = (props: {
   const { selectProps } = props
   const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
-  const { isClearable } = selectProps
+  const { isClearable, removeTopLabel } = selectProps
 
   const handleOnFocus = (e: any) => {
     props.onFocus(e)
@@ -363,6 +364,7 @@ export const CustomValueContainer = (props: {
         isFocusedOrHasValue={isFocused || hasValue}
         error={selectProps.error}
         size={selectProps.size}
+        removeTopLabel={removeTopLabel}
       >
         {selectProps.label}
         {selectProps.required ? ' *' : ''}
@@ -401,22 +403,31 @@ const IconContainer = styled.div`
 `
 
 const InputLabel = styled.div`
-  color: ${({ error, isFocused, theme, isValueContainer }) => {
+  color: ${({
+    error,
+    isFocused,
+    removeTopLabel,
+    theme,
+    isValueContainer,
+    isFocusedOrHasValue
+  }) => {
     switch (true) {
       case error:
         return theme.palette.red05
       case isValueContainer:
+      case isFocusedOrHasValue && removeTopLabel:
         return 'transparent'
-      case isFocused:
+      case isFocused && !removeTopLabel:
       default:
         return theme.palette.darkblue01
     }
   }};
   position: absolute;
-  left: ${({ isFocusedOrHasValue }) => (isFocusedOrHasValue ? '-1px' : '14px')};
-  top: ${({ isFocusedOrHasValue, size }) => {
+  left: ${({ isFocusedOrHasValue, removeTopLabel }) =>
+    isFocusedOrHasValue && !removeTopLabel ? '-1px' : '14px'};
+  top: ${({ isFocusedOrHasValue, removeTopLabel, size }) => {
     switch (true) {
-      case isFocusedOrHasValue:
+      case isFocusedOrHasValue && !removeTopLabel:
         return '-19px'
       case size === SELECT_SIZES.small:
         return '8px'
@@ -424,9 +435,9 @@ const InputLabel = styled.div`
         return '14px'
     }
   }};
-  font-size: ${({ isFocusedOrHasValue, size }) => {
+  font-size: ${({ isFocusedOrHasValue, removeTopLabel, size }) => {
     switch (true) {
-      case isFocusedOrHasValue:
+      case isFocusedOrHasValue && !removeTopLabel:
         return '12px'
       case size === SELECT_SIZES.small:
         return '14px'
@@ -434,8 +445,8 @@ const InputLabel = styled.div`
         return '16px'
     }
   }};
-  line-height: ${({ isFocusedOrHasValue }) =>
-    isFocusedOrHasValue ? '12px' : '16px'};
+  line-height: ${({ isFocusedOrHasValue, removeTopLabel }) =>
+    isFocusedOrHasValue && !removeTopLabel ? '12px' : '16px'};
   background-color: transparent;
   transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 `
