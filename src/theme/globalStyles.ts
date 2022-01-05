@@ -139,7 +139,7 @@ export default createGlobalStyle`
     sup {
     position: relative;
 
-    font-size: 75%;
+    font-size: 70%;
     line-height: 0;
     vertical-align: baseline;
     }
