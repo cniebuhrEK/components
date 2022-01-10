@@ -63,6 +63,11 @@ const StudentTopNavigation = (
     ? '/assets/logo/CrackUniversityLogo.svg'
     : '/assets/logo/LogoDarkBg.svg'
 
+  const SaltyBucksLogoUrl: string =
+    '/assets/saltyBucksMainNavigation/SaltyBucksLogo.svg'
+  const SaltyBucksCurrencyUrl: string =
+    '/assets/saltyBucksMainNavigation/SaltyBucksCurrency.svg'
+
   const generateLevel2Links = links =>
     links.map((link, index) => (
       <NavMenuItem href={link.url} key={`nav-menu-link-level-1-${index}`}>
@@ -151,9 +156,22 @@ const StudentTopNavigation = (
 
   return (
     <Container>
-      <LogoContainer>
-        <img src={logoUrl} alt='logo icon' />
-      </LogoContainer>
+      <LogoWrapper>
+        <LogoContainer>
+          <img src={logoUrl} alt='logo icon' />
+        </LogoContainer>
+
+        <SaltyBucksContainer>
+          <img src={SaltyBucksLogoUrl} alt='salty bucks logo icon' />
+          <SaltyBucks>
+            <SaltyBucksValue>120</SaltyBucksValue>
+            <SaltyBucksCurrency
+              src={SaltyBucksCurrencyUrl}
+              alt='salty bucks logo currency'
+            />
+          </SaltyBucks>
+        </SaltyBucksContainer>
+      </LogoWrapper>
 
       <NavRight>
         <UserContainer>
@@ -206,6 +224,11 @@ const Overlay = styled.div`
   z-index: ${({ theme }) => theme.zIndex.menu - 10};
 `
 
+const LogoWrapper = styled.div`
+  display: flex;
+  height: 100%;
+`
+
 const LogoContainer = styled.div`
   display: flex;
   height: 100%;
@@ -216,6 +239,25 @@ const LogoContainer = styled.div`
     width: 200px;
   }
 `
+
+const SaltyBucksContainer = styled.div`
+  display: flex;
+  height: 100%;
+  padding: 2px;
+  align-items: baseline;
+  flex-direction: column;
+`
+
+const SaltyBucks = styled.div`
+  display: flex;
+`
+
+const SaltyBucksValue = styled.p`
+  font-size: ${props => props.theme.typography.fontSizeNormal};
+  font-weight: 600;
+`
+
+const SaltyBucksCurrency = styled.img``
 
 //
 // Navigation User
