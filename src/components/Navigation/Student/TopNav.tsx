@@ -5,6 +5,7 @@ import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { isNotNilOrEmpty } from '../../../utils/ramda'
+import { SaltyBucksIcon } from '../../../icons'
 
 type PureLink = {
   label: string
@@ -30,14 +31,22 @@ interface StudentTopNavigationProps {
   menu: string
   showCrackUniversityLogo?: boolean
   links: MenuLink[]
+  saltyBucksBalance?: number
   onMenuOpen?: () => any
 }
 
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, menu, greeting, links, showCrackUniversityLogo, onMenuOpen } =
-    props
+  const {
+    avatar,
+    menu,
+    greeting,
+    links,
+    saltyBucksBalance,
+    showCrackUniversityLogo,
+    onMenuOpen
+  } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
   const [linkLevel1, setLinkLevel1] = React.useState('')
@@ -62,6 +71,9 @@ const StudentTopNavigation = (
   const logoUrl: string = showCrackUniversityLogo
     ? '/assets/logo/CrackUniversityLogo.svg'
     : '/assets/logo/LogoDarkBg.svg'
+
+  const SaltyBucksLogoUrl: string =
+    '/assets/saltyBucksMainNavigation/SaltyBucksLogo.svg'
 
   const generateLevel2Links = links =>
     links.map((link, index) => (
@@ -151,9 +163,24 @@ const StudentTopNavigation = (
 
   return (
     <Container>
-      <LogoContainer>
-        <img src={logoUrl} alt='logo icon' />
-      </LogoContainer>
+      <LogoWrapper>
+        <LogoContainer>
+          <img src={logoUrl} alt='logo icon' />
+        </LogoContainer>
+
+        {showCrackUniversityLogo ? (
+          <SaltyBucksContainer>
+            <SaltyBucksLogo
+              src={SaltyBucksLogoUrl}
+              alt='salty bucks logo icon'
+            />
+            <SaltyBucks>
+              <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
+              <SaltyBucksIcon />
+            </SaltyBucks>
+          </SaltyBucksContainer>
+        ) : null}
+      </LogoWrapper>
 
       <NavRight>
         <UserContainer>
@@ -206,6 +233,11 @@ const Overlay = styled.div`
   z-index: ${({ theme }) => theme.zIndex.menu - 10};
 `
 
+const LogoWrapper = styled.div`
+  display: flex;
+  height: 100%;
+`
+
 const LogoContainer = styled.div`
   display: flex;
   height: 100%;
@@ -215,6 +247,34 @@ const LogoContainer = styled.div`
   img {
     width: 200px;
   }
+`
+
+const SaltyBucksContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  width: 30px;
+  padding-top: 20px;
+`
+
+const SaltyBucksLogo = styled.img`
+  width: 100%;
+`
+
+const SaltyBucks = styled.div`
+  display: flex;
+  width: 45px;
+  justify-content: center;
+  color: ${props => props.theme.palette.brown01};
+  font-size: ${props => props.theme.typography.fontSizeNormal};
+  font-weight: 600;
+  padding: 4px 0;
+  line-height: normal;
+`
+
+const SaltyBucksValue = styled.p`
+  line-height: 16px;
 `
 
 //
