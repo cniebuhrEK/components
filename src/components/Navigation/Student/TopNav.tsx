@@ -30,14 +30,22 @@ interface StudentTopNavigationProps {
   menu: string
   showCrackUniversityLogo?: boolean
   links: MenuLink[]
+  saltyBucksBalance?: number
   onMenuOpen?: () => any
 }
 
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
-  const { avatar, menu, greeting, links, showCrackUniversityLogo, onMenuOpen } =
-    props
+  const {
+    avatar,
+    menu,
+    greeting,
+    links,
+    saltyBucksBalance,
+    showCrackUniversityLogo,
+    onMenuOpen
+  } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
   const [linkLevel1, setLinkLevel1] = React.useState('')
@@ -161,16 +169,21 @@ const StudentTopNavigation = (
           <img src={logoUrl} alt='logo icon' />
         </LogoContainer>
 
-        <SaltyBucksContainer>
-          <SaltyBucksLogo src={SaltyBucksLogoUrl} alt='salty bucks logo icon' />
-          <SaltyBucks>
-            <SaltyBucksValue>120</SaltyBucksValue>
-            <SaltyBucksCurrency
-              src={SaltyBucksCurrencyUrl}
-              alt='salty bucks logo currency'
+        {showCrackUniversityLogo ? (
+          <SaltyBucksContainer>
+            <SaltyBucksLogo
+              src={SaltyBucksLogoUrl}
+              alt='salty bucks logo icon'
             />
-          </SaltyBucks>
-        </SaltyBucksContainer>
+            <SaltyBucks>
+              <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
+              <SaltyBucksCurrency
+                src={SaltyBucksCurrencyUrl}
+                alt='salty bucks logo currency'
+              />
+            </SaltyBucks>
+          </SaltyBucksContainer>
+        ) : null}
       </LogoWrapper>
 
       <NavRight>
