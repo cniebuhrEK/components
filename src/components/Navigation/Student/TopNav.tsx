@@ -5,6 +5,7 @@ import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { isNotNilOrEmpty } from '../../../utils/ramda'
+import { SaltyBucksIcon } from '../../../icons'
 
 type PureLink = {
   label: string
@@ -73,8 +74,6 @@ const StudentTopNavigation = (
 
   const SaltyBucksLogoUrl: string =
     '/assets/saltyBucksMainNavigation/SaltyBucksLogo.svg'
-  const SaltyBucksCurrencyUrl: string =
-    '/assets/saltyBucksMainNavigation/SaltyBucksCurrency.svg'
 
   const generateLevel2Links = links =>
     links.map((link, index) => (
@@ -177,10 +176,7 @@ const StudentTopNavigation = (
             />
             <SaltyBucks>
               <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
-              <SaltyBucksCurrency
-                src={SaltyBucksCurrencyUrl}
-                alt='salty bucks logo currency'
-              />
+              <SaltyBucksIcon />
             </SaltyBucks>
           </SaltyBucksContainer>
         ) : null}
@@ -270,20 +266,15 @@ const SaltyBucks = styled.div`
   display: flex;
   width: 45px;
   justify-content: center;
-`
-
-const SaltyBucksValue = styled.p`
+  color: ${props => props.theme.palette.brown01};
   font-size: ${props => props.theme.typography.fontSizeNormal};
   font-weight: 600;
   padding: 4px 0;
   line-height: normal;
-  color: ${props => props.theme.palette.brown01};
 `
 
-const SaltyBucksCurrency = styled.img`
-  margin-left: -3px;
-  height: 25px;
-  width: 18px;
+const SaltyBucksValue = styled.p`
+  line-height: 16px;
 `
 
 //
