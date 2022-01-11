@@ -162,7 +162,7 @@ const StudentTopNavigation = (
         </LogoContainer>
 
         <SaltyBucksContainer>
-          <img src={SaltyBucksLogoUrl} alt='salty bucks logo icon' />
+          <SaltyBucksLogo src={SaltyBucksLogoUrl} alt='salty bucks logo icon' />
           <SaltyBucks>
             <SaltyBucksValue>120</SaltyBucksValue>
             <SaltyBucksCurrency
@@ -242,22 +242,36 @@ const LogoContainer = styled.div`
 
 const SaltyBucksContainer = styled.div`
   display: flex;
-  height: 100%;
-  padding: 2px;
-  align-items: baseline;
+  align-items: center;
   flex-direction: column;
+  height: 100%;
+  width: 30px;
+  padding-top: 20px;
+`
+
+const SaltyBucksLogo = styled.img`
+  width: 100%;
 `
 
 const SaltyBucks = styled.div`
   display: flex;
+  width: 45px;
+  justify-content: center;
 `
 
 const SaltyBucksValue = styled.p`
   font-size: ${props => props.theme.typography.fontSizeNormal};
   font-weight: 600;
+  padding: 4px 0;
+  line-height: normal;
+  color: ${props => props.theme.palette.brown01};
 `
 
-const SaltyBucksCurrency = styled.img``
+const SaltyBucksCurrency = styled.img`
+  margin-left: -3px;
+  height: 25px;
+  width: 18px;
+`
 
 //
 // Navigation User
