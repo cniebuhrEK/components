@@ -69,6 +69,11 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     height: 100%;
     background: ${({ theme }) => theme.palette.overlay};
     overflow-y: auto;
+    ::-webkit-scrollbar {
+      background: transparent;
+    } /* Chrome/Safari/Webkit */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
     padding: 40px 0;
     text-align: center;
     transition: opacity 0.2s

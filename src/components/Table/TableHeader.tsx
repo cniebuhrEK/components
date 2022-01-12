@@ -68,6 +68,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 
 const StyledTableHeader = styled.th`
   border-color: ${({ theme }) => theme.palette.grey09};
+  background-color: ${({ theme }) => theme.palette.background};
   border-spacing: 0;
   border-style: solid;
   border-width: 0 0 1px;
