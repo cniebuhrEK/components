@@ -45,7 +45,8 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
     onPause,
     onEnded,
     onError,
-    progressInterval
+    progressInterval,
+    onProgress
   } = props
 
   return (
@@ -66,6 +67,7 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
         onPlay={onPlay}
         onPause={onPause}
         onEnded={onEnded}
+        onProgress={onProgress}
         onError={onError}
       />
     </VideoContainer>
