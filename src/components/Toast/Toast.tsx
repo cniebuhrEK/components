@@ -99,10 +99,10 @@ const CloseContainer = styled.div`
 const Container = styled.div`
   position: fixed;
   top: 60px;
-  left: 0;
+  left: 2px;
   width: ${({ open }) => (open ? '100vw' : '0px')};
   display: flex;
-  justify-content: right;
+  justify-content: left;
   z-index: ${({ open, theme }) => (open ? theme.zIndex.snackbar : 'unset')};
 `
 
