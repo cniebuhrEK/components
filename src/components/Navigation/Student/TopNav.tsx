@@ -168,7 +168,7 @@ const StudentTopNavigation = (
           <img src={logoUrl} alt='logo icon' />
         </LogoContainer>
 
-        {showCrackUniversityLogo ? (
+        {typeof saltyBucksBalance !== 'undefined' ? (
           <SaltyBucksContainer>
             <SaltyBucksLogo
               src={SaltyBucksLogoUrl}
