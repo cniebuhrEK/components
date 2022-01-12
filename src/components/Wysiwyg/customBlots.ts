@@ -2,13 +2,20 @@ import Quill from 'quill'
 
 export const GLOSSARY_BLOT_NAME = 'glossary'
 export const CUSTOM_IMAGE_BLOT_NAME = 's3-image'
+
 export const ADMIN_HIGHLIGHTS_BLOT_NAME = 'a-highlights'
+
 export const GREEN_HIGHLIGHTS_BLOT_NAME = 'green-highlights'
 export const YELLOW_HIGHLIGHTS_BLOT_NAME = 'yellow-highlights'
 export const PURPLE_HIGHLIGHTS_BLOT_NAME = 'purple-highlights'
 export const BLUE_HIGHLIGHTS_BLOT_NAME = 'blue-highlights'
 export const RED_HIGHLIGHTS_BLOT_NAME = 'red-highlights'
 export const ORANGE_HIGHLIGHTS_BLOT_NAME = 'orange-highlights'
+
+export const FONT_COLOR_BLUE = 'font-color-blue'
+export const FONT_COLOR_ORANGE = 'font-color-orange'
+export const FONT_COLOR_GREEN = 'font-color-green'
+export const FONT_COLOR_PURPLE = 'font-color-purple'
 
 Quill.debug('error')
 
@@ -155,4 +162,45 @@ export const addHighlightBlots = () => {
   addBlueHighlightsBlotToQuill()
   addRedHighlightsBlotToQuill()
   addOrangeHighlightsBlotToQuill()
+}
+
+const createFontColorBlot = (blotName, className) => {
+  const InlineBlot = Quill.import('blots/inline')
+
+  // Creates a new blot based on 'inline' blot
+  // @ts-ignore
+  class fontColorBlot extends InlineBlot {
+    static blotName = blotName
+    static className = className
+    static tagName = 'span'
+
+    static formats(): boolean {
+      return true
+    }
+  }
+
+  Quill.register(fontColorBlot)
+}
+
+export const addBlueFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_BLUE, 'color-blue')
+}
+
+export const addOrangeFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_ORANGE, 'color-orange')
+}
+
+export const addGreenFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_GREEN, 'color-green')
+}
+
+export const addPurpleFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_PURPLE, 'color-purple')
+}
+
+export const addFontColorBlots = () => {
+  addBlueFontColorBlotToQuill()
+  addOrangeFontColorBlotToQuill()
+  addGreenFontColorBlotToQuill()
+  addPurpleFontColorBlotToQuill()
 }

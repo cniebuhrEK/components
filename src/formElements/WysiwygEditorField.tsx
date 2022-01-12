@@ -38,6 +38,7 @@ interface WysiwygEditorFieldProps {
     clean?: boolean
     customImage?: boolean
     adminHighlights?: boolean
+    fontColor?: boolean
   }
   handleCreateNew?: (e: any) => Promise<void>
   handleFetchGlossaryList?: (e: any) => void

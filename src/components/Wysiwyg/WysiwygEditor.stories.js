@@ -41,7 +41,8 @@ Default.args = {
     formula: true,
     glossary: true,
     customImage: true,
-    adminHighlights: true
+    adminHighlights: true,
+    fontColor: true
   },
   handleFetchGlossaryList: query => console.log(query),
   handleScanGlossaryList: async ({ raw, skipIds, query }) => {

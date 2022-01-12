@@ -46,6 +46,7 @@ interface TextEditorProps {
     clean?: boolean
     customImage?: boolean
     adminHighlights?: boolean
+    fontColor?: boolean
   }
   handleFetchGlossaryList?: (e: any) => void
   handleScanGlossaryList?: (e: any) => void
@@ -303,6 +304,22 @@ const WysiwygContainer = styled.div`
   .ql-size-small {
     font-size: 10px !important;
     line-height: 12px !important;
+  }
+
+  .color-green {
+    color: ${({ theme }) => theme.palette.green02} !important;
+  }
+
+  .color-purple {
+    color: ${({ theme }) => theme.palette.purple01} !important;
+  }
+
+  .color-blue {
+    color: ${({ theme }) => theme.palette.lightblue01} !important;
+  }
+
+  .color-orange {
+    color: ${({ theme }) => theme.palette.orange01} !important;
   }
 `
 

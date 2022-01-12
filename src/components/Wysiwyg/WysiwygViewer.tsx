@@ -13,7 +13,8 @@ import {
   addAdminHighlightsBlotToQuill,
   addGlossaryBlotToQuill,
   addImageBlotToQuill,
-  addHighlightBlots
+  addHighlightBlots,
+  addFontColorBlots
 } from './customBlots'
 
 import GlossaryTooltips from './components/GlossaryTooltips'
@@ -51,6 +52,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     addAdminHighlightsBlotToQuill()
     addHighlightBlots()
     addImageBlotToQuill()
+    addFontColorBlots()
     // make sure if we have the wrapper
     if (!wrapper) return
 
@@ -274,6 +276,22 @@ const TextViewerContainer = styled.div`
     .orange-highlight {
       background-color: ${({ theme }) => theme.palette.orange05};
     }
+  }
+
+  .color-green {
+    color: ${({ theme }) => theme.palette.green02} !important;
+  }
+
+  .color-purple {
+    color: ${({ theme }) => theme.palette.purple01} !important;
+  }
+
+  .color-blue {
+    color: ${({ theme }) => theme.palette.lightblue01} !important;
+  }
+
+  .color-orange {
+    color: ${({ theme }) => theme.palette.orange01} !important;
   }
 `
 

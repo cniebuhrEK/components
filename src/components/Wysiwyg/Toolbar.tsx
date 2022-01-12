@@ -9,6 +9,7 @@ import AddAdminHighlightsButton from './components/AddAdminHighlightsButton'
 // eslint-disable-next-line no-unused-vars
 import { GlossaryPhrase, PaginationProps } from './components/SelectGlossary'
 import ScanGlossaryButton from './components/ScanGlossaryButton'
+import AddFontColorButton from './components/AddFontColorButton'
 
 interface ToolbarProps {
   editorInstance: any
@@ -40,6 +41,7 @@ interface ToolbarProps {
     clean?: boolean
     customImage?: boolean
     adminHighlights?: boolean
+    fontColor?: boolean
   }
 }
 
@@ -73,7 +75,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       glossary,
       clean,
       customImage,
-      adminHighlights
+      adminHighlights,
+      fontColor
     }
   } = props
 
@@ -108,7 +111,8 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
   const hasAdditionalFormats = R.any(R.equals(true), [
     glossary,
     customImage,
-    adminHighlights
+    adminHighlights,
+    fontColor
   ])
 
   const sizeFormats = hasSizeFormats && (
@@ -200,6 +204,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
           editorInstance={editorInstance}
         />
       )}
+      {fontColor && <AddFontColorButton editorInstance={editorInstance} />}
     </span>
   )
 
