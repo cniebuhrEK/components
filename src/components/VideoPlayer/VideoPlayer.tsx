@@ -3,7 +3,7 @@ import VimeoPlayer from 'react-player/vimeo'
 import styled from 'styled-components'
 
 type VideoPlayerProps = {
-  ref: any
+  playerRef: any
   url: string
   width?: string
   height?: string
@@ -32,7 +32,7 @@ type VideoPlayerProps = {
 const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   const {
     url,
-    ref,
+    playerRef,
     controls,
     width,
     height,
@@ -54,7 +54,7 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
   return (
     <VideoContainer width={width} height={height}>
       <VimeoPlayer
-        ref={ref}
+        ref={playerRef}
         progressInterval={progressInterval}
         controls={controls}
         playing={playing}
