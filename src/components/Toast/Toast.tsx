@@ -99,7 +99,7 @@ const CloseContainer = styled.div`
 const Container = styled.div`
   position: fixed;
   top: 60px;
-  left: 2px;
+  left: 20px;
   width: ${({ open }) => (open ? '100vw' : '0px')};
   display: flex;
   justify-content: left;
