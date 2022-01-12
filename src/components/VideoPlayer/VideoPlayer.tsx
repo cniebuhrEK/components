@@ -12,6 +12,7 @@ type VideoPlayerProps = {
   muted?: boolean
   styles?: any
   light?: boolean
+  progressInterval?: number
   onReady?(player: any): void
   onStart?(): void
   onPlay?(): void
@@ -43,12 +44,14 @@ const VideoPlayer = (props: VideoPlayerProps): JSX.Element => {
     onPlay,
     onPause,
     onEnded,
-    onError
+    onError,
+    progressInterval
   } = props
 
   return (
     <VideoContainer width={width} height={height}>
       <VimeoPlayer
+        progressInterval={progressInterval}
         controls={controls}
         playing={playing}
         url={url}
