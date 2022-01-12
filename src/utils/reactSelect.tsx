@@ -189,7 +189,6 @@ export const REACT_SELECT_STYLES = {
       wordBreak: 'keep-all',
       maxWidth: 'calc(100% - 25px)',
       whiteSpace: 'nowrap',
-      overflow: 'hidden',
       textOverflow: 'ellipsis'
     }
   },
