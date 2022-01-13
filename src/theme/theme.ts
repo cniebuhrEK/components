@@ -137,7 +137,7 @@ export default {
     gray3: '#848484',
     gray4: '#4D4D4D',
     overlay: 'rgba(252, 251, 250, 0.6)',
-    inactive: '#979797',
+    inactive: '#B5B5B5',
     background: '#FCFBFA',
     textDark: '#061F2D'
   },
