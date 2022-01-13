@@ -168,7 +168,7 @@ const StudentTopNavigation = (
           <img src={logoUrl} alt='logo icon' />
         </LogoContainer>
 
-        {showCrackUniversityLogo ? (
+        {typeof saltyBucksBalance !== 'undefined' ? (
           <SaltyBucksContainer>
             <SaltyBucksLogo
               src={SaltyBucksLogoUrl}
@@ -329,7 +329,7 @@ const NavMenu = styled.div`
   min-width: ${({ open }) => (open ? '200px' : '0')};
   position: absolute;
   right: 0;
-  top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  top: ${({ theme }) => theme.dimensions.studentTopNavHeightMenu};
   z-index: ${({ theme }) => theme.zIndex.menu};
   transition: opacity 700ms ${({ theme }) =>
     theme.transitions.easing.easeInOut};
