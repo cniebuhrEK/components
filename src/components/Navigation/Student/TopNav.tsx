@@ -33,6 +33,7 @@ interface StudentTopNavigationProps {
   links: MenuLink[]
   saltyBucksBalance?: number
   onMenuOpen?: () => any
+  isPreviewStudent?: boolean
 }
 
 const StudentTopNavigation = (
@@ -45,7 +46,8 @@ const StudentTopNavigation = (
     links,
     saltyBucksBalance,
     showCrackUniversityLogo,
-    onMenuOpen
+    onMenuOpen,
+    isPreviewStudent
   } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
@@ -190,7 +192,9 @@ const StudentTopNavigation = (
 
         <Overlay open={open} />
         <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
-          <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
+          {isPreviewStudent ? null : (
+            <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
+          )}
           <NavMenu open={open}>{generateLinks}</NavMenu>
         </MenuContainer>
       </NavRight>
