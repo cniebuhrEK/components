@@ -3,7 +3,7 @@ import VimeoPlayer from 'react-player/vimeo'
 import styled from 'styled-components'
 
 type VideoPlayerProps = {
-  playerRef: any
+  playerRef?: any
   url: string
   width?: string
   height?: string
