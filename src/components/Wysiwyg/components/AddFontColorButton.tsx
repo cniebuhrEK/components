@@ -10,7 +10,10 @@ import {
   FONT_COLOR_BLUE,
   FONT_COLOR_ORANGE,
   FONT_COLOR_GREEN,
-  FONT_COLOR_PURPLE
+  FONT_COLOR_PURPLE,
+  FONT_COLOR_BLACK,
+  FONT_COLOR_BROWN,
+  FONT_COLOR_RED
 } from './../customBlots'
 import { IconButton } from '../../IconButton'
 
@@ -79,20 +82,32 @@ const AddAdminHighlightsButton = (
         />
         <div className='picker-colors'>
           <ColorPicker
-            onClick={handleFontColor(FONT_COLOR_BLUE)}
-            className='picker-color color-blue'
-          />
-          <ColorPicker
             onClick={handleFontColor(FONT_COLOR_ORANGE)}
             className='picker-color color-orange'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_PURPLE)}
+            className='picker-color color-purple'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_RED)}
+            className='picker-color color-red'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_BLUE)}
+            className='picker-color color-blue'
           />
           <ColorPicker
             onClick={handleFontColor(FONT_COLOR_GREEN)}
             className='picker-color color-green'
           />
           <ColorPicker
-            onClick={handleFontColor(FONT_COLOR_PURPLE)}
-            className='picker-color color-purple'
+            onClick={handleFontColor(FONT_COLOR_BROWN)}
+            className='picker-color color-brown'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_BLACK)}
+            className='picker-color color-black'
           />
         </div>
       </div>
@@ -170,9 +185,9 @@ const ButtonContainer = styled.div`
     top: calc(100% + 5px);
     left: 0;
     transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
-    min-width: 97px;
+    min-width: 130px;
     z-index: ${({ theme }) => theme.zIndex.menu};
-    max-width: 75px;
+    max-width: 150px;
 
     button {
       box-shadow: ${props => props.theme.shadows.darkShadow};
@@ -187,7 +202,6 @@ const ButtonContainer = styled.div`
     max-width: 75px;
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 5px 20px;
   }
@@ -216,6 +230,18 @@ const ColorPicker = styled.div`
 
   &.color-orange {
     background-color: ${({ theme }) => theme.palette.orange01};
+  }
+
+  &.color-black {
+    background-color: ${({ theme }) => theme.palette.black};
+  }
+
+  &.color-brown {
+    background-color: ${({ theme }) => theme.palette.brown01};
+  }
+
+  &.color-red {
+    background-color: ${({ theme }) => theme.palette.deepred01};
   }
 
   &.color-remove {

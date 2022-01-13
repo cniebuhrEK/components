@@ -16,6 +16,9 @@ export const FONT_COLOR_BLUE = 'font-color-blue'
 export const FONT_COLOR_ORANGE = 'font-color-orange'
 export const FONT_COLOR_GREEN = 'font-color-green'
 export const FONT_COLOR_PURPLE = 'font-color-purple'
+export const FONT_COLOR_BLACK = 'font-color-black'
+export const FONT_COLOR_BROWN = 'font-color-brown'
+export const FONT_COLOR_RED = 'font-color-red'
 
 Quill.debug('error')
 
@@ -198,9 +201,24 @@ export const addPurpleFontColorBlotToQuill = () => {
   createFontColorBlot(FONT_COLOR_PURPLE, 'color-purple')
 }
 
+export const addBlackFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_BLACK, 'color-black')
+}
+
+export const addBrownFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_BROWN, 'color-brown')
+}
+
+export const addRedFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_RED, 'color-red')
+}
+
 export const addFontColorBlots = () => {
   addBlueFontColorBlotToQuill()
   addOrangeFontColorBlotToQuill()
   addGreenFontColorBlotToQuill()
   addPurpleFontColorBlotToQuill()
+  addBlackFontColorBlotToQuill()
+  addBrownFontColorBlotToQuill()
+  addRedFontColorBlotToQuill()
 }

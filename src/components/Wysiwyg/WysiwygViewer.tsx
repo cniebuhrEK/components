@@ -293,6 +293,18 @@ const TextViewerContainer = styled.div`
   .color-orange {
     color: ${({ theme }) => theme.palette.orange01} !important;
   }
+
+  .color-black {
+    color: ${({ theme }) => theme.palette.black} !important;
+  }
+
+  .color-brown {
+    color: ${({ theme }) => theme.palette.brown01} !important;
+  }
+
+  .color-red {
+    color: ${({ theme }) => theme.palette.deepred01} !important;
+  }
 `
 
 export default WysiwygViewer
