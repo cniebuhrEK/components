@@ -177,8 +177,8 @@ const StudentTopNavigation = (
               alt='salty bucks logo icon'
             />
             <SaltyBucks>
-              <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
               <SaltyBucksIcon />
+              <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
             </SaltyBucks>
           </SaltyBucksContainer>
         ) : null}
