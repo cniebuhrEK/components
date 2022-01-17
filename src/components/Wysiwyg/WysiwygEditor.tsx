@@ -306,30 +306,44 @@ const WysiwygContainer = styled.div`
     line-height: 12px !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
   .color-green {
     color: ${({ theme }) => theme.palette.green02} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-purple,
+  .ql-container .ql-editor .color-purple .admin-highlights,
   .color-purple {
     color: ${({ theme }) => theme.palette.purple01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-blue,
+  .ql-container .ql-editor .color-blue .admin-highlights,
   .color-blue {
     color: ${({ theme }) => theme.palette.lightblue01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-orange,
+  .ql-container .ql-editor .color-orange .admin-highlights,
   .color-orange {
     color: ${({ theme }) => theme.palette.orange01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-black,
+  .ql-container .ql-editor .color-black .admin-highlights,
   .color-black {
     color: ${({ theme }) => theme.palette.black} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-brown,
+  .ql-container .ql-editor .color-brown .admin-highlights,
   .color-brown {
     color: ${({ theme }) => theme.palette.brown01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-red,
+  .ql-container .ql-editor .color-red .admin-highlights,
   .color-red {
     color: ${({ theme }) => theme.palette.deepred01} !important;
   }

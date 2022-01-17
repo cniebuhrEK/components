@@ -152,7 +152,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     }
   }, [quill])
 
-  const adminHighlightClassName = withHighlights ? 'admin-highlights' : ''
+  const adminHighlightClassName = withHighlights ? 'with-highlights' : ''
   const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
 
   return (
@@ -160,9 +160,9 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     // because of the issue, when user selects multiple quill areas at once
     // and wants to highlight the selected text - selection can be done
     // only within one quill editor context
-    <Container contentEditable>
+    <Container contentEditable className={`${adminHighlightClassName}`}>
       <TextViewerContainer
-        className={`${adminHighlightClassName} ${yourHighlightClassName}`}
+        className={`${yourHighlightClassName}`}
         ref={wrapperRef}
         id={id}
       />
@@ -182,19 +182,24 @@ WysiwygViewer.defaultProps = {
 const Container = styled.div`
   outline: none;
   border: none;
-`
 
-const TextViewerContainer = styled.div`
-  &.admin-highlights {
-    * {
+  &,
+  * {
+    color: ${({ theme }) => theme.palette.darkblue01};
+  }
+
+  &.with-highlights {
+    .ql-container * {
       color: ${({ theme }) => theme.palette.inactive} !important;
     }
 
-    .admin-highlights {
+    .ql-container .admin-highlights {
       color: ${({ theme }) => theme.palette.darkblue01} !important;
     }
   }
+`
 
+const TextViewerContainer = styled.div`
   strong {
     font-weight: bold;
   }
@@ -278,30 +283,44 @@ const TextViewerContainer = styled.div`
     }
   }
 
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
   .color-green {
     color: ${({ theme }) => theme.palette.green02} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-purple,
+  .ql-container .ql-editor .color-purple .admin-highlights,
   .color-purple {
     color: ${({ theme }) => theme.palette.purple01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-blue,
+  .ql-container .ql-editor .color-blue .admin-highlights,
   .color-blue {
     color: ${({ theme }) => theme.palette.lightblue01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-orange,
+  .ql-container .ql-editor .color-orange .admin-highlights,
   .color-orange {
     color: ${({ theme }) => theme.palette.orange01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-black,
+  .ql-container .ql-editor .color-black .admin-highlights,
   .color-black {
     color: ${({ theme }) => theme.palette.black} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-brown,
+  .ql-container .ql-editor .color-brown .admin-highlights,
   .color-brown {
     color: ${({ theme }) => theme.palette.brown01} !important;
   }
 
+  .ql-container .ql-editor .admin-highlights .color-red,
+  .ql-container .ql-editor .color-red .admin-highlights,
   .color-red {
     color: ${({ theme }) => theme.palette.deepred01} !important;
   }

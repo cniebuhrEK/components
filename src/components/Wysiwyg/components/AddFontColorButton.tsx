@@ -3,7 +3,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PaletteIcon, TrashIcon } from '../../../icons'
-import * as R from 'ramda'
 
 import {
   addFontColorBlots,
@@ -35,8 +34,23 @@ const AddAdminHighlightsButton = (
     addFontColorBlots()
   }, [])
 
+  const removeAllColorFormats = () => {
+    const allBlots = [
+      FONT_COLOR_BLUE,
+      FONT_COLOR_ORANGE,
+      FONT_COLOR_GREEN,
+      FONT_COLOR_PURPLE,
+      FONT_COLOR_BLACK,
+      FONT_COLOR_BROWN,
+      FONT_COLOR_RED
+    ]
+
+    allBlots.forEach(blotName => editorInstance.format(blotName, false))
+  }
+
   const handleFontColor = blotName => e => {
     e.preventDefault()
+    removeAllColorFormats()
     editorInstance.format(blotName, true)
     handleClose()
   }
@@ -58,10 +72,7 @@ const AddAdminHighlightsButton = (
 
   const handleRemoveFontColor = e => {
     e.preventDefault()
-    const selection = editorInstance.getSelection(true)
-    const index = R.propOr(1, 'index', selection)
-    const length = R.propOr(1, 'length', selection)
-    editorInstance.removeFormat(index, length)
+    removeAllColorFormats()
     handleClose()
   }
 

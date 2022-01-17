@@ -3,7 +3,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { EditorHighlightIcon } from '../../../icons'
-import * as R from 'ramda'
 
 import {
   addAdminHighlightsBlotToQuill,
@@ -51,10 +50,7 @@ const AddAdminHighlightsButton = (
 
   const handleRemoveAdminHighlights = e => {
     e.preventDefault()
-    const selection = editorInstance.getSelection(true)
-    const index = R.propOr(1, 'index', selection)
-    const length = R.propOr(1, 'length', selection)
-    editorInstance.removeFormat(index, length)
+    editorInstance.format(ADMIN_HIGHLIGHTS_BLOT_NAME, false)
     handleClose()
   }
 
