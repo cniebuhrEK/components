@@ -199,8 +199,8 @@ export default {
     buttonSmallMinWidth: '32px',
     adminSideNavWidth: '276px',
     studentSideNavWidth: '236px',
-    studentTopNavHeightMenu: '80px',
-    studentTopNavHeight: '100px',
+    studentTopNavHeightMenu: '75px',
+    studentTopNavHeight: '70px',
     adminTopNavHeight: '48px',
     tagHeight: '21px',
     tagWidth: '50px'

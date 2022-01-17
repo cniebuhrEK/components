@@ -30,8 +30,10 @@ interface StudentTopNavigationProps {
   greeting: string
   menu: string
   showCrackUniversityLogo?: boolean
+  redirectHandler?: (e) => any
   links: MenuLink[]
   saltyBucksBalance?: number
+  navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
   onMenuOpen?: () => any
   isPreviewStudent?: boolean
 }
@@ -47,12 +49,15 @@ const StudentTopNavigation = (
     saltyBucksBalance,
     showCrackUniversityLogo,
     onMenuOpen,
-    isPreviewStudent
+    isPreviewStudent,
+    navLeftElements,
+    redirectHandler
   } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
+  const hasAdditionalElements = isNotNilOrEmpty(navLeftElements)
 
   const setLevel1 = value => setLinkLevel1(value)
   const setLevel2 = value => setLinkLevel2(value)
@@ -77,9 +82,20 @@ const StudentTopNavigation = (
   const SaltyBucksLogoUrl: string =
     '/assets/saltyBucksMainNavigation/SaltyBucksLogo.svg'
 
+  const redirectByHref = url => {
+    window.location.href = url
+  }
+
+  const handleRedirect = url => () => {
+    redirectHandler ? redirectHandler(url) : redirectByHref(url)
+  }
+
   const generateLevel2Links = links =>
     links.map((link, index) => (
-      <NavMenuItem href={link.url} key={`nav-menu-link-level-1-${index}`}>
+      <NavMenuItem
+        onClick={handleRedirect(link.url)}
+        key={`nav-menu-link-level-1-${index}`}
+      >
         {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
         <NavMenuLink>{link.label}</NavMenuLink>
       </NavMenuItem>
@@ -108,7 +124,7 @@ const StudentTopNavigation = (
           <NavMenuLink>{link.label}</NavMenuLink>
         </NavStaticMenuItem>
       ) : (
-        <NavMenuItem href={link.url}>
+        <NavMenuItem onClick={handleRedirect(link.url)}>
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
           <NavMenuLink>{link.label}</NavMenuLink>
         </NavMenuItem>
@@ -149,7 +165,7 @@ const StudentTopNavigation = (
         <NavMenuLink>{link.label}</NavMenuLink>
       </NavStaticMenuItem>
     ) : (
-      <NavMenuItem isHidden={shouldHide} href={link.url}>
+      <NavMenuItem isHidden={shouldHide} onClick={handleRedirect(link.url)}>
         {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
         <NavMenuLink>{link.label}</NavMenuLink>
       </NavMenuItem>
@@ -182,6 +198,11 @@ const StudentTopNavigation = (
             </SaltyBucks>
           </SaltyBucksContainer>
         ) : null}
+        {hasAdditionalElements && (
+          <AdditionalElementsContainer>
+            {navLeftElements}
+          </AdditionalElementsContainer>
+        )}
       </LogoWrapper>
 
       <NavRight>
@@ -240,16 +261,16 @@ const Overlay = styled.div`
 const LogoWrapper = styled.div`
   display: flex;
   height: 100%;
+  padding-top: 20px;
 `
 
 const LogoContainer = styled.div`
   display: flex;
   height: 100%;
-  width: ${({ theme }) => theme.dimensions.studentSideNavWidth};
   color: ${({ theme }) => theme.palette.biege};
 
   img {
-    width: 200px;
+    max-width: 200px;
   }
 `
 
@@ -257,18 +278,27 @@ const SaltyBucksContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   height: 100%;
-  width: 30px;
-  padding-top: 20px;
+  margin-left: 22px;
+`
+
+const AdditionalElementsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-left: 22px;
+  line-height: 14px;
 `
 
 const SaltyBucksLogo = styled.img`
-  width: 100%;
+  width: auto;
+  height: 32px;
 `
 
 const SaltyBucks = styled.div`
   display: flex;
-  width: 45px;
   justify-content: center;
   color: ${props => props.theme.palette.brown01};
   font-size: ${props => props.theme.typography.fontSizeNormal};
@@ -278,7 +308,8 @@ const SaltyBucks = styled.div`
 `
 
 const SaltyBucksValue = styled.p`
-  line-height: 16px;
+  line-height: 14px;
+  font-size: 14px;
 `
 
 //
@@ -330,15 +361,14 @@ const NavMenu = styled.div`
   opacity: ${({ open }) => (open ? '1' : '0')};
   width: ${({ open }) => (open ? 'auto' : '0')};
   height: ${({ open }) => (open ? 'auto' : '0')};
-  min-width: ${({ open }) => (open ? '200px' : '0')};
+  min-width: ${({ open }) => (open ? '210px' : '0')};
   position: absolute;
   right: 0;
-  top: ${({ theme }) => theme.dimensions.studentTopNavHeightMenu};
+  top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   z-index: ${({ theme }) => theme.zIndex.menu};
   transition: opacity 700ms ${({ theme }) =>
     theme.transitions.easing.easeInOut};
   max-width: 210px;
-  min-width: 210px;
 `
 
 const NavMenuLink = styled.span`
