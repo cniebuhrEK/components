@@ -52,6 +52,7 @@ interface TextEditorProps {
   handleScanGlossaryList?: (e: any) => void
   handleCreateNew?: (e: any) => Promise<void>
   getPhraseDetails?: (e: any) => void
+  redirectHandler?: (e: any) => void
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
   required?: boolean
@@ -79,7 +80,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     errorText,
     initialValue,
     bookContentId,
-    handleCreateNew
+    handleCreateNew,
+    redirectHandler
   } = props
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
@@ -208,6 +210,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         bookContentId={bookContentId}
         getPhraseDetails={getPhraseDetails}
         glossaryIds={glossaryIds}
+        redirectHandler={redirectHandler}
       />
     </TextEditorContainer>
   )

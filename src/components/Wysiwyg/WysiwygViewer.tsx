@@ -30,6 +30,7 @@ interface TextEditorProps {
   withHighlights?: boolean
   withYoursHighlights?: boolean
   getPhraseDetails?: (e: any) => void
+  redirectHandler?: (e: any) => void
   onHighlightChange?: (e) => void
 }
 
@@ -41,7 +42,8 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     bookContentId,
     withHighlights,
     withYoursHighlights,
-    onHighlightChange
+    onHighlightChange,
+    redirectHandler
   } = props
   const [quill, setQuill] = React.useState()
 
@@ -170,6 +172,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         bookContentId={bookContentId}
         getPhraseDetails={getPhraseDetails}
         glossaryIds={glossaryIds}
+        redirectHandler={redirectHandler}
       />
     </Container>
   )

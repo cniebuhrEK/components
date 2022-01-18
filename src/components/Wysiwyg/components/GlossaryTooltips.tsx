@@ -5,9 +5,20 @@ import styled from 'styled-components'
 
 export interface GlossaryTooltipsProps {
   getPhraseDetails?: (e: any) => void
+  redirectHandler?: (e: any) => void
   glossaryIds?: string[]
   bookContentId?: string
 }
+
+const getParam = (param, path) =>
+  R.pipe(
+    R.split(param),
+    R.drop(1),
+    R.head,
+    R.split('/'),
+    R.drop(1),
+    R.head
+  )(path)
 
 const getTagOrBookShortcut = details =>
   R.pipe(
@@ -22,7 +33,7 @@ const getTagOrBookShortcut = details =>
 const PhraseTooltip = ({
   id,
   getPhraseDetails,
-  bookContentId
+  redirectHandler
 }): JSX.Element => {
   const [data, setData] = React.useState({
     id,
@@ -67,12 +78,32 @@ const PhraseTooltip = ({
     const partOrder = R.propOr('', 'part', occurance)
     const subchapterOrder = R.propOr('', 'subchapter_order', occurance)
 
-    const isCurrent = bookContentId === id
+    const pathname = window.location.pathname
+
+    const pathnameBookId = getParam('book', pathname)
+    const pathnameChapterOrder = getParam('chapter', pathname)
+    const pathnamePartOrder = getParam('part', pathname)
+
+    const isCurrent =
+      pathnameBookId === bookId.toString() &&
+      pathnameChapterOrder === chapterOrder.toString() &&
+      pathnamePartOrder === partOrder.toString()
+
+    const redirectPath = `/books/${bookId}/chapter/${chapterOrder}/part/${partOrder}`
+
+    const handleRedirect = () => {
+      if (redirectHandler) {
+        redirectHandler(redirectPath)
+      } else {
+        window.location.href = redirectPath
+      }
+    }
+
     const handleClick = e => {
       e.stopPropagation()
 
       if (!isCurrent) {
-        window.location.href = `/books/${bookId}/chapter/${chapterOrder}/part/${partOrder}?selectedBookContentId=${id}`
+        handleRedirect()
       }
     }
 
@@ -106,14 +137,14 @@ const PhraseTooltip = ({
 }
 
 export const GlossaryTooltips = (props: GlossaryTooltipsProps): JSX.Element => {
-  const { getPhraseDetails, glossaryIds, bookContentId } = props
+  const { getPhraseDetails, glossaryIds, redirectHandler } = props
 
   const renderTooltips = R.addIndex(R.map)((id, index) => (
     <PhraseTooltip
       id={id}
       key={`phrase-tooltip-${id}-${index}`}
       getPhraseDetails={getPhraseDetails}
-      bookContentId={bookContentId}
+      redirectHandler={redirectHandler}
     />
   ))(glossaryIds)
 
