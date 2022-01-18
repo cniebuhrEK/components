@@ -76,13 +76,6 @@ const PhraseTooltip = ({
       }
     }
 
-    console.log({
-      isCurrent,
-      bookContentId,
-      id,
-      occurance
-    })
-
     return (
       <OccuranceElement
         onClick={handleClick}
