@@ -180,7 +180,7 @@ export default {
     snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,
-    menu: 1800
+    menu: 2000
   },
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
