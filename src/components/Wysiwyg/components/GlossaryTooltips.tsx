@@ -76,6 +76,13 @@ const PhraseTooltip = ({
       }
     }
 
+    console.log({
+      isCurrent,
+      bookContentId,
+      id,
+      occurance
+    })
+
     return (
       <OccuranceElement
         onClick={handleClick}
@@ -161,9 +168,18 @@ const TooltipsContainer = styled.div`
 
 const OccuranceElement = styled.a`
   color: ${({ theme, isCurrent }) =>
-    isCurrent ? theme.palette.inactive : theme.palette.textDark};
+    isCurrent ? theme.palette.inactive : theme.palette.textDark} !important;
   margin-right: 3px;
   cursor: pointer !important;
+
+  strong,
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    color: ${({ theme, isCurrent }) =>
+      isCurrent ? theme.palette.inactive : theme.palette.textDark} !important;
+  }
 
   .content {
     white-space: nowrap;
