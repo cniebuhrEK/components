@@ -85,6 +85,7 @@ export default {
     orange05: '#fde4c4',
     orange06: '#fef6eb',
     orange07: '#FAAD14',
+    orange15: '#FCC65A',
 
     // Math Purple
     mathPurple06: '#a5a6f6',
@@ -190,6 +191,7 @@ export default {
     fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontFamilySalty: "'Comic Sans MS', 'Comic Sans', cursive",
+    fontSizeBig: '22px',
     fontSizeNormal: '16px',
     fontSizeSmall: '14px',
     fontSizeExtraSmall: '12px',

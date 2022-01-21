@@ -285,6 +285,8 @@ const SaltyBucksContainer = styled.div`
 const SaltyBucksCounterIconContainer = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.palette.grey03};
+  color: ${({ theme }) => theme.palette.grey04};
+  font-size: ${({ theme }) => theme.typography.fontSizeBig};
   height: 30px;
   width: 30px;
   justify-content: center;
