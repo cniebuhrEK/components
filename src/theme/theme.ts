@@ -84,6 +84,8 @@ export default {
     orange04: '#fbd29d',
     orange05: '#fde4c4',
     orange06: '#fef6eb',
+    orange07: '#FAAD14',
+    orange15: '#FCC65A',
 
     // Math Purple
     mathPurple06: '#a5a6f6',
@@ -112,7 +114,10 @@ export default {
     // Old Palette
     //
     black: '#000',
+    black02: '#181C27',
     white: '#fff',
+    grey03: '#E8E9ED',
+    grey04: '#A4A3A8',
     grey05: '#AAAAAA',
     grey06: '#464240',
     grey07: '#9F9F9F',
@@ -186,9 +191,12 @@ export default {
     fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontFamilySalty: "'Comic Sans MS', 'Comic Sans', cursive",
+    fontSizeBig: '22px',
     fontSizeNormal: '16px',
     fontSizeSmall: '14px',
-    fontSizeExtraSmall: '12px'
+    fontSizeExtraSmall: '12px',
+    fontSizeExtraUltraSmall: '10px', // :)
+    fontSizeExtraHiperUltraSmall: '8px' // :D
   },
   dimensions: {
     inputHeight: '43px',

@@ -5,7 +5,7 @@ import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { isNotNilOrEmpty } from '../../../utils/ramda'
-import { SaltyBucksIcon } from '../../../icons'
+import { SaltyBucksIcon, SaltyBucksCounterIcon } from '../../../icons'
 
 type PureLink = {
   label: string
@@ -78,9 +78,6 @@ const StudentTopNavigation = (
   const logoUrl: string = showCrackUniversityLogo
     ? '/assets/logo/CrackUniversityLogo.svg'
     : '/assets/logo/LogoDarkBg.svg'
-
-  const SaltyBucksLogoUrl: string =
-    '/assets/saltyBucksMainNavigation/SaltyBucksLogo.svg'
 
   const redirectByHref = url => {
     window.location.href = url
@@ -188,10 +185,9 @@ const StudentTopNavigation = (
 
         {typeof saltyBucksBalance !== 'undefined' ? (
           <SaltyBucksContainer>
-            <SaltyBucksLogo
-              src={SaltyBucksLogoUrl}
-              alt='salty bucks logo icon'
-            />
+            <SaltyBucksCounterIconContainer>
+              <SaltyBucksCounterIcon />
+            </SaltyBucksCounterIconContainer>
             <SaltyBucks>
               <SaltyBucksIcon />
               <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
@@ -276,40 +272,47 @@ const LogoContainer = styled.div`
 
 const SaltyBucksContainer = styled.div`
   display: flex;
+  min-width: 105px;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid ${({ theme }) => theme.palette.grey04};
+  border-radius: 40px;
+  height: 40px;
+  margin: 7px 0px 7px 22px;
+  padding: 3px 10px 3px 3px;
+`
+const SaltyBucksCounterIconContainer = styled.div`
+  display: flex;
+  background-color: ${({ theme }) => theme.palette.grey03};
+  color: ${({ theme }) => theme.palette.grey04};
+  font-size: ${({ theme }) => theme.typography.fontSizeBig};
+  height: 30px;
+  width: 30px;
   justify-content: center;
-  height: 100%;
-  margin-left: 22px;
+  align-items: center;
+  border-radius: 50%;
 `
 
 const AdditionalElementsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  margin-left: 22px;
+  margin-left: 10px;
   line-height: 14px;
-`
-
-const SaltyBucksLogo = styled.img`
-  width: auto;
-  height: 32px;
 `
 
 const SaltyBucks = styled.div`
   display: flex;
   justify-content: center;
-  color: ${props => props.theme.palette.brown01};
-  font-size: ${props => props.theme.typography.fontSizeNormal};
+  color: ${({ theme }) => theme.palette.grey04};
+  font-size: ${({ theme }) => theme.typography.fontSizeSmall};
   font-weight: 600;
   padding: 4px 0;
   line-height: normal;
 `
 
 const SaltyBucksValue = styled.p`
+  color: ${({ theme }) => theme.palette.black02};
+  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   line-height: 14px;
-  font-size: 14px;
 `
 
 //
