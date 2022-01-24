@@ -37,6 +37,7 @@ interface EntitiesListProps {
   rows: RowsProps[]
   tableActions?: string | JSX.Element
   totalPages: number
+  paginationPage?: number
   emptyStateText: string
   resultsText: string
   size?: string
@@ -69,7 +70,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     tableActions,
     size,
     highlight,
-    defaultRowsPerPage
+    defaultRowsPerPage,
+    paginationPage
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -80,6 +82,10 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   useEffect(() => {
     setRowsPerPage(defaultRowsPerPage)
   }, [defaultRowsPerPage])
+
+  useEffect(() => {
+    paginationPage && setCurrentPage(paginationPage)
+  }, [paginationPage])
 
   useEffect(() => {
     setCurrentPage(1)
