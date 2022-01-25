@@ -39,7 +39,7 @@ export const HighlightColorPicker = ({
   }
 
   return (
-    <Container id='ble ble ble'>
+    <Container>
       <IconButton
         onClick={handleRemove}
         color='blue'
