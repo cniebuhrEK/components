@@ -89,9 +89,10 @@ const Container = styled.div`
   display: inline-flex;
   padding: 5px 10px;
   box-shadow: ${props => props.theme.shadows.darkShadow};
+  background-color: ${props => props.theme.palette.white};
   gap: 12px;
   border-radius: 4px;
-
+  z-index: ${({ theme }) => theme.zIndex.menu + 30};
   button {
     box-shadow: ${props => props.theme.shadows.darkShadow};
   }
