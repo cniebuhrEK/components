@@ -81,13 +81,12 @@ const SubmitButton = (props) => {
 
 ## Adding assets
 
-All assets are kept in the `src/assets` directory.
+* All assets are kept in the `src/assets` of [examcrackers-components repository](https://git.desmart.com/examkrackers/components).
+* On admin/front directory under `yarn start`/`yarn reset`/`yarn components:assets` there is a script which makes a copy of the assets catalog from `/node_modules/examkrackers-components/build/assets` and paste it into local `/public/assets`
+* After assets are copied, you can use them within the project using relative paths, eg:
+  By adding a new asset `src/assets/images/example.png`, the source would be: `/assets/images/example.png`
 
-1. On admin/front directory under `yarn start` there is a script which makes a copy of the assets catalog from `/node_modules/examkrackers-components/build/assets` and paste it into local `/public/assets`
-2. After assets are copied, you can use them within the project using relative paths, eg:
-By adding a new asset `src/assets/images/example.png`, the source would be: `/assets/images/example.png`
-
-![Assets](docs/assets_explanation.png)
+![Assets](docs/ek-assets.png)
 
 ## Deploy a new version
 
