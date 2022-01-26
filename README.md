@@ -81,11 +81,13 @@ const SubmitButton = (props) => {
 
 ## Adding assets
 
-All assets are kept in the `src/assets` directory. To add a new asset you need to remember about few things:
+All assets are kept in the `src/assets` directory.
 
-1. After adding a new asset on development mode, you need to re-run the `yarn start` command, so the script can copy-paste the latest version of the directory
-2. While using assets use relative paths as you are in the build directory, eg:
-   By adding a new asset `src/assets/images/example.png`, the source would be: `/assets/images/example.png`
+1. On admin/front directory under `yarn start` there is a script which makes a copy of the assets catalog from `/node_modules/examkrackers-components/build/assets` and paste it into local `/public/assets`
+2. After assets are copied, you can use them within the project using relative paths, eg:
+By adding a new asset `src/assets/images/example.png`, the source would be: `/assets/images/example.png`
+
+![Assets](docs/assets_explanation.png)
 
 ## Deploy a new version
 
