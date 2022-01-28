@@ -235,6 +235,8 @@ const Container = styled.div`
   width: 100%;
   max-width: 1280px;
   margin: auto;
+  border-bottom: 1px solid ${({ theme }) => theme.palette.grey12};
+  margin-bottom: 7px;
 `
 
 const Overlay = styled.div`
@@ -256,7 +258,8 @@ const Overlay = styled.div`
 const LogoWrapper = styled.div`
   display: flex;
   height: 100%;
-  padding-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `
 
 const LogoContainer = styled.div`
