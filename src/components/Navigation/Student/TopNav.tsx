@@ -5,7 +5,7 @@ import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { isNotNilOrEmpty } from '../../../utils/ramda'
-import { SaltyBucksIcon, SaltyBucksCounterIcon } from '../../../icons'
+import { SaltyBucksCounterIcon } from '../../../icons'
 
 type PureLink = {
   label: string
@@ -189,7 +189,6 @@ const StudentTopNavigation = (
               <SaltyBucksCounterIcon />
             </SaltyBucksCounterIconContainer>
             <SaltyBucks>
-              <SaltyBucksIcon />
               <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
             </SaltyBucks>
           </SaltyBucksContainer>
