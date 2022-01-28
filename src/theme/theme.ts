@@ -125,6 +125,7 @@ export default {
     grey09: '#F0EFEE',
     grey10: '#F2F1F0',
     grey11: '#F2F2F2',
+    grey12: '#DDDFE1',
     biege: '#FCFBFA',
     orange08: '#FFD5BB',
     orange09: '#FFC488',
