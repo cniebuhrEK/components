@@ -14,7 +14,8 @@ const Panel = ({
   handleClose,
   children,
   onResize,
-  id
+  id,
+  type
 }) => {
   const panelRef = React.useRef<HTMLDivElement>(null)
 
@@ -154,6 +155,7 @@ const Panel = ({
       ref={panelRef}
       initWidth={initWidth}
       initHeight={initHeight}
+      type={type}
     >
       <div className='panel__container'>
         <Resizer onResize={handleResize} />
@@ -182,8 +184,14 @@ const Panel = ({
 
 const PanelContainer = styled.div`
   position: fixed;
-  top: calc((100% - ${props => props.initHeight}px) / 2);
-  left: calc((100% - ${props => props.initWidth}px) / 2);
+  top: ${props =>
+    props?.type === 'student-book-video'
+      ? `calc(100% - ${props.initHeight}px)` /* bottom right corner  */
+      : `calc((100% - ${props.initHeight}px) / 2)`};
+  left: ${props =>
+    props?.type === 'student-book-video'
+      ? `calc(100% - ${props.initWidth}px)` /* bottom right corner  */
+      : `calc((100% - ${props.initWidth}px) / 2)`};
   width: ${props => props.initWidth}px;
   height: ${props => props.initHeight}px;
   box-sizing: border-box;
