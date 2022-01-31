@@ -227,7 +227,6 @@ StudentTopNavigation.defaultProps = {
 
 const Container = styled.div`
   align-items: center;
-  background-color: none;
   display: flex;
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
@@ -236,7 +235,6 @@ const Container = styled.div`
   max-width: 1280px;
   margin: auto;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey12};
-  margin-bottom: 7px;
 `
 
 const Overlay = styled.div`

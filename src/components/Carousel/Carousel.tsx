@@ -40,7 +40,10 @@ const Carousel = (props: CarouselProps): JSX.Element => {
   }, [props.activeItem])
 
   React.useEffect(() => {
-    setActive(0)
+    // @ts-ignore
+    if (children?.length - 1 < active) {
+      setActive(0)
+    }
   }, [children])
 
   return (
@@ -85,7 +88,7 @@ const Container = styled.div`
   flex-direction: column;
 
   .container-inner {
-    flex-grow: 1;
+    height: 100%;
     width: 100%;
   }
 `
@@ -100,10 +103,12 @@ const Index = styled.div`
 `
 
 const Panel = styled.div`
-  height: auto;
+  height: 100%;
 `
 
 const Controls = styled.div`
+  position: absolute;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;

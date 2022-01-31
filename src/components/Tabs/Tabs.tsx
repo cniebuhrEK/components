@@ -98,8 +98,8 @@ const TabTrigger = styled.div`
   box-shadow: ${props => props.theme.shadows.darkShadow};
   min-width: 89px;
   text-align: center;
-  line-height: ${({ active }) => (active ? '29px' : '19px')};
-  height: ${({ active }) => (active ? '29px' : '19px')};
+  line-height: ${({ active }) => (active ? '19px' : '19px')};
+  height: ${({ active }) => (active ? '19px' : '19px')};
   font-weight: bold;
   font-size: 11px;
   letter-spacing: -0.1px;

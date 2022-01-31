@@ -209,8 +209,8 @@ export default {
     adminSideNavWidth: '276px',
     studentSideNavWidth: '236px',
     studentTopNavHeightMenu: '75px',
-    studentTopNavHeight: '70px',
-    adminTopNavHeight: '48px',
+    studentTopNavHeight: '80px',
+    adminTopNavHeight: '80px',
     tagHeight: '21px',
     tagWidth: '50px'
   },
