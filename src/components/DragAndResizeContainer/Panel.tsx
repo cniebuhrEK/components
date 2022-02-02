@@ -196,7 +196,7 @@ const PanelContainer = styled.div`
   height: ${props => props.initHeight}px;
   box-sizing: border-box;
   z-index: ${({ theme }) => theme.zIndex.modal};
-  box-shadow: ${props => props.theme.shadows.darkShadow};
+  box-shadow: ${props => props.theme.shadows.mainShadow};
 
   .panel__container {
     height: 100%;

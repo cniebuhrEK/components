@@ -59,7 +59,7 @@ export const CheckboxContainer = styled.div`
     border: 2px solid ${({ theme }) => theme.palette.deepred01};
     border-radius: 2px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-    box-shadow: ${props => props.theme.shadows.darkShadow};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
 
     &::after {
       content: '';

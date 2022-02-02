@@ -13,7 +13,7 @@ export const SELECT_SIZES = {
 const getHoverBorderColor = (disabled: boolean, error: any) => {
   switch (true) {
     case disabled:
-      return theme.palette.biege
+      return theme.palette.panelBackground
     case error:
       return theme.palette.red05
     default:
@@ -37,7 +37,7 @@ const getBorderColor = (disabled: boolean, error: boolean) => {
     case error:
       return theme.palette.red05
     case disabled:
-      return theme.palette.biege
+      return theme.palette.panelBackground
     default:
       return theme.palette.darkblue01
   }
@@ -48,7 +48,7 @@ const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
     case isFocused:
       return theme.palette.orange01
     case isDisabled:
-      return theme.palette.biege
+      return theme.palette.disabledFont
     default:
       return theme.palette.darkblue01
   }
@@ -58,25 +58,32 @@ export const REACT_SELECT_STYLES = {
   control: (
     _provided,
     state: {
-      selectProps: { error: boolean; size: string; isSearchable: boolean }
+      selectProps: {
+        error: boolean
+        size: string
+        isSearchable: boolean
+        removeMargin: boolean
+      }
       isDisabled: boolean
     }
   ) => {
     const {
-      selectProps: { error, size, isSearchable },
+      selectProps: { error, size, isSearchable, removeMargin },
       isDisabled
     } = state
 
     return {
-      margin: '30px 0 12px',
+      margin: removeMargin ? 0 : '30px 0 12px',
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',
       position: 'relative',
-      backgroundColor: isDisabled ? theme.palette.grey08 : 'transparent',
-      borderRadius: theme.shape.borderRadiusSmall,
+      backgroundColor: isDisabled
+        ? theme.palette.disabledBackground
+        : theme.palette.panelBackground,
       borderStyle: 'solid',
       borderWidth: '1px',
+      borderRadius: '6px',
       borderColor: getBorderColor(isDisabled, error),
       color: getBorderColor(isDisabled, error),
       fontSize: '13px',
@@ -105,7 +112,9 @@ export const REACT_SELECT_STYLES = {
 
     return {
       fontSize: '14px',
-      backgroundColor: 'transparent',
+      backgroundColor: isDisabled
+        ? theme.palette.disabledBackground
+        : theme.palette.panelBackground,
       border: 'none',
       color: getFontColor(isFocused, isDisabled),
       padding: '0',
@@ -135,7 +144,7 @@ export const REACT_SELECT_STYLES = {
   },
   menuList: (_provided, _state) => {
     return {
-      backgroundColor: theme.palette.biege,
+      backgroundColor: theme.palette.panelBackground,
       maxHeight: '300px',
       overflowY: 'auto',
       boxSizing: 'border-box',
@@ -154,7 +163,9 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: isFocused ? theme.palette.grey10 : theme.palette.biege,
+      backgroundColor: isFocused
+        ? theme.palette.grey10
+        : theme.palette.panelBackground,
       transition: `background-color 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
         backgroundColor: theme.palette.grey10
@@ -183,7 +194,9 @@ export const REACT_SELECT_STYLES = {
 
     return {
       '&:hover': {
-        color: isDisabled ? theme.palette.biege : theme.palette.orange01
+        color: isDisabled
+          ? theme.palette.panelBackground
+          : theme.palette.orange01
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
@@ -232,7 +245,7 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.palette.biege
+      backgroundColor: theme.palette.panelBackground
     }
   },
   loadingMessage: (_provided, _state) => {
@@ -246,7 +259,7 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.palette.biege
+      backgroundColor: theme.palette.panelBackground
     }
   },
   placeholder: (_provided, _state) => {
@@ -287,7 +300,7 @@ export const CustomInput = (props: {
   const { selectProps } = props
   const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
-  const { isClearable, removeTopLabel } = selectProps
+  const { isClearable, removeTopLabel, isDisabled } = selectProps
 
   const handleOnFocus = (e: any) => {
     props.onFocus(e)
@@ -312,6 +325,7 @@ export const CustomInput = (props: {
         isFocusedOrHasValue={isFocused || hasValue}
         error={selectProps.error}
         size={selectProps.size}
+        isDisabled={isDisabled}
       >
         {selectProps.label}
         {selectProps.required ? ' *' : ''}
@@ -338,7 +352,7 @@ export const CustomValueContainer = (props: {
   const { selectProps } = props
   const [isFocused, setIsFocused] = React.useState(false)
   const hasValue = isNotNilOrEmpty(selectProps.value)
-  const { isClearable, removeTopLabel } = selectProps
+  const { isClearable, removeTopLabel, isDisabled } = selectProps
 
   const handleOnFocus = (e: any) => {
     props.onFocus(e)
@@ -364,6 +378,7 @@ export const CustomValueContainer = (props: {
         error={selectProps.error}
         size={selectProps.size}
         removeTopLabel={removeTopLabel}
+        isDisabled={isDisabled}
       >
         {selectProps.label}
         {selectProps.required ? ' *' : ''}
@@ -408,17 +423,20 @@ const InputLabel = styled.div`
     removeTopLabel,
     theme,
     isValueContainer,
-    isFocusedOrHasValue
+    isFocusedOrHasValue,
+    isDisabled
   }) => {
     switch (true) {
       case error:
         return theme.palette.red05
+      case isDisabled:
+        return theme.palette.disabledFont
       case isValueContainer:
       case isFocusedOrHasValue && removeTopLabel:
         return 'transparent'
       case isFocused && !removeTopLabel:
       default:
-        return theme.palette.darkblue01
+        return theme.palette.textDark
     }
   }};
   position: absolute;

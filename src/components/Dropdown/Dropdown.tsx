@@ -112,7 +112,7 @@ const Container = styled.div`
 const Menu = styled.div`
   background-color ${({ theme }) => theme.palette.white};
   border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
-  box-shadow: 0px 10px 20px #CDC5BB;
+  box-shadow: ${props => props.theme.shadows.mainShadow};
   display: ${({ open }) => (open ? 'block' : 'none')};
   position: absolute;
   z-index: ${({ theme }) => theme.zIndex.menu};
@@ -153,7 +153,7 @@ const ItemContainer = styled.div`
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: ${props => props.theme.shadows.mainShadow};
     cursor: pointer;
   }
 `

@@ -6,6 +6,6 @@ export default styled.h1`
   font-size: 48px;
   line-height: 66px;
   letter-spacing: 0px;
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.headingDark};
   font-family: ${({ theme }) => theme.typography.fontFamily};
 `

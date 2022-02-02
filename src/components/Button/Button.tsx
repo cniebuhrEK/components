@@ -240,19 +240,6 @@ export const StyledButton = styled.button`
       }
     }};
     border-color: transparent;
-    box-shadow: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.orange:
-          return theme.shadows.orangeShadow
-        case color === buttonColors.blue:
-          return theme.shadows.blueShadow
-        case color === buttonColors.green:
-          return theme.shadows.greenShadow
-        case color === buttonColors.transparent:
-        default:
-          return 'none'
-      }
-    }};
   }
 
   .children-container {

@@ -81,6 +81,7 @@ const InputField = (props: InputProps): JSX.Element => {
 
   return (
     <Container
+      hasSearchType={hasSearchType()}
       isDisabled={disabled}
       hasPasswordType={hasPasswordType()}
       isPasswordVisible={isPasswordVisible()}
@@ -145,7 +146,7 @@ const InputField = (props: InputProps): JSX.Element => {
 const Label = styled.label`
   box-sizing: border-box;
   color: ${({ error, theme }) =>
-    error ? theme.palette.red05 : theme.palette.brown01};
+    error ? theme.palette.red05 : theme.palette.textDark};
   position: absolute;
   font-size: ${({ hasValue, size }) => {
     switch (true) {
@@ -190,14 +191,14 @@ const Input = styled.input`
   font-size: ${({ size, theme }) => {
     switch (true) {
       case size === INPUT_SIZES.small:
-        return theme.typography.fontSizeSmall
+        return theme.typography.inputSmall
       default:
         return theme.typography.fontSizeNormal
     }
   }};
   background-color: transparent;
   border: none;
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.textDark};
   padding: 0;
   margin: 0;
   outline: none;
@@ -206,15 +207,24 @@ const Input = styled.input`
     hasPasswordType ? 'calc(100% - 20px)' : '100%'};
 
   &:-webkit-autofill {
-    color: ${({ theme }) => theme.palette.brown01} !important;
+    color: ${({ theme }) => theme.palette.textDark} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.biege} inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.panelBackground}
+      inset;
     height: 100%;
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.disabledFont};
     cursor: 'not-allowed';
+  }
+
+  &::placeholder,
+  &:-ms-input-placeholder,
+  &::-ms-input-placeholder {
+    color: ${({ theme }) => theme.palette.placeholder} !important;
+    font-size: 11px;
+    line-height: 16px;
   }
 `
 
@@ -230,7 +240,7 @@ const Errors = styled.div`
 
 const PasswordIcon = styled.div`
   display: ${({ hasPasswordType }) => (hasPasswordType ? 'flex' : 'none')};
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.palette.textDark};
   cursor: pointer;
   position: absolute;
   right: 14px;
@@ -284,21 +294,30 @@ const SearchIcon = styled.div`
 const Container = styled.div`
   align-items: center;
   background-color: ${({ theme, isDisabled }) =>
-    isDisabled ? theme.palette.grey08 : theme.palette.background};
+    isDisabled
+      ? theme.palette.disabledBackground
+      : theme.palette.panelBackground};
   box-sizing: border-box;
-  color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : theme.palette.darkblue01};
+  color: ${({ theme, error, isDisabled }) => {
+    switch (true) {
+      case isDisabled:
+        return theme.palette.disabledFont
+      case error:
+        return theme.palette.red05
+      default:
+        return theme.palette.textDark
+    }
+  }};
   display: inline-flex;
   border-color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : 'transparent'};
+    error ? theme.palette.red05 : theme.palette.border};
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-style: solid;
   border-width: 1px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   font-size: ${({ size, theme }) => {
     switch (true) {
       case size === INPUT_SIZES.small:
-        return theme.typography.fontSizeSmall
+        return theme.typography.inputSmall
       default:
         return theme.typography.fontSizeNormal
     }
@@ -308,7 +327,7 @@ const Container = styled.div`
     size === INPUT_SIZES.normal
       ? theme.dimensions.inputHeight
       : theme.dimensions.inputSmallHeight};
-  margin: 25px 0 21px;
+  margin: ${({ hasSearchType }) => (hasSearchType ? 0 : '25px 0 21px')};
   padding: 0 16px;
   position: relative;
   transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
@@ -320,7 +339,7 @@ const Container = styled.div`
         case error:
           return theme.palette.red05
         case isDisabled:
-          return 'transparent'
+          return theme.palette.border
         default:
           return theme.palette.orange04
       }
@@ -329,10 +348,26 @@ const Container = styled.div`
 
   &:focus-within {
     border-width: 1px;
-    border-color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.orange01};
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+    border-color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.palette.border
+        case error:
+          return theme.palette.red05
+        default:
+          return theme.palette.orange01
+      }
+    }};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.palette.disabledFont
+        case error:
+          return theme.palette.red05
+        default:
+          return theme.palette.textDark
+      }
+    }};
   }
 
   &:focus-within ${Label} {
@@ -341,8 +376,16 @@ const Container = styled.div`
     left: ${({ hasValue }) => (hasValue ? '-6px' : '-1px')};
     top: -19px;
     background-color: transparent;
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.palette.disabledFont
+        case error:
+          return theme.palette.red05
+        default:
+          return theme.palette.textDark
+      }
+    }};
   }
 `
 

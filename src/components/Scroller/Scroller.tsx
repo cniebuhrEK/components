@@ -6,8 +6,8 @@ const Scroller = styled.div`
   height: 100%;
   width: 100%;
   scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.palette.brown01}
-    ${({ theme }) => theme.palette.brown09};
+  scrollbar-color: ${({ theme }) => theme.palette.headingDark}
+    ${({ theme }) => theme.palette.scroller};
 
   &::-webkit-scrollbar {
     width: 3px;
@@ -15,12 +15,12 @@ const Scroller = styled.div`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.brown01};
+    background-color: ${({ theme }) => theme.palette.headingDark};
   }
 
   &::-webkit-scrollbar-track {
     border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.brown09};
+    background-color: ${({ theme }) => theme.palette.scroller};
   }
 `
 
