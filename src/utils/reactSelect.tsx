@@ -54,6 +54,17 @@ const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
   }
 }
 
+const getBackgroundColor = (isFocused: boolean, isDisabled: boolean) => {
+  switch (true) {
+    case isFocused:
+      return theme.palette.darkblue01
+    case isDisabled:
+      return theme.palette.disabledBackground
+    default:
+      return theme.palette.panelBackground
+  }
+}
+
 export const REACT_SELECT_STYLES = {
   control: (
     _provided,
@@ -112,9 +123,7 @@ export const REACT_SELECT_STYLES = {
 
     return {
       fontSize: '14px',
-      backgroundColor: isDisabled
-        ? theme.palette.disabledBackground
-        : theme.palette.panelBackground,
+      backgroundColor: getBackgroundColor(isFocused, isDisabled),
       border: 'none',
       color: getFontColor(isFocused, isDisabled),
       padding: '0',
