@@ -104,7 +104,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
   & .Modal {
     z-index: ${({ theme }) => theme.zIndex.modal + 10};
     font-family: ${({ theme }) => theme.typography.fontFamily};
-    text-align: left;
+    text-align: center;
     position: relative;
     display: inline-block;
     padding: 64px 72px;
