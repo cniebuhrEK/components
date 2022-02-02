@@ -188,17 +188,16 @@ const Container = styled.div`
   outline: none;
   border: none;
 
-  &,
-  * {
+  & .ql-editor {
     color: ${({ theme }) => theme.palette.textDark};
   }
 
   &.with-highlights {
-    .ql-container * {
+    .ql-container .ql-editor {
       color: ${({ theme }) => theme.palette.adminHighlights} !important;
     }
 
-    .ql-container .admin-highlights {
+    .ql-container .admin-highlights .ql-editor {
       color: ${({ theme }) => theme.palette.textDark} !important;
     }
   }
