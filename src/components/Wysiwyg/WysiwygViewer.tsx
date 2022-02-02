@@ -250,6 +250,17 @@ const TextViewerContainer = styled.div`
     }
   }
 
+  .ql-editor p {
+    img {
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        cursor: pointer;
+      }
+    }
+  }
+
   .ql-size-huge {
     font-size: 22px !important;
     line-height: 29px !important;
