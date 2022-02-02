@@ -188,16 +188,16 @@ const Container = styled.div`
 
   &,
   * {
-    color: ${({ theme }) => theme.palette.darkblue01};
+    color: ${({ theme }) => theme.palette.textDark};
   }
 
   &.with-highlights {
     .ql-container * {
-      color: ${({ theme }) => theme.palette.inactive} !important;
+      color: ${({ theme }) => theme.palette.adminHighlights} !important;
     }
 
     .ql-container .admin-highlights {
-      color: ${({ theme }) => theme.palette.darkblue01} !important;
+      color: ${({ theme }) => theme.palette.textDark} !important;
     }
   }
 `

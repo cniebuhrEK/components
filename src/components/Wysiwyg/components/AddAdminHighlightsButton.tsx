@@ -128,7 +128,7 @@ const ButtonContainer = styled.div`
     overflow: hidden;
     position: absolute;
     background-color: ${({ theme }) => theme.palette.biege};
-    box-shadow: ${props => props.theme.shadows.darkShadow};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 19px);
     left: 0;
@@ -143,7 +143,7 @@ const ButtonContainer = styled.div`
     }
 
     .mode-option:hover {
-      box-shadow: ${props => props.theme.shadows.darkShadow};
+      box-shadow: ${props => props.theme.shadows.mainShadow};
       font-weight: bold;
     }
   }

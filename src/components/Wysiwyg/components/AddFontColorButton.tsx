@@ -183,7 +183,7 @@ const ButtonContainer = styled.div`
   .mode-selection {
     display: inline-flex;
     padding: 5px 10px;
-    box-shadow: ${props => props.theme.shadows.darkShadow};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
     gap: 12px;
     border-radius: 4px;
     opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
@@ -191,7 +191,7 @@ const ButtonContainer = styled.div`
     overflow: hidden;
     position: absolute;
     background-color: ${({ theme }) => theme.palette.biege};
-    box-shadow: ${props => props.theme.shadows.darkShadow};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 5px);
     left: 0;
@@ -201,7 +201,7 @@ const ButtonContainer = styled.div`
     max-width: 150px;
 
     button {
-      box-shadow: ${props => props.theme.shadows.darkShadow};
+      box-shadow: ${props => props.theme.shadows.mainShadow};
     }
 
     svg {
@@ -222,7 +222,7 @@ const ColorPicker = styled.div`
   width: 11.65px;
   height: 11.65px;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.shadows.darkShadow};
+  box-shadow: ${props => props.theme.shadows.mainShadow};
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};

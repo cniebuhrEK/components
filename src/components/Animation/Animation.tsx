@@ -184,7 +184,7 @@ const SpeedSelection = styled.div`
     overflow: hidden;
     position: absolute;
     background-color: ${({ theme }) => theme.palette.biege};
-    box-shadow: ${props => props.theme.shadows.darkShadow};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 5px);
     left: 0;

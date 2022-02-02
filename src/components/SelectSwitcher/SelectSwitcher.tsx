@@ -118,8 +118,9 @@ const SwitcherContainer = styled.div`
   position: relative;
   display: inline-flex;
   padding: 2px 8px;
-  box-shadow: ${({ theme }) => theme.shadows.darkShadow};
   border-radius: 16px;
+  border: 1px solid ${({ theme }) => theme.palette.border};
+  background-color: ${({ theme }) => theme.palette.panelBackground};
   cursor: pointer;
   justify-content: space-between;
   width: 100%;
@@ -158,9 +159,9 @@ const SwitcherLabel = styled.div`
   display: block;
   text-align: center;
   width: ${({ width }) => width}px;
-  margin-bottom: 6px;
-  letter-spacing: -0.1px;
-  color: ${props => props.theme.palette.brown01};
+  font-size: 11px;
+  line-height: 16px;
+  color: ${props => props.theme.palette.textDark};
 `
 
 const SwitcherTrigger = styled.div`
@@ -170,11 +171,12 @@ const SwitcherTrigger = styled.div`
   .switcher-option-label {
     position: absolute;
     text-align: center;
-    top: calc(100% + 5px);
+    top: calc(100%);
     left: ${({ left }) => left}px;
-    color: ${props => props.theme.palette.brown01};
-    font-size: 12px;
-    letter-spacing: -0.1px;
+    color: ${props => props.theme.palette.textDark};
+    font-size: 11px;
+    line-height: 16px;
+    color: ${props => props.theme.palette.textDark};
   }
 
   &:last-child {

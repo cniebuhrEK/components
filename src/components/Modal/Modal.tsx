@@ -108,9 +108,9 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     position: relative;
     display: inline-block;
     padding: 64px 72px;
-    background: ${({ theme }) => theme.palette.biege};
+    background: ${({ theme }) => theme.palette.panelBackground};
     box-shadow: ${({ theme }) => theme.shadows.beigeShadow};
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.textDark};
     border-radius: 3px;
     outline: 0;
     min-width: 500px;
@@ -129,7 +129,7 @@ const Close = styled.div`
   transition: color 0.2s ${({ theme }) => theme.transitions.easing.easeInOut} 0s;
 `
 const Title = styled.div`
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.headingDark};
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;

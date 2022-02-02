@@ -88,13 +88,13 @@ export default HighlightColorPicker
 const Container = styled.div`
   display: inline-flex;
   padding: 5px 10px;
-  box-shadow: ${props => props.theme.shadows.darkShadow};
+  box-shadow: ${props => props.theme.shadows.mainShadow};
   background-color: ${props => props.theme.palette.white};
   gap: 12px;
   border-radius: 4px;
   z-index: ${({ theme }) => theme.zIndex.menu + 30};
   button {
-    box-shadow: ${props => props.theme.shadows.darkShadow};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
   }
 
   .picker-colors {
@@ -111,7 +111,7 @@ const ColorPicker = styled.div`
   width: 11.65px;
   height: 11.65px;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.shadows.darkShadow};
+  box-shadow: ${props => props.theme.shadows.mainShadow};
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};

@@ -145,7 +145,7 @@ const Label = styled.label`
 const Textarea = styled.textarea`
   background-color: transparent;
   border: none;
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.textDark};
   cursor: text;
   font-size: ${({ theme }) => theme.typography.fontSizeSmall};
   height: 100%;
@@ -158,14 +158,15 @@ const Textarea = styled.textarea`
   z-index: 2;
 
   &:-webkit-autofill {
-    color: ${({ theme }) => theme.palette.brown01} !important;
+    color: ${({ theme }) => theme.palette.textDark} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.biege} inset;
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.panelBackground}
+      inset;
     height: 100%;
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.palette.disabledFont};
     cursor: 'not-allowed';
   }
 `
@@ -182,16 +183,17 @@ const Errors = styled.div`
 
 const Container = styled.div`
   background-color: ${({ theme, isDisabled }) =>
-    isDisabled ? theme.palette.grey08 : theme.palette.background};
+    isDisabled
+      ? theme.palette.disabledBackground
+      : theme.palette.panelBackground};
   box-sizing: border-box;
   border-color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : 'transparent'};
+    error ? theme.palette.red05 : theme.palette.border};
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-style: solid;
   border-width: 1px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : theme.palette.darkblue01};
+    error ? theme.palette.red05 : theme.palette.textDark};
   display: block;
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-family: ${({ theme }) => theme.typography.fontFamily};
@@ -208,7 +210,7 @@ const Container = styled.div`
         case error:
           return theme.palette.red05
         case isDisabled:
-          return 'transparent'
+          return theme.palette.border
         default:
           return theme.palette.orange04
       }
@@ -220,7 +222,7 @@ const Container = styled.div`
     border-color: ${({ error, theme }) =>
       error ? theme.palette.red05 : theme.palette.orange01};
     color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+      error ? theme.palette.red05 : theme.palette.textDark};
   }
 
   &:focus-within ${Label} {
@@ -230,7 +232,7 @@ const Container = styled.div`
     top: -19px;
     background-color: transparent;
     color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.brown01};
+      error ? theme.palette.red05 : theme.palette.textDark};
   }
 `
 

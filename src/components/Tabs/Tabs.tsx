@@ -64,7 +64,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  box-shadow: ${props => props.theme.shadows.darkShadow};
+  box-shadow: ${props => props.theme.shadows.mainShadow};
 `
 
 const TabTriggersContainer = styled.div`
@@ -74,7 +74,7 @@ const TabTriggersContainer = styled.div`
   bottom: ${({ position }) =>
     position === 'bottomRight' || position === 'bottomLeft' ? 0 : 'auto'};
   left: ${({ position }) =>
-    position === 'topLeft' || position === 'bottomLeft' ? 0 : 'auto'};
+    position === 'topLeft' || position === 'bottomLeft' ? '10px' : 'auto'};
   right: ${({ position }) =>
     position === 'topRight' || position === 'bottomRight' ? 0 : 'auto'};
   display: flex;
@@ -82,7 +82,7 @@ const TabTriggersContainer = styled.div`
     position === 'topRight' || position === 'topLeft'
       ? 'flex-end'
       : 'flex-start'};
-  gap: 18px;
+  gap: 2px;
   transform: translateY(
     ${({ position }) =>
       position === 'topRight' || position === 'topLeft' ? '-100%' : '100%'}
@@ -92,10 +92,10 @@ const TabTriggersContainer = styled.div`
 const TabTrigger = styled.div`
   cursor: pointer;
   background-color: ${({ theme, active }) =>
-    active ? theme.palette.orange01 : theme.palette.darkblue01};
+    active ? theme.palette.orange01 : theme.palette.grey12};
   color: ${({ theme, active }) =>
-    active ? theme.palette.darkblue01 : theme.palette.orange01};
-  box-shadow: ${props => props.theme.shadows.darkShadow};
+    active ? theme.palette.panelBackground : theme.palette.placeholder};
+  box-shadow: ${props => props.theme.shadows.mainShadow};
   min-width: 89px;
   text-align: center;
   line-height: ${({ active }) => (active ? '19px' : '19px')};

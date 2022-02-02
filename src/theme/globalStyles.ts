@@ -12,7 +12,7 @@ export default createGlobalStyle`
     }
 
     body {
-    background-color: ${({ theme }) => theme.palette.biege};
+    background-color: ${({ theme }) => theme.palette.background};
     margin: 0;
     font-family: ${({ theme }) => theme.typography.fontFamily};
     -webkit-font-smoothing: antialiased;
@@ -76,7 +76,8 @@ export default createGlobalStyle`
       height: 100%;
       color: ${({ theme }) => theme.palette.brown01}; !important;
       background-color: unset;
-      box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.biege} inset;
+      box-shadow: 0 0 0px 1000px ${({ theme }) =>
+        theme.palette.panelBackground} inset;
     }
 
     input::-ms-clear, input::-ms-reveal {

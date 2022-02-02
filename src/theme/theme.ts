@@ -50,7 +50,6 @@ export default {
     brown05: '#d16923',
     brown06: '#de7f3f',
     brown07: '#e49662',
-    brown08: '#eaad85',
     brown09: '#f0c5a8',
     brown10: '#f6dccb',
 
@@ -144,13 +143,22 @@ export default {
     gray4: '#4D4D4D',
     overlay: 'rgba(252, 251, 250, 0.6)',
     inactive: '#B5B5B5',
-    background: '#FCFBFA',
-    textDark: '#061F2D'
+    // background: '#FCFBFA',
+    background: '#F6F8FA',
+    panelBackground: '#FFF',
+    disabledBackground: '#F6F8FA',
+    disabledFont: '#C5C6C8',
+    textDark: '#1A1A1A',
+    headingDark: '#1A1A1A',
+    border: '#E3E5E7',
+    placeholder: '#949596',
+    scroller: '#C5C6C8',
+    adminHighlights: '#D9D9D9'
   },
   shape: {
     borderRadiusSmall: '2px',
     borderRadiusNormal: '4px',
-    borderRadiusBig: '6px'
+    borderRadiusBig: '8px'
   },
   shadows: {
     beigeShadow: '0px 10px 20px rgba(33, 26, 22, 0.1)',
@@ -158,7 +166,9 @@ export default {
     orangeShadow: '0px 4px 4px 0px rgba(249, 175, 77, 0.25)',
     blueShadow: '0px 4px 4px 0px rgba(11, 44, 66, 0.25)',
     headerShadow: '0px 2px 16px rgba(33, 26, 22, 0.04)',
-    darkShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)'
+    // darkShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
+    darkShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+    mainShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)'
   },
   transitions: {
     easing: {
@@ -182,11 +192,14 @@ export default {
     speedDial: 1050,
     appBar: 1100,
     drawer: 1200,
-    modal: 1300,
+    modal: 3030,
     snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,
-    menu: 2000
+    menu: 2000,
+    navigation: 3000,
+    mainOverlay: 3010,
+    mainMenu: 3020
   },
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
@@ -197,12 +210,13 @@ export default {
     fontSizeSmall: '14px',
     fontSizeExtraSmall: '12px',
     fontSizeExtraUltraSmall: '10px', // :)
-    fontSizeExtraHiperUltraSmall: '8px' // :D
+    fontSizeExtraHiperUltraSmall: '8px', // :D
+    inputSmall: '11px'
   },
   dimensions: {
-    inputHeight: '43px',
+    inputHeight: '42px',
     inputSmallHeight: '32px',
-    buttonNormalHeight: '43px',
+    buttonNormalHeight: '42px',
     buttonNormalMinWidth: '114px',
     buttonSmallHeight: '32px',
     buttonSmallMinWidth: '32px',

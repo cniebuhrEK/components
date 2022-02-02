@@ -78,7 +78,7 @@ RowsPerPage.defaultProps = {}
 export default RowsPerPage
 
 const RowsPerPageContainer = styled.div`
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.textDark};
   display: inline-flex;
   align-items: center;
   margin-top: 5px;
@@ -97,15 +97,16 @@ const SelectContainer = styled.div`
 
 const DropdownTrigger = styled.div`
   padding: 8px 12px;
-  background-color: ${({ theme }) => theme.palette.grey09};
-  border-radius: 2px;
+  background-color: ${({ theme }) => theme.palette.panelBackground};
+  border-radius: 6px;
+  border: 1px solid ${({ theme }) => theme.palette.border};
   display: flex;
   align-items: center;
   cursor: pointer;
 `
 
 const Menu = styled.div`
-  background-color ${({ theme }) => theme.palette.biege};
+  background-color ${({ theme }) => theme.palette.panelBackground};
   border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
   z-index: ${({ theme }) => theme.zIndex.dropdown};
   box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
@@ -121,8 +122,8 @@ const Menu = styled.div`
   width: fit-content;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.palette.brown01}
-    ${({ theme }) => theme.palette.brown09};
+  scrollbar-color: ${({ theme }) => theme.palette.textDark}
+    ${({ theme }) => theme.palette.scroller};
 
   &::-webkit-scrollbar {
     width: 3px;
@@ -130,12 +131,12 @@ const Menu = styled.div`
 
   &::-webkit-scrollbar-thumb {
     border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.brown01};
+    background-color: ${({ theme }) => theme.palette.textDark};
   }
 
   &::-webkit-scrollbar-track {
     border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.brown09};
+    background-color: ${({ theme }) => theme.palette.scroller};
   }
 `
 
@@ -144,12 +145,12 @@ const ItemContainer = styled.div`
   display: block;
   width: 100%;
   padding: 6px 16px;
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.palette.textDark};
   line-height: 1.5;
   font-size: 14px;
   white-space: nowrap;
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.grey10};
+    background-color: ${({ theme }) => theme.palette.disabledBackground};
   }
 `

@@ -38,6 +38,12 @@ interface StudentTopNavigationProps {
   isPreviewStudent?: boolean
 }
 
+const getRandomIntInclusive = (min, max) => {
+  min = Math.ceil(min)
+  max = Math.floor(max)
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
 const StudentTopNavigation = (
   props: StudentTopNavigationProps
 ): JSX.Element => {
@@ -91,7 +97,7 @@ const StudentTopNavigation = (
     links.map((link, index) => (
       <NavMenuItem
         onClick={handleRedirect(link.url)}
-        key={`nav-menu-link-level-1-${index}`}
+        key={`nav-menu-link-level-2-${index}-${getRandomIntInclusive(1, 100)}`}
       >
         {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
         <NavMenuLink>{link.label}</NavMenuLink>
@@ -128,7 +134,12 @@ const StudentTopNavigation = (
       )
 
       return (
-        <React.Fragment key={`nav-menu-link-level-1-${index}`}>
+        <React.Fragment
+          key={`nav-menu-link-level-1-${index}-${getRandomIntInclusive(
+            1,
+            100
+          )}`}
+        >
           {Level1Link}
           {link.label === linkLevel2 && generateLevel2Links(nextLevelLinks)}
         </React.Fragment>
@@ -177,44 +188,47 @@ const StudentTopNavigation = (
   })
 
   return (
-    <Container>
-      <LogoWrapper>
-        <LogoContainer>
-          <img src={logoUrl} alt='logo icon' />
-        </LogoContainer>
+    <React.Fragment>
+      <ContainerOuter open={open}>
+        <Container>
+          <LogoWrapper>
+            <LogoContainer>
+              <img src={logoUrl} alt='logo icon' />
+            </LogoContainer>
 
-        {typeof saltyBucksBalance !== 'undefined' ? (
-          <SaltyBucksContainer>
-            <SaltyBucksCounterIconContainer>
-              <SaltyBucksCounterIcon />
-            </SaltyBucksCounterIconContainer>
-            <SaltyBucks>
-              <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
-            </SaltyBucks>
-          </SaltyBucksContainer>
-        ) : null}
-        {hasAdditionalElements && (
-          <AdditionalElementsContainer>
-            {navLeftElements}
-          </AdditionalElementsContainer>
-        )}
-      </LogoWrapper>
+            {typeof saltyBucksBalance !== 'undefined' ? (
+              <SaltyBucksContainer>
+                <SaltyBucksCounterIconContainer>
+                  <SaltyBucksCounterIcon />
+                </SaltyBucksCounterIconContainer>
+                <SaltyBucks>
+                  <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
+                </SaltyBucks>
+              </SaltyBucksContainer>
+            ) : null}
+            {hasAdditionalElements && (
+              <AdditionalElementsContainer>
+                {navLeftElements}
+              </AdditionalElementsContainer>
+            )}
+          </LogoWrapper>
 
-      <NavRight>
-        <UserContainer>
-          {avatar && <IconContainer src={avatar} alt='profile icon' />}
-          <p>{greeting}</p>
-        </UserContainer>
-
-        <Overlay open={open} />
-        <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
-          {isPreviewStudent ? null : (
-            <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
-          )}
-          <NavMenu open={open}>{generateLinks}</NavMenu>
-        </MenuContainer>
-      </NavRight>
-    </Container>
+          <NavRight>
+            <UserContainer>
+              {avatar && <IconContainer src={avatar} alt='profile icon' />}
+              <p>{greeting}</p>
+            </UserContainer>
+            <Overlay open={open} />
+            <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
+              {isPreviewStudent ? null : (
+                <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
+              )}
+              <NavMenu open={open}>{generateLinks}</NavMenu>
+            </MenuContainer>
+          </NavRight>
+        </Container>
+      </ContainerOuter>
+    </React.Fragment>
   )
 }
 
@@ -225,23 +239,39 @@ StudentTopNavigation.defaultProps = {
   links: []
 }
 
-const Container = styled.div`
+const ContainerOuter = styled.div`
   align-items: center;
   display: flex;
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.palette.grey12};
+  background-color: ${({ theme }) => theme.palette.panelBackground};
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: ${({ theme, open }) =>
+    open ? theme.zIndex.mainOverlay : theme.zIndex.navigation};
+`
+
+const Container = styled.div`
+  align-items: center;
+  display: flex;
+  height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  justify-content: space-between;
   max-width: 1280px;
   margin: auto;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.grey12};
+  width: 100%;
+  padding: 0 10px;
 `
 
 const Overlay = styled.div`
   width: ${({ open }) => (open ? '100%' : '0')};
   height: ${({ open }) => (open ? '100%' : '0')};
   opacity: ${({ open }) => (open ? 1 : 0)};
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -250,14 +280,13 @@ const Overlay = styled.div`
   filter: blur(2px);
   backdrop-filter: blur(2px);
   transition: opacity 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
-  z-index: ${({ theme }) => theme.zIndex.menu - 10};
+  z-index: ${({ theme }) => theme.zIndex.mainOverlay};
 `
 
 const LogoWrapper = styled.div`
   display: flex;
   height: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  align-items: center;
 `
 
 const LogoContainer = styled.div`
@@ -266,7 +295,7 @@ const LogoContainer = styled.div`
   color: ${({ theme }) => theme.palette.biege};
 
   img {
-    max-width: 200px;
+    max-width: 157px;
   }
 `
 
@@ -279,7 +308,7 @@ const SaltyBucksContainer = styled.div`
   border: 1px solid ${({ theme }) => theme.palette.grey04};
   border-radius: 40px;
   height: 40px;
-  margin: 7px 0px 7px 22px;
+  margin: 0 0 0 48px;
   padding: 3px 10px 3px 3px;
 `
 const SaltyBucksCounterIconContainer = styled.div`
@@ -322,9 +351,11 @@ const UserContainer = styled.div`
   display: flex;
   align-items: center;
   flex-flow: row;
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.palette.textDark};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  margin-right: 2em;
+  margin-right: 16px;
+  font-size: 14px;
+  letter-spacing: -0.1px;
 
   p {
     white-space: nowrap;
@@ -353,7 +384,7 @@ const NavRight = styled.div`
 
 const MenuContainer = styled.div`
   position: relative;
-  z-index: ${({ theme }) => theme.zIndex.menu};
+  z-index: ${({ theme }) => theme.zIndex.mainMenu};
 `
 
 const NavMenu = styled.div`
@@ -368,14 +399,14 @@ const NavMenu = styled.div`
   position: absolute;
   right: 0;
   top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
-  z-index: ${({ theme }) => theme.zIndex.menu};
+  z-index: ${({ theme }) => theme.zIndex.mainMenu};
   transition: opacity 700ms ${({ theme }) =>
     theme.transitions.easing.easeInOut};
   max-width: 210px;
 `
 
 const NavMenuLink = styled.span`
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.palette.textDark};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   white-space: nowrap;
   overflow: hidden;
@@ -392,7 +423,7 @@ const NavMenuItem = styled.a`
   justify-content: flex-start;
   line-height: normal;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.palette.textDark};
   border-left: 3px solid transparent;
   width: 100%;
   overflow: hidden;
@@ -416,7 +447,7 @@ const NavStaticMenuItem = styled.div`
   justify-content: flex-start;
   line-height: normal;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.palette.textDark};
   border-left: ${({ isSelected, theme }) =>
     `3px solid ${isSelected ? theme.palette.orange02 : 'transparent'}`};
   box-shadow: ${({ isSelected }) =>
