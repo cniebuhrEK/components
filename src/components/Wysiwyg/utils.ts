@@ -29,6 +29,13 @@ export const getRealTextWithAdditionalInsertsAsPlaceholders = deltaObject =>
     R.toLower
   )(deltaObject)
 
+export const hasImg = deltaObject =>
+  R.pipe(
+    R.propOr([], 'ops'),
+    R.filter(R.hasPath(['insert', 's3-image'])),
+    R.map(R.pathOr('', ['insert', 's3-image']))
+  )(deltaObject)
+
 export const HIGHLIGHT_BLOTS = {
   [HIGHLIGHT_COLORS.green]: GREEN_HIGHLIGHTS_BLOT_NAME,
   [HIGHLIGHT_COLORS.yellow]: YELLOW_HIGHLIGHTS_BLOT_NAME,

@@ -20,9 +20,9 @@ import {
 import GlossaryTooltips from './components/GlossaryTooltips'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import { ModalWysiwygPreview } from './ModalWysiwygPreview'
 // @ts-ignore
 window.katex = katex
-
 interface TextEditorProps {
   id: string
   bookContentId?: string
@@ -174,6 +174,8 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         glossaryIds={glossaryIds}
         redirectHandler={redirectHandler}
       />
+      {/* @ts-ignore */}
+      <ModalWysiwygPreview value={value} />
     </Container>
   )
 }
@@ -238,6 +240,14 @@ const TextViewerContainer = styled.div`
   .ql-editor h2 {
     font-size: 19px !important;
     line-height: 23px !important;
+    img {
+      &:hover {
+        cursor: pointer;
+      }
+      &:active {
+        cursor: pointer;
+      }
+    }
   }
 
   .ql-size-huge {
