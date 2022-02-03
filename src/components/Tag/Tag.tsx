@@ -68,7 +68,6 @@ Tag.defaultProps = {
 export default Tag
 
 const TagContainer = styled.div`
-  box-shadow: ${({ theme }) => theme.shadows.darkShadow};
   line-height: ${({ theme }) => theme.dimensions.tagHeight};
   min-height: ${({ theme }) => theme.dimensions.tagHeight};
   min-width: ${({ theme }) => theme.dimensions.tagWidth};

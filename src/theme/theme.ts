@@ -33,6 +33,7 @@ export default {
     brightred04: '#f5aaa3',
     brightred05: '#f9ccc8',
     brightred06: '#fdeeed',
+    brightred07: '#FFE3E0',
 
     // Light blues
     lightblue01: '#1a7af8',
@@ -75,6 +76,7 @@ export default {
     green07: '#b6f7d2',
     green08: '#dafbe8',
     green09: '#edfdf3',
+    green10: '#DAF1E4',
 
     // Oranges
     orange01: '#f8961a',
@@ -136,7 +138,6 @@ export default {
     red04: '#A72A1C',
     red05: '#E83E2E',
     red10: '#FFDBD8',
-    green10: '#D2EDB5',
     gray1: '#2E2D2C',
     gray2: '#343432',
     gray3: '#848484',
@@ -144,15 +145,19 @@ export default {
     overlay: 'rgba(252, 251, 250, 0.6)',
     inactive: '#B5B5B5',
     // background: '#FCFBFA',
+
+    // new colors
+
     background: '#F6F8FA',
     panelBackground: '#FFF',
     disabledBackground: '#F6F8FA',
     disabledFont: '#C5C6C8',
-    textDark: '#1A1A1A',
+    textDark: '#444444',
     headingDark: '#1A1A1A',
     border: '#E3E5E7',
     placeholder: '#949596',
     scroller: '#C5C6C8',
+    scrollerThumb: '#7B7C7D',
     adminHighlights: '#D9D9D9'
   },
   shape: {
@@ -226,7 +231,8 @@ export default {
     studentTopNavHeight: '80px',
     adminTopNavHeight: '80px',
     tagHeight: '21px',
-    tagWidth: '50px'
+    tagWidth: '50px',
+    footerHeight: '32px'
   },
   breakpointsMedia: {
     mobile: '@media (max-width: 768px)',

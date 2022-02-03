@@ -6,20 +6,20 @@ const Scroller = styled.div`
   height: 100%;
   width: 100%;
   scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.palette.headingDark}
+  scrollbar-color: ${({ theme }) => theme.palette.scrollerThumb}
     ${({ theme }) => theme.palette.scroller};
 
   &::-webkit-scrollbar {
-    width: 3px;
+    width: 6px;
   }
 
   &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.headingDark};
+    border-radius: 6px;
+    background-color: ${({ theme }) => theme.palette.scrollerThumb};
   }
 
   &::-webkit-scrollbar-track {
-    border-radius: 3px;
+    border-radius: 6px;
     background-color: ${({ theme }) => theme.palette.scroller};
   }
 `

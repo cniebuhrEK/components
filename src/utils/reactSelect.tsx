@@ -37,7 +37,7 @@ const getBorderColor = (disabled: boolean, error: boolean) => {
     case error:
       return theme.palette.red05
     case disabled:
-      return theme.palette.panelBackground
+      return theme.palette.disabledFont
     default:
       return theme.palette.darkblue01
   }
