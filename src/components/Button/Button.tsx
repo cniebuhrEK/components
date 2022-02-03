@@ -113,50 +113,63 @@ export const StyledButton = styled.button`
   }};
   color: ${({ variant, color, theme }) => {
     switch (true) {
+      // contained variants
       case variant === buttonVariants.contained &&
         color === buttonColors.orange:
         return theme.palette.darkblue01
       case variant === buttonVariants.contained && color === buttonColors.blue:
         return theme.palette.orange01
+      case variant === buttonVariants.contained &&
+        color === buttonColors.transparent:
+        return theme.palette.textDark
+      case variant === buttonVariants.contained && color === buttonColors.green:
+        return theme.palette.green01
+      case variant === buttonVariants.contained && color === buttonColors.red:
+        return theme.palette.brightred01
+      case variant === buttonVariants.contained && color === buttonColors.black:
+        return theme.palette.panelBackground
+
+      // outlined variants
       case variant === buttonVariants.outlined && color === buttonColors.orange:
         return theme.palette.orange02
       case variant === buttonVariants.outlined && color === buttonColors.blue:
         return theme.palette.darkblue01
-      case variant === buttonVariants.contained &&
-        color === buttonColors.transparent:
-      case variant === buttonVariants.outlined &&
-        color === buttonColors.transparent:
-        return theme.palette.textDark
-      case variant === buttonVariants.contained && color === buttonColors.green:
       case variant === buttonVariants.outlined && color === buttonColors.green:
         return theme.palette.green01
-      case variant === buttonVariants.contained && color === buttonColors.red:
       case variant === buttonVariants.outlined && color === buttonColors.red:
         return theme.palette.brightred01
-      case variant === buttonVariants.contained && color === buttonColors.black:
-        return theme.palette.panelBackground
+      case variant === buttonVariants.outlined && color === buttonColors.black:
+        return theme.palette.textDark
+
+      // transparent variants
+      case color === buttonColors.transparent:
       default:
         return theme.palette.textDark
     }
   }};
   background-color: ${({ variant, color, theme }) => {
     switch (true) {
+      // contained
       case variant === buttonVariants.contained &&
         color === buttonColors.orange:
         return theme.palette.orange02
       case variant === buttonVariants.contained && color === buttonColors.blue:
         return theme.palette.darkblue01
-      case variant === buttonVariants.contained &&
-        color === buttonColors.transparent:
-      case variant === buttonVariants.outlined &&
-        color === buttonColors.transparent:
-        return 'transparent'
       case variant === buttonVariants.contained && color === buttonColors.green:
         return theme.palette.green10
       case variant === buttonVariants.contained && color === buttonColors.red:
         return theme.palette.brightred07
       case variant === buttonVariants.contained && color === buttonColors.black:
         return theme.palette.textDark
+
+      // outlined
+      case variant === buttonVariants.outlined:
+        return theme.palette.panelBackground
+
+      // transparent
+      case color === buttonColors.transparent:
+        return 'transparent'
+
       default:
         return theme.palette.panelBackground
     }
@@ -199,9 +212,9 @@ export const StyledButton = styled.button`
     background-color: ${({ variant, size, color, theme }) => {
       switch (true) {
         case variant === buttonVariants.outlined:
-          return theme.palette.background
+          return theme.palette.disabledBackground
         case size === buttonSizes.small && variant === buttonVariants.contained:
-          return theme.palette.background
+          return theme.palette.disabledBackground
         case color === buttonColors.orange &&
           variant !== buttonVariants.outlined:
           return theme.palette.orange05
@@ -209,7 +222,7 @@ export const StyledButton = styled.button`
           variant !== buttonVariants.outlined:
           return theme.palette.green10
         case color === buttonColors.blue && variant !== buttonVariants.outlined:
-          return theme.palette.background
+          return theme.palette.disabledBackground
         case color === buttonColors.transparent:
         default:
           return 'transparent'
