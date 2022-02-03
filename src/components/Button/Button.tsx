@@ -163,28 +163,8 @@ export const StyledButton = styled.button`
   }};
   box-shadow: none;
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
-  border-width: ${({ variant }) =>
-    variant === buttonVariants.contained ? '0px' : '1px'};
-  border-width: ${({ variant, color }) => {
-    switch (true) {
-      case variant === buttonVariants.outlined:
-      case variant === buttonVariants.contained && color === buttonColors.green:
-      case variant === buttonVariants.contained && color === buttonColors.red:
-        return '1px'
-      default:
-        return '0px'
-    }
-  }};
-  border-style: ${({ variant, color }) => {
-    switch (true) {
-      case variant === buttonVariants.outlined:
-      case variant === buttonVariants.contained && color === buttonColors.green:
-      case variant === buttonVariants.contained && color === buttonColors.red:
-        return 'solid'
-      default:
-        return 'none'
-    }
-  }};
+  border-width: 1px;
+  border-style: solid;
   border-color: ${({ variant, color, theme }) => {
     switch (true) {
       case variant === buttonVariants.outlined && color === buttonColors.orange:
@@ -235,39 +215,16 @@ export const StyledButton = styled.button`
           return 'transparent'
       }
     }};
-    border-color: ${({ color, theme, variant }) => {
+    border-color: ${({ color, theme }) => {
       switch (true) {
-        case color === buttonColors.red:
-        case color === buttonColors.green:
-        case color === buttonColors.transparent &&
-          variant === buttonVariants.outlined:
-          return theme.palette.disabledFont
         case color === buttonColors.transparent:
           return 'transparent'
         default:
           return theme.palette.disabledFont
       }
     }};
-    border-style: ${({ color }) => {
-      switch (true) {
-        case color === buttonColors.red:
-        case color === buttonColors.green:
-        case color === buttonColors.transparent:
-          return 'solid'
-        default:
-          return 'none'
-      }
-    }};
-    border-width: ${({ color }) => {
-      switch (true) {
-        case color === buttonColors.red:
-        case color === buttonColors.green:
-        case color === buttonColors.transparent:
-          return '1px'
-        default:
-          return '0'
-      }
-    }};
+    border-style: solid;
+    border-width: 1px;
   }
 
   &:hover:enabled,
