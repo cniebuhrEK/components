@@ -78,7 +78,6 @@ const Animation = (props: AnimationProps): JSX.Element => {
         options={options}
         isStopped={isStopped}
         isPaused={isPaused}
-        width={208}
         speed={speed}
       />
       {!hideControls && (
@@ -124,6 +123,7 @@ export default Animation
 
 export const AnimationContainer = styled.div`
   display: inline-block;
+  width: 100%;
 
   .controls-container {
     display: flex;
