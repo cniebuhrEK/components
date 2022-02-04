@@ -85,7 +85,8 @@ import {
   DragIcon,
   ContentQuestionsIcon,
   CloseContainedIcon,
-  CheckmarkContainedIcon
+  CheckmarkContainedIcon,
+  FlipIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -181,7 +182,8 @@ const AllIcons = () => {
     { component: DragIcon, title: 'DragIcon' },
     { component: ContentQuestionsIcon, title: 'ContentQuestionsIcon' },
     { component: CloseContainedIcon, title: 'CloseContainedIcon' },
-    { component: CheckmarkContainedIcon, title: 'CheckmarkContainedIcon' }
+    { component: CheckmarkContainedIcon, title: 'CheckmarkContainedIcon' },
+    { component: FlipIcon, title: 'FlipIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)

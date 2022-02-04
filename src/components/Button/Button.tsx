@@ -31,6 +31,7 @@ interface ButtonProps {
   color?: 'orange' | 'green' | 'blue' | 'transparent' | 'red' | 'black'
   variant?: 'contained' | 'outlined'
   startIcon?: any
+  endIcon?: any
   type?: string
   disabled?: boolean
   isLoading?: boolean
@@ -41,7 +42,7 @@ interface ButtonProps {
 }
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { children, startIcon, isLoading, autofocus } = props
+  const { children, startIcon, endIcon, isLoading, autofocus } = props
 
   return (
     <StyledButton {...props} autoFocus={autofocus}>
@@ -53,6 +54,7 @@ const Button = (props: ButtonProps): JSX.Element => {
       ) : (
         <span className='children-container'>{children}</span>
       )}
+      {endIcon && <EndIconContainer>{endIcon}</EndIconContainer>}
     </StyledButton>
   )
 }
@@ -292,6 +294,15 @@ export const StyledButton = styled.button`
 
 const IconContainer = styled.div`
   margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 16px;
+  width: 16px;
+`
+
+const EndIconContainer = styled.div`
+  margin-left: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
