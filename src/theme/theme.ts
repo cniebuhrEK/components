@@ -158,7 +158,8 @@ export default {
     placeholder: '#949596',
     scroller: '#C5C6C8',
     scrollerThumb: '#7B7C7D',
-    adminHighlights: '#D9D9D9'
+    adminHighlights: '#D9D9D9',
+    divider: '#D7D7D7'
   },
   shape: {
     borderRadiusSmall: '2px',
