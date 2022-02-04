@@ -159,7 +159,9 @@ export default {
     scroller: '#C5C6C8',
     scrollerThumb: '#7B7C7D',
     adminHighlights: '#D9D9D9',
-    divider: '#D7D7D7'
+    divider: '#D7D7D7',
+    proficiencyDrawer: '#D2E3ED',
+    proficiencyDrawerBorder: '#316689'
   },
   shape: {
     borderRadiusSmall: '2px',
