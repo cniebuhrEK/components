@@ -202,6 +202,7 @@ export default {
     appBar: 1100,
     drawer: 1200,
     modal: 3030,
+    snackbarToast: 3050,
     snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,
