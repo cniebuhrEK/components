@@ -161,7 +161,8 @@ export default {
     adminHighlights: '#D9D9D9',
     divider: '#D7D7D7',
     proficiencyDrawer: '#D2E3ED',
-    proficiencyDrawerBorder: '#316689'
+    proficiencyDrawerBorder: '#316689',
+    modalBackground: 'rgba(26, 26, 26, .6)' // #1A1A1A + opacity 0.6
   },
   shape: {
     borderRadiusSmall: '2px',
@@ -201,6 +202,7 @@ export default {
     appBar: 1100,
     drawer: 1200,
     modal: 3030,
+    snackbarToast: 3050,
     snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,

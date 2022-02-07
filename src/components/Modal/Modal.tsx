@@ -97,6 +97,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
       width: 100%;
       height: 100%;
       backdrop-filter: blur(2px);
+      background: ${({ theme }) => theme.palette.modalBackground};
       z-index: ${({ theme }) => theme.zIndex.modal};
     }
   }

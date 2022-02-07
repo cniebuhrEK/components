@@ -98,12 +98,13 @@ const CloseContainer = styled.div`
 
 const Container = styled.div`
   position: fixed;
-  top: 60px;
+  top: 100px;
   left: 20px;
   width: ${({ open }) => (open ? '100vw' : '0px')};
   display: flex;
   justify-content: left;
-  z-index: ${({ open, theme }) => (open ? theme.zIndex.snackbar : 'unset')};
+  z-index: ${({ open, theme }) =>
+    open ? theme.zIndex.snackbarToast : 'unset'};
 `
 
 const StyledToast = styled.div`
@@ -112,7 +113,8 @@ const StyledToast = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSizeSmall};
   min-width: ${({ open }) => (open ? '300px' : '0px')};
   max-width: ${({ open }) => (open ? '350px' : '0px')};
-  z-index: ${({ open, theme }) => (open ? theme.zIndex.snackbar : 'unset')};
+  z-index: ${({ open, theme }) =>
+    open ? theme.zIndex.snackbarToast : 'unset'};
   background-color: ${({ theme }) => theme.palette.biege};
   border-width: ${({ open }) => (open ? '1px' : '0')};
   border-style: solid;
