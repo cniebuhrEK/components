@@ -358,6 +358,8 @@ const TextEditorContainer = styled.div`
 `
 
 const WysiwygContainer = styled.div`
+  overflow: auto;
+
   strong {
     font-weight: bold;
   }
