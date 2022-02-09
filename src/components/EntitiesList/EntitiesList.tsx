@@ -45,6 +45,7 @@ interface EntitiesListProps {
   defaultRowsPerPage?: 10 | 50 | 100 | undefined
   defaultSortColumnId: string
   defaultSortDirection: string
+  exam?: boolean
   onTableStateChange: (state: {
     sortBy: string
     dir: string
@@ -128,7 +129,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const renderRows = rows.map(row => (
     <TableRow key={row.id} id={row.id} highlight={highlight}>
       {row.cells.map(cell => (
-        <TableCell key={cell.columnId} {...cell.cellProps}>
+        <TableCell key={cell.columnId} {...cell.cellProps} exam>
           {cell.children}
         </TableCell>
       ))}
