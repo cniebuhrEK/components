@@ -2,7 +2,7 @@ import React from 'react'
 import ReactTooltip from 'react-tooltip'
 import * as R from 'ramda'
 import styled from 'styled-components'
-import { getGlossaryIds } from "../utils";
+import { getGlossaryIds } from '../utils'
 
 export interface GlossaryTooltipsProps {
   deltaObject?: any
