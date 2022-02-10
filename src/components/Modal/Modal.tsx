@@ -108,7 +108,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     text-align: center;
     position: relative;
     display: inline-block;
-    padding: 64px 72px;
+    padding: 48px 20px;
     background: ${({ theme }) => theme.palette.panelBackground};
     box-shadow: ${({ theme }) => theme.shadows.beigeShadow};
     color: ${({ theme }) => theme.palette.textDark};
