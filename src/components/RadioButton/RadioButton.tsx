@@ -76,7 +76,6 @@ const Container = styled.div`
         isRight
           ? `url('/assets/contentQuestions/CorrectAnswer.svg')`
           : `url('/assets/contentQuestions/IncorrectAnswer.svg')`};
-      /* content: isRight ? url('/assets/contentQuestions/CorrectAnswer.svg') : url('/assets/contentQuestions/IncorrectAnswer.svg') ; */
       width: 16px;
       height: 16px;
       top: 3px;
@@ -87,7 +86,7 @@ const Container = styled.div`
     position: relative;
     width: 16px;
     height: 16px;
-    border: 1px solid #949596;
+    border: 1px solid ${({ theme }) => theme.palette.placeholder};
     background-color: ${({ theme }) => theme.palette.biege};
     border-radius: 50%;
     flex: none;
