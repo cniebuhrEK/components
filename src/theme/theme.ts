@@ -162,6 +162,7 @@ export default {
     divider: '#D7D7D7',
     proficiencyDrawer: '#D2E3ED',
     proficiencyDrawerBorder: '#316689',
+    contentQuestionsRightAnswer: '#a635ff',
     modalBackground: 'rgba(26, 26, 26, .6)' // #1A1A1A + opacity 0.6
   },
   shape: {
