@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface RadioButtonProps {
+  isRight?: boolean
+  isAnswered?: boolean
   isChecked?: boolean
   id?: string
   name: string
@@ -12,7 +14,17 @@ interface RadioButtonProps {
 }
 
 const RadioButton = (props: RadioButtonProps) => {
-  const { id, name, label, onChange, isChecked, isDisabled, value } = props
+  const {
+    id,
+    name,
+    label,
+    onChange,
+    isChecked,
+    isDisabled,
+    value,
+    isRight,
+    isAnswered
+  } = props
 
   function handleOnChange(): void {
     !isDisabled && onChange(value)
@@ -25,14 +37,19 @@ const RadioButton = (props: RadioButtonProps) => {
       onClick={handleOnChange}
       isChecked={isChecked}
       isDisabled={isDisabled}
+      isRight={isRight}
+      isAnswered={isAnswered}
     >
-      <div className='radio-icon' />
+      <div className={`${isAnswered ? 'radio-answer-icon' : ''}`}>
+        <div className='radio-icon' />
+      </div>
       {label && <div className='radio-label'>{label}</div>}
     </Container>
   )
 }
 
 RadioButton.defaultProps = {
+  isRight: false,
   isChecked: false,
   isDisabled: false,
   id: '',
@@ -49,13 +66,29 @@ const Container = styled.div`
   cursor: pointer;
   user-select: none;
   margin-top: 5px;
-
+  .radio-answer-icon {
+    position: relative;
+    &::after {
+      position: absolute;
+      top: -1px !important;
+      left: -1px !important;
+      content: ${({ isRight }) =>
+        isRight
+          ? `url('/assets/contentQuestions/CorrectAnswer.svg')`
+          : `url('/assets/contentQuestions/IncorrectAnswer.svg')`};
+      /* content: isRight ? url('/assets/contentQuestions/CorrectAnswer.svg') : url('/assets/contentQuestions/IncorrectAnswer.svg') ; */
+      width: 16px;
+      height: 16px;
+      top: 3px;
+      left: 3px;
+    }
+  }
   .radio-icon {
     position: relative;
     width: 16px;
     height: 16px;
+    border: 1px solid #949596;
     background-color: ${({ theme }) => theme.palette.biege};
-    box-shadow: ${({ theme }) => theme.shadows.darkShadow};
     border-radius: 50%;
     flex: none;
 
@@ -64,11 +97,11 @@ const Container = styled.div`
       position: absolute;
       width: 8px;
       height: 8px;
-      top: 4px;
-      left: 4px;
+      top: 3px;
+      left: 3px;
       border-radius: 50%;
       background-color: ${({ theme, isChecked }) =>
-        isChecked ? theme.palette.brown01 : theme.palette.inactive};
+        isChecked ? theme.palette.brown01 : theme.palette.white};
     }
   }
 
