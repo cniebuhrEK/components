@@ -2,8 +2,10 @@ import React from 'react'
 import ReactTooltip from 'react-tooltip'
 import * as R from 'ramda'
 import styled from 'styled-components'
+import { getGlossaryIds } from '../utils'
 
 export interface GlossaryTooltipsProps {
+  deltaObject?: any
   getPhraseDetails?: (e: any) => void
   redirectHandler?: (e: any) => void
   glossaryIds?: string[]
@@ -137,7 +139,9 @@ const PhraseTooltip = ({
 }
 
 export const GlossaryTooltips = (props: GlossaryTooltipsProps): JSX.Element => {
-  const { getPhraseDetails, glossaryIds, redirectHandler } = props
+  const { getPhraseDetails, deltaObject, redirectHandler } = props
+
+  const glossaryIds = getGlossaryIds(deltaObject)
 
   const renderTooltips = R.addIndex(R.map)((id, index) => (
     <PhraseTooltip
