@@ -8,7 +8,7 @@ const TableCell = styled.td`
   text-align: ${({ align }) => align || 'left'};
   border-collapse: separate;
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  padding: ${({ exam }) => (exam ? '7px' : '7px 18px')};
+  padding: 7px 18px;
   line-height: 37px;
   border-color: ${({ theme }) => theme.palette.grey09};
   border-width: 0 0 1px;
