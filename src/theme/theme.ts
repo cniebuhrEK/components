@@ -1,3 +1,23 @@
+// colors from January 2022
+const colors = {
+  black: '#1A1A1A',
+  darkGrey: '#444444',
+  white: '#FFFFFF',
+  grey200: '#F6F8FA',
+  grey300: '#DDDFE1',
+  grey400: '#C5C6C8',
+  grey600: '#949596',
+  grey700: '#7B7C7D',
+  brown900: '#352822',
+  red200: '#FFE3E0',
+  red500: '#E83E2E',
+  orange200: '#FFEEDF',
+  orange300: '#FFDCBB',
+  orange400: '#FFB86E',
+  orange500: '#F8961A',
+  orange600: '#D47B00'
+}
+
 export default {
   palette: {
     //
@@ -27,13 +47,13 @@ export default {
     purple09: '#fdedf6',
 
     // Bright reds
-    brightred01: '#e83e2e',
+    brightred01: colors.red500,
     brightred02: '#ed665a',
     brightred03: '#f1887e',
     brightred04: '#f5aaa3',
     brightred05: '#f9ccc8',
     brightred06: '#fdeeed',
-    brightred07: '#FFE3E0',
+    brightred07: colors.red200,
 
     // Light blues
     lightblue01: '#1a7af8',
@@ -79,7 +99,7 @@ export default {
     green10: '#DAF1E4',
 
     // Oranges
-    orange01: '#f8961a',
+    orange01: colors.orange500,
     orange02: '#f9af4d',
     orange03: '#fac075',
     orange04: '#fbd29d',
@@ -126,7 +146,7 @@ export default {
     grey09: '#F0EFEE',
     grey10: '#F2F1F0',
     grey11: '#F2F2F2',
-    grey12: '#DDDFE1',
+    grey12: colors.grey300,
     biege: '#FCFBFA',
     orange08: '#FFD5BB',
     orange09: '#FFC488',
@@ -136,7 +156,7 @@ export default {
     orange13: '#FFF5EB',
     orange14: '#FCFBF9',
     red04: '#A72A1C',
-    red05: '#E83E2E',
+    red05: colors.red500,
     red10: '#FFDBD8',
     gray1: '#2E2D2C',
     gray2: '#343432',
@@ -148,21 +168,25 @@ export default {
 
     // new colors
 
-    background: '#F6F8FA',
-    panelBackground: '#FFF',
-    disabledBackground: '#F6F8FA',
-    disabledFont: '#C5C6C8',
-    textDark: '#444444',
-    headingDark: '#1A1A1A',
+    background: colors.grey200,
+    panelBackground: colors.white,
+    disabledBackground: colors.grey200,
+    disabledFont: colors.grey400,
+    textDark: colors.darkGrey,
+    headingDark: colors.black,
     border: '#E3E5E7',
-    placeholder: '#949596',
-    scroller: '#C5C6C8',
-    scrollerThumb: '#7B7C7D',
+    placeholder: colors.grey600,
+    scroller: colors.grey400,
+    scrollerThumb: colors.grey700,
     adminHighlights: '#D9D9D9',
     divider: '#D7D7D7',
     proficiencyDrawer: '#D2E3ED',
     proficiencyDrawerBorder: '#316689',
-    modalBackground: 'rgba(26, 26, 26, .6)' // #1A1A1A + opacity 0.6
+    modalBackground: 'rgba(26, 26, 26, .6)', // #1A1A1A + opacity 0.6
+    notificationWarningBackground: colors.orange200,
+    notificationWarningFont: colors.orange600,
+    notificationErrorBackground: colors.red200,
+    notificationErrorFont: colors.red500
   },
   shape: {
     borderRadiusSmall: '2px',

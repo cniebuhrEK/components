@@ -5,7 +5,6 @@ import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { isNotNilOrEmpty } from '../../../utils/ramda'
-import { SaltyBucksCounterIcon } from '../../../icons'
 
 type PureLink = {
   label: string
@@ -32,10 +31,8 @@ interface StudentTopNavigationProps {
   showCrackUniversityLogo?: boolean
   redirectHandler?: (e) => any
   links: MenuLink[]
-  saltyBucksBalance?: number
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
   onMenuOpen?: () => any
-  isPreviewStudent?: boolean
 }
 
 const getRandomIntInclusive = (min, max) => {
@@ -52,10 +49,8 @@ const StudentTopNavigation = (
     menu,
     greeting,
     links,
-    saltyBucksBalance,
     showCrackUniversityLogo,
     onMenuOpen,
-    isPreviewStudent,
     navLeftElements,
     redirectHandler
   } = props
@@ -196,16 +191,6 @@ const StudentTopNavigation = (
               <img src={logoUrl} alt='logo icon' />
             </LogoContainer>
 
-            {typeof saltyBucksBalance !== 'undefined' ? (
-              <SaltyBucksContainer>
-                <SaltyBucksCounterIconContainer>
-                  <SaltyBucksCounterIcon />
-                </SaltyBucksCounterIconContainer>
-                <SaltyBucks>
-                  <SaltyBucksValue>{saltyBucksBalance}</SaltyBucksValue>
-                </SaltyBucks>
-              </SaltyBucksContainer>
-            ) : null}
             {hasAdditionalElements && (
               <AdditionalElementsContainer>
                 {navLeftElements}
@@ -219,12 +204,12 @@ const StudentTopNavigation = (
               <p>{greeting}</p>
             </UserContainer>
             <Overlay open={open} />
-            <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
-              {isPreviewStudent ? null : (
+            {isNotNilOrEmpty(links) && (
+              <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
                 <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
-              )}
-              <NavMenu open={open}>{generateLinks}</NavMenu>
-            </MenuContainer>
+                <NavMenu open={open}>{generateLinks}</NavMenu>
+              </MenuContainer>
+            )}
           </NavRight>
         </Container>
       </ContainerOuter>
@@ -299,49 +284,11 @@ const LogoContainer = styled.div`
   }
 `
 
-const SaltyBucksContainer = styled.div`
-  display: flex;
-  min-width: 105px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  border: 1px solid ${({ theme }) => theme.palette.grey04};
-  border-radius: 40px;
-  height: 40px;
-  margin: 0 0 0 48px;
-  padding: 3px 10px 3px 3px;
-`
-const SaltyBucksCounterIconContainer = styled.div`
-  display: flex;
-  background-color: ${({ theme }) => theme.palette.grey03};
-  color: ${({ theme }) => theme.palette.grey04};
-  font-size: ${({ theme }) => theme.typography.fontSizeBig};
-  height: 30px;
-  width: 30px;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-`
-
 const AdditionalElementsContainer = styled.div`
-  margin-left: 10px;
   line-height: 14px;
-`
-
-const SaltyBucks = styled.div`
   display: flex;
-  justify-content: center;
-  color: ${({ theme }) => theme.palette.grey04};
-  font-size: ${({ theme }) => theme.typography.fontSizeSmall};
-  font-weight: 600;
-  padding: 4px 0;
-  line-height: normal;
-`
-
-const SaltyBucksValue = styled.p`
-  color: ${({ theme }) => theme.palette.black02};
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  line-height: 14px;
+  align-items: center;
+  gap: 20px;
 `
 
 //
