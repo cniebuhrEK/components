@@ -204,14 +204,14 @@ export default {
     appBar: 1100,
     drawer: 1200,
     modal: 3030,
-    snackbarToast: 3050,
+    snackbarToast: 3040, // please see EK-927
     snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,
     menu: 2000,
     navigation: 3000,
-    mainOverlay: 3010,
-    mainMenu: 3020
+    mainOverlay: 3040, // please see EK-927
+    mainMenu: 3050 // please see EK-927
   },
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
