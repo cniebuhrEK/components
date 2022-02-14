@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker'
 import styled from 'styled-components'
 import * as R from 'ramda'
 import 'react-datepicker/dist/react-datepicker.css'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
 const getHeadErrorOrEmptyObj = R.pipe(
   R.propOr([], 'errors'),
@@ -10,48 +11,22 @@ const getHeadErrorOrEmptyObj = R.pipe(
 )
 
 interface DateFieldProps {
-  // Name of the input
   name: string
-
-  // Class name of the input element
   className?: string
-
-  // Id of the input element
   id?: string
-
-  // Label of the form input
   label?: string
-
-  // Flag to indicate whether the input is disabled or not.
   disabled?: boolean
-
-  // Flag to allow setting dates before the current date.
   allowPast?: boolean
-
-  // Current date
   value: Date
-
-  // Flag to allow clearing of the input
   isClearable?: boolean
-
-  // Flag to indicate whether the field is required or not.
   required?: boolean
-
-  // Function to valid the input
   validate: (name: string, v: any) => any
-
-  // Flag to quickly reset the form state
   reset?: boolean
-
-  // Translation dependancy injection
   t: (key: string, options: any) => string
-
-  // Handler function to be called every time the input is updated.
   onChange: (name: string, value: any) => void
   [x: string]: any
 }
 
-// Date input field component
 const DateField = (props: DateFieldProps) => {
   const {
     name,
@@ -61,11 +36,14 @@ const DateField = (props: DateFieldProps) => {
     validate,
     required,
     disabled,
+    label,
     t,
     reset,
     onChange,
     ...rest
   } = props
+
+  console.log({ label })
 
   // Has the input been touched
   const [touched, _setTouched] = React.useState<boolean>(false)
@@ -111,10 +89,15 @@ const DateField = (props: DateFieldProps) => {
       : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
 
   return (
-    <DatePickerContainer>
+    <DatePickerContainer error={isNotNilOrEmpty(error)}>
+      <Label htmlFor={name} error={isNotNilOrEmpty(error)}>
+        {label}
+        {required && ' *'}
+      </Label>
       <DatePicker
         {...rest}
         id={id || name}
+        name={name}
         disabled={disabled || !valid}
         minDate={!allowPast ? new Date() : null}
         selected={value}
@@ -139,12 +122,30 @@ DateField.defaultProps = {
 const DatePickerContainer = styled.div`
   display: block;
   margin-bottom: 1em;
+  position: relative;
 
   .react-datepicker-wrapper,
   .react-datepicker__input-container,
   .react-datepicker__input-container input {
     display: block;
     width: 100%;
+  }
+
+  .react-datepicker-wrapper {
+    margin: 25px 0 15px;
+    border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
+  }
+
+  input {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
+    height: 42px;
+    padding: 0 14px;
+    font-size: 16px;
+    outline: 0;
+    border-color: ${({ theme, error }) =>
+      error ? theme.palette.red05 : theme.palette.border};
   }
 `
 
@@ -156,6 +157,21 @@ const ErrorContainer = styled.div`
   left: -1px;
   bottom: -20px;
   white-space: nowrap;
+`
+
+const Label = styled.label`
+  box-sizing: border-box;
+  color: ${({ error, theme }) =>
+    error ? theme.palette.red05 : theme.palette.textDark};
+  position: absolute;
+  font-size: 12px;
+  line-height: 12px;
+  left: -6px;
+  top: 5px;
+  z-index: 1;
+  padding: 0 5px;
+  background-color: transparent;
+  transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 `
 
 export default DateField

@@ -39,7 +39,7 @@ const getBorderColor = (disabled: boolean, error: boolean) => {
     case disabled:
       return theme.palette.disabledFont
     default:
-      return theme.palette.darkblue01
+      return theme.palette.border
   }
 }
 
@@ -84,7 +84,7 @@ export const REACT_SELECT_STYLES = {
     } = state
 
     return {
-      margin: removeMargin ? 0 : '30px 0 12px',
+      margin: removeMargin ? 0 : '25px 0 15px',
       display: 'flex',
       alignItems: 'center',
       boxSizing: 'border-box',

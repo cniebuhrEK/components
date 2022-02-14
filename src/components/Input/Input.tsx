@@ -202,7 +202,7 @@ const Input = styled.input`
   padding: 0;
   margin: 0;
   outline: none;
-  cursor: 'text';
+  cursor: text;
   width: ${({ hasPasswordType }) =>
     hasPasswordType ? 'calc(100% - 20px)' : '100%'};
 
@@ -216,7 +216,7 @@ const Input = styled.input`
 
   &:disabled {
     color: ${({ theme }) => theme.palette.disabledFont};
-    cursor: 'not-allowed';
+    cursor: not-allowed;
   }
 
   &::placeholder,
@@ -327,7 +327,7 @@ const Container = styled.div`
     size === INPUT_SIZES.normal
       ? theme.dimensions.inputHeight
       : theme.dimensions.inputSmallHeight};
-  margin: ${({ hasSearchType }) => (hasSearchType ? 0 : '25px 0 21px')};
+  margin: ${({ hasSearchType }) => (hasSearchType ? 0 : '25px 0 15px')};
   padding: 0 16px;
   position: relative;
   transition: all 200ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
