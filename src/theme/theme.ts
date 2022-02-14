@@ -186,7 +186,8 @@ export default {
     notificationWarningBackground: colors.orange200,
     notificationWarningFont: colors.orange600,
     notificationErrorBackground: colors.red200,
-    notificationErrorFont: colors.red500
+    notificationErrorFont: colors.red500,
+    contentQuestionsRightAnswer: '#a635ff'
   },
   shape: {
     borderRadiusSmall: '2px',
@@ -201,7 +202,8 @@ export default {
     headerShadow: '0px 2px 16px rgba(33, 26, 22, 0.04)',
     // darkShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
     darkShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-    mainShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)'
+    mainShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+    chartShadow: '0px 4px 12px rgba(0, 0, 0, 0.08)'
   },
   transitions: {
     easing: {
@@ -226,14 +228,14 @@ export default {
     appBar: 1100,
     drawer: 1200,
     modal: 3030,
-    snackbarToast: 3050,
+    snackbarToast: 3040, // please see EK-927
     snackbar: 1900,
     tooltip: 1500,
     dropdown: 1700,
     menu: 2000,
     navigation: 3000,
-    mainOverlay: 3010,
-    mainMenu: 3020
+    mainOverlay: 3040, // please see EK-927
+    mainMenu: 3050 // please see EK-927
   },
   typography: {
     fontFamily: "'Arial', 'Milliard', sans-serif",
