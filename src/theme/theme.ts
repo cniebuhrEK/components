@@ -178,7 +178,8 @@ export default {
     headerShadow: '0px 2px 16px rgba(33, 26, 22, 0.04)',
     // darkShadow: '0px 4px 4px rgba(0, 0, 0, 0.15)',
     darkShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
-    mainShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)'
+    mainShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+    chartShadow: '0px 4px 12px rgba(0, 0, 0, 0.08)'
   },
   transitions: {
     easing: {
