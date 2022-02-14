@@ -121,7 +121,6 @@ DateField.defaultProps = {
 // classname prop to the datepicker.
 const DatePickerContainer = styled.div`
   display: block;
-  margin-bottom: 1em;
   position: relative;
 
   .react-datepicker-wrapper,
