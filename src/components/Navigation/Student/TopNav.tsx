@@ -32,6 +32,7 @@ interface StudentTopNavigationProps {
   redirectHandler?: (e) => any
   links: MenuLink[]
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
+  navRightElements?: JSX.Element | string | JSX.Element[] | string[]
   onMenuOpen?: () => any
 }
 
@@ -52,6 +53,7 @@ const StudentTopNavigation = (
     showCrackUniversityLogo,
     onMenuOpen,
     navLeftElements,
+    navRightElements,
     redirectHandler
   } = props
 
@@ -59,6 +61,7 @@ const StudentTopNavigation = (
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
   const hasAdditionalElements = isNotNilOrEmpty(navLeftElements)
+  const hasAdditionalRightElements = isNotNilOrEmpty(navRightElements)
 
   const setLevel1 = value => setLinkLevel1(value)
   const setLevel2 = value => setLinkLevel2(value)
@@ -204,9 +207,14 @@ const StudentTopNavigation = (
               <p>{greeting}</p>
             </UserContainer>
             <Overlay open={open} />
+            {hasAdditionalRightElements && navRightElements}
             {isNotNilOrEmpty(links) && (
-              <MenuContainer open={open} onMouseLeave={handleMouseLeave}>
-                <Button onMouseEnter={handleMouseEnter}>{menu}</Button>
+              <MenuContainer
+                open={open}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
+                <Button>{menu}</Button>
                 <NavMenu open={open}>{generateLinks}</NavMenu>
               </MenuContainer>
             )}
@@ -228,7 +236,6 @@ const ContainerOuter = styled.div`
   align-items: center;
   display: flex;
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
-  line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.palette.grey12};
@@ -244,7 +251,6 @@ const Container = styled.div`
   align-items: center;
   display: flex;
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
-  line-height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   max-width: 1280px;
   margin: auto;
@@ -300,7 +306,6 @@ const UserContainer = styled.div`
   flex-flow: row;
   color: ${({ theme }) => theme.palette.textDark};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
-  margin-right: 16px;
   font-size: 14px;
   letter-spacing: -0.1px;
 
@@ -323,6 +328,7 @@ const NavRight = styled.div`
   justify-content: space-between;
   display: flex;
   width: auto;
+  gap: 16px;
 `
 
 //
@@ -345,7 +351,7 @@ const NavMenu = styled.div`
   min-width: ${({ open }) => (open ? '210px' : '0')};
   position: absolute;
   right: 0;
-  top: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  top: 100%;
   z-index: ${({ theme }) => theme.zIndex.mainMenu};
   transition: opacity 700ms ${({ theme }) =>
     theme.transitions.easing.easeInOut};
