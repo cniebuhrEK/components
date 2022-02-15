@@ -242,7 +242,7 @@ export default {
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontFamilySalty: "'Comic Sans MS', 'Comic Sans', cursive",
     fontSizeBig: '22px',
-    fontSizeNormal: '16px',
+    fontSizeNormal: '14px', // Changed because this font was too large
     fontSizeSmall: '14px',
     fontSizeExtraSmall: '12px',
     fontSizeExtraUltraSmall: '10px', // :)
