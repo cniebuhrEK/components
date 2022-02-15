@@ -128,6 +128,12 @@ const DatePickerContainer = styled.div`
   .react-datepicker__input-container input {
     display: block;
     width: 100%;
+    position: relative;
+    z-index: 10;
+  }
+
+  .react-datepicker-popper {
+    z-index: 10;
   }
 
   .react-datepicker-wrapper {
