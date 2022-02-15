@@ -43,6 +43,17 @@ const getBorderColor = (disabled: boolean, error: boolean) => {
   }
 }
 
+const getInputTextColor = (disabled: boolean, error: boolean) => {
+  switch (true) {
+    case error:
+      return theme.palette.red05
+    case disabled:
+      return theme.palette.disabledFont
+    default:
+      return theme.palette.darkblue01
+  }
+}
+
 const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
   switch (true) {
     case isFocused:
@@ -96,7 +107,7 @@ export const REACT_SELECT_STYLES = {
       borderWidth: '1px',
       borderRadius: '6px',
       borderColor: getBorderColor(isDisabled, error),
-      color: getBorderColor(isDisabled, error),
+      color: getInputTextColor(isDisabled, error),
       fontSize: '13px',
       padding: '0 14px',
       fontFamily: theme.typography.fontFamily,
