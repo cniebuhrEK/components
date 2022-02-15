@@ -98,7 +98,7 @@ const DateField = (props: DateFieldProps) => {
         {...rest}
         id={id || name}
         name={name}
-        disabled={disabled || !valid}
+        disabled={disabled}
         minDate={!allowPast ? new Date() : null}
         selected={value}
         onFocus={handleFocus}
