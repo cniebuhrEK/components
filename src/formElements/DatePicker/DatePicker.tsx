@@ -43,8 +43,6 @@ const DateField = (props: DateFieldProps) => {
     ...rest
   } = props
 
-  console.log({ label })
-
   // Has the input been touched
   const [touched, _setTouched] = React.useState<boolean>(false)
   const [value, _setValue] = React.useState<Date>(initialValue)
