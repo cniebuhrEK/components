@@ -40,34 +40,38 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 }
 
 export const MinusIcon = styled.div`
-  width: 10px;
-  height: 3px;
+  width: 8px;
+  height: 2px;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.palette.orange01};
+  background-color: ${({ theme }) => theme.palette.panelBackground};
 `
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  line-height: 20px;
-  width: 24px;
-  height: 24px;
-  border: 1px solid #000000;
+  width: 18px;
+  height: 18px;
+  border: 1px solid ${({ theme }) => theme.palette.border};
+  color: ${({ theme }) => theme.palette.panelBackground} !important;
+  background-color: transparent;
   border-radius: 2px;
-  font-size: 14px;
+  font-size: 12px !important;
   cursor: pointer;
   transition: all 500ms;
+  overflow: hidden;
 
   &[data-is-selected='true'] {
-    background: ${({ theme }) => theme.palette.darkblue01};
+    background-color: ${({ theme }) => theme.palette.orange01};
+    border: 1px solid ${({ theme }) => theme.palette.orange01};
+    color: ${({ theme }) => theme.palette.panelBackground} !important;
+
     .exam-checkbox--checked {
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      color: ${({ theme }) => theme.palette.orange01};
-      height: 14px;
-      width: 14px;
+      font-size: 12px !important;
+      color: ${({ theme }) => theme.palette.panelBackground} !important;
     }
 
     .exam-checkbox--unchecked {
@@ -76,7 +80,9 @@ export const Container = styled.div`
   }
 
   &[data-is-intersected='true'] {
-    background: ${({ theme }) => theme.palette.darkblue01};
+    background-color: ${({ theme }) => theme.palette.orange01};
+    border: 1px solid ${({ theme }) => theme.palette.orange01};
+    color: ${({ theme }) => theme.palette.panelBackground};
   }
 
   &[data-is-selected='false'] {
