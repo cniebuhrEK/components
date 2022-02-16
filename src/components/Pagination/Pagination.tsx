@@ -25,6 +25,9 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       start = 1
     } else if (currentPage >= totalPages - range / 2) {
       start = Math.floor(totalPages - range + 1)
+      // currentPage === 4 to prevent: 1 ... 2 3 4 5 ... X, correct will be: 1 ... 3 4 5 6 ... X
+    } else if (currentPage === 4) {
+      start = currentPage - Math.floor(range / 2) + 1
     } else {
       start = currentPage - Math.floor(range / 2)
     }
