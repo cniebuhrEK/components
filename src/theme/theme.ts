@@ -189,7 +189,9 @@ export default {
     notificationErrorFont: colors.red500,
     contentQuestionsRightAnswer: '#a635ff',
     dollarsFont: '#85BB65',
-    dollarsBackground: '#E7FBDB'
+    dollarsBackground: '#E7FBDB',
+    bookNavigationDarkBrown: '#EFD8CB',
+    bookNavigationLightBrown: '#FFF3ED'
   },
   shape: {
     borderRadiusSmall: '2px',
