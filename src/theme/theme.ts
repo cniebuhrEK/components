@@ -187,7 +187,9 @@ export default {
     notificationWarningFont: colors.orange600,
     notificationErrorBackground: colors.red200,
     notificationErrorFont: colors.red500,
-    contentQuestionsRightAnswer: '#a635ff'
+    contentQuestionsRightAnswer: '#a635ff',
+    dollarsFont: '#85BB65',
+    dollarsBackground: '#E7FBDB'
   },
   shape: {
     borderRadiusSmall: '2px',
