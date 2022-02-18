@@ -88,6 +88,9 @@ import {
   CheckmarkContainedIcon,
   FlipIcon,
   OpenBookIcon,
+  SpeakerMuteIcon,
+  SpeakerQuietIcon,
+  SpeakerLoudIcon,
   CorrectMarkIcon
 } from './'
 
@@ -187,6 +190,9 @@ const AllIcons = () => {
     { component: CheckmarkContainedIcon, title: 'CheckmarkContainedIcon' },
     { component: FlipIcon, title: 'FlipIcon' },
     { component: OpenBookIcon, title: 'OpenBookIcon' },
+    { component: SpeakerMuteIcon, title: 'SpeakerMuteIcon' },
+    { component: SpeakerQuietIcon, title: 'SpeakerQuietIcon' },
+    { component: SpeakerLoudIcon, title: 'SpeakerLoudIcon' },
     { component: CorrectMarkIcon, title: 'CorrectMark' }
   ]
 
