@@ -41,7 +41,7 @@ const RadioButton = (props: RadioButtonProps) => {
       isDisabled={isDisabled}
       isAnswered={isAnswered}
     >
-      <Cont className={`${isAnswered ? 'radio-answer-icon' : ''}`}>
+      <IconContainer className={`${isAnswered ? 'radio-answer-icon' : ''}`}>
         {isAnswered ? (
           isRight ? (
             <IconPosition isRight={isRight}>
@@ -54,7 +54,7 @@ const RadioButton = (props: RadioButtonProps) => {
           )
         ) : null}
         <div className='radio-icon' />
-      </Cont>
+      </IconContainer>
       {label && <div className='radio-label'>{label}</div>}
     </Container>
   )
@@ -119,7 +119,7 @@ const IconPosition = styled.div`
     isRight ? theme.palette.green01 : theme.palette.brightred01};
     }
 `
-const Cont = styled.div`
+const IconContainer = styled.div`
   position: relative;
 `
 
