@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import CorrectMarkIcon from '../../icons/CorrectMark'
+import CloseIcon from '../../icons/Close'
 
 interface RadioButtonProps {
   isRight?: boolean
@@ -37,12 +39,22 @@ const RadioButton = (props: RadioButtonProps) => {
       onClick={handleOnChange}
       isChecked={isChecked}
       isDisabled={isDisabled}
-      isRight={isRight}
       isAnswered={isAnswered}
     >
-      <div className={`${isAnswered ? 'radio-answer-icon' : ''}`}>
+      <IconContainer className={`${isAnswered ? 'radio-answer-icon' : ''}`}>
+        {isAnswered ? (
+          isRight ? (
+            <IconPosition isRight={isRight}>
+              <CorrectMarkIcon width='21' height='21' />
+            </IconPosition>
+          ) : (
+            <IconPosition isRight={isRight}>
+              <CloseIcon width='21' height='21' />
+            </IconPosition>
+          )
+        ) : null}
         <div className='radio-icon' />
-      </div>
+      </IconContainer>
       {label && <div className='radio-label'>{label}</div>}
     </Container>
   )
@@ -66,22 +78,7 @@ const Container = styled.div`
   cursor: pointer;
   user-select: none;
   margin-top: 5px;
-  .radio-answer-icon {
-    position: relative;
-    &::after {
-      position: absolute;
-      top: -1px !important;
-      left: -1px !important;
-      content: ${({ isRight }) =>
-        isRight
-          ? `url('/assets/contentQuestions/CorrectAnswer.svg')`
-          : `url('/assets/contentQuestions/IncorrectAnswer.svg')`};
-      width: 16px;
-      height: 16px;
-      top: 3px;
-      left: 3px;
-    }
-  }
+  position: relative;
   .radio-icon {
     position: relative;
     width: 16px;
@@ -112,6 +109,18 @@ const Container = styled.div`
     margin-left: 10px;
     transform: translateY(2px);
   }
+`
+const IconPosition = styled.div`
+  position: absolute;
+  top: -3px !important;
+  left: -3px !important;
+  z-index: 999;
+  color: ${({ theme, isRight }) =>
+    isRight ? theme.palette.green01 : theme.palette.brightred01};
+    }
+`
+const IconContainer = styled.div`
+  position: relative;
 `
 
 export default RadioButton

@@ -59,6 +59,21 @@ export const VolumeControl = () => {
     }
   }, [volume, isMuted])
 
+  useEffect(() => {
+    const refreshStorage = () => {
+      const volumeFromLocalStorage = localStorage.getItem('volume') || 1
+      const isMutedFromLocal = localStorage.getItem('isMuted') || 'false'
+      if (volumeFromLocalStorage !== String(volume)) {
+        setVolume(Number(volumeFromLocalStorage))
+      }
+      setIsMuted(isMutedFromLocal === 'true')
+    }
+    window.addEventListener('storage', refreshStorage)
+    return () => {
+      window.removeEventListener('storage', refreshStorage)
+    }
+  }, [])
+
   return (
     <Wrapper>
       {icon}
