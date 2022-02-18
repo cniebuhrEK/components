@@ -29,7 +29,7 @@ export const VolumeControl = () => {
       setIsMuted(false)
       localStorage.setItem('isMuted', 'false')
     }
-    setVolume(Number(e.target.value))
+    setVolume(value)
   }
 
   useEffect(() => {
