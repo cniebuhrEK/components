@@ -29,7 +29,7 @@ interface StudentTopNavigationProps {
   greeting: string
   menu: string
   showCrackUniversityLogo?: boolean
-  notification?: string
+  notification?: string | JSX.Element | JSX.Element[]
   redirectHandler?: (e) => any
   links: MenuLink[]
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
