@@ -29,6 +29,7 @@ interface StudentTopNavigationProps {
   greeting: string
   menu: string
   showCrackUniversityLogo?: boolean
+  notification?: string | JSX.Element | JSX.Element[]
   redirectHandler?: (e) => any
   links: MenuLink[]
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
@@ -54,7 +55,8 @@ const StudentTopNavigation = (
     onMenuOpen,
     navLeftElements,
     navRightElements,
-    redirectHandler
+    redirectHandler,
+    notification
   } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
@@ -185,9 +187,12 @@ const StudentTopNavigation = (
     )
   })
 
+  const hasNotification = isNotNilOrEmpty(notification)
+
   return (
     <React.Fragment>
-      <ContainerOuter open={open}>
+      <ContainerOuter open={open} withNotification={hasNotification}>
+        <div className='nav-notification'>{notification}</div>
         <Container>
           <LogoWrapper>
             <LogoContainer>
@@ -233,7 +238,7 @@ StudentTopNavigation.defaultProps = {
 }
 
 const ContainerOuter = styled.div`
-  align-items: center;
+  flex-direction: column;
   display: flex;
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
@@ -245,6 +250,16 @@ const ContainerOuter = styled.div`
   left: 0;
   z-index: ${({ theme, open }) =>
     open ? theme.zIndex.mainOverlay : theme.zIndex.navigation};
+
+  .nav-notification {
+    flex: none;
+    display: ${({ theme }) => (theme.withNotification ? 'flex' : 'none')};
+    align-items: center;
+    justify-content: center;
+    height: ${({ theme }) => theme.dimensions.topNotificationHeight};
+    width: 100%;
+    background-color: ${({ theme }) => theme.palette.freeTrialNotification};
+  }
 `
 
 const Container = styled.div`

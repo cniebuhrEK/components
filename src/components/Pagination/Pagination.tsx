@@ -18,7 +18,17 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   const { currentPage, totalPages, onPageChange } = props
 
   const calculatePaging = () => {
-    const range = totalPages < PAGES_RANGE ? totalPages : PAGES_RANGE
+    /*
+    // if pagination is equal or has less than 5 items, display all of them
+    // but, if not then we go classic with this
+    */
+    const range =
+      totalPages <= 5
+        ? totalPages
+        : totalPages < PAGES_RANGE
+        ? totalPages
+        : PAGES_RANGE
+
     let start = 1
 
     if (currentPage < range / 2 + 1) {

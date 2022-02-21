@@ -9,19 +9,34 @@ import Fonts from './fonts'
 
 interface ThemeProviderProps {
   theme?: any
+  withNotification?: boolean
   children: JSX.Element
+}
+
+const notificationTheme = {
+  ...defaultTheme,
+  withNotification: true,
+  dimensions: {
+    ...defaultTheme.dimensions,
+    studentTopNavHeight: `calc(${defaultTheme.dimensions.studentTopNavHeight} + ${defaultTheme.dimensions.topNotificationHeight})`
+  }
 }
 
 const ThemeProvider = ({
   theme = {},
-  children
-}: ThemeProviderProps): JSX.Element => (
-  <StyledThemeProvider theme={mergeDeepRight(defaultTheme, theme)}>
-    <DndProvider backend={HTML5Backend}>
-      <Fonts />
-      {children}
-    </DndProvider>
-  </StyledThemeProvider>
-)
+  children,
+  withNotification
+}: ThemeProviderProps): JSX.Element => {
+  const currentTheme = withNotification ? notificationTheme : defaultTheme
+
+  return (
+    <StyledThemeProvider theme={mergeDeepRight(currentTheme, theme)}>
+      <DndProvider backend={HTML5Backend}>
+        <Fonts />
+        {children}
+      </DndProvider>
+    </StyledThemeProvider>
+  )
+}
 
 export default ThemeProvider
