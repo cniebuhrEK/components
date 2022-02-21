@@ -18,7 +18,7 @@ const notificationTheme = {
   withNotification: true,
   dimensions: {
     ...defaultTheme.dimensions,
-    studentTopNavHeight: `calc(${defaultTheme.dimensions.studentTopNavHeight} + ${defaultTheme.dimensions.topNotificationHeight})`
+    studentTopNavHeight: '112px'
   }
 }
 
