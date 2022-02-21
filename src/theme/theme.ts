@@ -191,7 +191,8 @@ export default {
     dollarsFont: '#85BB65',
     dollarsBackground: '#E7FBDB',
     bookNavigationDarkBrown: '#EFD8CB',
-    bookNavigationLightBrown: '#FFF3ED'
+    bookNavigationLightBrown: '#FFF3ED',
+    freeTrialNotification: '#FFFDCD'
   },
   shape: {
     borderRadiusSmall: '2px',
@@ -264,6 +265,7 @@ export default {
     studentSideNavWidth: '236px',
     studentTopNavHeightMenu: '75px',
     studentTopNavHeight: '80px',
+    topNotificationHeight: '32px',
     adminTopNavHeight: '80px',
     tagHeight: '21px',
     tagWidth: '50px',
@@ -272,5 +274,6 @@ export default {
   breakpointsMedia: {
     mobile: '@media (max-width: 768px)',
     smallDesktop: '@media (max-width: 1024px)'
-  }
+  },
+  withNotification: false
 }
