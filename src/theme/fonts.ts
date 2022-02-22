@@ -161,4 +161,42 @@ export default createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Digital';
+    src: url('/assets/fonts/digital/digital.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'examkrackers';
+    src: url('/assets/fonts/examkrackers/examkrackers.eot?vs4lib');
+    src: url('/assets/fonts/examkrackers/examkrackers.eot?vs4lib#iefix') format('embedded-opentype'),
+    url('/assets/fonts/examkrackers/examkrackers.ttf?vs4lib') format('truetype'),
+    url('/assets/fonts/examkrackers/examkrackers.woff?vs4lib') format('woff'),
+    url('/assets/fonts/examkrackers/examkrackers.svg?vs4lib#examkrackers') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
+  [class^="icon-ek-"], [class*=" icon-ek-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'examkrackers' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon-ek-salty-bucks::before {
+    content: "\\e900";
+  }
 `

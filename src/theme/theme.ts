@@ -246,6 +246,7 @@ export default {
     fontFamily: "'Arial', 'Milliard', sans-serif",
     fontFamilySecondary: "'Alfa Slab One', sans-serif",
     fontFamilySalty: "'Comic Sans MS', 'Comic Sans', cursive",
+    fontFamilyDigital: "'Digital', sans-serif",
     fontSizeBig: '22px',
     fontSizeNormal: '14px', // Changed because this font was too large
     fontSizeSmall: '14px',
