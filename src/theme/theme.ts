@@ -147,6 +147,8 @@ export default {
     grey10: '#F2F1F0',
     grey11: '#F2F2F2',
     grey12: colors.grey300,
+    grey13: colors.grey600,
+
     biege: '#FCFBFA',
     orange08: '#FFD5BB',
     orange09: '#FFC488',
