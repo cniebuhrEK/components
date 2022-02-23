@@ -3,6 +3,7 @@
 export * from './Accordion'
 export * from './Animation'
 export * from './ArrowNav'
+export * from './AssigmentTag'
 export * from './Breadcrumbs'
 export * from './Button'
 export * from './Carousel'
