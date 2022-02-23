@@ -76,7 +76,7 @@ export const VolumeControl = () => {
 
   return (
     <Wrapper>
-      {icon}
+      <span>{icon}</span>
       <Range
         volume={volume}
         type='range'
@@ -93,16 +93,19 @@ export const VolumeControl = () => {
 const MuteIcon = styled(SpeakerMuteIcon)`
   color: ${({ theme }) => theme.palette.grey05};
   cursor: pointer;
+  font-size: 24px;
 `
 
 const QuietIcon = styled(SpeakerQuietIcon)`
   color: ${({ theme }) => theme.palette.grey05};
   cursor: pointer;
+  font-size: 24px;
 `
 
 const LoudIcon = styled(SpeakerLoudIcon)`
   color: ${({ theme }) => theme.palette.grey05};
   cursor: pointer;
+  font-size: 24px;
 `
 
 const Wrapper = styled.div`
@@ -110,7 +113,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   font-size: 30px;
-  max-width: 80px;
+  max-width: 35px;
 `
 
 const Range = styled.input`

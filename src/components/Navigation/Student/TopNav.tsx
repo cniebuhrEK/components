@@ -206,12 +206,12 @@ const StudentTopNavigation = (
             )}
           </LogoWrapper>
 
+          <Overlay open={open} />
           <NavRight>
             <UserContainer>
               {avatar && <IconContainer src={avatar} alt='profile icon' />}
               <p>{greeting}</p>
             </UserContainer>
-            <Overlay open={open} />
             {hasAdditionalRightElements && navRightElements}
             {isNotNilOrEmpty(links) && (
               <MenuContainer
@@ -309,7 +309,7 @@ const AdditionalElementsContainer = styled.div`
   line-height: 14px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 18px;
 `
 
 //
@@ -353,6 +353,12 @@ const NavRight = styled.div`
 const MenuContainer = styled.div`
   position: relative;
   z-index: ${({ theme }) => theme.zIndex.mainMenu};
+
+  button {
+    min-width: 121px;
+    max-width: 121px;
+    height: 40px;
+  }
 `
 
 const NavMenu = styled.div`
