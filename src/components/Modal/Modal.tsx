@@ -18,13 +18,20 @@ const Modal = (props: ReactModalProps): JSX.Element => {
   const { children, handleClose, open, title, ...rest } = props
 
   return (
-    <StyledReactModal onRequestClose={handleClose} isOpen={open} {...rest}>
-      <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
-      <Close onClick={handleClose}>
-        <CloseIcon />
-      </Close>
-      {children}
-    </StyledReactModal>
+    <StyledReactModal
+      contentElement={props => (
+        <div {...props} onClick={e => e.stopPropagation()}>
+          <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
+          <Close onClick={handleClose}>
+            <CloseIcon />
+          </Close>
+          {children}
+        </div>
+      )}
+      onRequestClose={handleClose}
+      isOpen={open}
+      {...rest}
+    />
   )
 }
 
