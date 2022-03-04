@@ -5,6 +5,7 @@ import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../../Button'
 import { isNotNilOrEmpty } from '../../../utils/ramda'
+import useOutsideClick from '../../../hooks/useOutsideClick'
 
 type PureLink = {
   label: string
@@ -64,6 +65,7 @@ const StudentTopNavigation = (
   const [linkLevel2, setLinkLevel2] = React.useState('')
   const hasAdditionalElements = isNotNilOrEmpty(navLeftElements)
   const hasAdditionalRightElements = isNotNilOrEmpty(navRightElements)
+  const menuRef = React.useRef(null)
 
   const setLevel1 = value => setLinkLevel1(value)
   const setLevel2 = value => setLinkLevel2(value)
@@ -189,6 +191,8 @@ const StudentTopNavigation = (
 
   const hasNotification = isNotNilOrEmpty(notification)
 
+  useOutsideClick(menuRef, handleMouseLeave)
+
   return (
     <React.Fragment>
       <ContainerOuter open={open} withNotification={hasNotification}>
@@ -215,6 +219,7 @@ const StudentTopNavigation = (
             {hasAdditionalRightElements && navRightElements}
             {isNotNilOrEmpty(links) && (
               <MenuContainer
+                ref={menuRef}
                 open={open}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
