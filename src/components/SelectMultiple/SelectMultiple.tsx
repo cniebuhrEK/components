@@ -87,7 +87,7 @@ const SelectMultiple = (props: SelectMultipleProps): JSX.Element => {
   ))
 
   return (
-    <SelectMultipleContainer {...props}>
+    <SelectMultipleContainer>
       <Input
         size='small'
         name='search-options'
