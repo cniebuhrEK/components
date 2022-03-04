@@ -213,12 +213,12 @@ const TextViewerContainer = styled.div`
   }
 
   .ql-editor h1 {
-    font-size: 22px !important;
+    font-size: 16px !important;
     line-height: 29px !important;
   }
 
   .ql-editor h2 {
-    font-size: 19px !important;
+    font-size: 15px !important;
     line-height: 23px !important;
     img {
       &:hover {
