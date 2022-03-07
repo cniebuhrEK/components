@@ -2,18 +2,18 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { SpeakerMuteIcon, SpeakerQuietIcon, SpeakerLoudIcon } from '../../icons'
 import styled from 'styled-components'
 
-export const SOUNDS = {
-  cqSuccess: '/assets/sounds/cq_success.mp3',
-  cqFail: '/assets/sounds/cq_fail.mp3'
-}
-
 export const playSound = soundSrc => {
-  const volume = localStorage.getItem('volume') || 1
-  const isMutedFromLocal = localStorage.getItem('isMuted') || 'false'
-  const isMuted = isMutedFromLocal === 'true'
-  const audio = new Audio(soundSrc)
-  audio.volume = isMuted ? 0 : Number(volume)
-  audio.play()
+  const isPlaying = localStorage.getItem('isPlaying') || 'false'
+  if (isPlaying !== 'true') {
+    localStorage.setItem('isPlaying', 'true')
+    const volume = localStorage.getItem('volume') || 1
+    const isMutedFromLocal = localStorage.getItem('isMuted') || 'false'
+    const isMuted = isMutedFromLocal === 'true'
+    const audio = new Audio(soundSrc)
+    audio.volume = isMuted ? 0 : Number(volume)
+    audio.play()
+    localStorage.setItem('isPlaying', 'false')
+  }
 }
 
 export const VolumeControl = () => {
