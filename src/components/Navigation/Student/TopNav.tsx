@@ -75,8 +75,6 @@ const StudentTopNavigation = (
   const resetLevel1 = () => setLinkLevel1('')
   const resetLevel2 = () => setLinkLevel2('')
 
-  console.log('#################### ', multipleCourse)
-
   const handleMouseLeave = () => {
     setOpen(false)
     resetLevel1()
