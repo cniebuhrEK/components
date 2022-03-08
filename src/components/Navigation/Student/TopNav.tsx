@@ -30,6 +30,7 @@ interface StudentTopNavigationProps {
   greeting: string
   menu: string
   showCrackUniversityLogo?: boolean
+  multipleCourse?: boolean
   notification?: string | JSX.Element | JSX.Element[]
   redirectHandler?: (e) => any
   links: MenuLink[]
@@ -57,7 +58,8 @@ const StudentTopNavigation = (
     navLeftElements,
     navRightElements,
     redirectHandler,
-    notification
+    notification,
+    multipleCourse
   } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
@@ -72,6 +74,8 @@ const StudentTopNavigation = (
 
   const resetLevel1 = () => setLinkLevel1('')
   const resetLevel2 = () => setLinkLevel2('')
+
+  console.log('#################### ', multipleCourse)
 
   const handleMouseLeave = () => {
     setOpen(false)
@@ -211,7 +215,7 @@ const StudentTopNavigation = (
           </LogoWrapper>
 
           <Overlay open={open} />
-          <NavRight>
+          <NavRight alignItems={multipleCourse}>
             <UserContainer>
               {avatar && <IconContainer src={avatar} alt='profile icon' />}
               <p>{greeting}</p>
@@ -328,6 +332,7 @@ const UserContainer = styled.div`
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-size: 14px;
   letter-spacing: -0.1px;
+  padding: 5px 10px;
 
   p {
     white-space: nowrap;
@@ -344,7 +349,7 @@ const IconContainer = styled.img`
 `
 
 const NavRight = styled.div`
-  align-items: center;
+  align-items: ${({ alignItems }) => (alignItems ? 'flex-start' : 'center')};
   justify-content: space-between;
   display: flex;
   width: auto;
