@@ -92,8 +92,9 @@ import {
   SpeakerQuietIcon,
   SpeakerLoudIcon,
   CorrectMarkIcon,
-  PersonIcon, ScoreFileIcon
-} from "./";
+  PersonIcon,
+  ScoreFileIcon
+} from './'
 
 const IconContainer = styled.div`
   display: flex;
