@@ -27,7 +27,7 @@ type MenuLink = {
 
 interface StudentTopNavigationProps {
   avatar: string
-  greeting: string
+  greeting?: string
   menu: string
   showCrackUniversityLogo?: boolean
   multipleCourse?: boolean
@@ -65,15 +65,37 @@ const StudentTopNavigation = (
   const [open, setOpen] = React.useState<boolean>(false)
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
+  const [menuPosition, setMenuPosition] = React.useState({ top: 0, left: 0 })
   const hasAdditionalElements = isNotNilOrEmpty(navLeftElements)
   const hasAdditionalRightElements = isNotNilOrEmpty(navRightElements)
   const menuRef = React.useRef(null)
+  const staticMenuButtonRef = React.useRef(null)
 
   const setLevel1 = value => setLinkLevel1(value)
   const setLevel2 = value => setLinkLevel2(value)
 
   const resetLevel1 = () => setLinkLevel1('')
   const resetLevel2 = () => setLinkLevel2('')
+
+  const saveMenuPosition = () => {
+    const element = staticMenuButtonRef
+
+    const dimensions = element.current
+      ? // @ts-ignore
+        element.current.getBoundingClientRect()
+      : { top: 0, left: 0 }
+
+    setMenuPosition({ top: dimensions.top, left: dimensions.left })
+  }
+
+  React.useEffect(() => {
+    saveMenuPosition()
+
+    window.addEventListener('resize', saveMenuPosition)
+    return () => {
+      window.removeEventListener('resize', saveMenuPosition)
+    }
+  }, [])
 
   const handleMouseLeave = () => {
     setOpen(false)
@@ -195,8 +217,37 @@ const StudentTopNavigation = (
 
   useOutsideClick(menuRef, handleMouseLeave)
 
+  // MenuButtonStatic & MenuButtonOpened - It is an idea to pull
+  // menu items as high as possible so that their z-index is not
+  // overwritten by other items on the platform that have lower nesting
+
+  const MenuButtonStatic = (
+    <MenuContainerStatic
+      ref={staticMenuButtonRef}
+      onMouseEnter={handleMouseEnter}
+    >
+      <Button>{menu}</Button>
+    </MenuContainerStatic>
+  )
+
+  const MenuButtonOpened = (
+    <React.Fragment>
+      <Overlay open={open} />
+      <MenuContainerOpen
+        open={open}
+        ref={menuRef}
+        onMouseLeave={handleMouseLeave}
+        menuPosition={menuPosition}
+      >
+        <Button>{menu}</Button>
+        <NavMenu open={open}>{generateLinks}</NavMenu>
+      </MenuContainerOpen>
+    </React.Fragment>
+  )
+
   return (
     <React.Fragment>
+      {MenuButtonOpened}
       <ContainerOuter open={open} withNotification={hasNotification}>
         <div className='nav-notification'>{notification}</div>
         <Container>
@@ -212,24 +263,13 @@ const StudentTopNavigation = (
             )}
           </LogoWrapper>
 
-          <Overlay open={open} />
           <NavRight alignItems={multipleCourse}>
             <UserContainer>
               {avatar && <IconContainer src={avatar} alt='profile icon' />}
-              <p>{greeting}</p>
+              {greeting && <p>{greeting}</p>}
             </UserContainer>
             {hasAdditionalRightElements && navRightElements}
-            {isNotNilOrEmpty(links) && (
-              <MenuContainer
-                ref={menuRef}
-                open={open}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <Button>{menu}</Button>
-                <NavMenu open={open}>{generateLinks}</NavMenu>
-              </MenuContainer>
-            )}
+            {isNotNilOrEmpty(links) && MenuButtonStatic}
           </NavRight>
         </Container>
       </ContainerOuter>
@@ -255,8 +295,7 @@ const ContainerOuter = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: ${({ theme, open }) =>
-    open ? theme.zIndex.mainOverlay : theme.zIndex.navigation};
+  z-index: ${({ theme }) => theme.zIndex.navigation};
 
   .nav-notification {
     flex: none;
@@ -358,10 +397,21 @@ const NavRight = styled.div`
 // Navigation Menu
 //
 
-const MenuContainer = styled.div`
-  position: relative;
+const MenuContainerOpen = styled.div`
+  position: fixed;
+  display: ${({ open }) => (open ? 'block' : 'none')};
+  top: ${({ menuPosition }) => menuPosition.top}px;
+  left: ${({ menuPosition }) => menuPosition.left}px;
   z-index: ${({ theme }) => theme.zIndex.mainMenu};
 
+  button {
+    min-width: 121px;
+    max-width: 121px;
+    height: 40px;
+  }
+`
+
+const MenuContainerStatic = styled.div`
   button {
     min-width: 121px;
     max-width: 121px;
