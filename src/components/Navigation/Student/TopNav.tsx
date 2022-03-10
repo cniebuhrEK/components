@@ -89,7 +89,7 @@ const StudentTopNavigation = (
   }
 
   React.useEffect(() => {
-    saveMenuPosition()
+    setTimeout(saveMenuPosition, 300)
 
     window.addEventListener('resize', saveMenuPosition)
     return () => {
