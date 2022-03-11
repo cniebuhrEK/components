@@ -87,6 +87,9 @@ const Animation = (props: AnimationProps): JSX.Element => {
               {speed} x
             </div>
             <div className='speed-options'>
+              <div className='speed-option' onClick={handleSelectSpeed(0.5)}>
+                0.5 x
+              </div>
               <div className='speed-option' onClick={handleSelectSpeed(1)}>
                 1 x
               </div>
