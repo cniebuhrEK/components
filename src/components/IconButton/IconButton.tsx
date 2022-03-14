@@ -4,7 +4,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface ButtonProps {
-  color?: 'orange' | 'green' | 'blue' | 'transparent' | 'red' | 'black'
+  color?:
+    | 'orange'
+    | 'green'
+    | 'blue'
+    | 'transparent'
+    | 'red'
+    | 'black'
+    | 'primary'
+    | 'secondary'
   onClick?: (e: any) => void
   icon?: any
   type?: string
@@ -35,6 +43,18 @@ const buttonColors = {
   transparent: 'transparent',
   red: 'red',
   black: 'black'
+}
+
+// this is because there was inconsistency of naming colors
+const colorsMap = {
+  primary: 'primary',
+  [buttonColors.orange]: 'primary',
+  [buttonColors.green]: 'green',
+  [buttonColors.blue]: 'secondary',
+  secondary: 'secondary',
+  [buttonColors.transparent]: 'transparent',
+  [buttonColors.red]: 'red',
+  [buttonColors.black]: 'black'
 }
 
 const IconButton = (props: ButtonProps): JSX.Element => {
@@ -82,13 +102,14 @@ export const StyledButton = styled.button`
   align-items: center;
   justify-content: center;
   color: ${({ variant, color, theme }) =>
-    theme.colors.buttons[variantsMap[variant]][color].font ||
+    theme.colors.buttons[variantsMap[variant]][colorsMap[color]].font ||
     theme.colors.main.text};
   background-color: ${({ variant, color, theme }) =>
-    theme.colors.buttons[variantsMap[variant]][color].background ||
+    theme.colors.buttons[variantsMap[variant]][colorsMap[color]].background ||
     theme.colors.main.white};
   border-color: ${({ variant, color, theme }) =>
-    theme.colors.buttons[variantsMap[variant]][color].border || 'transparent'};
+    theme.colors.buttons[variantsMap[variant]][colorsMap[color]].border ||
+    'transparent'};
   box-shadow: none;
   border-width: 1px;
   border-style: solid;
@@ -97,7 +118,7 @@ export const StyledButton = styled.button`
 
   svg {
     fill: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variantsMap[variant]][color].font ||
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]].font ||
       theme.colors.main.text};
   }
 
@@ -131,14 +152,14 @@ export const StyledButton = styled.button`
   &:hover:enabled,
   &:active:enabled {
     color: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variantsMap[variant]][color].fontActive ||
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]].fontActive ||
       theme.colors.main.text};
     background-color: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variantsMap[variant]][color].backgroundActive ||
-      theme.colors.main.white};
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]]
+        .backgroundActive || theme.colors.main.white};
     border-color: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variantsMap[variant]][color].borderActive ||
-      'transparent'};
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]]
+        .borderActive || 'transparent'};
   }
 `
 

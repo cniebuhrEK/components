@@ -22,13 +22,33 @@ const buttonColors = {
   black: 'black'
 }
 
+// this is because there was inconsistency of naming colors
+const colorsMap = {
+  primary: 'primary',
+  [buttonColors.orange]: 'primary',
+  [buttonColors.green]: 'green',
+  [buttonColors.blue]: 'secondary',
+  secondary: 'secondary',
+  [buttonColors.transparent]: 'transparent',
+  [buttonColors.red]: 'red',
+  [buttonColors.black]: 'black'
+}
+
 interface ButtonProps {
   onClick?: (e: any) => void
   onMouseEnter?: (e: any) => void
   onMouseLeave?: (e: any) => void
   children?: JSX.Element | string
   size?: 'small' | 'normal'
-  color?: 'orange' | 'green' | 'blue' | 'transparent' | 'red' | 'black'
+  color?:
+    | 'orange'
+    | 'green'
+    | 'blue'
+    | 'transparent'
+    | 'red'
+    | 'black'
+    | 'primary'
+    | 'secondary'
   variant?: 'contained' | 'outlined'
   startIcon?: any
   endIcon?: any
@@ -114,11 +134,13 @@ export const StyledButton = styled.button`
     }
   }};
   color: ${({ variant, color, theme }) =>
-    theme.colors.buttons[variant][color].font || theme.colors.main.text};
+    theme.colors.buttons[variant][colorsMap[color]].font ||
+    theme.colors.main.text};
   background-color: ${({ variant, color, theme }) =>
-    theme.colors.buttons[variant][color].background || theme.colors.main.white};
+    theme.colors.buttons[variant][colorsMap[color]].background ||
+    theme.colors.main.white};
   border-color: ${({ variant, color, theme }) =>
-    theme.colors.buttons[variant][color].border || 'transparent'};
+    theme.colors.buttons[variant][colorsMap[color]].border || 'transparent'};
   box-shadow: none;
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-width: 1px;
@@ -146,11 +168,13 @@ export const StyledButton = styled.button`
   &:hover:enabled,
   &:active:enabled {
     color: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variant][color].fontActive || 'inherit'};
+      theme.colors.buttons[variant][colorsMap[color]].fontActive || 'inherit'};
     background-color: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variant][color].backgroundActive || 'inherit'};
+      theme.colors.buttons[variant][colorsMap[color]].backgroundActive ||
+      'inherit'};
     border-color: ${({ variant, color, theme }) =>
-      theme.colors.buttons[variant][color].borderActive || 'inherit'};
+      theme.colors.buttons[variant][colorsMap[color]].borderActive ||
+      'inherit'};
   }
 
   .children-container {

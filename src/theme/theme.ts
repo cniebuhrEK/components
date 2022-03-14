@@ -19,62 +19,70 @@ const colors = {
 }
 
 const palette = {
-  black: '#1A1A1A',
-  white: '#FFFFFF',
+  heading: '#1A1A1A',
   text: '#444444',
   primary200: '#FFEEDF',
-  primary300: '#FFDCBB',
-  primary400: '#FFB86E',
   primary500: '#F8961A',
   primary600: '#D47B00',
-  primary999: '#2D1600',
+  secondary200: '#D2E3ED',
+  secondary500: '#316689',
+  secondary600: '#0B2C42',
+  tertinary200: '#FFF3ED',
+  tertinary500: '#EFD8CB',
+  tertinary600: '#352822',
+  white: '#FFFFFF',
   grey200: '#F6F8FA',
   grey300: '#DDDFE1',
-  grey400: '#C5C6C8',
-  grey500: '',
   grey600: '#949596',
-  grey700: '#7B7C7D',
-  danger500: '#E83E2E',
-  success500: '#119B4C'
+  error200: '#FFE3E0',
+  error500: '#E83E2E',
+  success200: '#DAF1E4',
+  success500: '#119B4C',
+  currency200: '#E7FBDB',
+  currency500: '#85BB65'
 }
 
 export default {
   colors: {
     main: {
-      black: palette.black,
-      white: palette.white,
+      heading: palette.heading,
       text: palette.text,
       primary200: palette.primary200,
-      primary300: palette.primary300,
-      primary400: palette.primary400,
       primary500: palette.primary500,
       primary600: palette.primary600,
-      primary999: palette.primary999,
+      secondary200: palette.secondary200,
+      secondary500: palette.secondary500,
+      secondary600: palette.secondary600,
+      tertinary200: palette.tertinary200,
+      tertinary500: palette.tertinary500,
+      tertinary600: palette.tertinary600,
+      white: palette.white,
       grey200: palette.grey200,
       grey300: palette.grey300,
-      grey400: palette.grey400,
-      grey500: palette.grey500,
       grey600: palette.grey600,
-      grey700: palette.grey700,
-      danger500: palette.danger500,
-      success500: palette.success500
+      error200: palette.error200,
+      error500: palette.error500,
+      success200: palette.success200,
+      success500: palette.success500,
+      currency200: palette.currency200,
+      currency500: palette.currency500
     },
     buttons: {
       contained: {
-        orange: {
-          font: '#0B2C42',
+        primary: {
+          font: palette.secondary600,
           background: palette.primary500,
           border: 'transparent',
           fontActive: palette.white,
           backgroundActive: palette.primary600,
           borderActive: 'transparent'
         },
-        blue: {
+        secondary: {
           font: palette.primary500,
-          background: '#0B2C42',
+          background: palette.secondary600,
           border: 'transparent',
           fontActive: palette.white,
-          backgroundActive: '#124669',
+          backgroundActive: palette.secondary500,
           borderActive: 'transparent'
         },
         transparent: {
@@ -87,27 +95,27 @@ export default {
         },
         green: {
           font: palette.success500,
-          background: '#DAF1E4',
+          background: palette.success200,
           border: palette.success500,
           fontActive: palette.white,
           backgroundActive: palette.success500,
           borderActive: palette.success500
         },
         red: {
-          font: palette.danger500,
-          background: '#FFE3E0',
-          border: palette.danger500,
+          font: palette.error500,
+          background: palette.error200,
+          border: palette.error500,
           fontActive: palette.white,
-          backgroundActive: palette.danger500,
-          borderActive: palette.danger500
+          backgroundActive: palette.error500,
+          borderActive: palette.error500
         },
         black: {
           font: palette.white,
           background: palette.text,
           border: 'transparent',
           fontActive: palette.white,
-          backgroundActive: palette.black,
-          borderActive: palette.black
+          backgroundActive: palette.heading,
+          borderActive: palette.heading
         },
         disabled: {
           font: palette.grey200,
@@ -119,7 +127,7 @@ export default {
         }
       },
       outlined: {
-        orange: {
+        primary: {
           font: palette.primary500,
           background: palette.white,
           border: palette.primary500,
@@ -135,13 +143,13 @@ export default {
           backgroundActive: palette.success500,
           borderActive: palette.success500
         },
-        blue: {
-          font: '#0B2C42',
+        secondary: {
+          font: palette.tertinary500,
           background: palette.white,
-          border: '#0B2C42',
+          border: palette.tertinary500,
           fontActive: palette.white,
-          backgroundActive: '#0B2C42',
-          borderActive: '#0B2C42'
+          backgroundActive: palette.tertinary500,
+          borderActive: palette.tertinary500
         },
         transparent: {
           font: palette.text,
@@ -152,12 +160,12 @@ export default {
           borderActive: palette.text
         },
         red: {
-          font: palette.danger500,
+          font: palette.error500,
           background: palette.white,
-          border: palette.danger500,
+          border: palette.error500,
           fontActive: palette.white,
-          backgroundActive: palette.danger500,
-          borderActive: palette.danger500
+          backgroundActive: palette.error500,
+          borderActive: palette.error500
         },
         black: {
           font: palette.text,
@@ -168,17 +176,17 @@ export default {
           borderActive: palette.text
         },
         disabled: {
-          font: palette.grey400,
+          font: palette.grey600,
           background: palette.grey200,
-          border: palette.grey400,
-          fontActive: palette.grey400,
+          border: palette.grey600,
+          fontActive: palette.grey600,
           backgroundActive: palette.grey200,
-          borderActive: palette.grey400
+          borderActive: palette.grey600
         }
       },
       // used for IconButtons (icons without background)
       transparent: {
-        orange: {
+        primary: {
           font: palette.primary500,
           background: 'transparent',
           border: 'transparent',
@@ -190,15 +198,15 @@ export default {
           font: palette.success500,
           background: 'transparent',
           border: 'transparent',
-          fontActive: '#16ca64',
+          fontActive: palette.success200,
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
-        blue: {
-          font: '#0B2C42',
+        secondary: {
+          font: palette.tertinary600,
           background: 'transparent',
           border: 'transparent',
-          fontActive: '#124669',
+          fontActive: palette.tertinary500,
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
@@ -206,15 +214,15 @@ export default {
           font: palette.text,
           background: 'transparent',
           border: 'transparent',
-          fontActive: palette.black,
+          fontActive: palette.heading,
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
         red: {
-          font: palette.danger500,
+          font: palette.error500,
           background: 'transparent',
           border: 'transparent',
-          fontActive: '#A72A1C',
+          fontActive: palette.error200,
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
@@ -222,15 +230,15 @@ export default {
           font: palette.text,
           background: 'transparent',
           border: 'transparent',
-          fontActive: palette.black,
+          fontActive: palette.heading,
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
         disabled: {
-          font: palette.grey400,
+          font: palette.grey600,
           background: 'transparent',
           border: 'transparent',
-          fontActive: palette.grey400,
+          fontActive: palette.grey600,
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         }
