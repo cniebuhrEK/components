@@ -93,7 +93,9 @@ import {
   SpeakerLoudIcon,
   CorrectMarkIcon,
   PersonIcon,
-  ScoreFileIcon
+  ScoreFileIcon,
+  PlayInCircleIcon,
+  PlayInSquaresIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -197,7 +199,9 @@ const AllIcons = () => {
     { component: SpeakerLoudIcon, title: 'SpeakerLoudIcon' },
     { component: CorrectMarkIcon, title: 'CorrectMark' },
     { component: PersonIcon, title: 'Person' },
-    { component: ScoreFileIcon, title: 'ScoreFile' }
+    { component: ScoreFileIcon, title: 'ScoreFile' },
+    { component: PlayInCircleIcon, title: 'PlayInCircle' },
+    { component: PlayInSquaresIcon, title: 'PlayInSquares' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)

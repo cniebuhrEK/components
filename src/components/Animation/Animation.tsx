@@ -68,6 +68,10 @@ const Animation = (props: AnimationProps): JSX.Element => {
     }
   }, [dropdownRef])
 
+  React.useEffect(() => {
+    setIsStopped(!autoplay)
+  }, [autoplay])
+
   return (
     <AnimationContainer
       isStopped={isStopped}
