@@ -189,7 +189,7 @@ const SpeedSelection = styled.div`
     background-color: ${({ theme }) => theme.palette.biege};
     box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
-    top: calc(100% + 5px);
+    bottom: calc(100% + 5px);
     left: 0;
     transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
   }
