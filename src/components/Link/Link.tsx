@@ -26,7 +26,7 @@ const Link = (props: LinkProps): JSX.Element => {
 }
 
 const LinkContainer = styled.a`
-  color: ${props => props.theme.palette.gray3};
+  color: ${props => props.theme.colors.main.grey600};
   font-weight: normal;
   text-decoration: none;
   font-size: ${props => props.theme.typography.fontSizeSmall};
@@ -38,11 +38,11 @@ const LinkContainer = styled.a`
   &.--isActive {
     text-decoration: underline;
     font-weight: normal;
-    color: ${props => props.theme.palette.gray1};
+    color: ${props => props.theme.colors.main.text};
   }
 
   &.--disabled {
-    color: ${props => props.theme.palette.grey08};
+    color: ${props => props.theme.colors.main.grey300};
     cursor: not-allowed;
   }
 `

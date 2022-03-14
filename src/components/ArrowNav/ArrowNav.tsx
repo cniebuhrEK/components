@@ -53,7 +53,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: 32px;
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.colors.main.tertinary600};
   font-weight: 700;
   font-size: 14px;
 

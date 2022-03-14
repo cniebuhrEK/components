@@ -22,13 +22,33 @@ const buttonColors = {
   black: 'black'
 }
 
+// this is because there was inconsistency of naming colors
+const colorsMap = {
+  primary: 'primary',
+  [buttonColors.orange]: 'primary',
+  [buttonColors.green]: 'green',
+  [buttonColors.blue]: 'secondary',
+  secondary: 'secondary',
+  [buttonColors.transparent]: 'transparent',
+  [buttonColors.red]: 'red',
+  [buttonColors.black]: 'black'
+}
+
 interface ButtonProps {
   onClick?: (e: any) => void
   onMouseEnter?: (e: any) => void
   onMouseLeave?: (e: any) => void
   children?: JSX.Element | string
   size?: 'small' | 'normal'
-  color?: 'orange' | 'green' | 'blue' | 'transparent' | 'red' | 'black'
+  color?:
+    | 'orange'
+    | 'green'
+    | 'blue'
+    | 'transparent'
+    | 'red'
+    | 'black'
+    | 'primary'
+    | 'secondary'
   variant?: 'contained' | 'outlined'
   startIcon?: any
   endIcon?: any
@@ -113,94 +133,18 @@ export const StyledButton = styled.button`
         return theme.dimensions.buttonSmallMinWidth
     }
   }};
-  color: ${({ variant, color, theme }) => {
-    switch (true) {
-      // contained variants
-      case variant === buttonVariants.contained &&
-        color === buttonColors.orange:
-        return theme.palette.darkblue01
-      case variant === buttonVariants.contained && color === buttonColors.blue:
-        return theme.palette.orange01
-      case variant === buttonVariants.contained &&
-        color === buttonColors.transparent:
-        return theme.palette.textDark
-      case variant === buttonVariants.contained && color === buttonColors.green:
-        return theme.palette.green01
-      case variant === buttonVariants.contained && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === buttonVariants.contained && color === buttonColors.black:
-        return theme.palette.panelBackground
-
-      // outlined variants
-      case variant === buttonVariants.outlined && color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === buttonVariants.outlined && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === buttonVariants.outlined && color === buttonColors.green:
-        return theme.palette.green01
-      case variant === buttonVariants.outlined && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === buttonVariants.outlined && color === buttonColors.black:
-        return theme.palette.textDark
-
-      // transparent variants
-      case color === buttonColors.transparent:
-      default:
-        return theme.palette.textDark
-    }
-  }};
-  background-color: ${({ variant, color, theme }) => {
-    switch (true) {
-      // contained
-      case variant === buttonVariants.contained &&
-        color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === buttonVariants.contained && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === buttonVariants.contained && color === buttonColors.green:
-        return theme.palette.green10
-      case variant === buttonVariants.contained && color === buttonColors.red:
-        return theme.palette.brightred07
-      case variant === buttonVariants.contained && color === buttonColors.black:
-        return theme.palette.textDark
-
-      // outlined
-      case variant === buttonVariants.outlined:
-        return theme.palette.panelBackground
-
-      // transparent
-      case color === buttonColors.transparent:
-        return 'transparent'
-
-      default:
-        return theme.palette.panelBackground
-    }
-  }};
+  color: ${({ variant, color, theme }) =>
+    theme.colors.buttons[variant][colorsMap[color]].font ||
+    theme.colors.main.text};
+  background-color: ${({ variant, color, theme }) =>
+    theme.colors.buttons[variant][colorsMap[color]].background ||
+    theme.colors.main.white};
+  border-color: ${({ variant, color, theme }) =>
+    theme.colors.buttons[variant][colorsMap[color]].border || 'transparent'};
   box-shadow: none;
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ variant, color, theme }) => {
-    switch (true) {
-      case variant === buttonVariants.outlined && color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === buttonVariants.outlined && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === buttonVariants.outlined &&
-        color === buttonColors.transparent:
-        return theme.palette.textDark
-      case variant === buttonVariants.contained && color === buttonColors.green:
-      case variant === buttonVariants.outlined && color === buttonColors.green:
-        return theme.palette.green01
-      case variant === buttonVariants.contained && color === buttonColors.red:
-      case variant === buttonVariants.outlined && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === buttonVariants.outlined && color === buttonColors.black:
-        return theme.palette.textDark
-      default:
-        return 'transparent'
-    }
-  }};
   background-position: center;
   transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
@@ -210,79 +154,27 @@ export const StyledButton = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${({ theme }) => theme.palette.disabledFont};
-    background-color: ${({ variant, size, color, theme }) => {
-      switch (true) {
-        case variant === buttonVariants.outlined:
-          return theme.palette.disabledBackground
-        case size === buttonSizes.small && variant === buttonVariants.contained:
-          return theme.palette.disabledBackground
-        case color === buttonColors.orange &&
-          variant !== buttonVariants.outlined:
-          return theme.palette.orange05
-        case color === buttonColors.green &&
-          variant !== buttonVariants.outlined:
-          return theme.palette.green10
-        case color === buttonColors.blue && variant !== buttonVariants.outlined:
-          return theme.palette.disabledBackground
-        case color === buttonColors.transparent:
-        default:
-          return 'transparent'
-      }
-    }};
-    border-color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.transparent:
-          return 'transparent'
-        default:
-          return theme.palette.disabledFont
-      }
-    }};
+    color: ${({ variant, theme }) =>
+      theme.colors.buttons[variant].disabled.font || theme.colors.main.grey400};
+    background-color: ${({ variant, theme }) =>
+      theme.colors.buttons[variant].disabled.background ||
+      theme.colors.main.grey200};
+    border-color: ${({ variant, theme }) =>
+      theme.colors.buttons[variant].disabled.border || 'transparent'};
     border-style: solid;
     border-width: 1px;
   }
 
   &:hover:enabled,
   &:active:enabled {
-    color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.orange:
-        case color === buttonColors.blue:
-        case color === buttonColors.green:
-        case color === buttonColors.red:
-        case color === buttonColors.black:
-          return theme.palette.panelBackground
-        case color === buttonColors.transparent:
-        default:
-          return theme.palette.orange01
-      }
-    }};
-    border-color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.transparent:
-          return theme.palette.orange01
-        default:
-          return 'none'
-      }
-    }};
-    background-color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.orange:
-          return theme.palette.orange01
-        case color === buttonColors.blue:
-          return theme.palette.darkblue02
-        case color === buttonColors.green:
-          return theme.palette.green01
-        case color === buttonColors.transparent:
-          return 'transparent'
-        case color === buttonColors.red:
-          return theme.palette.brightred01
-        case color === buttonColors.black:
-          return theme.palette.headingDark
-        default:
-          return theme.palette.panelBackground
-      }
-    }};
+    color: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variant][colorsMap[color]].fontActive || 'inherit'};
+    background-color: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variant][colorsMap[color]].backgroundActive ||
+      'inherit'};
+    border-color: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variant][colorsMap[color]].borderActive ||
+      'inherit'};
   }
 
   .children-container {

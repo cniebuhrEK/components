@@ -12,7 +12,8 @@ export default createGlobalStyle`
     }
 
     body {
-    background-color: ${({ theme }) => theme.palette.background};
+    background-color: ${({ theme }) => theme.colors.backgrounds.app};
+    color: ${({ theme }) => theme.colors.main.text};
     margin: 0;
     font-family: ${({ theme }) => theme.typography.fontFamily};
     -webkit-font-smoothing: antialiased;
@@ -21,6 +22,23 @@ export default createGlobalStyle`
 
     * {
       box-sizing: border-box;
+      scrollbar-width: thin;
+      scrollbar-color: ${({ theme }) => theme.colors.scroll.thumb}
+      ${({ theme }) => theme.colors.scroll.scroller};
+
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background-color: ${({ theme }) => theme.colors.scroll.thumb};
+      }
+
+      &::-webkit-scrollbar-track {
+        border-radius: 6px;
+        background-color: ${({ theme }) => theme.colors.scroll.scroller};
+      }
     }
 
     article,
@@ -65,7 +83,7 @@ export default createGlobalStyle`
     }
 
     a {
-      color: ${({ theme }) => theme.palette.grey07};
+      color: ${({ theme }) => theme.colors.main.text};
       font-weight: 400;
       text-decoration: none;
       background-color: transparent;
@@ -74,10 +92,10 @@ export default createGlobalStyle`
 
     input:-webkit-autofill {
       height: 100%;
-      color: ${({ theme }) => theme.palette.brown01}; !important;
+      color: ${({ theme }) => theme.colors.main.text}; !important;
       background-color: unset;
       box-shadow: 0 0 0px 1000px ${({ theme }) =>
-        theme.palette.panelBackground} inset;
+        theme.colors.backgrounds.main} inset;
     }
 
     input::-ms-clear, input::-ms-reveal {

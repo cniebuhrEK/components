@@ -43,7 +43,7 @@ export const MinusIcon = styled.div`
   width: 8px;
   height: 2px;
   border-radius: 4px;
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  background-color: ${({ theme }) => theme.colors.backgrounds.main};
 `
 
 export const Container = styled.div`
@@ -52,8 +52,8 @@ export const Container = styled.div`
   justify-content: center;
   width: 18px;
   height: 18px;
-  border: 1px solid ${({ theme }) => theme.palette.border};
-  color: ${({ theme }) => theme.palette.panelBackground} !important;
+  border: 1px solid ${({ theme }) => theme.colors.checkbox.border};
+  color: ${({ theme }) => theme.colors.checkbox.font} !important;
   background-color: transparent;
   border-radius: 2px;
   font-size: 12px !important;
@@ -62,16 +62,16 @@ export const Container = styled.div`
   overflow: hidden;
 
   &[data-is-selected='true'] {
-    background-color: ${({ theme }) => theme.palette.orange01};
-    border: 1px solid ${({ theme }) => theme.palette.orange01};
-    color: ${({ theme }) => theme.palette.panelBackground} !important;
+    background-color: ${({ theme }) => theme.colors.checkbox.backgroundActive};
+    border: 1px solid ${({ theme }) => theme.colors.checkbox.borderActive};
+    color: ${({ theme }) => theme.colors.checkbox.fontActive} !important;
 
     .exam-checkbox--checked {
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px !important;
-      color: ${({ theme }) => theme.palette.panelBackground} !important;
+      color: ${({ theme }) => theme.colors.checkbox.fontActive} !important;
     }
 
     .exam-checkbox--unchecked {
@@ -80,9 +80,9 @@ export const Container = styled.div`
   }
 
   &[data-is-intersected='true'] {
-    background-color: ${({ theme }) => theme.palette.orange01};
-    border: 1px solid ${({ theme }) => theme.palette.orange01};
-    color: ${({ theme }) => theme.palette.panelBackground};
+    background-color: ${({ theme }) => theme.colors.checkbox.backgroundActive};
+    border: 1px solid ${({ theme }) => theme.colors.checkbox.borderActive};
+    color: ${({ theme }) => theme.colors.checkbox.fontActive} !important;
   }
 
   &[data-is-selected='false'] {

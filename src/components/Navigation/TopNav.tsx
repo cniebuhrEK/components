@@ -3,9 +3,9 @@
 import React from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
-import { Button } from '../../Button'
-import { isNotNilOrEmpty } from '../../../utils/ramda'
-import useOutsideClick from '../../../hooks/useOutsideClick'
+import { Button } from '../Button'
+import { isNotNilOrEmpty } from '../../utils/ramda'
+import useOutsideClick from '../../hooks/useOutsideClick'
 
 type PureLink = {
   label: string
@@ -290,8 +290,8 @@ const ContainerOuter = styled.div`
   height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.grey12};
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.topNav.border};
+  background-color: ${({ theme }) => theme.colors.topNav.background};
   position: fixed;
   top: 0;
   left: 0;
@@ -304,7 +304,7 @@ const ContainerOuter = styled.div`
     justify-content: center;
     height: ${({ theme }) => theme.dimensions.topNotificationHeight};
     width: 100%;
-    background-color: ${({ theme }) => theme.palette.freeTrialNotification};
+    background-color: ${({ theme }) => theme.colors.topNav.freeTrial};
   }
 `
 
@@ -328,7 +328,7 @@ const Overlay = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  background: ${({ theme }) => theme.palette.overlay};
+  background: ${({ theme }) => theme.colors.topNav.overlay};
   filter: blur(2px);
   backdrop-filter: blur(2px);
   transition: opacity 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
@@ -344,7 +344,6 @@ const LogoWrapper = styled.div`
 const LogoContainer = styled.div`
   display: flex;
   height: 100%;
-  color: ${({ theme }) => theme.palette.biege};
 
   img {
     max-width: 157px;
@@ -365,7 +364,6 @@ const UserContainer = styled.div`
   display: flex;
   align-items: center;
   flex-flow: row;
-  color: ${({ theme }) => theme.palette.textDark};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-size: 14px;
   letter-spacing: -0.1px;
@@ -378,7 +376,6 @@ const UserContainer = styled.div`
 
 const IconContainer = styled.img`
   border-radius: 100%;
-  background: ${({ theme }) => theme.palette.white};
   height: 48px;
   width: 48px;
   justify-content: flex-start;
@@ -420,7 +417,7 @@ const MenuContainerStatic = styled.div`
 `
 
 const NavMenu = styled.div`
-  background-color ${({ theme }) => theme.palette.white};
+  background-color ${({ theme }) => theme.colors.mainMenu.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
   box-shadow: 0px 10px 20px #CDC5BB;
   display: ${({ open }) => (open ? 'block' : 'none')};
@@ -438,7 +435,7 @@ const NavMenu = styled.div`
 `
 
 const NavMenuLink = styled.span`
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.mainMenu.font};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   white-space: nowrap;
   overflow: hidden;
@@ -455,7 +452,7 @@ const NavMenuItem = styled.a`
   justify-content: flex-start;
   line-height: normal;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.mainMenu.font};
   border-left: 3px solid transparent;
   width: 100%;
   overflow: hidden;
@@ -463,8 +460,8 @@ const NavMenuItem = styled.a`
   text-overflow: ellipsis;
 
   &:hover {
-    border-left: 3px solid ${({ theme }) => theme.palette.orange02};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-left: 3px solid ${({ theme }) => theme.colors.mainMenu.borderActive};
+    box-shadow: ${props => props.theme.shadows.mainShadow};
     cursor: pointer;
   }
 
@@ -479,9 +476,11 @@ const NavStaticMenuItem = styled.div`
   justify-content: flex-start;
   line-height: normal;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.mainMenu.font};
   border-left: ${({ isSelected, theme }) =>
-    `3px solid ${isSelected ? theme.palette.orange02 : 'transparent'}`};
+    `3px solid ${
+      isSelected ? theme.colors.mainMenu.borderActive : 'transparent'
+    }`};
   box-shadow: ${({ isSelected }) =>
     isSelected ? '0px 4px 4px rgba(0, 0, 0, 0.15)' : 'none'};
   text-decoration: ${({ isSelectedAsLevel1 }) =>
@@ -492,7 +491,7 @@ const NavStaticMenuItem = styled.div`
   text-overflow: ellipsis;
 
   &:hover {
-    border-left: 3px solid ${({ theme }) => theme.palette.orange02};
+    border-left: 3px solid ${({ theme }) => theme.colors.mainMenu.borderActive};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     cursor: pointer;
   }

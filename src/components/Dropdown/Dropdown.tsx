@@ -110,7 +110,7 @@ const Container = styled.div`
 `
 
 const Menu = styled.div`
-  background-color ${({ theme }) => theme.palette.white};
+  background-color ${({ theme }) => theme.colors.selects.option.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
   box-shadow: ${props => props.theme.shadows.mainShadow};
   display: ${({ open }) => (open ? 'block' : 'none')};
@@ -122,23 +122,6 @@ const Menu = styled.div`
   width: fit-content;
   max-height: 172px;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.palette.brown01}
-    ${({ theme }) => theme.palette.brown09};
-
-  &::-webkit-scrollbar {
-    width: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.brown01};
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.brown09};
-  }
 `
 
 const ItemContainer = styled.div`
@@ -146,14 +129,15 @@ const ItemContainer = styled.div`
   line-height: normal;
   width: 100%;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.colors.selects.option.font};
   border-left: 3px solid transparent;
   white-space: nowrap;
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
 
   &:hover {
     border-left: 3px solid ${({ theme }) => theme.palette.orange02};
-    box-shadow: ${props => props.theme.shadows.mainShadow};
+    background-color ${({ theme }) =>
+      theme.colors.selects.option.backgroundActive};
     cursor: pointer;
   }
 `
@@ -171,21 +155,33 @@ export const DropdownButtonContainer = styled.button`
   height: ${({ theme }) => theme.dimensions.buttonSmallHeight};
   justify-content: center;
   min-width: auto;
-  color: ${({ theme }) => theme.palette.darkblue01};
-  background-color: ${({ theme }) => theme.palette.orange02};
-  background-position: center;
-  border-color: transparent;
+  color: ${({ theme }) => theme.colors.buttons.contained.primary.font};
+  background-color: ${({ theme }) =>
+    theme.colors.buttons.contained.primary.background};
+  border-color: ${({ theme }) => theme.colors.buttons.contained.primary.border};
   border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
   border-style: none;
   border-width: 0px;
   box-shadow: none;
-  transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
   &:disabled {
     cursor: not-allowed;
-    color: ${({ theme }) => theme.palette.background};
-    background-color: ${({ theme }) => theme.palette.inactive};
-    border-color: transparent;
+    color: ${({ theme }) => theme.colors.buttons.contained.disabled.font};
+    background-color: ${({ theme }) =>
+      theme.colors.buttons.contained.disabled.background};
+    border-color: ${({ theme }) =>
+      theme.colors.buttons.contained.disabled.border};
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: ${({ theme }) => theme.colors.buttons.contained.primary.fontActive};
+    background-color: ${({ theme }) =>
+      theme.colors.buttons.contained.primary.backgroundActive};
+    border-color: ${({ theme }) =>
+      theme.colors.buttons.contained.primary.borderActive};
   }
 `
 
@@ -197,6 +193,8 @@ const IconContainer = styled.div`
   margin-left: 4px;
   width: 16px;
   transform: ${({ isOpen }) => (!isOpen ? 'initial' : 'rotate(180deg)')};
+  transition: transform 300ms
+    ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 `
 
 export default Dropdown

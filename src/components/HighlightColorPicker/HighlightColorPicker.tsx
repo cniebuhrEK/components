@@ -89,7 +89,7 @@ const Container = styled.div`
   display: inline-flex;
   padding: 5px 10px;
   box-shadow: ${props => props.theme.shadows.mainShadow};
-  background-color: ${props => props.theme.palette.white};
+  background-color: ${props => props.theme.colors.backgrounds.main};
   gap: 12px;
   border-radius: 4px;
   z-index: ${({ theme }) => theme.zIndex.menu + 30};
@@ -142,6 +142,6 @@ const ColorPicker = styled.div`
 
   &:hover,
   &:active {
-    border-color: ${({ theme }) => theme.palette.brown01};
+    border-color: ${({ theme }) => theme.colors.main.grey600};
   }
 `

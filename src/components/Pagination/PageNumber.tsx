@@ -53,7 +53,7 @@ const StyledPageNumber = styled.li`
     display: inline-block;
     text-align: center;
     font-size: ${props => props.theme.typography.fontSizeSmall};
-    color: ${props => props.theme.palette.textDark};
+    color: ${props => props.theme.colors.main.text};
     transition: all 0.2s ${props => props.theme.transitions.easing.easeInOut} 0s;
 
     &:hover {
@@ -76,7 +76,7 @@ const StyledPageNumber = styled.li`
       content: '...';
       position: absolute;
       top: 0;
-      color: ${props => props.theme.palette.textDark};
+      color: ${props => props.theme.colors.main.text};
       left: calc(0px - 27px);
       width: 16px;
       line-height: 16px;
@@ -96,7 +96,7 @@ const StyledPageNumber = styled.li`
       content: '...';
       position: absolute;
       top: 0;
-      color: ${props => props.theme.palette.textDark};
+      color: ${props => props.theme.colors.main.text};
       right: calc(0px - 27px);
       width: 16px;
       line-height: 16px;

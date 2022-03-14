@@ -210,7 +210,7 @@ const PanelContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: ${props => props.theme.palette.biege};
+    background: ${props => props.theme.colors.backgrounds.main};
     overflow: hidden;
   }
 
@@ -228,7 +228,7 @@ const PanelContainer = styled.div`
     font-size: 16px;
     line-height: 24px;
     cursor: move;
-    background: ${props => props.theme.palette.biege};
+    background: ${props => props.theme.colors.backgrounds.main};
     z-index: ${({ theme }) => theme.zIndex.modal + 10};
 
     strong {
@@ -256,7 +256,6 @@ const PanelContainer = styled.div`
     position: absolute;
     bottom: 0px;
     left: 3px;
-    color: ${props => props.theme.palette.textDark};
 
     img {
       transform: scaleX(-1);
@@ -269,7 +268,6 @@ const PanelContainer = styled.div`
     position: absolute;
     bottom: 0px;
     right: 3px;
-    color: ${props => props.theme.palette.textDark};
 
     img {
       width: 11px;
@@ -283,7 +281,6 @@ const PanelContainer = styled.div`
     top: 5px;
     right: 10px;
     cursor: pointer;
-    color: ${props => props.theme.palette.textDark};
     font-size: 17px;
     line-height: 24px;
   }

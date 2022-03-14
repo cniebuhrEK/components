@@ -4,7 +4,15 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface ButtonProps {
-  color?: 'orange' | 'green' | 'blue' | 'transparent' | 'red' | 'black'
+  color?:
+    | 'orange'
+    | 'green'
+    | 'blue'
+    | 'transparent'
+    | 'red'
+    | 'black'
+    | 'primary'
+    | 'secondary'
   onClick?: (e: any) => void
   icon?: any
   type?: string
@@ -21,6 +29,13 @@ const variants = {
   transparent: 'transparent'
 }
 
+// this is because there was inconsistency of naming variants
+const variantsMap = {
+  [variants.filled]: 'contained',
+  [variants.outlined]: 'outlined',
+  [variants.transparent]: 'transparent'
+}
+
 const buttonColors = {
   orange: 'orange',
   green: 'green',
@@ -28,6 +43,18 @@ const buttonColors = {
   transparent: 'transparent',
   red: 'red',
   black: 'black'
+}
+
+// this is because there was inconsistency of naming colors
+const colorsMap = {
+  primary: 'primary',
+  [buttonColors.orange]: 'primary',
+  [buttonColors.green]: 'green',
+  [buttonColors.blue]: 'secondary',
+  secondary: 'secondary',
+  [buttonColors.transparent]: 'transparent',
+  [buttonColors.red]: 'red',
+  [buttonColors.black]: 'black'
 }
 
 const IconButton = (props: ButtonProps): JSX.Element => {
@@ -74,145 +101,38 @@ export const StyledButton = styled.button`
   width: 32px;
   align-items: center;
   justify-content: center;
-  color: ${({ variant, color, theme }) => {
-    switch (true) {
-      // Filled variant
-      case variant === variants.filled && color === buttonColors.orange:
-        return theme.palette.darkblue01
-      case variant === variants.filled && color === buttonColors.green:
-        return theme.palette.green01
-      case variant === variants.filled && color === buttonColors.blue:
-        return theme.palette.orange01
-      case variant === variants.filled && color === buttonColors.transparent:
-        return theme.palette.grey07
-      case variant === variants.filled && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === variants.filled && color === buttonColors.black:
-        return theme.palette.panelBackground
-
-      // Outlined variant
-      case variant === variants.outlined && color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === variants.outlined && color === buttonColors.green:
-        return theme.palette.green01
-      case variant === variants.outlined && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === variants.outlined && color === buttonColors.transparent:
-        return theme.palette.grey07
-      case variant === variants.outlined && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === variants.outlined && color === buttonColors.black:
-        return theme.palette.textDark
-
-      // Transparent variant
-      case variant === variants.transparent && color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === variants.transparent && color === buttonColors.green:
-        return theme.palette.green04
-      case variant === variants.transparent && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === variants.transparent && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === variants.transparent && color === buttonColors.black:
-        return theme.palette.textDark
-      case variant === variants.transparent &&
-        color === buttonColors.transparent:
-        return theme.palette.textDark
-      default:
-        return theme.palette.textDark
-    }
-  }};
-  background-color: ${({ variant, color, theme }) => {
-    switch (true) {
-      // filled
-      case variant === variants.filled && color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === variants.filled && color === buttonColors.green:
-        return theme.palette.green10
-      case variant === variants.filled && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === variants.filled && color === buttonColors.red:
-        return theme.palette.brightred07
-      case variant === variants.filled && color === buttonColors.black:
-        return theme.palette.textDark
-
-      // outlined
-      case variant === variants.outlined && color !== buttonColors.transparent:
-        return theme.palette.panelBackground
-
-      // transparent
-      case variant === variants.transparent:
-      case color === buttonColors.transparent:
-        return 'transparent'
-
-      default:
-        return theme.palette.orange02
-    }
-  }};
+  color: ${({ variant, color, theme }) =>
+    theme.colors.buttons[variantsMap[variant]][colorsMap[color]].font ||
+    theme.colors.main.text};
+  background-color: ${({ variant, color, theme }) =>
+    theme.colors.buttons[variantsMap[variant]][colorsMap[color]].background ||
+    theme.colors.main.white};
+  border-color: ${({ variant, color, theme }) =>
+    theme.colors.buttons[variantsMap[variant]][colorsMap[color]].border ||
+    'transparent'};
   box-shadow: none;
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ variant, theme, color }) => {
-    switch (true) {
-      case variant === variants.outlined && color === buttonColors.orange:
-        return theme.palette.orange02
-      case variant === variants.outlined && color === buttonColors.green:
-      case variant === variants.filled && color === buttonColors.green:
-        return theme.palette.green01
-      case variant === variants.outlined && color === buttonColors.blue:
-        return theme.palette.darkblue01
-      case variant === variants.outlined && color === buttonColors.red:
-      case variant === variants.filled && color === buttonColors.red:
-        return theme.palette.brightred01
-      case variant === variants.outlined && color === buttonColors.black:
-        return theme.palette.textDark
-      case variant === variants.outlined && color === buttonColors.transparent:
-        return theme.palette.grey07
-      default:
-        return 'transparent'
-    }
-  }};
   transition: all 300ms ${({ theme }) =>
     theme.transitions.easing.easeInOut} 0ms;
 
   svg {
-    fill: ${({ theme, variant, color }) => {
-      switch (true) {
-        // Filled variant
-        case variant === variants.filled && color === buttonColors.orange:
-          return theme.palette.darkblue01
-        case variant === variants.filled && color === buttonColors.green:
-          return theme.palette.biege
-        case variant === variants.filled && color === buttonColors.blue:
-          return theme.palette.orange01
-        case variant === variants.filled && color === buttonColors.transparent:
-          return theme.palette.grey07
-
-        // Outlined variant
-        case variant === variants.outlined && color === buttonColors.orange:
-          return theme.palette.orange02
-        case variant === variants.outlined && color === buttonColors.green:
-          return theme.palette.green04
-        case variant === variants.outlined && color === buttonColors.blue:
-          return theme.palette.darkblue01
-
-        // Transparent variant
-        case variant === variants.transparent && color === buttonColors.orange:
-          return theme.palette.orange02
-        case variant === variants.transparent && color === buttonColors.green:
-          return theme.palette.green04
-        case variant === variants.transparent && color === buttonColors.blue:
-          return theme.palette.darkblue01
-        case variant === variants.transparent &&
-          color === buttonColors.transparent:
-          return theme.palette.grey07
-        default:
-          return theme.palette.darkblue01
-      }
-    }};
+    fill: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]].font ||
+      theme.colors.main.text};
   }
 
   &:disabled {
+    color: ${({ variant, theme }) =>
+      theme.colors.buttons[variantsMap[variant]].disabled.font ||
+      theme.colors.main.text};
+    background-color: ${({ variant, theme }) =>
+      theme.colors.buttons[variantsMap[variant]].disabled.background ||
+      theme.colors.main.white};
+    border-color: ${({ variant, theme }) =>
+      theme.colors.buttons[variantsMap[variant]].disabled.border ||
+      'transparent'};
+
     background-color ${({ theme }) => theme.palette.disabledBackground};
     border-color: ${({ color, theme }) => {
       switch (true) {
@@ -223,51 +143,23 @@ export const StyledButton = styled.button`
       }
     }};
     svg {
-      color: ${({ theme }) => theme.palette.disabledFont};
+      fill: ${({ variant, theme }) =>
+        theme.colors.buttons[variantsMap[variant]].disabled.font ||
+        theme.colors.main.text};
     }
   }
 
   &:hover:enabled,
   &:active:enabled {
-    color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.orange:
-        case color === buttonColors.blue:
-        case color === buttonColors.green:
-        case color === buttonColors.red:
-        case color === buttonColors.black:
-          return theme.palette.panelBackground
-        case color === buttonColors.transparent:
-        default:
-          return theme.palette.orange01
-      }
-    }};
-    background-color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.orange:
-          return theme.palette.orange01
-        case color === buttonColors.blue:
-          return theme.palette.darkblue02
-        case color === buttonColors.green:
-          return theme.palette.green01
-        case color === buttonColors.transparent:
-          return 'transparent'
-        case color === buttonColors.red:
-          return theme.palette.brightred01
-        case color === buttonColors.black:
-          return theme.palette.headingDark
-        default:
-          return theme.palette.panelBackground
-      }
-    }};
-    border-color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.transparent:
-          return theme.palette.orange01
-        default:
-          return 'none'
-      }
-    }};
+    color: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]].fontActive ||
+      theme.colors.main.text};
+    background-color: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]]
+        .backgroundActive || theme.colors.main.white};
+    border-color: ${({ variant, color, theme }) =>
+      theme.colors.buttons[variantsMap[variant]][colorsMap[color]]
+        .borderActive || 'transparent'};
   }
 `
 

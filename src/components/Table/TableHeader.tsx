@@ -67,8 +67,8 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 }
 
 const StyledTableHeader = styled.th`
-  border-color: ${({ theme }) => theme.palette.border};
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  border-color: ${({ theme }) => theme.colors.table.border};
+  background-color: ${({ theme }) => theme.colors.table.background};
   border-spacing: 0;
   border-style: solid;
   border-width: 0 0 1px;
@@ -87,7 +87,7 @@ const StyledTableHeader = styled.th`
 `
 
 const ArrowContainer = styled.div`
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.table.font};
   display: inline-block;
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   line-height: 14px;
