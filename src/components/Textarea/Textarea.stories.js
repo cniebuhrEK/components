@@ -19,7 +19,10 @@ export const Default = Template.bind({})
 Default.args = {
   type: 'text',
   label: 'Textarea',
-  maxHeight: '100px'
+  maxHeight: '100px',
+  disabled: false,
+  error: false,
+  errorText: ''
 }
 
 export default {

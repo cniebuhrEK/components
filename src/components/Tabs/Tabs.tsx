@@ -65,6 +65,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   box-shadow: ${props => props.theme.shadows.mainShadow};
+  background-color: ${props => props.theme.colors.backgrounds.main};
 `
 
 const TabTriggersContainer = styled.div`
@@ -92,14 +93,13 @@ const TabTriggersContainer = styled.div`
 const TabTrigger = styled.div`
   cursor: pointer;
   background-color: ${({ theme, active }) =>
-    active ? theme.palette.orange01 : theme.palette.grey12};
+    active ? theme.colors.tabs.backgroundActive : theme.colors.tabs.background};
   color: ${({ theme, active }) =>
-    active ? theme.palette.panelBackground : theme.palette.placeholder};
-  box-shadow: ${props => props.theme.shadows.mainShadow};
-  min-width: 89px;
+    active ? theme.colors.tabs.fontActive : theme.colors.tabs.font};
+  min-width: 80px;
   text-align: center;
-  line-height: ${({ active }) => (active ? '19px' : '19px')};
-  height: ${({ active }) => (active ? '19px' : '19px')};
+  line-height: ${({ active }) => (active ? '21px' : '21px')};
+  height: ${({ active }) => (active ? '21px' : '21px')};
   font-weight: bold;
   font-size: 11px;
   letter-spacing: -0.1px;

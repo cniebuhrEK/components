@@ -88,6 +88,7 @@ const TextareaField = (props: TextareaProps): JSX.Element => {
         size={size}
         htmlFor={name}
         error={error}
+        isDisabled={disabled}
         hasValue={isNotNilOrEmpty(inputValue)}
       >
         {label}
@@ -114,8 +115,16 @@ TextareaField.defaultProps = {
 const Label = styled.label`
   background-color: transparent;
   box-sizing: border-box;
-  color: ${({ error, theme }) =>
-    error ? theme.palette.red05 : theme.palette.brown01};
+  color: ${({ theme, error, isDisabled }) => {
+    switch (true) {
+      case isDisabled:
+        return theme.colors.inputs.disabled.font
+      case error:
+        return theme.colors.main.error500
+      default:
+        return theme.colors.inputs.input.font
+    }
+  }};
   font-size: 14px;
   line-height: 14px;
   left: ${({ hasValue, hasSearchType }) => {
@@ -145,7 +154,16 @@ const Label = styled.label`
 const Textarea = styled.textarea`
   background-color: transparent;
   border: none;
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme, error, disabled }) => {
+    switch (true) {
+      case disabled:
+        return theme.colors.inputs.disabled.font
+      case error:
+        return theme.colors.main.error500
+      default:
+        return theme.colors.inputs.input.font
+    }
+  }};
   cursor: text;
   font-size: ${({ theme }) => theme.typography.fontSizeSmall};
   height: 100%;
@@ -158,22 +176,31 @@ const Textarea = styled.textarea`
   z-index: 2;
 
   &:-webkit-autofill {
-    color: ${({ theme }) => theme.palette.textDark} !important;
+    color: ${({ theme }) => theme.colors.inputs.input.font} !important;
     background-color: unset;
-    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.palette.panelBackground}
-      inset;
+    box-shadow: 0 0 0px 1000px
+    ${({ theme }) => theme.colors.inputs.input.background} inset;
     height: 100%;
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.palette.disabledFont};
-    cursor: 'not-allowed';
+    color: ${({ theme }) => theme.colors.inputs.disabled.font} !important;
+    cursor: not-allowed;
+  }}
+
+  &::placeholder,
+  &:-ms-input-placeholder,
+  &::-ms-input-placeholder {
+    color: ${({ theme }) =>
+      theme.colors.inputs.input.fontPlaceholder} !important;
+    font-size: 11px;
+    line-height: 16px;
   }
 `
 
 const Errors = styled.div`
   display: ${({ error }) => (error ? 'block' : 'none')};
-  color: ${({ theme }) => theme.palette.red05};
+  color: ${({ theme }) => theme.colors.main.error500};
   font-size: 12px;
   position: absolute;
   left: -1px;
@@ -184,16 +211,32 @@ const Errors = styled.div`
 const Container = styled.div`
   background-color: ${({ theme, isDisabled }) =>
     isDisabled
-      ? theme.palette.disabledBackground
-      : theme.palette.panelBackground};
+      ? theme.colors.inputs.disabled.background
+      : theme.colors.inputs.input.background};
   box-sizing: border-box;
-  border-color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : theme.palette.border};
+  border-color: ${({ error, isDisabled, theme }) => {
+    switch (true) {
+      case error:
+        return theme.colors.main.error500
+      case isDisabled:
+        return theme.colors.inputs.disabled.border
+      default:
+        return theme.colors.inputs.input.border
+    }
+  }};
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
   border-style: solid;
   border-width: 1px;
-  color: ${({ theme, error }) =>
-    error ? theme.palette.red05 : theme.palette.textDark};
+  color: ${({ theme, error, isDisabled }) => {
+    switch (true) {
+      case isDisabled:
+        return theme.colors.inputs.disabled.font
+      case error:
+        return theme.colors.main.error500
+      default:
+        return theme.colors.inputs.input.font
+    }
+  }};
   display: block;
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-family: ${({ theme }) => theme.typography.fontFamily};
@@ -208,21 +251,37 @@ const Container = styled.div`
     border-color: ${({ error, isDisabled, theme }) => {
       switch (true) {
         case error:
-          return theme.palette.red05
+          return theme.colors.main.error500
         case isDisabled:
-          return theme.palette.border
+          return theme.colors.inputs.disabled.borderActive
         default:
-          return theme.palette.orange04
+          return theme.colors.inputs.input.borderActive
       }
     }};
   }
 
   &:focus-within {
     border-width: 1px;
-    border-color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.orange01};
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.textDark};
+    border-color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.colors.inputs.disabled.borderActive
+        case error:
+          return theme.colors.main.error500
+        default:
+          return theme.colors.inputs.input.borderActive
+      }
+    }};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.colors.inputs.disabled.fontActive
+        case error:
+          return theme.colors.main.error500
+        default:
+          return theme.colors.inputs.input.fontActive
+      }
+    }};
   }
 
   &:focus-within ${Label} {
@@ -231,8 +290,16 @@ const Container = styled.div`
     left: ${({ hasValue }) => (hasValue ? '-6px' : '-1px')};
     top: -19px;
     background-color: transparent;
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.textDark};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.colors.inputs.disabled.fontActive
+        case error:
+          return theme.colors.main.error500
+        default:
+          return theme.colors.inputs.input.fontActive
+      }
+    }};
   }
 `
 

@@ -108,7 +108,7 @@ SelectMultiple.defaultProps = {
 const SelectMultipleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background: ${({ theme }) => theme.palette.panelBackground};
+  background: ${({ theme }) => theme.colors.backgrounds.main};
   border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
   padding: 8px;
 `

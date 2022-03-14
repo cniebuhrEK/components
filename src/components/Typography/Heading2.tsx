@@ -11,7 +11,7 @@ const Heading2 = (props: Heading2Props) => (
 )
 
 const Container = styled.h2`
-  color: ${({ theme }) => theme.palette.headingDark};
+  color: ${({ theme }) => theme.colors.main.heading};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-size: 19px;
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};

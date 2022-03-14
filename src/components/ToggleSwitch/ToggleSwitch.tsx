@@ -25,7 +25,7 @@ const Container = styled.label`
 `
 
 const Label = styled.div`
-  color: ${({ theme }) => theme.palette.darkblue01};
+  color: ${({ theme }) => theme.colors.toggle.font};
 `
 
 const Slider = styled.span`
@@ -35,11 +35,11 @@ const Slider = styled.span`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${({ theme }) => theme.palette.inactive};
+  background-color: ${({ theme }) => theme.colors.toggle.background};
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 16px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid transparent;
 
   &::before {
     position: absolute;
@@ -47,20 +47,20 @@ const Slider = styled.span`
     height: 12px;
     width: 12px;
     left: 3px;
-    bottom: 2px;
-    background-color: ${({ theme }) => theme.palette.background};
+    bottom: 1px;
+    background-color: ${({ theme }) => theme.colors.toggle.mark};
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
 
   ${Input}:checked + & {
-    background-color: ${({ theme }) => theme.palette.background};
+    background-color: ${({ theme }) => theme.colors.toggle.mark};
+    border-color: ${({ theme }) => theme.colors.toggle.markActive};
   }
 
   ${Input}:checked + &::before {
-    background-color: ${({ theme }) => theme.palette.green01};
+    background-color: ${({ theme }) => theme.colors.toggle.markActive};
     -webkit-transform: translateX(12px);
     -ms-transform: translateX(12px);
     transform: translateX(12px);

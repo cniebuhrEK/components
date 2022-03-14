@@ -114,7 +114,6 @@ const Controls = styled.div`
   justify-content: space-between;
   width: 100%;
   height: fit-content;
-  color: ${({ theme }) => theme.palette.darkblue01};
   z-index: ${({ theme }) => theme.zIndex.drawer + 80};
   opacity: ${({ disabled }) => (disabled ? '0.2' : '1')};
 `

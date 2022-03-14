@@ -196,18 +196,16 @@ const TableActionBar = styled.div`
     font-size: ${({ theme }) => theme.typography.fontSizeNormal};
     line-height: 19px;
     letter-spacing: -0.00450187px;
-    color: ${({ theme }) => theme.palette.textDark};
   }
 `
 
 const TableEmptyState = styled.div`
   display: flex;
   align-items: center;
-  color: ${({ theme }) => theme.palette.textDark};
   font-size: ${({ theme }) => theme.typography.fontSizeSmall};
 
   svg {
-    color: ${({ theme }) => theme.palette.red05};
+    color: ${({ theme }) => theme.colors.main.error500};
     margin-right: 10px;
     font-size: 20px;
   }
@@ -215,7 +213,7 @@ const TableEmptyState = styled.div`
 
 const TableContainer = styled.div`
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  background-color: ${({ theme }) => theme.colors.backgrounds.main};
   box-shadow: ${({ theme }) => theme.shadows.mainShadow};
   padding: 0 21px 36px;
 `

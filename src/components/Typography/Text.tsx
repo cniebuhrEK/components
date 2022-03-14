@@ -49,7 +49,6 @@ const Container = styled.p`
     }
   }};
   letter-spacing: -0.1px;
-  color: ${({ theme }) => theme.palette.textDark};
 `
 
 export default Text

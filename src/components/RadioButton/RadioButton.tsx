@@ -83,8 +83,8 @@ const Container = styled.div`
     position: relative;
     width: 16px;
     height: 16px;
-    border: 1px solid ${({ theme }) => theme.palette.placeholder};
-    background-color: ${({ theme }) => theme.palette.biege};
+    border: 1px solid ${({ theme }) => theme.colors.radio.border};
+    background-color: ${({ theme }) => theme.colors.radio.background};
     border-radius: 50%;
     flex: none;
 
@@ -97,7 +97,7 @@ const Container = styled.div`
       left: 3px;
       border-radius: 50%;
       background-color: ${({ theme, isChecked }) =>
-        isChecked ? theme.palette.brown01 : theme.palette.white};
+        isChecked ? theme.colors.radio.mark : theme.colors.radio.background};
     }
   }
 
@@ -105,7 +105,7 @@ const Container = styled.div`
     font-size: 12px;
     line-height: 15px;
     letter-spacing: -0.1px;
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.colors.radio.font};
     margin-left: 10px;
     transform: translateY(2px);
   }
@@ -116,7 +116,7 @@ const IconPosition = styled.div`
   left: -3px !important;
   z-index: 999;
   color: ${({ theme, isRight }) =>
-    isRight ? theme.palette.green01 : theme.palette.brightred01};
+    isRight ? theme.colors.main.success500 : theme.colors.main.error500};
     }
 `
 const IconContainer = styled.div`

@@ -44,7 +44,7 @@ const StyledPagePrevious = styled.li`
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
     &:hover {
-      color: ${props => props.theme.palette.orange04};
+      color: ${props => props.theme.colors.main.primary500};
     }
   }
 `
