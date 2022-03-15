@@ -62,7 +62,8 @@ export const Tag = (props: TagProps): JSX.Element => {
 }
 
 Tag.defaultProps = {
-  uppercase: true
+  uppercase: true,
+  color: 'orange'
 }
 
 export default Tag
@@ -79,12 +80,13 @@ const TagContainer = styled.div`
   justify-content: center;
   border: 1px solid
     ${({ theme, isActive }) =>
-      isActive ? theme.palette.brown01 : 'transparent'};
+      isActive ? theme.colors.main.text : 'transparent'};
   border-radius: 2px;
   text-align: center;
-  color: ${({ theme }) => theme.palette.brown01};
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
+  background-color: ${({ theme, color, isActive }) =>
+    theme.colors.tags[color][isActive ? 'backgroundActive' : 'background']};
   background-color: ${({ theme, color, isActive }) => {
     switch (true) {
       case color === tagColors.purple && isActive:
@@ -139,56 +141,8 @@ const TagContainer = styled.div`
   &:hover,
   &:active {
     border-color: ${({ theme, isStatic }) =>
-      isStatic ? 'transparent' : theme.palette.brown01};
-    background-color: ${({ theme, color, isStatic }) => {
-      switch (true) {
-        case color === tagColors.purple && !isStatic:
-          return theme.palette.purple06
-        case color === tagColors.purple && isStatic:
-          return theme.palette.purple08
-        case color === tagColors.red && !isStatic:
-          return theme.palette.deepred05
-        case color === tagColors.red && isStatic:
-          return theme.palette.deepred07
-        case color === tagColors.blue && !isStatic:
-          return theme.palette.lightblue03
-        case color === tagColors.blue && isStatic:
-          return theme.palette.lightblue05
-        case color === tagColors.green && !isStatic:
-          return theme.palette.green06
-        case color === tagColors.green && isStatic:
-          return theme.palette.green08
-        case color === tagColors.orange && !isStatic:
-          return theme.palette.orange04
-        case color === tagColors.orange && isStatic:
-          return theme.palette.orange06
-        case color === tagColors.brown && !isStatic:
-          return theme.palette.brown08
-        case color === tagColors.brown && isStatic:
-          return theme.palette.brown10
-        case color === tagColors.mathPurple && !isStatic:
-          return theme.palette.mathPurple06
-        case color === tagColors.mathPurple && isStatic:
-          return theme.palette.mathPurple08
-        case color === tagColors.aquamarine && !isStatic:
-          return theme.palette.aquamarine06
-        case color === tagColors.aquamarine && isStatic:
-          return theme.palette.aquamarine08
-        case color === tagColors.turquoise && !isStatic:
-          return theme.palette.turquoise06
-        case color === tagColors.turquoise && isStatic:
-          return theme.palette.turquoise08
-        case color === tagColors.yellow && !isStatic:
-          return theme.palette.yellow06
-        case color === tagColors.yellow && isStatic:
-          return theme.palette.yellow08
-        case color === tagColors.grey && !isStatic:
-          return theme.palette.gray01
-        case color === tagColors.grey && isStatic:
-          return theme.palette.gray01
-        default:
-          return theme.palette.orange06
-      }
-    }};
+      isStatic ? 'transparent' : theme.colors.main.text};
+    background-color: ${({ theme, color, isStatic }) =>
+      theme.colors.tags[color][isStatic ? 'background' : 'backgroundActive']};
   }
 `

@@ -375,6 +375,52 @@ export default {
     tooltip: {
       background: palette.text,
       font: palette.white
+    },
+    tags: {
+      purple: {
+        background: '#fbdaed',
+        backgroundActive: '#f391c8'
+      },
+      red: {
+        background: '#f6b6b7',
+        backgroundActive: '#ed6e70'
+      },
+      blue: {
+        background: '#c4ddfd',
+        backgroundActive: '#75affa'
+      },
+      green: {
+        background: '#dafbe8',
+        backgroundActive: '#91f3bb'
+      },
+      orange: {
+        background: '#fef6eb',
+        backgroundActive: '#fbd29d'
+      },
+      brown: {
+        background: '#f6dccb',
+        backgroundActive: '#e49662'
+      },
+      mathPurple: {
+        background: '#d6d7f1',
+        backgroundActive: '#a5a6f6'
+      },
+      aquamarine: {
+        background: '#dbe2c6',
+        backgroundActive: '#d2e598'
+      },
+      turquoise: {
+        background: '#d6f1f1',
+        backgroundActive: '#93f4f4'
+      },
+      yellow: {
+        background: '#fde19d',
+        backgroundActive: '#ffc22a'
+      },
+      grey: {
+        background: palette.grey300,
+        backgroundActive: palette.grey600
+      }
     }
   },
   palette: {
