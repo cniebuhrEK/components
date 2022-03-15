@@ -117,27 +117,31 @@ const ColorPicker = styled.div`
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
 
   &.color-green {
-    background-color: ${({ theme }) => theme.palette.highlightGreen};
+    background-color: ${({ theme }) =>
+      theme.colors.highlights.green.background};
   }
 
   &.color-yellow {
-    background-color: ${({ theme }) => theme.palette.highlightYellow};
+    background-color: ${({ theme }) =>
+      theme.colors.highlights.yellow.background};
   }
 
   &.color-purple {
-    background-color: ${({ theme }) => theme.palette.purple08};
+    background-color: ${({ theme }) =>
+      theme.colors.highlights.purple.background};
   }
 
   &.color-blue {
-    background-color: ${({ theme }) => theme.palette.lightblue05};
+    background-color: ${({ theme }) => theme.colors.highlights.blue.background};
   }
 
   &.color-red {
-    background-color: ${({ theme }) => theme.palette.deepred07};
+    background-color: ${({ theme }) => theme.colors.highlights.red.background};
   }
 
   &.color-orange {
-    background-color: ${({ theme }) => theme.palette.orange05};
+    background-color: ${({ theme }) =>
+      theme.colors.highlights.orange.background};
   }
 
   &:hover,

@@ -218,43 +218,44 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
 
 const TextEditorContainer = styled.div`
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  background-color: ${({ theme }) => theme.colors.backgrounds.main};
 
   &,
   * {
-    color: ${({ theme }) => theme.palette.textDark};
+    color: ${({ theme }) => theme.colors.main.text};
   }
 
   &.with-highlights {
     .ql-container * {
-      color: ${({ theme }) => theme.palette.adminHighlights} !important;
+      color: ${({ theme }) =>
+        theme.colors.editorFontColors.admin.font} !important;
     }
 
     .ql-container .admin-highlights {
-      color: ${({ theme }) => theme.palette.textDark} !important;
+      color: ${({ theme }) => theme.colors.main.text} !important;
     }
   }
 
   .ql-stroke {
-    stroke: ${({ theme }) => theme.palette.textDark};
+    stroke: ${({ theme }) => theme.colors.main.text};
   }
 
   .ql-fill {
-    fill: ${({ theme }) => theme.palette.textDark};
+    fill: ${({ theme }) => theme.colors.main.text};
   }
 
   .editor-label {
     display: inline-flex;
     align-items: center;
     color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.textDark};
+      error ? theme.colors.main.error500 : theme.colors.main.text};
     margin-bottom: 8px;
   }
 
   .ql-toolbar.ql-snow,
   .ql-container.ql-snow {
     border-color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : 'transparent'};
+      error ? theme.colors.main.error500 : 'transparent'};
   }
 
   .ql-snow.ql-toolbar button:hover .ql-fill,
@@ -285,7 +286,7 @@ const TextEditorContainer = styled.div`
   .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill {
-    fill: ${({ theme }) => theme.palette.orange01};
+    fill: ${({ theme }) => theme.colors.main.primary500};
   }
 
   .ql-snow.ql-toolbar button:hover .ql-stroke,
@@ -316,7 +317,7 @@ const TextEditorContainer = styled.div`
   .ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter {
-    stroke: ${({ theme }) => theme.palette.orange01};
+    stroke: ${({ theme }) => theme.colors.main.primary500};
   }
 
   .ql-snow.ql-toolbar button:hover,
@@ -333,13 +334,13 @@ const TextEditorContainer = styled.div`
   .ql-snow .ql-toolbar .ql-picker-item:hover,
   .ql-snow.ql-toolbar .ql-picker-item.ql-selected,
   .ql-snow .ql-toolbar .ql-picker-item.ql-selected {
-    color: ${({ theme }) => theme.palette.orange01};
+    color: ${({ theme }) => theme.colors.main.primary500};
   }
 
   .ql-toolbar.ql-snow {
     border-bottom: 1px solid
       ${({ error, theme }) =>
-        error ? theme.palette.red05 : theme.palette.border};
+        error ? theme.colors.main.error500 : theme.colors.main.grey300};
   }
 
   .ql-toolbar.ql-snow button {
@@ -353,7 +354,7 @@ const TextEditorContainer = styled.div`
 
   .editor-error {
     color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.textDark};
+      error ? theme.colors.main.error500 : theme.colors.main.text};
   }
 `
 
@@ -365,7 +366,7 @@ const WysiwygContainer = styled.div`
   }
 
   .glossary-word {
-    color: ${({ theme }) => theme.palette.darkblue04} !important;
+    color: ${({ theme }) => theme.colors.secondary500} !important;
   }
 
   .ql-formats .ql-glossary {
@@ -402,43 +403,48 @@ const WysiwygContainer = styled.div`
   .ql-container .ql-editor .admin-highlights .color-green,
   .ql-container .ql-editor .color-green .admin-highlights,
   .color-green {
-    color: ${({ theme }) => theme.palette.green02} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.green.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-purple,
   .ql-container .ql-editor .color-purple .admin-highlights,
   .color-purple {
-    color: ${({ theme }) => theme.palette.purple01} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.purple.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-blue,
   .ql-container .ql-editor .color-blue .admin-highlights,
   .color-blue {
-    color: ${({ theme }) => theme.palette.lightblue01} !important;
+    color: ${({ theme }) => theme.colors.editorFontColors.blue.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-orange,
   .ql-container .ql-editor .color-orange .admin-highlights,
   .color-orange {
-    color: ${({ theme }) => theme.palette.orange01} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.orange.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-black,
   .ql-container .ql-editor .color-black .admin-highlights,
   .color-black {
-    color: ${({ theme }) => theme.palette.black} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.black.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-brown,
   .ql-container .ql-editor .color-brown .admin-highlights,
   .color-brown {
-    color: ${({ theme }) => theme.palette.brown01} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.brown.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-red,
   .ql-container .ql-editor .color-red .admin-highlights,
   .color-red {
-    color: ${({ theme }) => theme.palette.deepred01} !important;
+    color: ${({ theme }) => theme.colors.editorFontColors.red.font} !important;
   }
 `
 

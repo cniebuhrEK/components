@@ -113,8 +113,7 @@ export const StyledButton = styled.button`
   box-shadow: none;
   border-width: 1px;
   border-style: solid;
-  transition: all 300ms ${({ theme }) =>
-    theme.transitions.easing.easeInOut} 0ms;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
   svg {
     fill: ${({ variant, color, theme }) =>
@@ -132,16 +131,6 @@ export const StyledButton = styled.button`
     border-color: ${({ variant, theme }) =>
       theme.colors.buttons[variantsMap[variant]].disabled.border ||
       'transparent'};
-
-    background-color ${({ theme }) => theme.palette.disabledBackground};
-    border-color: ${({ color, theme }) => {
-      switch (true) {
-        case color === buttonColors.transparent:
-          return 'transparent'
-        default:
-          return theme.palette.disabledFont
-      }
-    }};
     svg {
       fill: ${({ variant, theme }) =>
         theme.colors.buttons[variantsMap[variant]].disabled.font ||

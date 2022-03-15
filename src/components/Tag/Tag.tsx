@@ -1,20 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const tagColors = {
-  purple: 'purple',
-  red: 'red',
-  blue: 'blue',
-  green: 'green',
-  orange: 'orange',
-  brown: 'brown',
-  mathPurple: 'mathPurple',
-  aquamarine: 'aquamarine',
-  turquoise: 'turquoise',
-  yellow: 'yellow',
-  grey: 'grey'
-}
-
 interface TagProps {
   color:
     | 'purple'
@@ -87,56 +73,6 @@ const TagContainer = styled.div`
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
   background-color: ${({ theme, color, isActive }) =>
     theme.colors.tags[color][isActive ? 'backgroundActive' : 'background']};
-  background-color: ${({ theme, color, isActive }) => {
-    switch (true) {
-      case color === tagColors.purple && isActive:
-        return theme.palette.purple06
-      case color === tagColors.purple && !isActive:
-        return theme.palette.purple08
-      case color === tagColors.red && isActive:
-        return theme.palette.deepred05
-      case color === tagColors.red && !isActive:
-        return theme.palette.deepred07
-      case color === tagColors.blue && isActive:
-        return theme.palette.lightblue03
-      case color === tagColors.blue && !isActive:
-        return theme.palette.lightblue05
-      case color === tagColors.green && isActive:
-        return theme.palette.green06
-      case color === tagColors.green && !isActive:
-        return theme.palette.green08
-      case color === tagColors.orange && isActive:
-        return theme.palette.orange04
-      case color === tagColors.orange && !isActive:
-        return theme.palette.orange06
-      case color === tagColors.brown && isActive:
-        return theme.palette.brown08
-      case color === tagColors.brown && !isActive:
-        return theme.palette.brown10
-      case color === tagColors.mathPurple && isActive:
-        return theme.palette.mathPurple06
-      case color === tagColors.mathPurple && !isActive:
-        return theme.palette.mathPurple08
-      case color === tagColors.aquamarine && isActive:
-        return theme.palette.aquamarine06
-      case color === tagColors.aquamarine && !isActive:
-        return theme.palette.aquamarine08
-      case color === tagColors.turquoise && isActive:
-        return theme.palette.turquoise06
-      case color === tagColors.turquoise && !isActive:
-        return theme.palette.turquoise08
-      case color === tagColors.yellow && isActive:
-        return theme.palette.yellow06
-      case color === tagColors.yellow && !isActive:
-        return theme.palette.yellow08
-      case color === tagColors.grey && isActive:
-        return theme.palette.gray01
-      case color === tagColors.grey && !isActive:
-        return theme.palette.gray01
-      default:
-        return theme.palette.orange06
-    }
-  }};
 
   &:hover,
   &:active {

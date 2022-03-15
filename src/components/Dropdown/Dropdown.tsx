@@ -135,7 +135,8 @@ const ItemContainer = styled.div`
   font-weight: ${({ isBold }) => (isBold ? 600 : 400)};
 
   &:hover {
-    border-left: 3px solid ${({ theme }) => theme.palette.orange02};
+    border-left: 3px solid ${({ theme }) =>
+      theme.colors.selects.option.fontActive};
     background-color ${({ theme }) =>
       theme.colors.selects.option.backgroundActive};
     cursor: pointer;

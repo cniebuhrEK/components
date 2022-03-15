@@ -78,15 +78,18 @@ const ButtonContainer = styled.div`
   position: relative;
 
   button * {
-    color: ${({ theme }) => theme.palette.orange01} !important;
+    color: ${({ theme }) =>
+      theme.colors.buttons.contained.secondary.font} !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
   }
 
   button {
     cursor: pointer !important;
-    background-color: ${({ theme }) => theme.palette.darkblue01} !important;
-    color: ${({ theme }) => theme.palette.orange01} !important;
+    background-color: ${({ theme }) =>
+      theme.colors.buttons.contained.secondary.background} !important;
+    color: ${({ theme }) =>
+      theme.colors.buttons.contained.secondary.font} !important;
     width: 19px !important;
     height: 19px !important;
     line-height: 19px !important;
@@ -94,30 +97,37 @@ const ButtonContainer = styled.div`
     font-size: 12px !important;
     padding: 0 !important;
     text-align: center !important;
-    box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
+    box-shadow: none !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
     margin: 0 3px !important;
 
     svg {
       float: unset !important;
-      color: ${({ theme }) => theme.palette.orange01} !important;
+      color: ${({ theme }) =>
+        theme.colors.buttons.contained.secondary.font} !important;
     }
   }
 
   &:hover {
     button * {
-      color: ${({ theme }) => theme.palette.darkblue01} !important;
+      color: ${({ theme }) =>
+        theme.colors.buttons.contained.secondary.fontActive} !important;
     }
 
     button {
       background-color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.inactive : theme.palette.orange01} !important;
-      color: ${({ theme }) => theme.palette.darkblue01} !important;
+        isLoading
+          ? theme.colors.buttons.contained.disabled.background
+          : theme.colors.buttons.contained.secondary
+              .backgroundActive} !important;
+      color: ${({ theme }) =>
+        theme.colors.buttons.contained.secondary.fontActive} !important;
 
       svg {
         float: unset !important;
-        color: ${({ theme }) => theme.palette.background} !important;
+        color: ${({ theme }) =>
+          theme.colors.buttons.contained.secondary.backgroundActive} !important;
       }
     }
   }
@@ -127,7 +137,7 @@ const ButtonContainer = styled.div`
     height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;
     position: absolute;
-    background-color: ${({ theme }) => theme.palette.biege};
+    background-color: ${({ theme }) => theme.colors.selects.option.background};
     box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 19px);

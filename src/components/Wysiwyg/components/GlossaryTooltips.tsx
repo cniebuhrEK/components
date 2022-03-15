@@ -159,10 +159,11 @@ export default GlossaryTooltips
 
 const TooltipsContainer = styled.div`
   .__react_component_tooltip {
-    background-color: ${({ theme }) => theme.palette.biege} !important;
+    background-color: ${({ theme }) =>
+      theme.colors.backgrounds.main} !important;
     opacity: 1 !important;
-    color: ${({ theme }) => theme.palette.textDark} !important;
-    border: 1px solid ${({ theme }) => theme.palette.darkblue03} !important;
+    color: ${({ theme }) => theme.colors.main.text} !important;
+    border: 1px solid ${({ theme }) => theme.colors.main.text} !important;
     border-radius: ${({ theme }) => theme.shape.borderRadiusBig} !important;
     padding: 10px !important;
     margin-top: 0px !important;
@@ -181,7 +182,7 @@ const TooltipsContainer = styled.div`
   }
 
   .content {
-    color: ${({ theme }) => theme.palette.textDark} !important;
+    color: ${({ theme }) => theme.colors.main.text} !important;
   }
 
   .phrase {
@@ -196,7 +197,7 @@ const TooltipsContainer = styled.div`
 
 const OccuranceElement = styled.a`
   color: ${({ theme, isCurrent }) =>
-    isCurrent ? theme.palette.inactive : theme.palette.textDark} !important;
+    isCurrent ? theme.colors.main.grey600 : theme.colors.main.text} !important;
   margin-right: 3px;
   cursor: pointer !important;
 
@@ -206,7 +207,9 @@ const OccuranceElement = styled.a`
   &:hover,
   &:visited {
     color: ${({ theme, isCurrent }) =>
-      isCurrent ? theme.palette.inactive : theme.palette.textDark} !important;
+      isCurrent
+        ? theme.colors.main.grey600
+        : theme.colors.main.text} !important;
   }
 
   .content {

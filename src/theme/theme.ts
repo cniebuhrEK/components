@@ -421,6 +421,52 @@ export default {
         background: palette.grey300,
         backgroundActive: palette.grey600
       }
+    },
+    highlights: {
+      green: {
+        background: '#13fb03'
+      },
+      yellow: {
+        background: '#ffff00'
+      },
+      red: {
+        background: '#f6b6b7'
+      },
+      purple: {
+        background: '#fbdaed'
+      },
+      blue: {
+        background: '#c4ddfd'
+      },
+      orange: {
+        background: '#fde4c4'
+      }
+    },
+    editorFontColors: {
+      green: {
+        font: '#16ca64'
+      },
+      purple: {
+        font: '#9b115f'
+      },
+      blue: {
+        font: '#1a7af8'
+      },
+      orange: {
+        font: palette.primary500
+      },
+      black: {
+        font: palette.heading
+      },
+      brown: {
+        font: '#42210b'
+      },
+      red: {
+        font: palette.error500
+      },
+      admin: {
+        font: '#D9D9D9'
+      }
     }
   },
   palette: {
