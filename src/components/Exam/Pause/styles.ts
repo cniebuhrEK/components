@@ -4,17 +4,17 @@ export const PauseExamContainer = styled.div`
   user-select: none;
   height: 28px;
   width: 100%;
-  background-color: ${props => props.theme.palette.grey08};
-  color: ${props => props.theme.palette.white};
+  background-color: ${props => props.theme.exam.original.grey08};
+  color: ${props => props.theme.exam.original.white};
   flex: none;
 `
 
 export const PauseButton = styled.a`
-  background-color: ${props => props.theme.palette.grey10};
+  background-color: ${props => props.theme.exam.original.grey10};
   position: relative;
-  color: ${props => props.theme.palette.black};
+  color: ${props => props.theme.exam.original.black};
   width: 50px;
-  border: 1px solid ${props => props.theme.palette.white};
+  border: 1px solid ${props => props.theme.exam.original.white};
   padding: 0 10px;
   cursor: pointer;
   font-size: 16px;

@@ -105,7 +105,7 @@ export const REACT_SELECT_STYLES = {
         : theme.colors.selects.input.background,
       borderStyle: 'solid',
       borderWidth: '1px',
-      borderRadius: '6px',
+      borderRadius: theme.shape.borderRadiusNormal,
       borderColor: getBorderColor(isDisabled, error),
       color: getInputTextColor(isDisabled, error),
       fontSize: '13px',

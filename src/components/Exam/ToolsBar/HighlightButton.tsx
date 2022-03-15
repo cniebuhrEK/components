@@ -131,7 +131,7 @@ export default HighlightButton
 
 export const HighlightButtonContainer = styled.div`
   font-size: 16px;
-  color: ${props => props.theme.palette.white};
+  color: ${props => props.theme.exam.original.white};
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -144,11 +144,11 @@ export const HighlightButtonContainer = styled.div`
   .selected-highlight-square {
     width: 16px;
     height: 16px;
-    border: 2px solid ${props => props.theme.palette.white};
+    border: 2px solid ${props => props.theme.exam.original.white};
   }
 
   &.button__add-highlight .selected-highlight-square {
-    background-color: ${props => props.theme.palette.yellow02};
+    background-color: ${props => props.theme.exam.original.yellow02};
   }
 
   &.button__remove-highlight .selected-highlight-square {
@@ -166,13 +166,13 @@ export const HighlightButtonContainer = styled.div`
 
   &.button__is-open,
   &:hover {
-    color: ${props => props.theme.palette.yellow02};
+    color: ${props => props.theme.exam.original.yellow02};
   }
 
   &.button__is-open,
   &:focus,
   &:active {
-    outline: 1px solid ${props => props.theme.palette.white};
+    outline: 1px solid ${props => props.theme.exam.original.white};
   }
 
   .dropdown {
@@ -182,8 +182,8 @@ export const HighlightButtonContainer = styled.div`
     display: none;
     padding: 3px;
     width: 202px;
-    background-color: ${props => props.theme.palette.blue02};
-    border: 1px solid ${props => props.theme.palette.black};
+    background-color: ${props => props.theme.exam.original.blue02};
+    border: 1px solid ${props => props.theme.exam.original.black};
   }
 
   &.button__is-open .dropdown {
@@ -195,25 +195,25 @@ export const HighlightButtonContainer = styled.div`
     margin-top: 5px;
     display: flex;
     cursor: pointer;
-    color: ${props => props.theme.palette.white};
+    color: ${props => props.theme.exam.original.white};
 
     &:hover {
-      color: ${props => props.theme.palette.yellow02};
+      color: ${props => props.theme.exam.original.yellow02};
     }
   }
 
   .add-highlight-square {
     width: 16px;
     height: 16px;
-    border: 2px solid ${props => props.theme.palette.yellow02};
-    background-color: ${props => props.theme.palette.yellow02};
+    border: 2px solid ${props => props.theme.exam.original.yellow02};
+    background-color: ${props => props.theme.exam.original.yellow02};
   }
 
   .remove-highlight-square {
     width: 16px;
     height: 16px;
     margin-right: 5px;
-    border: 2px solid ${props => props.theme.palette.white};
+    border: 2px solid ${props => props.theme.exam.original.white};
     background-color: transparent;
   }
 `

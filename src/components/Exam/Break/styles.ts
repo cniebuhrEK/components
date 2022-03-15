@@ -9,7 +9,7 @@ export const BreakOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${props => props.theme.palette.blue02};
+  background-color: ${props => props.theme.exam.original.blue02};
   overflow: auto;
 `
 
@@ -23,13 +23,13 @@ export const BreakQuestionContainer = styled.div`
   right: 0;
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: 16px;
-  background-color: ${props => props.theme.palette.beige01};
-  outline: 3px solid ${props => props.theme.palette.black};
+  background-color: ${props => props.theme.exam.original.beige01};
+  outline: 3px solid ${props => props.theme.exam.original.black};
 `
 
 export const BreakQuestionHeader = styled.div`
-  border-bottom: 1px solid ${props => props.theme.palette.white};
-  background-color: ${props => props.theme.palette.blue02};
+  border-bottom: 1px solid ${props => props.theme.exam.original.white};
+  background-color: ${props => props.theme.exam.original.blue02};
   height: 30px;
 `
 
@@ -40,7 +40,7 @@ export const BreakQuestionBody = styled.div`
   vertical-align: baseline;
   font-size: 16px;
   line-height: 24.27px;
-  color: ${props => props.theme.palette.black};
+  color: ${props => props.theme.exam.original.black};
 
   .break-question-image {
     width: 40px;
@@ -62,7 +62,7 @@ export const BreakQuestionBody = styled.div`
     border: 0;
     vertical-align: baseline;
     font-size: 16px;
-    color: ${props => props.theme.palette.black};
+    color: ${props => props.theme.exam.original.black};
     font-family: ${props => props.theme.typography.fontFamily};
 
     p {
@@ -79,13 +79,13 @@ export const BreakQuestionFooter = styled.div`
   vertical-align: baseline;
   font-size: 16px;
   line-height: 24.27px;
-  color: ${props => props.theme.palette.black};
+  color: ${props => props.theme.exam.original.black};
 `
 
 export const BreakQuestionButton = styled.a`
   display: inline-block;
-  color: ${props => props.theme.palette.black};
-  border: 2px solid ${props => props.theme.palette.black};
+  color: ${props => props.theme.exam.original.black};
+  border: 2px solid ${props => props.theme.exam.original.black};
   padding: 5px 20px;
   cursor: pointer;
   font-family: ${props => props.theme.typography.fontFamily};
@@ -105,7 +105,7 @@ export const BreakQuestionButton = styled.a`
 `
 
 export const BreakCountDownContainer = styled.div`
-  background-color: ${props => props.theme.palette.beige01};
+  background-color: ${props => props.theme.exam.original.beige01};
   width: 450px;
   min-height: 650px;
   margin: 0 auto;
@@ -119,15 +119,15 @@ export const BreakCountDownContainer = styled.div`
 `
 
 export const BreakCountDownHeader = styled.div`
-  background-color: ${props => props.theme.palette.blue02};
+  background-color: ${props => props.theme.exam.original.blue02};
   height: 30px;
   line-height: 30px;
-  color: ${props => props.theme.palette.white};
+  color: ${props => props.theme.exam.original.white};
   margin: 0;
   padding: 0;
   padding-left: 10px;
   border: 0;
-  border-bottom: 1px solid ${props => props.theme.palette.white};
+  border-bottom: 1px solid ${props => props.theme.exam.original.white};
   vertical-align: baseline;
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: 16px;
@@ -142,18 +142,18 @@ export const BreakCountDownBody = styled.div`
   display: block;
   font-family: ${props => props.theme.typography.fontFamily};
   font-size: 16px;
-  color: ${props => props.theme.palette.black};
+  color: ${props => props.theme.exam.original.black};
 
   .break-countdown-white-box {
     height: 300px;
-    background-color: ${props => props.theme.palette.white};
+    background-color: ${props => props.theme.exam.original.white};
     margin: 0;
     padding: 0;
     border: 0;
     vertical-align: baseline;
     font-family: ${props => props.theme.typography.fontFamily};
     font-size: 16px;
-    color: ${props => props.theme.palette.black};
+    color: ${props => props.theme.exam.original.black};
   }
 
   .break-countdown-content {
@@ -163,14 +163,14 @@ export const BreakCountDownBody = styled.div`
     vertical-align: baseline;
     font-family: ${props => props.theme.typography.fontFamily};
     font-size: 16px;
-    color: ${props => props.theme.palette.black};
+    color: ${props => props.theme.exam.original.black};
     line-height: 24.27px;
   }
 
   fieldset {
     padding: 0 10px;
     margin: 5px 0 20px 0;
-    border: 1px solid ${props => props.theme.palette.black};
+    border: 1px solid ${props => props.theme.exam.original.black};
   }
 
   legend {

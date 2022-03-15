@@ -56,7 +56,7 @@ export const CheckboxContainer = styled.div`
     height: 22px;
     line-height: 22px;
     text-align: center;
-    border: 2px solid ${({ theme }) => theme.palette.deepred01};
+    border: 2px solid ${({ theme }) => theme.exam.original.markAsRead};
     border-radius: 2px;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
     box-shadow: ${props => props.theme.shadows.mainShadow};
@@ -67,7 +67,7 @@ export const CheckboxContainer = styled.div`
       width: 5px;
       height: 10px;
       border-radius: 2px;
-      border-color: ${({ theme }) => theme.palette.inactive};
+      border-color: ${({ theme }) => theme.exam.original.grey08};
       border-width: 0 3px 3px 0;
       border-style: solid;
       transform: rotate(45deg);
@@ -78,10 +78,10 @@ export const CheckboxContainer = styled.div`
   }
 
   input:checked {
-    background-color: ${({ theme }) => theme.palette.deepred01};
+    background-color: ${({ theme }) => theme.exam.original.markAsRead};
 
     &::after {
-      border-color: ${({ theme }) => theme.palette.biege};
+      border-color: ${({ theme }) => theme.exam.original.white};
     }
   }
 
@@ -91,7 +91,7 @@ export const CheckboxContainer = styled.div`
     font-size: 14px;
     line-height: 16px;
     letter-spacing: -0.1px;
-    color: ${({ theme }) => theme.palette.deepred01};
+    color: ${({ theme }) => theme.exam.original.markAsRead};
     font-family: ${({ theme }) => theme.typography.fontFamilyTertiary};
     cursor: pointer;
   }

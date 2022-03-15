@@ -4,8 +4,8 @@ export const ExamHeaderContainer = styled.div`
   user-select: none;
   height: 45px;
   width: 100%;
-  background-color: ${props => props.theme.palette.blue02};
-  color: ${props => props.theme.palette.white};
+  background-color: ${props => props.theme.exam.original.blue02};
+  color: ${props => props.theme.exam.original.white};
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -16,8 +16,8 @@ export const ExamHeaderContainer = styled.div`
 
 export const NotOfficialMCATContainer = styled.div`
   height: 100%;
-  background-color: ${props => props.theme.palette.green02};
-  color: ${props => props.theme.palette.white};
+  background-color: ${props => props.theme.exam.original.green02};
+  color: ${props => props.theme.exam.original.white};
   padding: 0 10px;
   display: flex;
   justify-content: center;
@@ -42,7 +42,7 @@ export const TimeAndPageContainer = styled.div`
 `
 
 export const ExamHeaderTitle = styled.h1`
-  color: ${props => props.theme.palette.white};
+  color: ${props => props.theme.exam.original.white};
   line-height: 45px;
   font-weight: 400 !important;
   font-size: 21.33px;
@@ -52,7 +52,7 @@ export const ExamHeaderTitle = styled.h1`
 
 export const TimeAndPageElement = styled.a`
   font-size: 14.66px;
-  color: ${props => props.theme.palette.white};
+  color: ${props => props.theme.exam.original.white};
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -72,15 +72,15 @@ export const TimeAndPageElement = styled.a`
   }
 
   &:hover {
-    color: ${props => props.theme.palette.yellow02};
+    color: ${props => props.theme.exam.original.yellow02};
     text-decoration: none;
     font-weight: 400 !important;
   }
 
   &:focus,
   &:active {
-    color: ${props => props.theme.palette.yellow02};
-    outline: 1px solid ${props => props.theme.palette.white};
+    color: ${props => props.theme.exam.original.yellow02};
+    outline: 1px solid ${props => props.theme.exam.original.white};
   }
 
   &.--condensed {
@@ -90,7 +90,7 @@ export const TimeAndPageElement = styled.a`
   }
 
   &.--warning {
-    color: ${props => props.theme.palette.yellow02};
+    color: ${props => props.theme.exam.original.yellow02};
   }
 
   &.--hidden {

@@ -48,8 +48,8 @@ export default TimeEndWarning
 export const TimeEndWarningContainer = styled.div`
   display: flex;
   padding: 20px;
-  background-color: ${props => props.theme.palette.white};
-  color: ${props => props.theme.palette.black};
+  background-color: ${props => props.theme.exam.original.white};
+  color: ${props => props.theme.exam.original.black};
   height: 100%;
   margin: 0 15px;
 `

@@ -59,6 +59,11 @@ const Slider = styled.span`
     border-color: ${({ theme }) => theme.colors.toggle.markActive};
   }
 
+  ${Input}:checked${Input}:disabled + & {
+    background-color: ${({ theme }) => theme.colors.toggle.background};
+    border-color: transparent;
+  }
+
   ${Input}:checked + &::before {
     background-color: ${({ theme }) => theme.colors.toggle.markActive};
     -webkit-transform: translateX(12px);
@@ -66,9 +71,13 @@ const Slider = styled.span`
     transform: translateX(12px);
   }
 
+  ${Input}:checked${Input}:disabled + &::before {
+    background-color: ${({ theme }) => theme.colors.toggle.mark};
+  }
+
   ${Input}:disabled + & {
     pointer-events: none;
-    background: #e6e6e6;
+    background-color: ${({ theme }) => theme.colors.toggle.background};
   }
 `
 

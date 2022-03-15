@@ -1,17 +1,20 @@
 export default {
-  palette: {
-    black: '#000',
-    white: '#fff',
-    beige01: '#E1DECC',
-    blue01: '#80AEE1',
-    blue02: '#006DAA',
-    yellow02: 'rgb(255, 255, 0)',
-    red02: '#FF0000',
-    green02: '#38b54a',
-    grey10: '#F4F4F4',
-    grey09: '#d2d2d2',
-    grey08: '#a6a6a6',
-    grey07: '#353535'
+  exam: {
+    original: {
+      black: '#000',
+      white: '#fff',
+      beige01: '#E1DECC',
+      blue01: '#80AEE1',
+      blue02: '#006DAA',
+      yellow02: 'rgb(255, 255, 0)',
+      red02: '#FF0000',
+      green02: '#38b54a',
+      grey10: '#F4F4F4',
+      grey09: '#d2d2d2',
+      grey08: '#a6a6a6',
+      grey07: '#353535',
+      markAsRead: '#a51417'
+    }
   },
   shadows: {
     scrollbarThumb: '0 0 1px rgba(255, 255, 255, 0.5)',

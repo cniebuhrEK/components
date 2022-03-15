@@ -467,6 +467,27 @@ export default {
       admin: {
         font: '#D9D9D9'
       }
+    },
+    diagnostics: {
+      question: {
+        skipped: '#ca167c',
+        correct: palette.success500,
+        incorrect: palette.error500
+      },
+      projections: {
+        target: '#9b115f',
+        scaled: '#1e74ae'
+      },
+      diagnostic: {
+        passageWorking: {
+          font: '#ae581e',
+          chart: '#fde4c4'
+        },
+        passageReading: {
+          font: '#ae581e',
+          chart: '#fac075'
+        }
+      }
     }
   },
   palette: {

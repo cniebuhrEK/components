@@ -50,7 +50,7 @@ export const PeriodicTableContainer = styled.div`
 
   .periodic-table-container {
     max-height: 1000px;
-    background-color: ${({ theme }) => theme.palette.white};
+    background-color: ${({ theme }) => theme.exam.original.white};
   }
 
   .periodic-table {
