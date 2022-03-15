@@ -212,11 +212,11 @@ const ButtonsContainer = styled.div`
 `
 
 const PaginationContainer = styled.div`
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.main.text};
   margin-top: 7px;
 
   * {
-    color: ${({ theme }) => theme.palette.textDark};
+    color: ${({ theme }) => theme.colors.main.text};
   }
 `
 
@@ -224,12 +224,12 @@ const GlossaryHeadingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.palette.brown01};
+  color: ${({ theme }) => theme.colors.main.heading};
   font-weight: bold;
   font-size: 14px;
   line-height: 16px;
   letter-spacing: -0.1px;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.grey09};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.main.grey300};
   padding-bottom: 4.5px;
   text-align: center;
 
@@ -249,11 +249,11 @@ const GlossaryContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid ${({ theme }) => theme.palette.grey09};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.main.grey300};
   padding: 16px;
 
   .left {
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.colors.main.heading};
     font-weight: normal;
     font-size: 14px;
     line-height: 16px;
@@ -261,7 +261,7 @@ const GlossaryContainer = styled.div`
     width: 30%;
   }
   .middle {
-    color: ${({ theme }) => theme.palette.textDark};
+    color: ${({ theme }) => theme.colors.main.text};
     font-weight: normal;
     font-size: 11px;
     line-height: 19px;
@@ -338,9 +338,9 @@ export const StyledModal = styled(ReactModalAdapter).attrs({
     text-align: left;
     position: relative;
     padding: 20px;
-    background: ${({ theme }) => theme.palette.biege};
+    background: ${({ theme }) => theme.colors.backgrounds.main};
     box-shadow: ${({ theme }) => theme.shadows.darkShadow};
-    color: ${({ theme }) => theme.palette.brown01};
+    color: ${({ theme }) => theme.colors.main.text};
     border-radius: 6px;
     outline: 0;
     max-width: 408px;

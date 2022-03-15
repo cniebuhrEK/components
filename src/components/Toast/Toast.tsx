@@ -11,7 +11,7 @@ import Close from '../../icons/Close'
 interface ToastProps {
   handleClose: (e: any) => any
   children: JSX.Element | string
-  severity: string
+  severity: 'success' | 'error' | 'warning' | 'info'
   open: boolean
 }
 
@@ -66,14 +66,14 @@ const IconContainer = styled.div`
   color: ${({ severity, theme }) => {
     switch (severity) {
       case SEVERITY.success:
-        return theme.palette.green05
+        return theme.colors.toast.success.font
       case SEVERITY.error:
-        return theme.palette.red05
+        return theme.colors.toast.error.font
       case SEVERITY.warning:
-        return theme.palette.orange04
+        return theme.colors.toast.warning.font
       case SEVERITY.info:
       default:
-        return theme.palette.darkblue01
+        return theme.colors.toast.info.font
     }
   }};
 `
@@ -92,7 +92,7 @@ const CloseContainer = styled.div`
     0ms;
 
   &:hover {
-    color: ${({ theme }) => theme.palette.darkblue01};
+    color: ${({ theme }) => theme.colors.main.tertinary600};
   }
 `
 
@@ -115,23 +115,22 @@ const StyledToast = styled.div`
   max-width: ${({ open }) => (open ? '350px' : '0px')};
   z-index: ${({ open, theme }) =>
     open ? theme.zIndex.snackbarToast : 'unset'};
-  background-color: ${({ theme }) => theme.palette.biege};
+  background-color: ${({ theme }) => theme.colors.backgrounds.main};
   border-width: ${({ open }) => (open ? '1px' : '0')};
   border-style: solid;
   border-color: ${({ severity, theme }) => {
     switch (severity) {
       case SEVERITY.success:
-        return theme.palette.green10
+        return theme.colors.toast.success.border
       case SEVERITY.error:
-        return theme.palette.red10
+        return theme.colors.toast.error.border
       case SEVERITY.warning:
-        return theme.palette.orange10
+        return theme.colors.toast.warning.border
       case SEVERITY.info:
       default:
-        return theme.palette.grey09
+        return theme.colors.toast.info.border
     }
   }};
-  color: ${({ theme }) => theme.palette.darkblue01};
   border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
   opacity: ${({ open }) => (open ? '1' : '0')};
   transform: ${({ open }) => (open ? 'none' : 'scale(0.75, 0.75)')};

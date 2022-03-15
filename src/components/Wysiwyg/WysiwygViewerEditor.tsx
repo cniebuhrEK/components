@@ -170,16 +170,17 @@ const Container = styled.div`
   border: none;
 
   & .ql-editor {
-    color: ${({ theme }) => theme.palette.textDark};
+    color: ${({ theme }) => theme.colors.main.text};
   }
 
   &.with-highlights {
     .ql-container .ql-editor {
-      color: ${({ theme }) => theme.palette.adminHighlights} !important;
+      color: ${({ theme }) =>
+        theme.colors.editorFontColors.admin.font} !important;
     }
 
     .ql-container .admin-highlights .ql-editor {
-      color: ${({ theme }) => theme.palette.textDark} !important;
+      color: ${({ theme }) => theme.colors.main.text} !important;
     }
   }
 `
@@ -190,7 +191,7 @@ const TextViewerContainer = styled.div`
   }
 
   .glossary-word:hover {
-    color: ${({ theme }) => theme.palette.darkblue04} !important;
+    color: ${({ theme }) => theme.colors.secondary500} !important;
   }
 
   .ql-formats .ql-glossary {
@@ -263,70 +264,81 @@ const TextViewerContainer = styled.div`
 
   &.your-highlights {
     .green-highlight {
-      background-color: ${({ theme }) => theme.palette.highlightGreen};
+      background-color: ${({ theme }) =>
+        theme.colors.highlights.green.background};
     }
 
     .purple-highlight {
-      background-color: ${({ theme }) => theme.palette.purple08};
+      background-color: ${({ theme }) =>
+        theme.colors.highlights.purple.background};
     }
 
     .red-highlight {
-      background-color: ${({ theme }) => theme.palette.deepred07};
+      background-color: ${({ theme }) =>
+        theme.colors.highlights.red.background};
     }
 
     .yellow-highlight {
-      background-color: ${({ theme }) => theme.palette.highlightYellow};
+      background-color: ${({ theme }) =>
+        theme.colors.highlights.yellow.background};
     }
 
     .blue-highlight {
-      background-color: ${({ theme }) => theme.palette.lightblue05};
+      background-color: ${({ theme }) =>
+        theme.colors.highlights.blue.background};
     }
 
     .orange-highlight {
-      background-color: ${({ theme }) => theme.palette.orange05};
+      background-color: ${({ theme }) =>
+        theme.colors.highlights.orange.background};
     }
   }
 
   .ql-container .ql-editor .admin-highlights .color-green,
   .ql-container .ql-editor .color-green .admin-highlights,
   .color-green {
-    color: ${({ theme }) => theme.palette.green02} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.green.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-purple,
   .ql-container .ql-editor .color-purple .admin-highlights,
   .color-purple {
-    color: ${({ theme }) => theme.palette.purple01} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.purple.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-blue,
   .ql-container .ql-editor .color-blue .admin-highlights,
   .color-blue {
-    color: ${({ theme }) => theme.palette.lightblue01} !important;
+    color: ${({ theme }) => theme.colors.editorFontColors.blue.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-orange,
   .ql-container .ql-editor .color-orange .admin-highlights,
   .color-orange {
-    color: ${({ theme }) => theme.palette.orange01} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.orange.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-black,
   .ql-container .ql-editor .color-black .admin-highlights,
   .color-black {
-    color: ${({ theme }) => theme.palette.black} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.black.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-brown,
   .ql-container .ql-editor .color-brown .admin-highlights,
   .color-brown {
-    color: ${({ theme }) => theme.palette.brown01} !important;
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.brown.font} !important;
   }
 
   .ql-container .ql-editor .admin-highlights .color-red,
   .ql-container .ql-editor .color-red .admin-highlights,
   .color-red {
-    color: ${({ theme }) => theme.palette.deepred01} !important;
+    color: ${({ theme }) => theme.colors.editorFontColors.red.font} !important;
   }
 `
 

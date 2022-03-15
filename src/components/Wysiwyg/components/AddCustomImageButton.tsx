@@ -81,7 +81,9 @@ const ButtonContainer = styled.div`
 
   * {
     color: ${({ theme, isLoading }) =>
-      isLoading ? theme.palette.biege : theme.palette.orange01} !important;
+      isLoading
+        ? theme.colors.buttons.contained.disabled.font
+        : theme.colors.buttons.contained.secondary.font} !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
   }
@@ -89,9 +91,13 @@ const ButtonContainer = styled.div`
   button {
     cursor: pointer !important;
     background-color: ${({ theme, isLoading }) =>
-      isLoading ? theme.palette.inactive : theme.palette.darkblue01} !important;
+      isLoading
+        ? theme.colors.buttons.contained.disabled.background
+        : theme.colors.buttons.contained.secondary.background} !important;
     color: ${({ theme, isLoading }) =>
-      isLoading ? theme.palette.biege : theme.palette.orange01} !important;
+      isLoading
+        ? theme.colors.buttons.contained.disabled.font
+        : theme.colors.buttons.contained.secondary.font} !important;
     width: 19px !important;
     height: 19px !important;
     line-height: 19px !important;
@@ -99,7 +105,6 @@ const ButtonContainer = styled.div`
     font-size: 12px !important;
     padding: 0 !important;
     text-align: center !important;
-    box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
     margin: 0 3px !important;
@@ -107,27 +112,37 @@ const ButtonContainer = styled.div`
     svg {
       float: unset !important;
       color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.biege : theme.palette.orange01} !important;
+        isLoading
+          ? theme.colors.buttons.contained.disabled.font
+          : theme.colors.buttons.contained.secondary.font} !important;
     }
   }
 
   &:hover {
     * {
       color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.biege : theme.palette.darkblue01} !important;
+        isLoading
+          ? theme.colors.buttons.contained.disabled.fontActive
+          : theme.colors.buttons.contained.secondary.fontActive} !important;
     }
 
     button {
       background-color: ${({ theme, isLoading }) =>
-        isLoading ? theme.palette.inactive : theme.palette.orange01} !important;
-      color: ${({ theme }) => theme.palette.darkblue01} !important;
+        isLoading
+          ? theme.colors.buttons.contained.disabled.backgroundActive
+          : theme.colors.buttons.contained.secondary
+              .backgroundActive} !important;
+      color: ${({ theme, isLoading }) =>
+        isLoading
+          ? theme.colors.buttons.contained.disabled.fontActive
+          : theme.colors.buttons.contained.secondary.fontActive} !important;
 
       svg {
         float: unset !important;
         color: ${({ theme, isLoading }) =>
           isLoading
-            ? theme.palette.biege
-            : theme.palette.background} !important;
+            ? theme.colors.buttons.contained.disabled.fontActive
+            : theme.colors.buttons.contained.secondary.fontActive} !important;
       }
     }
   }

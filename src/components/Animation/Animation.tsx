@@ -88,20 +88,20 @@ const Animation = (props: AnimationProps): JSX.Element => {
         <div className='controls-container'>
           <SpeedSelection isOpen={isSpeedOpen} ref={dropdownRef}>
             <div className='selected-speed' onClick={openSpeedMenu}>
-              {speed} x
+              {speed}x
             </div>
             <div className='speed-options'>
               <div className='speed-option' onClick={handleSelectSpeed(0.5)}>
-                0.5 x
+                0.5x
               </div>
               <div className='speed-option' onClick={handleSelectSpeed(1)}>
-                1 x
+                1x
               </div>
               <div className='speed-option' onClick={handleSelectSpeed(1.5)}>
-                1.5 x
+                1.5x
               </div>
               <div className='speed-option' onClick={handleSelectSpeed(2)}>
-                2 x
+                2x
               </div>
             </div>
           </SpeedSelection>
@@ -143,7 +143,6 @@ export const AnimationContainer = styled.div`
     border: none;
     padding: 0;
     font-size: 9px;
-    color: ${({ theme }) => theme.palette.darkblue02};
 
     &:not(last-of-type) {
       margin-right: 9px;
@@ -151,38 +150,49 @@ export const AnimationContainer = styled.div`
   }
 
   .play {
-    color: ${({ theme }) => theme.palette.orange01};
+    color: ${({ theme, isPaused, isStopped }) =>
+      !isPaused && !isStopped
+        ? theme.colors.main.grey600
+        : theme.colors.main.primary500};
   }
 
   .pause {
-    color: ${({ theme, isPaused, isStopped }) =>
-      isPaused || isStopped
-        ? theme.palette.inactive
-        : theme.palette.darkblue02};
+    color: ${({ theme, isPaused }) =>
+      isPaused ? theme.colors.main.grey600 : theme.colors.main.secondary600};
   }
 
   .stop {
     color: ${({ theme, isStopped }) =>
-      isStopped ? theme.palette.inactive : theme.palette.darkblue02};
+      isStopped ? theme.colors.main.grey600 : theme.colors.main.secondary600};
   }
 `
 
 const SpeedSelection = styled.div`
-  color: ${({ theme }) => theme.palette.darkblue02};
+  color: ${({ theme, isOpen }) =>
+    theme.colors.selects.input[isOpen ? 'fontActive' : 'font']};
+  background-color: ${({ theme, isOpen }) =>
+    theme.colors.selects.input[isOpen ? 'backgroundActive' : 'background']};
   font-size: 11px;
   line-height: 15px;
   letter-spacing: -0.1px;
-  border: 1px solid ${({ theme }) => theme.palette.darkblue02};
-  border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
+  border: 1px solid
+    ${({ theme, isOpen }) =>
+      theme.colors.selects.input[isOpen ? 'borderActive' : 'border']};
+  border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
   position: relative;
   min-width: 30px;
   text-align: center;
   margin-right: 9px;
   cursor: pointer;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
 
   //.selected-speed {
   //
   //}
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.selects.input.borderActive};
+  }
 
   .speed-options {
     z-index: ${({ theme, isOpen }) => (isOpen ? theme.zIndex.modal : 0)};
@@ -190,7 +200,7 @@ const SpeedSelection = styled.div`
     height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;
     position: absolute;
-    background-color: ${({ theme }) => theme.palette.biege};
+    background-color: ${({ theme }) => theme.colors.selects.option.background};
     box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     bottom: calc(100% + 5px);
@@ -200,9 +210,13 @@ const SpeedSelection = styled.div`
 
   .speed-option {
     cursor: pointer;
+    color: ${({ theme }) => theme.colors.selects.option.font};
+    background-color: ${({ theme }) => theme.colors.selects.option.background};
 
     &:hover {
-      background-color: ${({ theme }) => theme.palette.grey10};
+      color: ${({ theme }) => theme.colors.selects.option.fontActive};
+      background-color: ${({ theme }) =>
+        theme.colors.selects.option.backgroundActive};
     }
   }
 `

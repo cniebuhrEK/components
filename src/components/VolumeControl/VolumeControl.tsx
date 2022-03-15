@@ -90,20 +90,22 @@ export const VolumeControl = () => {
   )
 }
 
+export default VolumeControl
+
 const MuteIcon = styled(SpeakerMuteIcon)`
-  color: ${({ theme }) => theme.palette.grey05};
+  color: ${({ theme }) => theme.colors.volumeControl.font};
   cursor: pointer;
   font-size: 24px;
 `
 
 const QuietIcon = styled(SpeakerQuietIcon)`
-  color: ${({ theme }) => theme.palette.grey05};
+  color: ${({ theme }) => theme.colors.volumeControl.font};
   cursor: pointer;
   font-size: 24px;
 `
 
 const LoudIcon = styled(SpeakerLoudIcon)`
-  color: ${({ theme }) => theme.palette.grey05};
+  color: ${({ theme }) => theme.colors.volumeControl.font};
   cursor: pointer;
   font-size: 24px;
 `
@@ -132,13 +134,13 @@ const Range = styled.input`
     position: absolute;
     z-index: 0;
     left: 0;
-    background-color: ${({ theme }) => theme.palette.orange01};
+    background-color: ${({ theme }) => theme.colors.volumeControl.range};
   }
 
   &::-webkit-slider-runnable-track {
     height: 2px;
     width: 40px;
-    background: ${({ theme }) => theme.palette.grey05};
+    background: ${({ theme }) => theme.colors.volumeControl.thumb};
     border-radius: 1px;
     -webkit-appearance: none;
   }
@@ -147,9 +149,9 @@ const Range = styled.input`
     height: 10px;
     width: 10px;
     border-radius: 100%;
-    background: ${({ theme }) => theme.palette.orange01};
+    background-color: ${({ theme }) => theme.colors.volumeControl.range};
     margin-top: -4px;
-    border: 1px solid white;
+    border: 1px solid ${({ theme }) => theme.colors.volumeControl.border};
     -webkit-appearance: none;
     z-index: 1;
     position: relative;

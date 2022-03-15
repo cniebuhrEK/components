@@ -1,5 +1,3 @@
-// Loader/Loader.tsx - Loader component
-
 import styled from 'styled-components'
 
 const Loader = styled.div`

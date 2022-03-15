@@ -134,47 +134,68 @@ const ButtonContainer = styled.div`
 
   .trigger-button {
     button * {
-      color: ${({ theme }) => theme.palette.orange01} !important;
+      color: ${({ theme, isLoading }) =>
+        isLoading
+          ? theme.colors.buttons.contained.disabled.font
+          : theme.colors.buttons.contained.secondary.font} !important;
       transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
         0ms;
     }
 
     button {
       cursor: pointer !important;
-      background-color: ${({ theme }) => theme.palette.darkblue01} !important;
-      color: ${({ theme }) => theme.palette.orange01} !important;
+      background-color: ${({ theme, isLoading }) =>
+        isLoading
+          ? theme.colors.buttons.contained.disabled.background
+          : theme.colors.buttons.contained.secondary.background} !important;
+      color: ${({ theme, isLoading }) =>
+        isLoading
+          ? theme.colors.buttons.contained.disabled.font
+          : theme.colors.buttons.contained.secondary.font} !important;
       width: 19px !important;
       height: 19px !important;
       border-radius: 2px !important;
       font-size: 14px !important;
       padding: 0 !important;
       text-align: center !important;
-      box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
       transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
         0ms;
       margin: 0 3px !important;
 
       svg {
         float: unset !important;
-        color: ${({ theme }) => theme.palette.orange01} !important;
+        color: ${({ theme, isLoading }) =>
+          isLoading
+            ? theme.colors.buttons.contained.disabled.font
+            : theme.colors.buttons.contained.secondary.font} !important;
       }
     }
 
     &:hover {
       button * {
-        color: ${({ theme }) => theme.palette.darkblue01} !important;
+        color: ${({ theme, isLoading }) =>
+          isLoading
+            ? theme.colors.buttons.contained.disabled.fontActive
+            : theme.colors.buttons.contained.secondary.fontActive} !important;
       }
 
       button {
         background-color: ${({ theme, isLoading }) =>
           isLoading
-            ? theme.palette.inactive
-            : theme.palette.orange01} !important;
-        color: ${({ theme }) => theme.palette.darkblue01} !important;
+            ? theme.colors.buttons.contained.disabled.backgroundActive
+            : theme.colors.buttons.contained.secondary
+                .backgroundActive} !important;
+        color: ${({ theme, isLoading }) =>
+          isLoading
+            ? theme.colors.buttons.contained.disabled.fontActive
+            : theme.colors.buttons.contained.secondary.fontActive} !important;
 
         svg {
           float: unset !important;
-          color: ${({ theme }) => theme.palette.background} !important;
+          color: ${({ theme, isLoading }) =>
+            isLoading
+              ? theme.colors.buttons.contained.disabled.fontActive
+              : theme.colors.buttons.contained.secondary.fontActive} !important;
         }
       }
     }
@@ -183,14 +204,13 @@ const ButtonContainer = styled.div`
   .mode-selection {
     display: inline-flex;
     padding: 5px 10px;
-    box-shadow: ${props => props.theme.shadows.mainShadow};
     gap: 12px;
     border-radius: 4px;
     opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
     height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;
     position: absolute;
-    background-color: ${({ theme }) => theme.palette.biege};
+    background-color: ${({ theme }) => theme.colors.backgrounds.main};
     box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 5px);
@@ -228,31 +248,36 @@ const ColorPicker = styled.div`
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
 
   &.color-green {
-    background-color: ${({ theme }) => theme.palette.green02};
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.green.font};
   }
 
   &.color-purple {
-    background-color: ${({ theme }) => theme.palette.purple01};
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.purple.font};
   }
 
   &.color-blue {
-    background-color: ${({ theme }) => theme.palette.lightblue01};
+    background-color: ${({ theme }) => theme.colors.editorFontColors.blue.font};
   }
 
   &.color-orange {
-    background-color: ${({ theme }) => theme.palette.orange01};
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.orange.font};
   }
 
   &.color-black {
-    background-color: ${({ theme }) => theme.palette.black};
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.black.font};
   }
 
   &.color-brown {
-    background-color: ${({ theme }) => theme.palette.brown01};
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.brown.font};
   }
 
   &.color-red {
-    background-color: ${({ theme }) => theme.palette.deepred01};
+    background-color: ${({ theme }) => theme.colors.editorFontColors.red.font};
   }
 
   &.color-remove {
@@ -261,6 +286,6 @@ const ColorPicker = styled.div`
 
   &:hover,
   &:active {
-    border-color: ${({ theme }) => theme.palette.brown01};
+    border-color: ${({ theme }) => theme.colors.main.text};
   }
 `

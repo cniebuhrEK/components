@@ -2,12 +2,12 @@
 
 import React from 'react'
 import TopNav from './TopNav'
-import BooksContainedIcon from '../../../icons/BooksContained'
-import DashboardIcon from '../../../icons/Dashboard'
-import GamesIcon from '../../../icons/Games'
-import VideoCameraIcon from '../../../icons/VideoCamera'
-import ExamEditorIcon from '../../../icons/ExamEditor'
-import LogoutIcon from '../../../icons/Logout'
+import BooksContainedIcon from '../../icons/BooksContained'
+import DashboardIcon from '../../icons/Dashboard'
+import GamesIcon from '../../icons/Games'
+import VideoCameraIcon from '../../icons/VideoCamera'
+import ExamEditorIcon from '../../icons/ExamEditor'
+import LogoutIcon from '../../icons/Logout'
 
 const Template = args => <TopNav {...args} />
 
@@ -104,10 +104,6 @@ TopNavigation.args = {
           url: '#'
         }
       ]
-    },
-    {
-      label: 'Projections',
-      url: '#'
     },
     {
       label: 'Log Out',

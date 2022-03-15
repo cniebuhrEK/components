@@ -74,7 +74,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     z-index: ${({ theme }) => theme.zIndex.modal};
     width: 100%;
     height: 100%;
-    background: ${({ theme }) => theme.palette.overlay};
+    background: ${({ theme }) => theme.colors.modal.overlay};
     overflow-y: auto;
     ::-webkit-scrollbar {
       background: transparent;
@@ -104,7 +104,6 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
       width: 100%;
       height: 100%;
       backdrop-filter: blur(2px);
-      background: ${({ theme }) => theme.palette.modalBackground};
       z-index: ${({ theme }) => theme.zIndex.modal};
     }
   }
@@ -116,9 +115,8 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     position: relative;
     display: inline-block;
     padding: 48px 20px;
-    background: ${({ theme }) => theme.palette.panelBackground};
-    box-shadow: ${({ theme }) => theme.shadows.beigeShadow};
-    color: ${({ theme }) => theme.palette.textDark};
+    background: ${({ theme }) => theme.colors.modal.background};
+    box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
     outline: 0;
     min-width: 500px;
@@ -133,11 +131,10 @@ const Close = styled.div`
   top: 24px;
   right: 24px;
   cursor: pointer;
-  color: ${({ theme }) => theme.palette.darkblue01};
   transition: color 0.2s ${({ theme }) => theme.transitions.easing.easeInOut} 0s;
 `
 const Title = styled.div`
-  color: ${({ theme }) => theme.palette.headingDark};
+  color: ${({ theme }) => theme.colors.modal.heading};
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;

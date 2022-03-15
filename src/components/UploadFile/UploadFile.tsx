@@ -1,9 +1,8 @@
-// UploadFile/UploadFile.tsx - File input component
-
 import React from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { isNotNilOrEmpty } from '../../utils/ramda'
+import { AttachmentIcon } from '../../icons'
 
 interface UploadFileProps {
   disabled?: boolean
@@ -33,22 +32,26 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
     onChange(e.target.files[0])
   }
 
+  const handleClick = () => {
+    const inputElement = document.getElementById(id)
+    inputElement && inputElement.click()
+  }
+
   return (
     <UploadFileContainer
       error={error}
       isDisabled={disabled}
       hasValue={isNotNilOrEmpty(file)}
+      onClick={handleClick}
     >
       <div className='file-upload__wrapper'>
-        <label htmlFor={id} className='file-upload__trigger'>
+        <div className='file-upload__trigger'>
           <div className='file-upload__label'>
             {label}
             {required && ' *'}
           </div>
-          <span className='file-upload__name'>
-            {R.propOr('', 'name', file)}
-          </span>
-        </label>
+          <div className='file-upload__name'>{R.propOr('', 'name', file)}</div>
+        </div>
         <input
           disabled={disabled}
           className='file-upload__input'
@@ -56,6 +59,9 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
           onChange={handleOnChange}
           type='file'
         />
+        <div className='file-upload__icon'>
+          <AttachmentIcon />
+        </div>
         <div className='file-upload__error'>{errorText}</div>
       </div>
     </UploadFileContainer>
@@ -68,17 +74,36 @@ export const UploadFileContainer = styled.div`
   }
 
   .file-upload__wrapper {
+    display: flex;
     align-items: center;
     background-color: ${({ theme, isDisabled }) =>
-      isDisabled ? theme.palette.grey08 : theme.palette.panelBackground};
+      isDisabled
+        ? theme.colors.inputs.disabled.background
+        : theme.colors.inputs.input.background};
     box-sizing: border-box;
     border-style: solid;
     border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
-    border-color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.border};
+    border-color: ${({ error, isDisabled, theme }) => {
+      switch (true) {
+        case error:
+          return theme.colors.main.error500
+        case isDisabled:
+          return theme.colors.inputs.disabled.border
+        default:
+          return theme.colors.inputs.input.border
+      }
+    }};
     border-width: 1px;
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.textDark};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.colors.inputs.disabled.font
+        case error:
+          return theme.colors.main.error500
+        default:
+          return theme.colors.inputs.input.font
+      }
+    }};
     display: inline-flex;
     font-size: ${({ theme }) => theme.typography.fontSizeNormal};
     font-family: ${({ theme }) => theme.typography.fontFamily};
@@ -92,14 +117,14 @@ export const UploadFileContainer = styled.div`
     width: 100%;
 
     &:hover {
-      border-color: ${({ theme, error, isDisabled }) => {
+      border-color: ${({ error, isDisabled, theme }) => {
         switch (true) {
           case error:
-            return theme.palette.red05
+            return theme.colors.main.error500
           case isDisabled:
-            return 'transparent'
+            return theme.colors.inputs.disabled.borderActive
           default:
-            return theme.palette.darkblue01
+            return theme.colors.inputs.input.borderActive
         }
       }};
     }
@@ -108,16 +133,36 @@ export const UploadFileContainer = styled.div`
   .file-upload__trigger {
     display: inline-flex;
     align-items: center;
+    max-width: calc(100% - 25px - 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    min-width: 0;
   }
 
   .file-upload__name {
-    color: ${({ theme }) => theme.palette.darkblue01};
+    max-width: calc(100% - 25px - 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    float: left;
+    min-width: 0;
   }
 
   .file-upload__label {
     box-sizing: border-box;
-    color: ${({ theme, error }) =>
-      error ? theme.palette.red05 : theme.palette.darkblue01};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.colors.inputs.disabled.font
+        case error:
+          return theme.colors.main.error500
+        default:
+          return theme.colors.inputs.input.font
+      }
+    }};
     position: absolute;
     font-size: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
     line-height: ${({ hasValue }) => (hasValue ? '12px' : '16px')};
@@ -136,13 +181,30 @@ export const UploadFileContainer = styled.div`
     left: ${({ hasValue }) => (hasValue ? '-6px' : '-1px')};
     top: -19px;
     background-color: transparent;
-    color: ${({ error, theme }) =>
-      error ? theme.palette.red05 : theme.palette.darkblue01};
+    color: ${({ theme, error, isDisabled }) => {
+      switch (true) {
+        case isDisabled:
+          return theme.colors.inputs.disabled.font
+        case error:
+          return theme.colors.main.error500
+        default:
+          return theme.colors.inputs.input.font
+      }
+    }};
+  }
+
+  .file-upload__icon {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    font-size: 22px;
+    color: ${({ theme }) => theme.colors.main.primary500};
+    line-height: ${({ theme }) => theme.dimensions.inputHeight};
   }
 
   .file-upload__error {
     display: ${({ error }) => (error ? 'block' : 'none')};
-    color: ${({ theme }) => theme.palette.red05};
+    color: ${({ theme }) => theme.colors.main.error500};
     font-size: 12px;
     position: absolute;
     left: -1px;

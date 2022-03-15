@@ -37,9 +37,12 @@ export default Tooltip
 
 export const TooltipContainer = styled.div`
   display: inline-block;
+  cursor: pointer;
 
   .__react_component_tooltip {
-    background-color: ${props => props.theme.palette.brown01} !important;
+    background-color: ${props =>
+      props.theme.colors.tooltip.background} !important;
+    color: ${props => props.theme.colors.tooltip.font} !important;
     font-family: ${props => props.theme.typography.fontFamily} !important;
   }
 `

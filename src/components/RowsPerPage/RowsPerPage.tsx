@@ -59,12 +59,12 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
     <RowsPerPageContainer>
       <div className='rows-per-page-label'>Show:</div>
       <SelectContainer ref={ref}>
-        <DropdownTrigger onClick={handleToggle}>
+        <DropdownTrigger open={open} onClick={handleToggle}>
           <div className='dropdown-label'>
             {R.propOr('', 'label', selectedOption)}
           </div>
           <div className='dropdown-icon'>
-            <ArrowDownIcon />
+            <ArrowDownIcon open={open} />
           </div>
         </DropdownTrigger>
         <Menu open={open}>{renderOptions}</Menu>
@@ -78,7 +78,7 @@ RowsPerPage.defaultProps = {}
 export default RowsPerPage
 
 const RowsPerPageContainer = styled.div`
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.selects.input.font};
   display: inline-flex;
   align-items: center;
   margin-top: 5px;
@@ -97,22 +97,38 @@ const SelectContainer = styled.div`
 
 const DropdownTrigger = styled.div`
   padding: 8px 12px;
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  color: ${({ theme, open }) =>
+    theme.colors.selects.input[open ? 'fontActive' : 'font']};
+  background-color: ${({ theme, open }) =>
+    theme.colors.selects.input[open ? 'backgroundActive' : 'background']};
+  border: 1px solid
+    ${({ theme, open }) =>
+      theme.colors.selects.input[open ? 'borderActive' : 'border']};
   border-radius: 6px;
-  border: 1px solid ${({ theme }) => theme.palette.border};
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
+
+  &:hover {
+    border: 1px solid ${({ theme }) => theme.colors.selects.input.borderActive};
+  }
+
+  .dropdown-icon {
+    transform: ${({ open }) => (!open ? 'initial' : 'rotate(180deg)')};
+    transition: transform 300ms
+      ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
+  }
 `
 
 const Menu = styled.div`
-  background-color ${({ theme }) => theme.palette.panelBackground};
+  background-color ${({ theme }) => theme.colors.selects.option.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
   z-index: ${({ theme }) => theme.zIndex.dropdown};
   box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
   max-height: ${({ open }) => (open ? '300px' : '0')};
   position: absolute;
-  bottom: 0;
+  bottom: calc(100% + 5px);
   left: 0;
   cursor: pointer;
   z-index: ${({ theme }) => theme.zIndex.menu};
@@ -121,23 +137,6 @@ const Menu = styled.div`
   min-width: 55px;
   width: fit-content;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: ${({ theme }) => theme.palette.textDark}
-    ${({ theme }) => theme.palette.scroller};
-
-  &::-webkit-scrollbar {
-    width: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.textDark};
-  }
-
-  &::-webkit-scrollbar-track {
-    border-radius: 3px;
-    background-color: ${({ theme }) => theme.palette.scroller};
-  }
 `
 
 const ItemContainer = styled.div`
@@ -145,12 +144,15 @@ const ItemContainer = styled.div`
   display: block;
   width: 100%;
   padding: 6px 16px;
-  color: ${({ theme }) => theme.palette.textDark};
+  color: ${({ theme }) => theme.colors.selects.option.font};
+  background-color: ${({ theme }) => theme.colors.selects.option.background};
   line-height: 1.5;
   font-size: 14px;
   white-space: nowrap;
 
   &:hover {
-    background-color: ${({ theme }) => theme.palette.disabledBackground};
+    color: ${({ theme }) => theme.colors.selects.option.fontActive};
+    background-color: ${({ theme }) =>
+      theme.colors.selects.option.backgroundActive};
   }
 `

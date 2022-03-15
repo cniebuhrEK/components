@@ -223,7 +223,6 @@ const AllIcons = () => {
 AllIcons.defaultProps = {}
 
 const IconsContainer = styled.div`
-  color: ${({ theme }) => theme.palette.darkblue01};
   svg {
     font-size: 20px;
   }

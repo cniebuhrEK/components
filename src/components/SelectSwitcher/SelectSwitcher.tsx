@@ -119,8 +119,8 @@ const SwitcherContainer = styled.div`
   display: inline-flex;
   padding: 2px 8px;
   border-radius: 16px;
-  border: 1px solid ${({ theme }) => theme.palette.border};
-  background-color: ${({ theme }) => theme.palette.panelBackground};
+  border: 1px solid ${({ theme }) => theme.colors.selectSwitcher.border};
+  background-color: ${({ theme }) => theme.colors.selectSwitcher.background};
   cursor: pointer;
   justify-content: space-between;
   width: 100%;
@@ -142,7 +142,7 @@ const ActiveOption = styled.div`
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.palette.green01};
+  background-color: ${({ theme }) => theme.colors.selectSwitcher.mark};
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
 `
 
@@ -161,7 +161,6 @@ const SwitcherLabel = styled.div`
   width: ${({ width }) => width}px;
   font-size: 11px;
   line-height: 16px;
-  color: ${props => props.theme.palette.textDark};
 `
 
 const SwitcherTrigger = styled.div`
@@ -173,10 +172,8 @@ const SwitcherTrigger = styled.div`
     text-align: center;
     top: calc(100%);
     left: ${({ left }) => left}px;
-    color: ${props => props.theme.palette.textDark};
     font-size: 11px;
     line-height: 16px;
-    color: ${props => props.theme.palette.textDark};
   }
 
   &:last-child {

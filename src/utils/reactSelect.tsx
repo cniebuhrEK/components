@@ -13,11 +13,11 @@ export const SELECT_SIZES = {
 const getHoverBorderColor = (disabled: boolean, error: any) => {
   switch (true) {
     case disabled:
-      return theme.palette.panelBackground
+      return theme.colors.selects.disabled.borderActive
     case error:
-      return theme.palette.red05
+      return theme.colors.main.error500
     default:
-      return theme.palette.darkblue01
+      return theme.colors.selects.input.borderActive
   }
 }
 
@@ -34,45 +34,45 @@ const getHoverCursor = (disabled: boolean, searchable: boolean) => {
 
 const getBorderColor = (disabled: boolean, error: boolean) => {
   switch (true) {
-    case error:
-      return theme.palette.red05
     case disabled:
-      return theme.palette.disabledFont
+      return theme.colors.selects.disabled.border
+    case error:
+      return theme.colors.main.error500
     default:
-      return theme.palette.border
+      return theme.colors.selects.input.border
   }
 }
 
 const getInputTextColor = (disabled: boolean, error: boolean) => {
   switch (true) {
-    case error:
-      return theme.palette.red05
     case disabled:
-      return theme.palette.disabledFont
+      return theme.colors.selects.disabled.font
+    case error:
+      return theme.colors.main.error500
     default:
-      return theme.palette.darkblue01
+      return theme.colors.selects.input.font
   }
 }
 
 const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
   switch (true) {
-    case isFocused:
-      return theme.palette.orange01
+    case isFocused && !isDisabled:
+      return theme.colors.selects.input.fontActive
     case isDisabled:
-      return theme.palette.disabledFont
+      return theme.colors.selects.disabled.font
     default:
-      return theme.palette.darkblue01
+      return theme.colors.selects.input.font
   }
 }
 
 const getBackgroundColor = (isFocused: boolean, isDisabled: boolean) => {
   switch (true) {
-    case isFocused:
-      return theme.palette.darkblue01
+    case isFocused && !isDisabled:
+      return theme.colors.selects.input.backgroundActive
     case isDisabled:
-      return theme.palette.disabledBackground
+      return theme.colors.selects.disabled.background
     default:
-      return theme.palette.panelBackground
+      return theme.colors.selects.input.background
   }
 }
 
@@ -101,8 +101,8 @@ export const REACT_SELECT_STYLES = {
       boxSizing: 'border-box',
       position: 'relative',
       backgroundColor: isDisabled
-        ? theme.palette.disabledBackground
-        : theme.palette.panelBackground,
+        ? theme.colors.selects.disabled.background
+        : theme.colors.selects.input.background,
       borderStyle: 'solid',
       borderWidth: '1px',
       borderRadius: '6px',
@@ -121,10 +121,12 @@ export const REACT_SELECT_STYLES = {
         borderColor: getHoverBorderColor(isDisabled, error)
       },
       '&:focus-within': {
-        background: theme.palette.darkblue01,
+        background: theme.colors.selects.input.backgroundActive,
         borderWidth: '1px',
         borderColor: getBorderColor(isDisabled, error),
-        color: error ? theme.palette.red05 : theme.palette.orange01
+        color: error
+          ? theme.colors.main.error500
+          : theme.colors.selects.input.fontActive
       },
       '& input': isSearchable ? {} : { height: '1px' }
     }
@@ -157,14 +159,14 @@ export const REACT_SELECT_STYLES = {
       top: '100%',
       left: '0',
       margin: '0',
-      backgroundColor: theme.palette.biege,
-      boxShadow: theme.shadows.beigeShadow,
+      backgroundColor: theme.colors.selects.option.background,
+      boxShadow: theme.shadows.mainShadow,
       zIndex: theme.zIndex.dropdown
     }
   },
   menuList: (_provided, _state) => {
     return {
-      backgroundColor: theme.palette.panelBackground,
+      backgroundColor: theme.colors.selects.option.background,
       maxHeight: '300px',
       overflowY: 'auto',
       boxSizing: 'border-box',
@@ -174,7 +176,7 @@ export const REACT_SELECT_STYLES = {
   option: (_provided, state: { isFocused: boolean }) => {
     const { isFocused } = state
     return {
-      color: theme.palette.darkblue01,
+      color: theme.colors.selects.option.font,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -184,17 +186,17 @@ export const REACT_SELECT_STYLES = {
       overflow: 'visible',
       whiteSpace: 'nowrap',
       backgroundColor: isFocused
-        ? theme.palette.grey10
-        : theme.palette.panelBackground,
+        ? theme.colors.selects.option.backgroundActive
+        : theme.colors.selects.option.background,
       transition: `background-color 200ms ${theme.transitions.easing.easeInOut} 0ms`,
       '&:hover': {
-        backgroundColor: theme.palette.grey10
+        backgroundColor: theme.colors.selects.option.backgroundActive
       },
       '&:active': {
-        backgroundColor: theme.palette.grey10
+        backgroundColor: theme.colors.selects.option.backgroundActive
       },
       '&:focus': {
-        backgroundColor: theme.palette.grey10
+        backgroundColor: theme.colors.selects.option.backgroundActive
       }
     }
   },
@@ -215,8 +217,8 @@ export const REACT_SELECT_STYLES = {
     return {
       '&:hover': {
         color: isDisabled
-          ? theme.palette.panelBackground
-          : theme.palette.orange01
+          ? theme.colors.selects.disabled.fontActive
+          : theme.colors.selects.input.fontActive
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
@@ -231,7 +233,7 @@ export const REACT_SELECT_STYLES = {
       display: 'flex',
       alignItems: 'center',
       padding: '6px',
-      backgroundColor: theme.palette.grey09,
+      backgroundColor: theme.colors.main.grey300,
       borderRadius: theme.shape.borderRadiusSmall,
       marginRight: '9px',
       wordBreak: 'keep-all'
@@ -250,13 +252,13 @@ export const REACT_SELECT_STYLES = {
       cursor: 'pointer',
       transition: 'all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms',
       '&:hover': {
-        color: theme.palette.orange04
+        color: theme.colors.main.white
       }
     }
   },
   noOptionsMessage: (_provided, _state) => {
     return {
-      color: theme.palette.darkblue01,
+      color: theme.colors.selects.option.font,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -265,12 +267,12 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.palette.panelBackground
+      backgroundColor: theme.colors.selects.option.background
     }
   },
   loadingMessage: (_provided, _state) => {
     return {
-      color: theme.palette.darkblue01,
+      color: theme.colors.selects.option.font,
       fontFamily: theme.typography.fontFamily,
       zIndex: theme.zIndex.dropdown,
       cursor: 'pointer',
@@ -279,7 +281,7 @@ export const REACT_SELECT_STYLES = {
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.palette.panelBackground
+      backgroundColor: theme.colors.selects.option.background
     }
   },
   placeholder: (_provided, _state) => {
@@ -295,13 +297,15 @@ export const REACT_SELECT_STYLES = {
   clearIndicator: (_provided, state: { isFocused: boolean }) => {
     const { isFocused } = state
     return {
-      color: isFocused ? theme.palette.orange01 : theme.palette.darkblue01,
+      color: isFocused
+        ? theme.colors.selects.input.fontActive
+        : theme.colors.selects.input.font,
       cursor: 'pointer'
     }
   },
   loadingIndicator: (_provided, _state) => {
     return {
-      color: theme.palette.darkblue01,
+      color: theme.colors.selects.input.font,
       display: 'flex',
       alignItems: 'center',
       fontSize: '4px'
@@ -448,15 +452,15 @@ const InputLabel = styled.div`
   }) => {
     switch (true) {
       case error:
-        return theme.palette.red05
+        return theme.colors.main.error500
       case isDisabled:
-        return theme.palette.disabledFont
+        return theme.colors.selects.disabled.font
       case isValueContainer:
       case isFocusedOrHasValue && removeTopLabel:
         return 'transparent'
       case isFocused && !removeTopLabel:
       default:
-        return theme.palette.textDark
+        return theme.colors.selects.input.font
     }
   }};
   position: absolute;
@@ -490,7 +494,7 @@ const InputLabel = styled.div`
 
 const ErrorText = styled.div`
   display: ${({ error }) => (error ? 'block' : 'none')};
-  color: ${({ theme }) => theme.palette.red05};
+  color: ${({ theme }) => theme.colors.main.error500};
   font-size: 12px;
   position: absolute;
   left: -1px;

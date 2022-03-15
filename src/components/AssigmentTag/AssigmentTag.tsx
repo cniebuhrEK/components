@@ -30,7 +30,7 @@ const AssigmentTagContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: ${({ theme }) => theme.palette.grey12};
+  background: ${({ theme }) => theme.colors.main.grey300};
   padding: 0 12px;
   border-radius: 20px;
   line-height: 24px;
@@ -42,13 +42,13 @@ const Delete = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 13px;
-  color: ${({ theme }) => theme.palette.grey13};
+  color: ${({ theme }) => theme.colors.main.grey600};
   margin-left: 9px;
   cursor: pointer;
   transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
   &:hover {
-    color: ${({ theme }) => theme.palette.white};
+    color: ${({ theme }) => theme.colors.main.white};
   }
 `
 
