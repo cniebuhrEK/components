@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { palette } from '../../theme/theme'
+import palette from '../../theme/colors'
 
 const Palette = () => (
   <PaletteContainer>
@@ -25,7 +25,7 @@ const ColorSwatch = styled.div`
   align-items: center;
   justify-content: center;
   color: #c5c6c8;
-  background-color: ${({ color }) => color};
+  background: ${({ color }) => color};
   width: 100px;
   height: 100px;
 `
