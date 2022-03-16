@@ -104,7 +104,7 @@ export const StyledButton = styled.button`
   color: ${({ variant, color, theme }) =>
     theme.colors.buttons[variantsMap[variant]][colorsMap[color]].font ||
     theme.colors.main.text};
-  background-color: ${({ variant, color, theme }) =>
+  background: ${({ variant, color, theme }) =>
     theme.colors.buttons[variantsMap[variant]][colorsMap[color]].background ||
     theme.colors.main.white};
   border-color: ${({ variant, color, theme }) =>
@@ -125,7 +125,7 @@ export const StyledButton = styled.button`
     color: ${({ variant, theme }) =>
       theme.colors.buttons[variantsMap[variant]].disabled.font ||
       theme.colors.main.text};
-    background-color: ${({ variant, theme }) =>
+    background: ${({ variant, theme }) =>
       theme.colors.buttons[variantsMap[variant]].disabled.background ||
       theme.colors.main.white};
     border-color: ${({ variant, theme }) =>
@@ -143,7 +143,7 @@ export const StyledButton = styled.button`
     color: ${({ variant, color, theme }) =>
       theme.colors.buttons[variantsMap[variant]][colorsMap[color]].fontActive ||
       theme.colors.main.text};
-    background-color: ${({ variant, color, theme }) =>
+    background: ${({ variant, color, theme }) =>
       theme.colors.buttons[variantsMap[variant]][colorsMap[color]]
         .backgroundActive || theme.colors.main.white};
     border-color: ${({ variant, color, theme }) =>

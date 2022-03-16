@@ -136,7 +136,7 @@ export const StyledButton = styled.button`
   color: ${({ variant, color, theme }) =>
     theme.colors.buttons[variant][colorsMap[color]].font ||
     theme.colors.main.text};
-  background-color: ${({ variant, color, theme }) =>
+  background: ${({ variant, color, theme }) =>
     theme.colors.buttons[variant][colorsMap[color]].background ||
     theme.colors.main.white};
   border-color: ${({ variant, color, theme }) =>
@@ -156,7 +156,7 @@ export const StyledButton = styled.button`
     cursor: not-allowed;
     color: ${({ variant, theme }) =>
       theme.colors.buttons[variant].disabled.font || theme.colors.main.grey400};
-    background-color: ${({ variant, theme }) =>
+    background: ${({ variant, theme }) =>
       theme.colors.buttons[variant].disabled.background ||
       theme.colors.main.grey200};
     border-color: ${({ variant, theme }) =>
@@ -169,7 +169,7 @@ export const StyledButton = styled.button`
   &:active:enabled {
     color: ${({ variant, color, theme }) =>
       theme.colors.buttons[variant][colorsMap[color]].fontActive || 'inherit'};
-    background-color: ${({ variant, color, theme }) =>
+    background: ${({ variant, color, theme }) =>
       theme.colors.buttons[variant][colorsMap[color]].backgroundActive ||
       'inherit'};
     border-color: ${({ variant, color, theme }) =>

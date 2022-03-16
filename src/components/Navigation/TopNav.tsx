@@ -291,7 +291,7 @@ const ContainerOuter = styled.div`
   justify-content: space-between;
   width: 100%;
   border-bottom: 1px solid ${({ theme }) => theme.colors.topNav.border};
-  background-color: ${({ theme }) => theme.colors.topNav.background};
+  background: ${({ theme }) => theme.colors.topNav.background};
   position: fixed;
   top: 0;
   left: 0;
@@ -419,7 +419,7 @@ const MenuContainerStatic = styled.div`
 const NavMenu = styled.div`
   background-color ${({ theme }) => theme.colors.mainMenu.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
-  box-shadow: 0px 10px 20px #CDC5BB;
+  box-shadow: ${({ theme }) => theme.shadows.mainShadow};
   display: ${({ open }) => (open ? 'block' : 'none')};
   opacity: ${({ open }) => (open ? '1' : '0')};
   width: ${({ open }) => (open ? 'auto' : '0')};
