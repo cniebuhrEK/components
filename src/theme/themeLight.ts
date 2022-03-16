@@ -450,6 +450,27 @@ export default {
           chart: '#fac075'
         }
       }
+    },
+    dashboard: {
+      barsVertical: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
+      barsHorizontal: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
+      questions: {
+        correctColor: '#FFA800',
+        correctBar:
+          'linear-gradient(270deg, #FFD900 0.19%, #FAA307 11.11%, #4D4F51 100%)',
+        incorrectColor: '#E9001C',
+        incorrectBar:
+          'linear-gradient(270deg, #EF3615 0%, #E9001C 13.54%, #4D4F51 100%)',
+        untriedColor: '#5F6062',
+        untriedBar: '#5F6062'
+      },
+      flashcards: {
+        background200: 'linear-gradient(180deg, #FFD900 0%, #B38B00 100%)',
+        background300: 'linear-gradient(180deg, #F59800 0%, #AC6A00 100%)',
+        background400: 'linear-gradient(180deg, #F57500 0%, #AC5200 100%)',
+        background500: 'linear-gradient(180deg, #DF4100 0%, #9C2E00 100%)',
+        background600: 'linear-gradient(180deg, #A30014 0%, #72000E 100%)'
+      }
     }
   }
 }
