@@ -3,7 +3,8 @@ import colors from './colors'
 export const palette = {
   ...colors,
   heading: '#FFFFFF',
-  text: '#BBBBBC'
+  text: '#BBBBBC',
+  currency500: '#BDFA3B'
 }
 
 export default {
@@ -32,7 +33,8 @@ export default {
       currency500: palette.currency500,
       black: palette.black,
       darkGradient: palette.darkGradient,
-      primaryGradient: palette.primaryGradient
+      primaryGradient: palette.primaryGradient,
+      currencyGradient: palette.currencyGradient
     },
     buttons: {
       contained: {
@@ -468,9 +470,6 @@ export default {
           'linear-gradient(270deg, #EF3615 0%, #E9001C 13.54%, #4D4F51 100%)',
         untriedColor: '#5F6062',
         untriedBar: '#5F6062'
-      },
-      saltyBucks: {
-        color: '#BDFA3B'
       },
       flashcards: {
         background200: 'linear-gradient(180deg, #FFD900 0%, #B38B00 100%)',

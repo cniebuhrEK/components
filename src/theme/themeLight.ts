@@ -23,7 +23,11 @@ export default {
       success200: palette.success200,
       success500: palette.success500,
       currency200: palette.currency200,
-      currency500: palette.currency500
+      currency500: palette.currency500,
+      black: palette.black,
+      darkGradient: palette.darkGradient,
+      primaryGradient: palette.primaryGradient,
+      currencyGradient: palette.currencyGradient
     },
     buttons: {
       contained: {
