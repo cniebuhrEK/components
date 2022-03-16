@@ -21,7 +21,7 @@ const colors = {
 
 export default {
   // default theme
-  colors: lightThemeColors,
+  ...lightThemeColors,
   palette: {
     //
     // New Palette
