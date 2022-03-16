@@ -1,4 +1,5 @@
-// colors from January 2022
+import lightThemeColors from './themeLight'
+
 const colors = {
   black: '#1A1A1A',
   darkGrey: '#444444',
@@ -19,6 +20,8 @@ const colors = {
 }
 
 export default {
+  // default theme
+  colors: lightThemeColors,
   palette: {
     //
     // New Palette
