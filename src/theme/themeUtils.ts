@@ -4,7 +4,7 @@ import themeDark from './themeDark'
 import themeLight from './themeLight'
 import mitt from 'mitt'
 
-const themeEvents = mitt()
+export const themeEvents = mitt()
 
 export const eventsNames = {
   themeUpdated: 'ek-theme-updated'
