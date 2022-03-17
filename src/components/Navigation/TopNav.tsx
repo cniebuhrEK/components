@@ -115,8 +115,8 @@ const StudentTopNavigation = (
 
   const getExamsLogo = () =>
     localStorage.getItem(themeKey) === themeDarkVariant
-      ? '/assets/logo/LogoDarkBg.svg'
-      : '/assets/logo/LogoLightBg.svg'
+      ? '/assets/logo/ExamsLogoLightBg.svg'
+      : '/assets/logo/ExamsLogoDarkBg.svg'
 
   const getKrackULogo = () =>
     localStorage.getItem(themeKey) === themeDarkVariant
@@ -135,7 +135,7 @@ const StudentTopNavigation = (
     return () => {
       themeEvents.off(eventsNames.themeUpdated, saveLogoUrl)
     }
-  }, [])
+  }, [showCrackUniversityLogo])
 
   const redirectByHref = url => {
     window.location.href = url
