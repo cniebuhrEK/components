@@ -478,6 +478,27 @@ export default {
         background500: 'linear-gradient(180deg, #DF4100 0%, #9C2E00 100%)',
         background600: 'linear-gradient(180deg, #A30014 0%, #72000E 100%)'
       }
+    },
+    books: {
+      saltyText: '#d16923',
+      resources: {
+        tmi: {
+          background: '#ebf4fe',
+          font: '#1a7af8'
+        },
+        video: {
+          background: palette.primary200,
+          font: palette.primary500
+        },
+        clinicalContext: {
+          background: '#edfdf3',
+          font: '#16ca64'
+        },
+        mcatThink: {
+          background: '#fdedf6',
+          font: '#9b115f'
+        }
+      }
     }
   }
 }
