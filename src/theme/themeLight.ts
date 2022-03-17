@@ -454,6 +454,10 @@ export default {
     dashboard: {
       barsVertical: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
       barsHorizontal: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
+      totalProgress: '#A4A4A5',
+      totalProgressShadowLight: '#5F6062',
+      totalProgressShadowDark: '#000',
+      totalProgressBackground: '#1B1C1F',
       questions: {
         correctColor: '#FFA800',
         correctBar:
