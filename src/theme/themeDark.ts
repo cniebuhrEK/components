@@ -39,10 +39,10 @@ export default {
     buttons: {
       contained: {
         primary: {
-          font: palette.secondary600,
+          font: palette.white,
           background: palette.primaryGradient,
           border: 'transparent',
-          fontActive: palette.white,
+          fontActive: palette.secondary600,
           backgroundActive: palette.primary600,
           borderActive: 'transparent'
         },
@@ -314,7 +314,7 @@ export default {
       font: palette.grey600,
       background: palette.grey300,
       fontActive: palette.white,
-      backgroundActive: palette.primary500
+      backgroundActive: palette.primaryGradient
     },
     toast: {
       success: {
@@ -488,6 +488,8 @@ export default {
     },
     books: {
       saltyText: '#d16923',
+      selectBorder: '#9b115f',
+      contentQuestionMark: '#a635ff',
       resources: {
         tmi: {
           background: '#ebf4fe',
@@ -505,7 +507,20 @@ export default {
           background: '#fdedf6',
           font: '#9b115f'
         }
+      },
+      navigation: {
+        backgroundDark: '#EFD8CB',
+        backgroundLight: '#FFF3ED'
       }
+    },
+    flashcards: {
+      boxes: {
+        active: '#E7E6E5',
+        background: '#D2E3ED',
+        font: '#316689'
+      },
+      hotkeysLegend:
+        'linear-gradient(180deg, rgba(228, 228, 228, 1) 0%, rgba(255, 255, 255, 1) 100%)'
     }
   }
 }

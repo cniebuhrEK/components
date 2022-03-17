@@ -1,5 +1,5 @@
 import React from 'react'
-import theme from '../theme/theme'
+import { getTheme } from '../theme'
 import { components } from 'react-select'
 import { isNotNilOrEmpty } from './ramda'
 import styled from 'styled-components'
@@ -13,11 +13,11 @@ export const SELECT_SIZES = {
 const getHoverBorderColor = (disabled: boolean, error: any) => {
   switch (true) {
     case disabled:
-      return theme.colors.selects.disabled.borderActive
+      return getTheme().colors.selects.disabled.borderActive
     case error:
-      return theme.colors.main.error500
+      return getTheme().colors.main.error500
     default:
-      return theme.colors.selects.input.borderActive
+      return getTheme().colors.selects.input.borderActive
   }
 }
 
@@ -35,44 +35,44 @@ const getHoverCursor = (disabled: boolean, searchable: boolean) => {
 const getBorderColor = (disabled: boolean, error: boolean) => {
   switch (true) {
     case disabled:
-      return theme.colors.selects.disabled.border
+      return getTheme().colors.selects.disabled.border
     case error:
-      return theme.colors.main.error500
+      return getTheme().colors.main.error500
     default:
-      return theme.colors.selects.input.border
+      return getTheme().colors.selects.input.border
   }
 }
 
 const getInputTextColor = (disabled: boolean, error: boolean) => {
   switch (true) {
     case disabled:
-      return theme.colors.selects.disabled.font
+      return getTheme().colors.selects.disabled.font
     case error:
-      return theme.colors.main.error500
+      return getTheme().colors.main.error500
     default:
-      return theme.colors.selects.input.font
+      return getTheme().colors.selects.input.font
   }
 }
 
 const getFontColor = (isFocused: boolean, isDisabled: boolean) => {
   switch (true) {
     case isFocused && !isDisabled:
-      return theme.colors.selects.input.fontActive
+      return getTheme().colors.selects.input.fontActive
     case isDisabled:
-      return theme.colors.selects.disabled.font
+      return getTheme().colors.selects.disabled.font
     default:
-      return theme.colors.selects.input.font
+      return getTheme().colors.selects.input.font
   }
 }
 
 const getBackgroundColor = (isFocused: boolean, isDisabled: boolean) => {
   switch (true) {
     case isFocused && !isDisabled:
-      return theme.colors.selects.input.backgroundActive
+      return getTheme().colors.selects.input.backgroundActive
     case isDisabled:
-      return theme.colors.selects.disabled.background
+      return getTheme().colors.selects.disabled.background
     default:
-      return theme.colors.selects.input.background
+      return getTheme().colors.selects.input.background
   }
 }
 
@@ -101,32 +101,32 @@ export const REACT_SELECT_STYLES = {
       boxSizing: 'border-box',
       position: 'relative',
       backgroundColor: isDisabled
-        ? theme.colors.selects.disabled.background
-        : theme.colors.selects.input.background,
+        ? getTheme().colors.selects.disabled.background
+        : getTheme().colors.selects.input.background,
       borderStyle: 'solid',
       borderWidth: '1px',
-      borderRadius: theme.shape.borderRadiusNormal,
+      borderRadius: getTheme().shape.borderRadiusNormal,
       borderColor: getBorderColor(isDisabled, error),
       color: getInputTextColor(isDisabled, error),
       fontSize: '13px',
       padding: '0 14px',
-      fontFamily: theme.typography.fontFamily,
+      fontFamily: getTheme().typography.fontFamily,
       minHeight:
         size === SELECT_SIZES.small
-          ? theme.dimensions.inputSmallHeight
-          : theme.dimensions.inputHeight,
-      transition: `all 200ms ${theme.transitions.easing.easeInOut} 0ms`,
+          ? getTheme().dimensions.inputSmallHeight
+          : getTheme().dimensions.inputHeight,
+      transition: `all 200ms ${getTheme().transitions.easing.easeInOut} 0ms`,
       '&:hover': {
         cursor: getHoverCursor(isDisabled, isSearchable),
         borderColor: getHoverBorderColor(isDisabled, error)
       },
       '&:focus-within': {
-        background: theme.colors.selects.input.backgroundActive,
+        background: getTheme().colors.selects.input.backgroundActive,
         borderWidth: '1px',
         borderColor: getBorderColor(isDisabled, error),
         color: error
-          ? theme.colors.main.error500
-          : theme.colors.selects.input.fontActive
+          ? getTheme().colors.main.error500
+          : getTheme().colors.selects.input.fontActive
       },
       '& input': isSearchable ? {} : { height: '1px' }
     }
@@ -159,26 +159,26 @@ export const REACT_SELECT_STYLES = {
       top: '100%',
       left: '0',
       margin: '0',
-      backgroundColor: theme.colors.selects.option.background,
-      boxShadow: theme.shadows.mainShadow,
-      zIndex: theme.zIndex.dropdown
+      backgroundColor: getTheme().colors.selects.option.background,
+      boxShadow: getTheme().shadows.mainShadow,
+      zIndex: getTheme().zIndex.dropdown
     }
   },
   menuList: (_provided, _state) => {
     return {
-      backgroundColor: theme.colors.selects.option.background,
+      backgroundColor: getTheme().colors.selects.option.background,
       maxHeight: '300px',
       overflowY: 'auto',
       boxSizing: 'border-box',
-      zIndex: theme.zIndex.dropdown
+      zIndex: getTheme().zIndex.dropdown
     }
   },
   option: (_provided, state: { isFocused: boolean }) => {
     const { isFocused } = state
     return {
-      color: theme.colors.selects.option.font,
-      fontFamily: theme.typography.fontFamily,
-      zIndex: theme.zIndex.dropdown,
+      color: getTheme().colors.selects.option.font,
+      fontFamily: getTheme().typography.fontFamily,
+      zIndex: getTheme().zIndex.dropdown,
       cursor: 'pointer',
       fontSize: '14px',
       padding: '6px 16px',
@@ -186,17 +186,19 @@ export const REACT_SELECT_STYLES = {
       overflow: 'visible',
       whiteSpace: 'nowrap',
       backgroundColor: isFocused
-        ? theme.colors.selects.option.backgroundActive
-        : theme.colors.selects.option.background,
-      transition: `background-color 200ms ${theme.transitions.easing.easeInOut} 0ms`,
+        ? getTheme().colors.selects.option.backgroundActive
+        : getTheme().colors.selects.option.background,
+      transition: `background-color 200ms ${
+        getTheme().transitions.easing.easeInOut
+      } 0ms`,
       '&:hover': {
-        backgroundColor: theme.colors.selects.option.backgroundActive
+        backgroundColor: getTheme().colors.selects.option.backgroundActive
       },
       '&:active': {
-        backgroundColor: theme.colors.selects.option.backgroundActive
+        backgroundColor: getTheme().colors.selects.option.backgroundActive
       },
       '&:focus': {
-        backgroundColor: theme.colors.selects.option.backgroundActive
+        backgroundColor: getTheme().colors.selects.option.backgroundActive
       }
     }
   },
@@ -217,8 +219,8 @@ export const REACT_SELECT_STYLES = {
     return {
       '&:hover': {
         color: isDisabled
-          ? theme.colors.selects.disabled.fontActive
-          : theme.colors.selects.input.fontActive
+          ? getTheme().colors.selects.disabled.fontActive
+          : getTheme().colors.selects.input.fontActive
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
@@ -233,8 +235,8 @@ export const REACT_SELECT_STYLES = {
       display: 'flex',
       alignItems: 'center',
       padding: '6px',
-      backgroundColor: theme.colors.main.grey300,
-      borderRadius: theme.shape.borderRadiusSmall,
+      backgroundColor: getTheme().colors.main.grey300,
+      borderRadius: getTheme().shape.borderRadiusSmall,
       marginRight: '9px',
       wordBreak: 'keep-all'
     }
@@ -252,36 +254,36 @@ export const REACT_SELECT_STYLES = {
       cursor: 'pointer',
       transition: 'all 200ms cubic-bezier(0, 0, 0.2, 1) 0ms',
       '&:hover': {
-        color: theme.colors.main.white
+        color: getTheme().colors.main.white
       }
     }
   },
   noOptionsMessage: (_provided, _state) => {
     return {
-      color: theme.colors.selects.option.font,
-      fontFamily: theme.typography.fontFamily,
-      zIndex: theme.zIndex.dropdown,
+      color: getTheme().colors.selects.option.font,
+      fontFamily: getTheme().typography.fontFamily,
+      zIndex: getTheme().zIndex.dropdown,
       cursor: 'pointer',
       fontSize: '13px',
       padding: '6px 16px',
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.colors.selects.option.background
+      backgroundColor: getTheme().colors.selects.option.background
     }
   },
   loadingMessage: (_provided, _state) => {
     return {
-      color: theme.colors.selects.option.font,
-      fontFamily: theme.typography.fontFamily,
-      zIndex: theme.zIndex.dropdown,
+      color: getTheme().colors.selects.option.font,
+      fontFamily: getTheme().typography.fontFamily,
+      zIndex: getTheme().zIndex.dropdown,
       cursor: 'pointer',
       fontSize: '13px',
       padding: '6px 16px',
       lineHeight: '1.5',
       overflow: 'visible',
       whiteSpace: 'nowrap',
-      backgroundColor: theme.colors.selects.option.background
+      backgroundColor: getTheme().colors.selects.option.background
     }
   },
   placeholder: (_provided, _state) => {
@@ -298,14 +300,14 @@ export const REACT_SELECT_STYLES = {
     const { isFocused } = state
     return {
       color: isFocused
-        ? theme.colors.selects.input.fontActive
-        : theme.colors.selects.input.font,
+        ? getTheme().colors.selects.input.fontActive
+        : getTheme().colors.selects.input.font,
       cursor: 'pointer'
     }
   },
   loadingIndicator: (_provided, _state) => {
     return {
-      color: theme.colors.selects.input.font,
+      color: getTheme().colors.selects.input.font,
       display: 'flex',
       alignItems: 'center',
       fontSize: '4px'

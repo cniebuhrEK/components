@@ -92,7 +92,7 @@ const TabTriggersContainer = styled.div`
 
 const TabTrigger = styled.div`
   cursor: pointer;
-  background-color: ${({ theme, active }) =>
+  background: ${({ theme, active }) =>
     active ? theme.colors.tabs.backgroundActive : theme.colors.tabs.background};
   color: ${({ theme, active }) =>
     active ? theme.colors.tabs.fontActive : theme.colors.tabs.font};
