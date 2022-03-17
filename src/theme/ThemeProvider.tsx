@@ -1,51 +1,25 @@
 import React from 'react'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import defaultTheme from './theme'
-import themeDark from './themeDark'
-import themeLight from './themeLight'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { DndProvider } from 'react-dnd'
 import { mergeDeepRight } from 'ramda'
 
 import Fonts from './fonts'
+import { useTheme } from './themeUtils'
 
 interface ThemeProviderProps {
   theme?: any
-  withNotification?: boolean
-  darkMode?: boolean
   children: JSX.Element
-}
-
-const notificationTheme = {
-  ...defaultTheme,
-  withNotification: true,
-  dimensions: {
-    ...defaultTheme.dimensions,
-    studentTopNavHeight: '112px'
-  }
 }
 
 const ThemeProvider = ({
   theme = {},
-  children,
-  withNotification,
-  darkMode
+  children
 }: ThemeProviderProps): JSX.Element => {
-  const currentTheme = withNotification ? notificationTheme : defaultTheme
-  const themeMode = darkMode
-    ? {
-        ...currentTheme,
-        ...themeDark
-      }
-    : {
-        ...currentTheme,
-        ...themeLight
-      }
-
-  console.log(mergeDeepRight(themeMode, theme))
+  const currentTheme = useTheme()
 
   return (
-    <StyledThemeProvider theme={mergeDeepRight(themeMode, theme)}>
+    <StyledThemeProvider theme={mergeDeepRight(currentTheme, theme)}>
       <DndProvider backend={HTML5Backend}>
         <Fonts />
         {children}
