@@ -94,21 +94,14 @@ const StudentTopNavigation = (
     setMenuPosition({ top: dimensions.top, left: dimensions.left })
   }
 
-  React.useEffect(() => {
-    setTimeout(saveMenuPosition, 300)
-
-    window.addEventListener('resize', saveMenuPosition)
-    return () => {
-      window.removeEventListener('resize', saveMenuPosition)
-    }
-  }, [])
-
   const handleMouseLeave = () => {
+    saveMenuPosition()
     setOpen(false)
     resetLevel1()
     resetLevel2()
   }
   const handleMouseEnter = () => {
+    saveMenuPosition()
     setOpen(true)
     onMenuOpen && onMenuOpen()
   }
