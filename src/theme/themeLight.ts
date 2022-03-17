@@ -452,6 +452,9 @@ export default {
       }
     },
     dashboard: {
+      dataLabels: '#949596',
+      barsFrom: '#E9001C',
+      barsTo: '#FFD900',
       barsVertical: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
       barsHorizontal: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
       totalProgress: '#A4A4A5',
