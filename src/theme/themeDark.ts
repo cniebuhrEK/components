@@ -470,6 +470,15 @@ export default {
       totalProgressShadowDark: '#000',
       totalProgressBackground: '#1B1C1F',
       questions: {
+        correctBarFrom: '#4D4F51',
+        correctBarVia: '#FAA307',
+        correctBarTo: '#FFD900',
+        incorrectBarFrom: '#4D4F51',
+        incorrectBarVia: '#EF3615',
+        incorrectBarTo: '#E9001C',
+        untriedBarFrom: '#1B1C1F',
+        untriedBarVia: '#767779',
+        untriedBarTo: '#5F6062',
         correctColor: '#FFA800',
         correctBar:
           'linear-gradient(270deg, #FFD900 0.19%, #FAA307 11.11%, #4D4F51 100%)',
