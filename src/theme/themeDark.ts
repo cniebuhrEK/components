@@ -280,7 +280,7 @@ export default {
     },
     modal: {
       overlay: 'rgba(26, 26, 26, .6)',
-      background: palette.white,
+      background: palette.darkGradient,
       heading: palette.heading
     },
     topNav: {
