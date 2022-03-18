@@ -10,26 +10,32 @@ interface ReactModalProps {
   children: JSX.Element
   handleClose: () => void
   open?: boolean
+  blank?: boolean
   title?: string
   [x: string]: any
 }
 
 const Modal = (props: ReactModalProps): JSX.Element => {
-  const { children, handleClose, open, title, ...rest } = props
+  const { children, handleClose, open, title, blank, ...rest } = props
 
   return (
     <StyledReactModal
       contentElement={props => (
         <div {...props} onClick={e => e.stopPropagation()}>
-          <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
-          <Close onClick={handleClose}>
-            <CloseIcon />
-          </Close>
+          {!blank && (
+            <>
+              <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
+              <Close onClick={handleClose}>
+                <CloseIcon />
+              </Close>
+            </>
+          )}
           {children}
         </div>
       )}
       onRequestClose={handleClose}
       isOpen={open}
+      blank={blank}
       {...rest}
     />
   )
@@ -115,6 +121,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     position: relative;
     display: inline-block;
     padding: 48px 20px;
+    padding: ${({ blank }) => (blank ? '24px 16px' : '48px 20px')};
     background: ${({ theme }) => theme.colors.modal.background};
     box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
