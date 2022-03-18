@@ -23,12 +23,12 @@ const Modal = (props: ReactModalProps): JSX.Element => {
       contentElement={props => (
         <div {...props} onClick={e => e.stopPropagation()}>
           {!blank && (
-            <>
+            <React.Fragment>
               <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
               <Close onClick={handleClose}>
                 <CloseIcon />
               </Close>
-            </>
+            </React.Fragment>
           )}
           {children}
         </div>
