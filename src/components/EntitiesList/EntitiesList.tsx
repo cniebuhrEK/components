@@ -213,7 +213,7 @@ const TableEmptyState = styled.div`
 
 const TableContainer = styled.div`
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.backgrounds.main};
+  background: ${({ theme }) => theme.colors.backgrounds.main};
   box-shadow: ${({ theme }) => theme.shadows.mainShadow};
   padding: 0 21px 36px;
 `

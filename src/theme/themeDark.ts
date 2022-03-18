@@ -238,8 +238,8 @@ export default {
         background: palette.white,
         border: palette.grey300,
         fontActive: palette.primary500,
-        backgroundActive: palette.text,
-        borderActive: palette.text
+        backgroundActive: palette.tertinary600,
+        borderActive: palette.tertinary600
       },
       disabled: {
         font: palette.grey300,
@@ -308,7 +308,7 @@ export default {
     table: {
       font: palette.text,
       border: palette.grey300,
-      background: palette.white
+      background: palette.black
     },
     tabs: {
       font: palette.grey600,
