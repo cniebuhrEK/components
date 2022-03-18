@@ -466,6 +466,7 @@ export default {
       barsHorizontal: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
       totalProgress: '#A4A4A5',
       totalProgressShadowLight: '#5F6062',
+      totalProgressShadowMedium: '#767779',
       totalProgressShadowDark: '#000',
       totalProgressBackground: '#1B1C1F',
       questions: {
