@@ -96,5 +96,9 @@ export { default as ScoreFileIcon } from './ScoreFile'
 export { default as PlayInCircleIcon } from './PlayInCircle'
 export { default as PlayInSquaresIcon } from './PlayInSquares'
 export { default as TotalProgressIcon } from './TotalProgressIcon'
+<<<<<<< HEAD
 export { default as ChartIcon } from './ChartIcon'
 export { default as ShowIcon } from './ShowIcon'
+=======
+export { default as AddContainedIcon } from './AddContained'
+>>>>>>> master

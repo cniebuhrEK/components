@@ -1,11 +1,17 @@
 // Navigation/Student/TopNav.tsx - Top navigation component
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../Button'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import useOutsideClick from '../../hooks/useOutsideClick'
+import {
+  themeDarkVariant,
+  themeKey,
+  eventsNames,
+  themeEvents
+} from '../../theme'
 
 type PureLink = {
   label: string
@@ -88,28 +94,41 @@ const StudentTopNavigation = (
     setMenuPosition({ top: dimensions.top, left: dimensions.left })
   }
 
-  React.useEffect(() => {
-    setTimeout(saveMenuPosition, 300)
-
-    window.addEventListener('resize', saveMenuPosition)
-    return () => {
-      window.removeEventListener('resize', saveMenuPosition)
-    }
-  }, [])
-
   const handleMouseLeave = () => {
+    saveMenuPosition()
     setOpen(false)
     resetLevel1()
     resetLevel2()
   }
   const handleMouseEnter = () => {
+    saveMenuPosition()
     setOpen(true)
     onMenuOpen && onMenuOpen()
   }
 
-  const logoUrl: string = showCrackUniversityLogo
-    ? '/assets/logo/CrackUniversityLogo.svg'
-    : '/assets/logo/LogoDarkBg.svg'
+  const getExamsLogo = () =>
+    localStorage.getItem(themeKey) === themeDarkVariant
+      ? '/assets/logo/ExamsLogoLightBg.svg'
+      : '/assets/logo/ExamsLogoDarkBg.svg'
+
+  const getKrackULogo = () =>
+    localStorage.getItem(themeKey) === themeDarkVariant
+      ? '/assets/logo/KrackUniversityLogoDarkBg.svg'
+      : '/assets/logo/KrackUniversityLogoLightBg.svg'
+
+  const getLogo = () =>
+    showCrackUniversityLogo ? getKrackULogo() : getExamsLogo()
+
+  const [logoUrl, setLogoUrl] = useState(getLogo())
+
+  const saveLogoUrl = () => setLogoUrl(getLogo())
+
+  useEffect(() => {
+    themeEvents.on(eventsNames.themeUpdated, saveLogoUrl)
+    return () => {
+      themeEvents.off(eventsNames.themeUpdated, saveLogoUrl)
+    }
+  }, [showCrackUniversityLogo])
 
   const redirectByHref = url => {
     window.location.href = url

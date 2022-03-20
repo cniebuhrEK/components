@@ -238,8 +238,8 @@ export default {
         background: palette.white,
         border: palette.grey300,
         fontActive: palette.primary500,
-        backgroundActive: palette.text,
-        borderActive: palette.text
+        backgroundActive: palette.tertinary600,
+        borderActive: palette.tertinary600
       },
       disabled: {
         font: palette.grey300,
@@ -280,7 +280,7 @@ export default {
     },
     modal: {
       overlay: 'rgba(26, 26, 26, .6)',
-      background: palette.white,
+      background: palette.darkGradient,
       heading: palette.heading
     },
     topNav: {
@@ -319,7 +319,7 @@ export default {
     table: {
       font: palette.text,
       border: palette.grey300,
-      background: palette.white
+      background: palette.black
     },
     tabs: {
       font: palette.grey600,
@@ -477,9 +477,19 @@ export default {
       barsHorizontal: 'linear-gradient(270deg, #FFD900 0%, #E9001C 100%)',
       totalProgress: '#A4A4A5',
       totalProgressShadowLight: '#5F6062',
+      totalProgressShadowMedium: '#767779',
       totalProgressShadowDark: '#000',
       totalProgressBackground: '#1B1C1F',
       questions: {
+        correctBarFrom: '#4D4F51',
+        correctBarVia: '#FAA307',
+        correctBarTo: '#FFD900',
+        incorrectBarFrom: '#4D4F51',
+        incorrectBarVia: '#EF3615',
+        incorrectBarTo: '#E9001C',
+        untriedBarFrom: '#1B1C1F',
+        untriedBarVia: '#767779',
+        untriedBarTo: '#5F6062',
         correctColor: '#FFA800',
         correctBar:
           'linear-gradient(270deg, #FFD900 0.19%, #FAA307 11.11%, #4D4F51 100%)',

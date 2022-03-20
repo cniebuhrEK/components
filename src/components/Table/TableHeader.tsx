@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import ArrowDown from '../../icons/ArrowDown'
 
@@ -32,6 +32,26 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
     align
   } = props
 
+  const [isSticky, setIsSticky] = useState(0)
+  const headerRef = useRef(null)
+
+  const handleScroll = () => {
+    // @ts-ignore
+    const windowOffset = document.documentElement.scrollTop || 0
+    // @ts-ignore
+    const offset = headerRef.current.getBoundingClientRect().top
+    // @ts-ignore
+    setIsSticky(windowOffset > offset)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   const handleSort = () => {
     if (sortable && onChangeSort) {
       onChangeSort(columnId)
@@ -40,6 +60,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 
   return (
     <StyledTableHeader
+      ref={headerRef}
       align={align}
       sortable={sortable}
       sticky={sticky}
@@ -47,6 +68,7 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
       isSortActive={isSortActive}
       onClick={handleSort}
       id={id}
+      isSticky={isSticky}
     >
       {sortable && align === 'right' && (
         <ArrowContainer>
@@ -68,7 +90,8 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
 
 const StyledTableHeader = styled.th`
   border-color: ${({ theme }) => theme.colors.table.border};
-  background-color: ${({ theme }) => theme.colors.table.background};
+  background-color: ${({ theme, isSticky }) =>
+    isSticky ? theme.colors.table.background : 'transparent'};
   border-spacing: 0;
   border-style: solid;
   border-width: 0 0 1px;
