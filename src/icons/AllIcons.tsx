@@ -97,7 +97,9 @@ import {
   ScoreFileIcon,
   PlayInCircleIcon,
   PlayInSquaresIcon,
-  TotalProgressIcon
+  TotalProgressIcon,
+  ChartIcon,
+  ShowIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -205,7 +207,9 @@ const AllIcons = () => {
     { component: ScoreFileIcon, title: 'ScoreFile' },
     { component: PlayInCircleIcon, title: 'PlayInCircle' },
     { component: PlayInSquaresIcon, title: 'PlayInSquares' },
-    { component: TotalProgressIcon, title: 'TotalProgress' }
+    { component: TotalProgressIcon, title: 'TotalProgress' },
+    { component: ChartIcon, title: 'Chart' },
+    { component: ShowIcon, title: 'Show' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)

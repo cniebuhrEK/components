@@ -354,7 +354,7 @@ const AdditionalElementsContainer = styled.div`
   line-height: 14px;
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
 `
 
 //
