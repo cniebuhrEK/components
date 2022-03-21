@@ -506,6 +506,13 @@ export default {
         background400: 'linear-gradient(180deg, #F57500 0%, #AC5200 100%)',
         background500: 'linear-gradient(180deg, #DF4100 0%, #9C2E00 100%)',
         background600: 'linear-gradient(180deg, #A30014 0%, #72000E 100%)'
+      },
+      mcat: {
+        strokeDash: '#49494C'
+      },
+      sb: {
+        mainLine: '#BDFA3B',
+        strokeDash: '#49494C'
       }
     },
     books: {
