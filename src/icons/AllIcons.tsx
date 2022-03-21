@@ -98,12 +98,9 @@ import {
   PlayInCircleIcon,
   PlayInSquaresIcon,
   TotalProgressIcon,
-<<<<<<< HEAD
   ChartIcon,
-  ShowIcon
-=======
+  ShowIcon,
   AddContainedIcon
->>>>>>> master
 } from './'
 
 const IconContainer = styled.div`
@@ -212,12 +209,9 @@ const AllIcons = () => {
     { component: PlayInCircleIcon, title: 'PlayInCircle' },
     { component: PlayInSquaresIcon, title: 'PlayInSquares' },
     { component: TotalProgressIcon, title: 'TotalProgress' },
-<<<<<<< HEAD
     { component: ChartIcon, title: 'Chart' },
-    { component: ShowIcon, title: 'Show' }
-=======
+    { component: ShowIcon, title: 'Show' },
     { component: AddContainedIcon, title: 'AddContainedIcon' }
->>>>>>> master
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
