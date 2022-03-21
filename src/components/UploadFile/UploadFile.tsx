@@ -142,7 +142,6 @@ export const UploadFileContainer = styled.div`
   }
 
   .file-upload__name {
-    max-width: calc(100% - 25px - 16px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
