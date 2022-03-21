@@ -98,6 +98,8 @@ import {
   PlayInCircleIcon,
   PlayInSquaresIcon,
   TotalProgressIcon,
+  ChartIcon,
+  ShowIcon,
   AddContainedIcon
 } from './'
 
@@ -207,6 +209,8 @@ const AllIcons = () => {
     { component: PlayInCircleIcon, title: 'PlayInCircle' },
     { component: PlayInSquaresIcon, title: 'PlayInSquares' },
     { component: TotalProgressIcon, title: 'TotalProgress' },
+    { component: ChartIcon, title: 'Chart' },
+    { component: ShowIcon, title: 'Show' },
     { component: AddContainedIcon, title: 'AddContainedIcon' }
   ]
 
