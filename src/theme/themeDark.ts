@@ -251,9 +251,9 @@ export default {
       },
       option: {
         font: palette.text,
-        background: palette.white,
+        background: 'linear-gradient(180deg, #323335 0%, #1B1C1F 100%)',
         fontActive: palette.primary500,
-        backgroundActive: palette.grey200
+        backgroundActive: '#49494c'
       }
     },
     backgrounds: {
@@ -287,17 +287,18 @@ export default {
       border: palette.black,
       background: 'linear-gradient(180deg, #49494C 0%, #101112 100%)',
       freeTrial: '#FFFDCD',
-      overlay: 'rgba(0, 0, 0, 0.6)',
+      overlay: 'rgba(26, 26, 26, .6)',
       totalSaltyBucksAndTimer: {
         boxShadow: 'inset -2px -2px 6px #49494c, inset 2px 2px 8px #090909',
-        iconBackground: 'linear-gradient(180deg, #bdfa3b 0%, #377712 100%)',
+        saltyBucksBackground:
+          'linear-gradient(180deg, #bdfa3b 0%, #377712 100%)',
         background: '#1b1c1f',
-        borderAndBackground: '#49494c',
-        historyIncomeBackground:
-          'linear-gradient(180deg, #323335 0%, #1b1c1f 100%);',
+        border: 'transparent',
+        dropdownLineBreak: '#49494c',
         clockIconBackground:
           'linear-gradient(180deg, #fea700 0%, #bd5000 100%)',
-        pauseIconBackground: '#323335'
+        pauseIconBackground: '#323335',
+        iconFont: palette.heading
       }
     },
     mainMenu: {

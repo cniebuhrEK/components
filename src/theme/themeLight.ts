@@ -277,20 +277,21 @@ export default {
       heading: palette.heading
     },
     topNav: {
-      border: palette.black,
-      background: 'linear-gradient(180deg, #49494C 0%, #101112 100%)',
+      border: palette.grey300,
+      background: palette.white,
       freeTrial: '#FFFDCD',
-      overlay: 'rgba(0, 0, 0, 0.6)',
+      overlay: 'rgba(252, 251, 250, 0.6)',
       totalSaltyBucksAndTimer: {
-        boxShadow: 'inset -2px -2px 6px #49494c, inset 2px 2px 8px #090909',
-        iconBackground: 'linear-gradient(180deg, #bdfa3b 0%, #377712 100%)',
-        background: '#1b1c1f',
-        borderAndBackground: '#49494c',
-        historyIncomeBackground:
-          'linear-gradient(180deg, #323335 0%, #1b1c1f 100%);',
+        boxShadow: 'none',
+        saltyBucksBackground:
+          'linear-gradient(180deg, #bdfa3b 0%, #377712 100%)',
+        background: palette.white,
+        border: palette.grey300,
+        dropdownLineBreak: palette.text,
         clockIconBackground:
-          'linear-gradient(180deg, #fea700 0%, #bd5000 100%)',
-        pauseIconBackground: '#323335'
+          'linear-gradient(180deg, #FEA700 0%, #BD5000 100%)',
+        pauseIconBackground: palette.grey600,
+        iconFont: palette.white
       }
     },
     mainMenu: {
