@@ -1,4 +1,9 @@
-import palette from './colors'
+import colors from './colors'
+
+export const palette = {
+  ...colors,
+  primaryGradient: 'linear-gradient(180deg, #F8961A 0%, #D47B00 100%)'
+}
 
 export default {
   colors: {
@@ -32,10 +37,10 @@ export default {
     buttons: {
       contained: {
         primary: {
-          font: palette.secondary600,
-          background: palette.primary500,
+          font: palette.white,
+          background: palette.primaryGradient,
           border: 'transparent',
-          fontActive: palette.white,
+          fontActive: palette.secondary600,
           backgroundActive: palette.primary600,
           borderActive: 'transparent'
         },
@@ -277,16 +282,16 @@ export default {
       heading: palette.heading
     },
     topNav: {
-      border: palette.grey300,
-      background: palette.white,
+      border: 'transparent',
+      background: 'linear-gradient(180deg, #FFFFFF 0%, #E6E9EC 100%)',
       freeTrial: '#FFFDCD',
       overlay: 'rgba(252, 251, 250, 0.6)',
       totalSaltyBucksAndTimer: {
-        boxShadow: 'none',
+        boxShadow: 'inset 2px 2px 6px #DDDFE1',
         saltyBucksBackground:
           'linear-gradient(180deg, #bdfa3b 0%, #377712 100%)',
         background: palette.white,
-        border: palette.grey300,
+        border: 'transparent',
         dropdownLineBreak: palette.text,
         clockIconBackground:
           'linear-gradient(180deg, #FEA700 0%, #BD5000 100%)',
@@ -319,7 +324,7 @@ export default {
       font: palette.grey600,
       background: palette.grey300,
       fontActive: palette.white,
-      backgroundActive: palette.primary500
+      backgroundActive: palette.primaryGradient
     },
     toast: {
       success: {
@@ -537,7 +542,8 @@ export default {
         }
       },
       navigation: {
-        backgroundDark: '#EFD8CB',
+        backgroundDark: 'linear-gradient(180deg, #FBEBE2 0%, #EFD8CB 100%)',
+        borderDark: '#EFD8CB',
         backgroundLight: '#FFF3ED'
       }
     },
