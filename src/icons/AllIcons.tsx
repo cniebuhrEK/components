@@ -102,7 +102,8 @@ import {
   TotalProgressIcon,
   ChartIcon,
   ShowIcon,
-  AddContainedIcon
+  AddContainedIcon,
+  InfoCircleIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -215,7 +216,8 @@ const AllIcons = () => {
     { component: TotalProgressIcon, title: 'TotalProgress' },
     { component: ChartIcon, title: 'Chart' },
     { component: ShowIcon, title: 'Show' },
-    { component: AddContainedIcon, title: 'AddContainedIcon' }
+    { component: AddContainedIcon, title: 'AddContainedIcon' },
+    { component: InfoCircleIcon, title: 'InfoCircleIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
