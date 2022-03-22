@@ -504,6 +504,13 @@ export default {
       speedometer: {
         infoButtonBorder: '#323335',
         infoButtonBackground: '#1B1C1F'
+      },
+      mcat: {
+        strokeDash: '#49494C'
+      },
+      sb: {
+        mainLine: '#BDFA3B',
+        strokeDash: '#49494C'
       }
     },
     books: {

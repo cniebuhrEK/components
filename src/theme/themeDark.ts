@@ -511,6 +511,13 @@ export default {
         infoButtonBorder: '#323335',
         infoButtonBackground: '#1B1C1F',
         buttonText: '#A4A4A5'
+      },
+      mcat: {
+        strokeDash: '#49494C'
+      },
+      sb: {
+        mainLine: '#BDFA3B',
+        strokeDash: '#49494C'
       }
     },
     books: {
