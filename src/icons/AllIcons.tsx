@@ -60,7 +60,7 @@ import {
   GlossaryIcon,
   ResizeIcon,
   SaltyBucksIcon,
-  SbCalendarIcon,
+  SaltyBucksCalendarIcon,
   SaltyBucksCounterIcon,
   ReloadIcon,
   SubtractIcon,
