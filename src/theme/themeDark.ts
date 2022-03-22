@@ -510,7 +510,8 @@ export default {
       speedometer: {
         infoButtonBorder: '#323335',
         infoButtonBackground: '#1B1C1F',
-        buttonText: '#A4A4A5'
+        buttonText: '#A4A4A5',
+        infoBoxBackground: 'rgba(9, 9, 9, 0.9)'
       },
       mcat: {
         strokeDash: '#49494C'
