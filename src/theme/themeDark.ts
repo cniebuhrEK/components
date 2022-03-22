@@ -284,7 +284,7 @@ export default {
       heading: palette.heading
     },
     topNav: {
-      border: palette.black,
+      border: 'transparent',
       background: 'linear-gradient(180deg, #49494C 0%, #101112 100%)',
       freeTrial: '#FFFDCD',
       overlay: 'rgba(26, 26, 26, .6)',
@@ -538,7 +538,8 @@ export default {
         }
       },
       navigation: {
-        backgroundDark: '#EFD8CB',
+        backgroundDark: 'linear-gradient(180deg, #FBEBE2 0%, #EFD8CB 100%)',
+        borderDark: '#EFD8CB',
         backgroundLight: '#FFF3ED'
       }
     },
