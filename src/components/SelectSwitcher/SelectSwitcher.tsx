@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface SelectSwitcherProps {
   value: string
@@ -24,162 +23,75 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
     width
   } = props
 
-  const [dimensionLeft, setDimensionLeft] = React.useState(0)
-  const [containerWidth, setContainerWidth] = React.useState(0)
   const [value, setValue] = React.useState(defaultValue)
-
-  const saveDimensions = () => {
-    setDimensionLeft(0)
-    const containerElement = document.getElementById(id)
-    const activeElement = document.getElementById(`switcher-option-${value}`)
-    if (activeElement && containerElement) {
-      const activeElementDimensions = activeElement.getBoundingClientRect()
-      const containerElementDimensions =
-        containerElement.getBoundingClientRect()
-
-      setContainerWidth(containerElementDimensions.width)
-
-      const offset =
-        activeElementDimensions.left - containerElementDimensions.left
-      setDimensionLeft(offset)
-    }
-  }
 
   React.useEffect(() => {
     setValue(defaultValue)
   }, [defaultValue])
 
   React.useEffect(() => {
-    saveDimensions()
     onChange(value)
   }, [value])
 
   const handleClick = value => () => setValue(value)
 
-  const findOptionPosition = value => {
-    const containerElement = document.getElementById(id)
-    const optionElement = document.getElementById(`switcher-option-${value}`)
+  console.log({
+    handleClick,
+    options
+  })
 
-    if (optionElement && containerElement) {
-      const containerElementDimensions =
-        containerElement.getBoundingClientRect()
-      const optionElementDimensions = optionElement.getBoundingClientRect()
-
-      return optionElementDimensions.left - containerElementDimensions.left
-    } else {
-      return 0
-    }
-  }
-
-  const RenderOptions = options.map(option => (
-    <SwitcherOption
-      key={`switcher-option-${option.value}`}
-      id={`switcher-option-${option.value}`}
-    />
-  ))
-
-  const RenderTriggers = options.map(option => (
-    <SwitcherTrigger
+  const renderOptions = options.map(option => (
+    <Option
+      key={`${id}-option-${option.value}`}
       onClick={handleClick(option.value)}
-      id={`switcher-trigger-${option.value}`}
-      key={`switcher-trigger-${option.value}`}
-      width={100 / options.length}
-      left={findOptionPosition(option.value)}
+      active={option.value === value}
     >
-      <div className='switcher-option-label'>{option.label}</div>
-    </SwitcherTrigger>
+      {option.label}
+    </Option>
   ))
 
   return (
-    <React.Fragment>
-      <Container width={width}>
-        {label && <SwitcherLabel width={containerWidth}>{label}</SwitcherLabel>}
-        <SwitcherContainer id={id}>
-          {RenderOptions}
-          <ActiveOption
-            isVisible={isNotNilOrEmpty(value)}
-            dimensionLeft={dimensionLeft}
-          />
-          <SwitcherTriggers>{RenderTriggers}</SwitcherTriggers>
-        </SwitcherContainer>
-      </Container>
-    </React.Fragment>
+    <Container id={id} width={width}>
+      {label && <Label>{label}</Label>}
+      <OptionsContainer>{renderOptions}</OptionsContainer>
+    </Container>
   )
 }
 
 export default SelectSwitcher
 
 const Container = styled.div`
-  display: inline-block;
-  width: ${({ width }) => width || '100px'};
-`
-
-const SwitcherContainer = styled.div`
-  position: relative;
   display: inline-flex;
-  padding: 2px 8px;
-  border-radius: 16px;
-  border: 1px solid ${({ theme }) => theme.colors.selectSwitcher.border};
-  background-color: ${({ theme }) => theme.colors.selectSwitcher.background};
-  cursor: pointer;
-  justify-content: space-between;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: ${({ width }) => width || '100px'};
+  min-height: 40px;
 `
 
-const SwitcherOption = styled.div`
-  position: relative;
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-`
-
-const ActiveOption = styled.div`
-  display: ${({ isVisible }) => (isVisible ? 'inline-block' : 'none')};
-  opacity: ${({ isVisible }) => (isVisible ? '1' : '0')};
-  position: absolute;
-  left: ${({ dimensionLeft }) => dimensionLeft}px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.selectSwitcher.mark};
-  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
-`
-
-const SwitcherTriggers = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-`
-
-const SwitcherLabel = styled.div`
-  display: block;
-  text-align: center;
-  width: ${({ width }) => width}px;
+const Label = styled.div`
+  font-weight: 700;
   font-size: 11px;
-  line-height: 16px;
+  line-height: 13px;
 `
 
-const SwitcherTrigger = styled.div`
-  width: ${({ width }) => width}%;
-  height: 100%;
+const Option = styled.div`
+  cursor: pointer;
+  font-size: 11px;
+  line-height: 17px;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
+  color: ${({ theme, active }) =>
+    active ? theme.colors.main.white : theme.colors.main.grey600};
+  background: ${({ theme, active }) =>
+    active ? theme.colors.main.primaryGradient : 'transparent'};
+  transition: background 800ms
+    ${({ theme }) => theme.transitions.easing.easeInOut};
+`
 
-  .switcher-option-label {
-    position: absolute;
-    text-align: center;
-    top: calc(100%);
-    left: ${({ left }) => left}px;
-    font-size: 11px;
-    line-height: 16px;
-  }
-
-  &:last-child {
-    .switcher-option-label {
-      left: auto;
-      right: 0;
-    }
-  }
+const OptionsContainer = styled.div`
+  display: flex;
+  gap: 6px;
+  margin-top: 3px;
 `
