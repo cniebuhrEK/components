@@ -491,8 +491,7 @@ export default {
         incorrectBar:
           'linear-gradient(270deg, #EF3615 0%, #E9001C 13.54%, #4D4F51 100%)',
         untriedColor: '#5F6062',
-        untriedBar: '#5F6062',
-        buttonText: '#A4A4A5'
+        untriedBar: '#5F6062'
       },
       flashcards: {
         background200: 'linear-gradient(180deg, #FFD900 0%, #B38B00 100%)',
@@ -503,7 +502,8 @@ export default {
       },
       speedometer: {
         infoButtonBorder: '#323335',
-        infoButtonBackground: '#1B1C1F'
+        infoButtonBackground: '#1B1C1F',
+        buttonText: '#A4A4A5'
       },
       mcat: {
         strokeDash: '#49494C'
