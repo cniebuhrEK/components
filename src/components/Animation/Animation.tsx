@@ -10,10 +10,11 @@ interface AnimationProps {
   data: any
   hideControls?: boolean
   autoplay?: boolean
+  className?: string
 }
 
 const Animation = (props: AnimationProps): JSX.Element => {
-  const { data, hideControls, autoplay } = props
+  const { data, hideControls, autoplay, className } = props
   const dropdownRef = React.useRef(null)
 
   const [isSpeedOpen, setIsSpeedOpen] = React.useState(false)
@@ -74,6 +75,7 @@ const Animation = (props: AnimationProps): JSX.Element => {
 
   return (
     <AnimationContainer
+      className={className}
       isStopped={isStopped}
       isPaused={isPaused}
       isOpen={isSpeedOpen}
