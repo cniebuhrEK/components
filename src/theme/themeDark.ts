@@ -296,7 +296,7 @@ export default {
         border: 'transparent',
         dropdownLineBreak: '#49494c',
         clockIconBackground:
-          'linear-gradient(180deg, #fea700 0%, #bd5000 100%)',
+          'linear-gradient(180deg, #B87D55 0%, #42210B 100%);',
         pauseIconBackground: '#323335',
         iconFont: palette.heading
       }
@@ -481,6 +481,7 @@ export default {
       totalProgressShadowMedium: '#767779',
       totalProgressShadowDark: '#000',
       totalProgressBackground: '#1B1C1F',
+      chartsGridLine: '#49494C',
       questions: {
         correctBarFrom: '#4D4F51',
         correctBarVia: '#FAA307',
