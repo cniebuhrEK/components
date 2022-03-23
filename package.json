@@ -14,8 +14,10 @@
   },
   "scripts": {
     "reset": "rm -rf yarn.lock && yarn install",
-    "build": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build && microbundle-crl --no-compress --format modern,cjs",
-    "start": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build && microbundle-crl watch --no-compress --format modern,cjs",
+    "prebuild": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
+    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
+    "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "run-s build",
     "prepare": "yarn run build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
@@ -23,8 +25,10 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "storybook:start": "rm -rf ./public && mkdir -p ./public/assets && cp -R ./src/assets ./public && start-storybook -p 6006 --static-dir public",
-    "storybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets && cp -R ./src/assets ./public"
+    "prestorybook:start": "rm -rf ./public && mkdir -p ./public/assets && cp -R ./src/assets ./public",
+    "storybook:start": "start-storybook -p 6006 --static-dir public",
+    "prestorybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets",
+    "storybook:build": "cp -R ./src/assets ./public"
   },
   "peerDependencies": {
     "react": "^16.0.0"
