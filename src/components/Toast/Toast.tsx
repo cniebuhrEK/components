@@ -100,8 +100,8 @@ const Container = styled.div`
   position: fixed;
   top: 60px;
   left: 20px;
-  width: ${({ open }) => (open ? '100vw' : '0px')};
-  display: flex;
+  width: ${({ open }) => (open ? 'auto' : '0px')};
+  display: inline-flex;
   justify-content: left;
   z-index: ${({ open, theme }) =>
     open ? theme.zIndex.snackbarToast : 'unset'};
