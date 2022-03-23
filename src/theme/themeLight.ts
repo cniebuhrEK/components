@@ -288,6 +288,7 @@ export default {
       overlay: 'rgba(252, 251, 250, 0.6)',
       totalSaltyBucksAndTimer: {
         boxShadow: 'inset 2px 2px 6px #DDDFE1',
+        saltyHistoryHeaders: '#A4A4A5',
         saltyBucksBackground:
           'linear-gradient(180deg, #bdfa3b 0%, #377712 100%)',
         background: palette.white,
@@ -498,6 +499,10 @@ export default {
           'linear-gradient(270deg, #EF3615 0%, #E9001C 13.54%, #4D4F51 100%)',
         untriedColor: '#5F6062',
         untriedBar: '#5F6062'
+      },
+      learningTime: {
+        barsFrom: '#A9D2E9',
+        barsTo: '#A9D2E9'
       },
       flashcards: {
         background200: 'linear-gradient(180deg, #FFD900 0%, #B38B00 100%)',
