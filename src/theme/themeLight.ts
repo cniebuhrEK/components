@@ -296,7 +296,8 @@ export default {
         dropdownLineBreak: palette.text,
         clockIconBackground:
           'linear-gradient(180deg, #B87D55 0%, #42210B 100%);',
-        pauseIconBackground: palette.grey600,
+        pauseIconBackground:
+          'linear-gradient(180deg, #DDDFE1 0%, #7B7C7D 100%)',
         iconFont: palette.white
       }
     },
