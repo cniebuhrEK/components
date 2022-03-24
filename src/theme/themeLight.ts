@@ -516,6 +516,7 @@ export default {
         GradientFlashcards4B: '#9C2E00',
         GradientFlashcards5A: '#A30014',
         GradientFlashcards5B: '#72000E',
+        strokeDash: '#49494C'
       },
       speedometer: {
         infoButtonBorder: '#323335',
