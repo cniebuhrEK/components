@@ -40,8 +40,8 @@ export default {
           font: palette.white,
           background: palette.primaryGradient,
           border: 'transparent',
-          fontActive: palette.secondary600,
-          backgroundActive: palette.primary600,
+          fontActive: palette.text,
+          backgroundActive: 'linear-gradient(180deg, #D47B00 0%, #F8961A 100%)',
           borderActive: 'transparent'
         },
         secondary: {
