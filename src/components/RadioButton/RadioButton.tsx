@@ -13,7 +13,7 @@ interface RadioButtonProps {
   label?: JSX.Element | string
   onChange: (e: any) => void
   isDisabled?: boolean
-  contentQuestion?: boolean
+  alignTop?: boolean
 }
 
 const RadioButton = (props: RadioButtonProps) => {
@@ -27,7 +27,7 @@ const RadioButton = (props: RadioButtonProps) => {
     value,
     isRight,
     isAnswered,
-    contentQuestion
+    alignTop
   } = props
 
   function handleOnChange(): void {
@@ -36,7 +36,7 @@ const RadioButton = (props: RadioButtonProps) => {
 
   return (
     <Container
-      contentQuestion={contentQuestion}
+      alignTop={alignTop}
       id={id}
       name={name}
       onClick={handleOnChange}
@@ -77,8 +77,7 @@ const Container = styled.div`
   display: flex;
   font-size: 12px;
   line-height: 16px;
-  align-items: ${({ contentQuestion }) =>
-    contentQuestion ? 'flex-start' : 'center'};
+  align-items: ${({ alignTop }) => (alignTop ? 'flex-start' : 'center')};
   cursor: pointer;
   user-select: none;
   /* margin-top: 5px; */
