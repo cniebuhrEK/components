@@ -35,11 +35,6 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
 
   const handleClick = value => () => setValue(value)
 
-  console.log({
-    handleClick,
-    options
-  })
-
   const renderOptions = options.map(option => (
     <Option
       key={`${id}-option-${option.value}`}
