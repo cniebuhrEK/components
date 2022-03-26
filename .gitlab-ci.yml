@@ -4,7 +4,7 @@ variables:
   RANCHER_ENVIRONMENT_PRODUCTION: desmart-production
   RANCHER_STACK_NAME: $CI_ENV-$CI_PROJECT_PATH_SLUG
   RANCHER_CONFIG_DIR: gitlab/deploy/staging
-  NODE_VERSION: "node:12.16.0-slim"
+  NODE_VERSION: "node:16.14.0-slim"
   NODE_VERSION_DOCKERFILE: "desmart/nginx-spa:latest"
   WEB_IMAGE: "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
   HOSTNAME: $CI_PROJECT_PATH_SLUG.$CI_ENV.desmart.live
