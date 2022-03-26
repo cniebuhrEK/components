@@ -9,7 +9,7 @@
   "main": "build/index.js",
   "module": "build/index.modern.js",
   "source": "src/index.tsx",
-  "type": "module",
+  "type": "commonjs",
   "engines": {
     "node": ">=10"
   },

@@ -1,4 +1,4 @@
-export default function (plop) {
+module.exports = function (plop) {
   plop.setGenerator('Icon', {
     description: 'Adds new svg icon',
     prompts: [
