@@ -1,4 +1,5 @@
 // icon/index.ts - Icon component module exports
+// appendIcons
 
 export { default as AddIcon } from './Add'
 export { default as ArrowDownIcon } from './ArrowDown'

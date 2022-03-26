@@ -5,6 +5,8 @@ import styled from 'styled-components'
 import * as R from 'ramda'
 
 import {
+  // appendIconImport
+
   AddIcon,
   ArrowDownIcon,
   ArrowRightIcon,
@@ -119,6 +121,8 @@ const IconContainer = styled.div`
 
 const AllIcons = () => {
   const icons = [
+    // appendIconComponent
+
     { component: AddIcon, title: 'AddIcon' },
     { component: ArrowDownIcon, title: 'ArrowDownIcon' },
     { component: ArrowRightIcon, title: 'ArrowRightIcon' },
