@@ -105,7 +105,8 @@ import {
   ChartIcon,
   ShowIcon,
   AddContainedIcon,
-  InfoCircleIcon
+  InfoCircleIcon,
+  ContentQuestionsOutlineIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -205,6 +206,10 @@ const AllIcons = () => {
     { component: ProjectionsIcon, title: 'ProjectionsIcon' },
     { component: DragIcon, title: 'DragIcon' },
     { component: ContentQuestionsIcon, title: 'ContentQuestionsIcon' },
+    {
+      component: ContentQuestionsOutlineIcon,
+      title: 'ContentQuestionsOutlineIcon'
+    },
     { component: CloseContainedIcon, title: 'CloseContainedIcon' },
     { component: CheckmarkContainedIcon, title: 'CheckmarkContainedIcon' },
     { component: FlipIcon, title: 'FlipIcon' },
