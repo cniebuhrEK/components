@@ -559,6 +559,11 @@ export default {
         backgroundDark: 'linear-gradient(180deg, #FBEBE2 0%, #EFD8CB 100%)',
         borderDark: '#EFD8CB',
         backgroundLight: '#FFF3ED'
+      },
+      chapterExam: {
+        backgroundDark: 'linear-gradient(180deg, #FAE7E7 0%, #EBB8B8 100%)',
+        borderDark: '#EBB8B8',
+        backgroundLight: '#FAE7E7'
       }
     },
     flashcards: {
