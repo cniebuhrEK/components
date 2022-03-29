@@ -84,11 +84,10 @@ export const StyledButton = styled.button`
   align-items: center;
   outline: none;
   box-sizing: border-box;
-  padding: 0 16px;
   padding: ${({ size }) => {
     switch (size) {
       case buttonSizes.small:
-        return '0 18.5px'
+        return '0 8px'
       case buttonSizes.normal:
       default:
         return '0 16px;'
