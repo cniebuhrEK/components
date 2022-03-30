@@ -140,9 +140,30 @@ const Range = styled.input`
   &::-webkit-slider-runnable-track {
     height: 2px;
     width: 40px;
-    background: ${({ theme }) => theme.colors.volumeControl.thumb};
+    background-color: ${({ theme }) => theme.colors.volumeControl.thumb};
     border-radius: 1px;
     -webkit-appearance: none;
+  }
+
+  &::-moz-range-track {
+    height: 2px;
+    width: 40px;
+    background: ${({ theme }) => theme.colors.volumeControl.thumb};
+    border-radius: 1px;
+  }
+
+  &::-moz-range-progress {
+    height: 2px;
+    width: 40px;
+    border-radius: 1px;
+    background: ${({ theme }) => theme.colors.volumeControl.range};
+  }
+
+  &::-ms-track {
+    height: 2px;
+    width: 40px;
+    background-color: ${({ theme }) => theme.colors.volumeControl.thumb};
+    border-radius: 1px;
   }
 
   &::-webkit-slider-thumb {
@@ -153,6 +174,17 @@ const Range = styled.input`
     margin-top: -4px;
     border: 1px solid ${({ theme }) => theme.colors.volumeControl.border};
     -webkit-appearance: none;
+    z-index: 1;
+    position: relative;
+  }
+
+  &::-moz-range-thumb {
+    height: 8px;
+    width: 8px;
+    border-radius: 100%;
+    background-color: ${({ theme }) => theme.colors.volumeControl.range};
+    margin-top: -4px;
+    border: 1px solid ${({ theme }) => theme.colors.volumeControl.border};
     z-index: 1;
     position: relative;
   }
