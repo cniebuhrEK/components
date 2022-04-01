@@ -404,6 +404,20 @@ export default {
         backgroundActive: palette.grey600
       }
     },
+    statusTags: {
+      green: {
+        background: palette.success200,
+        text: palette.success500
+      },
+      orange: {
+        background: palette.primary200,
+        text: palette.primary500
+      },
+      grey: {
+        background: palette.grey300,
+        text: palette.grey600
+      }
+    },
     highlights: {
       green: {
         background: '#13fb03'
