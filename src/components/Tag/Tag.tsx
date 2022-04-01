@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import CorrectMark from '../../icons/CorrectMark'
 
 interface TagProps {
   color:
@@ -42,6 +43,9 @@ export const Tag = (props: TagProps): JSX.Element => {
       isActive={isActive}
       isStatic={isStatic}
     >
+      <IconWrapper>
+        {isActive && <CorrectMark width='8px' height='7' />}
+      </IconWrapper>
       {text}
     </TagContainer>
   )
@@ -59,26 +63,38 @@ const TagContainer = styled.div`
   min-height: ${({ theme }) => theme.dimensions.tagHeight};
   min-width: ${({ theme }) => theme.dimensions.tagWidth};
   cursor: ${({ isStatic }) => (isStatic ? 'text' : 'pointer')};
+  color: ${({ theme, isActive, color }) =>
+    theme.colors.tags[color][isActive ? 'background' : 'backgroundActive']};
   padding: 0 11px;
   font-size: 10px !important;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid
-    ${({ theme, isActive }) =>
-      isActive ? theme.colors.main.text : 'transparent'};
+    ${({ theme, color }) => theme.colors.tags[color].backgroundActive};
   border-radius: 2px;
   text-align: center;
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
   background-color: ${({ theme, color, isActive }) =>
-    theme.colors.tags[color][isActive ? 'backgroundActive' : 'background']};
+    theme.colors.tags[color][
+      isActive ? 'backgroundActive' : theme.colors.main.white
+    ]};
 
-  &:hover,
+  &:hover {
+    color: ${({ theme, color }) => theme.colors.tags[color].backgroundActive};
+    border-color: ${({ theme, color }) =>
+      theme.colors.tags[color].backgroundHover};
+    background-color: ${({ theme, color }) =>
+      theme.colors.tags[color].backgroundHover};
+  }
   &:active {
     border-color: ${({ theme, isStatic }) =>
       isStatic ? 'transparent' : theme.colors.main.text};
     background-color: ${({ theme, color, isStatic }) =>
       theme.colors.tags[color][isStatic ? 'background' : 'backgroundActive']};
   }
+`
+const IconWrapper = styled.div`
+  padding-right: 4px;
 `

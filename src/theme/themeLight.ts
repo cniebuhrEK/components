@@ -359,48 +359,59 @@ export default {
     },
     tags: {
       purple: {
-        background: '#fbdaed',
-        backgroundActive: '#f391c8'
+        background: palette.white,
+        backgroundHover: '##FAC2E2',
+        backgroundActive: '#770A48'
       },
       red: {
-        background: '#f6b6b7',
-        backgroundActive: '#ed6e70'
+        background: palette.white,
+        backgroundHover: '#FFCFD0',
+        backgroundActive: '#B61719'
       },
       blue: {
-        background: '#c4ddfd',
-        backgroundActive: '#75affa'
+        background: palette.white,
+        backgroundHover: '#C8D7FF',
+        backgroundActive: '#3861C9'
       },
       green: {
-        background: '#dafbe8',
-        backgroundActive: '#91f3bb'
+        background: palette.white,
+        backgroundHover: '#DAFBE3',
+        backgroundActive: '#1B7734'
       },
       orange: {
-        background: '#fef6eb',
-        backgroundActive: '#fbd29d'
+        background: palette.white,
+        backgroundHover: '#FEF6EB',
+        backgroundActive: '#AE5700'
       },
       brown: {
-        background: '#f6dccb',
-        backgroundActive: '#e49662'
+        background: palette.white,
+        backgroundHover: '#F1E8E1',
+        backgroundActive: '#845A3F'
       },
       mathPurple: {
-        background: '#d6d7f1',
-        backgroundActive: '#a5a6f6'
+        background: palette.white,
+        backgroundHover: '#E4E5FF',
+        backgroundActive: '#4E2393'
       },
       aquamarine: {
-        background: '#dbe2c6',
+        background: palette.white,
+        backgroundHover: '#dbe2c6',
         backgroundActive: '#d2e598'
       },
       turquoise: {
-        background: '#d6f1f1',
-        backgroundActive: '#93f4f4'
+        background: palette.white,
+        backgroundHover: '#CAFAFA',
+        backgroundActive: '#31B7B7'
       },
       yellow: {
-        background: '#fde19d',
-        backgroundActive: '#ffc22a'
+        background: palette.white,
+        backgroundHover: '#FFF6C1',
+        backgroundActive: '#E4C200'
       },
       grey: {
-        background: palette.grey300,
-        backgroundActive: palette.grey600
+        background: palette.white,
+        backgroundHover: '#DDDDDD',
+        backgroundActive: '#606060'
       }
     },
     highlights: {
