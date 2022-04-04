@@ -12,6 +12,8 @@ export const BLUE_HIGHLIGHTS_BLOT_NAME = 'blue-highlights'
 export const RED_HIGHLIGHTS_BLOT_NAME = 'red-highlights'
 export const ORANGE_HIGHLIGHTS_BLOT_NAME = 'orange-highlights'
 
+// plop_font_color_blot_const
+
 export const FONT_COLOR_BLUE = 'font-color-blue'
 export const FONT_COLOR_ORANGE = 'font-color-orange'
 export const FONT_COLOR_GREEN = 'font-color-green'
@@ -220,6 +222,8 @@ export const addRedFontColorBlotToQuill = () => {
   createFontColorBlot(FONT_COLOR_RED, 'color-red')
 }
 
+// plop_font_color_blot_create
+
 export const addYellowFontColorBlotToQuill = () => {
   createFontColorBlot(FONT_COLOR_YELLOW, 'color-yellow')
 }
@@ -256,6 +260,8 @@ export const addFontColorBlots = () => {
   addBlackFontColorBlotToQuill()
   addBrownFontColorBlotToQuill()
   addRedFontColorBlotToQuill()
+  // plop_font_color_blot_init
+
   addYellowFontColorBlotToQuill()
   addGreyFontColorBlotToQuill()
   addVioletFontColorBlotToQuill()

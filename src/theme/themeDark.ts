@@ -454,6 +454,8 @@ export default {
       }
     },
     editorFontColors: {
+      // plop_editor_color_theme_path
+
       orange: {
         font: palette.primary500
       },

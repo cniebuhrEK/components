@@ -6,6 +6,7 @@ import { PaletteIcon, TrashIcon } from '../../../icons'
 
 import {
   addFontColorBlots,
+  // plop_import_font_color_blot_definition
   FONT_COLOR_BLUE,
   FONT_COLOR_ORANGE,
   FONT_COLOR_GREEN,
@@ -43,6 +44,7 @@ const AddAdminHighlightsButton = (
 
   const removeAllColorFormats = () => {
     const allBlots = [
+      // plop_create_font_color_blot_list
       FONT_COLOR_BLUE,
       FONT_COLOR_ORANGE,
       FONT_COLOR_GREEN,
@@ -162,6 +164,8 @@ const AddAdminHighlightsButton = (
             onClick={handleFontColor(FONT_COLOR_LIGHTBROWN)}
             className='picker-color color-lightBrown'
           />
+          {/* plop_create_font_color_blot_component */}
+
         </div>
       </div>
     </ButtonContainer>
@@ -395,6 +399,8 @@ const ColorPicker = styled.div`
     background-color: ${({ theme }) =>
       theme.colors.editorFontColors.lightBrown.font};
   }
+
+  // plop_create_font_color_blot_component_color_class
 
   &.color-remove {
     background-color: transparent;

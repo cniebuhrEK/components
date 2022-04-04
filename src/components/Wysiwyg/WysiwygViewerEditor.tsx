@@ -341,53 +341,55 @@ const TextViewerContainer = styled.div`
     color: ${({ theme }) => theme.colors.editorFontColors.red.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-grey,
+  .ql-container .ql-editor .color-grey .admin-highlights,
   .color-grey {
     color: ${({ theme }) => theme.colors.editorFontColors.grey.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-yellow,
+  .ql-container .ql-editor .color-yellow .admin-highlights,
   .color-yellow {
     color: ${({ theme }) =>
       theme.colors.editorFontColors.yellow.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-violet,
+  .ql-container .ql-editor .color-violet .admin-highlights,
   .color-violet {
     color: ${({ theme }) =>
       theme.colors.editorFontColors.violet.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-lightRed,
+  .ql-container .ql-editor .color-lightRed .admin-highlights,
   .color-lightRed {
     color: ${({ theme }) =>
       theme.colors.editorFontColors.lightRed.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-azure,
+  .ql-container .ql-editor .color-azure .admin-highlights,
   .color-azure {
     color: ${({ theme }) =>
       theme.colors.editorFontColors.azure.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-lightGreen,
+  .ql-container .ql-editor .color-lightGreen .admin-highlights,
   .color-lightGreen {
     color: ${({ theme }) =>
       theme.colors.editorFontColors.lightGreen.font} !important;
   }
 
-  .ql-container .ql-editor .admin-highlights .color-green,
-  .ql-container .ql-editor .color-green .admin-highlights,
+  .ql-container .ql-editor .admin-highlights .color-lightBrown,
+  .ql-container .ql-editor .color-lightBrown .admin-highlights,
   .color-lightBrown {
     color: ${({ theme }) =>
       theme.colors.editorFontColors.lightBrown.font} !important;
   }
+
+  // plop_create_font_color_class_viewer
 `
 
 export default memo(WysiwygViewer)
