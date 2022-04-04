@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface StatusTagProps {
-  color: 'green' | 'orange' | 'grey' | null
+  color: 'green' | 'orange' | 'grey' | 'red' | null
   text: string
 }
 
