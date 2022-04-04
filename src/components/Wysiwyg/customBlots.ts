@@ -19,6 +19,13 @@ export const FONT_COLOR_PURPLE = 'font-color-purple'
 export const FONT_COLOR_BLACK = 'font-color-black'
 export const FONT_COLOR_BROWN = 'font-color-brown'
 export const FONT_COLOR_RED = 'font-color-red'
+export const FONT_COLOR_YELLOW = 'font-color-yellow'
+export const FONT_COLOR_GREY = 'font-color-grey'
+export const FONT_COLOR_VIOLET = 'font-color-violet'
+export const FONT_COLOR_LIGHTRED = 'font-color-lightRed'
+export const FONT_COLOR_AZURE = 'font-color-azure'
+export const FONT_COLOR_LIGHTGREEN = 'font-color-lightGreen'
+export const FONT_COLOR_LIGHTBROWN = 'font-color-lightBrown'
 
 Quill.debug('error')
 
@@ -213,6 +220,34 @@ export const addRedFontColorBlotToQuill = () => {
   createFontColorBlot(FONT_COLOR_RED, 'color-red')
 }
 
+export const addYellowFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_YELLOW, 'color-yellow')
+}
+
+export const addGreyFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_GREY, 'color-grey')
+}
+
+export const addVioletFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_VIOLET, 'color-violet')
+}
+
+export const addLightRedFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_LIGHTRED, 'color-lightRed')
+}
+
+export const addAzureFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_AZURE, 'color-azure')
+}
+
+export const addLightGreenFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_LIGHTGREEN, 'color-lightGreen')
+}
+
+export const addLightBrownFontColorBlotToQuill = () => {
+  createFontColorBlot(FONT_COLOR_LIGHTBROWN, 'color-lightBrown')
+}
+
 export const addFontColorBlots = () => {
   addBlueFontColorBlotToQuill()
   addOrangeFontColorBlotToQuill()
@@ -221,4 +256,11 @@ export const addFontColorBlots = () => {
   addBlackFontColorBlotToQuill()
   addBrownFontColorBlotToQuill()
   addRedFontColorBlotToQuill()
+  addYellowFontColorBlotToQuill()
+  addGreyFontColorBlotToQuill()
+  addVioletFontColorBlotToQuill()
+  addLightRedFontColorBlotToQuill()
+  addAzureFontColorBlotToQuill()
+  addLightGreenFontColorBlotToQuill()
+  addLightBrownFontColorBlotToQuill()
 }

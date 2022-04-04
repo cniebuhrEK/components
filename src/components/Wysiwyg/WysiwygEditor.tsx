@@ -446,6 +446,54 @@ const WysiwygContainer = styled.div`
   .color-red {
     color: ${({ theme }) => theme.colors.editorFontColors.red.font} !important;
   }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-grey {
+    color: ${({ theme }) => theme.colors.editorFontColors.grey.font} !important;
+  }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-yellow {
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.yellow.font} !important;
+  }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-violet {
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.violet.font} !important;
+  }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-lightRed {
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.lightRed.font} !important;
+  }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-azure {
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.azure.font} !important;
+  }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-lightGreen {
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.lightGreen.font} !important;
+  }
+
+  .ql-container .ql-editor .admin-highlights .color-green,
+  .ql-container .ql-editor .color-green .admin-highlights,
+  .color-lightBrown {
+    color: ${({ theme }) =>
+      theme.colors.editorFontColors.lightBrown.font} !important;
+  }
 `
 
 export default WysiwygEditor

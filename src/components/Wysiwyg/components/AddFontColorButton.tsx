@@ -12,7 +12,14 @@ import {
   FONT_COLOR_PURPLE,
   FONT_COLOR_BLACK,
   FONT_COLOR_BROWN,
-  FONT_COLOR_RED
+  FONT_COLOR_RED,
+  FONT_COLOR_YELLOW,
+  FONT_COLOR_GREY,
+  FONT_COLOR_VIOLET,
+  FONT_COLOR_LIGHTRED,
+  FONT_COLOR_AZURE,
+  FONT_COLOR_LIGHTGREEN,
+  FONT_COLOR_LIGHTBROWN
 } from './../customBlots'
 import { IconButton } from '../../IconButton'
 
@@ -42,7 +49,14 @@ const AddAdminHighlightsButton = (
       FONT_COLOR_PURPLE,
       FONT_COLOR_BLACK,
       FONT_COLOR_BROWN,
-      FONT_COLOR_RED
+      FONT_COLOR_RED,
+      FONT_COLOR_YELLOW,
+      FONT_COLOR_GREY,
+      FONT_COLOR_VIOLET,
+      FONT_COLOR_LIGHTRED,
+      FONT_COLOR_AZURE,
+      FONT_COLOR_LIGHTGREEN,
+      FONT_COLOR_LIGHTBROWN
     ]
 
     allBlots.forEach(blotName => editorInstance.format(blotName, false))
@@ -97,28 +111,56 @@ const AddAdminHighlightsButton = (
             className='picker-color color-orange'
           />
           <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_YELLOW)}
+            className='picker-color color-yellow'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_BLACK)}
+            className='picker-color color-black'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_GREY)}
+            className='picker-color color-grey'
+          />
+          <ColorPicker
             onClick={handleFontColor(FONT_COLOR_PURPLE)}
             className='picker-color color-purple'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_VIOLET)}
+            className='picker-color color-violet'
           />
           <ColorPicker
             onClick={handleFontColor(FONT_COLOR_RED)}
             className='picker-color color-red'
           />
           <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_LIGHTRED)}
+            className='picker-color color-lightRed'
+          />
+          <ColorPicker
             onClick={handleFontColor(FONT_COLOR_BLUE)}
             className='picker-color color-blue'
+          />
+          <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_AZURE)}
+            className='picker-color color-azure'
           />
           <ColorPicker
             onClick={handleFontColor(FONT_COLOR_GREEN)}
             className='picker-color color-green'
           />
           <ColorPicker
+            onClick={handleFontColor(FONT_COLOR_LIGHTGREEN)}
+            className='picker-color color-lightGreen'
+          />
+          <ColorPicker
             onClick={handleFontColor(FONT_COLOR_BROWN)}
             className='picker-color color-brown'
           />
           <ColorPicker
-            onClick={handleFontColor(FONT_COLOR_BLACK)}
-            className='picker-color color-black'
+            onClick={handleFontColor(FONT_COLOR_LIGHTBROWN)}
+            className='picker-color color-lightBrown'
           />
         </div>
       </div>
@@ -216,12 +258,50 @@ const ButtonContainer = styled.div`
     top: calc(100% + 5px);
     left: 0;
     transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
-    min-width: 130px;
+    min-width: 100px;
     z-index: ${({ theme }) => theme.zIndex.menu};
-    max-width: 150px;
+    max-width: 100px;
 
     button {
-      box-shadow: ${props => props.theme.shadows.mainShadow};
+      color: ${({ theme }) =>
+        theme.colors.buttons.contained.primary.font} !important;
+      background: ${({ theme }) =>
+        theme.colors.buttons.contained.primary.background};
+      border-color: ${({ theme }) =>
+        theme.colors.buttons.contained.primary.border};
+      box-shadow: none;
+      border-width: 1px;
+      border-style: solid;
+      border-radius: 4px;
+
+      * {
+        color: ${({ theme }) =>
+          theme.colors.buttons.contained.primary.font} !important;
+      }
+
+      svg {
+        fill: ${({ theme }) =>
+          theme.colors.buttons.contained.primary.font} !important;
+      }
+
+      &:hover {
+        color: ${({ theme }) =>
+          theme.colors.buttons.contained.primary.fontActive} !important;
+        background: ${({ theme }) =>
+          theme.colors.buttons.contained.primary.backgroundActive};
+        border-color: ${({ theme }) =>
+          theme.colors.buttons.contained.primary.borderActive};
+
+        svg {
+          fill: ${({ theme }) =>
+            theme.colors.buttons.contained.primary.fontActive} !important;
+        }
+
+        * {
+          color: ${({ theme }) =>
+            theme.colors.buttons.contained.primary.fontActive} !important;
+        }
+      }
     }
 
     svg {
@@ -230,11 +310,14 @@ const ButtonContainer = styled.div`
   }
 
   .picker-colors {
-    max-width: 75px;
+    max-width: 55px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     gap: 5px 20px;
+  }
+
+  .picker-color {
   }
 `
 
@@ -242,7 +325,6 @@ const ColorPicker = styled.div`
   width: 11.65px;
   height: 11.65px;
   border-radius: 50%;
-  box-shadow: ${props => props.theme.shadows.mainShadow};
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
@@ -278,6 +360,40 @@ const ColorPicker = styled.div`
 
   &.color-red {
     background-color: ${({ theme }) => theme.colors.editorFontColors.red.font};
+  }
+
+  &.color-grey {
+    background-color: ${({ theme }) => theme.colors.editorFontColors.grey.font};
+  }
+
+  &.color-yellow {
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.yellow.font};
+  }
+
+  &.color-violet {
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.violet.font};
+  }
+
+  &.color-lightRed {
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.lightRed.font};
+  }
+
+  &.color-azure {
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.azure.font};
+  }
+
+  &.color-lightGreen {
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.lightGreen.font};
+  }
+
+  &.color-lightBrown {
+    background-color: ${({ theme }) =>
+      theme.colors.editorFontColors.lightBrown.font};
   }
 
   &.color-remove {

@@ -453,26 +453,47 @@ export default {
       }
     },
     editorFontColors: {
-      green: {
-        font: '#16ca64'
-      },
-      purple: {
-        font: '#9b115f'
-      },
-      blue: {
-        font: '#1a7af8'
-      },
       orange: {
         font: palette.primary500
       },
+      yellow: {
+        font: '#F0D800'
+      },
       black: {
-        font: palette.heading
+        font: '#000'
+      },
+      grey: {
+        font: palette.grey600
+      },
+      purple: {
+        font: '#CB0073'
+      },
+      violet: {
+        font: '#A53DCA'
+      },
+      red: {
+        font: '#A51417'
+      },
+      lightRed: {
+        font: '#FA2F33'
+      },
+      blue: {
+        font: '#1A7AF8'
+      },
+      azure: {
+        font: '#12ECDF'
+      },
+      green: {
+        font: '#009B3E'
+      },
+      lightGreen: {
+        font: '#51E700'
       },
       brown: {
         font: '#42210b'
       },
-      red: {
-        font: palette.error500
+      lightBrown: {
+        font: '#E6A686'
       },
       admin: {
         font: '#D9D9D9'
