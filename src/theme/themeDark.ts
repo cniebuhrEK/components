@@ -427,6 +427,10 @@ export default {
       grey: {
         background: palette.grey300,
         text: palette.grey600
+      },
+      red: {
+        background: palette.error200,
+        text: palette.error500
       }
     },
     highlights: {
