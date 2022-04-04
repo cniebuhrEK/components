@@ -13,10 +13,19 @@ interface ReactModalProps {
   blank?: boolean
   title?: string
   [x: string]: any
+  animationIsLess500px?: boolean
 }
 
 const Modal = (props: ReactModalProps): JSX.Element => {
-  const { children, handleClose, open, title, blank, ...rest } = props
+  const {
+    children,
+    handleClose,
+    open,
+    title,
+    blank,
+    animationIsLess500px,
+    ...rest
+  } = props
 
   return (
     <StyledReactModal
@@ -36,6 +45,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
       onRequestClose={handleClose}
       isOpen={open}
       blank={blank}
+      animationIsLess500px={animationIsLess500px}
       {...rest}
     />
   )
@@ -126,7 +136,8 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
     outline: 0;
-    min-width: 500px;
+    min-width: ${({ animationIsLess500px }) =>
+      animationIsLess500px ? 'unset' : '500px'};
     margin-top: 100px;
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
