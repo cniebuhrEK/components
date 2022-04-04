@@ -3,7 +3,15 @@ import Icon from '../components/Icon'
 
 export const CorrectMark = props => {
   return (
-    <Icon width='20' height='20' viewBox='0 0 20 16' fill='none' {...props}>
+    <Icon
+      width='1em'
+      height='1em'
+      viewBox='0 0 20 16'
+      fill='none'
+      version='1.1'
+      xmlns='http://www.w3.org/2000/svg'
+      {...props}
+    >
       <g>
         <path
           d='M7.861,15.665c-0.331,0-0.649-0.131-0.884-0.366L0.561,8.883c-0.488-0.489-0.488-1.28,0-1.768

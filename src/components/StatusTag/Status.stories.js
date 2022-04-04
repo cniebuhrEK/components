@@ -1,7 +1,7 @@
 // Status/Status.stories.js - Status story
 
 import React from 'react'
-import StatusTag from 'components/StatusTag/StatusTag'
+import StatusTag from './StatusTag'
 
 const Template = args => <StatusTag {...args} />
 

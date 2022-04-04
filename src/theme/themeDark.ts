@@ -361,7 +361,7 @@ export default {
     tags: {
       purple: {
         background: palette.white,
-        backgroundHover: '##FAC2E2',
+        backgroundHover: '#FAC2E2',
         backgroundActive: '#770A48'
       },
       red: {
@@ -396,8 +396,8 @@ export default {
       },
       aquamarine: {
         background: palette.white,
-        backgroundHover: '#dbe2c6',
-        backgroundActive: '#d2e598'
+        backgroundHover: '#EFF5DC',
+        backgroundActive: '#607321'
       },
       turquoise: {
         background: palette.white,

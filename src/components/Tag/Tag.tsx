@@ -43,9 +43,11 @@ export const Tag = (props: TagProps): JSX.Element => {
       isActive={isActive}
       isStatic={isStatic}
     >
-      <IconWrapper>
-        {isActive && <CorrectMark width='8px' height='7' />}
-      </IconWrapper>
+      {isActive && (
+        <IconWrapper>
+          <CorrectMark />
+        </IconWrapper>
+      )}
       {text}
     </TagContainer>
   )
@@ -77,24 +79,27 @@ const TagContainer = styled.div`
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
   background-color: ${({ theme, color, isActive }) =>
-    theme.colors.tags[color][
-      isActive ? 'backgroundActive' : theme.colors.main.white
-    ]};
+    theme.colors.tags[color][isActive ? 'backgroundActive' : 'background']};
 
   &:hover {
     color: ${({ theme, color }) => theme.colors.tags[color].backgroundActive};
-    border-color: ${({ theme, color }) =>
-      theme.colors.tags[color].backgroundHover};
-    background-color: ${({ theme, color }) =>
-      theme.colors.tags[color].backgroundHover};
+    border-color: ${({ theme, color, isStatic }) =>
+      theme.colors.tags[color][
+        isStatic ? 'backgroundActive' : 'backgroundHover'
+      ]};
+    background-color: ${({ theme, color, isStatic }) =>
+      theme.colors.tags[color][isStatic ? 'background' : 'backgroundHover']};
   }
   &:active {
-    border-color: ${({ theme, isStatic }) =>
-      isStatic ? 'transparent' : theme.colors.main.text};
+    border-color: ${({ theme, color }) =>
+      theme.colors.tags[color].backgroundActive};
     background-color: ${({ theme, color, isStatic }) =>
       theme.colors.tags[color][isStatic ? 'background' : 'backgroundActive']};
   }
 `
 const IconWrapper = styled.div`
   padding-right: 4px;
+  display: inline-flex;
+  line-height: ${({ theme }) => theme.dimensions.tagHeight};
+  align-items: center;
 `
