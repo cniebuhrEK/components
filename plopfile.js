@@ -104,13 +104,13 @@ module.exports = function (plop) {
         type: 'append',
         path: 'src/components/Wysiwyg/components/AddFontColorButton.tsx',
         pattern: /(\/\/ plop_import_font_color_blot_definition\s)/g,
-        template: '\n' + '  FONT_COLOR_{{constantCase name}},'
+        template: '  FONT_COLOR_{{constantCase name}},\n'
       },
       {
         type: 'append',
         path: 'src/components/Wysiwyg/components/AddFontColorButton.tsx',
         pattern: /(\/\/ plop_create_font_color_blot_list\s)/g,
-        template: '\n' + '      FONT_COLOR_{{constantCase name}},'
+        template: '      FONT_COLOR_{{constantCase name}},\n'
       },
       {
         type: 'append',
