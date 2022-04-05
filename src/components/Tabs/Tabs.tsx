@@ -97,6 +97,7 @@ const TabTrigger = styled.div`
   color: ${({ theme, active }) =>
     active ? theme.colors.tabs.fontActive : theme.colors.tabs.font};
   min-width: 80px;
+  padding: 0 12px;
   text-align: center;
   line-height: ${({ active }) => (active ? '21px' : '21px')};
   height: ${({ active }) => (active ? '21px' : '21px')};
