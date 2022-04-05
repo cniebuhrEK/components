@@ -165,7 +165,6 @@ const AddAdminHighlightsButton = (
             className='picker-color color-lightBrown'
           />
           {/* plop_create_font_color_blot_component */}
-
         </div>
       </div>
     </ButtonContainer>
