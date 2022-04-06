@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import PlayIcon from '../../icons/Play'
 import PauseIcon from '../../icons/Pause'
 import StopIcon from '../../icons/Stop'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
 interface AnimationProps {
   data: any
@@ -50,7 +51,7 @@ const Animation = (props: AnimationProps): JSX.Element => {
   }
 
   const options = {
-    animationData: data,
+    animationData: isNotNilOrEmpty(data) ? data : null,
     autoplay: autoplay
   }
 
