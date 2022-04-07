@@ -7,6 +7,10 @@ import * as R from 'ramda'
 import {
   // appendIconImport
 
+  CorrectAnswersIcon,
+  YourScoreIcon,
+  TargetScoreIcon,
+  PercentileRankIcon,
   QuestionCircleIcon,
   AddIcon,
   ArrowDownIcon,
@@ -125,6 +129,10 @@ const AllIcons = () => {
   const icons = [
     // appendIconComponent
 
+    { component: CorrectAnswersIcon, title: 'CorrectAnswersIcon' },
+    { component: YourScoreIcon, title: 'YourScoreIcon' },
+    { component: TargetScoreIcon, title: 'TargetScoreIcon' },
+    { component: PercentileRankIcon, title: 'PercentileRankIcon' },
     { component: QuestionCircleIcon, title: 'QuestionCircleIcon' },
     { component: AddIcon, title: 'AddIcon' },
     { component: ArrowDownIcon, title: 'ArrowDownIcon' },

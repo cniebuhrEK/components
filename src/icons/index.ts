@@ -1,6 +1,10 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as CorrectAnswersIcon } from './CorrectAnswers'
+export { default as YourScoreIcon } from './YourScore'
+export { default as TargetScoreIcon } from './TargetScore'
+export { default as PercentileRankIcon } from './PercentileRank'
 export { default as QuestionCircleIcon } from './QuestionCircle'
 export { default as AddIcon } from './Add'
 export { default as ArrowDownIcon } from './ArrowDown'
