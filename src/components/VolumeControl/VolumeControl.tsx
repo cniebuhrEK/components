@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { SpeakerMuteIcon, SpeakerQuietIcon, SpeakerLoudIcon } from '../../icons'
 import styled from 'styled-components'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
-export const playSound = soundSrc => {
+export const playSound = (soundSrc, vol) => {
   const isPlaying = localStorage.getItem('isPlaying') || 'false'
   if (isPlaying !== 'true') {
     localStorage.setItem('isPlaying', 'true')
@@ -10,7 +11,11 @@ export const playSound = soundSrc => {
     const isMutedFromLocal = localStorage.getItem('isMuted') || 'false'
     const isMuted = isMutedFromLocal === 'true'
     const audio = new Audio(soundSrc)
-    audio.volume = isMuted ? 0 : Number(volume)
+    audio.volume = isMuted
+      ? 0
+      : isNotNilOrEmpty(vol)
+      ? Number(vol)
+      : Number(volume)
     audio.play()
     localStorage.setItem('isPlaying', 'false')
   }
