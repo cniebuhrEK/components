@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as QuestionCircleIcon } from './QuestionCircle'
 export { default as AddIcon } from './Add'
 export { default as ArrowDownIcon } from './ArrowDown'
 export { default as ArrowRightIcon } from './ArrowRight'
