@@ -39,7 +39,7 @@ const Slider = styled.span`
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 16px;
-  border: 1px solid transparent;
+  border: 1px solid ${({ theme }) => theme.colors.toggle.background};
 
   &::before {
     position: absolute;
@@ -48,7 +48,7 @@ const Slider = styled.span`
     width: 12px;
     left: 3px;
     bottom: 1px;
-    background-color: ${({ theme }) => theme.colors.toggle.mark};
+    background-color: ${({ theme }) => theme.colors.toggle.markActive};
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
@@ -56,12 +56,12 @@ const Slider = styled.span`
 
   ${Input}:checked + & {
     background-color: ${({ theme }) => theme.colors.toggle.mark};
-    border-color: ${({ theme }) => theme.colors.toggle.markActive};
+    border-color: ${({ theme }) => theme.colors.toggle.mark};
   }
 
   ${Input}:checked${Input}:disabled + & {
-    background-color: ${({ theme }) => theme.colors.toggle.background};
-    border-color: transparent;
+    background-color: ${({ theme }) => theme.colors.toggle.mark};
+    border-color: ${({ theme }) => theme.colors.toggle.mark};
   }
 
   ${Input}:checked + &::before {
@@ -72,7 +72,7 @@ const Slider = styled.span`
   }
 
   ${Input}:checked${Input}:disabled + &::before {
-    background-color: ${({ theme }) => theme.colors.toggle.mark};
+    background-color: ${({ theme }) => theme.colors.toggle.markActive};
   }
 
   ${Input}:disabled + & {

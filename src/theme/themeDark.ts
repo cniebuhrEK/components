@@ -351,8 +351,8 @@ export default {
       font: palette.text,
       mark: palette.white,
       background: palette.grey300,
-      markActive: palette.success500,
-      backgroundActive: palette.white
+      markActive: palette.white,
+      backgroundActive: palette.grey300
     },
     tooltip: {
       background: palette.text,
