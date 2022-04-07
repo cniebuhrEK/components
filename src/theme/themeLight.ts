@@ -346,13 +346,19 @@ export default {
         border: palette.tertinary600
       }
     },
+    // ///////////////////////
+    // ///////////////////////
+    // ///////////////////////
     toggle: {
       font: palette.text,
-      mark: palette.white,
+      mark: palette.orange500,
       background: palette.grey300,
-      markActive: palette.success500,
-      backgroundActive: palette.white
+      markActive: palette.white,
+      backgroundActive: palette.grey300
     },
+    // ///////////////////////
+    // ///////////////////////
+    // ///////////////////////
     tooltip: {
       background: palette.text,
       font: palette.white
