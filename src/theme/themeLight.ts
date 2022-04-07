@@ -346,9 +346,6 @@ export default {
         border: palette.tertinary600
       }
     },
-    // ///////////////////////
-    // ///////////////////////
-    // ///////////////////////
     toggle: {
       font: palette.text,
       mark: palette.orange500,
@@ -356,9 +353,6 @@ export default {
       markActive: palette.white,
       backgroundActive: palette.grey300
     },
-    // ///////////////////////
-    // ///////////////////////
-    // ///////////////////////
     tooltip: {
       background: palette.text,
       font: palette.white
