@@ -4,45 +4,69 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ReactTooltip from 'react-tooltip'
+import QuestionCircle from '../../icons/QuestionCircle'
 
-interface TooltipProps {
-  children: JSX.Element | string
-  tooltipContent: JSX.Element | string
-  id: string
-}
+type TooltipProps =
+  | {
+      children: JSX.Element | string
+      tooltipContent: JSX.Element | string
+      id: string
+      info?: boolean
+      infoIconColor?: string
+      place?: 'top' | 'right' | 'bottom' | 'left'
+    }
+  | {
+      children?: JSX.Element | string
+      tooltipContent: JSX.Element | string
+      id: string
+      info: boolean
+      infoIconColor?: string
+      place?: 'top' | 'right' | 'bottom' | 'left'
+    }
 
 const Tooltip = ({
   children,
   tooltipContent,
-  id
+  id,
+  info,
+  infoIconColor,
+  place
 }: TooltipProps): JSX.Element => {
   return (
-    <React.Fragment>
+    <Wrapper>
       <TooltipContainer data-tip data-for={id}>
-        {children}
+        {info ? <QuestionMarkIcon color={infoIconColor} /> : children}
       </TooltipContainer>
       <ReactTooltip
         id={id}
-        place='top'
+        place={place || 'top'}
         effect='solid'
         data-class='tooltip-content'
       >
         {tooltipContent}
       </ReactTooltip>
-    </React.Fragment>
+    </Wrapper>
   )
 }
 
 export default Tooltip
 
-export const TooltipContainer = styled.div`
+const Wrapper = styled.div`
   display: inline-block;
-  cursor: pointer;
-
   .__react_component_tooltip {
     background-color: ${props =>
       props.theme.colors.tooltip.background} !important;
     color: ${props => props.theme.colors.tooltip.font} !important;
     font-family: ${props => props.theme.typography.fontFamily} !important;
+    z-index: ${({ theme }) => theme.zIndex.navigation + 1} !important;
   }
+`
+
+export const TooltipContainer = styled.div`
+  display: inline-block;
+  cursor: help;
+`
+
+const QuestionMarkIcon = styled(QuestionCircle)`
+  color: ${({ theme, color }) => color || theme.colors.main.primary500};
 `
