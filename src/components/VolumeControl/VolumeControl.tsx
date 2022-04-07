@@ -3,7 +3,7 @@ import { SpeakerMuteIcon, SpeakerQuietIcon, SpeakerLoudIcon } from '../../icons'
 import styled from 'styled-components'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 
-export const playSound = (soundSrc, vol) => {
+export const playSound = (soundSrc, vol = null) => {
   const isPlaying = localStorage.getItem('isPlaying') || 'false'
   if (isPlaying !== 'true') {
     localStorage.setItem('isPlaying', 'true')
