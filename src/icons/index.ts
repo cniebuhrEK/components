@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as FlagOutlinedIcon } from './FlagOutlined'
 export { default as CorrectAnswersIcon } from './CorrectAnswers'
 export { default as YourScoreIcon } from './YourScore'
 export { default as TargetScoreIcon } from './TargetScore'
