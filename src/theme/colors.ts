@@ -21,6 +21,7 @@ export default {
   success500: '#119B4C',
   currency200: '#E7FBDB',
   currency500: '#85BB65',
+  brown: '#E8C1A0',
   black: '#090909',
   darkGradient: 'linear-gradient(180deg, #323335 0%, #1B1C1F 100%)',
   primaryGradient: 'linear-gradient(180deg, #FFA800 0%, #FF5C00 100%)',
