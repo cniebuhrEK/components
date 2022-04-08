@@ -64,8 +64,6 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  box-shadow: ${props => props.theme.shadows.mainShadow};
-  background-color: ${props => props.theme.colors.backgrounds.main};
 `
 
 const TabTriggersContainer = styled.div`
