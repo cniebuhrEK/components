@@ -32,7 +32,8 @@ export default {
       black: palette.black,
       darkGradient: palette.darkGradient,
       primaryGradient: palette.primaryGradient,
-      currencyGradient: palette.currencyGradient
+      currencyGradient: palette.currencyGradient,
+      brownGradient: palette.brownGradient
     },
     buttons: {
       contained: {

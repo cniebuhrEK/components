@@ -24,5 +24,6 @@ export default {
   black: '#090909',
   darkGradient: 'linear-gradient(180deg, #323335 0%, #1B1C1F 100%)',
   primaryGradient: 'linear-gradient(180deg, #FFA800 0%, #FF5C00 100%)',
-  currencyGradient: 'linear-gradient(180deg, #BDFA3B 0%, #377712 100%)'
+  currencyGradient: 'linear-gradient(180deg, #BDFA3B 0%, #377712 100%)',
+  brownGradient: 'linear-gradient(180deg, #F1DAC6 0%, #FFEEDF 100%);'
 }
