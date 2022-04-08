@@ -53,6 +53,7 @@ export default Tooltip
 
 const Wrapper = styled.div`
   display: inline-block;
+  line-height: 1;
   .__react_component_tooltip {
     background-color: ${props =>
       props.theme.colors.tooltip.background} !important;
