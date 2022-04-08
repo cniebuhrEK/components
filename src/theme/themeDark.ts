@@ -31,6 +31,7 @@ export default {
       success500: palette.success500,
       currency200: palette.currency200,
       currency500: palette.currency500,
+      brown: palette.brown,
       black: palette.black,
       darkGradient: palette.darkGradient,
       primaryGradient: palette.primaryGradient,
