@@ -11,8 +11,11 @@ export default {
       heading: palette.heading,
       text: palette.text,
       primary200: palette.primary200,
+      primary300: palette.primary300,
+      primary400: palette.primary400,
       primary500: palette.primary500,
       primary600: palette.primary600,
+      primary700: palette.primary700,
       secondary200: palette.secondary200,
       secondary500: palette.secondary500,
       secondary600: palette.secondary600,
@@ -350,7 +353,7 @@ export default {
     },
     toggle: {
       font: palette.text,
-      mark: palette.orange500,
+      mark: palette.primary500,
       background: palette.grey300,
       markActive: palette.white,
       backgroundActive: palette.grey300
@@ -505,7 +508,7 @@ export default {
     },
     diagnostics: {
       question: {
-        skipped: '#ca167c',
+        skipped: palette.primary400,
         correct: palette.success500,
         incorrect: palette.error500
       },
@@ -515,12 +518,12 @@ export default {
       },
       diagnostic: {
         passageWorking: {
-          font: '#ae581e',
-          chart: '#fde4c4'
+          font: palette.primary700,
+          chart: palette.primary300
         },
         passageReading: {
-          font: '#ae581e',
-          chart: '#fac075'
+          font: palette.primary700,
+          chart: palette.primary400
         }
       }
     },
