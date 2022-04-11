@@ -20,7 +20,13 @@ Default.args = {
         gap: '10px'
       }}
     >
-      <div>Target:</div>
+      <div
+        style={{
+          paddingLeft: '7px'
+        }}
+      >
+        Target:
+      </div>
       <div
         style={{
           fontWeight: '700'
@@ -30,12 +36,14 @@ Default.args = {
       </div>
       <div
         style={{
+          height: '14px',
+          width: '14px',
           cursor: 'pointer',
           color: '#000',
           fontSize: '14px'
         }}
       >
-        <EditIcon onClick={() => console.log('onClick')} />
+        <EditIcon onClick={() => console.log('console.log -> onClick')} />
       </div>
     </div>
   )

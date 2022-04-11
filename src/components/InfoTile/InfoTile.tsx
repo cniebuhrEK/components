@@ -44,7 +44,7 @@ const Icon = styled.div`
 `
 
 const Content = styled.div`
-  width: 75%;
+  width: 80%;
   white-space: nowrap;
   * {
     overflow: hidden;
