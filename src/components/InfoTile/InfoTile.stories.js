@@ -36,8 +36,6 @@ Default.args = {
       </div>
       <div
         style={{
-          height: '14px',
-          width: '14px',
           cursor: 'pointer',
           color: '#000',
           fontSize: '14px'

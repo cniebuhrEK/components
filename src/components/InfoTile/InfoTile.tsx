@@ -21,24 +21,27 @@ const InfoTile = (props: InfoTileProps): JSX.Element => {
 
 const Container = styled.div`
   display: flex;
+  flex-grow: 1
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-around;
+  height: 30px;
+  line-height: 30px;
   min-height: 30px;
   max-height: 34px;
-  gap: 10px;
-  padding: 5px 8px;
+  gap: 16px;
+  padding: 4px 8px;
   min-width: 80px;
   max-width: 160px;
   border-radius: 4px;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme.shadows.mainShadow};
   background-color: ${({ theme }) => theme.palette.white};
 `
 
 const Icon = styled.div`
-  height: 26px;
+  height: 22px;
+  flex: none;
   svg {
-    font-size: 26px;
+    font-size: 22px;
     color: ${({ theme }) => theme.palette.orange01};
   }
 `
