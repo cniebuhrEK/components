@@ -511,13 +511,19 @@ export default {
       question: {
         skipped: palette.primary400,
         correct: palette.success500,
-        incorrect: palette.error500
+        incorrect: palette.error500,
+        skippedBackground: palette.primary300,
+        correctBackground: palette.success200,
+        incorrectBackground: palette.error200
       },
       projections: {
         target: '#9b115f',
         scaled: '#1e74ae'
       },
       diagnostic: {
+        wordsPerMinute: {
+          font: '#751D13'
+        },
         passageWorking: {
           font: palette.primary700,
           chart: palette.primary300
