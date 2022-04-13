@@ -31,7 +31,7 @@ const Container = styled.div`
   gap: 16px;
   padding: 4px 8px;
   min-width: 80px;
-  max-width: 160px;
+  max-width: 180px;
   border-radius: 4px;
   box-shadow: ${({ theme }) => theme.shadows.mainShadow};
   background-color: ${({ theme }) => theme.palette.white};
