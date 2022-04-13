@@ -153,15 +153,7 @@ export const StyledButton = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    color: ${({ variant, theme }) =>
-      theme.colors.buttons[variant].disabled.font || theme.colors.main.grey400};
-    background: ${({ variant, theme }) =>
-      theme.colors.buttons[variant].disabled.background ||
-      theme.colors.main.grey200};
-    border-color: ${({ variant, theme }) =>
-      theme.colors.buttons[variant].disabled.border || 'transparent'};
-    border-style: solid;
-    border-width: 1px;
+    opacity: 0.3;
   }
 
   &:hover:enabled,

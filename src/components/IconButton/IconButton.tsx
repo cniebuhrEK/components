@@ -122,20 +122,8 @@ export const StyledButton = styled.button`
   }
 
   &:disabled {
-    color: ${({ variant, theme }) =>
-      theme.colors.buttons[variantsMap[variant]].disabled.font ||
-      theme.colors.main.text};
-    background: ${({ variant, theme }) =>
-      theme.colors.buttons[variantsMap[variant]].disabled.background ||
-      theme.colors.main.white};
-    border-color: ${({ variant, theme }) =>
-      theme.colors.buttons[variantsMap[variant]].disabled.border ||
-      'transparent'};
-    svg {
-      fill: ${({ variant, theme }) =>
-        theme.colors.buttons[variantsMap[variant]].disabled.font ||
-        theme.colors.main.text};
-    }
+    cursor: not-allowed;
+    opacity: 0.3;
   }
 
   &:hover:enabled,
