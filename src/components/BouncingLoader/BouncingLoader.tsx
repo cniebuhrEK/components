@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const BouncingLoader = styled.div`
-  margin-right: 20px;
   color: ${({ theme }) => theme.colors.main.primary200};
   position: relative;
   display: inline-block;
