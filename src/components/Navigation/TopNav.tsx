@@ -139,15 +139,22 @@ const StudentTopNavigation = (
   }
 
   const generateLevel2Links = links =>
-    links.map((link, index) => (
-      <NavMenuItem
-        onClick={handleRedirect(link.url)}
-        key={`nav-menu-link-level-2-${index}-${getRandomIntInclusive(1, 100)}`}
-      >
-        {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
-        <NavMenuLink>{link.label}</NavMenuLink>
-      </NavMenuItem>
-    ))
+    links.map((link, index) => {
+      const isInactive = R.propOr(false, 'isInactive', link)
+      return (
+        <NavMenuItem
+          isInactive={isInactive}
+          onClick={isInactive ? () => {} : handleRedirect(link.url)}
+          key={`nav-menu-link-level-2-${index}-${getRandomIntInclusive(
+            1,
+            100
+          )}`}
+        >
+          {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+          <NavMenuLink>{link.label}</NavMenuLink>
+        </NavMenuItem>
+      )
+    })
 
   const handleLevel2 = value => e => {
     e.preventDefault()
@@ -161,10 +168,12 @@ const StudentTopNavigation = (
       const isOtherLeveledLinkSelected =
         linkLevel2 !== link.label && isNotNilOrEmpty(linkLevel2)
       const isSelected = linkLevel2 === link.label
+      const isInactive = R.propOr(false, 'isInactive', link)
 
       const Level1Link = has2level ? (
         <NavStaticMenuItem
-          onClick={handleLevel2(link.label)}
+          isInactive={isInactive}
+          onClick={isInactive ? () => {} : handleLevel2(link.label)}
           isHidden={isOtherLeveledLinkSelected}
           isSelectedAsLevel1={isSelected}
         >
@@ -172,7 +181,10 @@ const StudentTopNavigation = (
           <NavMenuLink>{link.label}</NavMenuLink>
         </NavStaticMenuItem>
       ) : (
-        <NavMenuItem onClick={handleRedirect(link.url)}>
+        <NavMenuItem
+          isInactive={isInactive}
+          onClick={isInactive ? () => {} : handleRedirect(link.url)}
+        >
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
           <NavMenuLink>{link.label}</NavMenuLink>
         </NavMenuItem>
@@ -454,7 +466,6 @@ const NavMenu = styled.div`
 `
 
 const NavMenuLink = styled.span`
-  color: ${({ theme }) => theme.colors.mainMenu.font};
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   white-space: nowrap;
   overflow: hidden;
@@ -471,7 +482,10 @@ const NavMenuItem = styled.a`
   justify-content: flex-start;
   line-height: normal;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.colors.mainMenu.font};
+  color: ${({ theme, isInactive }) =>
+    isInactive
+      ? theme.colors.main.grey600
+      : theme.colors.mainMenu.font} !important;
   border-left: 3px solid transparent;
   width: 100%;
   overflow: hidden;
@@ -479,13 +493,17 @@ const NavMenuItem = styled.a`
   text-overflow: ellipsis;
 
   &:hover {
-    border-left: 3px solid ${({ theme }) => theme.colors.mainMenu.borderActive};
-    box-shadow: ${props => props.theme.shadows.mainShadow};
-    cursor: pointer;
+    border-left: ${({ theme, isInactive }) =>
+      isInactive
+        ? '3px solid transparent'
+        : `3px solid ${theme.colors.mainMenu.borderActive}`};
+    box-shadow: ${({ theme, isInactive }) =>
+      isInactive ? 'none' : theme.shadows.mainShadow};
+    cursor: ${({ isInactive }) => (isInactive ? 'not-allowed' : 'pointer')};
   }
 
   &:hover ${NavMenuLink} {
-    font-weight: 600;
+    font-weight: ${({ isInactive }) => (isInactive ? 'none' : 600)};
   }
 `
 
@@ -495,7 +513,10 @@ const NavStaticMenuItem = styled.div`
   justify-content: flex-start;
   line-height: normal;
   padding: 12px 16px;
-  color: ${({ theme }) => theme.colors.mainMenu.font};
+  color: ${({ theme, isInactive }) =>
+    isInactive
+      ? theme.colors.main.grey600
+      : theme.colors.mainMenu.font} !important;
   border-left: ${({ isSelected, theme }) =>
     `3px solid ${
       isSelected ? theme.colors.mainMenu.borderActive : 'transparent'
@@ -510,13 +531,17 @@ const NavStaticMenuItem = styled.div`
   text-overflow: ellipsis;
 
   &:hover {
-    border-left: 3px solid ${({ theme }) => theme.colors.mainMenu.borderActive};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
+    border-left: ${({ theme, isInactive }) =>
+      isInactive
+        ? '3px solid transparent'
+        : `3px solid ${theme.colors.mainMenu.borderActive}`};
+    box-shadow: ${({ theme, isInactive }) =>
+      isInactive ? 'none' : theme.shadows.mainShadow};
+    cursor: ${({ isInactive }) => (isInactive ? 'not-allowed' : 'pointer')};
   }
 
   &:hover ${NavMenuLink} {
-    font-weight: 600;
+    font-weight: ${({ isInactive }) => (isInactive ? 'none' : 600)};
   }
 `
 

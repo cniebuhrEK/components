@@ -31,6 +31,7 @@ TopNavigation.args = {
         {
           label: 'Biology',
           url: '',
+          isInactive: true,
           nextLevel: [
             {
               label: '1',
@@ -49,6 +50,7 @@ TopNavigation.args = {
         {
           label: 'Physics',
           url: '',
+          isInactive: false,
           nextLevel: [
             {
               label: '1',
@@ -56,11 +58,13 @@ TopNavigation.args = {
             },
             {
               label: '2',
-              url: '/2'
+              url: '/2',
+              isInactive: true
             },
             {
               label: '3',
-              url: '/3'
+              url: '/3',
+              isInactive: true
             }
           ]
         },
