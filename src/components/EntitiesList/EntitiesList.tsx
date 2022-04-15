@@ -1,6 +1,6 @@
 // EntitiesList/EntitiesList.tsx - Full functional table component
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 
 import Table from '../Table/Table'
@@ -17,6 +17,8 @@ import TableRow from '../Table/TableRow'
 import Pagination from '../Pagination/Pagination'
 import RowsPerPage from '../RowsPerPage/RowsPerPage'
 import WarningReversed from '../../icons/WarningReversed'
+import EntitiesListExpandableRow from './EntitiesListExpandableRow'
+import { propOr } from 'ramda'
 
 const DEFAULT_ROWS_PER_PAGE = 10
 
@@ -125,15 +127,24 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     </TableHeader>
   ))
 
-  const renderRows = rows.map(row => (
-    <TableRow key={row.id} id={row.id} highlight={highlight}>
-      {row.cells.map(cell => (
-        <TableCell key={cell.columnId} {...cell.cellProps}>
-          {cell.children}
-        </TableCell>
-      ))}
-    </TableRow>
-  ))
+  const rowsToRender = useMemo(() => {
+    return rows.map(row => ({
+      ...row,
+      level: 'level-0',
+      children: propOr([], 'children', row).map(childLvl1 => ({
+        ...childLvl1,
+        level: 'level-1',
+        children: propOr([], 'children', childLvl1).map(childLvl2 => ({
+          ...childLvl2,
+          level: 'level-2'
+        }))
+      }))
+    }))
+  }, [rows])
+
+  const renderRows = rowsToRender.map(row => {
+    return <EntitiesListExpandableRow key={row.id} row={row} />
+  })
 
   const renderEmptyState = (
     <TableRow highlight={highlight}>

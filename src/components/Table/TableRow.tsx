@@ -13,6 +13,28 @@ const TableRow = styled.tr`
   border-style: inherit;
   border-width: 0 0 1px;
   border-color: inherit;
+
+  &.level-1 {
+    background: ${({ theme }) => theme.colors.main.grey200};
+    & > td:first-of-type {
+      border-left: 4px solid ${({ theme }) => theme.colors.main.primary500} !important;
+      padding-left: 28px !important;
+    }
+  }
+
+  &.level-2 {
+    background: ${({ theme }) => theme.colors.main.grey200};
+    & > td:first-of-type {
+      border-left: 4px solid ${({ theme }) => theme.colors.main.secondary600} !important;
+      padding-left: 38px !important;
+    }
+  }
+
+  &.shadow {
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
 `
 
 TableRow.defaultProps = {
