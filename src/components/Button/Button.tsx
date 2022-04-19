@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Tooltip } from '../Tooltip'
 
 import { Loader } from '../Loader'
+import { isNotNilOrEmpty } from '../../utils/ramda'
 
 const buttonSizes = {
   normal: 'normal',
@@ -34,37 +36,76 @@ const colorsMap = {
   [buttonColors.black]: 'black'
 }
 
-interface ButtonProps {
-  onClick?: (e: any) => void
-  onMouseEnter?: (e: any) => void
-  onMouseLeave?: (e: any) => void
-  children?: JSX.Element | string
-  size?: 'small' | 'normal'
-  color?:
-    | 'orange'
-    | 'green'
-    | 'blue'
-    | 'transparent'
-    | 'red'
-    | 'black'
-    | 'primary'
-    | 'secondary'
-  variant?: 'contained' | 'outlined'
-  startIcon?: any
-  endIcon?: any
-  type?: string
-  disabled?: boolean
-  isLoading?: boolean
-  autofocus?: boolean
-  name?: string
-  value?: string
-  id?: string
-}
+type ButtonProps =
+  | {
+      onClick?: (e: any) => void
+      onMouseEnter?: (e: any) => void
+      onMouseLeave?: (e: any) => void
+      children?: JSX.Element | string
+      size?: 'small' | 'normal'
+      color?:
+        | 'orange'
+        | 'green'
+        | 'blue'
+        | 'transparent'
+        | 'red'
+        | 'black'
+        | 'primary'
+        | 'secondary'
+      variant?: 'contained' | 'outlined'
+      startIcon?: any
+      endIcon?: any
+      type?: string
+      disabled?: boolean
+      tooltip?: JSX.Element | string
+      tooltipId?: string
+      isLoading?: boolean
+      autofocus?: boolean
+      name?: string
+      value?: string
+      id?: string
+    }
+  | {
+      onClick?: (e: any) => void
+      onMouseEnter?: (e: any) => void
+      onMouseLeave?: (e: any) => void
+      children?: JSX.Element | string
+      size?: 'small' | 'normal'
+      color?:
+        | 'orange'
+        | 'green'
+        | 'blue'
+        | 'transparent'
+        | 'red'
+        | 'black'
+        | 'primary'
+        | 'secondary'
+      variant?: 'contained' | 'outlined'
+      startIcon?: any
+      endIcon?: any
+      type?: string
+      disabled?: boolean
+      tooltip: JSX.Element | string
+      tooltipId: string
+      isLoading?: boolean
+      autofocus?: boolean
+      name?: string
+      value?: string
+      id?: string
+    }
 
 const Button = (props: ButtonProps): JSX.Element => {
-  const { children, startIcon, endIcon, isLoading, autofocus } = props
+  const {
+    children,
+    startIcon,
+    endIcon,
+    isLoading,
+    autofocus,
+    tooltip,
+    tooltipId
+  } = props
 
-  return (
+  const buttonComponent = (
     <StyledButton {...props} autoFocus={autofocus}>
       {startIcon && <IconContainer>{startIcon}</IconContainer>}
       {isLoading ? (
@@ -76,6 +117,15 @@ const Button = (props: ButtonProps): JSX.Element => {
       )}
       {endIcon && <EndIconContainer>{endIcon}</EndIconContainer>}
     </StyledButton>
+  )
+
+  return isNotNilOrEmpty(tooltip) ? (
+    // @ts-ignore
+    <Tooltip tooltipContent={tooltip} id={tooltipId}>
+      {buttonComponent}
+    </Tooltip>
+  ) : (
+    buttonComponent
   )
 }
 

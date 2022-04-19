@@ -2,26 +2,52 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { isNotNilOrEmpty } from '../../utils/ramda'
+import { Tooltip } from '../Tooltip'
 
-interface ButtonProps {
-  color?:
-    | 'orange'
-    | 'green'
-    | 'blue'
-    | 'transparent'
-    | 'red'
-    | 'black'
-    | 'primary'
-    | 'secondary'
-  onClick?: (e: any) => void
-  icon?: any
-  type?: string
-  disabled?: boolean
-  autofocus?: boolean
-  id?: string
-  name?: string
-  variant?: 'filled' | 'outlined' | 'transparent'
-}
+type ButtonProps =
+  | {
+      color?:
+        | 'orange'
+        | 'green'
+        | 'blue'
+        | 'transparent'
+        | 'red'
+        | 'black'
+        | 'primary'
+        | 'secondary'
+      onClick?: (e: any) => void
+      icon?: any
+      type?: string
+      disabled?: boolean
+      tooltip?: JSX.Element | string
+      tooltipId?: string
+      autofocus?: boolean
+      id?: string
+      name?: string
+      variant?: 'filled' | 'outlined' | 'transparent'
+    }
+  | {
+      color?:
+        | 'orange'
+        | 'green'
+        | 'blue'
+        | 'transparent'
+        | 'red'
+        | 'black'
+        | 'primary'
+        | 'secondary'
+      onClick?: (e: any) => void
+      icon?: any
+      type?: string
+      disabled?: boolean
+      tooltip: JSX.Element | string
+      tooltipId: string
+      autofocus?: boolean
+      id?: string
+      name?: string
+      variant?: 'filled' | 'outlined' | 'transparent'
+    }
 
 const variants = {
   filled: 'filled',
@@ -67,10 +93,12 @@ const IconButton = (props: ButtonProps): JSX.Element => {
     id,
     name,
     variant,
+    tooltip,
+    tooltipId,
     color = buttonColors.orange
   } = props
 
-  return (
+  const renderButton = (
     <StyledButton
       name={name}
       onClick={onClick}
@@ -84,6 +112,15 @@ const IconButton = (props: ButtonProps): JSX.Element => {
     >
       {icon}
     </StyledButton>
+  )
+
+  return isNotNilOrEmpty(tooltip) ? (
+    // @ts-ignore
+    <Tooltip tooltipContent={tooltip} id={tooltipId}>
+      {renderButton}
+    </Tooltip>
+  ) : (
+    renderButton
   )
 }
 
