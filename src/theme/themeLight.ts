@@ -290,6 +290,7 @@ export default {
       border: 'transparent',
       background: 'linear-gradient(180deg, #FFFFFF 0%, #E6E9EC 100%)',
       freeTrial: '#FFFDCD',
+      freeTrialFont: palette.text,
       overlay: 'rgba(252, 251, 250, 0.6)',
       totalSaltyBucksAndTimer: {
         boxShadow: 'inset 2px 2px 6px #DDDFE1',

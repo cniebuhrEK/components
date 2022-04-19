@@ -292,6 +292,7 @@ export default {
       border: 'transparent',
       background: 'linear-gradient(180deg, #49494C 0%, #101112 100%)',
       freeTrial: '#FFFDCD',
+      freeTrialFont: '#444444',
       overlay: 'rgba(26, 26, 26, .6)',
       totalSaltyBucksAndTimer: {
         boxShadow: 'inset -2px -2px 6px #49494c, inset 2px 2px 8px #090909',
