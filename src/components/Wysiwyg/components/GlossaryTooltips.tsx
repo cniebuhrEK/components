@@ -131,7 +131,7 @@ const PhraseTooltip = ({
       afterShow={handleFetchData}
     >
       <div className='content'>
-        <span className='phrase'>{data.phrase};</span> {data.explanation}
+        <span className='phrase'>{data.phrase}:</span> {data.explanation}
       </div>
       <div className='occurances'>{renderOccurances}</div>
     </ReactTooltip>
