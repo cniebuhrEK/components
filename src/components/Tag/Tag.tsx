@@ -1,39 +1,80 @@
 import React from 'react'
 import styled from 'styled-components'
 import CorrectMark from '../../icons/CorrectMark'
+import { isNotNilOrEmpty } from '../../utils/ramda'
+import { Tooltip } from '../Tooltip'
 
-interface TagProps {
-  color:
-    | 'purple'
-    | 'red'
-    | 'blue'
-    | 'green'
-    | 'orange'
-    | 'brown'
-    | 'mathPurple'
-    | 'aquamarine'
-    | 'turquoise'
-    | 'yellow'
-    | 'grey'
-  onClick?: (e: any) => void
-  text: string | JSX.Element
-  id?: string
-  name?: string
-  isActive?: boolean
-  isStatic?: boolean
-  uppercase?: boolean
-}
+type TagProps =
+  | {
+      color:
+        | 'purple'
+        | 'red'
+        | 'blue'
+        | 'green'
+        | 'orange'
+        | 'brown'
+        | 'mathPurple'
+        | 'aquamarine'
+        | 'turquoise'
+        | 'yellow'
+        | 'grey'
+      onClick?: (e: any) => void
+      text: string | JSX.Element
+      id?: string
+      name?: string
+      isActive?: boolean
+      isStatic?: boolean
+      uppercase?: boolean
+      disabled?: boolean
+      tooltip?: JSX.Element | string
+      tooltipId?: string
+    }
+  | {
+      color:
+        | 'purple'
+        | 'red'
+        | 'blue'
+        | 'green'
+        | 'orange'
+        | 'brown'
+        | 'mathPurple'
+        | 'aquamarine'
+        | 'turquoise'
+        | 'yellow'
+        | 'grey'
+      onClick?: (e: any) => void
+      text: string | JSX.Element
+      id?: string
+      name?: string
+      isActive?: boolean
+      isStatic?: boolean
+      uppercase?: boolean
+      disabled?: boolean
+      tooltip: JSX.Element | string
+      tooltipId: string
+    }
 
 export const Tag = (props: TagProps): JSX.Element => {
-  const { uppercase, id, name, text, color, isActive, isStatic, onClick } =
-    props
+  const {
+    uppercase,
+    id,
+    name,
+    text,
+    color,
+    isActive,
+    isStatic,
+    onClick,
+    tooltip,
+    tooltipId,
+    disabled
+  } = props
 
   const handleClick = e => {
     e.preventDefault()
     return onClick ? onClick(color) : {}
   }
 
-  return (
+  const renderTag = (
     <TagContainer
       uppercase={uppercase}
       name={name}
@@ -42,6 +83,7 @@ export const Tag = (props: TagProps): JSX.Element => {
       color={color}
       isActive={isActive}
       isStatic={isStatic}
+      disabled={disabled}
     >
       {isActive && (
         <IconWrapper>
@@ -50,6 +92,15 @@ export const Tag = (props: TagProps): JSX.Element => {
       )}
       {text}
     </TagContainer>
+  )
+
+  return isNotNilOrEmpty(tooltip) ? (
+    // @ts-ignore
+    <Tooltip tooltipContent={tooltip} id={tooltipId}>
+      {renderTag}
+    </Tooltip>
+  ) : (
+    renderTag
   )
 }
 
@@ -61,6 +112,7 @@ Tag.defaultProps = {
 export default Tag
 
 const TagContainer = styled.div`
+  opacity: ${({ disabled }) => (disabled ? 0.3 : 1)};
   line-height: ${({ theme }) => theme.dimensions.tagHeight};
   min-height: ${({ theme }) => theme.dimensions.tagHeight};
   min-width: ${({ theme }) => theme.dimensions.tagWidth};
