@@ -337,19 +337,23 @@ export default {
     toast: {
       success: {
         font: palette.success500,
-        border: palette.success500
+        border: palette.success500,
+        background: palette.white
       },
       error: {
         font: palette.error500,
-        border: palette.error500
+        border: palette.error500,
+        background: palette.white
       },
       warning: {
         font: palette.primary600,
-        border: palette.primary600
+        border: palette.primary600,
+        background: palette.white
       },
       info: {
         font: palette.tertinary600,
-        border: palette.tertinary600
+        border: palette.tertinary600,
+        background: palette.white
       }
     },
     toggle: {

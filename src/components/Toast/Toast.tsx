@@ -115,7 +115,7 @@ const StyledToast = styled.div`
   max-width: ${({ open }) => (open ? '350px' : '0px')};
   z-index: ${({ open, theme }) =>
     open ? theme.zIndex.snackbarToast : 'unset'};
-  background-color: ${({ theme }) => theme.colors.backgrounds.main};
+  background: ${({ theme }) => theme.colors.toast.background};
   border-width: ${({ open }) => (open ? '1px' : '0')};
   border-style: solid;
   border-color: ${({ severity, theme }) => {
