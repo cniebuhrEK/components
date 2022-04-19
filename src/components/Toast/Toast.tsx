@@ -115,7 +115,19 @@ const StyledToast = styled.div`
   max-width: ${({ open }) => (open ? '350px' : '0px')};
   z-index: ${({ open, theme }) =>
     open ? theme.zIndex.snackbarToast : 'unset'};
-  background: ${({ theme }) => theme.colors.toast.background};
+  backgroundr: ${({ severity, theme }) => {
+    switch (severity) {
+      case SEVERITY.success:
+        return theme.colors.toast.success.background
+      case SEVERITY.error:
+        return theme.colors.toast.error.background
+      case SEVERITY.warning:
+        return theme.colors.toast.warning.background
+      case SEVERITY.info:
+      default:
+        return theme.colors.toast.info.background
+    }
+  }};
   border-width: ${({ open }) => (open ? '1px' : '0')};
   border-style: solid;
   border-color: ${({ severity, theme }) => {
