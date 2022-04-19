@@ -115,7 +115,7 @@ const StyledToast = styled.div`
   max-width: ${({ open }) => (open ? '350px' : '0px')};
   z-index: ${({ open, theme }) =>
     open ? theme.zIndex.snackbarToast : 'unset'};
-  backgroundr: ${({ severity, theme }) => {
+  background: ${({ severity, theme }) => {
     switch (severity) {
       case SEVERITY.success:
         return theme.colors.toast.success.background
