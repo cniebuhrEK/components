@@ -12,7 +12,12 @@ const EntitiesListExpandableRow = ({ row }) => {
   const cells = [...propOr([], 'cells', row)]
   const firstCell = cells.shift()
 
-  const toggleOpen = () => setOpen(prev => !prev)
+  const toggleOpen = () => {
+    if (isNotNilOrEmpty(children)) {
+      setOpen(prev => !prev)
+    }
+  }
+
   return open ? (
     // @ts-ignore
     <>
@@ -29,21 +34,8 @@ const EntitiesListExpandableRow = ({ row }) => {
           </TableCell>
         ))}
       </TableRow>
-      {children.map((child, index) => {
-        const childCells = [...propOr([], 'cells', child)]
-        return (
-          <TableRow
-            id={child.id}
-            key={`${child.id}-${index}`}
-            className={child.level}
-          >
-            {childCells.map(cell => (
-              <TableCell key={cell.columnId} {...cell.cellProps}>
-                {cell.children}
-              </TableCell>
-            ))}
-          </TableRow>
-        )
+      {children.map(child => {
+        return <EntitiesListExpandableRow row={child} />
       })}
     </>
   ) : (
