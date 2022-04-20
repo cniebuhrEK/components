@@ -167,7 +167,15 @@ const StudentTopNavigation = (
 
       const renderLink = hasTooltip ? (
         <TooltipContainer>
-          <Tooltip tooltipContent={tooltip}>{Level2Link}</Tooltip>
+          <Tooltip
+            id={`nav-menu-link-level-2-tooltip-${index}-${getRandomIntInclusive(
+              1,
+              100
+            )}`}
+            tooltipContent={tooltip}
+          >
+            {Level2Link}
+          </Tooltip>
         </TooltipContainer>
       ) : (
         Level2Link
