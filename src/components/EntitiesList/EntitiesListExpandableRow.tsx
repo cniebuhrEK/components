@@ -35,7 +35,7 @@ const EntitiesListExpandableRow = ({ row }) => {
         ))}
       </TableRow>
       {children.map(child => {
-        return <EntitiesListExpandableRow row={child} />
+        return <EntitiesListExpandableRow row={child} key={child.id} />
       })}
     </>
   ) : (
