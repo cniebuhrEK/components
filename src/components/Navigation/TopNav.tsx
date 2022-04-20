@@ -17,17 +17,23 @@ import { Tooltip } from '../Tooltip'
 type PureLink = {
   label: string
   url?: string
+  isInactive?: boolean
+  tooltip?: string | JSX.Element
 }
 
 type NextLevelLink = {
   label: string
   url?: string
+  isInactive?: boolean
+  tooltip?: string | JSX.Element
   nextLevel?: PureLink[]
 }
 
 type MenuLink = {
   label: string
   url?: string
+  isInactive?: boolean
+  tooltip?: string | JSX.Element
   icon?: JSX.Element
   nextLevel?: NextLevelLink[]
 }
