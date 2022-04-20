@@ -15,18 +15,18 @@ const TableRow = styled.tr`
   border-color: inherit;
 
   &.level-1 {
-    background: ${({ theme }) => theme.colors.main.grey200};
+    background: #fef6eb;
     & > td:first-of-type {
       border-left: 4px solid ${({ theme }) => theme.colors.main.primary500} !important;
-      padding-left: 28px !important;
+      padding-left: 35px !important;
     }
   }
 
   &.level-2 {
-    background: ${({ theme }) => theme.colors.main.grey200};
+    background: #feedd7;
     & > td:first-of-type {
       border-left: 4px solid ${({ theme }) => theme.colors.main.secondary600} !important;
-      padding-left: 38px !important;
+      padding-left: 50px !important;
     }
   }
 
