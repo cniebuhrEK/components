@@ -12,6 +12,7 @@ import {
   eventsNames,
   themeEvents
 } from '../../theme'
+import { Tooltip } from '../Tooltip'
 
 type PureLink = {
   label: string
@@ -141,7 +142,10 @@ const StudentTopNavigation = (
   const generateLevel2Links = links =>
     links.map((link, index) => {
       const isInactive = R.propOr(false, 'isInactive', link)
-      return (
+      const tooltip = R.propOr('', 'tooltip', link)
+      const hasTooltip = isNotNilOrEmpty(tooltip)
+
+      const Level2Link = (
         <NavMenuItem
           isInactive={isInactive}
           onClick={isInactive ? () => {} : handleRedirect(link.url)}
@@ -154,6 +158,16 @@ const StudentTopNavigation = (
           <NavMenuLink>{link.label}</NavMenuLink>
         </NavMenuItem>
       )
+
+      const renderLink = hasTooltip ? (
+        <TooltipContainer>
+          <Tooltip tooltipContent={tooltip}>{Level2Link}</Tooltip>
+        </TooltipContainer>
+      ) : (
+        Level2Link
+      )
+
+      return renderLink
     })
 
   const handleLevel2 = value => e => {
@@ -169,6 +183,8 @@ const StudentTopNavigation = (
         linkLevel2 !== link.label && isNotNilOrEmpty(linkLevel2)
       const isSelected = linkLevel2 === link.label
       const isInactive = R.propOr(false, 'isInactive', link)
+      const tooltip = R.propOr('', 'tooltip', link)
+      const hasTooltip = isNotNilOrEmpty(tooltip)
 
       const Level1Link = has2level ? (
         <NavStaticMenuItem
@@ -190,6 +206,22 @@ const StudentTopNavigation = (
         </NavMenuItem>
       )
 
+      const renderLink = hasTooltip ? (
+        <TooltipContainer isHidden={isOtherLeveledLinkSelected}>
+          <Tooltip
+            tooltipContent={tooltip}
+            id={`nav-menu-link-level-1-tooltip-${index}-${getRandomIntInclusive(
+              1,
+              100
+            )}`}
+          >
+            {Level1Link}
+          </Tooltip>
+        </TooltipContainer>
+      ) : (
+        Level1Link
+      )
+
       return (
         <React.Fragment
           key={`nav-menu-link-level-1-${index}-${getRandomIntInclusive(
@@ -197,7 +229,7 @@ const StudentTopNavigation = (
             100
           )}`}
         >
-          {Level1Link}
+          {renderLink}
           {link.label === linkLevel2 && generateLevel2Links(nextLevelLinks)}
         </React.Fragment>
       )
@@ -205,11 +237,14 @@ const StudentTopNavigation = (
 
   const handleLevel1 = value => e => {
     e.preventDefault()
+    console.log(value)
     linkLevel1 === value ? resetLevel1() : setLevel1(value)
   }
 
   const generateLinks = links.map((link: MenuLink, index) => {
     const nextLevelLinks = R.propOr([], 'nextLevel')(link)
+    const tooltip = R.propOr('', 'tooltip')(link)
+    const hasTooltip = isNotNilOrEmpty(tooltip)
     const has1level = isNotNilOrEmpty(nextLevelLinks)
 
     const openedLeveledLinkIndex = R.findIndex(R.propEq('label', linkLevel1))(
@@ -236,9 +271,22 @@ const StudentTopNavigation = (
       </NavMenuItem>
     )
 
+    const renderLink = hasTooltip ? (
+      <TooltipContainer
+        isHidden={shouldHide}
+        id={`nav-menu-xx-link-tooltip-${index}`}
+      >
+        <Tooltip tooltipContent={tooltip} id={`nav-menu-link-tooltip-${index}`}>
+          {MainLink}
+        </Tooltip>
+      </TooltipContainer>
+    ) : (
+      MainLink
+    )
+
     return (
       <React.Fragment key={`nav-menu-link-${index}`}>
-        {MainLink}
+        {renderLink}
         {linkLevel1 === link.label && generateLevel1Links(nextLevelLinks)}
       </React.Fragment>
     )
@@ -541,6 +589,22 @@ const NavStaticMenuItem = styled.div`
 
   &:hover ${NavMenuLink} {
     font-weight: ${({ isInactive }) => (isInactive ? 'none' : 600)};
+  }
+`
+
+const TooltipContainer = styled.div`
+  display: ${({ isHidden }) => (isHidden ? 'none' : 'flex')};
+  align-items: center;
+  justify-content: flex-start;
+  line-height: normal;
+
+  & > div,
+  & > div > div {
+    width: 100%;
+  }
+
+  .__react_component_tooltip {
+    max-width: 150px;
   }
 `
 

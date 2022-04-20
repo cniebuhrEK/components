@@ -32,6 +32,7 @@ TopNavigation.args = {
           label: 'Biology',
           url: '',
           isInactive: true,
+          tooltip: 'Definition why this is inactive',
           nextLevel: [
             {
               label: '1',
@@ -59,18 +60,21 @@ TopNavigation.args = {
             {
               label: '2',
               url: '/2',
-              isInactive: true
+              isInactive: true,
+              tooltip: 'Definition why this is inactive'
             },
             {
               label: '3',
               url: '/3',
-              isInactive: true
+              isInactive: true,
+              tooltip: 'Definition why this is inactive'
             }
           ]
         },
         {
           label: 'Chemistry',
           url: '',
+          tooltip: 'Normal tooltip',
           nextLevel: [
             {
               label: '1',
@@ -86,6 +90,7 @@ TopNavigation.args = {
     },
     {
       label: 'Games',
+      tooltip: 'Normal tooltip',
       icon: <GamesIcon />,
       url: '#'
     },
