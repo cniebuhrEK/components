@@ -365,7 +365,7 @@ export default {
       backgroundActive: palette.grey300
     },
     tooltip: {
-      background: palette.text,
+      background: '#444444',
       font: palette.white
     },
     tags: {
