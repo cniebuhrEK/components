@@ -301,7 +301,7 @@ export default {
         border: 'transparent',
         dropdownLineBreak: palette.text,
         clockIconBackground:
-          'linear-gradient(180deg, #B87D55 0%, #42210B 100%);',
+          'linear-gradient(180deg, #FAAD4C 0%, #A82A1C 100%);',
         pauseIconBackground:
           'linear-gradient(180deg, #DDDFE1 0%, #7B7C7D 100%)',
         iconFont: palette.white
