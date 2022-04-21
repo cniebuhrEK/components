@@ -21,9 +21,6 @@ export default {
       secondary200: palette.secondary200,
       secondary500: palette.secondary500,
       secondary600: palette.secondary600,
-      tertinary200: palette.tertinary200,
-      tertinary500: palette.tertinary500,
-      tertinary600: palette.tertinary600,
       white: palette.white,
       grey200: palette.grey200,
       grey300: palette.grey300,
@@ -52,11 +49,19 @@ export default {
           borderActive: 'transparent'
         },
         secondary: {
-          font: palette.primary500,
-          background: palette.secondary600,
+          font: palette.white,
+          background: 'linear-gradient(180deg, #B3764E 0%, #7E441E 100%)',
           border: 'transparent',
-          fontActive: palette.white,
-          backgroundActive: palette.secondary500,
+          fontActive: palette.text,
+          backgroundActive: 'linear-gradient(180deg, #7E441E 0%, #B3764E 100%)',
+          borderActive: 'transparent'
+        },
+        tertiary: {
+          font: palette.text,
+          background: 'linear-gradient(180deg, #FCFCFC 0%, #C5C6C8 100%)',
+          border: 'transparent',
+          fontActive: palette.heading,
+          backgroundActive: 'linear-gradient(180deg, #C5C6C8 0%, #FCFCFC 100%)',
           borderActive: 'transparent'
         },
         transparent: {
@@ -68,20 +73,20 @@ export default {
           borderActive: palette.primary500
         },
         green: {
-          font: palette.success500,
-          background: palette.success200,
-          border: palette.success500,
+          font: palette.white,
+          background: 'linear-gradient(180deg, #31C26F 0%, #119B4C 100%)',
+          border: 'transparent',
           fontActive: palette.white,
-          backgroundActive: palette.success500,
-          borderActive: palette.success500
+          backgroundActive: 'linear-gradient(180deg, #119B4C 0%, #31C26F 100%)',
+          borderActive: 'transparent'
         },
         red: {
-          font: palette.error500,
-          background: palette.error200,
-          border: palette.error500,
-          fontActive: palette.white,
-          backgroundActive: palette.error500,
-          borderActive: palette.error500
+          font: palette.white,
+          background: 'linear-gradient(180deg, #FF5D4E 0%, #E83E2E 100%)',
+          border: 'transparent',
+          fontActive: palette.text,
+          backgroundActive: 'linear-gradient(180deg, #E83E2E 0%, #FF5D4E 100%)',
+          borderActive: 'transparent'
         },
         black: {
           font: palette.white,
@@ -118,12 +123,20 @@ export default {
           borderActive: palette.success500
         },
         secondary: {
-          font: palette.secondary600,
+          font: '#7E441E',
           background: palette.white,
-          border: palette.secondary600,
+          border: '#B2764E',
           fontActive: palette.white,
-          backgroundActive: palette.secondary600,
-          borderActive: palette.secondary600
+          backgroundActive: '#B2764E',
+          borderActive: 'transparent'
+        },
+        tertiary: {
+          font: '#C5C6C8',
+          background: palette.white,
+          border: 'transparent',
+          fontActive: palette.white,
+          backgroundActive: '#C5C6C8',
+          borderActive: 'transparent'
         },
         transparent: {
           font: palette.text,
@@ -177,10 +190,18 @@ export default {
           borderActive: 'transparent'
         },
         secondary: {
-          font: palette.secondary600,
+          font: '#7E441E',
           background: 'transparent',
           border: 'transparent',
-          fontActive: palette.secondary500,
+          fontActive: '#B2764E',
+          backgroundActive: 'transparent',
+          borderActive: 'transparent'
+        },
+        tertiary: {
+          font: '#C5C6C8',
+          background: 'transparent',
+          border: 'transparent',
+          fontActive: '#C5C6C8',
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
@@ -243,8 +264,8 @@ export default {
         background: palette.white,
         border: palette.grey300,
         fontActive: palette.primary500,
-        backgroundActive: palette.tertinary600,
-        borderActive: palette.tertinary600
+        backgroundActive: palette.secondary600,
+        borderActive: palette.secondary600
       },
       disabled: {
         font: palette.grey300,
@@ -352,8 +373,8 @@ export default {
         background: palette.white
       },
       info: {
-        font: palette.tertinary600,
-        border: palette.tertinary600,
+        font: palette.secondary600,
+        border: palette.secondary600,
         background: palette.white
       }
     },
