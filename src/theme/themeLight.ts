@@ -369,57 +369,57 @@ export default {
     },
     tags: {
       purple: {
-        background: palette.white,
+        background: '#FAC2E2',
         backgroundHover: '#FAC2E2',
         backgroundActive: '#770A48'
       },
       red: {
-        background: palette.white,
+        background: '#FFCFD0',
         backgroundHover: '#FFCFD0',
         backgroundActive: '#B61719'
       },
       blue: {
-        background: palette.white,
+        background: '#C8D7FF',
         backgroundHover: '#C8D7FF',
         backgroundActive: '#3861C9'
       },
       green: {
-        background: palette.white,
+        background: '#DAFBE3',
         backgroundHover: '#DAFBE3',
         backgroundActive: '#1B7734'
       },
       orange: {
-        background: palette.white,
+        background: '#FEF6EB',
         backgroundHover: '#FEF6EB',
         backgroundActive: '#AE5700'
       },
       brown: {
-        background: palette.white,
+        background: '#F1E8E1',
         backgroundHover: '#F1E8E1',
         backgroundActive: '#845A3F'
       },
       mathPurple: {
-        background: palette.white,
+        background: '#E4E5FF',
         backgroundHover: '#E4E5FF',
         backgroundActive: '#4E2393'
       },
       aquamarine: {
-        background: palette.white,
+        background: '#EFF5DC',
         backgroundHover: '#EFF5DC',
         backgroundActive: '#607321'
       },
       turquoise: {
-        background: palette.white,
+        background: '#CAFAFA',
         backgroundHover: '#CAFAFA',
         backgroundActive: '#31B7B7'
       },
       yellow: {
-        background: palette.white,
+        background: '#FFF6C1',
         backgroundHover: '#FFF6C1',
         backgroundActive: '#E4C200'
       },
       grey: {
-        background: palette.white,
+        background: '#DDDDDD',
         backgroundHover: '#DDDDDD',
         backgroundActive: '#606060'
       }
