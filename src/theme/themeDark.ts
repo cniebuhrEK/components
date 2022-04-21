@@ -324,7 +324,7 @@ export default {
         border: 'transparent',
         dropdownLineBreak: '#49494c',
         clockIconBackground:
-          'linear-gradient(180deg, #B87D55 0%, #42210B 100%);',
+          ' linear-gradient(180deg, #FEA700 0%, #BD5000 100%);',
         pauseIconBackground: '#323335',
         iconFont: palette.heading
       }
