@@ -370,57 +370,46 @@ export default {
     tags: {
       purple: {
         background: '#FAC2E2',
-        backgroundHover: '#FAC2E2',
         backgroundActive: '#770A48'
       },
       red: {
         background: '#FFCFD0',
-        backgroundHover: '#FFCFD0',
         backgroundActive: '#B61719'
       },
       blue: {
         background: '#C8D7FF',
-        backgroundHover: '#C8D7FF',
         backgroundActive: '#3861C9'
       },
       green: {
         background: '#DAFBE3',
-        backgroundHover: '#DAFBE3',
         backgroundActive: '#1B7734'
       },
       orange: {
         background: '#FEF6EB',
-        backgroundHover: '#FEF6EB',
         backgroundActive: '#AE5700'
       },
       brown: {
         background: '#F1E8E1',
-        backgroundHover: '#F1E8E1',
         backgroundActive: '#845A3F'
       },
       mathPurple: {
         background: '#E4E5FF',
-        backgroundHover: '#E4E5FF',
         backgroundActive: '#4E2393'
       },
       aquamarine: {
         background: '#EFF5DC',
-        backgroundHover: '#EFF5DC',
         backgroundActive: '#607321'
       },
       turquoise: {
         background: '#CAFAFA',
-        backgroundHover: '#CAFAFA',
         backgroundActive: '#31B7B7'
       },
       yellow: {
         background: '#FFF6C1',
-        backgroundHover: '#FFF6C1',
         backgroundActive: '#E4C200'
       },
       grey: {
         background: '#DDDDDD',
-        backgroundHover: '#DDDDDD',
         backgroundActive: '#606060'
       }
     },
@@ -635,9 +624,10 @@ export default {
     },
     flashcards: {
       boxes: {
-        active: '#E7E6E5',
-        background: '#D2E3ED',
-        font: '#316689'
+        active: '#FFEEDF',
+        background: 'linear-gradient(180deg, #FFEEDF 0%, #FFB86E 100%);',
+        font: '#42210B',
+        border: '#8C5000'
       },
       hotkeysLegend:
         'linear-gradient(180deg, rgba(228, 228, 228, 1) 0%, rgba(255, 255, 255, 1) 100%)'

@@ -370,58 +370,47 @@ export default {
     },
     tags: {
       purple: {
-        background: palette.white,
-        backgroundHover: '#FAC2E2',
+        background: '#FAC2E2',
         backgroundActive: '#770A48'
       },
       red: {
-        background: palette.white,
-        backgroundHover: '#FFCFD0',
+        background: '#FFCFD0',
         backgroundActive: '#B61719'
       },
       blue: {
-        background: palette.white,
-        backgroundHover: '#C8D7FF',
+        background: '#C8D7FF',
         backgroundActive: '#3861C9'
       },
       green: {
-        background: palette.white,
-        backgroundHover: '#DAFBE3',
+        background: '#DAFBE3',
         backgroundActive: '#1B7734'
       },
       orange: {
-        background: palette.white,
-        backgroundHover: '#FEF6EB',
+        background: '#FEF6EB',
         backgroundActive: '#AE5700'
       },
       brown: {
-        background: palette.white,
-        backgroundHover: '#F1E8E1',
+        background: '#F1E8E1',
         backgroundActive: '#845A3F'
       },
       mathPurple: {
-        background: palette.white,
-        backgroundHover: '#E4E5FF',
+        background: '#E4E5FF',
         backgroundActive: '#4E2393'
       },
       aquamarine: {
-        background: palette.white,
-        backgroundHover: '#EFF5DC',
+        background: '#EFF5DC',
         backgroundActive: '#607321'
       },
       turquoise: {
-        background: palette.white,
-        backgroundHover: '#CAFAFA',
+        background: '#CAFAFA',
         backgroundActive: '#31B7B7'
       },
       yellow: {
-        background: palette.white,
-        backgroundHover: '#FFF6C1',
+        background: '#FFF6C1',
         backgroundActive: '#E4C200'
       },
       grey: {
-        background: palette.white,
-        backgroundHover: '#DDDDDD',
+        background: '#DDDDDD',
         backgroundActive: '#606060'
       }
     },
@@ -636,9 +625,10 @@ export default {
     },
     flashcards: {
       boxes: {
-        active: '#E7E6E5',
-        background: '#D2E3ED',
-        font: '#316689'
+        active: '#FFEEDF',
+        background: 'linear-gradient(180deg, #FFEEDF 0%, #FFB86E 100%);',
+        font: '#42210B',
+        border: '#8C5000'
       },
       hotkeysLegend:
         'linear-gradient(180deg, rgba(228, 228, 228, 1) 0%, rgba(255, 255, 255, 1) 100%)'
