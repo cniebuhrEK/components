@@ -21,11 +21,13 @@ const buttonColors = {
   blue: 'blue',
   transparent: 'transparent',
   red: 'red',
-  black: 'black'
+  black: 'black',
+  tertiary: 'tertiary'
 }
 
 // this is because there was inconsistency of naming colors
 const colorsMap = {
+  tertiary: 'tertiary',
   primary: 'primary',
   [buttonColors.orange]: 'primary',
   [buttonColors.green]: 'green',
@@ -44,6 +46,7 @@ type ButtonProps =
       children?: JSX.Element | string
       size?: 'small' | 'normal'
       color?:
+        | 'tertiary'
         | 'orange'
         | 'green'
         | 'blue'
@@ -80,6 +83,7 @@ type ButtonProps =
         | 'black'
         | 'primary'
         | 'secondary'
+        | 'tertiary'
       variant?: 'contained' | 'outlined'
       startIcon?: any
       endIcon?: any
@@ -137,7 +141,7 @@ export const StyledButton = styled.button`
   padding: ${({ size }) => {
     switch (size) {
       case buttonSizes.small:
-        return '0 8px'
+        return '0 12px'
       case buttonSizes.normal:
       default:
         return '0 16px;'
@@ -154,15 +158,7 @@ export const StyledButton = styled.button`
     }
   }};
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: ${({ size }) => {
-    switch (size) {
-      case buttonSizes.small:
-        return 'normal'
-      case buttonSizes.normal:
-      default:
-        return '600'
-    }
-  }};
+  font-weight: bold;
   height: ${({ size, theme }) => {
     switch (size) {
       case buttonSizes.small:
@@ -190,9 +186,10 @@ export const StyledButton = styled.button`
     theme.colors.main.white};
   border-color: ${({ variant, color, theme }) =>
     theme.colors.buttons[variant][colorsMap[color]].border || 'transparent'};
+  border-width: ${({ variant }) =>
+    variant === buttonVariants.contained ? '0' : '1px'};
   box-shadow: none;
   border-radius: ${({ theme }) => theme.shape.borderRadiusNormal};
-  border-width: 1px;
   border-style: solid;
   background-position: center;
   transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;

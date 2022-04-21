@@ -16,6 +16,7 @@ type ButtonProps =
         | 'black'
         | 'primary'
         | 'secondary'
+        | 'tertiary'
       onClick?: (e: any) => void
       icon?: any
       type?: string
@@ -37,6 +38,7 @@ type ButtonProps =
         | 'black'
         | 'primary'
         | 'secondary'
+        | 'tertiary'
       onClick?: (e: any) => void
       icon?: any
       type?: string
@@ -63,6 +65,7 @@ const variantsMap = {
 }
 
 const buttonColors = {
+  tertiary: 'tertiary',
   orange: 'orange',
   green: 'green',
   blue: 'blue',
@@ -74,6 +77,7 @@ const buttonColors = {
 // this is because there was inconsistency of naming colors
 const colorsMap = {
   primary: 'primary',
+  tertiary: 'tertiary',
   [buttonColors.orange]: 'primary',
   [buttonColors.green]: 'green',
   [buttonColors.blue]: 'secondary',
@@ -148,7 +152,7 @@ export const StyledButton = styled.button`
     theme.colors.buttons[variantsMap[variant]][colorsMap[color]].border ||
     'transparent'};
   box-shadow: none;
-  border-width: 1px;
+  border-width: ${({ variant }) => (variant === variants.filled ? '0' : '1px')};
   border-style: solid;
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
 
