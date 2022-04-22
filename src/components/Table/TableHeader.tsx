@@ -99,7 +99,7 @@ const StyledTableHeader = styled.th`
   color: inherit;
   cursor: ${({ sortable }) => (sortable ? 'pointer' : 'text')};
   display: table-cell;
-  padding: 8px 18px;
+  padding: 8px;
   position: ${({ sticky }) => (sticky ? 'sticky' : 'static')};
   text-align: ${({ align }) => align};
   top: 0;
@@ -107,6 +107,11 @@ const StyledTableHeader = styled.th`
   vertical-align: bottom;
   white-space: nowrap;
   z-index: 1;
+
+  &:last-child,
+  &:first-child {
+    padding: 8px 0;
+  }
 `
 
 const ArrowContainer = styled.div`

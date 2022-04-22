@@ -223,10 +223,10 @@ const TableEmptyState = styled.div`
 `
 
 const TableContainer = styled.div`
-  border-radius: 8px;
+  border-radius: 6px;
   background: ${({ theme }) => theme.colors.backgrounds.main};
   box-shadow: ${({ theme }) => theme.shadows.mainShadow};
-  padding: 0 21px 36px;
+  padding: 16px;
 `
 
 EntitiesList.defaultProps = {
