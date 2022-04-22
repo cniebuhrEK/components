@@ -124,29 +124,27 @@ const TagContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid
-    ${({ theme, color }) => theme.colors.tags[color].backgroundActive};
   border-radius: 2px;
   text-align: center;
+  border: 1px solid transparent;
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
   background-color: ${({ theme, color, isActive }) =>
     theme.colors.tags[color][isActive ? 'backgroundActive' : 'background']};
 
   &:hover {
-    color: ${({ theme, color }) => theme.colors.tags[color].backgroundActive};
+    color: ${({ theme, color, isActive }) =>
+      isActive ? '#fff' : theme.colors.tags[color].backgroundActive};
     border-color: ${({ theme, color, isStatic }) =>
-      theme.colors.tags[color][
-        isStatic ? 'backgroundActive' : 'backgroundHover'
-      ]};
-    background-color: ${({ theme, color, isStatic }) =>
-      theme.colors.tags[color][isStatic ? 'background' : 'backgroundHover']};
+      theme.colors.tags[color][isStatic ? 'background' : 'backgroundActive']};
   }
+
   &:active {
-    border-color: ${({ theme, color }) =>
-      theme.colors.tags[color].backgroundActive};
+    border-color: ${({ theme, color, isStatic }) =>
+      theme.colors.tags[color][isStatic ? 'background' : 'backgroundActive']};
     background-color: ${({ theme, color, isStatic }) =>
       theme.colors.tags[color][isStatic ? 'background' : 'backgroundActive']};
+    color: #fff;
   }
 `
 const IconWrapper = styled.div`
