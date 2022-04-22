@@ -167,16 +167,18 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
           <div className='table-actions'>{tableActions}</div>
         )}
       </TableActionBar>
-      <TableContainer>
-        <Table size={size}>
-          <TableHead>
-            <TableRow highlight={highlight}>{renderHeaders}</TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.length === 0 ? renderEmptyState : renderRows}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <TableContainerOuter>
+        <TableContainer>
+          <Table size={size}>
+            <TableHead>
+              <TableRow highlight={highlight}>{renderHeaders}</TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.length === 0 ? renderEmptyState : renderRows}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </TableContainerOuter>
       <TablePaginationContainer>
         {defaultRowsPerPage && totalPages > 1 && (
           <RowsPerPage
@@ -222,11 +224,15 @@ const TableEmptyState = styled.div`
   }
 `
 
-const TableContainer = styled.div`
+const TableContainerOuter = styled.div`
   border-radius: 6px;
   background: ${({ theme }) => theme.colors.backgrounds.main};
   box-shadow: ${({ theme }) => theme.shadows.mainShadow};
   padding: 16px;
+`
+
+const TableContainer = styled.div`
+  overflow-x: hidden;
 `
 
 EntitiesList.defaultProps = {
