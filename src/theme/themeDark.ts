@@ -44,7 +44,7 @@ export default {
           font: palette.white,
           background: palette.primaryGradient,
           border: 'transparent',
-          fontActive: palette.text,
+          fontActive: palette.white,
           backgroundActive: 'linear-gradient(180deg, #D47B00 0%, #F8961A 100%)',
           borderActive: 'transparent'
         },
@@ -52,16 +52,16 @@ export default {
           font: palette.white,
           background: 'linear-gradient(180deg, #B3764E 0%, #7E441E 100%)',
           border: 'transparent',
-          fontActive: palette.text,
+          fontActive: palette.white,
           backgroundActive: 'linear-gradient(180deg, #7E441E 0%, #B3764E 100%)',
           borderActive: 'transparent'
         },
         tertiary: {
-          font: palette.text,
-          background: 'linear-gradient(180deg, #FCFCFC 0%, #C5C6C8 100%)',
+          font: palette.secondary600,
+          background: 'linear-gradient(180deg, #F3E2D7 0%, #D7BCAA 100%)',
           border: 'transparent',
-          fontActive: palette.heading,
-          backgroundActive: 'linear-gradient(180deg, #C5C6C8 0%, #FCFCFC 100%)',
+          fontActive: palette.secondary600,
+          backgroundActive: 'linear-gradient(180deg, #D7BCAA 0%, #F3E2D7 100%)',
           borderActive: 'transparent'
         },
         transparent: {
@@ -131,11 +131,11 @@ export default {
           borderActive: 'transparent'
         },
         tertiary: {
-          font: '#C5C6C8',
-          background: palette.white,
+          font: '#D7BCAA',
+          background: palette.secondary600,
           border: 'transparent',
-          fontActive: palette.white,
-          backgroundActive: '#C5C6C8',
+          fontActive: palette.secondary600,
+          backgroundActive: '#D7BCAA',
           borderActive: 'transparent'
         },
         transparent: {
@@ -198,10 +198,10 @@ export default {
           borderActive: 'transparent'
         },
         tertiary: {
-          font: '#C5C6C8',
+          font: '#D7BCAA',
           background: 'transparent',
           border: 'transparent',
-          fontActive: '#C5C6C8',
+          fontActive: '#D7BCAA',
           backgroundActive: 'transparent',
           borderActive: 'transparent'
         },
