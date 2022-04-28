@@ -62,6 +62,7 @@ export const Container = styled.div`
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
   transition: all 500ms;
   overflow: hidden;
+  opacity: ${({ isDisabled }) => (isDisabled ? 0.3 : 1)};
 
   &[data-is-selected='true'] {
     background-color: ${({ theme }) => theme.colors.checkbox.backgroundActive};
