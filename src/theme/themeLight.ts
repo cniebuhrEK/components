@@ -83,7 +83,7 @@ export default {
           font: palette.white,
           background: 'linear-gradient(180deg, #FF5D4E 0%, #E83E2E 100%)',
           border: 'transparent',
-          fontActive: palette.text,
+          fontActive: palette.white,
           backgroundActive: 'linear-gradient(180deg, #E83E2E 0%, #FF5D4E 100%)',
           borderActive: 'transparent'
         },
