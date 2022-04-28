@@ -6,6 +6,7 @@ import cx from 'classnames'
 interface CheckboxProps {
   name: string
   isSelected: boolean
+  disabled?: boolean
   intersection?: boolean
   onChange: (e: any) => void
 }
@@ -18,11 +19,12 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   const handleClick = (e: any) => {
     e.preventDefault()
-    props.onChange(!props.isSelected)
+    !props.disabled && props.onChange(!props.isSelected)
   }
 
   return (
     <Container
+      isDisabled={props.disabled}
       className={checkboxClass}
       id={`exam-checkbox-${props.name}`}
       data-is-selected={`${props.isSelected}`}
@@ -57,7 +59,7 @@ export const Container = styled.div`
   background-color: transparent;
   border-radius: 2px;
   font-size: 12px !important;
-  cursor: pointer;
+  cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
   transition: all 500ms;
   overflow: hidden;
 
