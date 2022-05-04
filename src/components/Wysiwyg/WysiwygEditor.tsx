@@ -16,7 +16,6 @@ import 'katex/dist/katex.min.css'
 
 // eslint-disable-next-line no-unused-vars
 import { GlossaryPhrase, PaginationProps } from './components/SelectGlossary'
-import { getGlossaryIds } from './utils'
 
 // @ts-ignore
 window.katex = katex
@@ -175,10 +174,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     return false
   }
 
-  const glossaryIds = getGlossaryIds(
-    // @ts-ignore
-    hasContent() ? quill.getContents() : initialValue
-  )
+  // @ts-ignore
+  const tooltipsDelta = hasContent() ? quill.getContents() : initialValue
 
   return (
     <TextEditorContainer
@@ -206,12 +203,14 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
       />
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}
-      <GlossaryTooltips
-        bookContentId={bookContentId}
-        getPhraseDetails={getPhraseDetails}
-        glossaryIds={glossaryIds}
-        redirectHandler={redirectHandler}
-      />
+      {getPhraseDetails && (
+        <GlossaryTooltips
+          bookContentId={bookContentId}
+          getPhraseDetails={getPhraseDetails}
+          deltaObject={tooltipsDelta}
+          redirectHandler={redirectHandler}
+        />
+      )}
     </TextEditorContainer>
   )
 }
