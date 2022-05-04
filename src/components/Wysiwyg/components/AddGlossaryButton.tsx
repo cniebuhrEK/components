@@ -108,7 +108,7 @@ const ButtonContainer = styled.div`
 
   .__react_component_tooltip {
     text-align: center !important;
-    background-color: ${({ theme }) => theme.palette.biege} !important;
+    background: ${({ theme }) => theme.palette.biege} !important;
     opacity: 1 !important;
     color: ${({ theme }) => theme.palette.textDark} !important;
     padding: 10px;
@@ -137,7 +137,7 @@ const ButtonContainer = styled.div`
   button {
     cursor: ${({ isDisabled }) =>
       isDisabled ? 'not-allowed' : 'pointer'} !important;
-    background-color: ${({ theme, isLoading, isDisabled }) =>
+    background: ${({ theme, isLoading, isDisabled }) =>
       isLoading || isDisabled
         ? theme.colors.buttons.contained.disabled.background
         : theme.colors.buttons.contained.secondary.background} !important;
@@ -181,7 +181,7 @@ const ButtonContainer = styled.div`
     }
 
     button {
-      background-color: ${({ theme, isLoading, isDisabled }) =>
+      background: ${({ theme, isLoading, isDisabled }) =>
         isLoading || isDisabled
           ? theme.colors.buttons.contained.disabled.backgroundActive
           : theme.colors.buttons.contained.secondary

@@ -159,8 +159,7 @@ export default GlossaryTooltips
 
 const TooltipsContainer = styled.div`
   .__react_component_tooltip {
-    background-color: ${({ theme }) =>
-      theme.colors.backgrounds.main} !important;
+    background: ${({ theme }) => theme.colors.backgrounds.main} !important;
     opacity: 1 !important;
     color: ${({ theme }) => theme.colors.main.text} !important;
     border: 1px solid ${({ theme }) => theme.colors.main.text} !important;

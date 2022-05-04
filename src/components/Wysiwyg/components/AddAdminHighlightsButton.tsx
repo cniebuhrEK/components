@@ -86,7 +86,7 @@ const ButtonContainer = styled.div`
 
   button {
     cursor: pointer !important;
-    background-color: ${({ theme }) =>
+    background: ${({ theme }) =>
       theme.colors.buttons.contained.secondary.background} !important;
     color: ${({ theme }) =>
       theme.colors.buttons.contained.secondary.font} !important;
@@ -116,7 +116,7 @@ const ButtonContainer = styled.div`
     }
 
     button {
-      background-color: ${({ theme, isLoading }) =>
+      background: ${({ theme, isLoading }) =>
         isLoading
           ? theme.colors.buttons.contained.disabled.background
           : theme.colors.buttons.contained.secondary
@@ -137,7 +137,7 @@ const ButtonContainer = styled.div`
     height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.selects.option.background};
+    background: ${({ theme }) => theme.colors.selects.option.background};
     box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 19px);

@@ -90,7 +90,7 @@ const ButtonContainer = styled.div`
 
   button {
     cursor: pointer !important;
-    background-color: ${({ theme, isLoading }) =>
+    background: ${({ theme, isLoading }) =>
       isLoading
         ? theme.colors.buttons.contained.disabled.background
         : theme.colors.buttons.contained.secondary.background} !important;
@@ -127,7 +127,7 @@ const ButtonContainer = styled.div`
     }
 
     button {
-      background-color: ${({ theme, isLoading }) =>
+      background: ${({ theme, isLoading }) =>
         isLoading
           ? theme.colors.buttons.contained.disabled.backgroundActive
           : theme.colors.buttons.contained.secondary

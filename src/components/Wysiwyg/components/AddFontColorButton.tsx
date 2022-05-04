@@ -189,7 +189,7 @@ const ButtonContainer = styled.div`
 
     button {
       cursor: pointer !important;
-      background-color: ${({ theme, isLoading }) =>
+      background: ${({ theme, isLoading }) =>
         isLoading
           ? theme.colors.buttons.contained.disabled.background
           : theme.colors.buttons.contained.secondary.background} !important;
@@ -225,7 +225,7 @@ const ButtonContainer = styled.div`
       }
 
       button {
-        background-color: ${({ theme, isLoading }) =>
+        background: ${({ theme, isLoading }) =>
           isLoading
             ? theme.colors.buttons.contained.disabled.backgroundActive
             : theme.colors.buttons.contained.secondary
@@ -255,7 +255,7 @@ const ButtonContainer = styled.div`
     height: ${({ isOpen }) => (isOpen ? 'auto' : 0)};
     overflow: hidden;
     position: absolute;
-    background-color: ${({ theme }) => theme.colors.backgrounds.main};
+    background: ${({ theme }) => theme.colors.backgrounds.main};
     box-shadow: ${props => props.theme.shadows.mainShadow};
     width: 100%;
     top: calc(100% + 5px);
@@ -333,76 +333,65 @@ const ColorPicker = styled.div`
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
 
   &.color-green {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.green.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.green.font};
   }
 
   &.color-purple {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.purple.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.purple.font};
   }
 
   &.color-blue {
-    background-color: ${({ theme }) => theme.colors.editorFontColors.blue.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.blue.font};
   }
 
   &.color-orange {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.orange.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.orange.font};
   }
 
   &.color-black {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.black.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.black.font};
   }
 
   &.color-brown {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.brown.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.brown.font};
   }
 
   &.color-red {
-    background-color: ${({ theme }) => theme.colors.editorFontColors.red.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.red.font};
   }
 
   &.color-grey {
-    background-color: ${({ theme }) => theme.colors.editorFontColors.grey.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.grey.font};
   }
 
   &.color-yellow {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.yellow.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.yellow.font};
   }
 
   &.color-violet {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.violet.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.violet.font};
   }
 
   &.color-lightRed {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.lightRed.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.lightRed.font};
   }
 
   &.color-azure {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.azure.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.azure.font};
   }
 
   &.color-lightGreen {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.lightGreen.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.lightGreen.font};
   }
 
   &.color-lightBrown {
-    background-color: ${({ theme }) =>
-      theme.colors.editorFontColors.lightBrown.font};
+    background: ${({ theme }) => theme.colors.editorFontColors.lightBrown.font};
   }
 
   // plop_create_font_color_blot_component_color_class
 
   &.color-remove {
-    background-color: transparent;
+    background: transparent;
   }
 
   &:hover,
