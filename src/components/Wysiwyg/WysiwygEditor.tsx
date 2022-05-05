@@ -222,6 +222,25 @@ const TextEditorContainer = styled.div`
   &,
   * {
     color: ${({ theme }) => theme.colors.main.text};
+
+    .glossary-word {
+      text-shadow: none;
+      animation: glossary-word-fade 1000ms ease-in;
+    }
+  }
+
+  @keyframes glossary-word-fade {
+    0% {
+      text-shadow: none;
+    }
+
+    50% {
+      text-shadow: 0px 0px 10px ${({ theme }) => theme.colors.main.primary500};
+    }
+
+    100% {
+      text-shadow: none;
+    }
   }
 
   &.with-highlights {
