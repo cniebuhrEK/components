@@ -127,7 +127,7 @@ const InputField = (props: InputProps): JSX.Element => {
         hasValue={isNotNilOrEmpty(inputValue) || inputValue === 0}
       >
         {label}
-        {required && ' *'}
+        {isNotNilOrEmpty(label) && required && ' *'}
       </Label>
       <Errors error={error}>{errorText}</Errors>
       <PasswordIcon
