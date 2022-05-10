@@ -8,7 +8,6 @@ const DatePickerContainer = props => {
 
   function handleSetNewDate(name, date) {
     setNewDate(date)
-    console.log(date)
   }
 
   return <DatePicker {...props} value={newDate} onChange={handleSetNewDate} />
@@ -22,7 +21,7 @@ Basic.args = {
   allowPast: false,
   value: new Date(),
   required: false,
-  onChange: date => console.log(date),
+  onChange: date => {},
   name: 'test',
   type: 'text',
   validate: (name, validationFunc) => {},
