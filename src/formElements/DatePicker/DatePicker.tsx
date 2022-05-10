@@ -92,7 +92,7 @@ const DateField = (props: DateFieldProps) => {
   }
 
   return (
-    <>
+    <React.Fragment>
       <Calendar
         {...rest}
         id={id || name}
@@ -122,7 +122,7 @@ const DateField = (props: DateFieldProps) => {
           size={size}
         />
       </Calendar>
-    </>
+    </React.Fragment>
   )
 }
 
