@@ -42,7 +42,6 @@ export const InputField = (props: InputProps): JSX.Element => {
     ...rest
   } = props
 
-  // Has the input been touched
   const [touched, _setTouched] = React.useState<boolean>(false)
   const [value, _setValue] = React.useState(initialValue)
   const [{ valid, error }, _validate] = React.useState({
