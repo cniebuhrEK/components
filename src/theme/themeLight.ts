@@ -281,6 +281,19 @@ export default {
         backgroundActive: palette.grey200
       }
     },
+    datePicker: {
+      background: palette.white,
+      border: palette.grey300,
+      font: palette.text,
+      fontActive: palette.black,
+      fontSelected: palette.white,
+      selectedBackground: 'linear-gradient(180deg, #D47B00 0%, #F8961A 100%)',
+      selectedBackgroundHover:
+        'linear-gradient(180deg, #F8961A 0%, #D47B00 100%)',
+      todayFont: palette.primary500,
+      weekendFont: palette.primary500,
+      arrowColor: palette.black
+    },
     backgrounds: {
       app: palette.grey200,
       main: palette.white

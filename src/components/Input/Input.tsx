@@ -19,6 +19,7 @@ interface InputProps {
   label?: string
   required?: boolean
   disabled?: boolean
+  disableTyping?: boolean
   type?: string
   autoComplete?: any
   autoFocus?: any
@@ -55,6 +56,7 @@ const InputField = (props: InputProps): JSX.Element => {
     onBlur,
     errorText,
     size,
+    disableTyping,
     ...rest
   } = props
 
@@ -65,8 +67,10 @@ const InputField = (props: InputProps): JSX.Element => {
 
   const handleOnChange = (e: any) => {
     e.preventDefault()
-    setInputValue(e.target.value)
-    onChange(e)
+    if (!disableTyping) {
+      setInputValue(e.target.value)
+      onChange(e)
+    }
   }
 
   React.useEffect(() => {
