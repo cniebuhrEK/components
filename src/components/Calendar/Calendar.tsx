@@ -60,6 +60,7 @@ const DatePickerContainer = styled.div`
 
     .react-datepicker__day.react-datepicker__day--disabled {
       color: ${({ theme }) => theme.colors.datePicker.font};
+      opacity: 0.3;
 
       &:hover {
         color: inherit !important;
