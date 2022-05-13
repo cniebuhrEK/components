@@ -10,12 +10,15 @@ import { isNotNilOrEmpty } from '../../utils/ramda'
 interface AnimationProps {
   data: any
   hideControls?: boolean
+  loop?: boolean
   autoplay?: boolean
   className?: string
+  onAnimationEnd?: () => void
 }
 
 const Animation = (props: AnimationProps): JSX.Element => {
-  const { data, hideControls, autoplay, className } = props
+  const { data, hideControls, autoplay, className, loop, onAnimationEnd } =
+    props
   const dropdownRef = React.useRef(null)
 
   const [isSpeedOpen, setIsSpeedOpen] = React.useState(false)
@@ -51,6 +54,7 @@ const Animation = (props: AnimationProps): JSX.Element => {
   }
 
   const options = {
+    loop,
     animationData: isNotNilOrEmpty(data) ? data : null,
     autoplay: autoplay
   }
@@ -86,6 +90,12 @@ const Animation = (props: AnimationProps): JSX.Element => {
         isStopped={isStopped}
         isPaused={isPaused}
         speed={speed}
+        eventListeners={[
+          {
+            eventName: 'complete',
+            callback: onAnimationEnd
+          }
+        ]}
       />
       {!hideControls && (
         <div className='controls-container'>
@@ -126,7 +136,9 @@ const Animation = (props: AnimationProps): JSX.Element => {
 Animation.defaultProps = {
   data: {},
   hideControls: false,
-  autoplay: false
+  autoplay: false,
+  loop: true,
+  onAnimationEnd: () => {}
 }
 
 export default Animation

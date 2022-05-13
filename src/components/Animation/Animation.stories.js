@@ -12,7 +12,8 @@ export const Default = Template.bind({})
 Default.args = {
   data: example,
   hideControls: false,
-  autoplay: false
+  autoplay: false,
+  loop: false
 }
 
 export default {
