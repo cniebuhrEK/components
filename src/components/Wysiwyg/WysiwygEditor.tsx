@@ -270,6 +270,10 @@ const TextEditorContainer = styled.div`
     margin-bottom: 8px;
   }
 
+  .ql-tooltip[data-mode='formula'] {
+    left: 12px !important;
+  }
+
   .ql-toolbar.ql-snow,
   .ql-container.ql-snow {
     border-color: ${({ error, theme }) =>
