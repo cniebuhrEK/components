@@ -7,6 +7,7 @@ import { isNotNilOrEmpty } from '../../utils/ramda'
 import SpyglassIcon from '../../icons/Spyglass'
 import EyeIcon from '../../icons/Eye'
 import HideIcon from '../../icons/Hide'
+import CloseIcon from '../../icons/Close'
 
 export const INPUT_SIZES = {
   normal: 'normal',
@@ -57,6 +58,7 @@ const InputField = (props: InputProps): JSX.Element => {
     errorText,
     size,
     disableTyping,
+    hasClearType,
     ...rest
   } = props
 
@@ -82,6 +84,11 @@ const InputField = (props: InputProps): JSX.Element => {
   const isPasswordVisible = () => type === 'password' && inputType === 'text'
   const hasSearchType = () => type === 'search'
   const hasPasswordType = () => type === 'password'
+
+  const resetInputField = () => {
+    setInputValue('')
+    onChange({ target: { value: '' } })
+  }
 
   return (
     <Container
@@ -118,6 +125,11 @@ const InputField = (props: InputProps): JSX.Element => {
         {...inputProps}
         {...rest}
       />
+      {hasClearType && (
+        <ClearIcon onClick={resetInputField}>
+          <CloseIcon />
+        </ClearIcon>
+      )}
       <Label
         isDisabled={disabled}
         size={size}
@@ -432,5 +444,13 @@ InputField.defaultProps = {
   onBlur: () => {},
   inputProps: {}
 }
+
+const ClearIcon = styled.div`
+  position: absolute;
+  top: 9px;
+  right: 10px;
+  z-index: 1;
+  cursor: pointer;
+`
 
 export default InputField
