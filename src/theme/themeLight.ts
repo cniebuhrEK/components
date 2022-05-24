@@ -659,7 +659,7 @@ export default {
     },
     flashcards: {
       boxes: {
-        active: '#FFEEDF',
+        active: 'linear-gradient(180deg, #FFEEDF 0%, #FFDCBB 100%)',
         background: 'linear-gradient(180deg, #FFEEDF 0%, #FFB86E 100%);',
         font: '#42210B',
         border: '#8C5000'
