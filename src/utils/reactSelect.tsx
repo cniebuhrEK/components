@@ -111,7 +111,7 @@ export const REACT_SELECT_STYLES = {
       fontSize: '13px',
       padding: '0 14px',
       fontFamily: getTheme().typography.fontFamily,
-      minHeight:
+      height:
         size === SELECT_SIZES.small
           ? getTheme().dimensions.inputSmallHeight
           : getTheme().dimensions.inputHeight,
@@ -206,7 +206,8 @@ export const REACT_SELECT_STYLES = {
     return {
       boxSizing: 'border-box',
       padding: '3px 0',
-      width: '100%',
+      marginRight: 0,
+      width: '90%',
       display: 'inline-flex',
       alignItems: 'center',
       flexWrap: 'wrap',
@@ -224,7 +225,7 @@ export const REACT_SELECT_STYLES = {
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
-      maxWidth: 'calc(100% - 25px)',
+      maxWidth: '60px',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis'
     }
@@ -428,7 +429,7 @@ const IconContainer = styled.div`
     hasValue && isClearable ? 'hidden' : 'visible'};
   cursor: pointer;
   position: absolute;
-  right: 14px;
+  right: 10px;
   top: ${({ isFocusedOrHasValue, size }) => {
     switch (true) {
       case isFocusedOrHasValue:
