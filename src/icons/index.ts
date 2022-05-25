@@ -1,6 +1,11 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as ChatIcon } from './Chat'
+export { default as CrackerIcon } from './Cracker'
+export { default as NewSectionIcon } from './NewSection'
+export { default as FlashcardIcon } from './Flashcard'
+export { default as QuestionIcon } from './Question'
 export { default as CalendarIcon } from './Calendar'
 export { default as FlagOutlinedIcon } from './FlagOutlined'
 export { default as CorrectAnswersIcon } from './CorrectAnswers'

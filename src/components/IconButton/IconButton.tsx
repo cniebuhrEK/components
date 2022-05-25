@@ -20,6 +20,7 @@ type ButtonProps =
       onClick?: (e: any) => void
       icon?: any
       type?: string
+      size?: 'small' | 'medium'
       disabled?: boolean
       tooltip?: JSX.Element | string
       tooltipId?: string
@@ -40,6 +41,7 @@ type ButtonProps =
         | 'secondary'
         | 'tertiary'
       onClick?: (e: any) => void
+      size?: 'small' | 'medium'
       icon?: any
       type?: string
       disabled?: boolean
@@ -55,6 +57,11 @@ const variants = {
   filled: 'filled',
   outlined: 'outlined',
   transparent: 'transparent'
+}
+
+const sizes = {
+  small: 'small',
+  medium: 'medium'
 }
 
 // this is because there was inconsistency of naming variants
@@ -99,6 +106,7 @@ const IconButton = (props: ButtonProps): JSX.Element => {
     variant,
     tooltip,
     tooltipId,
+    size,
     color = buttonColors.orange
   } = props
 
@@ -112,6 +120,7 @@ const IconButton = (props: ButtonProps): JSX.Element => {
       id={id}
       variant={variant}
       color={color}
+      size={size}
       {...props}
     >
       {icon}
@@ -138,9 +147,8 @@ export const StyledButton = styled.button`
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   font-family: ${({ theme }) => theme.typography.fontFamily};
   font-weight: 600;
-  height: 32px;
-  width: 32px;
-  align-items: center;
+  width: ${({ size }) => (size === sizes.small ? 24 : 32)}px;
+  height: ${({ size }) => (size === sizes.small ? 24 : 32)}px;
   justify-content: center;
   color: ${({ variant, color, theme }) =>
     theme.colors.buttons[variantsMap[variant]][colorsMap[color]].font ||
