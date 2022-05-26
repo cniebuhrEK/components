@@ -120,7 +120,7 @@ const DateField = (props: DateFieldProps) => {
           error={!valid && !disabled}
           onChange={onInputChange}
           size={size}
-          startCourse
+          wrappedLabel
         />
       </Calendar>
     </React.Fragment>
