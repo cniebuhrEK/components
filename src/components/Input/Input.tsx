@@ -34,6 +34,7 @@ interface InputProps {
   errorText?: string
   size?: string
   initialValue?: string
+  wrappedLabel?: boolean
   icon?: JSX.Element
   [x: string]: any
 }
@@ -59,6 +60,7 @@ const InputField = (props: InputProps): JSX.Element => {
     size,
     disableTyping,
     hasClearType,
+    wrappedLabel,
     ...rest
   } = props
 
@@ -137,6 +139,7 @@ const InputField = (props: InputProps): JSX.Element => {
         error={error}
         hasSearchType={hasSearchType()}
         hasValue={isNotNilOrEmpty(inputValue) || inputValue === 0}
+        wrappedLabel={wrappedLabel}
       >
         {label}
         {isNotNilOrEmpty(label) && required && ' *'}
@@ -161,6 +164,7 @@ const InputField = (props: InputProps): JSX.Element => {
 }
 
 const Label = styled.label`
+  margin: ${({ wrappedLabel }) => (wrappedLabel ? '-10px' : '0')};
   box-sizing: border-box;
   color: ${({ theme, error, isDisabled }) => {
     switch (true) {
