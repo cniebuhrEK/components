@@ -214,9 +214,9 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       {inlineFormats}
       {sectionFormats}
       {textFormats}
+      {additionalFormats}
       {formulaFormats}
       {cleanFormats}
-      {additionalFormats}
     </div>
   )
 }
