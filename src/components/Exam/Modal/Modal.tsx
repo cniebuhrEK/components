@@ -15,6 +15,7 @@ interface ExamModalProps {
   confirmButtonName?: string
   handleConfirm?: () => void
   showCancelButton?: boolean
+  isLoading?: boolean
   showBottomCloseButton?: boolean
   showBottomResizeIcons?: boolean
   noOverflow?: boolean
@@ -39,7 +40,8 @@ const ExamModal = ({
   initWidth,
   initHeight,
   disableOutsideClick,
-  noOverflow
+  noOverflow,
+  isLoading
 }: ExamModalProps): JSX.Element => {
   const handleKeyboardShortcut = e => {
     e.preventDefault()
@@ -74,6 +76,7 @@ const ExamModal = ({
         cancelButtonName={cancelButtonName}
         showBottomCloseButton={showBottomCloseButton}
         showBottomResizeIcons={showBottomResizeIcons}
+        isLoading={isLoading}
       >
         {children}
       </DraggableAndResizable>

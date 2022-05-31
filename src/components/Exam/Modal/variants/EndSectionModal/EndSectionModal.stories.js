@@ -5,7 +5,8 @@ const Template = args => <EndSectionModal {...args} />
 
 export const EndSection = Template.bind({})
 EndSection.args = {
-  incomplete: 12
+  incomplete: 12,
+  isLoading: false
 }
 
 export default {

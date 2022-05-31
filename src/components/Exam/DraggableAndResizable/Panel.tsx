@@ -6,6 +6,7 @@ import Resizer from './components/Resizer'
 
 import { Direction } from './components/Resizer/constants'
 import CloseIcon from '../../../examIcons/Close'
+import { Loader } from '../../Loader'
 
 const Panel = ({
   title,
@@ -21,7 +22,8 @@ const Panel = ({
   showBottomResizeIcons,
   handleClose,
   children,
-  noOverflow
+  noOverflow,
+  isLoading
 }) => {
   const panelRef = React.useRef<HTMLDivElement>(null)
 
@@ -169,7 +171,7 @@ const Panel = ({
                 id='exam-modal-confirm-btn'
                 onClick={handleConfirm}
               >
-                {confirmButtonName}
+                {isLoading ? <Loader /> : confirmButtonName}
               </div>
             )}
             {showCancelButton && (
@@ -178,7 +180,7 @@ const Panel = ({
                 id='exam-modal-cancel-btn'
                 onClick={handleCancel}
               >
-                {cancelButtonName}
+                {isLoading ? <Loader /> : cancelButtonName}
               </div>
             )}
             {showBottomCloseButton && (
@@ -386,6 +388,10 @@ const PanelContainer = styled.div`
     cursor: pointer;
     font-size: 15px;
     line-height: 24px;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     margin: 10px 0;
     font-family: ${props => props.theme.typography.fontFamilySecondary};

@@ -6,6 +6,7 @@ import { CHECK_SHORTCUT } from '../../../../../utils/shortcuts'
 interface EndSectionModalProps {
   handleConfirm: () => void
   open: boolean
+  isLoading?: boolean
   incomplete: number
   [x: string]: any
 }
@@ -14,6 +15,7 @@ const EndSectionModal = ({
   open,
   handleClose,
   handleConfirm,
+  isLoading,
   incomplete = 0,
   ...rest
 }: EndSectionModalProps): JSX.Element => {
@@ -74,6 +76,7 @@ const EndSectionModal = ({
       showCancelButton
       handleConfirm={handleConfirm}
       handleCancel={handleClose}
+      isLoading={isLoading}
       {...rest}
     >
       <EndSectionModalContainer>
