@@ -166,22 +166,38 @@ const Panel = ({
           <div className='panel__children-container'>{children}</div>
           <div className='panel__buttons-container'>
             {showConfirmButton && (
-              <div
-                className='panel_button'
-                id='exam-modal-confirm-btn'
-                onClick={handleConfirm}
-              >
-                {isLoading ? <Loader /> : confirmButtonName}
-              </div>
+              <React.Fragment>
+                {isLoading ? (
+                  <div className='panel_button--loading'>
+                    <Loader />
+                  </div>
+                ) : (
+                  <div
+                    className='panel_button'
+                    id='exam-modal-confirm-btn'
+                    onClick={handleConfirm}
+                  >
+                    {confirmButtonName}
+                  </div>
+                )}
+              </React.Fragment>
             )}
             {showCancelButton && (
-              <div
-                className='panel_button'
-                id='exam-modal-cancel-btn'
-                onClick={handleCancel}
-              >
-                {isLoading ? <Loader /> : cancelButtonName}
-              </div>
+              <React.Fragment>
+                {isLoading ? (
+                  <div className='panel_button--loading'>
+                    <Loader />
+                  </div>
+                ) : (
+                  <div
+                    className='panel_button'
+                    id='exam-modal-cancel-btn'
+                    onClick={handleCancel}
+                  >
+                    {cancelButtonName}
+                  </div>
+                )}
+              </React.Fragment>
             )}
             {showBottomCloseButton && (
               <div className='panel__bottom-close' onClick={handleClose}>
@@ -381,7 +397,8 @@ const PanelContainer = styled.div`
     }
   }
 
-  .panel_button {
+  .panel_button,
+  .panel_button--loading {
     color: ${props => props.theme.exam.original.white};
     border: 1px solid ${props => props.theme.exam.original.white};
     padding: 3px 10px;
@@ -405,6 +422,16 @@ const PanelContainer = styled.div`
     }
   }
 
+  .panel_button--loading {
+    cursor: not-allowed;
+    opacity: 0.3;
+
+    &:hover {
+      color: ${props => props.theme.exam.original.white};
+    }
+  }
+
+  .panel_button--loading + .panel_button--loading,
   .panel_button + .panel_button {
     margin-left: 5px;
   }
