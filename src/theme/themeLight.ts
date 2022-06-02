@@ -16,6 +16,7 @@ export default {
       primary500: palette.primary500,
       primary600: palette.primary600,
       primary700: palette.primary700,
+      primary800: palette.primary800,
       secondary200: palette.secondary200,
       secondary500: palette.secondary500,
       secondary600: palette.secondary600,

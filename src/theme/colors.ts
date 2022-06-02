@@ -7,6 +7,7 @@ export default {
   primary500: '#F8961A',
   primary600: '#D47B00',
   primary700: '#AF6500',
+  primary800: '#8C5000',
   secondary200: '#FFF3ED',
   secondary500: '#EFD8CB',
   secondary600: '#352822',
