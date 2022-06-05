@@ -35,6 +35,7 @@ interface InputProps {
   size?: string
   initialValue?: string
   wrappedLabel?: boolean
+  displayLeft?: boolean
   icon?: JSX.Element
   [x: string]: any
 }
@@ -61,6 +62,7 @@ const InputField = (props: InputProps): JSX.Element => {
     disableTyping,
     hasClearType,
     wrappedLabel,
+    displayLeft,
     ...rest
   } = props
 
@@ -144,7 +146,9 @@ const InputField = (props: InputProps): JSX.Element => {
         {label}
         {isNotNilOrEmpty(label) && required && ' *'}
       </Label>
-      <Errors error={error}>{errorText}</Errors>
+      <Errors displayLeft={displayLeft} error={error}>
+        {errorText}
+      </Errors>
       <PasswordIcon
         size={size}
         hasPasswordType={hasPasswordType()}
@@ -271,8 +275,8 @@ const Errors = styled.div`
   color: ${({ theme }) => theme.colors.main.error500};
   font-size: 12px;
   position: absolute;
-  left: -1px;
-  bottom: -20px;
+  left: ${({ displayLeft }) => (displayLeft ? '-320px' : '-1px')};
+  bottom: ${({ displayLeft }) => (displayLeft ? '10px' : '-20px')};
   white-space: nowrap;
 `
 
