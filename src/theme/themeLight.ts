@@ -327,7 +327,7 @@ export default {
       background: 'linear-gradient(180deg, #FFFFFF 0%, #E6E9EC 100%)',
       freeTrial: '#FFFDCD',
       freeTrialFont: palette.text,
-      overlay: 'rgba(252, 251, 250, 0.6)',
+      overlay: 'rgba(26, 26, 26, .6)',
       totalSaltyBucksAndTimer: {
         boxShadow: 'inset 2px 2px 6px #DDDFE1',
         saltyHistoryHeaders: '#A4A4A5',
@@ -345,8 +345,14 @@ export default {
     },
     mainMenu: {
       background: palette.white,
+      backgroundActive: palette.primary200,
+      backgroundSelected: palette.primary500,
       font: palette.text,
-      borderActive: palette.primary500
+      fontActive: palette.primary500,
+      fontSelected: palette.white,
+      borderActive: palette.primary500,
+      secondShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+      mainShadow: '0px 0px 25px rgba(0, 0, 0, 0.3)'
     },
     selectSwitcher: {
       background: palette.white,

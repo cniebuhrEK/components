@@ -344,9 +344,15 @@ export default {
       }
     },
     mainMenu: {
-      background: palette.black,
+      background: '#2C2C2D',
+      backgroundActive: '#4B2800',
+      backgroundSelected: palette.primary500,
       font: palette.text,
-      borderActive: palette.primary500
+      fontActive: palette.primary500,
+      fontSelected: palette.white,
+      borderActive: palette.primary500,
+      secondShadow: '4px 4px 8px rgba(0, 0, 0, 0.5)',
+      mainShadow: '0px 0px 25px rgba(0, 0, 0, 0.5)'
     },
     selectSwitcher: {
       background: palette.white,

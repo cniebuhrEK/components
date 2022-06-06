@@ -13,6 +13,7 @@ import {
   themeEvents
 } from '../../theme'
 import { Tooltip } from '../Tooltip'
+import { ArrowDownIcon, ArrowRightIcon } from '../../icons'
 
 type PureLink = {
   label: string
@@ -152,7 +153,7 @@ const StudentTopNavigation = (
       const hasTooltip = isNotNilOrEmpty(tooltip)
 
       const Level2Link = (
-        <NavMenuItem
+        <LowestLevelLink
           isInactive={isInactive}
           onClick={isInactive ? () => {} : handleRedirect(link.url)}
           key={`nav-menu-link-level-2-${index}-${getRandomIntInclusive(
@@ -162,7 +163,7 @@ const StudentTopNavigation = (
         >
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
           <NavMenuLink>{link.label}</NavMenuLink>
-        </NavMenuItem>
+        </LowestLevelLink>
       )
 
       const renderLink = hasTooltip ? (
@@ -193,8 +194,6 @@ const StudentTopNavigation = (
     links.map((link, index) => {
       const nextLevelLinks = R.propOr([], 'nextLevel')(link)
       const has2level = isNotNilOrEmpty(nextLevelLinks)
-      const isOtherLeveledLinkSelected =
-        linkLevel2 !== link.label && isNotNilOrEmpty(linkLevel2)
       const isSelected = linkLevel2 === link.label
       const isInactive = R.propOr(false, 'isInactive', link)
       const tooltip = R.propOr('', 'tooltip', link)
@@ -203,12 +202,17 @@ const StudentTopNavigation = (
       const Level1Link = has2level ? (
         <NavStaticMenuItem
           isInactive={isInactive}
-          onClick={isInactive ? () => {} : handleLevel2(link.label)}
-          isHidden={isOtherLeveledLinkSelected}
+          onMouseEnter={isInactive ? () => {} : handleLevel2(link.label)}
           isSelectedAsLevel1={isSelected}
         >
-          {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
-          <NavMenuLink>{link.label}</NavMenuLink>
+          <LabelWrapper>
+            {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+            <NavMenuLink>{link.label}</NavMenuLink>
+          </LabelWrapper>
+          <ArrowRightIcon className='right-icon' />
+          <Level2LinksContainer>
+            {link.label === linkLevel2 && generateLevel2Links(nextLevelLinks)}
+          </Level2LinksContainer>
         </NavStaticMenuItem>
       ) : (
         <NavMenuItem
@@ -221,7 +225,7 @@ const StudentTopNavigation = (
       )
 
       const renderLink = hasTooltip ? (
-        <TooltipContainer isHidden={isOtherLeveledLinkSelected}>
+        <TooltipContainer>
           <Tooltip
             tooltipContent={tooltip}
             id={`nav-menu-link-level-1-tooltip-${index}-${getRandomIntInclusive(
@@ -244,7 +248,6 @@ const StudentTopNavigation = (
           )}`}
         >
           {renderLink}
-          {link.label === linkLevel2 && generateLevel2Links(nextLevelLinks)}
         </React.Fragment>
       )
     })
@@ -266,30 +269,28 @@ const StudentTopNavigation = (
     )
     const isSelected = index === openedLeveledLinkIndex
 
-    const shouldHide =
-      openedLeveledLinkIndex >= 0 && index > openedLeveledLinkIndex
-
     const MainLink = has1level ? (
       <NavStaticMenuItem
-        isHidden={shouldHide}
         onClick={handleLevel1(link.label)}
         isSelected={isSelected}
       >
-        {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
-        <NavMenuLink>{link.label}</NavMenuLink>
+        <LabelWrapper>
+          {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+          <NavMenuLink>{link.label}</NavMenuLink>
+        </LabelWrapper>
+        <ArrowDownIcon className='dropdown-icon' />
       </NavStaticMenuItem>
     ) : (
-      <NavMenuItem isHidden={shouldHide} onClick={handleRedirect(link.url)}>
-        {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
-        <NavMenuLink>{link.label}</NavMenuLink>
+      <NavMenuItem onClick={handleRedirect(link.url)}>
+        <LabelWrapper>
+          {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+          <NavMenuLink>{link.label}</NavMenuLink>
+        </LabelWrapper>
       </NavMenuItem>
     )
 
     const renderLink = hasTooltip ? (
-      <TooltipContainer
-        isHidden={shouldHide}
-        id={`nav-menu-xx-link-tooltip-${index}`}
-      >
+      <TooltipContainer id={`nav-menu-xx-link-tooltip-${index}`}>
         <Tooltip tooltipContent={tooltip} id={`nav-menu-link-tooltip-${index}`}>
           {MainLink}
         </Tooltip>
@@ -301,7 +302,11 @@ const StudentTopNavigation = (
     return (
       <React.Fragment key={`nav-menu-link-${index}`}>
         {renderLink}
-        {linkLevel1 === link.label && generateLevel1Links(nextLevelLinks)}
+        {linkLevel1 === link.label && (
+          <Level1LinksContainer>
+            {generateLevel1Links(nextLevelLinks)}
+          </Level1LinksContainer>
+        )}
       </React.Fragment>
     )
   })
@@ -422,8 +427,6 @@ const Overlay = styled.div`
   bottom: 0;
   right: 0;
   background: ${({ theme }) => theme.colors.topNav.overlay};
-  filter: blur(2px);
-  backdrop-filter: blur(2px);
   transition: opacity 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
   z-index: ${({ theme }) => theme.zIndex.mainOverlay};
 `
@@ -510,9 +513,9 @@ const MenuContainerStatic = styled.div`
 `
 
 const NavMenu = styled.div`
-  background-color ${({ theme }) => theme.colors.mainMenu.background};
+  background: ${({ theme }) => theme.colors.mainMenu.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusBig};
-  box-shadow: ${({ theme }) => theme.shadows.mainShadow};
+  box-shadow: ${({ theme }) => theme.colors.mainMenu.mainShadow};
   display: ${({ open }) => (open ? 'block' : 'none')};
   opacity: ${({ open }) => (open ? '1' : '0')};
   width: ${({ open }) => (open ? 'auto' : '0')};
@@ -522,88 +525,196 @@ const NavMenu = styled.div`
   right: 0;
   top: 100%;
   z-index: ${({ theme }) => theme.zIndex.mainMenu};
-  transition: opacity 700ms ${({ theme }) =>
-    theme.transitions.easing.easeInOut};
-  max-width: 210px;
+  transition: opacity 700ms ${({ theme }) => theme.transitions.easing.easeInOut};
+  max-width: 235px;
+  min-width: 235px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `
 
 const NavMenuLink = styled.span`
-  font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 36px;
 `
 
 const NavMenuIcon = styled.div`
-  margin: 0 8px 0 0;
+  font-size: 17px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
 `
 
 const NavMenuItem = styled.a`
-  display: ${({ isHidden }) => (isHidden ? 'none' : 'flex')};
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
-  line-height: normal;
-  padding: 12px 16px;
-  color: ${({ theme, isInactive }) =>
-    isInactive
-      ? theme.colors.main.grey600
-      : theme.colors.mainMenu.font} !important;
-  border-left: 3px solid transparent;
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 16px;
+  background: ${({ theme, isSelected }) =>
+    isSelected ? theme.colors.mainMenu.backgroundSelected : 'none'};
+  color: ${({ theme, isInactive, isSelected }) => {
+    switch (true) {
+      case isInactive:
+        return theme.colors.main.grey600
+      case isSelected:
+        return theme.colors.mainMenu.fontSelected
+      default:
+        return theme.colors.mainMenu.font
+    }
+  }} !important;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-radius: 4px;
 
   &:hover {
-    border-left: ${({ theme, isInactive }) =>
-      isInactive
-        ? '3px solid transparent'
-        : `3px solid ${theme.colors.mainMenu.borderActive}`};
-    box-shadow: ${({ theme, isInactive }) =>
-      isInactive ? 'none' : theme.shadows.mainShadow};
+    background: ${({ theme, isSelected, isInactive }) => {
+      switch (true) {
+        case isSelected:
+          return theme.colors.mainMenu.backgroundSelected
+        case isInactive:
+          return 'none'
+        default:
+          return theme.colors.mainMenu.backgroundActive
+      }
+    }};
     cursor: ${({ isInactive }) => (isInactive ? 'not-allowed' : 'pointer')};
   }
 
   &:hover ${NavMenuLink} {
-    font-weight: ${({ isInactive }) => (isInactive ? 'none' : 600)};
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }};
+  }
+
+  &:hover ${NavMenuIcon} {
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }};
+  }
+
+  &:hover svg {
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }};
   }
 `
 
+const LabelWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+`
+
 const NavStaticMenuItem = styled.div`
-  display: ${({ isHidden }) => (isHidden ? 'none' : 'flex')};
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
-  line-height: normal;
-  padding: 12px 16px;
-  color: ${({ theme, isInactive }) =>
-    isInactive
-      ? theme.colors.main.grey600
-      : theme.colors.mainMenu.font} !important;
-  border-left: ${({ isSelected, theme }) =>
-    `3px solid ${
-      isSelected ? theme.colors.mainMenu.borderActive : 'transparent'
-    }`};
-  box-shadow: ${({ isSelected }) =>
-    isSelected ? '0px 4px 4px rgba(0, 0, 0, 0.15)' : 'none'};
-  text-decoration: ${({ isSelectedAsLevel1 }) =>
-    isSelectedAsLevel1 ? 'underline' : 'none'};
+  justify-content: space-between;
+  height: 36px;
+  padding: 0 16px;
+  background: ${({ theme, isSelected }) =>
+    isSelected ? theme.colors.mainMenu.backgroundSelected : 'none'};
+  color: ${({ theme, isInactive, isSelected }) => {
+    switch (true) {
+      case isInactive:
+        return theme.colors.main.grey600
+      case isSelected:
+        return theme.colors.mainMenu.fontSelected
+      default:
+        return theme.colors.mainMenu.font
+    }
+  }} !important;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  border-radius: 4px;
+  opacity: ${({ isInactive }) => (isInactive ? '0.3' : 1)};
 
   &:hover {
-    border-left: ${({ theme, isInactive }) =>
-      isInactive
-        ? '3px solid transparent'
-        : `3px solid ${theme.colors.mainMenu.borderActive}`};
-    box-shadow: ${({ theme, isInactive }) =>
-      isInactive ? 'none' : theme.shadows.mainShadow};
+    background: ${({ theme, isSelected, isInactive }) => {
+      switch (true) {
+        case isSelected:
+          return theme.colors.mainMenu.backgroundSelected
+        case isInactive:
+          return 'none'
+        default:
+          return theme.colors.mainMenu.backgroundActive
+      }
+    }};
     cursor: ${({ isInactive }) => (isInactive ? 'not-allowed' : 'pointer')};
   }
 
   &:hover ${NavMenuLink} {
-    font-weight: ${({ isInactive }) => (isInactive ? 'none' : 600)};
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }};
+  }
+
+  &:hover ${NavMenuIcon} {
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }} !important;
+  }
+
+  &:hover svg {
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }};
+  }
+
+  .dropdown-icon {
+    transform: ${({ isSelected }) => (isSelected ? 'rotate(180deg)' : 'none')};
+    transition: transform 200ms
+      ${({ theme }) => theme.transitions.easing.easeInOut};
   }
 `
 
@@ -619,7 +730,59 @@ const TooltipContainer = styled.div`
   }
 
   .__react_component_tooltip {
-    max-width: 150px;
+    max-width: 230px;
+  }
+`
+
+const Level1LinksContainer = styled.div`
+  margin-top: -8px;
+  display: flex;
+  flex-direction: column;
+  background: ${({ theme }) => theme.colors.mainMenu.backgroundActive};
+  border-radius: 4px;
+
+  ${NavStaticMenuItem}, ${NavMenuItem} {
+    position: relative;
+    overflow: visible;
+    background: ${({ theme }) => theme.colors.mainMenu.backgroundActive};
+
+    &:hover {
+      ${NavStaticMenuItem}, ${NavMenuItem} {
+        color: ${({ theme }) => theme.colors.mainMenu.font} !important;
+      }
+    }
+  }
+`
+
+const Level2LinksContainer = styled.div`
+  background: ${({ theme }) => theme.colors.mainMenu.backgroundActive};
+  border-radius: 4px;
+  position: absolute;
+  right: 100%;
+  top: 0;
+  box-shadow: ${({ theme }) => theme.colors.mainMenu.secondShadow};
+  min-width: 235px;
+  z-index: 3000;
+`
+
+const LowestLevelLink = styled(NavMenuItem)`
+  opacity: ${({ isInactive }) => (isInactive ? '0.3' : 1)};
+
+  ${NavMenuLink} {
+    color: ${({ theme }) => theme.colors.mainMenu.font} !important;
+  }
+
+  &:hover ${NavMenuLink} {
+    color: ${({ theme, isInactive, isSelected }) => {
+      switch (true) {
+        case isInactive:
+          return theme.colors.main.grey600
+        case isSelected:
+          return theme.colors.mainMenu.fontSelected
+        default:
+          return theme.colors.mainMenu.fontActive
+      }
+    }} !important;
   }
 `
 
