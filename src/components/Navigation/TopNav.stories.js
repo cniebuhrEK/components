@@ -4,7 +4,8 @@ import React from 'react'
 import TopNav from './TopNav'
 import BooksContainedIcon from '../../icons/BooksContained'
 import DashboardIcon from '../../icons/Dashboard'
-import GamesIcon from '../../icons/Games'
+import NotesIcon from '../../icons/Notes'
+import FlashcardsIcon from '../../icons/Flashcards'
 import VideoCameraIcon from '../../icons/VideoCamera'
 import ExamEditorIcon from '../../icons/ExamEditor'
 import LogoutIcon from '../../icons/Logout'
@@ -26,7 +27,7 @@ TopNavigation.args = {
     {
       label: 'Books',
       icon: <BooksContainedIcon />,
-      url: '',
+      url: '#',
       nextLevel: [
         {
           label: 'Biology',
@@ -89,30 +90,24 @@ TopNavigation.args = {
       ]
     },
     {
-      label: 'Games',
-      tooltip: 'Normal tooltip',
-      icon: <GamesIcon />,
-      url: '#'
-    },
-    {
       label: 'Videos',
       icon: <VideoCameraIcon />,
       url: '#'
     },
     {
+      label: 'Flashcards',
+      icon: <FlashcardsIcon />,
+      url: '#'
+    },
+    {
+      label: 'Notes',
+      icon: <NotesIcon />,
+      url: '#'
+    },
+    {
       label: 'Practice Exams',
-      url: '',
       icon: <ExamEditorIcon />,
-      nextLevel: [
-        {
-          label: 'Mini',
-          url: '#'
-        },
-        {
-          label: 'Full',
-          url: '#'
-        }
-      ]
+      url: '#'
     },
     {
       label: 'Log Out',
