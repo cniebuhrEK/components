@@ -46,7 +46,7 @@ stages:
 .script.build: &SCRIPT_BUILD
   script:
     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    - docker run --privileged --rm -v "${PWD}:/usr/src/app" -w "/usr/src/app" --env-file=$ENVFILE $NODE_VERSION /bin/sh -c "yarn && storybook:build"
+    - docker run --privileged --rm -v "${PWD}:/usr/src/app" -w "/usr/src/app" --env-file=$ENVFILE $NODE_VERSION /bin/sh -c "yarn && yarn storybook:build"
     - docker build . -f "docker/Dockerfile" --build-arg NODE_VERSION=$NODE_VERSION_DOCKERFILE -t $WEB_IMAGE
     - docker push $WEB_IMAGE
 
