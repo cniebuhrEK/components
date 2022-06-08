@@ -16,23 +16,21 @@
   "scripts": {
     "reset": "rm -rf yarn.lock && yarn install",
     "prebuild": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
-    "build": "microbundle-crl --no-compress --format modern,cjs",
+    "build": "microbundle-crl --compress --format modern,cjs",
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "run-s build",
     "prepare": "yarn run build",
-    "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:build": "run-s build",
+    "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "prestorybook:start": "rm -rf ./public && mkdir -p ./public/assets && cp -R ./src/assets ./public",
-    "storybook:start": "start-storybook -p 6006 --static-dir public",
-    "prestorybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets",
-    "storybook:build": "cp -R ./src/assets ./public"
+    "storybook:start": "yarn start && cd storybook && yarn install && yarn run start",
+    "storybook:build": "yarn build && cd storybook && yarn install && yarn run build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^17.0.2"
   },
   "dependencies": {
     "classnames": "^2.2.6",
@@ -57,13 +55,6 @@
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/eslint-parser": "^7.14.3",
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/cli": "^6.2.9",
-    "@storybook/node-logger": "^6.1.21",
-    "@storybook/preset-create-react-app": "^3.1.7",
-    "@storybook/react": "^6.1.21",
     "@types/jest": "^25.1.4",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
@@ -86,7 +77,6 @@
     "jest": "26.6.0",
     "microbundle-crl": "^0.13.8",
     "npm-run-all": "^4.1.5",
-    "plop": "^3.0.5",
     "prettier": "^2.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

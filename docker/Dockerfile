@@ -1,4 +1,4 @@
 ARG NODE_VERSION=${NODE_VERSION_DOCKERFILE}
 FROM ${NODE_VERSION}
 
-COPY public/ /usr/src/app
+COPY storybook/public/ /usr/src/app
