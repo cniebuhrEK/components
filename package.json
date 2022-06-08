@@ -14,12 +14,14 @@
     "node": ">=10"
   },
   "scripts": {
-    "prepublish": "run-s build",
     "reset": "rm -rf yarn.lock && yarn install",
     "prebuild": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "build": "microbundle-crl --compress --format modern,cjs",
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepublish": "run-s build",
+    "prepare": "yarn run build",
+    "test:build": "run-s build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
