@@ -5,7 +5,6 @@
   "author": "DeSmart",
   "license": "MIT",
   "repository": "https://git.desmart.com/examkrackers/components",
-  "homepage": "https://desmart.github.io/components",
   "main": "build/index.js",
   "module": "build/index.modern.js",
   "source": "src/index.tsx",
@@ -20,14 +19,13 @@
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "run-s build",
-    "prepare": "yarn run build",
     "test:build": "run-s build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "storybook:start": "yarn start && cd storybook && yarn install && yarn run start",
-    "storybook:build": "yarn build && cd storybook && yarn install && yarn run build"
+    "storybook:start": "cd storybook && yarn install && yarn run start",
+    "storybook:build": "cd storybook && yarn install && yarn run build"
   },
   "peerDependencies": {
     "react": "^17.0.2"
@@ -53,8 +51,6 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/eslint-parser": "^7.14.3",
     "@types/jest": "^25.1.4",
     "@types/react": "^17.0.3",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
@@ -73,21 +69,13 @@
     "eslint-plugin-standard": "^4.0.1",
     "fork-ts-checker-webpack-plugin": "^6.1.1",
     "gh-pages": "^2.2.0",
-    "husky": "^7.0.4",
-    "jest": "26.6.0",
     "microbundle-crl": "^0.13.8",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3"
+    "react": "^17.0.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "4.0.3"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "files": [
     "build"
   ]

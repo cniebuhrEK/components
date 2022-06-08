@@ -13,7 +13,6 @@
     "start": "rm -rf ./public && mkdir -p ./public/assets && cp -R ../src/assets ./public && start-storybook -p 6006 --static-dir public",
     "build": "build-storybook --output-dir public && mkdir -p ./public/assets && cp -R ../src/assets ./public"
   },
-
   "eslintConfig": {
     "extends": "react-app"
   },
