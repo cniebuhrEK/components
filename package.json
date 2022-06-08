@@ -18,6 +18,7 @@
     "build": "microbundle-crl --compress --format modern,cjs",
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepare": "yarn run build",
     "prepublish": "run-s build",
     "test:build": "run-s build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
