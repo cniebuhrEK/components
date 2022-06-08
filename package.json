@@ -14,13 +14,13 @@
     "node": ">=10"
   },
   "scripts": {
+    "prepublish": "run-s build",
     "reset": "rm -rf yarn.lock && yarn install",
     "prebuild": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "build": "microbundle-crl --compress --format modern,cjs",
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "test": "react-scripts test --env=jsdom --watchAll=false",
-    "test:build": "run-s build",
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
@@ -28,7 +28,7 @@
     "storybook:build": "yarn build && cd storybook && yarn install && yarn run build"
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^17.0.2"
   },
   "dependencies": {
     "classnames": "^2.2.6",
