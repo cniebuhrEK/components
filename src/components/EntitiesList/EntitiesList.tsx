@@ -41,8 +41,9 @@ interface EntitiesListProps {
   totalPages: number
   paginationPage?: number
   emptyStateText: string
-  resultsText: string
+  resultsText?: string
   size?: string
+  removeMargin?: boolean
   defaultPage: number
   defaultRowsPerPage?: 10 | 50 | 100 | undefined
   defaultSortColumnId: string
@@ -73,7 +74,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     size,
     highlight,
     defaultRowsPerPage,
-    paginationPage
+    paginationPage,
+    removeMargin
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -159,7 +161,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
 
   return (
     <div>
-      <TableActionBar>
+      <TableActionBar removeMargin={removeMargin}>
         {resultsText !== undefined && (
           <div className='table-results'>{resultsText}</div>
         )}
@@ -202,7 +204,7 @@ const TableActionBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 8px;
+  margin-bottom: ${({ removeMargin }) => (removeMargin ? 0 : '8px')};
 
   .table-results {
     font-weight: 600;
