@@ -27,11 +27,18 @@ interface TextEditorProps {
   withHighlights?: boolean
   withYoursHighlights?: boolean
   onHighlightChange?: (e) => void
+  onSelectionChange?: (text, range, quill) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, value, withHighlights, withYoursHighlights, onHighlightChange } =
-    props
+  const {
+    id,
+    value,
+    withHighlights,
+    withYoursHighlights,
+    onHighlightChange,
+    onSelectionChange
+  } = props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
@@ -131,11 +138,28 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     }
   }
 
+  const handleSelectionChange = range => {
+    if (onSelectionChange) {
+      // @ts-ignore
+      const text = quill.getText(range)
+      onSelectionChange(text, range, quill)
+    }
+  }
+
   React.useEffect(() => {
     document.addEventListener('mousedown', handleMouseDown)
 
+    if (onSelectionChange && quill) {
+      // @ts-ignore
+      quill.on('selection-change', handleSelectionChange)
+    }
+
     return () => {
       document.removeEventListener('mousedown', handleMouseDown)
+      if (onSelectionChange && quill) {
+        // @ts-ignore
+        quill.off('selection-change', handleSelectionChange)
+      }
     }
   }, [quill])
 

@@ -18,6 +18,7 @@ interface TextEditorProps {
   getPhraseDetails?: (e: any) => void
   redirectHandler?: (e: any) => void
   onHighlightChange?: (e) => void
+  onSelectionChange?: (text, range, quill) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
@@ -29,7 +30,8 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     withHighlights,
     withYoursHighlights,
     onHighlightChange,
-    redirectHandler
+    redirectHandler,
+    onSelectionChange
   } = props
   return (
     <React.Fragment>
@@ -39,6 +41,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         withHighlights={withHighlights}
         withYoursHighlights={withYoursHighlights}
         onHighlightChange={onHighlightChange}
+        onSelectionChange={onSelectionChange}
       />
       {getPhraseDetails && (
         <GlossaryTooltips
