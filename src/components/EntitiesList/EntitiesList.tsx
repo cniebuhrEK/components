@@ -43,7 +43,7 @@ interface EntitiesListProps {
   emptyStateText: string
   resultsText?: string
   size?: string
-  profileTabs?: boolean
+  removeMargin?: boolean
   defaultPage: number
   defaultRowsPerPage?: 10 | 50 | 100 | undefined
   defaultSortColumnId: string
@@ -75,7 +75,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     highlight,
     defaultRowsPerPage,
     paginationPage,
-    profileTabs
+    removeMargin
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -161,7 +161,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
 
   return (
     <div>
-      <TableActionBar profileTabs={profileTabs}>
+      <TableActionBar profileTabs={removeMargin}>
         {resultsText !== undefined && (
           <div className='table-results'>{resultsText}</div>
         )}
