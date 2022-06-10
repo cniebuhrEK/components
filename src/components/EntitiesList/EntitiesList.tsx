@@ -161,7 +161,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
 
   return (
     <div>
-      <TableActionBar profileTabs={removeMargin}>
+      <TableActionBar removeMargin={removeMargin}>
         {resultsText !== undefined && (
           <div className='table-results'>{resultsText}</div>
         )}
@@ -204,7 +204,7 @@ const TableActionBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: ${({ profileTabs }) => (profileTabs ? 0 : '8px')};
+  margin-bottom: ${({ removeMargin }) => (removeMargin ? 0 : '8px')};
 
   .table-results {
     font-weight: 600;
