@@ -8,7 +8,7 @@ interface TabProps {
   activeTab: string
   position: 'bottomRight' | 'bottomLeft' | 'topRight' | 'topLeft'
   tabs: {
-    label: string
+    label: string | JSX.Element
     value: string
   }[]
   tabContents: {
