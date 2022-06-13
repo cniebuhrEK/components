@@ -139,7 +139,9 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   }
 
   const handleSelectionChange = range => {
-    if (onSelectionChange) {
+    const length = propOr(0, 'length', range)
+
+    if (onSelectionChange && length > 0) {
       // @ts-ignore
       const text = quill.getText(range)
       onSelectionChange(text, range, quill)
