@@ -66,6 +66,7 @@
     "@storybook/react": "^6.1.21",
     "@types/jest": "^25.1.4",
     "@types/react": "^17.0.3",
+    "@types/react-tooltip": "^4.2.4",
     "@typescript-eslint/eslint-plugin": "^4.4.1",
     "@typescript-eslint/parser": "^2.26.0",
     "babel-loader": "8.1.0",
@@ -91,6 +92,10 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^4.0.3"
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
   },
   "browserslist": [
     ">0.2%",
