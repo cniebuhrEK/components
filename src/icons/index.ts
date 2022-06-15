@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as MinusContainedIcon } from './MinusContained'
 export { default as ImageOutlinedIcon } from './ImageOutlined'
 export { default as ChatIcon } from './Chat'
 export { default as CrackerIcon } from './Cracker'
