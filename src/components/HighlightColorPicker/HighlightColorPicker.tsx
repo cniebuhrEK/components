@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { IconButton } from '../IconButton'
-import { TrashIcon } from '../../icons'
+import HighlightCursor from '../HighlightCursor/HighlightCursor'
+import { isNotNilOrEmpty } from '../../utils/ramda'
+import { HighlighterIcon } from '../../icons'
 
 export const HIGHLIGHT_COLORS = {
   green: 'color-green',
@@ -26,84 +27,107 @@ interface HighlightColorPickerProps {
 }
 
 export const HighlightColorPicker = ({
-  onChange,
-  onRemove
+  onChange
 }: HighlightColorPickerProps): JSX.Element => {
-  const handleRemove = e => {
-    e.preventDefault()
-    onRemove && onRemove(e)
-  }
+  const [selectedColor, setSelectedColor] = useState(HIGHLIGHT_COLORS.green)
   const handleSelect = value => e => {
     e.preventDefault()
-    onChange && onChange(value)
+    setSelectedColor(value)
   }
 
+  useEffect(() => {
+    onChange && onChange(selectedColor)
+  }, [selectedColor])
+
+  const hasColorSelected = isNotNilOrEmpty(selectedColor)
+
   return (
-    <Container>
-      <IconButton
-        onClick={handleRemove}
-        color='blue'
-        variant='transparent'
-        icon={<TrashIcon id='delete-highlight-icon' />}
-        id='delete-highlight'
-      />
-      <div className='picker-colors'>
-        <ColorPicker
-          onClick={handleSelect('color-green')}
-          className='picker-color color-green'
-          data-highlight={HIGHLIGHT_COLORS.green}
-        />
-        <ColorPicker
-          onClick={handleSelect('color-purple')}
-          className='picker-color color-purple'
-          data-highlight={HIGHLIGHT_COLORS.purple}
-        />
-        <ColorPicker
-          onClick={handleSelect('color-red')}
-          className='picker-color color-red'
-          data-highlight={HIGHLIGHT_COLORS.red}
-        />
-        <ColorPicker
-          onClick={handleSelect('color-yellow')}
-          className='picker-color color-yellow'
-          data-highlight={HIGHLIGHT_COLORS.yellow}
-        />
-        <ColorPicker
-          onClick={handleSelect('color-blue')}
-          className='picker-color color-blue'
-          data-highlight={HIGHLIGHT_COLORS.blue}
-        />
-        <ColorPicker
-          onClick={handleSelect('color-orange')}
-          className='picker-color color-orange'
-          data-highlight={HIGHLIGHT_COLORS.orange}
-        />
-      </div>
-    </Container>
+    <React.Fragment>
+      {hasColorSelected && <HighlightCursor />}
+      <Container>
+        <div className='picker-colors'>
+          <HighlighterIcon />
+          <span>Color: </span>
+          <ColorPicker
+            onClick={handleSelect('color-green')}
+            className='picker-color color-green'
+            data-highlight={HIGHLIGHT_COLORS.green}
+            isActive={selectedColor === HIGHLIGHT_COLORS.green}
+          />
+          <ColorPicker
+            onClick={handleSelect('color-purple')}
+            className='picker-color color-purple'
+            data-highlight={HIGHLIGHT_COLORS.purple}
+            isActive={selectedColor === HIGHLIGHT_COLORS.purple}
+          />
+          <ColorPicker
+            onClick={handleSelect('color-red')}
+            className='picker-color color-red'
+            data-highlight={HIGHLIGHT_COLORS.red}
+            isActive={selectedColor === HIGHLIGHT_COLORS.red}
+          />
+          <ColorPicker
+            onClick={handleSelect('color-yellow')}
+            className='picker-color color-yellow'
+            data-highlight={HIGHLIGHT_COLORS.yellow}
+            isActive={selectedColor === HIGHLIGHT_COLORS.yellow}
+          />
+          <ColorPicker
+            onClick={handleSelect('color-blue')}
+            className='picker-color color-blue'
+            data-highlight={HIGHLIGHT_COLORS.blue}
+            isActive={selectedColor === HIGHLIGHT_COLORS.blue}
+          />
+          <ColorPicker
+            onClick={handleSelect('color-orange')}
+            className='picker-color color-orange'
+            data-highlight={HIGHLIGHT_COLORS.orange}
+            isActive={selectedColor === HIGHLIGHT_COLORS.orange}
+          />
+          <RemoveColor
+            onClick={handleSelect('color-remove')}
+            data-highlight='color-remove'
+            isActive={selectedColor === 'color-remove'}
+          />
+        </div>
+      </Container>
+    </React.Fragment>
   )
 }
 
 export default HighlightColorPicker
 
 const Container = styled.div`
-  display: inline-flex;
-  padding: 5px 10px;
+  padding: 8px;
   box-shadow: ${props => props.theme.shadows.mainShadow};
-  background-color: ${props => props.theme.colors.backgrounds.main};
-  gap: 12px;
+  background: ${props => props.theme.colors.tooltip.background};
+  color: ${props => props.theme.colors.tooltip.font};
   border-radius: 4px;
   z-index: ${({ theme }) => theme.zIndex.menu + 30};
-  button {
-    box-shadow: ${props => props.theme.shadows.mainShadow};
-  }
 
   .picker-colors {
-    max-width: 75px;
+    max-width: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px 20px;
+    gap: 4px;
+  }
+`
+
+const RemoveColor = styled.div`
+  width: 11.65px;
+  height: 11.65px;
+  border-radius: 50%;
+  box-shadow: ${props => props.theme.shadows.mainShadow};
+  border: 1px solid
+    ${({ isActive, theme }) =>
+      isActive ? theme.colors.main.error500 : theme.colors.main.white};
+  cursor: pointer;
+  transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
+
+  &:hover,
+  &:active {
+    border-color: ${({ theme }) => theme.colors.main.error500};
   }
 `
 
@@ -112,7 +136,9 @@ const ColorPicker = styled.div`
   height: 11.65px;
   border-radius: 50%;
   box-shadow: ${props => props.theme.shadows.mainShadow};
-  border: 1px solid transparent;
+  border: 1px solid
+    ${({ isActive, theme }) =>
+      isActive ? theme.colors.main.error500 : 'transparent'};
   cursor: pointer;
   transition: all 300ms ${({ theme }) => theme.transitions.easing.easeInOut};
 
@@ -146,6 +172,6 @@ const ColorPicker = styled.div`
 
   &:hover,
   &:active {
-    border-color: ${({ theme }) => theme.colors.main.grey600};
+    border-color: ${({ theme }) => theme.colors.main.error500};
   }
 `
