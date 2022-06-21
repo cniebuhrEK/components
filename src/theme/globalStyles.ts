@@ -20,6 +20,12 @@ export default createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     }
 
+    .remove-cursor {
+      * {
+        cursor: none;
+      }
+    }
+
     * {
       box-sizing: border-box;
       scrollbar-width: thin;

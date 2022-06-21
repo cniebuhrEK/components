@@ -3,12 +3,11 @@
 import React, { memo } from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
-import { includes, values, propOr, any, propEq, pipe } from 'ramda'
+import { propOr } from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
 import { isNotNilOrEmpty } from '../../utils/ramda'
-import { HIGHLIGHT_BLOTS } from './utils'
 import {
   addAdminHighlightsBlotToQuill,
   addGlossaryBlotToQuill,
@@ -36,7 +35,6 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     value,
     withHighlights,
     withYoursHighlights,
-    onHighlightChange,
     onSelectionChange
   } = props
   const [quill, setQuill] = React.useState()
@@ -74,70 +72,6 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     }
   }, [quill, value])
 
-  const removeHighlights = () => {
-    // @ts-ignore
-    values(HIGHLIGHT_BLOTS).forEach(blot => quill.format(blot, false, 'api'))
-  }
-
-  const isClickedInside = mouseEvent => {
-    const path = propOr([], 'path', mouseEvent)
-    const isClickedInsideSelf = any(propEq('id', id))(path)
-    const isClickedInsideOtherEditor = any(
-      pipe(propOr('', 'className'), includes('text-editor-container'))
-    )(path)
-
-    return isClickedInsideSelf || isClickedInsideOtherEditor
-  }
-
-  const handleMouseDown = e => {
-    const targetElement = e.target
-    const highlightData = targetElement.getAttribute('data-highlight')
-    const farthestViewportElement = propOr(
-      {},
-      'farthestViewportElement',
-      targetElement
-    )
-    const elementId = propOr('null', 'id', targetElement)
-    const farthestViewportElementId = propOr(
-      'null',
-      'id',
-      farthestViewportElement
-    )
-    const isColorPicker = includes('color-', highlightData || 'null')
-    const isDeleteButton =
-      includes('delete-highlight', elementId) ||
-      includes('delete-highlight', farthestViewportElementId)
-
-    // This is to reset the lastRange when user clicks outside of the area
-    // because of the issue, when user selects another area in different
-    // quill editor, then the highlight is set on the editor which loses focus
-    // because of lastRange saved
-    if (!isClickedInside(e) && !isColorPicker && !isDeleteButton) {
-      // @ts-ignore
-      quill.setSelection(0, 0)
-    }
-
-    if (isColorPicker && isNotNilOrEmpty(quill)) {
-      // @ts-ignore
-      quill.update()
-      removeHighlights()
-      // @ts-ignore
-      quill.format(HIGHLIGHT_BLOTS[highlightData], true, 'api')
-      // @ts-ignore
-      quill.setSelection(0, 0)
-      onHighlightChange && onHighlightChange(quill)
-    }
-
-    if (isDeleteButton && isNotNilOrEmpty(quill)) {
-      // @ts-ignore
-      quill.update()
-      removeHighlights()
-      // @ts-ignore
-      quill.setSelection(0, 0)
-      onHighlightChange && onHighlightChange(quill)
-    }
-  }
-
   const handleSelectionChange = range => {
     const length = propOr(0, 'length', range)
 
@@ -149,15 +83,12 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   }
 
   React.useEffect(() => {
-    document.addEventListener('mousedown', handleMouseDown)
-
     if (onSelectionChange && quill) {
       // @ts-ignore
       quill.on('selection-change', handleSelectionChange)
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleMouseDown)
       if (onSelectionChange && quill) {
         // @ts-ignore
         quill.off('selection-change', handleSelectionChange)
