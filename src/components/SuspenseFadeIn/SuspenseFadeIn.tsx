@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import SkeletonLoader from 'components/SkeletonLoader'
+import { SkeletonLoader } from '../SkeletonLoader'
 import styled from 'styled-components'
 
 interface SuspenseFadeInProps {
@@ -13,9 +13,7 @@ export const SuspenseFadeIn = (props: SuspenseFadeInProps): JSX.Element => {
 
   return (
     <Suspense fallback={<SkeletonLoader {...rest} />}>
-      <Container>
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </Suspense>
   )
 }
