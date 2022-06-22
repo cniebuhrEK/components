@@ -30,13 +30,8 @@ interface TextEditorProps {
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const {
-    id,
-    value,
-    withHighlights,
-    withYoursHighlights,
-    onSelectionChange
-  } = props
+  const { id, value, withHighlights, withYoursHighlights, onSelectionChange } =
+    props
   const [quill, setQuill] = React.useState()
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
