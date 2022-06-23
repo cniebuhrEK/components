@@ -22,7 +22,14 @@ export default createGlobalStyle`
 
     .remove-cursor {
       * {
-        cursor: none;
+        cursor: none !important;
+      }
+
+      @media (-moz-os-version: windows-xp), (-moz-os-version: windows-vista),
+      (-moz-os-version: windows-win7), (-moz-os-version: windows-win8) {
+        * {
+          cursor: none !important;
+        }
       }
     }
 

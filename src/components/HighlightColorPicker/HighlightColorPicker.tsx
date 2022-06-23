@@ -42,7 +42,7 @@ export const HighlightColorPicker = ({
   const hasColorSelected = isNotNilOrEmpty(selectedColor)
 
   return (
-    <React.Fragment>
+    <ContainerOuter>
       {hasColorSelected && <HighlightCursor />}
       <Container>
         <div className='picker-colors'>
@@ -91,11 +91,19 @@ export const HighlightColorPicker = ({
           />
         </div>
       </Container>
-    </React.Fragment>
+    </ContainerOuter>
   )
 }
 
 export default HighlightColorPicker
+
+const ContainerOuter = styled.div`
+  &:hover {
+    .highlight-cursor svg {
+      color: ${({ theme }) => theme.colors.main.white};
+    }
+  }
+`
 
 const Container = styled.div`
   padding: 8px;
@@ -119,7 +127,7 @@ const RemoveColor = styled.div`
   height: 11.65px;
   border-radius: 50%;
   box-shadow: ${props => props.theme.shadows.mainShadow};
-  border: 1px solid
+  border: 2px solid
     ${({ isActive, theme }) =>
       isActive ? theme.colors.main.error500 : theme.colors.main.white};
   cursor: pointer;
@@ -136,7 +144,7 @@ const ColorPicker = styled.div`
   height: 11.65px;
   border-radius: 50%;
   box-shadow: ${props => props.theme.shadows.mainShadow};
-  border: 1px solid
+  border: 2px solid
     ${({ isActive, theme }) =>
       isActive ? theme.colors.main.error500 : 'transparent'};
   cursor: pointer;

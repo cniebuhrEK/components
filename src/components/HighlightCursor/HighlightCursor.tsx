@@ -36,6 +36,7 @@ export const HighlightCursor = (): JSX.Element => {
   const { x, y } = mousePosition
   return (
     <CursorContainer
+      className='highlight-cursor'
       style={{
         left: `${x}px`,
         top: `${y}px`
@@ -51,8 +52,8 @@ export default HighlightCursor
 const CursorContainer = styled.div`
   position: fixed;
   z-index: 999999999;
-  transform: translate(-50%, -50%);
+  transform: translate(0, -10px);
   pointer-events: none;
   cursor: none;
-  color: ${({ theme }) => theme.colors.main.text} !important;
+  color: ${({ theme }) => theme.colors.main.text};
 `
