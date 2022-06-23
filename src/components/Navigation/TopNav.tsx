@@ -13,7 +13,7 @@ import {
   themeEvents
 } from '../../theme'
 import { Tooltip } from '../Tooltip'
-import { ArrowDownIcon, ArrowRightIcon } from '../../icons'
+import { ArrowDownIcon, ArrowRightIcon, BookMarkIcon } from '../../icons'
 
 type PureLink = {
   label: string
@@ -151,18 +151,31 @@ const StudentTopNavigation = (
       const isInactive = R.propOr(false, 'isInactive', link)
       const tooltip = R.propOr('', 'tooltip', link)
       const hasTooltip = isNotNilOrEmpty(tooltip)
+      const hasBookmark = R.not(R.propEq('bookmark', null, link))
+      const bookmark = R.propOr('', 'bookmark', link)
 
       const Level2Link = (
         <LowestLevelLink
           isInactive={isInactive}
-          onClick={isInactive ? () => {} : handleRedirect(link.url)}
           key={`nav-menu-link-level-2-${index}-${getRandomIntInclusive(
             1,
             100
           )}`}
         >
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
-          <NavMenuLink>{link.label}</NavMenuLink>
+          <NavMenuLink
+            onClick={isInactive ? () => {} : handleRedirect(link.url)}
+          >
+            {link.label}
+          </NavMenuLink>
+          {hasBookmark && (
+            <BookmarkLink
+              onClick={isInactive ? () => {} : handleRedirect(bookmark)}
+            >
+              Go to
+              <BookMarkIcon />
+            </BookmarkLink>
+          )}
         </LowestLevelLink>
       )
 
@@ -254,7 +267,6 @@ const StudentTopNavigation = (
 
   const handleLevel1 = value => e => {
     e.preventDefault()
-    console.log(value)
     linkLevel1 === value ? resetLevel1() : setLevel1(value)
   }
 
@@ -772,7 +784,7 @@ const LowestLevelLink = styled(NavMenuItem)`
     color: ${({ theme }) => theme.colors.mainMenu.font} !important;
   }
 
-  &:hover ${NavMenuLink} {
+  ${NavMenuLink}:hover {
     color: ${({ theme, isInactive, isSelected }) => {
       switch (true) {
         case isInactive:
@@ -783,6 +795,26 @@ const LowestLevelLink = styled(NavMenuItem)`
           return theme.colors.mainMenu.fontActive
       }
     }} !important;
+  }
+`
+
+const BookmarkLink = styled.div`
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: 4px;
+    text-decoration: none;
+    color: ${({ theme }) => theme.colors.main.error500} !important;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.main.primary500} !important;
+
+    svg {
+      color: ${({ theme }) => theme.colors.main.error500} !important;
+    }
   }
 `
 
