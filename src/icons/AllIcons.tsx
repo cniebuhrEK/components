@@ -122,7 +122,8 @@ import {
   AddContainedIcon,
   InfoCircleIcon,
   ContentQuestionsOutlineIcon,
-  ScissorsIcon
+  ScissorsIcon,
+  BookMarkIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -258,7 +259,8 @@ const AllIcons = () => {
     { component: ShowIcon, title: 'Show' },
     { component: AddContainedIcon, title: 'AddContainedIcon' },
     { component: InfoCircleIcon, title: 'InfoCircleIcon' },
-    { component: ScissorsIcon, title: 'Scissors' }
+    { component: ScissorsIcon, title: 'Scissors' },
+    { component: BookMarkIcon, title: 'BookMark' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
