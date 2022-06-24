@@ -20,6 +20,8 @@ type PureLink = {
   url?: string
   isInactive?: boolean
   tooltip?: string | JSX.Element
+  bookmark?: string | JSX.Element
+  bookmarkOnClick?: () => {}
 }
 
 type NextLevelLink = {
@@ -152,6 +154,7 @@ const StudentTopNavigation = (
       const tooltip = R.propOr('', 'tooltip', link)
       const hasTooltip = isNotNilOrEmpty(tooltip)
       const bookmark = R.propOr('', 'bookmark', link)
+      const bookmarkOnClick = R.propOr(() => {}, 'bookmarkOnClick', link)
       const hasBookmark = isNotNilOrEmpty(bookmark)
 
       const Level2Link = (
@@ -169,9 +172,7 @@ const StudentTopNavigation = (
             {link.label}
           </NavMenuLink>
           {hasBookmark && (
-            <BookmarkLink
-              onClick={isInactive ? () => {} : handleRedirect(bookmark)}
-            >
+            <BookmarkLink onClick={isInactive ? () => {} : bookmarkOnClick()}>
               Go to
               <BookMarkIcon />
             </BookmarkLink>
