@@ -151,8 +151,8 @@ const StudentTopNavigation = (
       const isInactive = R.propOr(false, 'isInactive', link)
       const tooltip = R.propOr('', 'tooltip', link)
       const hasTooltip = isNotNilOrEmpty(tooltip)
-      const hasBookmark = R.not(R.propEq('bookmark', null, link))
       const bookmark = R.propOr('', 'bookmark', link)
+      const hasBookmark = isNotNilOrEmpty(bookmark)
 
       const Level2Link = (
         <LowestLevelLink
@@ -802,6 +802,7 @@ const BookmarkLink = styled.div`
   text-decoration: underline;
   display: flex;
   align-items: center;
+  margin-left: 6px;
 
   svg {
     margin-left: 4px;
