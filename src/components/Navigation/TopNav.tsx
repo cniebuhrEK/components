@@ -172,7 +172,7 @@ const StudentTopNavigation = (
             {link.label}
           </NavMenuLink>
           {hasBookmark && (
-            <BookmarkLink onClick={isInactive ? () => {} : bookmarkOnClick()}>
+            <BookmarkLink onClick={isInactive ? () => {} : bookmarkOnClick}>
               Go to
               <BookMarkIcon />
             </BookmarkLink>
