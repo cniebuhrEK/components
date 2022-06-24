@@ -10,16 +10,16 @@ export const HighlightCursor = (): JSX.Element => {
   }
 
   const disableDefaultCursor = () => {
-    const rootElement = document.getElementById('root')
+    const rootElement = document.getElementsByTagName('body')
     if (rootElement) {
-      rootElement.classList.add('remove-cursor')
+      rootElement[0].classList.add('remove-cursor')
     }
   }
 
   const enableDefaultCursor = () => {
-    const rootElement = document.getElementById('root')
+    const rootElement = document.getElementsByTagName('body')
     if (rootElement) {
-      rootElement.classList.remove('remove-cursor')
+      rootElement[0].classList.remove('remove-cursor')
     }
   }
 
