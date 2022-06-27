@@ -641,8 +641,8 @@ export default {
           font: '#1a7af8'
         },
         video: {
-          background: palette.primary200,
-          font: palette.primary500
+          background: '#FFCFD0',
+          font: '#A82A1C'
         },
         clinicalContext: {
           background: '#edfdf3',
