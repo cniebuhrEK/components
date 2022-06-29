@@ -28,7 +28,6 @@ type ButtonProps =
       id?: string
       name?: string
       variant?: 'filled' | 'outlined' | 'transparent'
-      text?: string
     }
   | {
       color?:
@@ -52,7 +51,6 @@ type ButtonProps =
       id?: string
       name?: string
       variant?: 'filled' | 'outlined' | 'transparent'
-      text?: string
     }
 
 const variants = {
@@ -109,8 +107,7 @@ const IconButton = (props: ButtonProps): JSX.Element => {
     tooltip,
     tooltipId,
     size,
-    color = buttonColors.orange,
-    text
+    color = buttonColors.orange
   } = props
 
   const renderButton = (
@@ -124,10 +121,8 @@ const IconButton = (props: ButtonProps): JSX.Element => {
       variant={variant}
       color={color}
       size={size}
-      text={text}
       {...props}
     >
-      {text && <TextWrapper>{text}</TextWrapper>}
       {icon}
     </StyledButton>
   )
@@ -141,10 +136,6 @@ const IconButton = (props: ButtonProps): JSX.Element => {
     renderButton
   )
 }
-
-export const TextWrapper = styled.div`
-  margin-right: 5px;
-`
 
 export const StyledButton = styled.button`
   border-radius: 4px;
