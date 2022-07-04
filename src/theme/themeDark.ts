@@ -473,6 +473,20 @@ export default {
         text: palette.error500
       }
     },
+    pins: {
+      variantA: {
+        shape: '#1A7AF8',
+        background: '#D1E5FE'
+      },
+      variantB: {
+        shape: '##119B4C',
+        background: '##DAF1E4'
+      },
+      variantC: {
+        shape: '##A53DCA',
+        background: '##F5EAF9'
+      }
+    },
     highlights: {
       green: {
         background: '#13fb03'
