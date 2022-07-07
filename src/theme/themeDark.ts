@@ -476,15 +476,18 @@ export default {
     pins: {
       variantA: {
         shape: '#1A7AF8',
-        background: '#D1E5FE'
+        background: '#D1E5FE',
+        backgroundActive: '#1A7AF8'
       },
       variantB: {
-        shape: '##119B4C',
-        background: '##DAF1E4'
+        shape: '#119B4C',
+        background: '#DAF1E4',
+        backgroundActive: '#119B4C'
       },
       variantC: {
-        shape: '##A53DCA',
-        background: '##F5EAF9'
+        shape: '#A53DCA',
+        background: '#F5EAF9',
+        backgroundActive: '#A53DCA'
       }
     },
     highlights: {
