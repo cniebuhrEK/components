@@ -1,5 +1,5 @@
 import React from 'react'
-import { ToggleSwitch } from '../../index'
+import { ToggleSwitch } from '../../ToggleSwitch'
 import styled from 'styled-components'
 
 export const AdminHighlightsToggle = ({
