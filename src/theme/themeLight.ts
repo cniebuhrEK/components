@@ -668,7 +668,8 @@ export default {
         mcatThink: {
           background: '#fdedf6',
           font: '#9b115f'
-        }
+        },
+        checkmark: '#b2764e'
       },
       navigation: {
         backgroundDark: 'linear-gradient(180deg, #FBEBE2 0%, #EFD8CB 100%)',
