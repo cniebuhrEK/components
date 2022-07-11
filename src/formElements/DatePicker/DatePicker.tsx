@@ -2,6 +2,7 @@ import React from 'react'
 import * as R from 'ramda'
 import { Calendar } from '../../components/Calendar'
 import { Input } from '../../components'
+import styled from 'styled-components'
 
 const getHeadErrorOrEmptyObj = R.pipe(
   R.propOr([], 'errors'),
@@ -92,7 +93,7 @@ const DateField = (props: DateFieldProps) => {
   }
 
   return (
-    <React.Fragment>
+    <CalendarWrapper>
       <Calendar
         {...rest}
         id={id || name}
@@ -123,7 +124,7 @@ const DateField = (props: DateFieldProps) => {
           wrappedLabel
         />
       </Calendar>
-    </React.Fragment>
+    </CalendarWrapper>
   )
 }
 
@@ -138,3 +139,7 @@ DateField.defaultProps = {
 }
 
 export default DateField
+
+const CalendarWrapper = styled.div`
+  z-index: 10;
+`
