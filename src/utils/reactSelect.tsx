@@ -225,7 +225,7 @@ export const REACT_SELECT_STYLES = {
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
-      maxWidth: '60px',
+      maxWidth: 'max-content',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis'
     }
@@ -402,7 +402,7 @@ export const CustomValueContainer = (props: {
         isValueContainer
         isFocused={isFocused}
         isFocusedOrHasValue={isFocused || hasValue}
-        error={selectProps.error}
+        // error={selectProps.error} <- this created addition label which was interfering with the input, it not needed as the valuation is passed in the input component
         size={selectProps.size}
         removeTopLabel={removeTopLabel}
         isDisabled={isDisabled}
