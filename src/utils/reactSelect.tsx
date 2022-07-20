@@ -225,7 +225,7 @@ export const REACT_SELECT_STYLES = {
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
-      maxWidth: 'max-content',
+      maxWidth: '99%',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis'
     }
