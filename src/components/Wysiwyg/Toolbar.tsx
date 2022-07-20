@@ -10,6 +10,7 @@ import AddAdminHighlightsButton from './components/AddAdminHighlightsButton'
 import { GlossaryPhrase, PaginationProps } from './components/SelectGlossary'
 import ScanGlossaryButton from './components/ScanGlossaryButton'
 import AddFontColorButton from './components/AddFontColorButton'
+import AdminHighlightsToggle from './components/AdminHighlightsToggle'
 
 interface ToolbarProps {
   editorInstance: any
@@ -17,6 +18,7 @@ interface ToolbarProps {
   id: string
   handleScanGlossaryList?: (e: any) => void
   handleFetchGlossaryList?: (e: any) => void
+  toggleAdminHighlights?: (e: any) => void
   handleCreateNew?: (e: any) => Promise<void>
   glossaryEntries?: GlossaryPhrase[]
   glossaryEntriesPagination?: PaginationProps
@@ -50,6 +52,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
     glossaryEntries,
     handleScanGlossaryList,
     handleFetchGlossaryList,
+    toggleAdminHighlights,
     glossaryEntriesPagination,
     editorInstance,
     handleS3Upload,
@@ -186,9 +189,6 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
           handleS3Upload={S3Handler}
         />
       )}
-      {adminHighlights && (
-        <AddAdminHighlightsButton editorInstance={editorInstance} />
-      )}
       {glossary && (
         <AddGlossaryButton
           glossaryEntries={glossaryEntries}
@@ -205,6 +205,12 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
         />
       )}
       {fontColor && <AddFontColorButton editorInstance={editorInstance} />}
+      {adminHighlights && (
+        <AddAdminHighlightsButton editorInstance={editorInstance} />
+      )}
+      {toggleAdminHighlights && (
+        <AdminHighlightsToggle toggleAdminHighlights={toggleAdminHighlights} />
+      )}
     </span>
   )
 

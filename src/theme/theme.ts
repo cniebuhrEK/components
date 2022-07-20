@@ -48,6 +48,8 @@ export default {
     purple07: '#f7b6db',
     purple08: '#fbdaed',
     purple09: '#fdedf6',
+    purple10: '#A53DCA',
+    purple11: '#F5EAF9',
 
     // Bright reds
     brightred01: colors.red500,
