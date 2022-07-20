@@ -89,7 +89,7 @@ export default Answers
 
 export const AnswersContainer = styled.div`
   strike {
-    display: inline-flex;
+    display: inline;
   }
 
   .answer {

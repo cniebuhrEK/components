@@ -473,6 +473,23 @@ export default {
         text: palette.error500
       }
     },
+    pins: {
+      variantA: {
+        shape: '#1A7AF8',
+        background: '#D1E5FE',
+        backgroundActive: '#1A7AF8'
+      },
+      variantB: {
+        shape: '#119B4C',
+        background: '#DAF1E4',
+        backgroundActive: '#119B4C'
+      },
+      variantC: {
+        shape: '#A53DCA',
+        background: '#F5EAF9',
+        backgroundActive: '#A53DCA'
+      }
+    },
     highlights: {
       green: {
         background: '#13fb03'
@@ -651,7 +668,8 @@ export default {
         mcatThink: {
           background: '#fdedf6',
           font: '#9b115f'
-        }
+        },
+        checkmark: '#b2764e'
       },
       navigation: {
         backgroundDark: 'linear-gradient(180deg, #FBEBE2 0%, #EFD8CB 100%)',

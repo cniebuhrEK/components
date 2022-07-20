@@ -3,7 +3,7 @@ import { hasImg } from './utils'
 import { propOr, any, propEq } from 'ramda'
 import Modal from '../Modal/Modal'
 // @ts-ignore
-export const ModalWysiwygPreview = memo(({ value }) => {
+export const ModalWysiwygPreview = memo(({ value, wysiwygId }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [src, setSrc] = useState('')
   const handleIsOpen = () => setIsOpen(!isOpen)
@@ -17,7 +17,9 @@ export const ModalWysiwygPreview = memo(({ value }) => {
       const isClickedInsideSelf = any(propEq('alt', imageFromDeltaObject.alt))(
         path
       )
-      if (isClickedInsideSelf) {
+      const isClickedInsideWysiwygViewer = any(propEq('id', wysiwygId))(path)
+
+      if (isClickedInsideSelf && isClickedInsideWysiwygViewer) {
         setIsOpen(true)
         setSrc(imageFromDeltaObject.url)
       }

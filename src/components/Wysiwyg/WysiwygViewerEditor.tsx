@@ -126,12 +126,12 @@ const Container = styled.div`
   }
 
   &.with-highlights {
-    .ql-container .ql-editor {
+    .ql-container .ql-editor * {
       color: ${({ theme }) =>
         theme.colors.editorFontColors.admin.font} !important;
     }
 
-    .ql-container .admin-highlights .ql-editor {
+    .ql-container .admin-highlights .ql-editor * {
       color: ${({ theme }) => theme.colors.main.text} !important;
     }
   }

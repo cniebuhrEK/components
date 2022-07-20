@@ -23,7 +23,10 @@ const EntitiesListExpandableRow = ({ row }) => {
     <>
       <TableRow id={row.id} className={`${row.level}${open ? ' shadow' : ''}`}>
         <TableCell key={firstCell.columnId} {...firstCell.cellProps}>
-          <FirstCellInRowContent onClick={toggleOpen}>
+          <FirstCellInRowContent
+            isExpandable={isNotNilOrEmpty(children)}
+            onClick={toggleOpen}
+          >
             {firstCell.children}
             {isNotNilOrEmpty(children) && <StyledArrowIcon open={open} />}
           </FirstCellInRowContent>
@@ -60,7 +63,7 @@ export default EntitiesListExpandableRow
 const FirstCellInRowContent = styled.div`
   display: flex;
   align-items: center;
-  cursor: pointer;
+  cursor: ${({ isExpandable }) => (isExpandable ? 'pointer' : 'default')};
 `
 
 const StyledArrowIcon = styled(ArrowDownIcon)`

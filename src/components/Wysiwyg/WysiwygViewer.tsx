@@ -52,7 +52,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         />
       )}
       {/* @ts-ignore */}
-      <ModalWysiwygPreview value={value} />
+      <ModalWysiwygPreview value={value} wysiwygId={id} />
     </React.Fragment>
   )
 }
