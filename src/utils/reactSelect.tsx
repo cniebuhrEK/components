@@ -402,7 +402,7 @@ export const CustomValueContainer = (props: {
         isValueContainer
         isFocused={isFocused}
         isFocusedOrHasValue={isFocused || hasValue}
-        // error={selectProps.error} <- this created addition label which was interfering with the input, it not needed as the valuation is passed in the input component
+        // error={selectProps.error} <- It creates additional label during validation which is not needed here.
         size={selectProps.size}
         removeTopLabel={removeTopLabel}
         isDisabled={isDisabled}
