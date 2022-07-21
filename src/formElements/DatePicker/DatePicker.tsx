@@ -143,9 +143,7 @@ DateField.defaultProps = {
 export default DateField
 
 const DatePickerWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  #create-product-date-container {
+  > * {
     width: 100%;
   }
   .react-datepicker-popper {
