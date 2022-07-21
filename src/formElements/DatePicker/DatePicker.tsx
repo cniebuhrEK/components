@@ -2,6 +2,7 @@ import React from 'react'
 import * as R from 'ramda'
 import { Calendar } from '../../components/Calendar'
 import { Input } from '../../components'
+import styled from 'styled-components'
 
 const getHeadErrorOrEmptyObj = R.pipe(
   R.propOr([], 'errors'),
@@ -93,36 +94,38 @@ const DateField = (props: DateFieldProps) => {
 
   return (
     <React.Fragment>
-      <Calendar
-        {...rest}
-        id={id || name}
-        name={name}
-        disabled={disabled}
-        minDate={!allowPast ? new Date() : null}
-        selected={value}
-        onFocus={handleFocus}
-        onChange={handleChange}
-      >
-        <Input
-          disableTyping
-          disabled={disabled}
-          required={required}
+      <DatePickerWrapper>
+        <Calendar
+          {...rest}
+          id={id || name}
           name={name}
-          id={`${id}-input`}
-          label={label}
-          value={formattedDate(value)}
-          errorText={
-            valid || disabled
-              ? ''
-              : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
-          }
-          type='text'
-          error={!valid && !disabled}
-          onChange={onInputChange}
-          size={size}
-          wrappedLabel
-        />
-      </Calendar>
+          disabled={disabled}
+          minDate={!allowPast ? new Date() : null}
+          selected={value}
+          onFocus={handleFocus}
+          onChange={handleChange}
+        >
+          <Input
+            disableTyping
+            disabled={disabled}
+            required={required}
+            name={name}
+            id={`${id}-input`}
+            label={label}
+            value={formattedDate(value)}
+            errorText={
+              valid || disabled
+                ? ''
+                : t(R.propOr('', 'key', error), R.propOr({}, 'options', error))
+            }
+            type='text'
+            error={!valid && !disabled}
+            onChange={onInputChange}
+            size={size}
+            wrappedLabel
+          />
+        </Calendar>
+      </DatePickerWrapper>
     </React.Fragment>
   )
 }
@@ -138,3 +141,18 @@ DateField.defaultProps = {
 }
 
 export default DateField
+
+const DatePickerWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  #create-product-date-container {
+    width: 100%;
+  }
+  .react-datepicker-popper {
+    z-index: 3000;
+  }
+  label {
+    margin: 0;
+    top: -21px;
+  }
+`
