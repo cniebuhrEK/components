@@ -145,6 +145,7 @@ const StudentTopNavigation = (
   }
 
   const handleRedirect = url => () => {
+    handleMouseLeave()
     redirectHandler ? redirectHandler(url) : redirectByHref(url)
   }
 
