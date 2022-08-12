@@ -1499,6 +1499,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-transform-regenerator@npm:^7.18.6":
+  version: 7.18.6
+  resolution: "@babel/plugin-transform-regenerator@npm:7.18.6"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.18.6
+    regenerator-transform: ^0.15.0
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 60bd482cb0343c714f85c3e19a13b3b5fa05ee336c079974091c0b35e263307f4e661f4555dff90707a87d5efe19b1d51835db44455405444ac1813e268ad750
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-transform-reserved-words@npm:^7.17.12":
   version: 7.17.12
   resolution: "@babel/plugin-transform-reserved-words@npm:7.17.12"
@@ -10096,6 +10108,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.14.3
     "@babel/eslint-parser": ^7.14.3
+    "@babel/plugin-transform-regenerator": ^7.18.6
     "@storybook/addon-actions": ^6.1.21
     "@storybook/addon-essentials": ^6.1.21
     "@storybook/addon-links": ^6.1.21
