@@ -15,10 +15,11 @@
   },
   "scripts": {
     "reset": "rm -rf yarn.lock && yarn install",
-    "postbuild": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
+    "prebuild": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "prepublish": "yarn build",
     "prepare": "yarn run build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:build": "run-s build",
