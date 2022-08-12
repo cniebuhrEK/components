@@ -6280,7 +6280,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-transform-async-to-promises@npm:^0.8.15":
+"babel-plugin-transform-async-to-promises@npm:^0.8.15, babel-plugin-transform-async-to-promises@npm:^0.8.18":
   version: 0.8.18
   resolution: "babel-plugin-transform-async-to-promises@npm:0.8.18"
   checksum: dcc345359eb33f55c42c49894166c9a5c65635e1a6e0518a00beef4f1ead7dec3409f5b3050844c1870470627b21248b0947ee884835881961b731b638156377
@@ -10122,6 +10122,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^4.4.1
     "@typescript-eslint/parser": ^2.26.0
     babel-loader: 8.1.0
+    babel-plugin-transform-async-to-promises: ^0.8.18
     classnames: ^2.2.6
     cross-env: ^7.0.2
     depcheck: ^1.4.1
