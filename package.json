@@ -20,7 +20,7 @@
     "prestart": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "microbundle-crl --no-compress --format modern,cjs",
-    "prepare": "yarn run build",
+    "prepare": "microbundle-crl --no-compress --format modern,cjs",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:build": "run-s build",
     "test:lint": "eslint .",
