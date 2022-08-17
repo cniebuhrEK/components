@@ -94,6 +94,15 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const adminHighlightClassName = withHighlights ? 'with-highlights' : ''
   const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
 
+  useEffect(() => {
+    if (quill && (withHighlights || withYoursHighlights)) {
+      // @ts-ignore
+      const quillLength = quill.getLength()
+      // @ts-ignore
+      quill.formatText(0, quillLength, SEARCH_PHRASE_BLOT_NAME, false)
+    }
+  }, [withHighlights, withYoursHighlights, quill])
+
   return (
     // This is a workaround to allow selecting only within the div
     // because of the issue, when user selects multiple quill areas at once
