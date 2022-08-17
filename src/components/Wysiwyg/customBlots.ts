@@ -1,6 +1,7 @@
 import Quill from 'quill'
 
 export const GLOSSARY_BLOT_NAME = 'glossary'
+export const SEARCH_PHRASE_BLOT_NAME = 'glossary'
 export const CUSTOM_IMAGE_BLOT_NAME = 's3-image'
 
 export const ADMIN_HIGHLIGHTS_BLOT_NAME = 'a-highlights'
@@ -69,6 +70,24 @@ export const addGlossaryBlotToQuill = () => {
   GlossaryBlot.className = 'glossary-word'
 
   Quill.register(GlossaryBlot)
+}
+
+export const addSearchPhraseBlotToQuill = () => {
+  const InlineBlot = Quill.import('blots/inline')
+
+  // Creates a new blot based on 'inline' blot
+  // @ts-ignore
+  class SearchPhraseBlot extends InlineBlot {
+    static blotName = SEARCH_PHRASE_BLOT_NAME
+    static className = 'search-phrase'
+    static tagName = 'span'
+
+    static formats(): boolean {
+      return true
+    }
+  }
+
+  Quill.register(SearchPhraseBlot)
 }
 
 export const addImageBlotToQuill = () => {
