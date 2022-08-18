@@ -94,7 +94,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const adminHighlightClassName = withHighlights ? 'with-highlights' : ''
   const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (quill && (withHighlights || withYoursHighlights)) {
       // @ts-ignore
       const quillLength = quill.getLength()
