@@ -208,7 +208,7 @@ const Toolbar = (props: ToolbarProps): JSX.Element => {
       {adminHighlights && (
         <AddAdminHighlightsButton editorInstance={editorInstance} />
       )}
-      {toggleAdminHighlights && (
+      {adminHighlights && toggleAdminHighlights && (
         <AdminHighlightsToggle toggleAdminHighlights={toggleAdminHighlights} />
       )}
     </span>
