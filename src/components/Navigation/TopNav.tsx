@@ -1,6 +1,7 @@
 // Navigation/Student/TopNav.tsx - Top navigation component
 
 import React, { useEffect, useState } from 'react'
+// import { useLocation } from 'react-router-dom'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../Button'
@@ -35,6 +36,7 @@ type NextLevelLink = {
 type MenuLink = {
   label: string
   url?: string
+  onClick?: () => void
   isInactive?: boolean
   tooltip?: string | JSX.Element
   icon?: JSX.Element
@@ -53,6 +55,7 @@ interface StudentTopNavigationProps {
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
   navRightElements?: JSX.Element | string | JSX.Element[] | string[]
   onMenuOpen?: () => any
+  backgroundLocation?: {}
 }
 
 const getRandomIntInclusive = (min, max) => {
@@ -86,7 +89,6 @@ const StudentTopNavigation = (
   const hasAdditionalRightElements = isNotNilOrEmpty(navRightElements)
   const menuRef = React.useRef(null)
   const staticMenuButtonRef = React.useRef(null)
-
   const setLevel1 = value => setLinkLevel1(value)
   const setLevel2 = value => setLinkLevel2(value)
 
@@ -149,6 +151,11 @@ const StudentTopNavigation = (
     redirectHandler ? redirectHandler(url) : redirectByHref(url)
   }
 
+  const handleOnclick = callback => () => {
+    handleMouseLeave()
+    callback()
+  }
+
   const generateLevel2Links = links =>
     links.map((link, index) => {
       const isInactive = R.propOr(false, 'isInactive', link)
@@ -167,11 +174,13 @@ const StudentTopNavigation = (
           )}`}
         >
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
+
           <NavMenuLink
             onClick={isInactive ? () => {} : handleRedirect(link.url)}
           >
             {link.label}
           </NavMenuLink>
+
           {hasBookmark && (
             <BookmarkLink onClick={isInactive ? () => {} : bookmarkOnClick}>
               Go to
@@ -219,6 +228,7 @@ const StudentTopNavigation = (
           isInactive={isInactive}
           onMouseEnter={isInactive ? () => {} : handleLevel2(link.label)}
           isSelectedAsLevel1={isSelected}
+          state={{ backgroundLocation: location }}
         >
           <LabelWrapper>
             {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
@@ -295,7 +305,13 @@ const StudentTopNavigation = (
         <ArrowDownIcon className='dropdown-icon' />
       </NavStaticMenuItem>
     ) : (
-      <NavMenuItem onClick={handleRedirect(link.url)}>
+      <NavMenuItem
+        onClick={
+          R.has('onClick', link)
+            ? handleOnclick(link.onClick)
+            : handleRedirect(link.url)
+        }
+      >
         <LabelWrapper>
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
           <NavMenuLink>{link.label}</NavMenuLink>
