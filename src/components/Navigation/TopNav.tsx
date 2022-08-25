@@ -1,7 +1,6 @@
 // Navigation/Student/TopNav.tsx - Top navigation component
 
 import React, { useEffect, useState } from 'react'
-// import { useLocation } from 'react-router-dom'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../Button'
@@ -55,7 +54,6 @@ interface StudentTopNavigationProps {
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
   navRightElements?: JSX.Element | string | JSX.Element[] | string[]
   onMenuOpen?: () => any
-  backgroundLocation?: {}
 }
 
 const getRandomIntInclusive = (min, max) => {
