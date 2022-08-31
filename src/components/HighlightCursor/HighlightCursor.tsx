@@ -1,11 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { HighlighterIcon } from '../../icons'
+import { hasHighlightCursorClass } from '../Wysiwyg/utils'
 
 export const HighlightCursor = (): JSX.Element => {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
+  const [isCursorChanged, setIsCursorChanged] = React.useState(false)
+
   const onMouseMove = event => {
     const { pageX: x, pageY: y } = event
+    setIsCursorChanged(hasHighlightCursorClass(event))
     setMousePosition({ x, y })
   }
 
@@ -24,17 +28,27 @@ export const HighlightCursor = (): JSX.Element => {
   }
 
   React.useEffect(() => {
-    disableDefaultCursor()
     document.addEventListener('mousemove', onMouseMove)
 
     return () => {
-      enableDefaultCursor()
       document.removeEventListener('mousemove', onMouseMove)
     }
   }, [])
 
+  React.useEffect(() => {
+    if (isCursorChanged) {
+      disableDefaultCursor()
+    } else {
+      enableDefaultCursor()
+    }
+
+    return () => {
+      enableDefaultCursor()
+    }
+  }, [isCursorChanged])
+
   const { x, y } = mousePosition
-  return (
+  return isCursorChanged ? (
     <CursorContainer
       className='highlight-cursor'
       style={{
@@ -44,6 +58,8 @@ export const HighlightCursor = (): JSX.Element => {
     >
       <HighlighterIcon />
     </CursorContainer>
+  ) : (
+    <div />
   )
 }
 
