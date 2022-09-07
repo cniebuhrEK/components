@@ -20,7 +20,7 @@
     "build": "yarn copy:build-assets && microbundle-crl --no-compress --format modern,cjs",
     "start": "yarn copy:build-assets && microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "run-s build",
-    "prepack": "yarn copy:build-assets && yarn run build",
+    "prepack": "yarn run build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "test:build": "yarn-s build",
     "test:lint": "eslint .",
