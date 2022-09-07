@@ -17,10 +17,8 @@
     "reset": "rm -rf yarn.lock && touch yarn.lock && yarn install",
     "copy:build-assets": "rm -rf ./build && mkdir -p ./build/assets && cp -R ./src/assets ./build",
     "copy:storybook-assets": "rm -rf ./public && mkdir -p ./public/assets && cp -R ./src/assets ./public",
-    "prebuild": "yarn copy:build-assets",
-    "build": "microbundle-crl --no-compress --format modern,cjs",
-    "prestart": "yarn copy:build-assets",
-    "start": "microbundle-crl watch --no-compress --format modern,cjs",
+    "build": "yarn copy:build-assets && microbundle-crl --no-compress --format modern,cjs",
+    "start": "yarn copy:build-assets && microbundle-crl watch --no-compress --format modern,cjs",
     "prepublish": "run-s build",
     "prepack": "yarn copy:build-assets && yarn run build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
@@ -28,10 +26,8 @@
     "test:lint": "eslint .",
     "test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
     "test:watch": "react-scripts test --env=jsdom",
-    "prestorybook:start": "yarn copy:storybook-assets",
-    "storybook:start": "start-storybook -p 6006 --static-dir public",
-    "prestorybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets",
-    "storybook:build": "cp -R ./src/assets ./public"
+    "storybook:start": "yarn copy:storybook-assets && start-storybook -p 6006 --static-dir public",
+    "storybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets && cp -R ./src/assets ./public"
   },
   "peerDependencies": {
     "react": "^16.0.0"
