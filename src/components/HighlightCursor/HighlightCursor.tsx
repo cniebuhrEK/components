@@ -1,7 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { HighlighterIcon } from '../../icons'
-import { hasHighlightCursorClass } from '../Wysiwyg/utils'
+import * as R from 'ramda'
+
+export const hasHighlightCursorClass = event => {
+  const elementsPath = R.propOr([], 'path', event)
+  const elementHasHighlightCursorClass = el =>
+    R.pipe(R.propOr([], 'classList'), R.any(R.equals('highlight-cursor')))(el)
+
+  return R.any(elementHasHighlightCursorClass, elementsPath)
+}
 
 export const HighlightCursor = (): JSX.Element => {
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 })
