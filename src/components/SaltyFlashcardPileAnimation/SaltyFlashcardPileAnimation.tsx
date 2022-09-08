@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import * as R from 'ramda'
 
 // import leafblowerJSON from './json/leafblower.json'
-import tossJSON from './json/toss.json'
+// import tossJSON from './json/toss.json'
 
 import { getPileImageByCardsNumber } from './pile'
 // import { getIconImageByCardsNumber } from './icon'
@@ -85,7 +85,7 @@ export const SaltyFlashcardPileAnimation = ({
           options={{
             loop: false,
             autoplay: false,
-            animationData: tossJSON,
+            animationData: {},
             rendererSettings: {
               preserveAspectRatio: 'xMidYMid slice'
             }
@@ -105,7 +105,7 @@ export const SaltyFlashcardPileAnimation = ({
           options={{
             loop: false,
             autoplay: true,
-            animationData: tossJSON,
+            animationData: {},
             rendererSettings: {
               preserveAspectRatio: 'xMidYMid slice'
             }
