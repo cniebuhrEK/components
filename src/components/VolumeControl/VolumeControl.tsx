@@ -3,7 +3,7 @@ import { SpeakerMuteIcon, SpeakerQuietIcon, SpeakerLoudIcon } from '../../icons'
 import styled from 'styled-components'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 
-export const playSound = (soundSrc, vol = null) => {
+export const playSound = (soundSrc, vol = null, callback = () => {}) => {
   const isPlaying = localStorage.getItem('isPlaying') || 'false'
   if (isPlaying !== 'true') {
     localStorage.setItem('isPlaying', 'true')
@@ -11,6 +11,7 @@ export const playSound = (soundSrc, vol = null) => {
     const isMutedFromLocal = localStorage.getItem('isMuted') || 'false'
     const isMuted = isMutedFromLocal === 'true'
     const audio = new Audio(soundSrc)
+    audio.oncanplay = callback
     audio.volume = isMuted
       ? 0
       : isNotNilOrEmpty(vol)

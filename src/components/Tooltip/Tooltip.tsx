@@ -53,13 +53,15 @@ export default Tooltip
 
 const Wrapper = styled.div`
   display: inline-block;
-  line-height: 1;
+  line-height: 1.05;
   .__react_component_tooltip {
     background-color: ${props =>
       props.theme.colors.tooltip.background} !important;
     color: ${props => props.theme.colors.tooltip.font} !important;
     font-family: ${props => props.theme.typography.fontFamily} !important;
     z-index: ${({ theme }) => theme.zIndex.navigation + 1} !important;
+    max-width: 250px;
+    text-align: center;
   }
 `
 

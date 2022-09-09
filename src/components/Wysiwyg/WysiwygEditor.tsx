@@ -120,18 +120,8 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     setQuill(q)
   }, [])
 
-  const checkAdminHighlight = q => {
-    // @ts-ignore
-    const deltaObject = q.getContents()
-
-    const hasHighlights = R.pipe(
-      R.propOr([], 'ops'),
-      R.find(R.pipe(R.path(['attributes', 'a-highlights']), R.equals(true))),
-      R.isNil,
-      R.not
-    )(deltaObject)
-    setHasAdminHighlights(hasHighlights)
-  }
+  const toggleAdminHighlights = () =>
+    setHasAdminHighlights(prevState => !prevState)
 
   React.useEffect(() => {
     if (isNotNilOrEmpty(quill)) {
@@ -139,7 +129,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
       quill.setContents(initialValue)
       // @ts-ignore
       quill.update()
-      checkAdminHighlight(quill)
       glossary && ReactTooltip.rebuild()
     }
   }, [quill, initialValue])
@@ -151,7 +140,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     const handleTextChange = () => {
       // @ts-ignore
       onChange(quill)
-      checkAdminHighlight(quill)
     }
 
     // @ts-ignore
@@ -200,6 +188,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
         handleS3Upload={handleS3Upload}
         id={id}
         handleCreateNew={handleCreateNew}
+        toggleAdminHighlights={toggleAdminHighlights}
       />
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}

@@ -1,9 +1,9 @@
 // Wysiwyg/Wysiwyg.tsx - Wysiwyg component
 
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import styled from 'styled-components'
 import Quill from 'quill'
-import { propOr } from 'ramda'
+import { propOr, toLower } from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import ReactTooltip from 'react-tooltip'
@@ -13,11 +13,14 @@ import {
   addGlossaryBlotToQuill,
   addImageBlotToQuill,
   addHighlightBlots,
-  addFontColorBlots
+  addFontColorBlots,
+  addSearchPhraseBlotToQuill,
+  SEARCH_PHRASE_BLOT_NAME
 } from './customBlots'
 
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
+import { getRealTextWithAdditionalInsertsAsPlaceholders } from './utils'
 // @ts-ignore
 window.katex = katex
 interface TextEditorProps {
@@ -25,19 +28,29 @@ interface TextEditorProps {
   value: any
   withHighlights?: boolean
   withYoursHighlights?: boolean
+  markedPhrase?: string
   onHighlightChange?: (e) => void
   onSelectionChange?: (text, range, quill) => void
 }
 
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
-  const { id, value, withHighlights, withYoursHighlights, onSelectionChange } =
-    props
+  const {
+    id,
+    value,
+    withHighlights,
+    withYoursHighlights,
+    onSelectionChange,
+    markedPhrase
+  } = props
   const [quill, setQuill] = React.useState()
+  const [initalValueSaved, setInitialValueSaved] = React.useState(false)
+  const [searchPhraseMarked, setSearchPhraseMarked] = React.useState(false)
 
   // useCallback instead of useRef is used to make sure the wrapper ref is always defined
   // as soon as the element is rendered on the page it will use this callback
   const wrapperRef = React.useCallback(wrapper => {
     addGlossaryBlotToQuill()
+    addSearchPhraseBlotToQuill()
     addAdminHighlightsBlotToQuill()
     addHighlightBlots()
     addImageBlotToQuill()
@@ -59,10 +72,66 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     setQuill(q)
   }, [])
 
+  const findIndexes = (fullText, str) => {
+    const lowerCaseText = fullText.toLowerCase()
+    const lowerStr = str.toLowerCase()
+    const strLength = str.length
+
+    let startIndex = 0
+    let index
+    const indexes = []
+
+    while ((index = lowerCaseText.indexOf(lowerStr, startIndex)) > -1) {
+      // @ts-ignore
+      indexes.push(index)
+      startIndex = index + strLength
+    }
+
+    return indexes
+  }
+
+  const setMarkedPhrase = () => {
+    if (
+      isNotNilOrEmpty(markedPhrase) &&
+      isNotNilOrEmpty(value) &&
+      quill &&
+      !searchPhraseMarked
+    ) {
+      const phrase = toLower(markedPhrase)
+      // @ts-ignore
+      const delta = value
+      const totalText = getRealTextWithAdditionalInsertsAsPlaceholders(delta)
+      const re = new RegExp(phrase, 'g')
+      // make suer the text contains the word I want.
+      const match = re.test(totalText)
+
+      if (match) {
+        const indices = findIndexes(totalText, phrase)
+        const length = phrase.length
+
+        indices.forEach(index => {
+          // @ts-ignore
+          quill.formatText(index, length, SEARCH_PHRASE_BLOT_NAME, true, 'api')
+        })
+
+        setSearchPhraseMarked(true)
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (!quill) return
+
+    if (initalValueSaved) {
+      setMarkedPhrase()
+    }
+  }, [markedPhrase, value, quill, searchPhraseMarked, initalValueSaved])
+
   React.useEffect(() => {
     if (isNotNilOrEmpty(quill)) {
       // @ts-ignore
       quill.setContents(value)
+      setInitialValueSaved(true)
       ReactTooltip.rebuild()
     }
   }, [quill, value])
@@ -93,6 +162,15 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
 
   const adminHighlightClassName = withHighlights ? 'with-highlights' : ''
   const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
+
+  useEffect(() => {
+    if (quill && (withHighlights || withYoursHighlights)) {
+      // @ts-ignore
+      const quillLength = quill.getLength()
+      // @ts-ignore
+      quill.formatText(0, quillLength, SEARCH_PHRASE_BLOT_NAME, false)
+    }
+  }, [withHighlights, withYoursHighlights, quill])
 
   return (
     // This is a workaround to allow selecting only within the div
@@ -126,12 +204,12 @@ const Container = styled.div`
   }
 
   &.with-highlights {
-    .ql-container .ql-editor {
+    .ql-container .ql-editor * {
       color: ${({ theme }) =>
         theme.colors.editorFontColors.admin.font} !important;
     }
 
-    .ql-container .admin-highlights .ql-editor {
+    .ql-container .admin-highlights .ql-editor * {
       color: ${({ theme }) => theme.colors.main.text} !important;
     }
   }
@@ -140,6 +218,11 @@ const Container = styled.div`
 const TextViewerContainer = styled.div`
   strong {
     font-weight: bold;
+  }
+
+  span.search-phrase {
+    background-color: ${({ theme }) =>
+      theme.colors.highlights.yellow.background} !important;
   }
 
   .glossary-word:hover {

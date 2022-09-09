@@ -124,7 +124,9 @@ import {
   ContentQuestionsOutlineIcon,
   ScissorsIcon,
   BookMarkIcon,
-  RestoreIcon
+  RestoreIcon,
+  PinIcon,
+  ProfileIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -252,6 +254,7 @@ const AllIcons = () => {
     { component: SpeakerLoudIcon, title: 'SpeakerLoudIcon' },
     { component: CorrectMarkIcon, title: 'CorrectMark' },
     { component: PersonIcon, title: 'Person' },
+    { component: ProfileIcon, title: 'Profile' },
     { component: ScoreFileIcon, title: 'ScoreFile' },
     { component: PlayInCircleIcon, title: 'PlayInCircle' },
     { component: PlayInSquaresIcon, title: 'PlayInSquares' },
@@ -262,7 +265,8 @@ const AllIcons = () => {
     { component: InfoCircleIcon, title: 'InfoCircleIcon' },
     { component: ScissorsIcon, title: 'Scissors' },
     { component: BookMarkIcon, title: 'BookMark' },
-    { component: RestoreIcon, title: 'RestoreIcon' }
+    { component: RestoreIcon, title: 'RestoreIcon' },
+    { component: PinIcon, title: 'PinIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)

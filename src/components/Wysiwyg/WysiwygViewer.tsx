@@ -12,6 +12,7 @@ window.katex = katex
 interface TextEditorProps {
   id: string
   bookContentId?: string
+  markedPhrase?: string
   value: any
   withHighlights?: boolean
   withYoursHighlights?: boolean
@@ -31,7 +32,8 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
     withYoursHighlights,
     onHighlightChange,
     redirectHandler,
-    onSelectionChange
+    onSelectionChange,
+    markedPhrase
   } = props
   return (
     <React.Fragment>
@@ -42,6 +44,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         withYoursHighlights={withYoursHighlights}
         onHighlightChange={onHighlightChange}
         onSelectionChange={onSelectionChange}
+        markedPhrase={markedPhrase}
       />
       {getPhraseDetails && (
         <GlossaryTooltips
@@ -52,7 +55,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         />
       )}
       {/* @ts-ignore */}
-      <ModalWysiwygPreview value={value} />
+      <ModalWysiwygPreview value={value} wysiwygId={id} />
     </React.Fragment>
   )
 }

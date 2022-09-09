@@ -225,7 +225,7 @@ export const REACT_SELECT_STYLES = {
       },
       fontSize: '14px',
       wordBreak: 'keep-all',
-      maxWidth: '60px',
+      maxWidth: '95%',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis'
     }
@@ -402,7 +402,7 @@ export const CustomValueContainer = (props: {
         isValueContainer
         isFocused={isFocused}
         isFocusedOrHasValue={isFocused || hasValue}
-        error={selectProps.error}
+        // error={selectProps.error} <- It creates additional label during validation which is not needed here.
         size={selectProps.size}
         removeTopLabel={removeTopLabel}
         isDisabled={isDisabled}
