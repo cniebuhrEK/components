@@ -44,11 +44,3 @@ export const HIGHLIGHT_BLOTS = {
   [HIGHLIGHT_COLORS.red]: RED_HIGHLIGHTS_BLOT_NAME,
   [HIGHLIGHT_COLORS.orange]: ORANGE_HIGHLIGHTS_BLOT_NAME
 }
-
-export const hasHighlightCursorClass = event => {
-  const elementsPath = R.propOr([], 'path', event)
-  const elementHasHighlightCursorClass = el =>
-    R.pipe(R.propOr([], 'classList'), R.any(R.equals('highlight-cursor')))(el)
-
-  return R.any(elementHasHighlightCursorClass, elementsPath)
-}
