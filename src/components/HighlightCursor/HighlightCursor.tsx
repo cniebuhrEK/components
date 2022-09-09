@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import * as R from 'ramda'
 import { HighlighterIcon } from '../../icons'
 import { hasHighlightCursorClass } from '../Wysiwyg/utils'
 
@@ -64,6 +65,14 @@ export const HighlightCursor = (): JSX.Element => {
 }
 
 export default HighlightCursor
+
+export const hasHighlightCursorClass = event => {
+  const elementsPath = R.propOr([], 'path', event)
+  const elementHasHighlightCursorClass = el =>
+    R.pipe(R.propOr([], 'classList'), R.any(R.equals('highlight-cursor')))(el)
+
+  return R.any(elementHasHighlightCursorClass, elementsPath)
+}
 
 const CursorContainer = styled.div`
   position: fixed;

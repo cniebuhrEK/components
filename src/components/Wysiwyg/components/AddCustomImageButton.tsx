@@ -34,7 +34,8 @@ const AddCustomImageButton = (
     })
   }
 
-  const onTriggerClick = () => {
+  const onTriggerClick = e => {
+    e.preventDefault()
     // @ts-ignore
     document.getElementById(`${id}-s3-upload`).click()
   }
@@ -51,8 +52,9 @@ const AddCustomImageButton = (
 
   return (
     <ButtonContainer isLoading={isLoading}>
-      <button
-        disabled={isLoading}
+      <div
+        // disabled={isLoading}
+        id='button-input-file'
         className='ql-s3-image'
         onMouseDown={onTriggerClick}
       >
@@ -63,7 +65,7 @@ const AddCustomImageButton = (
         ) : (
           <EditorImageIcon />
         )}
-      </button>
+      </div>
       <input
         className='file-upload__input'
         id={`${id}-s3-upload`}
@@ -88,7 +90,7 @@ const ButtonContainer = styled.div`
       0ms;
   }
 
-  button {
+  #button-input-file {
     cursor: pointer !important;
     background: ${({ theme, isLoading }) =>
       isLoading
@@ -100,10 +102,13 @@ const ButtonContainer = styled.div`
         : theme.colors.buttons.contained.secondary.font} !important;
     width: 19px !important;
     height: 19px !important;
-    line-height: 19px !important;
+    line-height: 24px !important;
     border-radius: 2px !important;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     font-size: 12px !important;
-    padding: 0 !important;
+    padding: 0 0 0 0 !important;
     text-align: center !important;
     transition: all 800ms ${({ theme }) => theme.transitions.easing.easeInOut}
       0ms;
@@ -126,7 +131,7 @@ const ButtonContainer = styled.div`
           : theme.colors.buttons.contained.secondary.fontActive} !important;
     }
 
-    button {
+    #button-input-file {
       background: ${({ theme, isLoading }) =>
         isLoading
           ? theme.colors.buttons.contained.disabled.backgroundActive
