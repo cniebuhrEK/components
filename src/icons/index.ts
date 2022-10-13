@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as CrownIcon } from './Crown'
 export { default as HighlighterIcon } from './Highlighter'
 export { default as MinusContainedIcon } from './MinusContained'
 export { default as ImageOutlinedIcon } from './ImageOutlined'
