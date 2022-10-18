@@ -14,7 +14,8 @@ Default.args = {
   isActive: false,
   id: 'tag-ig',
   name: 'tag-name',
-  uppercase: true
+  uppercase: true,
+  rounded: false
 }
 
 export default {

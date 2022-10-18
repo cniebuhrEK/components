@@ -26,6 +26,7 @@ type TagProps =
       isStatic?: boolean
       uppercase?: boolean
       disabled?: boolean
+      rounded?: boolean
       tooltip?: JSX.Element | string
       tooltipId?: string
     }
@@ -50,6 +51,7 @@ type TagProps =
       isStatic?: boolean
       uppercase?: boolean
       disabled?: boolean
+      rounded?: boolean
       tooltip: JSX.Element | string
       tooltipId: string
     }
@@ -66,7 +68,8 @@ export const Tag = (props: TagProps): JSX.Element => {
     onClick,
     tooltip,
     tooltipId,
-    disabled
+    disabled,
+    rounded
   } = props
 
   const handleClick = e => {
@@ -84,6 +87,7 @@ export const Tag = (props: TagProps): JSX.Element => {
       isActive={isActive}
       isStatic={isStatic}
       disabled={disabled}
+      rounded={rounded}
     >
       {isActive && (
         <IconWrapper>
@@ -124,7 +128,7 @@ const TagContainer = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 2px;
+  border-radius: ${({ rounded }) => (rounded ? '24px' : '2px')};
   text-align: center;
   border: 1px solid transparent;
   text-transform: ${({ uppercase }) => (uppercase ? 'uppercase' : 'none')};
