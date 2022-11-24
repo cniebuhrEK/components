@@ -46,6 +46,7 @@ interface FullTableProps {
    * Flag to set a background to a table row while hovering.
    */
   highlight: boolean
+  isLoading: boolean
 }
 
 const FullTable = (props: FullTableProps): JSX.Element => {
@@ -80,6 +81,7 @@ const FullTable = (props: FullTableProps): JSX.Element => {
         onTableStateChange={handleTableStateChange}
         highlight={props.highlight}
         defaultRowsPerPage={10}
+        isLoading={props.isLoading}
       />
     </div>
   )

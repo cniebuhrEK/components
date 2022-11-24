@@ -15,7 +15,8 @@ EntitiesList.args = {
   defaultSortColumnId: 'firstname',
   defaultSortDirection: 'DESC',
   defaultPage: 1,
-  highlight: true
+  highlight: true,
+  isLoading: false
 }
 
 export default {

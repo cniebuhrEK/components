@@ -19,6 +19,7 @@ import RowsPerPage from '../RowsPerPage/RowsPerPage'
 import WarningReversed from '../../icons/WarningReversed'
 import EntitiesListExpandableRow from './EntitiesListExpandableRow'
 import { propOr } from 'ramda'
+import { BouncingLoader } from '../BouncingLoader'
 
 const DEFAULT_ROWS_PER_PAGE = 10
 
@@ -54,9 +55,8 @@ interface EntitiesListProps {
     page: number
     take: number
   }) => any
-
-  // Highlight table rows when hovered
   highlight: boolean
+  isLoading?: boolean
 }
 
 const EntitiesList = (props: EntitiesListProps): JSX.Element => {
@@ -75,7 +75,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     highlight,
     defaultRowsPerPage,
     paginationPage,
-    removeMargin
+    removeMargin,
+    isLoading
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -159,6 +160,29 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     </TableRow>
   )
 
+  const renderLoader = (
+    <TableRow highlight={highlight}>
+      <TableCell colSpan={headers.length}>
+        <TableLoader>
+          <BouncingLoader />
+        </TableLoader>
+      </TableCell>
+    </TableRow>
+  )
+
+  console.log({ isLoading })
+
+  const renderTableBodyContent = () => {
+    switch (true) {
+      case isLoading:
+        return renderLoader
+      case rows.length === 0:
+        return renderEmptyState
+      default:
+        return renderRows
+    }
+  }
+
   return (
     <div>
       <TableActionBar removeMargin={removeMargin}>
@@ -175,9 +199,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
             <TableHead>
               <TableRow highlight={highlight}>{renderHeaders}</TableRow>
             </TableHead>
-            <TableBody>
-              {rows.length === 0 ? renderEmptyState : renderRows}
-            </TableBody>
+            <TableBody>{renderTableBodyContent()}</TableBody>
           </Table>
         </TableContainer>
       </TableContainerOuter>
@@ -235,6 +257,12 @@ const TableContainerOuter = styled.div`
 
 const TableContainer = styled.div`
   overflow-x: hidden;
+`
+
+const TableLoader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 EntitiesList.defaultProps = {
