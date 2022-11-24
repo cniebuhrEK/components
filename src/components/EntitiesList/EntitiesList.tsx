@@ -170,8 +170,6 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     </TableRow>
   )
 
-  console.log({ isLoading })
-
   const renderTableBodyContent = () => {
     switch (true) {
       case isLoading:
