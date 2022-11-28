@@ -63,6 +63,9 @@ const Wrapper = styled.div`
     max-width: 250px;
     text-align: center;
   }
+  .place-top:before {
+    height: 8px!important;
+  }
 `
 
 export const TooltipContainer = styled.div`
