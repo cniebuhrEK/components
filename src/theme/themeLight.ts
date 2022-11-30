@@ -705,7 +705,7 @@ export default {
           border: '#B61719'
         },
         blue: {
-          background: '#C8D7FF',
+          background: 'linear-gradient(180deg, #C8D7FF 0%, #3861C9 100%)',
           border: '#3861C9'
         },
         green: {
@@ -721,23 +721,23 @@ export default {
           border: '#845A3F'
         },
         mathPurple: {
-          background: '#E4E5FF',
+          background: 'linear-gradient(180deg, #E4E5FF 0%, #4E2393 100%)',
           border: '#4E2393'
         },
         aquamarine: {
-          background: '#EFF5DC',
+          background: 'linear-gradient(180deg, #EFF5DC 0%, #607321 100%)',
           border: '#607321'
         },
         turquoise: {
-          background: '#CAFAFA',
+          background: 'linear-gradient(180deg, #CAFAFA 0%, #31B7B7 100%)',
           border: '#31B7B7'
         },
         yellow: {
-          background: '#FFF6C1',
+          background: 'linear-gradient(180deg, #FFF6C1 0%, #E4C200 100%)',
           border: '#E4C200'
         },
         grey: {
-          background: '#DDDDDD',
+          background: 'linear-gradient(180deg, #DDDDDD 0%, #606060 100%)',
           border: '#606060'
         }
       }
