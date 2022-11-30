@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as StarIcon } from './Star'
 export { default as DotMenuIcon } from './DotMenu'
 export { default as CrownIcon } from './Crown'
 export { default as HighlighterIcon } from './Highlighter'

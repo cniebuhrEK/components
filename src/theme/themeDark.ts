@@ -741,7 +741,6 @@ export default {
           border: '#606060'
         }
       }
-
     }
   }
 }
