@@ -64,7 +64,7 @@ const Wrapper = styled.div`
     text-align: center;
   }
   .place-top:before {
-    height: 8px!important;
+    height: 8px !important;
   }
 `
 

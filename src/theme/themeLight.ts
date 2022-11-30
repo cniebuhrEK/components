@@ -690,7 +690,57 @@ export default {
         border: '#8C5000'
       },
       hotkeysLegend:
-        'linear-gradient(180deg, rgba(228, 228, 228, 1) 0%, rgba(255, 255, 255, 1) 100%)'
+        'linear-gradient(180deg, rgba(228, 228, 228, 1) 0%, rgba(255, 255, 255, 1) 100%)',
+      filters: {
+        default: {
+          background: 'linear-gradient(180deg, #FFEEDF 0%, #FFB86E 100%)',
+          border: '#8C5000'
+        },
+        purple: {
+          background: 'linear-gradient(180deg, #FFD7EE 0%, #FA94CE 100%)',
+          border: '#770A48'
+        },
+        red: {
+          background: 'linear-gradient(180deg, #FFDCDD 0%, #FCA9AB 100%)',
+          border: '#B61719'
+        },
+        blue: {
+          background: '#C8D7FF',
+          border: '#3861C9'
+        },
+        green: {
+          background: 'linear-gradient(180deg, #DAFBE3 0%, #5DCA7A 100%)',
+          border: '#1B7734'
+        },
+        orange: {
+          background: 'linear-gradient(180deg, #FEF6EB 0%, #E9AB6D 100%)',
+          border: '#AE5700'
+        },
+        brown: {
+          background: 'linear-gradient(180deg, #F1E8E1 0%, #DEBCA2 100%)',
+          border: '#845A3F'
+        },
+        mathPurple: {
+          background: '#E4E5FF',
+          border: '#4E2393'
+        },
+        aquamarine: {
+          background: '#EFF5DC',
+          border: '#607321'
+        },
+        turquoise: {
+          background: '#CAFAFA',
+          border: '#31B7B7'
+        },
+        yellow: {
+          background: '#FFF6C1',
+          border: '#E4C200'
+        },
+        grey: {
+          background: '#DDDDDD',
+          border: '#606060'
+        }
+      }
     }
   }
 }
