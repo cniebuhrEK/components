@@ -5,8 +5,6 @@ import styled from 'styled-components'
 import Quill from 'quill'
 import Toolbar from './Toolbar'
 import ReactTooltip from 'react-tooltip'
-import GlossaryTooltips from './components/GlossaryTooltips'
-import * as R from 'ramda'
 
 import 'quill/dist/quill.snow.css'
 import { isNotNilOrEmpty } from '../../utils/ramda'
@@ -67,7 +65,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     glossaryEntries,
     handleFetchGlossaryList,
     handleScanGlossaryList,
-    getPhraseDetails,
     glossaryEntriesPagination,
     id,
     handleS3Upload,
@@ -78,9 +75,7 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     error,
     errorText,
     initialValue,
-    bookContentId,
-    handleCreateNew,
-    redirectHandler
+    handleCreateNew
   } = props
   const { glossary } = formats
   const [quill, setQuill] = React.useState()
@@ -151,20 +146,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
     }
   }, [quill, onChange])
 
-  const hasContent = () => {
-    // @ts-ignore
-    if (quill) {
-      // @ts-ignore
-      const raw = quill.getText()
-      return R.isEmpty(raw) || R.isNil(raw) || R.not(R.equals(raw, '\n'))
-    }
-
-    return false
-  }
-
-  // @ts-ignore
-  const tooltipsDelta = hasContent() ? quill.getContents() : initialValue
-
   return (
     <TextEditorContainer
       error={error}
@@ -192,14 +173,6 @@ const WysiwygEditor = (props: TextEditorProps): JSX.Element => {
       />
       <WysiwygContainer error={error} ref={wrapperRef} id={id} />
       {error && <div className='editor-error'>{errorText}</div>}
-      {getPhraseDetails && (
-        <GlossaryTooltips
-          bookContentId={bookContentId}
-          getPhraseDetails={getPhraseDetails}
-          deltaObject={tooltipsDelta}
-          redirectHandler={redirectHandler}
-        />
-      )}
     </TextEditorContainer>
   )
 }
