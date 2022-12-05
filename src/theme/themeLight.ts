@@ -96,6 +96,14 @@ export default {
           backgroundActive: palette.heading,
           borderActive: palette.heading
         },
+        darkRed: {
+          font: palette.white,
+          background: 'linear-gradient(180deg, #A30014 0%, #72000E 100%)',
+          border: 'transparent',
+          fontActive: palette.white,
+          backgroundActive: 'linear-gradient(180deg, #72000E 0%, #A30014 100%)',
+          borderActive: 'transparent'
+        },
         disabled: {
           font: palette.grey200,
           background: palette.grey300,
