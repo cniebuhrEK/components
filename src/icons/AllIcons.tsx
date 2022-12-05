@@ -130,6 +130,8 @@ import {
   RestoreIcon,
   PinIcon,
   ProfileIcon,
+  AddToBoxIcon,
+  AddToArchiveIcon,
   PadlockLockedIcon,
   PadlockOpenIcon
 } from './'
@@ -275,6 +277,8 @@ const AllIcons = () => {
     { component: BookMarkIcon, title: 'BookMark' },
     { component: RestoreIcon, title: 'RestoreIcon' },
     { component: PinIcon, title: 'PinIcon' },
+    { component: AddToBoxIcon, title: 'AddToBoxIcon' },
+    { component: AddToArchiveIcon, title: 'AddToArchiveIcon' },
     { component: PadlockLockedIcon, title: 'PadlockLockedIcon' },
     { component: PadlockOpenIcon, title: 'PadlockOpenIcon' }
   ]
