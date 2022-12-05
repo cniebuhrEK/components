@@ -1,6 +1,8 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as StarIcon } from './Star'
+export { default as DotMenuIcon } from './DotMenu'
 export { default as CrownIcon } from './Crown'
 export { default as HighlighterIcon } from './Highlighter'
 export { default as MinusContainedIcon } from './MinusContained'
@@ -127,3 +129,5 @@ export { default as PinIcon } from './Pin'
 export { default as ProfileIcon } from './Profile'
 export { default as AddToBoxIcon } from './AddToBox'
 export { default as AddToArchiveIcon } from './AddToArchive'
+export { default as PadlockLockedIcon } from './PadlockLocked'
+export { default as PadlockOpenIcon } from './PadlockOpen'

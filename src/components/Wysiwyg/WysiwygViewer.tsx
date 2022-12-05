@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 
 import 'quill/dist/quill.snow.css'
 
-import GlossaryTooltips from './components/GlossaryTooltips'
 import WysiwygViewerEditor from './WysiwygViewerEditor'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
@@ -25,13 +24,10 @@ interface TextEditorProps {
 const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
   const {
     id,
-    getPhraseDetails,
     value,
-    bookContentId,
     withHighlights,
     withYoursHighlights,
     onHighlightChange,
-    redirectHandler,
     onSelectionChange,
     markedPhrase
   } = props
@@ -46,14 +42,6 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
         onSelectionChange={onSelectionChange}
         markedPhrase={markedPhrase}
       />
-      {getPhraseDetails && (
-        <GlossaryTooltips
-          deltaObject={value}
-          bookContentId={bookContentId}
-          getPhraseDetails={getPhraseDetails}
-          redirectHandler={redirectHandler}
-        />
-      )}
       {/* @ts-ignore */}
       <ModalWysiwygPreview value={value} wysiwygId={id} />
     </React.Fragment>

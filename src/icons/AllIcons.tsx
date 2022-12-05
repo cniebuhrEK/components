@@ -7,6 +7,8 @@ import * as R from 'ramda'
 import {
   // appendIconImport
 
+  StarIcon,
+  DotMenuIcon,
   CrownIcon,
   HighlighterIcon,
   MinusContainedIcon,
@@ -129,7 +131,9 @@ import {
   PinIcon,
   ProfileIcon,
   AddToBoxIcon,
-  AddToArchiveIcon
+  AddToArchiveIcon,
+  PadlockLockedIcon,
+  PadlockOpenIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -147,6 +151,8 @@ const AllIcons = () => {
   const icons = [
     // appendIconComponent
 
+    { component: StarIcon, title: 'StarIcon' },
+    { component: DotMenuIcon, title: 'DotMenuIcon' },
     { component: CrownIcon, title: 'CrownIcon' },
     { component: HighlighterIcon, title: 'HighlighterIcon' },
     { component: MinusContainedIcon, title: 'MinusContainedIcon' },
@@ -272,7 +278,9 @@ const AllIcons = () => {
     { component: RestoreIcon, title: 'RestoreIcon' },
     { component: PinIcon, title: 'PinIcon' },
     { component: AddToBoxIcon, title: 'AddToBoxIcon' },
-    { component: AddToArchiveIcon, title: 'AddToArchiveIcon' }
+    { component: AddToArchiveIcon, title: 'AddToArchiveIcon' },
+    { component: PadlockLockedIcon, title: 'PadlockLockedIcon' },
+    { component: PadlockOpenIcon, title: 'PadlockOpenIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
