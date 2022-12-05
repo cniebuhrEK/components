@@ -36,7 +36,8 @@ const colorsMap = {
   secondary: 'secondary',
   [buttonColors.transparent]: 'transparent',
   [buttonColors.red]: 'red',
-  [buttonColors.black]: 'black'
+  [buttonColors.black]: 'black',
+  [buttonColors.darkRed]: 'darkRed'
 }
 
 type ButtonProps =
@@ -56,6 +57,7 @@ type ButtonProps =
         | 'black'
         | 'primary'
         | 'secondary'
+        | 'darkRed'
       variant?: 'contained' | 'outlined'
       startIcon?: any
       endIcon?: any
@@ -85,6 +87,7 @@ type ButtonProps =
         | 'primary'
         | 'secondary'
         | 'tertiary'
+        | 'darkRed'
       variant?: 'contained' | 'outlined'
       startIcon?: any
       endIcon?: any
