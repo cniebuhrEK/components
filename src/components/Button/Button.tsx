@@ -22,7 +22,8 @@ const buttonColors = {
   transparent: 'transparent',
   red: 'red',
   black: 'black',
-  tertiary: 'tertiary'
+  tertiary: 'tertiary',
+  darkRed: 'darkRed'
 }
 
 // this is because there was inconsistency of naming colors
