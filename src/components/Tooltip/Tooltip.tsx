@@ -14,7 +14,7 @@ type TooltipProps =
       info?: boolean
       infoIconColor?: string
       place?: 'top' | 'right' | 'bottom' | 'left'
-      afterShow?: () => {}
+      [x: string]: any
     }
   | {
       children?: JSX.Element | string
@@ -23,7 +23,7 @@ type TooltipProps =
       info: boolean
       infoIconColor?: string
       place?: 'top' | 'right' | 'bottom' | 'left'
-      afterShow?: () => {}
+      [x: string]: any
     }
 
 const Tooltip = ({
@@ -33,7 +33,7 @@ const Tooltip = ({
   info,
   infoIconColor,
   place,
-  afterShow
+  ...rest
 }: TooltipProps): JSX.Element => {
   return (
     <Wrapper>
@@ -45,7 +45,7 @@ const Tooltip = ({
         place={place || 'top'}
         effect='solid'
         data-class='tooltip-content'
-        afterShow={afterShow}
+        {...rest}
       >
         {tooltipContent}
       </ReactTooltip>
