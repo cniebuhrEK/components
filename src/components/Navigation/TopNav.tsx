@@ -448,9 +448,8 @@ const Container = styled.div`
   _::-webkit-full-page-media,
   _:future,
   :root .safari_only {
-    height: ${({ theme }) =>
-      theme.dimensions.studentTopNavHeight -
-      theme.dimensions.topNotificationHeight};
+    height: ${({ theme }) => `calc(${theme.dimensions.studentTopNavHeight} -
+${theme.dimensions.topNotificationHeight})`};
   }
 `
 
