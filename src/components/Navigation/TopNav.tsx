@@ -445,11 +445,11 @@ const Container = styled.div`
   padding: 0 10px;
 
   // this is a workaround, because safari is treating this height differently
-  _::-webkit-full-page-media,
-  _:future,
-  :root .safari_only {
-    height: ${({ theme }) => `calc(${theme.dimensions.studentTopNavHeight} -
+  @media not all and (min-resolution: 0.001dpcm) {
+    @media {
+      height: ${({ theme }) => `calc(${theme.dimensions.studentTopNavHeight} -
 ${theme.dimensions.topNotificationHeight})`};
+    }
   }
 `
 
