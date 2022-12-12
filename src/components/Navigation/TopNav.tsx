@@ -443,6 +443,15 @@ const Container = styled.div`
   margin: auto;
   width: 100%;
   padding: 0 10px;
+
+  // this is a workaround, because safari is treating this height differently
+  _::-webkit-full-page-media,
+  _:future,
+  :root .safari_only {
+    height: ${({ theme }) =>
+      theme.dimensions.studentTopNavHeight -
+      theme.dimensions.topNotificationHeight};
+  }
 `
 
 const Overlay = styled.div`

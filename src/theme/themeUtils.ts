@@ -35,9 +35,8 @@ export const getTheme = () => {
     ...defaultTheme,
     withNotification: true,
     dimensions: {
-      ...defaultTheme.dimensions
-      // commented because of issue on safari
-      // studentTopNavHeight: '112px'
+      ...defaultTheme.dimensions,
+      studentTopNavHeight: '112px'
     }
   }
   const notification = localStorage.getItem(themeWithNotificationKey) || 'false'
