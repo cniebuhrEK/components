@@ -371,12 +371,14 @@ const StudentTopNavigation = (
     </React.Fragment>
   )
 
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+
   return (
     <React.Fragment>
       {MenuButtonOpened}
       <ContainerOuter open={open} withNotification={hasNotification}>
         <div className='nav-notification'>{notification}</div>
-        <Container>
+        <Container isSafari={isSafari}>
           <LogoWrapper>
             <LogoContainer>
               <img src={logoUrl} alt='logo icon' />
@@ -437,20 +439,16 @@ const ContainerOuter = styled.div`
 const Container = styled.div`
   align-items: center;
   display: flex;
-  height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  height: ${({ theme, isSafari }) =>
+    isSafari
+      ? `calc(${theme.dimensions.studentTopNavHeight} -
+${theme.dimensions.topNotificationHeight})`
+      : theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   max-width: 1280px;
   margin: auto;
   width: 100%;
   padding: 0 10px;
-
-  // this is a workaround, because safari is treating this height differently
-  @media not all and (min-resolution: 0.001dpcm) {
-    @media {
-      height: ${({ theme }) => `calc(${theme.dimensions.studentTopNavHeight} -
-${theme.dimensions.topNotificationHeight})`};
-    }
-  }
 `
 
 const Overlay = styled.div`
