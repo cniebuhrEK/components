@@ -45,7 +45,10 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     return Array.from({ length: range }, (_el, i) => start + i)
   }
 
-  const setCurrentPage = number => () => onPageChange(number)
+  const setCurrentPage = number => () => {
+    window.scrollTo(0, 0)
+    onPageChange(number)
+  }
 
   const renderPages = () =>
     calculatePaging().map(page => (
