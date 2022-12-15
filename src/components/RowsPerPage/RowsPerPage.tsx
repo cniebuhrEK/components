@@ -6,14 +6,15 @@ import { getOptionByValue } from '../../utils/form'
 import { ArrowDownIcon } from '../../icons'
 
 interface RowsPerPageProps {
-  defaultValue: 10 | 50 | 100
+  defaultValue: 10 | 50 | 100 | 12 | 52
   onChange: (rowsPerPage) => any
+  customOptions?: any[]
 }
 
 const ROWS_PER_PAGE_VALUES = [10, 50, 100]
 
 const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
-  const { onChange, defaultValue } = props
+  const { onChange, defaultValue, customOptions } = props
   const [open, setOpen] = React.useState<boolean>(false)
   const ref = React.useRef<HTMLDivElement>()
 
@@ -31,7 +32,7 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
     return () => window.removeEventListener('mousedown', handleClickOutside)
   }, [open])
 
-  const options = ROWS_PER_PAGE_VALUES.map(value => ({
+  const options = (customOptions || ROWS_PER_PAGE_VALUES).map(value => ({
     label: value.toString(),
     value
   }))
@@ -54,7 +55,6 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
     </ItemContainer>
   ))
 
-  // @ts-ignore
   return (
     <RowsPerPageContainer>
       <div className='rows-per-page-label'>Show:</div>
@@ -122,7 +122,7 @@ const DropdownTrigger = styled.div`
 `
 
 const Menu = styled.div`
-  background-color ${({ theme }) => theme.colors.selects.option.background};
+  background-color: ${({ theme }) => theme.colors.selects.option.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
   z-index: ${({ theme }) => theme.zIndex.dropdown};
   box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
@@ -132,8 +132,7 @@ const Menu = styled.div`
   left: 0;
   cursor: pointer;
   z-index: ${({ theme }) => theme.zIndex.menu};
-  transition: opacity 700ms ${({ theme }) =>
-    theme.transitions.easing.easeInOut};
+  transition: opacity 700ms ${({ theme }) => theme.transitions.easing.easeInOut};
   min-width: 55px;
   width: fit-content;
   overflow-y: auto;

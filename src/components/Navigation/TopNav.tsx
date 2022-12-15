@@ -371,12 +371,14 @@ const StudentTopNavigation = (
     </React.Fragment>
   )
 
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+
   return (
     <React.Fragment>
       {MenuButtonOpened}
       <ContainerOuter open={open} withNotification={hasNotification}>
         <div className='nav-notification'>{notification}</div>
-        <Container>
+        <Container isSafari={isSafari}>
           <LogoWrapper>
             <LogoContainer>
               <img src={logoUrl} alt='logo icon' />
@@ -437,7 +439,11 @@ const ContainerOuter = styled.div`
 const Container = styled.div`
   align-items: center;
   display: flex;
-  height: ${({ theme }) => theme.dimensions.studentTopNavHeight};
+  height: ${({ theme, isSafari }) =>
+    isSafari
+      ? `calc(${theme.dimensions.studentTopNavHeight} -
+${theme.dimensions.topNotificationHeight})`
+      : theme.dimensions.studentTopNavHeight};
   justify-content: space-between;
   max-width: 1280px;
   margin: auto;
