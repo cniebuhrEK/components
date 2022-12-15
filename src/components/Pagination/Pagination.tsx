@@ -49,7 +49,7 @@ const Pagination = (props: PaginationProps): JSX.Element => {
 
   const setCurrentPage = number => () => {
     onPageChange(number)
-    setTimeout(handleScrollToTop, 800)
+    setTimeout(() => handleScrollToTop, 800)
   }
 
   const renderPages = () =>
