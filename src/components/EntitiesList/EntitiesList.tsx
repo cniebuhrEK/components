@@ -89,16 +89,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     setRowsPerPage(defaultRowsPerPage)
   }, [defaultRowsPerPage])
 
-  console.log({
-    rows,
-    paginationPage,
-    currentPage
-  })
-
   useEffect(() => {
-    console.log('halo!?', { paginationPage })
     paginationPage && setCurrentPage(paginationPage)
-    console.log('change current page?!')
   }, [paginationPage])
 
   const handleRowsPerPageChange = value => {
