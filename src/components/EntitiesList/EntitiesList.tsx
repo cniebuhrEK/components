@@ -83,26 +83,42 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
   const [currentPage, setCurrentPage] = useState(defaultPage)
   const [rowsPerPage, setRowsPerPage] = useState(defaultRowsPerPage)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     setRowsPerPage(defaultRowsPerPage)
   }, [defaultRowsPerPage])
 
+  console.log({
+    rows,
+    paginationPage,
+    currentPage
+  })
+
   useEffect(() => {
+    console.log('halo!?', { paginationPage })
     paginationPage && setCurrentPage(paginationPage)
+    console.log('change current page?!')
   }, [paginationPage])
 
-  useEffect(() => {
+  const handleRowsPerPageChange = value => {
+    setRowsPerPage(value)
     setCurrentPage(1)
-  }, [rowsPerPage])
+  }
 
   useEffect(() => {
-    onTableStateChange({
-      sortBy: sortedColumnId,
-      dir: sortDirection,
-      page: currentPage,
-      take: rowsPerPage || DEFAULT_ROWS_PER_PAGE
-    })
+    setTimeout(() => setIsMounted(true), 200)
+  }, [])
+
+  useEffect(() => {
+    if (isMounted) {
+      onTableStateChange({
+        sortBy: sortedColumnId,
+        dir: sortDirection,
+        page: currentPage,
+        take: rowsPerPage || DEFAULT_ROWS_PER_PAGE
+      })
+    }
   }, [sortedColumnId, sortDirection, currentPage, rowsPerPage])
 
   const setNewSortedColumnId = id => () => {
@@ -202,12 +218,10 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         </TableContainer>
       </TableContainerOuter>
       <TablePaginationContainer>
-        {defaultRowsPerPage && totalPages > 1 && (
-          <RowsPerPage
-            onChange={setRowsPerPage}
-            defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
-          />
-        )}
+        <RowsPerPage
+          onChange={handleRowsPerPageChange}
+          defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
+        />
         <div>
           <Pagination
             currentPage={currentPage}
