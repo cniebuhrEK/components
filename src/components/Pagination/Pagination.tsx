@@ -46,8 +46,8 @@ const Pagination = (props: PaginationProps): JSX.Element => {
   }
 
   const setCurrentPage = number => () => {
-    window.scrollTo(0, 0)
     onPageChange(number)
+    window.scrollTo(0, 0)
   }
 
   const renderPages = () =>
