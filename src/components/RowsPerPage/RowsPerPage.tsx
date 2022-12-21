@@ -56,7 +56,7 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
   ))
 
   return (
-    <RowsPerPageContainer>
+    <RowsPerPageContainer className='rows-per-page'>
       <div className='rows-per-page-label'>Show:</div>
       <SelectContainer ref={ref}>
         <DropdownTrigger open={open} onClick={handleToggle}>
