@@ -133,7 +133,10 @@ import {
   AddToBoxIcon,
   AddToArchiveIcon,
   PadlockLockedIcon,
-  PadlockOpenIcon
+  PadlockOpenIcon,
+  FirstPlaceMedalIcon,
+  SecondPlaceMedalIcon,
+  ThirdPlaceMedalIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -280,7 +283,10 @@ const AllIcons = () => {
     { component: AddToBoxIcon, title: 'AddToBoxIcon' },
     { component: AddToArchiveIcon, title: 'AddToArchiveIcon' },
     { component: PadlockLockedIcon, title: 'PadlockLockedIcon' },
-    { component: PadlockOpenIcon, title: 'PadlockOpenIcon' }
+    { component: PadlockOpenIcon, title: 'PadlockOpenIcon' },
+    { component: FirstPlaceMedalIcon, title: 'FirstPlaceMedalIcon' },
+    { component: SecondPlaceMedalIcon, title: 'SecondPlaceMedalIcon' },
+    { component: ThirdPlaceMedalIcon, title: 'ThirdPlaceMedalIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
