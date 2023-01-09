@@ -653,7 +653,8 @@ export default {
       },
       sb: {
         mainLine: '#BDFA3B',
-        strokeDash: '#49494C'
+        strokeDash: '#49494C',
+        text: colors.white
       }
     },
     books: {

@@ -652,8 +652,9 @@ export default {
         strokeDash: '#49494C'
       },
       sb: {
-        mainLine: '#BDFA3B',
-        strokeDash: '#49494C'
+        mainLine: '#85BB65',
+        strokeDash: '#DDDFE1',
+        text: '#949596'
       }
     },
     books: {
