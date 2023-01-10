@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '../components/Icon'
 
-export const FirstPlaceMedal = () => {
+export const ThirdPlaceMedal = () => {
   return (
     <Icon
       width='1em'
@@ -39,12 +39,12 @@ export const FirstPlaceMedal = () => {
           y2='29.9999'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stop-color='#FFE2C5' />
-          <stop offset='1' stop-color='#D3883E' />
+          <stop stopColor='#FFE2C5' />
+          <stop offset='1' stopColor='#D3883E' />
         </linearGradient>
       </defs>
     </Icon>
   )
 }
 
-export default FirstPlaceMedal
+export default ThirdPlaceMedal

@@ -136,7 +136,8 @@ import {
   PadlockOpenIcon,
   FirstPlaceMedalIcon,
   SecondPlaceMedalIcon,
-  ThirdPlaceMedalIcon
+  ThirdPlaceMedalIcon,
+  TrophyIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -286,7 +287,8 @@ const AllIcons = () => {
     { component: PadlockOpenIcon, title: 'PadlockOpenIcon' },
     { component: FirstPlaceMedalIcon, title: 'FirstPlaceMedalIcon' },
     { component: SecondPlaceMedalIcon, title: 'SecondPlaceMedalIcon' },
-    { component: ThirdPlaceMedalIcon, title: 'ThirdPlaceMedalIcon' }
+    { component: ThirdPlaceMedalIcon, title: 'ThirdPlaceMedalIcon' },
+    { component: TrophyIcon, title: 'TrophyIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
