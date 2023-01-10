@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '../components/Icon'
 
-export const FirstPlaceMedal = props => {
+export const Trophy = props => {
   return (
     <Icon
       width='1em'
@@ -19,4 +19,4 @@ export const FirstPlaceMedal = props => {
   )
 }
 
-export default FirstPlaceMedal
+export default Trophy
