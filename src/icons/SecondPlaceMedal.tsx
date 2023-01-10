@@ -39,8 +39,8 @@ export const SecondPlaceMedal = () => {
           y2='30.0009'
           gradientUnits='userSpaceOnUse'
         >
-          <stop stop-color='white' />
-          <stop offset='1' stop-color='#BEBEBE' />
+          <stop stopColor='white' />
+          <stop offset='1' stopColor='#BEBEBE' />
         </linearGradient>
       </defs>
     </Icon>
