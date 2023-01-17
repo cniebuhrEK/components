@@ -1,6 +1,8 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as IndentLeftIcon } from './IndentLeft'
+export { default as IndentRightIcon } from './IndentRight'
 export { default as StarIcon } from './Star'
 export { default as DotMenuIcon } from './DotMenu'
 export { default as CrownIcon } from './Crown'
@@ -134,4 +136,4 @@ export { default as PadlockOpenIcon } from './PadlockOpen'
 export { default as FirstPlaceMedalIcon } from './FirstPlaceMedal'
 export { default as SecondPlaceMedalIcon } from './SecondPlaceMedal'
 export { default as ThirdPlaceMedalIcon } from './ThirdPlaceMedal'
-export { default as TrophyIcon} from './Trophy'
+export { default as TrophyIcon } from './Trophy'
