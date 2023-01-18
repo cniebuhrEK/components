@@ -662,9 +662,13 @@ export default {
       selectBorder: '#9b115f',
       contentQuestionMark: '#a635ff',
       resources: {
-        tmi: {
+        topics: {
           background: '#ebf4fe',
           font: '#1a7af8'
+        },
+        tmi: {
+          background: '#c2abd4',
+          font: '#8C1EE2'
         },
         video: {
           background: '#FFCFD0',

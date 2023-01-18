@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as ExplodingBrainIcon } from './ExplodingBrain'
 export { default as IndentLeftIcon } from './IndentLeft'
 export { default as IndentRightIcon } from './IndentRight'
 export { default as StarIcon } from './Star'
