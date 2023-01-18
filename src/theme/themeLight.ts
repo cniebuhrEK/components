@@ -754,6 +754,16 @@ export default {
           border: '#606060'
         }
       }
+    },
+    accordionTabs: {
+      trigger: {
+        background: palette.grey200,
+        border: palette.grey300
+      },
+      content: {
+        background: palette.white,
+        border: palette.grey300
+      }
     }
   }
 }
