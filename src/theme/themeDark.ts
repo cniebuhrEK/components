@@ -667,7 +667,7 @@ export default {
           font: '#1a7af8'
         },
         tmi: {
-          background: '#c2abd4',
+          background: '#f4e8fe',
           font: '#8C1EE2'
         },
         video: {
