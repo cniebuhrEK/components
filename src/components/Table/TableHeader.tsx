@@ -102,7 +102,8 @@ const StyledTableHeader = styled.th`
   padding: 8px;
   position: ${({ sticky }) => (sticky ? 'sticky' : 'static')};
   text-align: ${({ align }) => align};
-  top: 0;
+  top: ${({ theme, isSticky }) =>
+    isSticky ? theme.dimensions.studentTopNavHeight : 0};
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   vertical-align: bottom;
   white-space: nowrap;
