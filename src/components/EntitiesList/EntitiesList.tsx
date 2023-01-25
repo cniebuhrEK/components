@@ -259,9 +259,7 @@ const TableContainerOuter = styled.div`
   padding: 16px;
 `
 
-const TableContainer = styled.div`
-  overflow-x: hidden;
-`
+const TableContainer = styled.div``
 
 const TableLoader = styled.div`
   display: flex;
