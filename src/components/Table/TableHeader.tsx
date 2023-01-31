@@ -107,7 +107,7 @@ const StyledTableHeader = styled.th`
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   vertical-align: bottom;
   white-space: nowrap;
-  z-index: 1;
+  z-index: 2;
 
   &:last-child,
   &:first-child {
