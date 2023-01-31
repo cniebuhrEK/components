@@ -9,6 +9,7 @@ interface CheckboxProps {
   disabled?: boolean
   intersection?: boolean
   onChange: (e: any) => void
+  outlined?: boolean
 }
 
 const Checkbox = (props: CheckboxProps): JSX.Element => {
@@ -24,6 +25,7 @@ const Checkbox = (props: CheckboxProps): JSX.Element => {
 
   return (
     <Container
+      outlined={props.outlined}
       isDisabled={props.disabled}
       className={checkboxClass}
       id={`exam-checkbox-${props.name}`}
@@ -65,16 +67,29 @@ export const Container = styled.div`
   opacity: ${({ isDisabled }) => (isDisabled ? 0.3 : 1)};
 
   &[data-is-selected='true'] {
-    background-color: ${({ theme }) => theme.colors.checkbox.backgroundActive};
-    border: 1px solid ${({ theme }) => theme.colors.checkbox.borderActive};
-    color: ${({ theme }) => theme.colors.checkbox.fontActive} !important;
+    background-color: ${({ theme, outlined }) =>
+      outlined
+        ? theme.colors.checkbox.background
+        : theme.colors.checkbox.backgroundActive};
+    border: 1px solid
+      ${({ theme, outlined }) =>
+        outlined
+          ? theme.colors.checkbox.border
+          : theme.colors.checkbox.borderActive};
+    color: ${({ theme, outlined }) =>
+      outlined
+        ? theme.colors.checkbox.borderActive
+        : theme.colors.checkbox.fontActive} !important;
 
     .exam-checkbox--checked {
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px !important;
-      color: ${({ theme }) => theme.colors.checkbox.fontActive} !important;
+      color: ${({ theme, outlined }) =>
+        outlined
+          ? theme.colors.checkbox.borderActive
+          : theme.colors.checkbox.fontActive} !important;
     }
 
     .exam-checkbox--unchecked {
@@ -83,9 +98,19 @@ export const Container = styled.div`
   }
 
   &[data-is-intersected='true'] {
-    background-color: ${({ theme }) => theme.colors.checkbox.backgroundActive};
-    border: 1px solid ${({ theme }) => theme.colors.checkbox.borderActive};
-    color: ${({ theme }) => theme.colors.checkbox.fontActive} !important;
+    background-color: ${({ theme, outlined }) =>
+      outlined
+        ? theme.colors.checkbox.background
+        : theme.colors.checkbox.backgroundActive};
+    border: 1px solid
+      ${({ theme, outlined }) =>
+        outlined
+          ? theme.colors.checkbox.border
+          : theme.colors.checkbox.borderActive};
+    color: ${({ theme, outlined }) =>
+      outlined
+        ? theme.colors.checkbox.borderActive
+        : theme.colors.checkbox.fontActive} !important;
   }
 
   &[data-is-selected='false'] {
