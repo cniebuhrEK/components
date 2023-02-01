@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as ToDoListIcon } from './ToDoList'
 export { default as ChecklistIcon } from './Checklist'
 export { default as ExplodingBrainIcon } from './ExplodingBrain'
 export { default as IndentLeftIcon } from './IndentLeft'
