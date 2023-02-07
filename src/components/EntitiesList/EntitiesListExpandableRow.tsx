@@ -10,9 +10,12 @@ const EntitiesListExpandableRow = ({ row }) => {
   const [open, setOpen] = useState(false)
   const children = propOr([], 'children', row)
   const cells = [...propOr([], 'cells', row)]
+  const onRowClickHandler = propOr(null, 'onRowClick', row)
   const firstCell = cells.shift()
 
   const toggleOpen = () => {
+    onRowClickHandler && onRowClickHandler()
+
     if (isNotNilOrEmpty(children)) {
       setOpen(prev => !prev)
     }
@@ -24,11 +27,13 @@ const EntitiesListExpandableRow = ({ row }) => {
       <TableRow id={row.id} className={`${row.level}${open ? ' shadow' : ''}`}>
         <TableCell key={firstCell.columnId} {...firstCell.cellProps}>
           <FirstCellInRowContent
-            isExpandable={isNotNilOrEmpty(children)}
+            isExpandable={isNotNilOrEmpty(children) || onRowClickHandler}
             onClick={toggleOpen}
           >
             {firstCell.children}
-            {isNotNilOrEmpty(children) && <StyledArrowIcon open={open} />}
+            {(isNotNilOrEmpty(children) || onRowClickHandler) && (
+              <StyledArrowIcon open={open} />
+            )}
           </FirstCellInRowContent>
         </TableCell>
         {cells.map(cell => (
@@ -46,7 +51,9 @@ const EntitiesListExpandableRow = ({ row }) => {
       <TableCell key={firstCell.columnId} {...firstCell.cellProps}>
         <FirstCellInRowContent onClick={toggleOpen}>
           {firstCell.children}
-          {isNotNilOrEmpty(children) && <StyledArrowIcon open={open} />}
+          {(isNotNilOrEmpty(children) || onRowClickHandler) && (
+            <StyledArrowIcon open={open} />
+          )}
         </FirstCellInRowContent>
       </TableCell>
       {cells.map(cell => (
