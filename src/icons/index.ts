@@ -1,6 +1,9 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as AddPageIcon } from './AddPage'
+export { default as ArchiveLockIcon } from './ArchiveLock'
+export { default as EditBookIcon } from './EditBook'
 export { default as ToDoListIcon } from './ToDoList'
 export { default as ChecklistIcon } from './Checklist'
 export { default as ExplodingBrainIcon } from './ExplodingBrain'

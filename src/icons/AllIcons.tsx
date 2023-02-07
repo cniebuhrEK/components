@@ -7,6 +7,9 @@ import * as R from 'ramda'
 import {
   // appendIconImport
 
+  AddPageIcon,
+  ArchiveLockIcon,
+  EditBookIcon,
   ToDoListIcon,
   ChecklistIcon,
   ExplodingBrainIcon,
@@ -160,6 +163,9 @@ const AllIcons = () => {
   const icons = [
     // appendIconComponent
 
+    { component: AddPageIcon, title: 'AddPageIcon' },
+    { component: ArchiveLockIcon, title: 'ArchiveLockIcon' },
+    { component: EditBookIcon, title: 'EditBookIcon' },
     { component: ToDoListIcon, title: 'ToDoListIcon' },
     { component: ChecklistIcon, title: 'ChecklistIcon' },
     { component: ExplodingBrainIcon, title: 'ExplodingBrainIcon' },
