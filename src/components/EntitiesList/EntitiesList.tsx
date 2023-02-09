@@ -20,6 +20,8 @@ import WarningReversed from '../../icons/WarningReversed'
 import EntitiesListExpandableRow from './EntitiesListExpandableRow'
 import { propOr } from 'ramda'
 import { BouncingLoader } from '../BouncingLoader'
+import { IconButton } from '../IconButton'
+import { AddIcon } from '../../icons'
 
 const DEFAULT_ROWS_PER_PAGE = 10
 
@@ -36,7 +38,7 @@ interface RowsProps {
 }
 
 interface EntitiesListProps {
-  headers: TableHeaderProps[]
+  headers: any[]
   rows: RowsProps[]
   tableActions?: string | JSX.Element
   totalPages: number
@@ -122,6 +124,26 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     )
   }
 
+  const renderAddButton = id => {
+    const handleAddButtonClick = () => {
+      const stickyHeadersButton = document.getElementById(id)
+      // @ts-ignore
+      stickyHeadersButton.click()
+    }
+
+    return (
+      <IconButton
+        icon={<AddIcon />}
+        color='secondary'
+        variant='filled'
+        tooltip='Add new item to the list'
+        tooltipId='header-action-button'
+        onClick={handleAddButtonClick}
+        size='small'
+      />
+    )
+  }
+
   const renderHeaders = headers.map((header: TableHeaderProps) => (
     <TableHeader
       align={header.align}
@@ -134,7 +156,10 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
       isSortActive={sortedColumnId === header.columnId}
       onChangeSort={setNewSortedColumnId(header.columnId)}
     >
-      {header.children}
+      <React.Fragment>
+        {header.addButtonId && renderAddButton(header.addButtonId)}
+        {header.children}
+      </React.Fragment>
     </TableHeader>
   ))
 

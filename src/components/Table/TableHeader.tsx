@@ -12,6 +12,7 @@ export interface TableHeaderProps {
   sticky?: boolean
   isSortActive?: boolean
   onChangeSort?: (e: any) => any
+  addButtonId?: string
 }
 
 export const SORT_DIRECTION = {
@@ -112,6 +113,11 @@ const StyledTableHeader = styled.th`
   &:last-child,
   &:first-child {
     padding: 8px 0;
+  }
+
+  button {
+    display: ${({ isSticky }) => (isSticky ? 'flex' : 'none')};
+    margin: -5px 10px -2px 0;
   }
 `
 
