@@ -63,7 +63,7 @@ const Wrapper = styled.div`
       props.theme.colors.tooltip.background} !important;
     color: ${props => props.theme.colors.tooltip.font} !important;
     font-family: ${props => props.theme.typography.fontFamily} !important;
-    z-index: ${({ theme }) => theme.zIndex.navigation + 1} !important;
+    z-index: ${({ theme }) => theme.zIndex.mainMenu + 11} !important;
     max-width: 250px;
     text-align: center;
   }
