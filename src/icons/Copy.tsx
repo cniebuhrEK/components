@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '../components/Icon'
 
-export const BookEditor = props => {
+export const Copy = props => {
   return (
     <Icon
       width='1em'
@@ -18,4 +18,4 @@ export const BookEditor = props => {
   )
 }
 
-export default BookEditor
+export default Copy
