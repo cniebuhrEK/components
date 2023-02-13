@@ -21,7 +21,7 @@ export const BookEditor = props => {
       </g>
       <defs>
         <clipPath id='clip0_10978_117680'>
-          <rect width='24' height='24' />
+          <rect width='1em' height='1em' />
         </clipPath>
       </defs>
     </Icon>
