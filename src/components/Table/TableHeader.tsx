@@ -108,7 +108,7 @@ const StyledTableHeader = styled.th`
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   vertical-align: bottom;
   white-space: nowrap;
-  z-index: 2;
+  z-index: ${({ theme, sticky }) => (sticky ? theme.zIndex.mainMenu + 10 : 2)};
 
   &:last-child,
   &:first-child {
@@ -118,6 +118,9 @@ const StyledTableHeader = styled.th`
   button {
     display: ${({ isSticky }) => (isSticky ? 'flex' : 'none')};
     margin: -5px 10px -2px 0;
+    .__react_component_tooltip.show {
+      z-index: ${({ theme }) => theme.zIndex.mainMenu + 10};
+    }
   }
 `
 
