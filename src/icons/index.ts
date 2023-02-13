@@ -143,3 +143,6 @@ export { default as FirstPlaceMedalIcon } from './FirstPlaceMedal'
 export { default as SecondPlaceMedalIcon } from './SecondPlaceMedal'
 export { default as ThirdPlaceMedalIcon } from './ThirdPlaceMedal'
 export { default as TrophyIcon } from './Trophy'
+export {default as BookEditorIcon} from './BookEditor'
+export {default as CopyIcon} from './Copy'
+
