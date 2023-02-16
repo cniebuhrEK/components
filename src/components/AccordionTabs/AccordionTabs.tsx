@@ -5,7 +5,7 @@ import { ArrowDownIcon, TrashIcon } from '../../icons'
 import { IconButton } from '../IconButton'
 
 export const AccordionTabs = props => {
-  const { tabs, activeTab, tabContents, onChange, onDelete } = props
+  const { tabs, activeTab, tabContents, onChange, onDelete, deleteIcon } = props
 
   const [active, setActive] = React.useState(activeTab)
 
@@ -49,9 +49,11 @@ export const AccordionTabs = props => {
                 color='primary'
                 variant='filled'
                 icon={
-                  <TrashIcon
-                    id={`delete-tab-icon-${propOr('', 'value', tab)}`}
-                  />
+                  deleteIcon || (
+                    <TrashIcon
+                      id={`delete-tab-icon-${propOr('', 'value', tab)}`}
+                    />
+                  )
                 }
                 id={`delete-tab-${propOr('', 'value', tab)}`}
               />
