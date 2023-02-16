@@ -92,15 +92,16 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     right: 0;
     z-index: ${({ theme }) => theme.zIndex.modal};
     width: 100%;
-    height: 100%;
+    height: ${({ fullscreen }) => (fullscreen ? '100vh' : '100%')};
     background: ${({ theme }) => theme.colors.modal.overlay};
-    overflow-y: auto;
+    overflow-y: ${({ fullscreen }) => (fullscreen ? 'hidden' : 'auto')};
+    overflow: ${({ fullscreen }) => (fullscreen ? 'hidden' : 'auto')};
     ::-webkit-scrollbar {
       background: transparent;
     } /* Chrome/Safari/Webkit */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE 10+ */
-    padding: 40px 0;
+    padding: ${({ fullscreen }) => (fullscreen ? '0' : '40px 0')};
     text-align: center;
     transition: opacity 0.2s
       ${({ theme }) => theme.transitions.easing.easeInOut} 0s;
