@@ -166,7 +166,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
           return 'unset'
       }
     }};
-    max-height: ${({ fullscreen }) => {
+    height: ${({ fullscreen }) => {
       switch (true) {
         case fullscreen:
           return '100vh'
