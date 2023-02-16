@@ -134,7 +134,16 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     text-align: center;
     position: relative;
     display: inline-block;
-    padding: ${({ blank }) => (blank ? '24px 16px' : '48px 20px')};
+    padding: ${({ blank, fullscreen }) => {
+      switch (true) {
+        case blank:
+          return '24px 16px'
+        case fullscreen:
+          return '8px'
+        default:
+          return '48px 20px'
+      }
+    }};
     background: ${({ theme }) => theme.colors.modal.background};
     box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
@@ -152,7 +161,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     min-height: ${({ fullscreen }) => {
       switch (true) {
         case fullscreen:
-          return '100vw'
+          return '100vh'
         default:
           return 'unset'
       }
@@ -165,6 +174,15 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
           return 'unset'
       }
     }};
+    overflow: ${({ fullscreen }) => {
+      switch (true) {
+        case fullscreen:
+          return 'auto'
+        default:
+          return 'unset'
+      }
+    }};
+    box-sizing: border-box;
     margin-top: ${({ fullscreen }) => (fullscreen ? '0' : '100px')};
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
