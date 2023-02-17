@@ -461,6 +461,38 @@ export default {
       grey: {
         background: '#DDDDDD',
         backgroundActive: '#606060'
+      },
+      terraCotta: {
+        background: '#ffd0bb',
+        backgroundActive: '#cf692e'
+      },
+      gold: {
+        background: '#ffe4b3',
+        backgroundActive: '#edc10c'
+      },
+      tangerine: {
+        background: '#ffc3ae',
+        backgroundActive: '#ef560a'
+      },
+      guacamole: {
+        background: '#f0f99b',
+        backgroundActive: '#85a500'
+      },
+      ultramarine: {
+        background: '#cacdff',
+        backgroundActive: '#4b00db'
+      },
+      grape: {
+        background: '#e1c9f2',
+        backgroundActive: '#9300d8'
+      },
+      moss: {
+        background: '#dde3e1',
+        backgroundActive: '#86a398'
+      },
+      slate: {
+        background: '#ced9ea',
+        backgroundActive: '#6d7c9e'
       }
     },
     statusTags: {
