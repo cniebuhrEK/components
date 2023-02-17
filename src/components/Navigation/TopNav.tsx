@@ -423,7 +423,7 @@ const ContainerOuter = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: ${({ theme }) => theme.zIndex.navigation};
+  z-index: ${({ theme }) => theme.zIndex.navigation + 11};
 
   .nav-notification {
     flex: none;
