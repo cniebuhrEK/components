@@ -27,6 +27,7 @@ export const AccordionTabs = props => {
 
   const renderTabTriggers = tabs.map(tab => {
     const content = find(propEq('value', propOr('', 'value', tab)))(tabContents)
+    const hideDeleteButton = propOr(false, 'hideDelete', tab)
 
     return (
       <TabContainer
@@ -43,7 +44,7 @@ export const AccordionTabs = props => {
         >
           <span>{propOr('', 'label', tab)}</span>
           <TabTriggerActions>
-            {onDelete && (
+            {onDelete && !hideDeleteButton && (
               <IconButton
                 onClick={handleDelete(tab)}
                 color='primary'
