@@ -245,7 +245,7 @@ export default {
     tooltip: 1500,
     dropdown: 1700,
     menu: 2000,
-    navigation: 3000,
+    navigation: 3011,
     mainOverlay: 3040, // please see EK-927
     mainMenu: 3050 // please see EK-927
   },
