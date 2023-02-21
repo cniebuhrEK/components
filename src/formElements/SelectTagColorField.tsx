@@ -67,16 +67,21 @@ export const SelectTagColorField = (
   const hasError = !valid && !disabled
 
   const tagsArray = [
-    'purple',
+    'gold',
     'red',
+    'mathPurple',
+    'guacamole',
+    'brown',
+    'terraCotta',
+    'purple',
     'blue',
     'green',
+    'moss',
+    'tangerine',
+    'grape',
+    'ultramarine',
     'turquoise',
-    'orange',
-    'brown',
-    'mathPurple',
-    'yellow',
-    'aquamarine'
+    'slate'
   ]
 
   const renderTags = tagsArray.map(tagColor => (

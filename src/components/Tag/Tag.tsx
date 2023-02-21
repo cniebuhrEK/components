@@ -18,6 +18,14 @@ type TagProps =
         | 'turquoise'
         | 'yellow'
         | 'grey'
+        | 'terraCotta'
+        | 'gold'
+        | 'tangerine'
+        | 'guacamole'
+        | 'ultramarine'
+        | 'grape'
+        | 'moss'
+        | 'slate'
       onClick?: (e: any) => void
       text: string | JSX.Element
       id?: string
@@ -43,6 +51,14 @@ type TagProps =
         | 'turquoise'
         | 'yellow'
         | 'grey'
+        | 'terraCotta'
+        | 'gold'
+        | 'tangerine'
+        | 'guacamole'
+        | 'ultramarine'
+        | 'grape'
+        | 'moss'
+        | 'slate'
       onClick?: (e: any) => void
       text: string | JSX.Element
       id?: string

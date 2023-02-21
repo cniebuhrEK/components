@@ -1,6 +1,8 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as AddBookmarkIcon } from './AddBookmark'
+export { default as AddDocumentIcon } from './AddDocument'
 export { default as AddPageIcon } from './AddPage'
 export { default as ArchiveLockIcon } from './ArchiveLock'
 export { default as EditBookIcon } from './EditBook'

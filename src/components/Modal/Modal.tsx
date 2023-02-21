@@ -11,6 +11,7 @@ interface ReactModalProps {
   handleClose: () => void
   open?: boolean
   blank?: boolean
+  fullscreen?: boolean
   title?: string
   [x: string]: any
   animationIsLess500px?: boolean
@@ -23,6 +24,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
     open,
     title,
     blank,
+    fullscreen,
     animationIsLess500px,
     ...rest
   } = props
@@ -45,6 +47,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
       onRequestClose={handleClose}
       isOpen={open}
       blank={blank}
+      fullscreen={fullscreen}
       animationIsLess500px={animationIsLess500px}
       {...rest}
     />
@@ -89,15 +92,16 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     right: 0;
     z-index: ${({ theme }) => theme.zIndex.modal};
     width: 100%;
-    height: 100%;
+    height: ${({ fullscreen }) => (fullscreen ? '100vh' : '100%')};
     background: ${({ theme }) => theme.colors.modal.overlay};
-    overflow-y: auto;
+    overflow-y: ${({ fullscreen }) => (fullscreen ? 'hidden' : 'auto')};
+    overflow: ${({ fullscreen }) => (fullscreen ? 'hidden' : 'auto')};
     ::-webkit-scrollbar {
       background: transparent;
     } /* Chrome/Safari/Webkit */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE 10+ */
-    padding: 40px 0;
+    padding: ${({ fullscreen }) => (fullscreen ? '0' : '40px 0')};
     text-align: center;
     transition: opacity 0.2s
       ${({ theme }) => theme.transitions.easing.easeInOut} 0s;
@@ -130,15 +134,56 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     text-align: center;
     position: relative;
     display: inline-block;
-    padding: 48px 20px;
-    padding: ${({ blank }) => (blank ? '24px 16px' : '48px 20px')};
+    padding: ${({ blank, fullscreen }) => {
+      switch (true) {
+        case blank:
+          return '24px 16px'
+        case fullscreen:
+          return '8px'
+        default:
+          return '48px 20px'
+      }
+    }};
     background: ${({ theme }) => theme.colors.modal.background};
     box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
     outline: 0;
-    min-width: ${({ animationIsLess500px }) =>
-      animationIsLess500px ? 'unset' : '500px'};
-    margin-top: 100px;
+    min-width: ${({ animationIsLess500px, fullscreen }) => {
+      switch (true) {
+        case animationIsLess500px:
+          return 'unset'
+        case fullscreen:
+          return '100vw'
+        default:
+          return '500px'
+      }
+    }};
+    min-height: ${({ fullscreen }) => {
+      switch (true) {
+        case fullscreen:
+          return '100vh'
+        default:
+          return 'unset'
+      }
+    }};
+    height: ${({ fullscreen }) => {
+      switch (true) {
+        case fullscreen:
+          return '100vh'
+        default:
+          return 'unset'
+      }
+    }};
+    overflow: ${({ fullscreen }) => {
+      switch (true) {
+        case fullscreen:
+          return 'auto'
+        default:
+          return 'unset'
+      }
+    }};
+    box-sizing: border-box;
+    margin-top: ${({ fullscreen }) => (fullscreen ? '0' : '100px')};
     font-size: ${({ theme }) => theme.typography.fontSizeSmall};
     font-weight: 400;
   }
