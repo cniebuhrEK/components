@@ -58,7 +58,8 @@ export const Container = styled.div`
   height: 18px;
   border: 1px solid ${({ theme }) => theme.colors.checkbox.border};
   color: ${({ theme }) => theme.colors.checkbox.font} !important;
-  background-color: transparent;
+  background-color: ${({ theme }) =>
+    theme.colors.checkbox.background} !important;
   border-radius: 2px;
   font-size: 12px !important;
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
