@@ -310,7 +310,7 @@ export default {
     },
     checkbox: {
       font: palette.white,
-      background: 'transparent',
+      background: palette.white,
       border: palette.grey300,
       fontActive: palette.white,
       backgroundActive: palette.primary500,
