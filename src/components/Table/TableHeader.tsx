@@ -108,8 +108,8 @@ const StyledTableHeader = styled.th`
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
   vertical-align: bottom;
   white-space: nowrap;
-  z-index: ${({ theme, sticky }) =>
-    sticky ? theme.zIndex.navigation + 10 : 2};
+  z-index: ${({ theme, sticky, isSticky }) =>
+    sticky ? (isSticky ? theme.zIndex.navigation + 10 : 2) : 2};
 
   &:last-child,
   &:first-child {
