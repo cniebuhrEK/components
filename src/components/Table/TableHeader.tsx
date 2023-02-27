@@ -109,7 +109,7 @@ const StyledTableHeader = styled.th`
   vertical-align: bottom;
   white-space: nowrap;
   z-index: ${({ theme, sticky, isSticky }) =>
-    sticky ? (isSticky ? theme.zIndex.navigation + 10 : 2) : 2};
+    isSticky && sticky ? theme.zIndex.navigation : 2};
 
   &:last-child,
   &:first-child {
