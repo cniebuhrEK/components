@@ -58,8 +58,7 @@ export const Container = styled.div`
   height: 18px;
   border: 1px solid ${({ theme }) => theme.colors.checkbox.border};
   color: ${({ theme }) => theme.colors.checkbox.font} !important;
-  background-color: ${({ theme }) =>
-    theme.colors.checkbox.background} !important;
+  background-color: ${({ theme }) => theme.colors.checkbox.background};
   border-radius: 2px;
   font-size: 12px !important;
   cursor: ${({ isDisabled }) => (isDisabled ? 'not-allowed' : 'pointer')};
@@ -87,6 +86,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       font-size: 12px !important;
+      z-index: 1;
       color: ${({ theme, outlined }) =>
         outlined
           ? theme.colors.checkbox.borderActive
