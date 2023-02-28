@@ -696,7 +696,8 @@ export default {
       resources: {
         topics: {
           background: '#ebf4fe',
-          font: '#1a7af8'
+          font: '#1a7af8',
+          highlight: '#D4E4F6'
         },
         tmi: {
           background: '#f4e8fe',
