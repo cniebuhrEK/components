@@ -22,6 +22,7 @@ interface InputProps {
   validate: (name: string, v: any) => any
   errorText?: string
   reset?: boolean
+  revalidate?: boolean
   t: (key: string, options: any) => string
   [x: string]: any
 }
@@ -38,16 +39,22 @@ export const InputField = (props: InputProps): JSX.Element => {
     required,
     disabled,
     reset,
+    revalidate = false,
     t,
     ...rest
   } = props
 
   const [touched, _setTouched] = React.useState<boolean>(false)
+  const [shouldRevalidate, setShouldRevalidate] = React.useState<boolean>(false)
   const [value, _setValue] = React.useState(initialValue)
   const [{ valid, error }, _validate] = React.useState({
     valid: true,
     error: {}
   })
+
+  React.useEffect(() => {
+    setShouldRevalidate(revalidate)
+  }, [revalidate])
 
   React.useEffect(() => {
     if (touched && !reset) {
@@ -56,6 +63,15 @@ export const InputField = (props: InputProps): JSX.Element => {
       })
     }
   }, [value, touched, reset])
+
+  React.useEffect(() => {
+    if (shouldRevalidate) {
+      validate(name, v => {
+        _validate({ valid: v.valid, error: getHeadErrorOrEmptyObj(v) })
+      })
+      setShouldRevalidate(false)
+    }
+  }, [value, revalidate, shouldRevalidate])
 
   // When the initial value changes
   React.useEffect(() => {
