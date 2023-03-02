@@ -695,13 +695,13 @@ export default {
       contentQuestionMark: '#a635ff',
       resources: {
         topics: {
-          background: '#ebf4fe',
-          font: '#1a7af8',
-          highlight: '#D4E4F6'
+          background: '#F8EFFF',
+          font: '#8C1EE2',
+          highlight: '#E9D4FA'
         },
         tmi: {
-          background: '#f4e8fe',
-          font: '#8C1EE2'
+          background: '#ebf4fe',
+          font: '#1a7af8'
         },
         video: {
           background: '#FFCFD0',
