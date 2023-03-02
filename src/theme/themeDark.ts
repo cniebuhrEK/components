@@ -25,6 +25,7 @@ export default {
       white: palette.white,
       grey200: palette.grey200,
       grey300: palette.grey300,
+      grey400: palette.grey400,
       grey600: palette.grey600,
       error200: palette.error200,
       error500: palette.error500,
