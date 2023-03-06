@@ -43,7 +43,7 @@ const Slider = styled.span`
 
   &::before {
     position: absolute;
-    content: '';
+    content: ${({ statusLabel }) => (statusLabel ? "'OFF'" : "''")};
     height: 12px;
     width: 12px;
     left: 3px;
@@ -52,6 +52,11 @@ const Slider = styled.span`
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6px;
+    font-weight: 700;
   }
 
   ${Input}:checked + & {
@@ -69,6 +74,7 @@ const Slider = styled.span`
     -webkit-transform: translateX(12px);
     -ms-transform: translateX(12px);
     transform: translateX(12px);
+    content: ${({ statusLabel }) => (statusLabel ? "'ON'!important" : "''")};
   }
 
   ${Input}:checked${Input}:disabled + &::before {
@@ -89,10 +95,11 @@ interface ToggleSwitchProps {
   label?: string
   onChange: (e: any) => void
   disabled?: boolean
+  statusLabel?: boolean
 }
 
 function ToggleSwitch(props: ToggleSwitchProps) {
-  const { checked, onChange, name, id, disabled, label } = props
+  const { checked, onChange, name, id, disabled, label, statusLabel } = props
   const [active, setActive] = React.useState(checked)
 
   // set initial value if it comes as a promise
@@ -117,7 +124,7 @@ function ToggleSwitch(props: ToggleSwitchProps) {
           checked={active}
           onChange={handleOnChange}
         />
-        <Slider />
+        <Slider statusLabel={statusLabel} />
       </Container>
       <Label>{label}</Label>
     </InputGroup>
