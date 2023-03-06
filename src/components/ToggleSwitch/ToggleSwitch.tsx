@@ -28,6 +28,13 @@ const Label = styled.div`
   color: ${({ theme }) => theme.colors.toggle.font};
 `
 
+const StatusLabel = styled.div`
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.main.text};
+`
+
 const Slider = styled.span`
   position: absolute;
   cursor: pointer;
@@ -43,7 +50,7 @@ const Slider = styled.span`
 
   &::before {
     position: absolute;
-    content: ${({ statusLabel }) => (statusLabel ? "'OFF'" : "''")};
+    content: '';
     height: 12px;
     width: 12px;
     left: 3px;
@@ -52,11 +59,6 @@ const Slider = styled.span`
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 6px;
-    font-weight: 700;
   }
 
   ${Input}:checked + & {
@@ -74,7 +76,6 @@ const Slider = styled.span`
     -webkit-transform: translateX(12px);
     -ms-transform: translateX(12px);
     transform: translateX(12px);
-    content: ${({ statusLabel }) => (statusLabel ? "'ON'!important" : "''")};
   }
 
   ${Input}:checked${Input}:disabled + &::before {
@@ -114,6 +115,7 @@ function ToggleSwitch(props: ToggleSwitchProps) {
 
   return (
     <InputGroup>
+      {statusLabel && <StatusLabel>OFF</StatusLabel>}
       <Container htmlFor={name} disabled={disabled}>
         <Input
           id={id}
@@ -124,8 +126,9 @@ function ToggleSwitch(props: ToggleSwitchProps) {
           checked={active}
           onChange={handleOnChange}
         />
-        <Slider statusLabel={statusLabel} />
+        <Slider />
       </Container>
+      {statusLabel && <StatusLabel>ON</StatusLabel>}
       <Label>{label}</Label>
     </InputGroup>
   )
