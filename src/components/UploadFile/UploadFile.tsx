@@ -66,7 +66,7 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
           <div className='file-upload__name'>
             {R.propOr('', 'name', file)}
             {/* @ts-ignore */}
-            {getFilenameIfExists()}
+            {getFilenameIfExists}
           </div>
         </div>
         <input
