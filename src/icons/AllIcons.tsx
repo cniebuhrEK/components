@@ -150,7 +150,8 @@ import {
   TrophyIcon,
   BookEditorIcon,
   CopyIcon,
-  SettingsIcon
+  SettingsIcon,
+  NotificationBellIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -314,7 +315,8 @@ const AllIcons = () => {
     { component: TrophyIcon, title: 'TrophyIcon' },
     { component: BookEditorIcon, title: 'BookEditorIcon' },
     { component: CopyIcon, title: 'CopyIcon' },
-    { component: SettingsIcon, title: 'SettingsIcon' }
+    { component: SettingsIcon, title: 'SettingsIcon' },
+    { component: NotificationBellIcon, title: 'NotificationBellIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
