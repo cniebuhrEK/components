@@ -1,7 +1,7 @@
 import React from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
-import { isNotNilOrEmpty } from '../../utils/ramda'
+import { isNilOrEmpty, isNotNilOrEmpty } from '../../utils/ramda'
 import { AttachmentIcon } from '../../icons'
 
 interface UploadFileProps {
@@ -13,11 +13,21 @@ interface UploadFileProps {
   required?: boolean
   error?: boolean
   errorText?: string
+  filename?: string
 }
 
 const UploadFile = (props: UploadFileProps): JSX.Element => {
-  const { onChange, reset, id, label, required, errorText, error, disabled } =
-    props
+  const {
+    onChange,
+    reset,
+    id,
+    label,
+    required,
+    errorText,
+    error,
+    disabled,
+    filename
+  } = props
   const [file, setFile] = React.useState(null)
 
   React.useEffect(() => {
@@ -37,6 +47,9 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
     inputElement && inputElement.click()
   }
 
+  const getFilenameIfExists =
+    isNotNilOrEmpty(filename) && isNilOrEmpty(file) ? filename : ''
+
   return (
     <UploadFileContainer
       error={error}
@@ -50,7 +63,11 @@ const UploadFile = (props: UploadFileProps): JSX.Element => {
             {label}
             {required && ' *'}
           </div>
-          <div className='file-upload__name'>{R.propOr('', 'name', file)}</div>
+          <div className='file-upload__name'>
+            {R.propOr('', 'name', file)}
+            {/* @ts-ignore */}
+            {getFilenameIfExists}
+          </div>
         </div>
         <input
           disabled={disabled}

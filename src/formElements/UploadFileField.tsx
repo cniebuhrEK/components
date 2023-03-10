@@ -15,6 +15,7 @@ interface UploadFileProps {
   validate: (name: string, v: any) => any
   disabled: boolean
   revalidate?: boolean
+  filename?: string
 }
 
 // Form field for uploading files
@@ -29,7 +30,8 @@ export const UploadFileField = (props: UploadFileProps): JSX.Element => {
     disabled,
     reset,
     t,
-    revalidate
+    revalidate,
+    filename
   } = props
 
   // Indicator for whether the input is open or not
@@ -82,6 +84,7 @@ export const UploadFileField = (props: UploadFileProps): JSX.Element => {
       required={required}
       error={hasError}
       errorText={errorText}
+      filename={filename}
     />
   )
 }

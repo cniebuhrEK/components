@@ -28,6 +28,13 @@ const Label = styled.div`
   color: ${({ theme }) => theme.colors.toggle.font};
 `
 
+const StatusLabel = styled.div`
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 16px;
+  color: ${({ theme }) => theme.colors.main.text};
+`
+
 const Slider = styled.span`
   position: absolute;
   cursor: pointer;
@@ -89,10 +96,11 @@ interface ToggleSwitchProps {
   label?: string
   onChange: (e: any) => void
   disabled?: boolean
+  statusLabel?: boolean
 }
 
 function ToggleSwitch(props: ToggleSwitchProps) {
-  const { checked, onChange, name, id, disabled, label } = props
+  const { checked, onChange, name, id, disabled, label, statusLabel } = props
   const [active, setActive] = React.useState(checked)
 
   // set initial value if it comes as a promise
@@ -107,6 +115,7 @@ function ToggleSwitch(props: ToggleSwitchProps) {
 
   return (
     <InputGroup>
+      {statusLabel && <StatusLabel>OFF</StatusLabel>}
       <Container htmlFor={name} disabled={disabled}>
         <Input
           id={id}
@@ -119,6 +128,7 @@ function ToggleSwitch(props: ToggleSwitchProps) {
         />
         <Slider />
       </Container>
+      {statusLabel && <StatusLabel>ON</StatusLabel>}
       <Label>{label}</Label>
     </InputGroup>
   )
