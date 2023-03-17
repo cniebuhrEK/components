@@ -48,7 +48,7 @@ interface EntitiesListProps {
   size?: string
   removeMargin?: boolean
   defaultPage: number
-  defaultRowsPerPage?: 10 | 50 | 100 | undefined
+  defaultRowsPerPage?: 5 | 10 | 50 | 100 | undefined
   defaultSortColumnId: string
   defaultSortDirection: string
   onTableStateChange: (state: {
