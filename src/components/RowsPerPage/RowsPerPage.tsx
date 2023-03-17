@@ -6,12 +6,12 @@ import { getOptionByValue } from '../../utils/form'
 import { ArrowDownIcon } from '../../icons'
 
 interface RowsPerPageProps {
-  defaultValue: 10 | 50 | 100 | 12 | 52
+  defaultValue: 5 | 10 | 50 | 100 | 12 | 52
   onChange: (rowsPerPage) => any
   customOptions?: any[]
 }
 
-const ROWS_PER_PAGE_VALUES = [10, 50, 100]
+const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
 
 const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
   const { onChange, defaultValue, customOptions } = props
