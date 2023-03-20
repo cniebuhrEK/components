@@ -1,6 +1,9 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as CommunityIcon } from './Community'
+export { default as StatusPageIcon } from './StatusPage'
+export { default as VideoTutorialsIcon } from './VideoTutorials'
 export { default as AddBookmarkIcon } from './AddBookmark'
 export { default as AddDocumentIcon } from './AddDocument'
 export { default as AddPageIcon } from './AddPage'
@@ -149,3 +152,5 @@ export { default as BookEditorIcon } from './BookEditor'
 export { default as CopyIcon } from './Copy'
 export { default as SettingsIcon } from './Settings'
 export { default as NotificationBellIcon } from './NotificationBell'
+export { default as ErrataIcon } from './Errata'
+export { default as RocketIcon } from './Rocket'
