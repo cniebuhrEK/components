@@ -1,6 +1,8 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as SupportTabIcon } from './SupportTab'
+export { default as OnboardingIcon } from './Onboarding'
 export { default as CommunityIcon } from './Community'
 export { default as StatusPageIcon } from './StatusPage'
 export { default as VideoTutorialsIcon } from './VideoTutorials'
