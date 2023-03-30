@@ -12,6 +12,7 @@ Default.args = {
   id: 'select-switcher',
   onChange: () => {},
   value: 'y',
+  size: 'small',
   options: [
     {
       label: 'Yours',

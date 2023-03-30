@@ -4,6 +4,7 @@ import styled from 'styled-components'
 interface SelectSwitcherProps {
   value: string
   label?: string
+  size?: 'small' | 'large'
   width?: string
   onChange: (v) => void
   id: string
@@ -20,7 +21,8 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
     id,
     onChange = () => {},
     label,
-    width
+    width,
+    size
   } = props
 
   const [value, setValue] = React.useState(defaultValue)
@@ -37,6 +39,7 @@ export const SelectSwitcher = (props: SelectSwitcherProps): JSX.Element => {
 
   const renderOptions = options.map(option => (
     <Option
+      size={size}
       key={`${id}-option-${option.value}`}
       onClick={handleClick(option.value)}
       active={option.value === value}
@@ -72,10 +75,10 @@ const Label = styled.div`
 
 const Option = styled.div`
   cursor: pointer;
-  font-size: 11px;
-  line-height: 17px;
+  font-size: ${({ size }) => (size === 'large' ? '12px' : '11px')};
+  line-height: ${({ size }) => (size === 'large' ? '24px' : '17px')};
+  border-radius: ${({ size }) => (size === 'large' ? '2px' : '12px')};
   padding: 0 8px;
-  border-radius: 12px;
   font-weight: ${({ active }) => (active ? 'bold' : 'normal')};
   color: ${({ theme, active }) =>
     active ? theme.colors.main.white : theme.colors.main.grey600};
