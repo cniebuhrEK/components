@@ -90,6 +90,7 @@ export const Tag = (props: TagProps): JSX.Element => {
 
   const handleClick = e => {
     e.preventDefault()
+    e.stopPropagation()
     return onClick ? onClick(color) : {}
   }
 
