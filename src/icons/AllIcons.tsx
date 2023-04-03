@@ -7,6 +7,8 @@ import * as R from 'ramda'
 import {
   // appendIconImport
 
+  HeartContainedIcon,
+  HeartOutlinedIcon,
   SupportTabIcon,
   OnboardingIcon,
   CommunityIcon,
@@ -176,6 +178,8 @@ const AllIcons = () => {
   const icons = [
     // appendIconComponent
 
+    { component: HeartContainedIcon, title: 'HeartContainedIcon' },
+    { component: HeartOutlinedIcon, title: 'HeartOutlinedIcon' },
     { component: SupportTabIcon, title: 'SupportTabIcon' },
     { component: OnboardingIcon, title: 'OnboardingIcon' },
     { component: CommunityIcon, title: 'CommunityIcon' },
