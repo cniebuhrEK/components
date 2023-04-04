@@ -799,5 +799,8 @@ export default {
         border: palette.grey300
       }
     }
+  },
+  rating: {
+    star: '#FFD542'
   }
 }
