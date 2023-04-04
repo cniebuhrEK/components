@@ -798,9 +798,9 @@ export default {
         background: palette.white,
         border: palette.grey300
       }
+    },
+    rating: {
+      star: '#FFD542'
     }
-  },
-  rating: {
-    star: '#FFD542'
   }
 }
