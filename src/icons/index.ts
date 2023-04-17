@@ -1,6 +1,7 @@
 // icon/index.ts - Icon component module exports
 // appendIcons
 
+export { default as AddErrataIcon } from './AddErrata'
 export { default as HeartContainedIcon } from './HeartContained'
 export { default as HeartOutlinedIcon } from './HeartOutlined'
 export { default as SupportTabIcon } from './SupportTab'
