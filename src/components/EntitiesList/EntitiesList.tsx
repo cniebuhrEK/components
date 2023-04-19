@@ -48,6 +48,7 @@ interface EntitiesListProps {
   size?: string
   removeMargin?: boolean
   defaultPage: number
+  hidePagination?: boolean
   defaultRowsPerPage?: 5 | 10 | 50 | 100 | undefined
   defaultSortColumnId: string
   defaultSortDirection: string
@@ -66,6 +67,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     headers,
     rows,
     defaultPage,
+    hidePagination,
     totalPages,
     onTableStateChange,
     emptyStateText,
@@ -234,19 +236,21 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
           </Table>
         </TableContainer>
       </TableContainerOuter>
-      <TablePaginationContainer>
-        <RowsPerPage
-          onChange={handleRowsPerPageChange}
-          defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
-        />
-        <div>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
+      {hidePagination ? null : (
+        <TablePaginationContainer>
+          <RowsPerPage
+            onChange={handleRowsPerPageChange}
+            defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
           />
-        </div>
-      </TablePaginationContainer>
+          <div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </div>
+        </TablePaginationContainer>
+      )}
     </div>
   )
 }
