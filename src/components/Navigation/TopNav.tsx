@@ -30,6 +30,7 @@ type NextLevelLink = {
   isInactive?: boolean
   tooltip?: string | JSX.Element
   nextLevel?: PureLink[]
+  onClick?: () => void
 }
 
 type MenuLink = {
@@ -220,6 +221,8 @@ const StudentTopNavigation = (
       const isInactive = R.propOr(false, 'isInactive', link)
       const tooltip = R.propOr('', 'tooltip', link)
       const hasTooltip = isNotNilOrEmpty(tooltip)
+      const onClick = R.propOr('', 'nextLevel')(link)
+      const hasOnClick = isNotNilOrEmpty(onClick)
 
       const Level1Link = has2level ? (
         <NavStaticMenuItem
@@ -240,7 +243,13 @@ const StudentTopNavigation = (
       ) : (
         <NavMenuItem
           isInactive={isInactive}
-          onClick={isInactive ? () => {} : handleRedirect(link.url)}
+          onClick={
+            hasOnClick
+              ? onClick
+              : isInactive
+              ? () => {}
+              : handleRedirect(link.url)
+          }
         >
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
           <NavMenuLink>{link.label}</NavMenuLink>
