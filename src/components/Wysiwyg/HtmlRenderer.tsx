@@ -1,8 +1,22 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const HtmlRenderer = ({ htmlString }): JSX.Element => {
-  return <Container dangerouslySetInnerHTML={{ __html: htmlString }} />
+export const HtmlRenderer = ({
+  htmlString,
+  withHighlights = false,
+  withYoursHighlights = false
+}): JSX.Element => {
+  const adminHighlightClassName = withHighlights ? 'with-highlights' : ''
+  const yourHighlightClassName = withYoursHighlights ? 'your-highlights' : ''
+
+  const additionalClassName = `${adminHighlightClassName} ${yourHighlightClassName}`
+
+  return (
+    <Container
+      className={additionalClassName}
+      dangerouslySetInnerHTML={{ __html: htmlString }}
+    />
+  )
 }
 
 export default HtmlRenderer
@@ -10,6 +24,17 @@ export default HtmlRenderer
 const Container = styled.div`
   outline: none;
   border: none;
+
+  &.with-highlights {
+    .ql-editor * {
+      color: ${({ theme }) =>
+        theme.colors.editorFontColors.admin.font} !important;
+    }
+
+    .admin-highlights .ql-editor * {
+      color: ${({ theme }) => theme.colors.main.text} !important;
+    }
+  }
 
   & .ql-editor {
     color: ${({ theme }) => theme.colors.main.text};
