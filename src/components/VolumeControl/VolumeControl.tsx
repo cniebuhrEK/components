@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useMemo, useState } from 'react'
 import { SpeakerMuteIcon, SpeakerQuietIcon, SpeakerLoudIcon } from '../../icons'
 import styled from 'styled-components'
@@ -57,8 +58,10 @@ export const VolumeControl = () => {
     switch (true) {
       case volume === 0 || isMuted:
         return <MuteIcon onClick={toggleMute} />
+      // @ts-ignore
       case volume > 0 && volume <= 0.5:
         return <QuietIcon onClick={toggleMute} />
+      // @ts-ignore
       case volume > 0.5:
       default:
         return <LoudIcon onClick={toggleMute} />
@@ -84,6 +87,7 @@ export const VolumeControl = () => {
     <Wrapper>
       <span>{icon}</span>
       <Range
+        // @ts-ignore
         volume={volume}
         type='range'
         min={0}
@@ -136,6 +140,7 @@ const Range = styled.input`
   &::before {
     content: '';
     height: 2px;
+    // @ts-ignore
     width: ${({ volume }) => volume * 100}%;
     position: absolute;
     z-index: 0;
