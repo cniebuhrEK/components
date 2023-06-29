@@ -97,6 +97,7 @@ export const SelectTagColorField = (
   ))
 
   return (
+    // @ts-ignore
     <SelectTagColorContainer id={id} name={name}>
       {label && (
         <div className='label-container'>
