@@ -409,7 +409,7 @@ export default {
     },
     toggle: {
       font: palette.text,
-      mark: palette.white,
+      mark: palette.primary500,
       background: palette.grey300,
       markActive: palette.white,
       backgroundActive: palette.grey300
