@@ -9,12 +9,13 @@ interface RowsPerPageProps {
   defaultValue: 5 | 10 | 50 | 100 | 12 | 52
   onChange: (rowsPerPage) => any
   customOptions?: any[]
+  isTop?: boolean
 }
 
 const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
 
 const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
-  const { onChange, defaultValue, customOptions } = props
+  const { onChange, defaultValue, customOptions, isTop } = props
   const [open, setOpen] = React.useState<boolean>(false)
   const ref = React.useRef<HTMLDivElement>()
 
@@ -59,7 +60,7 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
     <RowsPerPageContainer className='rows-per-page'>
       <div className='rows-per-page-label'>Show:</div>
       <SelectContainer ref={ref}>
-        <DropdownTrigger open={open} onClick={handleToggle}>
+        <DropdownTrigger open={open} onClick={handleToggle} isTop={isTop}>
           <div className='dropdown-label'>
             {R.propOr('', 'label', selectedOption)}
           </div>
@@ -67,7 +68,9 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
             <ArrowDownIcon open={open} />
           </div>
         </DropdownTrigger>
-        <Menu open={open}>{renderOptions}</Menu>
+        <Menu open={open} isTop={isTop}>
+          {renderOptions}
+        </Menu>
       </SelectContainer>
     </RowsPerPageContainer>
   )
@@ -115,7 +118,14 @@ const DropdownTrigger = styled.div`
   }
 
   .dropdown-icon {
-    transform: ${({ open }) => (!open ? 'initial' : 'rotate(180deg)')};
+    transform: ${({ open, isTop }) =>
+      isTop
+        ? !open
+          ? 'initial'
+          : 'rotate(180deg)'
+        : !open
+        ? 'rotate(180deg)'
+        : 'initial'};
     transition: transform 300ms
       ${({ theme }) => theme.transitions.easing.easeInOut} 0ms;
   }
@@ -124,11 +134,10 @@ const DropdownTrigger = styled.div`
 const Menu = styled.div`
   background-color: ${({ theme }) => theme.colors.selects.option.background};
   border-radius: ${({ theme }) => theme.shape.borderRadiusSmall};
-  z-index: ${({ theme }) => theme.zIndex.dropdown};
   box-shadow: ${({ theme }) => theme.shadows.darkShadow} !important;
   max-height: ${({ open }) => (open ? '300px' : '0')};
   position: absolute;
-  bottom: calc(100% + 5px);
+  ${({ isTop }) => (isTop ? 'margin-top: 5px;' : 'bottom: calc(100% + 5px);')}
   left: 0;
   cursor: pointer;
   z-index: ${({ theme }) => theme.zIndex.menu};

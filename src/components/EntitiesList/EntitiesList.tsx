@@ -59,6 +59,7 @@ interface EntitiesListProps {
   }) => any
   highlight: boolean
   isLoading?: boolean
+  topPagination?: boolean
 }
 
 const EntitiesList = (props: EntitiesListProps): JSX.Element => {
@@ -78,7 +79,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     defaultRowsPerPage,
     paginationPage,
     removeMargin,
-    isLoading
+    isLoading,
+    topPagination
   } = props
 
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
@@ -224,6 +226,22 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
           <div className='table-actions'>{tableActions}</div>
         )}
       </TableActionBar>
+      {topPagination ? (
+        <TablePaginationContainer isTop={topPagination}>
+          <RowsPerPage
+            onChange={handleRowsPerPageChange}
+            defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
+            isTop
+          />
+          <div>
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </div>
+        </TablePaginationContainer>
+      ) : null}
       <TableContainerOuter>
         <TableContainer>
           <Table size={size}>
