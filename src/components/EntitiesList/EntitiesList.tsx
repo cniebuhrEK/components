@@ -22,8 +22,9 @@ import { propOr } from 'ramda'
 import { BouncingLoader } from '../BouncingLoader'
 import { IconButton } from '../IconButton'
 import { AddIcon } from '../../icons'
+import { getOptionByValue } from '../../utils/form'
 
-const DEFAULT_ROWS_PER_PAGE = 10
+const DEFAULT_ROWS_PER_PAGE = 50
 
 interface CellProps {
   children: JSX.Element | string
@@ -86,19 +87,31 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const [sortedColumnId, setSortedColumnId] = useState(defaultSortColumnId)
   const [sortDirection, setSortDirection] = useState(defaultSortDirection)
   const [currentPage, setCurrentPage] = useState(defaultPage)
-  const [rowsPerPage, setRowsPerPage] = useState(defaultRowsPerPage)
   const [isMounted, setIsMounted] = useState(false)
 
+  const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
+  const options = ROWS_PER_PAGE_VALUES.map(value => ({
+    label: value.toString(),
+    value
+  }))
+  const defaultValue = DEFAULT_ROWS_PER_PAGE
+  const defaultOption = getOptionByValue(defaultValue)(options)
+
+  const [rowsPerPage, setRowsPerPage] = React.useState(defaultOption)
+
   useEffect(() => {
-    setRowsPerPage(defaultRowsPerPage)
+    setRowsPerPage(getOptionByValue(defaultRowsPerPage!)(options))
   }, [defaultRowsPerPage])
 
   useEffect(() => {
     paginationPage && setCurrentPage(paginationPage)
   }, [paginationPage])
 
-  const handleRowsPerPageChange = value => {
-    setRowsPerPage(value)
+  const handleRowsPerPageChange = (option: {
+    label: string
+    value: number | string
+  }) => {
+    setRowsPerPage(option)
     setCurrentPage(1)
   }
 
@@ -112,7 +125,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         sortBy: sortedColumnId,
         dir: sortDirection,
         page: currentPage,
-        take: rowsPerPage || DEFAULT_ROWS_PER_PAGE
+        take: propOr(DEFAULT_ROWS_PER_PAGE, 'value', rowsPerPage)
       })
     }
   }, [sortedColumnId, sortDirection, currentPage, rowsPerPage])
@@ -230,7 +243,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         <TablePaginationContainer isTop={topPagination}>
           <RowsPerPage
             onChange={handleRowsPerPageChange}
-            defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
+            selectedOption={rowsPerPage}
             isTop
           />
           <div>
@@ -255,7 +268,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
       <TablePaginationContainer>
         <RowsPerPage
           onChange={handleRowsPerPageChange}
-          defaultValue={rowsPerPage || DEFAULT_ROWS_PER_PAGE}
+          selectedOption={rowsPerPage}
+          isTop
         />
         <div>
           <Pagination

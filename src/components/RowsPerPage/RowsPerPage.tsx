@@ -2,20 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import * as R from 'ramda'
 
-import { getOptionByValue } from '../../utils/form'
 import { ArrowDownIcon } from '../../icons'
 
 interface RowsPerPageProps {
-  defaultValue: 5 | 10 | 50 | 100 | 12 | 52
   onChange: (rowsPerPage) => any
   customOptions?: any[]
   isTop?: boolean
+  selectedOption?: 5 | 10 | 50 | 100
 }
 
 const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
 
 const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
-  const { onChange, defaultValue, customOptions, isTop } = props
+  const { onChange, customOptions, isTop, selectedOption } = props
   const [open, setOpen] = React.useState<boolean>(false)
   const ref = React.useRef<HTMLDivElement>()
 
@@ -38,13 +37,9 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
     value
   }))
 
-  const defaultOption = getOptionByValue(defaultValue)(options)
-  const [selectedOption, setSelectedOption] = React.useState(defaultOption)
-
   const handleChange = (e: any) => () => {
-    onChange(e.value)
+    onChange(e)
     setOpen(false)
-    setSelectedOption(e)
   }
 
   const renderOptions = options.map(option => (
