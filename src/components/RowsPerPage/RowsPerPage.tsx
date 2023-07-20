@@ -8,10 +8,10 @@ interface RowsPerPageProps {
   onChange: (rowsPerPage) => any
   customOptions?: any[]
   isTop?: boolean
-  selectedOption?: 5 | 10 | 50 | 100
+  selectedOption?: 5 | 10 | 50 | 100 | 12 | 52
 }
 
-const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
+const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100, 12, 52]
 
 const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
   const { onChange, customOptions, isTop, selectedOption } = props

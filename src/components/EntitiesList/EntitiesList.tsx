@@ -89,7 +89,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(defaultPage)
   const [isMounted, setIsMounted] = useState(false)
 
-  const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
+  const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100, 12, 52]
   const options = ROWS_PER_PAGE_VALUES.map(value => ({
     label: value.toString(),
     value
