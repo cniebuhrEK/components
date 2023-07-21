@@ -3,15 +3,18 @@ import styled from 'styled-components'
 import * as R from 'ramda'
 
 import { ArrowDownIcon } from '../../icons'
+// eslint-disable-next-line no-unused-vars
+import { Option, ROWS_PER_PAGE_VALUES } from '../../utils/lists'
 
 interface RowsPerPageProps {
-  onChange: (rowsPerPage) => any
-  customOptions?: any[]
+  onChange: (option: Option) => void
+  customOptions?: number[]
   isTop?: boolean
-  selectedOption?: 5 | 10 | 50 | 100 | 12 | 52
+  selectedOption: {
+    label: string
+    value: number
+  }
 }
-
-const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100, 12, 52]
 
 const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
   const { onChange, customOptions, isTop, selectedOption } = props
@@ -32,10 +35,12 @@ const RowsPerPage = (props: RowsPerPageProps): JSX.Element => {
     return () => window.removeEventListener('mousedown', handleClickOutside)
   }, [open])
 
-  const options = (customOptions || ROWS_PER_PAGE_VALUES).map(value => ({
-    label: value.toString(),
-    value
-  }))
+  const options: Option[] = (customOptions || ROWS_PER_PAGE_VALUES).map(
+    (value: number) => ({
+      label: value.toString(),
+      value
+    })
+  )
 
   const handleChange = (e: any) => () => {
     onChange(e)
