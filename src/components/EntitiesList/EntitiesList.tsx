@@ -23,8 +23,14 @@ import { BouncingLoader } from '../BouncingLoader'
 import { IconButton } from '../IconButton'
 import { AddIcon } from '../../icons'
 import { getOptionByValue } from '../../utils/form'
-
-const DEFAULT_ROWS_PER_PAGE = 50
+import {
+  DEFAULT_ROWS_PER_PAGE,
+  // eslint-disable-next-line no-unused-vars
+  Option,
+  ROWS_PER_PAGE_VALUES,
+  // eslint-disable-next-line no-unused-vars
+  RowsPerPageType
+} from '../../utils/lists'
 
 interface CellProps {
   children: JSX.Element | string
@@ -49,7 +55,7 @@ interface EntitiesListProps {
   size?: string
   removeMargin?: boolean
   defaultPage: number
-  defaultRowsPerPage?: 5 | 10 | 50 | 100 | undefined
+  defaultRowsPerPage?: RowsPerPageType
   defaultSortColumnId: string
   defaultSortDirection: string
   onTableStateChange: (state: {
@@ -57,7 +63,7 @@ interface EntitiesListProps {
     dir: string
     page: number
     take: number
-  }) => any
+  }) => void
   highlight: boolean
   isLoading?: boolean
   topPagination?: boolean
@@ -89,7 +95,6 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const [currentPage, setCurrentPage] = useState(defaultPage)
   const [isMounted, setIsMounted] = useState(false)
 
-  const ROWS_PER_PAGE_VALUES = [5, 10, 50, 100]
   const options = ROWS_PER_PAGE_VALUES.map(value => ({
     label: value.toString(),
     value
@@ -97,20 +102,18 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
   const defaultValue = DEFAULT_ROWS_PER_PAGE
   const defaultOption = getOptionByValue(defaultValue)(options)
 
-  const [rowsPerPage, setRowsPerPage] = React.useState(defaultOption)
+  const [rowsPerPage, setRowsPerPage] = React.useState<Option>(defaultOption)
 
   useEffect(() => {
-    setRowsPerPage(getOptionByValue(defaultRowsPerPage!)(options))
+    defaultRowsPerPage &&
+      setRowsPerPage(getOptionByValue(defaultRowsPerPage)(options))
   }, [defaultRowsPerPage])
 
   useEffect(() => {
     paginationPage && setCurrentPage(paginationPage)
   }, [paginationPage])
 
-  const handleRowsPerPageChange = (option: {
-    label: string
-    value: number | string
-  }) => {
+  const handleRowsPerPageChange = (option: Option) => {
     setRowsPerPage(option)
     setCurrentPage(1)
   }
@@ -269,7 +272,6 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         <RowsPerPage
           onChange={handleRowsPerPageChange}
           selectedOption={rowsPerPage}
-          isTop
         />
         <div>
           <Pagination

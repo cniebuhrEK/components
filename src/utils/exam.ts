@@ -7,8 +7,7 @@ function componentFromStr(numStr, percent) {
     : Math.min(255, num)
 }
 
-const rgbRegex =
-  /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/
+const rgbRegex = /^rgb\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/
 const hexRegex = /^#?([a-f\d]{6})$/
 const shortHexRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/
 
