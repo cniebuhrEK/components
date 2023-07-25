@@ -24,6 +24,7 @@ export default {
       grey200: palette.grey200,
       grey300: palette.grey300,
       grey400: palette.grey400,
+      grey500: palette.grey500,
       grey600: palette.grey600,
       error200: palette.error200,
       error500: palette.error500,
@@ -259,7 +260,7 @@ export default {
         fontPlaceholder: palette.grey600
       },
       disabled: {
-        font: palette.grey300,
+        font: palette.grey500,
         background: palette.grey200,
         border: palette.grey300,
         fontActive: palette.grey300,
@@ -277,7 +278,7 @@ export default {
         borderActive: palette.text
       },
       disabled: {
-        font: palette.grey300,
+        font: palette.grey500,
         background: palette.grey200,
         border: palette.grey300,
         fontActive: palette.grey300,
