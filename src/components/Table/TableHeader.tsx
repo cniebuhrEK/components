@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import ArrowDown from '../../icons/ArrowDown'
 
 export interface TableHeaderProps {
@@ -72,12 +72,15 @@ const TableHeader = (props: TableHeaderProps): JSX.Element => {
       isSticky={isSticky}
     >
       {sortable && align === 'right' && (
-        <ArrowContainer>
+        <ArrowContainer
+          isSortActive={isSortActive}
+          sortDirection={sortDirection}
+        >
           <ArrowDown />
         </ArrowContainer>
       )}
       {children}
-      {sortable && align === 'left' && (
+      {sortable && (align === 'left' || align === 'center') && (
         <ArrowContainer
           isSortActive={isSortActive}
           sortDirection={sortDirection}
@@ -127,20 +130,24 @@ const ArrowContainer = styled.div`
   display: inline-block;
   font-size: ${({ theme }) => theme.typography.fontSizeNormal};
   line-height: 14px;
-  opacity: ${({ isSortActive }) => (isSortActive ? '1' : '0')};
+  opacity: ${({ isSortActive }) => (isSortActive ? '1' : '0.5')};
   padding: 0 5px;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  transform: rotate(
-      ${({ sortDirection }) =>
-        sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
-    )
-    translateY(
-      ${({ sortDirection }) =>
-        sortDirection === SORT_DIRECTION.asc ? '10%' : '0'}
-    );
+  ${({ isSortActive }) =>
+    isSortActive &&
+    css`
+      transform: rotate(
+          ${({ sortDirection }) =>
+            sortDirection === SORT_DIRECTION.asc ? '0deg' : '180deg'}
+        )
+        translateY(
+          ${({ sortDirection }) =>
+            sortDirection === SORT_DIRECTION.asc ? '10%' : '0'}
+        );
+    `}
 
   &:hover {
-    opacity: ${({ isSortActive }) => (isSortActive ? '1' : '0.5')};
+    opacity: ${({ isSortActive }) => (isSortActive ? '1' : '0.8')};
   }
 `
 
