@@ -117,27 +117,25 @@ const StudentTopNavigation = (
     onMenuOpen && onMenuOpen()
   }
 
-  const getExamsLogo = () =>
-    localStorage.getItem(themeKey) === themeDarkVariant
-      ? '/assets/logo/ExamsLogoLightBg.svg'
-      : '/assets/logo/ExamsLogoDarkBg.svg'
+  const [logoUrl, setLogoUrl] = useState('/assets/logo/ExamsLogoLightBg.svg')
 
-  const getKrackULogo = () =>
-    localStorage.getItem(themeKey) === themeDarkVariant
-      ? '/assets/logo/KrackUniversityLogoDarkBg.svg'
-      : '/assets/logo/KrackUniversityLogoLightBg.svg'
-
-  const getLogo = () =>
-    showCrackUniversityLogo ? getKrackULogo() : getExamsLogo()
-
-  const [logoUrl, setLogoUrl] = useState(getLogo())
-
-  const saveLogoUrl = () => setLogoUrl(getLogo())
+  const saveLogoUrl2 = () => {
+    if (showCrackUniversityLogo) {
+      localStorage.getItem(themeKey) === themeDarkVariant
+        ? setLogoUrl('/assets/logo/KrackUniversityLogoDarkBg.svg')
+        : setLogoUrl('/assets/logo/KrackUniversityLogoLightBg.svg')
+    } else {
+      localStorage.getItem(themeKey) === themeDarkVariant
+        ? setLogoUrl('/assets/logo/ExamsLogoDarkBg.svg')
+        : setLogoUrl('/assets/logo/ExamsLogoLightBg.svg')
+    }
+  }
 
   useEffect(() => {
-    themeEvents.on(eventsNames.themeUpdated, saveLogoUrl)
+    saveLogoUrl2()
+    themeEvents.on(eventsNames.themeUpdated, saveLogoUrl2)
     return () => {
-      themeEvents.off(eventsNames.themeUpdated, saveLogoUrl)
+      themeEvents.off(eventsNames.themeUpdated, saveLogoUrl2)
     }
   }, [showCrackUniversityLogo])
 
