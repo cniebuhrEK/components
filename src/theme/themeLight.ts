@@ -789,36 +789,36 @@ export default {
           border: '#606060'
         },
         terraCotta: {
-          background: 'linear-gradient(180deg, #ffd0bb, #ffe0cb)',
-          border: '#ffd0bb'
+          background: 'linear-gradient(180deg, #fff2e6, #ffd0bb)',
+          border: '#4a260f'
         },
         gold: {
-          background: 'linear-gradient(180deg, #ffe4b3, #ffe8c3)',
-          border: '#ffe4b3'
+          background: 'linear-gradient(180deg, #fff9e0, #ffe4b3)',
+          border: '#5d4503'
         },
         tangerine: {
-          background: 'linear-gradient(180deg, #ffc3ae, #ffd3be)',
-          border: '#ffc3ae'
+          background: 'linear-gradient(180deg, #ffe1c3, #ffc3ae)',
+          border: '#5c2103'
         },
         guacamole: {
-          background: 'linear-gradient(180deg, #f0f99b, #f4fca5)',
-          border: '#f0f99b'
+          background: 'linear-gradient(180deg, #f9fcb0, #f0f99b)',
+          border: '#2d3900'
         },
         ultramarine: {
-          background: 'linear-gradient(180deg, #cacdff, #d6d9ff)',
-          border: '#cacdff'
+          background: 'linear-gradient(180deg, #e1e4ff, #cacdff)',
+          border: '#19004d'
         },
         grape: {
-          background: 'linear-gradient(180deg, #e1c9f2, #e5d3f6)',
-          border: '#e1c9f2'
+          background: 'linear-gradient(180deg, #e8d6fa, #e1c9f2)',
+          border: '#310054'
         },
         moss: {
-          background: 'linear-gradient(180deg, #dde3e1, #e1e7e5)',
-          border: '#dde3e1'
+          background: 'linear-gradient(180deg, #e6eae8, #dde3e1)',
+          border: '#2d3b34'
         },
         slate: {
-          background: 'linear-gradient(180deg, #ced9ea, #d2ddef)',
-          border: '#ced9ea'
+          background: 'linear-gradient(180deg, #d7e0f3, #ced9ea)',
+          border: '#232b37'
         }
       }
     },
