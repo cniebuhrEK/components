@@ -4,8 +4,8 @@ import Icon from '../components/Icon'
 export const Trophy = props => {
   return (
     <Icon
-      width='1em'
-      height='1em'
+      width='20'
+      height='20'
       viewBox='0 0 20 20'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -16,7 +16,7 @@ export const Trophy = props => {
       </g>
       <defs>
         <clipPath id='clip0_10978_111179'>
-          <rect width='1em' height='1em' />
+          <rect width='20' height='20' />
         </clipPath>
       </defs>
     </Icon>
