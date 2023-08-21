@@ -84,6 +84,7 @@ const StudentTopNavigation = (
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
   const [menuPosition, setMenuPosition] = React.useState({ top: 0, left: 0 })
+  const [logoUrl, setLogoUrl] = useState('/assets/logo/ExamsLogoLightBg.svg')
   const hasAdditionalElements = isNotNilOrEmpty(navLeftElements)
   const hasAdditionalRightElements = isNotNilOrEmpty(navRightElements)
   const menuRef = React.useRef(null)
@@ -93,6 +94,8 @@ const StudentTopNavigation = (
 
   const resetLevel1 = () => setLinkLevel1('')
   const resetLevel2 = () => setLinkLevel2('')
+
+  console.log('logoUrl', logoUrl)
 
   const saveMenuPosition = () => {
     const element = staticMenuButtonRef
@@ -116,9 +119,6 @@ const StudentTopNavigation = (
     setOpen(true)
     onMenuOpen && onMenuOpen()
   }
-
-  const [logoUrl, setLogoUrl] = useState('/assets/logo/ExamsLogoLightBg.svg')
-
   const saveLogoUrl2 = () => {
     if (showCrackUniversityLogo) {
       localStorage.getItem(themeKey) === themeDarkVariant
@@ -132,7 +132,6 @@ const StudentTopNavigation = (
   }
 
   useEffect(() => {
-    saveLogoUrl2()
     themeEvents.on(eventsNames.themeUpdated, saveLogoUrl2)
     return () => {
       themeEvents.off(eventsNames.themeUpdated, saveLogoUrl2)
@@ -388,7 +387,10 @@ const StudentTopNavigation = (
         <Container isSafari={isSafari}>
           <LogoWrapper>
             <LogoContainer>
-              <img src={logoUrl} alt='logo icon' />
+              <img
+                src={logoUrl}
+                alt={showCrackUniversityLogo ? 'KrackU Logo' : 'Logo'}
+              />
             </LogoContainer>
 
             {hasAdditionalElements && (
