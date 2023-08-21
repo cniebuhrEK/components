@@ -95,8 +95,6 @@ const StudentTopNavigation = (
   const resetLevel1 = () => setLinkLevel1('')
   const resetLevel2 = () => setLinkLevel2('')
 
-  console.log('logoUrl', logoUrl)
-
   const saveMenuPosition = () => {
     const element = staticMenuButtonRef
 
@@ -119,7 +117,7 @@ const StudentTopNavigation = (
     setOpen(true)
     onMenuOpen && onMenuOpen()
   }
-  const saveLogoUrl2 = () => {
+  const handleLogoUrl = () => {
     if (showCrackUniversityLogo) {
       localStorage.getItem(themeKey) === themeDarkVariant
         ? setLogoUrl('/assets/logo/KrackUniversityLogoDarkBg.svg')
@@ -132,9 +130,9 @@ const StudentTopNavigation = (
   }
 
   useEffect(() => {
-    themeEvents.on(eventsNames.themeUpdated, saveLogoUrl2)
+    themeEvents.on(eventsNames.themeUpdated, handleLogoUrl)
     return () => {
-      themeEvents.off(eventsNames.themeUpdated, saveLogoUrl2)
+      themeEvents.off(eventsNames.themeUpdated, handleLogoUrl)
     }
   }, [showCrackUniversityLogo])
 
