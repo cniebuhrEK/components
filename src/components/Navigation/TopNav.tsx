@@ -1,19 +1,14 @@
 // Navigation/Student/TopNav.tsx - Top navigation component
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../Button'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import useOutsideClick from '../../hooks/useOutsideClick'
-import {
-  themeDarkVariant,
-  themeKey,
-  eventsNames,
-  themeEvents
-} from '../../theme'
 import { Tooltip } from '../Tooltip'
 import { ArrowDownIcon, ArrowRightIcon, BookMarkIcon } from '../../icons'
+import { AppLogo } from './AppLogo'
 
 type PureLink = {
   label: string
@@ -84,7 +79,6 @@ const StudentTopNavigation = (
   const [linkLevel1, setLinkLevel1] = React.useState('')
   const [linkLevel2, setLinkLevel2] = React.useState('')
   const [menuPosition, setMenuPosition] = React.useState({ top: 0, left: 0 })
-  const [logoUrl, setLogoUrl] = useState('/assets/logo/ExamsLogoLightBg.svg')
   const hasAdditionalElements = isNotNilOrEmpty(navLeftElements)
   const hasAdditionalRightElements = isNotNilOrEmpty(navRightElements)
   const menuRef = React.useRef(null)
@@ -117,24 +111,6 @@ const StudentTopNavigation = (
     setOpen(true)
     onMenuOpen && onMenuOpen()
   }
-  const handleLogoUrl = () => {
-    if (showCrackUniversityLogo) {
-      localStorage.getItem(themeKey) === themeDarkVariant
-        ? setLogoUrl('/assets/logo/KrackUniversityLogoDarkBg.svg')
-        : setLogoUrl('/assets/logo/KrackUniversityLogoLightBg.svg')
-    } else {
-      localStorage.getItem(themeKey) === themeDarkVariant
-        ? setLogoUrl('/assets/logo/ExamsLogoDarkBg.svg')
-        : setLogoUrl('/assets/logo/ExamsLogoLightBg.svg')
-    }
-  }
-
-  useEffect(() => {
-    themeEvents.on(eventsNames.themeUpdated, handleLogoUrl)
-    return () => {
-      themeEvents.off(eventsNames.themeUpdated, handleLogoUrl)
-    }
-  }, [showCrackUniversityLogo])
 
   const redirectByHref = url => {
     window.location.href = url
@@ -384,13 +360,7 @@ const StudentTopNavigation = (
         <div className='nav-notification'>{notification}</div>
         <Container isSafari={isSafari}>
           <LogoWrapper>
-            <LogoContainer>
-              <img
-                src={logoUrl}
-                alt={showCrackUniversityLogo ? 'KrackU Logo' : 'Logo'}
-              />
-            </LogoContainer>
-
+            <AppLogo isUniversity={showCrackUniversityLogo ?? false} />
             {hasAdditionalElements && (
               <AdditionalElementsContainer>
                 {navLeftElements}
@@ -476,15 +446,6 @@ const LogoWrapper = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
-`
-
-const LogoContainer = styled.div`
-  display: flex;
-  height: 100%;
-
-  img {
-    max-width: 157px;
-  }
 `
 
 const AdditionalElementsContainer = styled.div`
