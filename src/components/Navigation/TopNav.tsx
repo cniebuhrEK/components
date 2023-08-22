@@ -1,19 +1,14 @@
 // Navigation/Student/TopNav.tsx - Top navigation component
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import * as R from 'ramda'
 import styled from 'styled-components'
 import { Button } from '../Button'
 import { isNotNilOrEmpty } from '../../utils/ramda'
 import useOutsideClick from '../../hooks/useOutsideClick'
-import {
-  themeDarkVariant,
-  themeKey,
-  eventsNames,
-  themeEvents
-} from '../../theme'
 import { Tooltip } from '../Tooltip'
 import { ArrowDownIcon, ArrowRightIcon, BookMarkIcon } from '../../icons'
+import { AppLogo } from './AppLogo'
 
 type PureLink = {
   label: string
@@ -116,30 +111,6 @@ const StudentTopNavigation = (
     setOpen(true)
     onMenuOpen && onMenuOpen()
   }
-
-  const getExamsLogo = () =>
-    localStorage.getItem(themeKey) === themeDarkVariant
-      ? '/assets/logo/ExamsLogoLightBg.svg'
-      : '/assets/logo/ExamsLogoDarkBg.svg'
-
-  const getKrackULogo = () =>
-    localStorage.getItem(themeKey) === themeDarkVariant
-      ? '/assets/logo/KrackUniversityLogoDarkBg.svg'
-      : '/assets/logo/KrackUniversityLogoLightBg.svg'
-
-  const getLogo = () =>
-    showCrackUniversityLogo ? getKrackULogo() : getExamsLogo()
-
-  const [logoUrl, setLogoUrl] = useState(getLogo())
-
-  const saveLogoUrl = () => setLogoUrl(getLogo())
-
-  useEffect(() => {
-    themeEvents.on(eventsNames.themeUpdated, saveLogoUrl)
-    return () => {
-      themeEvents.off(eventsNames.themeUpdated, saveLogoUrl)
-    }
-  }, [showCrackUniversityLogo])
 
   const redirectByHref = url => {
     window.location.href = url
@@ -389,10 +360,7 @@ const StudentTopNavigation = (
         <div className='nav-notification'>{notification}</div>
         <Container isSafari={isSafari}>
           <LogoWrapper>
-            <LogoContainer>
-              <img src={logoUrl} alt='logo icon' />
-            </LogoContainer>
-
+            <AppLogo isUniversity={showCrackUniversityLogo ?? false} />
             {hasAdditionalElements && (
               <AdditionalElementsContainer>
                 {navLeftElements}
@@ -478,15 +446,6 @@ const LogoWrapper = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
-`
-
-const LogoContainer = styled.div`
-  display: flex;
-  height: 100%;
-
-  img {
-    max-width: 157px;
-  }
 `
 
 const AdditionalElementsContainer = styled.div`
