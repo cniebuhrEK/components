@@ -49,7 +49,7 @@
     "katex": "=0.13.18",
     "lodash.debounce": "=4.0.8",
     "mitt": "=3.0.0",
-    "quill": "=1.3.6",
+    "quill": "=1.3.7",
     "ramda": "=0.28.0",
     "react-datepicker": "=4.1.1",
     "react-dnd": "=14.0.5",
