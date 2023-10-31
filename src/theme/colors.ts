@@ -1,6 +1,7 @@
 export default {
   heading: '#1A1A1A',
   text: '#444444',
+  primary100: '#F7F0EB',
   primary200: '#FFEEDF',
   primary300: '#FFDCBB',
   primary400: '#FFB86E',
