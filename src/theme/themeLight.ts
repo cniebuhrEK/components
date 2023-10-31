@@ -10,6 +10,7 @@ export default {
     main: {
       heading: palette.heading,
       text: palette.text,
+      primary100: palette.primary100,
       primary200: palette.primary200,
       primary300: palette.primary300,
       primary400: palette.primary400,
