@@ -835,6 +835,9 @@ export default {
     },
     rating: {
       star: '#FFD542'
+    },
+    notifications: {
+      active: '#f7e2d2'
     }
   }
 }
