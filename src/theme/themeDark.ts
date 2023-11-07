@@ -91,6 +91,14 @@ export default {
           backgroundActive: 'linear-gradient(180deg, #E83E2E 0%, #FF5D4E 100%)',
           borderActive: 'transparent'
         },
+        purple: {
+          font: palette.secondary600,
+          background: 'linear-gradient(180deg, #d4cde0 0%, #d4cde0 100%)',
+          border: '#9d94bf',
+          fontActive: palette.secondary600,
+          backgroundActive: 'linear-gradient(180deg, #d4cde0 0%, #d4cde0 100%)',
+          borderActive: 'transparent'
+        },
         black: {
           font: palette.white,
           background: palette.text,

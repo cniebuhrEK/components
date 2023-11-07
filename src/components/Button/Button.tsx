@@ -23,7 +23,8 @@ const buttonColors = {
   red: 'red',
   black: 'black',
   tertiary: 'tertiary',
-  darkRed: 'darkRed'
+  darkRed: 'darkRed',
+  purple: 'purple'
 }
 
 // this is because there was inconsistency of naming colors
@@ -37,7 +38,8 @@ const colorsMap = {
   [buttonColors.transparent]: 'transparent',
   [buttonColors.red]: 'red',
   [buttonColors.black]: 'black',
-  [buttonColors.darkRed]: 'darkRed'
+  [buttonColors.darkRed]: 'darkRed',
+  [buttonColors.purple]: 'purple'
 }
 
 type ButtonProps =
@@ -58,6 +60,7 @@ type ButtonProps =
         | 'primary'
         | 'secondary'
         | 'darkRed'
+        | 'purple'
       variant?: 'contained' | 'outlined'
       startIcon?: any
       endIcon?: any
@@ -88,6 +91,7 @@ type ButtonProps =
         | 'secondary'
         | 'tertiary'
         | 'darkRed'
+        | 'purple'
       variant?: 'contained' | 'outlined'
       startIcon?: any
       endIcon?: any
