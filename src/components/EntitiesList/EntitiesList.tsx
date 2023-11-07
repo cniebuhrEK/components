@@ -155,7 +155,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         color='secondary'
         variant='filled'
         tooltip='Add new item to the list'
-        tooltipId='header-action-button'
+        tooltipId='header-action-button-add'
         onClick={handleAddButtonClick}
         size='small'
       />
@@ -175,7 +175,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
         color='primary'
         variant='filled'
         tooltip='Delete item from the list'
-        tooltipId='header-action-button'
+        tooltipId='header-action-button-delete'
         onClick={handleDeleteButtonClick}
         size='small'
       />
