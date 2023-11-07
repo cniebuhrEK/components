@@ -198,7 +198,7 @@ const StudentTopNavigation = (
       const Level1Link = has2level ? (
         <NavStaticMenuItem
           isInactive={isInactive}
-          onMouseEnter={isInactive ? () => {} : handleLevel2(link.label)}
+          onClick={isInactive ? () => {} : handleLevel2(link.label)}
           isSelectedAsLevel1={isSelected}
           state={{ backgroundLocation: location }}
         >
@@ -328,10 +328,7 @@ const StudentTopNavigation = (
   // overwritten by other items on the platform that have lower nesting
 
   const MenuButtonStatic = (
-    <MenuContainerStatic
-      ref={staticMenuButtonRef}
-      onMouseEnter={handleMouseEnter}
-    >
+    <MenuContainerStatic ref={staticMenuButtonRef} onClick={handleMouseEnter}>
       <Button>{menu}</Button>
     </MenuContainerStatic>
   )
@@ -342,7 +339,7 @@ const StudentTopNavigation = (
       <MenuContainerOpen
         open={open}
         ref={menuRef}
-        onMouseLeave={handleMouseLeave}
+        // onMouseLeave={handleMouseLeave}
         menuPosition={menuPosition}
       >
         <Button>{menu}</Button>
