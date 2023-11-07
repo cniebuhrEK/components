@@ -837,6 +837,13 @@ export default {
     },
     notifications: {
       active: '#f7e2d2'
+    },
+    checklist: {
+      backgroundRectangle: '#eee9f4',
+      strokeRectangle: '#a79bd3',
+      backgroundInterior: '#e2dcea',
+      backgroundButton: '#d4cde0',
+      strokeButton: '#9d94bf'
     }
   }
 }
