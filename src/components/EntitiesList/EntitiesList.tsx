@@ -195,8 +195,8 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
       onChangeSort={setNewSortedColumnId(header.columnId)}
     >
       <React.Fragment>
-        {header.addButtonId && renderAddButton(header.addButtonId)}
         {header.deleteButtonId && renderDeleteButton(header.deleteButtonId)}
+        {header.addButtonId && renderAddButton(header.addButtonId)}
         {header.children}
       </React.Fragment>
     </TableHeader>
