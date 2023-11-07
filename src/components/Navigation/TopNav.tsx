@@ -142,14 +142,11 @@ const StudentTopNavigation = (
             1,
             100
           )}`}
+          onClick={isInactive ? () => {} : handleRedirect(link.url)}
         >
           {link.icon && <NavMenuIcon>{link.icon}</NavMenuIcon>}
 
-          <NavMenuLink
-            onClick={isInactive ? () => {} : handleRedirect(link.url)}
-          >
-            {link.label}
-          </NavMenuLink>
+          <NavMenuLink>{link.label}</NavMenuLink>
 
           {hasBookmark && (
             <BookmarkLink onClick={isInactive ? () => {} : bookmarkOnClick}>
@@ -766,6 +763,9 @@ const Level2LinksContainer = styled.div`
 
 const LowestLevelLink = styled(NavMenuItem)`
   opacity: ${({ isInactive }) => (isInactive ? '0.3' : 1)};
+  &:hover ${NavMenuLink} {
+    color: ${({ theme }) => theme.colors.mainMenu.fontActive}!important;
+  }
 
   ${NavMenuLink} {
     color: ${({ theme }) => theme.colors.mainMenu.font} !important;
