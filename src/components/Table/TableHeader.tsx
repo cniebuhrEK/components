@@ -13,6 +13,7 @@ export interface TableHeaderProps {
   isSortActive?: boolean
   onChangeSort?: (e: any) => any
   addButtonId?: string
+  deleteButtonId?: string
 }
 
 export const SORT_DIRECTION = {

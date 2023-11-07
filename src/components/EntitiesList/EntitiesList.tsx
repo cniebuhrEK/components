@@ -21,7 +21,7 @@ import EntitiesListExpandableRow from './EntitiesListExpandableRow'
 import { propOr } from 'ramda'
 import { BouncingLoader } from '../BouncingLoader'
 import { IconButton } from '../IconButton'
-import { AddIcon } from '../../icons'
+import { AddIcon, TrashIcon } from '../../icons'
 import { getOptionByValue } from '../../utils/form'
 import {
   DEFAULT_ROWS_PER_PAGE,
@@ -162,6 +162,26 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     )
   }
 
+  const renderDeleteButton = id => {
+    const handleDeleteButtonClick = () => {
+      const stickyHeadersButton = document.getElementById(id)
+      // @ts-ignore
+      stickyHeadersButton.click()
+    }
+
+    return (
+      <IconButton
+        icon={<TrashIcon />}
+        color='primary'
+        variant='filled'
+        tooltip='Delete item from the list'
+        tooltipId='header-action-button'
+        onClick={handleDeleteButtonClick}
+        size='small'
+      />
+    )
+  }
+
   const renderHeaders = headers.map((header: TableHeaderProps) => (
     <TableHeader
       align={header.align}
@@ -176,6 +196,7 @@ const EntitiesList = (props: EntitiesListProps): JSX.Element => {
     >
       <React.Fragment>
         {header.addButtonId && renderAddButton(header.addButtonId)}
+        {header.deleteButtonId && renderDeleteButton(header.deleteButtonId)}
         {header.children}
       </React.Fragment>
     </TableHeader>
