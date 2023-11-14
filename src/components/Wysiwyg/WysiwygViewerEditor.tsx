@@ -69,7 +69,7 @@ const WysiwygViewer = (props: TextEditorProps): JSX.Element => {
       },
       readOnly: true
     })
-     q.setSelection(q.getLength(), 0)
+
     setQuill(q)
   }, [])
 
