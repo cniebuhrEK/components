@@ -24,9 +24,9 @@ npm-debug.log*
 
 .idea/
 
-# yarn zero-install config
+# yarn without zero-install config
+.pnp.*
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
