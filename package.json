@@ -31,7 +31,8 @@
     "prestorybook:start": "yarn copy:storybook-assets",
     "storybook:start": "start-storybook -p 6006 --static-dir public",
     "prestorybook:build": "build-storybook --output-dir public && mkdir -p ./public/assets",
-    "storybook:build": "cp -R ./src/assets ./public"
+    "storybook:build": "cp -R ./src/assets ./public",
+    "another-script": "echo Hello"
   },
   "peerDependencies": {
     "react": "=16.0.0"
