@@ -24,14 +24,11 @@ npm-debug.log*
 
 .idea/
 
-# yarn
-.pnp.*
+# yarn zero-install config
 .yarn/*
+!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
-yarn-error.log*
-.yarn-integrity
-yarn-debug.log*
