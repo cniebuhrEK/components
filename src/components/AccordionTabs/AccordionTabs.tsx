@@ -4,6 +4,8 @@ import { propOr, find, propEq } from 'ramda'
 import { ArrowDownIcon, TrashIcon } from '../../icons'
 import { IconButton } from '../IconButton'
 
+const EXAMPLE_CONST = 1
+
 export const AccordionTabs = props => {
   const { tabs, activeTab, tabContents, onChange, onDelete, deleteIcon } = props
 
