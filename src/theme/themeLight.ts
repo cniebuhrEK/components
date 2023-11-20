@@ -847,6 +847,14 @@ export default {
     notifications: {
       active: '#f7e2d2'
     },
+    errata: {
+      background: '#f7f0eb',
+      stroke: '#efbfab',
+      highlight: {
+        background: '#f7e2d2',
+        stroke: '#ffbca4'
+      }
+    },
     checklist: {
       backgroundRectangle: '#eee9f4',
       strokeRectangle: '#a79bd3',
