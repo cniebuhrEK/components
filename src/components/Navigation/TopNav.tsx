@@ -448,6 +448,10 @@ const LogoWrapper = styled.div`
   display: flex;
   height: 100%;
   align-items: center;
+
+  img {
+    cursor: ${({ clickableLogo }) => (clickableLogo ? 'pointer' : 'default')};
+  }
 `
 
 const AdditionalElementsContainer = styled.div`
