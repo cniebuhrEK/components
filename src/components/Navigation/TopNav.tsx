@@ -357,7 +357,7 @@ const StudentTopNavigation = (
       <ContainerOuter open={open} withNotification={hasNotification}>
         <div className='nav-notification'>{notification}</div>
         <Container isSafari={isSafari}>
-          <LogoWrapper>
+          <LogoWrapper clickackableLogo={clickableLogo}>
             <AppLogo
               onClick={logoOnClick}
               clickableLogo={clickableLogo}
