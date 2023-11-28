@@ -9,9 +9,15 @@ import {
 
 interface AppLogoProps {
   isUniversity: boolean
+  onClick?: () => void
+  clickableLogo?: boolean
 }
 
-export const AppLogo = ({ isUniversity }: AppLogoProps) => {
+export const AppLogo = ({
+  isUniversity,
+  onClick,
+  clickableLogo
+}: AppLogoProps) => {
   const [logoUrl, setLogoUrl] = useState('/assets/logo/ExamsLogoLightBg.svg')
 
   const handleLogoUrl = () => {
@@ -35,7 +41,15 @@ export const AppLogo = ({ isUniversity }: AppLogoProps) => {
 
   return (
     <LogoContainer>
-      <img src={logoUrl} alt={isUniversity ? 'KrackU Logo' : 'Logo'} />
+      {clickableLogo ? (
+        <img
+          onClick={onClick}
+          src={logoUrl}
+          alt={isUniversity ? 'KrackU Logo' : 'Logo'}
+        />
+      ) : (
+        <img src={logoUrl} alt={isUniversity ? 'KrackU Logo' : 'Logo'} />
+      )}
     </LogoContainer>
   )
 }

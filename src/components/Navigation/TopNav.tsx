@@ -50,6 +50,8 @@ interface StudentTopNavigationProps {
   navLeftElements?: JSX.Element | string | JSX.Element[] | string[]
   navRightElements?: JSX.Element | string | JSX.Element[] | string[]
   onMenuOpen?: () => any
+  clickableLogo?: boolean
+  logoOnClick?: () => any
 }
 
 const getRandomIntInclusive = (min, max) => {
@@ -72,7 +74,9 @@ const StudentTopNavigation = (
     navRightElements,
     redirectHandler,
     notification,
-    multipleCourse
+    multipleCourse,
+    clickableLogo,
+    logoOnClick
   } = props
 
   const [open, setOpen] = React.useState<boolean>(false)
@@ -354,7 +358,11 @@ const StudentTopNavigation = (
         <div className='nav-notification'>{notification}</div>
         <Container isSafari={isSafari}>
           <LogoWrapper>
-            <AppLogo isUniversity={showCrackUniversityLogo ?? false} />
+            <AppLogo
+              onClick={logoOnClick}
+              clickableLogo={clickableLogo}
+              isUniversity={showCrackUniversityLogo ?? false}
+            />
             {hasAdditionalElements && (
               <AdditionalElementsContainer>
                 {navLeftElements}
