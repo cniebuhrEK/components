@@ -864,31 +864,31 @@ export default {
     },
     calendar: {
       purple: {
-        background: 'linear-gradient(180deg, #e4e5ff 0%, #8671bf 100%)',
+        background: 'linear-gradient(180deg, #EFEFFF 0%, #C4B2F5 100%)',
         tag: '#4E2393'
       },
       blue: {
-        background: 'linear-gradient(180deg, #bfdcf7 0%, #5580b5 100%)',
+        background: 'linear-gradient(180deg, #ECF6FF 0%, #BFDCF7 100%)',
         tag: '#285598'
       },
       brown: {
-        background: 'linear-gradient(180deg, #f1e8e1 0%, #996e56 100%)',
+        background: 'linear-gradient(180deg, #FFF7F0 0%, #EACFBA 100%)',
         tag: '#845a3f'
       },
       turquoise: {
-        background: 'linear-gradient(180deg, #CAFAFA 0%, #44b2af 100%)',
+        background: 'linear-gradient(180deg, #DBFFFF 0%, #A6EDED 100%)',
         tag: '#22918b'
       },
       red: {
-        background: 'linear-gradient(180deg, #FFCDD0 0%, #FCA9AB 100%)',
+        background: 'linear-gradient(180deg, #FFE5E6 0%, #FE96A3 100%)',
         tag: '#B61719'
       },
       green: {
-        background: 'linear-gradient(180deg, #dafbe3 0%, #53a566 100%)',
+        background: 'linear-gradient(180deg, #E2FFEA 0%, #98E8AE 100%)',
         tag: '#1b7734'
       },
       orange: {
-        background: 'linear-gradient(180deg, #FFC3AE 0%, #ea8663 100%)',
+        background: 'linear-gradient(180deg, #FFECE5 0%, #FFC3AE 100%)',
         tag: '#ef560a'
       }
     },
