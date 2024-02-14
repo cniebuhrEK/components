@@ -861,6 +861,47 @@ export default {
       backgroundInterior: '#e2dcea',
       backgroundButton: '#d4cde0',
       strokeButton: '#9d94bf'
+    },
+    calendar: {
+      purple: {
+        background: 'linear-gradient(180deg, #e4e5ff 0%, #8671bf 100%)',
+        tag: '#4E2393'
+      },
+      blue: {
+        background: 'linear-gradient(180deg, #bfdcf7 0%, #5580b5 100%)',
+        tag: '#285598'
+      },
+      brown: {
+        background: 'linear-gradient(180deg, #f1e8e1 0%, #996e56 100%)',
+        tag: '#845a3f'
+      },
+      turquoise: {
+        background: 'linear-gradient(180deg, #CAFAFA 0%, #44b2af 100%)',
+        tag: '#22918b'
+      },
+      red: {
+        background: 'linear-gradient(180deg, #FFCDD0 0%, #FCA9AB 100%)',
+        tag: '#B61719'
+      },
+      green: {
+        background: 'linear-gradient(180deg, #dafbe3 0%, #53a566 100%)',
+        tag: '#1b7734'
+      },
+      orange: {
+        background: 'linear-gradient(180deg, #FFC3AE 0%, #ea8663 100%)',
+        tag: '#ef560a'
+      }
+    },
+    exam: {
+      orange: {
+        background: 'linear-gradient(180deg, #FFEEDF 0%, #FFDCBB 100%)',
+        tag: '#F8961A'
+      }
+    },
+    custom: {
+      brown: {
+        border: '#B2764E'
+      }
     }
   }
 }
