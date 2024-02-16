@@ -889,17 +889,65 @@ export default {
       orange: {
         background: 'linear-gradient(180deg, #FFECE5 0%, #FFC3AE 100%)',
         tag: '#ef560a'
-      }
-    },
-    exam: {
-      orange: {
-        background: 'linear-gradient(180deg, #FFEEDF 0%, #FFDCBB 100%)',
-        tag: '#F8961A'
-      }
-    },
-    custom: {
-      brown: {
-        border: '#B2764E'
+      },
+      mathPurple: {
+        background: 'linear-gradient(180deg, #F2F2FF 0%, #C6B6F2 100%)',
+        tag: '#4E2393'
+      },
+      aquamarine: {
+        background: 'linear-gradient(180deg, #F7FBF2 0%, #B9C896 100%)',
+        tag: '#607321'
+      },
+      yellow: {
+        background: 'linear-gradient(180deg, #FFFBE6 0%, #F2E58B 100%)',
+        tag: '#E4C200'
+      },
+      grey: {
+        background: 'linear-gradient(180deg, #F1F1F1 0%, #B8B8B8 100%)',
+        tag: '#606060'
+      },
+      terraCotta: {
+        background: 'linear-gradient(180deg, #FFEDE4 0%, #F1A987 100%)',
+        tag: '#cf692e'
+      },
+      gold: {
+        background: 'linear-gradient(180deg, #FFF8E1 0%, #F9D67A 100%)',
+        tag: '#edc10c'
+      },
+      tangerine: {
+        background: 'linear-gradient(180deg, #FFF1E6 0%, #FFB897 100%)',
+        tag: '#ef560a'
+      },
+      guacamole: {
+        background: 'linear-gradient(180deg, #FAFFD1 0%, #CCE673 100%)',
+        tag: '#85a500'
+      },
+      ultramarine: {
+        background: 'linear-gradient(180deg, #EDEFFF 0%, #9A8CFF 100%)',
+        tag: '#4b00db'
+      },
+      grape: {
+        background: 'linear-gradient(180deg, #F4E8FF 0%, #C597F2 100%)',
+        tag: '#9300d8'
+      },
+      moss: {
+        background: 'linear-gradient(180deg, #F0F4F3 0%, #BCCBC5 100%)',
+        tag: '#86a398'
+      },
+      slate: {
+        background: 'linear-gradient(180deg, #E3E9F2 0%, #A6B1C1 100%)',
+        tag: '#6d7c9e'
+      },
+      exam: {
+        orange: {
+          background: 'linear-gradient(180deg, #FFEEDF 0%, #FFDCBB 100%)',
+          tag: '#F8961A'
+        }
+      },
+      custom: {
+        brown: {
+          border: '#B2764E'
+        }
       }
     }
   }
