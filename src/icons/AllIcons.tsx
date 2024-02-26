@@ -163,7 +163,8 @@ import {
   SettingsIcon,
   NotificationBellIcon,
   ErrataIcon,
-  RocketIcon
+  RocketIcon,
+  NoteIcon
 } from './'
 
 const IconContainer = styled.div`
@@ -340,7 +341,8 @@ const AllIcons = () => {
     { component: SettingsIcon, title: 'SettingsIcon' },
     { component: NotificationBellIcon, title: 'NotificationBellIcon' },
     { component: ErrataIcon, title: 'ErrataIcon' },
-    { component: RocketIcon, title: 'RocketIcon' }
+    { component: RocketIcon, title: 'RocketIcon' },
+    { component: NoteIcon, title: 'NoteIcon' }
   ]
 
   const sortedIcons = R.sortBy(R.prop('title'))(icons)
