@@ -112,7 +112,7 @@ const DateField = (props: DateFieldProps) => {
             name={name}
             id={`${id}-input`}
             label={label}
-            value={value}
+            value={value.toISOString()}
             errorText={
               valid || disabled
                 ? ''
