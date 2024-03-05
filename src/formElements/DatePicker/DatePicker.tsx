@@ -75,16 +75,16 @@ const DateField = (props: DateFieldProps) => {
     onChange(name, date)
   }
 
-  const formattedDate = dateObject => {
-    return (
-      dateObject.getMonth() +
-      1 +
-      '/' +
-      dateObject.getDate() +
-      '/' +
-      dateObject.getFullYear()
-    )
-  }
+  // const formattedDate = dateObject => {
+  //   return (
+  //     dateObject.getMonth() +
+  //     1 +
+  //     '/' +
+  //     dateObject.getDate() +
+  //     '/' +
+  //     dateObject.getFullYear()
+  //   )
+  // }
 
   const onInputChange = () => {
     const inputElement = document.getElementById(id || name)
@@ -112,7 +112,7 @@ const DateField = (props: DateFieldProps) => {
             name={name}
             id={`${id}-input`}
             label={label}
-            value={formattedDate(value)}
+            value={value}
             errorText={
               valid || disabled
                 ? ''
