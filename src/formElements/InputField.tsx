@@ -44,7 +44,6 @@ export const InputField = (props: InputProps): JSX.Element => {
     ...rest
   } = props
 
-   console.log('testing mirroring to github')
   const [touched, _setTouched] = React.useState<boolean>(false)
   const [shouldRevalidate, setShouldRevalidate] = React.useState<boolean>(false)
   const [value, _setValue] = React.useState(initialValue)
