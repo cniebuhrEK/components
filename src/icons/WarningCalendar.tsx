@@ -4,12 +4,11 @@ import Icon from '../components/Icon'
 export const WarningCalendar = props => {
   return (
     <Icon
-      width='1em'
-      height='1em'
-      viewBox='0 0 1024 1024'
-      version='1.1'
-      xmlns='http://www.w3.org/2000/svg'
+      width='40'
+      height='39'
+      viewBox='0 0 40 39'
       fill='none'
+      xmlns='http://www.w3.org/2000/svg'
       {...props}
     >
       <g>
@@ -33,6 +32,16 @@ export const WarningCalendar = props => {
           strokeLinejoin='round'
         />
       </g>
+      <defs>
+        <clipPath id='clip0_15082_221913'>
+          <rect
+            width='39.0306'
+            height='38.25'
+            fill='white'
+            transform='translate(0.957031 0.75)'
+          />
+        </clipPath>
+      </defs>
     </Icon>
   )
 }
