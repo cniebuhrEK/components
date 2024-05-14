@@ -4,10 +4,10 @@ import Icon from '../components/Icon'
 export const Reorder = props => {
   return (
     <Icon
-      width='1em'
-      height='1em'
+      width='17'
+      height='16'
       viewBox='0 0 17 16'
-      version='1.1'
+      fill='none'
       xmlns='http://www.w3.org/2000/svg'
       {...props}
     >
@@ -29,6 +29,16 @@ export const Reorder = props => {
           strokeLinejoin='round'
         />
       </g>
+      <defs>
+        <clipPath id='clip0_15073_276442'>
+          <rect
+            width='16.0009'
+            height='16.0009'
+            fill='white'
+            transform='translate(0.5)'
+          />
+        </clipPath>
+      </defs>
     </Icon>
   )
 }
