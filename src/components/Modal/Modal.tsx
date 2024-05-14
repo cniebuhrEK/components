@@ -13,6 +13,7 @@ interface ReactModalProps {
   blank?: boolean
   fullscreen?: boolean
   title?: string
+  titleIcon?: any
   [x: string]: any
   animationIsLess500px?: boolean
 }
@@ -26,6 +27,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
     blank,
     fullscreen,
     animationIsLess500px,
+    titleIcon,
     ...rest
   } = props
 
@@ -35,6 +37,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
         <div {...props} onClick={e => e.stopPropagation()}>
           {!blank && (
             <React.Fragment>
+              {titleIcon && <TitleIcon>{titleIcon}</TitleIcon>}
               <Title isVisible={isNotNilOrEmpty(title)}>{title}</Title>
               <Close onClick={handleClose}>
                 <CloseIcon />
@@ -203,3 +206,4 @@ const Title = styled.div`
   margin-bottom: 24px;
   display: ${({ isVisible }) => (isVisible ? 'block' : 'none')};
 `
+const TitleIcon = styled.div``
