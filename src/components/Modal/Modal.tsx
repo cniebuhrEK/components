@@ -154,7 +154,7 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
     border: ${({ theme, hasBorder }) =>
-      hasBorder ? `1px solid ${theme.colors.main.primary500}` : 'none'};
+      hasBorder ? `2px solid ${theme.colors.main.primary500}` : 'none'};
     outline: 0;
     min-width: ${({ animationIsLess500px, fullscreen }) => {
       switch (true) {
