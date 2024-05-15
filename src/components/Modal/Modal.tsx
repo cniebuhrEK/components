@@ -14,6 +14,7 @@ interface ReactModalProps {
   fullscreen?: boolean
   title?: string
   titleIcon?: any
+  hasBorder?: boolean
   [x: string]: any
   animationIsLess500px?: boolean
 }
@@ -28,6 +29,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
     fullscreen,
     animationIsLess500px,
     titleIcon,
+    hasBorder,
     ...rest
   } = props
 
@@ -52,6 +54,7 @@ const Modal = (props: ReactModalProps): JSX.Element => {
       blank={blank}
       fullscreen={fullscreen}
       animationIsLess500px={animationIsLess500px}
+      hasBorder={hasBorder}
       {...rest}
     />
   )
@@ -150,6 +153,8 @@ export const StyledReactModal = styled(ReactModalAdapter).attrs({
     background: ${({ theme }) => theme.colors.modal.background};
     box-shadow: ${({ theme }) => theme.shadows.mainShadow};
     border-radius: 3px;
+    border: ${({ theme, hasBorder }) =>
+      hasBorder ? `1px solid ${theme.colors.main.primary500}` : 'none'};
     outline: 0;
     min-width: ${({ animationIsLess500px, fullscreen }) => {
       switch (true) {
